@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
 import { SearchEntry } from "./components/SearchEntry";
@@ -17,6 +17,21 @@ export default function App() {
   const openDrawer = (instrumentNumber: string) =>
     setDrawerInstrument(instrumentNumber);
   const closeDrawer = () => setDrawerInstrument(null);
+
+  const corpusProvenance = useMemo(() => {
+    return data.instruments.reduce(
+      (acc, inst) => {
+        const s = inst.provenance_summary;
+        if (!s) return acc;
+        return {
+          public_api: acc.public_api + s.public_api_count,
+          ocr: acc.ocr + s.ocr_count,
+          manual_entry: acc.manual_entry + s.manual_entry_count,
+        };
+      },
+      { public_api: 0, ocr: 0, manual_entry: 0 },
+    );
+  }, [data.instruments]);
 
   const drawerOpen = drawerInstrument !== null;
   const instrumentForDrawer = drawerOpen
@@ -103,6 +118,7 @@ export default function App() {
             <ProofDrawer
               instrument={instrumentForDrawer}
               links={linksForDrawer}
+              corpusProvenance={corpusProvenance}
               onClose={closeDrawer}
             />
           </aside>

@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import type { Instrument, DocumentLink } from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
@@ -6,13 +6,21 @@ import { ProvenanceTag } from "./ProvenanceTag";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
+export interface CorpusProvenance {
+  public_api: number;
+  ocr: number;
+  manual_entry: number;
+}
+
 interface Props {
   instrument: Instrument;
   links: DocumentLink[];
+  corpusProvenance: CorpusProvenance;
   onClose: () => void;
 }
 
-export function ProofDrawer({ instrument, links, onClose }: Props) {
+export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Props) {
+  const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const citation = formatCitation(instrument, COUNTY_NAME);
 
   const handleCopyCitation = useCallback(() => {
@@ -25,10 +33,13 @@ export function ProofDrawer({ instrument, links, onClose }: Props) {
   const lenders = getLenders(instrument);
   const releasingParties = getReleasingParties(instrument);
 
+  const ps = instrument.provenance_summary;
+
   return (
     <div className="h-full flex flex-col">
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50 shrink-0">
+      <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 shrink-0">
+        <div className="flex items-center justify-between">
           <div>
             <h3 className="font-semibold text-gray-800">
               {instrument.instrument_number}
@@ -53,9 +64,42 @@ export function ProofDrawer({ instrument, links, onClose }: Props) {
             </button>
           </div>
         </div>
+        {/* Provenance summary line */}
+        {ps && (
+          <div className="mt-2 text-xs text-gray-600 flex items-center gap-1 flex-wrap">
+            <span>This record:</span>
+            <span className="font-medium text-gray-700">
+              {ps.public_api_count} field{ps.public_api_count === 1 ? "" : "s"} from County API
+            </span>
+            <span className="text-gray-400">&middot;</span>
+            <span className="font-medium text-gray-700">
+              {ps.ocr_count} field{ps.ocr_count === 1 ? "" : "s"} OCR&rsquo;d from document
+            </span>
+            <span className="text-gray-400">&middot;</span>
+            <span className="font-medium text-gray-700">
+              {ps.manual_entry_count} field{ps.manual_entry_count === 1 ? "" : "s"} hand-curated
+            </span>
+            <button
+              onClick={() => setShowCorpusTotals((v) => !v)}
+              className="ml-1 w-4 h-4 rounded-full border border-gray-400 text-gray-500 text-[10px] leading-none flex items-center justify-center hover:bg-gray-100"
+              title="Show corpus-wide totals"
+              aria-label="Show corpus-wide totals"
+            >
+              i
+            </button>
+            {showCorpusTotals && (
+              <span className="w-full mt-1 text-[11px] text-gray-500 italic">
+                Across the full corpus: {corpusProvenance.public_api} /{" "}
+                {corpusProvenance.ocr} / {corpusProvenance.manual_entry}
+                {" "}(County API / OCR / hand-curated)
+              </span>
+            )}
+          </div>
+        )}
+      </div>
 
-        {/* Content: two-column */}
-        <div className="flex-1 overflow-hidden flex">
+      {/* Content: two-column */}
+      <div className="flex-1 overflow-hidden flex">
           {/* Left: Document Image */}
           <div className="w-1/2 border-r border-gray-200 overflow-auto bg-gray-100 p-4">
             {instrument.source_image_path.endsWith(".pdf") ? (
@@ -202,24 +246,6 @@ export function ProofDrawer({ instrument, links, onClose }: Props) {
                   ))}
                 </div>
               </>
-            )}
-
-            {/* Provenance summary */}
-            {instrument.provenance_summary && (
-              <div className="mt-6 pt-4 border-t border-gray-200">
-                <h4 className="text-xs font-medium text-gray-500 mb-2">
-                  Field Provenance Breakdown
-                </h4>
-                <div className="flex gap-4 text-xs text-gray-600">
-                  <span>
-                    County API: {instrument.provenance_summary.public_api_count}
-                  </span>
-                  <span>OCR: {instrument.provenance_summary.ocr_count}</span>
-                  <span>
-                    Hand-Curated: {instrument.provenance_summary.manual_entry_count}
-                  </span>
-                </div>
-              </div>
             )}
 
             {/* Corpus boundary */}
