@@ -19,8 +19,12 @@ export function SearchEntry({ parcel, onSelectParcel }: Props) {
       <h2 className="text-2xl font-bold text-gray-800 mb-1">
         Official Records Search
       </h2>
-      <p className="text-sm text-gray-500 mb-6">
-        Search by address, APN, owner name, or instrument number
+      <p className="text-sm text-gray-700 mb-1">
+        The authoritative parcel-keyed index for Maricopa County &mdash;
+        provenance-tagged to source, verified through April&nbsp;9,&nbsp;2026.
+      </p>
+      <p className="text-xs text-gray-500 mb-6">
+        Search by address, APN, owner name, or instrument number.
       </p>
 
       <div className="mb-8">
