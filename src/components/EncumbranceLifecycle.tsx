@@ -131,8 +131,8 @@ export function EncumbranceLifecycle({
             className="bg-white border border-gray-200 rounded-lg mb-4 overflow-hidden"
           >
             {/* Lifecycle Header */}
-            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200 flex items-center justify-between">
-              <div className="flex items-center gap-3">
+            <div className="px-4 py-3 bg-gray-50 border-b border-gray-200 flex items-center justify-between gap-3">
+              <div className="flex items-center gap-3 shrink-0">
                 <StatusBadge
                   status={effectiveStatus}
                   overridden={isOverridden}
@@ -140,11 +140,14 @@ export function EncumbranceLifecycle({
                 <span className="font-semibold text-gray-800">
                   DOT: {rootInst.instrument_number}
                 </span>
-                <span className="text-sm text-gray-500">
+                <span className="text-sm text-gray-500 whitespace-nowrap">
                   recorded {rootInst.recording_date}
                 </span>
               </div>
-              <div className="text-sm text-gray-500">
+              <div
+                className="text-sm text-gray-500 min-w-0 truncate text-right"
+                title={formatDotParties(rootInst)}
+              >
                 {formatDotParties(rootInst)}
               </div>
             </div>

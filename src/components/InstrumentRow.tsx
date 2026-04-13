@@ -27,13 +27,20 @@ export function InstrumentRow({ instrument, onOpenDocument }: Props) {
   const grantors = getGrantors(instrument);
   const grantees = getGrantees(instrument);
 
+  const partiesText =
+    grantors.length > 0 && grantees.length > 0
+      ? `${grantors.join(", ")} \u2192 ${grantees.join(", ")}`
+      : grantors.length > 0
+        ? grantors.join(", ")
+        : grantees.join(", ");
+
   return (
-    <div className="flex items-center justify-between py-2 px-3 hover:bg-gray-50 rounded">
-      <div className="flex items-center gap-3">
+    <div className="flex items-center justify-between gap-3 py-2 px-3 hover:bg-gray-50 rounded">
+      <div className="flex items-center gap-3 shrink-0">
         <span className="text-xs font-medium text-gray-400 w-24">
           {instrument.recording_date}
         </span>
-        <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700">
+        <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700 whitespace-nowrap">
           {TYPE_LABELS[instrument.document_type]}
         </span>
         <button
@@ -44,12 +51,11 @@ export function InstrumentRow({ instrument, onOpenDocument }: Props) {
           {instrument.instrument_number}
         </button>
       </div>
-      <div className="text-sm text-gray-600">
-        {grantors.length > 0 && grantees.length > 0
-          ? `${grantors.join(", ")} \u2192 ${grantees.join(", ")}`
-          : grantors.length > 0
-            ? grantors.join(", ")
-            : grantees.join(", ")}
+      <div
+        className="text-sm text-gray-600 min-w-0 truncate text-right"
+        title={partiesText}
+      >
+        {partiesText}
       </div>
     </div>
   );
