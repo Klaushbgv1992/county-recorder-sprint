@@ -1,0 +1,113 @@
+{
+  "instrument_number": "20130183450",
+  "recording_date": "2013-02-27",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "CHRISTOPHER POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "ASHLEY POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "V I P MORTGAGE INC",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "AMERICAN TITLE SERVICE AGENCY LLC",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "nominee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "V I P MORTGAGE INC",
+        "party_role": "lender"
+      }
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "ocr",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2013-02-18",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1005660000447551",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "American Title Service Agency, LLC",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "3674 E. Palmer Street, Gilbert, Arizona 85298",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "zip_code_note": {
+      "value": "ZIP code was 85298 in 2013 documents; current assessor address is 85295. Likely USPS reorganization.",
+      "provenance": "manual_entry",
+      "confidence": 0.8
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20130183449"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20130183450.pdf",
+  "page_count": 18,
+  "raw_api_response": {
+    "names": [
+      "AMERICAN TITLE SERVICE AGENCY LLC",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC MERS",
+      "POPHAM ASHLEY",
+      "POPHAM CHRISTOPHER",
+      "V I P MORTGAGE INC"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "2-27-2013",
+    "recordingNumber": "20130183450",
+    "pageAmount": 18,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS is the beneficiary of record as nominee for V.I.P. Mortgage, Inc. The note may have been transferred outside the public record via the MERS system. The release (20210075858) was executed by Wells Fargo Home Mortgage, not VIP Mortgage, indicating the loan was assigned outside the county recording system.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 6,
+    "manual_entry_count": 6
+  }
+}

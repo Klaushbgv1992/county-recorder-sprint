@@ -1,0 +1,107 @@
+{
+  "instrument_number": "20210075858",
+  "recording_date": "2021-01-22",
+  "document_type": "full_reconveyance",
+  "document_type_raw": "REL D/T",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "WELLS FARGO HOME MORTGAGE",
+      "role": "releasing_party",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    {
+      "name": "CAS NATIONWIDE TITLE CLEARING INC",
+      "role": "releasing_party",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "beneficiary",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "V I P MORTGAGE INC",
+        "party_role": "lender"
+      }
+    },
+    {
+      "name": "V I P MORTGAGE INC",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "CHRISTOPHER POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "ASHLEY POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "extracted_fields": {
+    "released_instrument": {
+      "value": "20130183450",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "release_date": {
+      "value": "2021-01-22",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_number": {
+      "value": "0293919278",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "notary_date": {
+      "value": "2021-01-22",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "notary_state": {
+      "value": "Florida",
+      "provenance": "ocr",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20130183450"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20210075858.pdf",
+  "page_count": 1,
+  "raw_api_response": {
+    "names": [
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "POPHAM ASHLEY",
+      "POPHAM CHRISTOPHER",
+      "V I P MORTGAGE INC"
+    ],
+    "documentCodes": [
+      "REL D/T"
+    ],
+    "recordingDate": "1-22-2021",
+    "recordingNumber": "20210075858",
+    "pageAmount": 1,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS is the beneficiary of record as nominee for V.I.P. Mortgage, Inc. This release was executed by Wells Fargo Home Mortgage via CAS Nationwide Title Clearing, Inc., indicating the loan was transferred from VIP Mortgage to Wells Fargo outside the county recording system via MERS.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 7,
+    "manual_entry_count": 4
+  }
+}

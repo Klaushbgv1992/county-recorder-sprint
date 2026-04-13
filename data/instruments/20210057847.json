@@ -1,0 +1,102 @@
+{
+  "instrument_number": "20210057847",
+  "recording_date": "2021-01-19",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "CHRISTOPHER POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "ASHLEY POPHAM",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "BAY EQUITY LLC",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "OLD REPUBLIC TITLE INSURANCE AGENCY INC",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "ocr",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2021-01-12",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$225,000.00",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1006166000413429-8",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "property_address": {
+      "value": "3674 E Palmer St, Gilbert, AZ 85295",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2051-02-01",
+      "provenance": "ocr",
+      "confidence": 0.9
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20210057846"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20210057847.pdf",
+  "page_count": 12,
+  "raw_api_response": {
+    "names": [
+      "BAY EQUITY LLC",
+      "POPHAM ASHLEY",
+      "POPHAM ASHLEY A",
+      "POPHAM CHRISTOPHER",
+      "POPHAM CHRISTOPHER A"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "1-19-2021",
+    "recordingNumber": "20210057847",
+    "pageAmount": 12,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 7,
+    "manual_entry_count": 4
+  }
+}

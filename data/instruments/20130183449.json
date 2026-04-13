@@ -1,0 +1,103 @@
+{
+  "instrument_number": "20130183449",
+  "recording_date": "2013-02-27",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [
+    "affidavit_of_disclosure"
+  ],
+  "parties": [
+    {
+      "name": "THE BRIAN J. AND TANYA R. MADISON LIVING TRUST, dated February 23, 2006",
+      "role": "grantor",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    {
+      "name": "CHRISTOPHER POPHAM",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "ASHLEY POPHAM",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "ocr",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2013-02-07",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "escrow_number": {
+      "value": "00044857-046-CC",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "American Title Service Agency, LLC",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "trust_execution_date": {
+      "value": "2006-02-23",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "signatory_capacity": {
+      "value": "trustees_of_trust",
+      "provenance": "ocr",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20010849180"
+  ],
+  "same_day_group": [
+    "20130183450"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20130183449.pdf",
+  "page_count": 5,
+  "raw_api_response": {
+    "names": [
+      "BRIAN J AND TANYA R MADISON LIVING TRUST DATED FEBRUAR",
+      "MADISON BRIAN J",
+      "MADISON BRIAN JOSEPH",
+      "MADISON TANYA R",
+      "MADISON TANYA RENAE",
+      "POPHAM ASHLEY",
+      "POPHAM CHRISTOPHER"
+    ],
+    "documentCodes": [
+      "WAR DEED",
+      "AF DISCLS"
+    ],
+    "recordingDate": "2-27-2013",
+    "recordingNumber": "20130183449",
+    "pageAmount": 5,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 1,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 8,
+    "manual_entry_count": 2
+  }
+}

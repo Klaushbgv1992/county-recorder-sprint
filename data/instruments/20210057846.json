@@ -1,0 +1,87 @@
+{
+  "instrument_number": "20210057846",
+  "recording_date": "2021-01-19",
+  "document_type": "ucc_termination",
+  "document_type_raw": "T FIN ST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "POPHAM CHRISTOPHER",
+      "role": "grantor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "SPWR USB 2013 2 LLC",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 0.9
+    }
+  ],
+  "extracted_fields": {
+    "original_filing_number": {
+      "value": "8201400340216",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "original_filing_date": {
+      "value": "2014-01-17",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "filing_type": {
+      "value": "TERMINATION",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "secured_party": {
+      "value": "SPWR USB 2013-2 LLC",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "filer": {
+      "value": "SunRun Capital, LLC",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "apn": {
+      "value": "304-78-386",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "ucc_reference": {
+      "value": "SPWR USB 2013-2 LLC - B78 - 427720",
+      "provenance": "ocr",
+      "confidence": 0.9
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20210057847"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20210057846.pdf",
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "POPHAM CHRISTOPHER",
+      "SPWR USB 2013 2 LLC"
+    ],
+    "documentCodes": [
+      "T FIN ST"
+    ],
+    "recordingDate": "1-19-2021",
+    "recordingNumber": "20210057846",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 7,
+    "manual_entry_count": 2
+  }
+}
