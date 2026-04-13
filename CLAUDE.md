@@ -27,7 +27,7 @@ Residential title examiner / abstractor
 5. Document Proof Drawer
 
 ## County Selection
-- **Primary:** Maricopa AZ (pending R-001 confirmation of free image access)
+- **Primary:** Maricopa AZ (CONFIRMED via R-001 — free images to 1974, public API discovered)
 - **Backup:** Clark NV
 - **Skipped:** Salt Lake UT, Franklin OH (only scout if both primary + backup fail)
 - **Auto-flip rule:** If Maricopa images are paywalled or require account creation, flip to Clark without roundtrip — log in decision table
@@ -56,6 +56,11 @@ Residential title examiner / abstractor
 | 15 | Name normalization / entity resolution: mention-only | Verbal reference in demo, zero code. Single most time-consuming examiner task. | 2026-04-13 |
 | 16 | Data freshness / live sync: mention-only | Prototype uses snapshot. Production syncs real-time — that's the moat narrative. | 2026-04-13 |
 | 17 | Confidence scores hand-assigned during curation | No model-based confidence estimation in prototype | 2026-04-13 |
+| 18 | R-001: Maricopa CONFIRMED — all 5 criteria pass | Free images to 1974, public REST API discovered, 272 doc types, name index 1871-2026 | 2026-04-13 |
+| 19 | DATA-MODEL: No grantor/grantee distinction in Maricopa API | names[] is flat array, no roles. Grantor/grantee assignment is always `manual_entry` provenance. Demo-strengthening gap. | 2026-04-13 |
+| 20 | DATA-MODEL: No legal description in structured data | Only in PDF body. Every legal description is `manual_entry` or `ai_extraction`, never `index_metadata`. | 2026-04-13 |
+| 21 | DATA-MODEL: No APN in recorder system | Assessor→recorder link is one-way via legacy docketBook/pageMap. No bidirectional APN bridge. This IS the moat moment — prototype fixes this gap. | 2026-04-13 |
+| 22 | Public API: publicapi.recorder.maricopa.gov | Undocumented REST API, no auth, JSON metadata + deterministic PDF/PNG URLs. Disintermediation thesis verified. | 2026-04-13 |
 
 ## Active Skill State
 - **Current Phase:** Phase 1 — County + Parcel Lock
@@ -66,10 +71,31 @@ Residential title examiner / abstractor
 ## Research Request Tracker
 | ID | Phase | Status | Summary |
 |----|-------|--------|---------|
-| (none yet) | | | |
+| R-001 | 1 | COMPLETE | Maricopa portal scout — all 5 criteria pass, public API discovered, 1974 lookback |
 
-## Schema
-TBD — will define after county/parcel lock
+## Schema Notes (pre-Phase 3)
+- Grantor/grantee provenance is ALWAYS `manual_entry` for Maricopa data (flat names[] in API)
+- Legal description provenance is ALWAYS `manual_entry` or `ai_extraction` (not in structured data)
+- No APN cross-reference in recorder — assessor bridge is manual curation
+- Schema update deferred to Phase 3 Task 3.2
 
-## Terminology Notes
-TBD — will capture per-county terminology from research handoffs
+## Terminology Notes (Maricopa AZ)
+- **Instrument number format:** 11 digits, YYYY + 7-digit sequence, no separators (e.g., 20210234567)
+- **Recording date format (API):** M-D-YYYY (no leading zeros) — normalize to YYYY-MM-DD
+- **Name index coverage:** 1871-06-01 through 2026-04-09
+- **Corpus boundary date:** 2026-04-09
+- **APN format:** NNN-NN-NNN[X] (e.g., 112-19-038A). URL form strips dashes.
+- **Document types (deed family):** DEED/USE WITH ANY GENERAL DEED TYPE, GRANT DEED, QUIT CLAIM DEED, JOINT TENANCY DEED, BARGAIN AND SALE DEED, BENEFICIARY DEED, COMMUNITY PROPERTY DEED, DEED OF TRUST, ASSIGNMENT OF DEED OF TRUST, DEED OF RELEASE & FULL RECONVEYANCE OF D/TR, + others (272 total codes)
+- **Release label:** "DEED OF RELEASE & FULL RECONVEYANCE OF D/TR"
+- **Assignment label:** "ASSIGNMENT OF DEED OF TRUST"
+- **Image formats:** PDF (all pages) or PNG (per page). "Unofficial Document" watermark.
+- **Image lookback depth:** April 1974 (confirmed)
+
+## Key Endpoints
+- Recorder API: `https://publicapi.recorder.maricopa.gov`
+  - `GET /documents/{recordingNumber}` → JSON metadata
+  - `GET /preview/pdf?recordingNumber={id}` → full PDF
+  - `GET /preview/image?recordingNumber={id}&page={n}` → page PNG
+- Legacy static: `https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/{recordingNumber}.pdf` (recent only)
+- Assessor: `https://mcassessor.maricopa.gov/mcs/?q={APN-no-dashes}&mod=pd`
+- Assessor→recorder: `https://recorder.maricopa.gov/recording/document-search-results.html?mode=book&docketBook={book}&pageMap={page}`
