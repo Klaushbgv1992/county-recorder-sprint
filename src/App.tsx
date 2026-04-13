@@ -1,121 +1,93 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
-import './App.css'
+import { useState } from "react";
+import { useParcelData } from "./hooks/useParcelData";
+import { useExaminerActions } from "./hooks/useExaminerActions";
+import { SearchEntry } from "./components/SearchEntry";
+import { ChainOfTitle } from "./components/ChainOfTitle";
+import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
+import { ProofDrawer } from "./components/ProofDrawer";
 
-function App() {
-  const [count, setCount] = useState(0)
+type Screen = "search" | "chain" | "encumbrance";
+
+export default function App() {
+  const data = useParcelData();
+  const examiner = useExaminerActions(data.links);
+  const [screen, setScreen] = useState<Screen>("search");
+  const [drawerInstrument, setDrawerInstrument] = useState<string | null>(null);
+
+  const openDrawer = (instrumentNumber: string) =>
+    setDrawerInstrument(instrumentNumber);
+  const closeDrawer = () => setDrawerInstrument(null);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.tsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
+    <div className="min-h-screen bg-gray-50 text-gray-900">
+      <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6">
+        <h1 className="text-lg font-semibold text-blue-900">
+          Maricopa County Recorder
+        </h1>
         <button
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
+          onClick={() => setScreen("search")}
+          className={`px-3 py-1 rounded text-sm ${screen === "search" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
         >
-          Count is {count}
+          Search
         </button>
-      </section>
+        <button
+          onClick={() => setScreen("chain")}
+          className={`px-3 py-1 rounded text-sm ${screen === "chain" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+        >
+          Chain of Title
+        </button>
+        <button
+          onClick={() => setScreen("encumbrance")}
+          className={`px-3 py-1 rounded text-sm ${screen === "encumbrance" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+        >
+          Encumbrances
+        </button>
+      </nav>
 
-      <div className="ticks"></div>
+      <main className="max-w-6xl mx-auto px-6 py-6">
+        {screen === "search" && (
+          <SearchEntry
+            parcel={data.parcel}
+            onSelectParcel={() => setScreen("chain")}
+          />
+        )}
+        {screen === "chain" && (
+          <ChainOfTitle
+            parcel={data.parcel}
+            instruments={data.instruments}
+            links={data.links}
+            onOpenDocument={openDrawer}
+          />
+        )}
+        {screen === "encumbrance" && (
+          <EncumbranceLifecycle
+            parcel={data.parcel}
+            instruments={data.instruments}
+            links={data.links}
+            lifecycles={data.lifecycles}
+            pipelineStatus={data.pipelineStatus}
+            linkActions={examiner.linkActions}
+            lifecycleOverrides={examiner.lifecycleOverrides}
+            onSetLinkAction={examiner.setLinkAction}
+            onSetLifecycleOverride={examiner.setLifecycleOverride}
+            onOpenDocument={openDrawer}
+          />
+        )}
+      </main>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      {drawerInstrument && (
+        <ProofDrawer
+          instrument={data.instruments.find(
+            (i) => i.instrument_number === drawerInstrument,
+          )!}
+          links={data.links.filter(
+            (l) =>
+              l.source_instrument === drawerInstrument ||
+              l.target_instrument === drawerInstrument,
+          )}
+          onClose={closeDrawer}
+        />
+      )}
+    </div>
+  );
 }
-
-export default App
