@@ -33,9 +33,14 @@ export default function App() {
   return (
     <div className="h-screen flex flex-col bg-gray-50 text-gray-900">
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
-        <h1 className="text-lg font-semibold text-blue-900">
-          Maricopa County Recorder
-        </h1>
+        <div className="flex items-baseline gap-2">
+          <h1 className="text-lg font-semibold text-blue-900">
+            Land Custodian Portal
+          </h1>
+          <span className="text-xs text-gray-500 uppercase tracking-wide">
+            Maricopa County, AZ
+          </span>
+        </div>
         <button
           onClick={() => setScreen("search")}
           className={`px-3 py-1 rounded text-sm ${screen === "search" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
