@@ -50,6 +50,8 @@ Source: R-001 Maricopa County portal scouting + R-002-v2 parcel detail walks (20
 
 5. **Assessor cross-links use legacy format.** docketBook/pageMap instead of modern recording numbers.
 
+6. **Role inference from name order fails on DOTs.** The public API returns names for a Deed of Trust alphabetized by entity rather than by role. On the 2013 POPHAM purchase DOT (20130183450), the names array returned as [AMERICAN TITLE, MERS, POPHAM, VIP MORTGAGE] — no way to tell borrower from lender from trustee without reading the PDF body. This holds for all DOTs with multiple institutional parties, which is the majority of residential recorder volume.
+
 ## Measurable-Win Evidence
 
 ### From R-001 (Portal-Level)

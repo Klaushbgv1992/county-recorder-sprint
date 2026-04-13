@@ -193,3 +193,7 @@ The Palmer St chain from 2013 onward is **CLEAN**:
 - "T FIN ST" = Termination of Financing Statement (UCC filing)
 - "AF DISCLS" = Affidavit of Disclosure (bundled with AZ residential deeds)
 - Trust names truncated at ~53 characters in the API
+
+## Open Items
+
+- **20130183449 trust name truncation.** Public API truncates grantor trust name at ~53 chars. The full trust name (with execution date) is needed for provenance accuracy in the demo. DECISION: recover the full trust name during Phase 2 corpus download by OCR-extracting the first page of the PDF, NOT by hand-typing during Phase 3 curation. Rationale: (a) Phase 2 is already downloading all PDFs, so OCR is additive not new work; (b) hand-typing during Phase 3 creates a provenance gap — the corpus would not match the displayed data; (c) this surfaces a second API limitation worth documenting.

@@ -68,6 +68,8 @@ Residential title examiner / abstractor
 | 26 | Curation rule A: parcel attribution | An instrument belongs to the locked parcel only if its names list includes the parcel's owner AND at least one other party appears on a prior/subsequent deed in the DEED-button-confirmed chain. | 2026-04-13 |
 | 27 | Curation rule B: same-day transaction linking | Same-day recording number groups (e.g., WAR DEED + DEED TRST) are linked transactions. The DEED TRST is the financing for that deed. | 2026-04-13 |
 | 28 | POPHAM selected primary over HOGUE | (a) 2021 DOT has 3-day release creating clean lifecycle pair, (b) purchase from living trust adds legal nuance, (c) UCC filing chain is demo-differentiating, (d) HOGUE has more same-name contamination. | 2026-04-13 |
+| 29 | DOT name ordering unreliable for role inference | Public API returns DOT names alphabetized by entity, not grantor-first. Role inference from name order works for deed-to-deed but fails for DOTs with institutional parties (trustee, MERS, lender, borrower all interleaved). Prototype uses manual curation for the 5 POPHAM instruments. Production would need document-type heuristics (DEED TRST → individual name is borrower, institutional name is lender) plus OCR fallback on the PDF body. This is a known scope limit, not a bug. | 2026-04-13 |
+| 30 | Trust name truncation handled in Phase 2 via OCR, not Phase 3 via hand-typing | Public API truncates long entity names at ~53 chars. Recovering via OCR during corpus download keeps displayed data traceable to source. Hand-typing during curation would create provenance gaps. | 2026-04-13 |
 
 ## Active Skill State
 - **Current Phase:** Phase 1 — County + Parcel Lock
@@ -97,6 +99,10 @@ Residential title examiner / abstractor
 - **Assignment label:** "ASSIGNMENT OF DEED OF TRUST"
 - **Image formats:** PDF (all pages) or PNG (per page). "Unofficial Document" watermark.
 - **Image lookback depth:** April 1974 (confirmed)
+- **Additional document codes (from R-002 API verification):**
+  - **REL D/T** → "Release of Deed of Trust" (UI dropdown label: "DEED OF RELEASE & FULL RECONVEYANCE OF D/TR"). The API returns the short code while the UI dropdown uses the long form — another instance of the backend/UI taxonomy mismatch already logged in Decision #21.
+  - **T FIN ST** → "Termination of Financing Statement" (UCC-3 termination). In the POPHAM chain this terminated a SunPower solar lease UCC filing.
+  - **AF DISCLS** → "Affidavit of Disclosure" (Arizona A.R.S. § 33-422 seller disclosure affidavit, often recorded alongside rural deeds).
 
 ## Key Endpoints
 - Recorder API: `https://publicapi.recorder.maricopa.gov`
