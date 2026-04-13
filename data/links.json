@@ -1,0 +1,29 @@
+[
+  {
+    "id": "link-001",
+    "source_instrument": "20130183450",
+    "target_instrument": "20130183449",
+    "link_type": "same_day_transaction",
+    "provenance": "public_api",
+    "confidence": 1.0,
+    "examiner_action": "pending"
+  },
+  {
+    "id": "link-002",
+    "source_instrument": "20210075858",
+    "target_instrument": "20130183450",
+    "link_type": "release_of",
+    "provenance": "ocr",
+    "confidence": 0.97,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-003",
+    "source_instrument": "20210057846",
+    "target_instrument": "20210057847",
+    "link_type": "same_day_transaction",
+    "provenance": "public_api",
+    "confidence": 1.0,
+    "examiner_action": "pending"
+  }
+]

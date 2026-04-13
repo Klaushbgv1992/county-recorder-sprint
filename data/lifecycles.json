@@ -1,0 +1,25 @@
+{
+  "pipeline_status": {
+    "verified_through_date": "2026-04-09",
+    "current_stage": "published",
+    "last_updated": "2026-04-09"
+  },
+  "lifecycles": [
+    {
+      "id": "lc-001",
+      "root_instrument": "20130183450",
+      "child_instruments": ["20210075858"],
+      "status": "released",
+      "status_rationale": "Release confirmed by examiner via 20210075858",
+      "examiner_override": null
+    },
+    {
+      "id": "lc-002",
+      "root_instrument": "20210057847",
+      "child_instruments": [],
+      "status": "open",
+      "status_rationale": "No reconveyance found in corpus for DOT 20210057847",
+      "examiner_override": null
+    }
+  ]
+}
