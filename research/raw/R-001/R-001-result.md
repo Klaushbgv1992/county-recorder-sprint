@@ -3,6 +3,11 @@
 Date: 2026-04-13
 Status: COMPLETE — All 5 acceptance criteria PASS
 
+Amendments:
+- Date: 2026-04-13, Source: R-003 corpus download
+  - publicapi /preview/pdf: clarified 302 redirect behavior
+  - publicapi /preview/image: marked not-usable-as-documented, local render via PyMuPDF recommended instead
+
 ## Acceptance Criteria
 
 | # | Criterion | Result |
@@ -18,8 +23,19 @@ Status: COMPLETE — All 5 acceptance criteria PASS
 ### Recorder Public API (undocumented, no auth)
 - Base: https://publicapi.recorder.maricopa.gov
 - GET /documents/{11-digit recordingNumber} → JSON metadata
-- GET /preview/pdf?recordingNumber={id} → full PDF (all pages)
-- GET /preview/image?recordingNumber={id}&page={n} → page PNG
+- GET /preview/pdf?recordingNumber={id}
+  Returns HTTP 302 redirect — follow with curl -L or equivalent.
+  Redirects to era-appropriate storage (legacy.recorder.maricopa.gov
+  for recent docs, internal store for older). Handles era routing
+  internally — callers don't need to know which backend serves which
+  era. Verified end-to-end in R-003 for 2013 and 2021 documents.
+- GET /preview/image?recordingNumber={id}&page={n}
+  OBSERVED in R-001 network traffic from document-preview.html, but
+  direct calls return HTTP 400 Bad Request (tested in R-003). The URL
+  pattern is either incomplete (missing required params) or gated by
+  same-origin headers. For prototype use, render page images locally
+  from downloaded PDFs via PyMuPDF rather than calling this endpoint.
+  Re-investigate if per-page image access becomes a production need.
 
 ### Recorder User-Facing
 - Homepage: https://recorder.maricopa.gov/
