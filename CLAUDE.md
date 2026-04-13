@@ -61,6 +61,7 @@ Residential title examiner / abstractor
 | 20 | DATA-MODEL: No legal description in structured data | Only in PDF body. Every legal description is `manual_entry` or `ai_extraction`, never `index_metadata`. | 2026-04-13 |
 | 21 | DATA-MODEL: No APN in recorder system | Assessor→recorder link is one-way via legacy docketBook/pageMap. No bidirectional APN bridge. This IS the moat moment — prototype fixes this gap. | 2026-04-13 |
 | 22 | Public API: publicapi.recorder.maricopa.gov | Undocumented REST API, no auth, JSON metadata + deterministic PDF/PNG URLs. Disintermediation thesis verified. | 2026-04-13 |
+| 23 | R-002 v1 reconnaissance complete, hunting scope narrowed | Street+city search strategy discovered (subdivision search too noisy). 10 APNs pre-qualified on E Palmer St Gilbert. Splitting R-002 into v2 (3 specific APNs) + API verification via curl. | 2026-04-13 |
 
 ## Active Skill State
 - **Current Phase:** Phase 1 — County + Parcel Lock
