@@ -58,10 +58,10 @@ Residential title examiner / abstractor
 | 17 | Confidence scores hand-assigned during curation | No model-based confidence estimation in prototype | 2026-04-13 |
 
 ## Active Skill State
-- **Current Phase:** Phase 0 — Setup + Brainstorming Gate
-- **Active Skill:** brainstorming (pending)
-- **Brainstorm Sign-off:** pending
-- **Plan Sign-off:** pending
+- **Current Phase:** Phase 1 — County + Parcel Lock
+- **Active Skill:** executing-plans
+- **Brainstorm Sign-off:** approved (2026-04-13)
+- **Plan Sign-off:** approved (2026-04-13) — 6 fixes applied (Tailwind v4, resolveLifecycleStatus, time budget, copy-cite verified, test rename, measurable-win rule)
 
 ## Research Request Tracker
 | ID | Phase | Status | Summary |

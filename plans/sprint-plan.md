@@ -12,6 +12,20 @@
 
 ---
 
+## Time Budget
+
+| Phase | Time | Day | Window |
+|-------|------|-----|--------|
+| Phase 1: County + Parcel Lock | ~3h | Day 1 | Morning |
+| Phase 2: Corpus Assembly | ~2h | Day 1 | Early afternoon |
+| Phase 3: Data Structuring + Schema + TDD | ~5-6h | Day 1 | Late afternoon through evening |
+| Phase 4: UI Build (4 firm screens) | ~8-10h | Day 2 | Full day |
+| Phase 5: Demo Polish + Red Team | ~2-3h | Day 2 | End of day |
+
+**Mid-sprint escalation rule (end of Day 1):** If Phase 3 is not complete by end of Day 1, STOP and reassess scope. Consider cutting TDD on citation-formatter (Task 3.7) to recover time. Data layer TDD on schemas, chain builder, and lifecycle status (Tasks 3.3, 3.5, 3.6) is **non-negotiable** — those are thesis logic and must have coverage.
+
+---
+
 ## File Structure
 
 ```
@@ -63,8 +77,7 @@
 │   ├── lifecycle-status.test.ts       # Lifecycle status rule tests
 │   └── citation-formatter.test.ts     # Citation formatting tests
 ├── index.html                         # Vite entry HTML
-├── vite.config.ts                     # Vite config
-├── tailwind.config.js                 # Tailwind config
+├── vite.config.ts                     # Vite config (includes Tailwind v4 plugin)
 ├── tsconfig.json                      # TypeScript config
 └── package.json
 ```
@@ -399,7 +412,6 @@ Only execute if Task 2.2 Step 2 found gaps. Emit a targeted follow-up for specif
 - Create: `package.json`
 - Create: `vite.config.ts`
 - Create: `tsconfig.json`
-- Create: `tailwind.config.js`
 - Create: `index.html`
 - Create: `src/main.tsx`
 
@@ -451,8 +463,8 @@ Expected: browser opens with Vite default page. Kill server after confirming.
 - [ ] **Step 5: Commit scaffold**
 
 ```bash
-git add package.json vite.config.ts tsconfig.json tailwind.config.js index.html src/ postcss.config.js
-git commit -m "feat: Vite + React + TypeScript + Tailwind scaffold"
+git add package.json vite.config.ts tsconfig.json index.html src/
+git commit -m "feat: Vite + React + TypeScript + Tailwind v4 scaffold"
 ```
 
 ### Task 3.2: Define Zod Schemas + TypeScript Types
@@ -1166,7 +1178,7 @@ git commit -m "feat: chain-builder — assembles owner periods from deed history
 `tests/lifecycle-status.test.ts`:
 ```ts
 import { describe, it, expect } from "vitest";
-import { computeLifecycleStatus } from "../src/logic/lifecycle-status";
+import { computeLifecycleStatus, resolveLifecycleStatus } from "../src/logic/lifecycle-status";
 import type { Instrument, DocumentLink } from "../src/types";
 
 describe("computeLifecycleStatus", () => {
@@ -1212,7 +1224,7 @@ describe("computeLifecycleStatus", () => {
     expect(result.status).toBe("released");
   });
 
-  it("returns 'possible_match' when release link is pending with high confidence", () => {
+  it("returns 'possible_match' when release link is pending review", () => {
     const release: Instrument = {
       ...rootDot,
       instrument_number: "20230002",
@@ -1285,11 +1297,29 @@ describe("computeLifecycleStatus", () => {
     expect(result.status).toBe("open");
   });
 
-  it("respects examiner override — override to released trumps computed open", () => {
-    const result = computeLifecycleStatus(rootDot, [], []);
-    // computeLifecycleStatus returns computed status; override is applied at render layer
-    // So this test confirms the base computation is 'open'
-    expect(result.status).toBe("open");
+});
+
+describe("resolveLifecycleStatus", () => {
+  const computed = {
+    status: "open" as const,
+    status_rationale: "No reconveyance found in corpus for DOT 20210001",
+  };
+
+  it("returns computed unchanged when override is null", () => {
+    const result = resolveLifecycleStatus(computed, null);
+    expect(result).toEqual(computed);
+  });
+
+  it("override wins over computed status", () => {
+    const result = resolveLifecycleStatus(computed, "released");
+    expect(result.status).toBe("released");
+  });
+
+  it("rationale includes original reason when overridden", () => {
+    const result = resolveLifecycleStatus(computed, "released");
+    expect(result.status_rationale).toContain("Examiner override");
+    expect(result.status_rationale).toContain("open");
+    expect(result.status_rationale).toContain("No reconveyance found");
   });
 });
 ```
@@ -1313,7 +1343,7 @@ const RELEASE_TYPES = new Set([
   "partial_reconveyance",
 ]);
 
-interface LifecycleResult {
+export interface LifecycleResult {
   status: LifecycleStatus;
   status_rationale: string;
 }
@@ -1365,6 +1395,17 @@ export function computeLifecycleStatus(
   return {
     status: "possible_match",
     status_rationale: `Release candidate ${bestCandidate.source_instrument} pending examiner review (confidence: ${bestCandidate.confidence})`,
+  };
+}
+
+export function resolveLifecycleStatus(
+  computed: LifecycleResult,
+  override: LifecycleStatus | null
+): LifecycleResult {
+  if (override === null) return computed;
+  return {
+    status: override,
+    status_rationale: `Examiner override: ${override} (original: ${computed.status} — ${computed.status_rationale})`,
   };
 }
 ```
@@ -2451,7 +2492,7 @@ import type {
   ExaminerAction,
   LifecycleStatus,
 } from "../types";
-import { computeLifecycleStatus } from "../logic/lifecycle-status";
+import { computeLifecycleStatus, resolveLifecycleStatus } from "../logic/lifecycle-status";
 import { MoatBanner } from "./MoatBanner";
 import { StatusBadge } from "./StatusBadge";
 import { InstrumentRow } from "./InstrumentRow";
@@ -2518,12 +2559,13 @@ export function EncumbranceLifecycle({
         );
 
         // Compute effective status: override wins if set
-        const override = lifecycleOverrides[lifecycle.id];
+        const override = lifecycleOverrides[lifecycle.id] ?? null;
         const computed = computeLifecycleStatus(rootInst, childInsts, 
           relatedLinks.map(l => ({...l, examiner_action: linkActions[l.id] ?? l.examiner_action}))
         );
-        const effectiveStatus = override ?? computed.status;
-        const isOverridden = override !== undefined;
+        const resolved = resolveLifecycleStatus(computed, override);
+        const effectiveStatus = resolved.status;
+        const isOverridden = override !== null;
 
         return (
           <div
@@ -2633,7 +2675,7 @@ export function EncumbranceLifecycle({
             {/* Status rationale */}
             <div className="px-4 py-2 bg-gray-50 text-xs text-gray-500">
               <span className="font-medium">Status rationale:</span>{" "}
-              {computed.status_rationale}
+              {resolved.status_rationale}
             </div>
           </div>
         );
@@ -3005,6 +3047,8 @@ Structure:
 9. **Close** (30 sec)
 
 Include the specific instrument numbers, names, and dates from our real data. Reference specific screenshot IDs from research handoffs for the measurable-win claim.
+
+**Measurable-win rule:** Pull measurable-win numbers verbatim from `research/measurable-win.md`. Do not round, estimate, or invent. If the research file doesn't have a number, leave a `[TBD]` placeholder and flag it.
 
 - [ ] **Step 2: Commit**
 
