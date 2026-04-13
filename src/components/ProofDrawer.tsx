@@ -26,17 +26,9 @@ export function ProofDrawer({ instrument, links, onClose }: Props) {
   const releasingParties = getReleasingParties(instrument);
 
   return (
-    <>
-      {/* Backdrop */}
-      <div
-        className="fixed inset-0 bg-black/30 z-40"
-        onClick={onClose}
-      />
-
-      {/* Drawer */}
-      <div className="fixed right-0 top-0 h-full w-[800px] max-w-[90vw] bg-white shadow-2xl z-50 flex flex-col">
-        {/* Header */}
-        <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50">
+    <div className="h-full flex flex-col">
+      {/* Header */}
+      <div className="px-6 py-4 border-b border-gray-200 flex items-center justify-between bg-gray-50 shrink-0">
           <div>
             <h3 className="font-semibold text-gray-800">
               {instrument.instrument_number}
@@ -238,8 +230,7 @@ export function ProofDrawer({ instrument, links, onClose }: Props) {
             </div>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 }
 
