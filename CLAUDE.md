@@ -70,9 +70,12 @@ Residential title examiner / abstractor
 | 28 | POPHAM selected primary over HOGUE | (a) 2021 DOT has 3-day release creating clean lifecycle pair, (b) purchase from living trust adds legal nuance, (c) UCC filing chain is demo-differentiating, (d) HOGUE has more same-name contamination. | 2026-04-13 |
 | 29 | DOT name ordering unreliable for role inference | Public API returns DOT names alphabetized by entity, not grantor-first. Role inference from name order works for deed-to-deed but fails for DOTs with institutional parties (trustee, MERS, lender, borrower all interleaved). Prototype uses manual curation for the 5 POPHAM instruments. Production would need document-type heuristics (DEED TRST → individual name is borrower, institutional name is lender) plus OCR fallback on the PDF body. This is a known scope limit, not a bug. | 2026-04-13 |
 | 30 | Trust name truncation handled in Phase 2 via OCR, not Phase 3 via hand-typing | Public API truncates long entity names at ~53 chars. Recovering via OCR during corpus download keeps displayed data traceable to source. Hand-typing during curation would create provenance gaps. | 2026-04-13 |
+| 31 | R-003 corpus complete — 5 instruments, 3.4MB, all scanned image PDFs | No embedded text in any document — all are scanned images with "Unofficial Document" watermark. Text extraction requires OCR. Manual curation from visual inspection is consistent with manual-curation-preferred constraint. | 2026-04-13 |
+| 32 | Trust name recovered: THE BRIAN J. AND TANYA R. MADISON LIVING TRUST, dated February 23, 2006 | Full name with execution date extracted from PDF page 1. API had truncated to 53 chars. Legal desc also recovered: Lot 46, 58 SEVILLE PARCEL 3, Book 554 Maps Page 19. | 2026-04-13 |
+| 33 | Release executed by Wells Fargo / CAS Nationwide, not VIP Mortgage directly | 20210075858 shows VIP Mortgage loan was serviced or sold to Wells Fargo. MERS as beneficiary as nominee for VIP. Possible unrecorded ASSIGNMENT OF DEED OF TRUST — check in Phase 3 but not blocking. | 2026-04-13 |
 
 ## Active Skill State
-- **Current Phase:** Phase 1 — County + Parcel Lock
+- **Current Phase:** Phase 2 — Corpus Assembly (R-003 complete)
 - **Active Skill:** executing-plans
 - **Brainstorm Sign-off:** approved (2026-04-13)
 - **Plan Sign-off:** approved (2026-04-13) — 6 fixes applied (Tailwind v4, resolveLifecycleStatus, time budget, copy-cite verified, test rename, measurable-win rule)
@@ -81,6 +84,8 @@ Residential title examiner / abstractor
 | ID | Phase | Status | Summary |
 |----|-------|--------|---------|
 | R-001 | 1 | COMPLETE | Maricopa portal scout — all 5 criteria pass, public API discovered, 1974 lookback |
+| R-002 | 1 | COMPLETE | Parcel hunting — POPHAM 304-78-386 locked primary, HOGUE 304-77-689 backup |
+| R-003 | 2 | COMPLETE | Corpus download — 5 instruments, 3.4MB total, all PDFs verified, trust name recovered |
 
 ## Schema Notes (pre-Phase 3)
 - Grantor/grantee provenance is ALWAYS `manual_entry` for Maricopa data (flat names[] in API)
