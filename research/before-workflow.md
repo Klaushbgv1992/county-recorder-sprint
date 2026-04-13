@@ -1,6 +1,6 @@
 # Before Workflow — Examiner Pain Points
 
-Source: R-001 Maricopa County portal scouting (2026-04-13)
+Source: R-001 Maricopa County portal scouting + R-002-v2 parcel detail walks (2026-04-13)
 
 ## Architectural Pain Points
 
@@ -24,6 +24,20 @@ Source: R-001 Maricopa County portal scouting (2026-04-13)
 
 4. **Modal stacks.** Document detail is rendered in a modal that layers restricted/free/purchase UI filtered by CSS visibility. Cluttered and confusing.
 
+5. **DEED button opens single document, not instrument list.** The assessor's DEED button routes to a recorder book/page search that returns a single document reference — NOT a full list of instruments for the parcel. Examiner must then start a separate name search to find all instruments. (Discovered in R-002-v2)
+
+6. **New tab per DEED click, no back-link.** Each DEED button click opens a new browser tab. The recorder page has no link back to the assessor parcel. Context is lost — examiner must manually switch tabs to cross-reference. (Discovered in R-002-v2)
+
+## Search & Indexing Pain Points (from R-002-v2)
+
+1. **No APN/address filter on recorder name search.** Recorder name search returns ALL instruments where a person appears, across ALL properties they have ever owned. There is no way to filter by parcel, address, or APN. An examiner evaluating a single property must manually inspect every result to determine which instruments relate to the target parcel.
+
+2. **Name variant fragmentation.** The same person may be indexed under multiple name variants (e.g., POPHAM CHRISTOPHER vs POPHAM CHRISTOPHER A, HOGUE JASON vs HOGUE JASON A). Each variant is a separate index entry. The examiner must search for all variants and deduplicate results manually.
+
+3. **Duplicate rows for name variants.** A single recording number may appear multiple times in name search results — once per name variant. This inflates result counts and obscures the actual instrument count for a person.
+
+4. **Same-name contamination across properties.** When an owner has held multiple Maricopa properties, their name search returns instruments from all of them interleaved chronologically. There is no visual indicator of which property an instrument relates to. The examiner must open each instrument and read the legal description to determine the property. (E.g., POPHAM name search returns records from 2004, but Palmer St was purchased in 2013 — the 2004-2012 instruments are from other properties.)
+
 ## Data Governance Gaps
 
 1. **No grantor/grantee role distinction.** Public API returns a flat `names[]` array per document. No way to know who is grantor vs grantee without reading the actual document.
@@ -36,12 +50,17 @@ Source: R-001 Maricopa County portal scouting (2026-04-13)
 
 5. **Assessor cross-links use legacy format.** docketBook/pageMap instead of modern recording numbers.
 
-## Measurable-Win Evidence (from R-001)
+## Measurable-Win Evidence
 
-These counts will be supplemented by R-002 parcel-specific counts:
-
+### From R-001 (Portal-Level)
 - **Domains touched for one document lookup:** 3 (assessor → recorder search → recorder modal)
 - **Tab spawl potential:** At minimum 2 tabs (assessor + recorder), likely 3+ when comparing instruments
 - **Deep-link availability:** NONE — no URL per document in the recorder UI
 - **API documentation:** NONE — undocumented public API exists but is invisible to users
 - **Grantor/grantee role assignment:** MANUAL for every document — not provided by county data
+
+### From R-002-v2 (Parcel-Level)
+- **Search sessions per parcel evaluation:** 3+ (DEED button, current owner name search, prior owner name search)
+- **Same-name disambiguation effort:** Manual inspection of every name search result to filter out other-property instruments
+- **Name variant searches required:** Multiple per owner (must try all known variants)
+- **False positive rate in name search:** High — POPHAM returned ~20 instruments, only ~10-12 relate to Palmer St (50% noise)

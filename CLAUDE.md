@@ -33,8 +33,9 @@ Residential title examiner / abstractor
 - **Auto-flip rule:** If Maricopa images are paywalled or require account creation, flip to Clark without roundtrip — log in decision table
 
 ## Parcel Selection
-- **Primary:** TBD
-- **Backup:** TBD
+- **Primary:** 304-78-386 — 3674 E Palmer St, Gilbert — POPHAM CHRISTOPHER/ASHLEY — Seville Parcel 3
+- **Backup:** 304-77-689 — 2715 E Palmer St, Gilbert — HOGUE JASON/MICHELE — Shamrock Estates Ph 2A
+- **Dropped:** 304-78-400 — GARCIA — no DOT in 2020-2022 window
 
 ## Decision Log
 | # | Decision | Rationale | Date |
@@ -62,6 +63,11 @@ Residential title examiner / abstractor
 | 21 | DATA-MODEL: No APN in recorder system | Assessor→recorder link is one-way via legacy docketBook/pageMap. No bidirectional APN bridge. This IS the moat moment — prototype fixes this gap. | 2026-04-13 |
 | 22 | Public API: publicapi.recorder.maricopa.gov | Undocumented REST API, no auth, JSON metadata + deterministic PDF/PNG URLs. Disintermediation thesis verified. | 2026-04-13 |
 | 23 | R-002 v1 reconnaissance complete, hunting scope narrowed | Street+city search strategy discovered (subdivision search too noisy). 10 APNs pre-qualified on E Palmer St Gilbert. Splitting R-002 into v2 (3 specific APNs) + API verification via curl. | 2026-04-13 |
+| 24 | Parcel lock: POPHAM primary, HOGUE backup, GARCIA dropped | POPHAM 304-78-386 primary (2021 DOT w/ 3-day release, living trust purchase, UCC filing). HOGUE 304-77-689 backup (2020 DOT, more same-name noise). GARCIA 304-78-400 dropped (no DOT in 2020-2022 window). | 2026-04-13 |
+| 25 | Same-name instrument contamination finding | Recorder name search returns instruments from ALL properties owned by a person. Phase 3 curation must scrub. This is a demo-strengthening finding — concrete proof that parcel-keyed indexing beats name-based search. | 2026-04-13 |
+| 26 | Curation rule A: parcel attribution | An instrument belongs to the locked parcel only if its names list includes the parcel's owner AND at least one other party appears on a prior/subsequent deed in the DEED-button-confirmed chain. | 2026-04-13 |
+| 27 | Curation rule B: same-day transaction linking | Same-day recording number groups (e.g., WAR DEED + DEED TRST) are linked transactions. The DEED TRST is the financing for that deed. | 2026-04-13 |
+| 28 | POPHAM selected primary over HOGUE | (a) 2021 DOT has 3-day release creating clean lifecycle pair, (b) purchase from living trust adds legal nuance, (c) UCC filing chain is demo-differentiating, (d) HOGUE has more same-name contamination. | 2026-04-13 |
 
 ## Active Skill State
 - **Current Phase:** Phase 1 — County + Parcel Lock
