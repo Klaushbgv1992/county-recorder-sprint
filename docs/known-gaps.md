@@ -214,3 +214,26 @@ beat (see `docs/demo-script.md`).
       review queue with an audit trail and a second-examiner sign-off,
       not an inline button. The prototype documents this as a feature
       of the curation discipline, not an omission.
+
+16. **Schedule B-I (Requirements) is not generated.**
+    - *What's missing:* The exported commitment PDF emits Schedule A
+      and Schedule B-II only. There is no Schedule B-I (Requirements)
+      section.
+    - *Why that's OK for this pitch:* B-I items are
+      transaction-scoped — payoff statements, satisfactions, curative
+      affidavits — generated when a closing opens against a specific
+      buyer, lender, and effective date. None of those inputs are part
+      of the recorded corpus. A fabricated B-I section would dilute
+      every other honest gap surfaced on stage (HOGUE empty state,
+      MERS note, hunt log). The PDF header note states this verbatim,
+      and each open Schedule B-II row carries a `Closing impact:`
+      sentence (sourced from `src/data/closing-impact-templates.json`,
+      reviewed per the rule documented in
+      `src/data/closing-impact-templates.README.md`) explaining what a
+      B-I item *would* require if a transaction were opened.
+    - *What production would do:* generate B-I when a closing file is
+      opened against the parcel — payoff requests for open DOTs,
+      satisfaction lookups for any unreleased assignments, curative
+      requirements derived from chain anomalies. Every B-I item
+      depends on transaction inputs (effective date, buyer, lender,
+      title agent) that this prototype does not model.
