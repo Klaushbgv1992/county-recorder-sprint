@@ -96,6 +96,10 @@ describe("route table", () => {
     });
   });
 
+  it("/moat-compare matches the moat-compare route", () => {
+    expect(matchIds("/moat-compare")).toContain("moat-compare");
+  });
+
   it("unknown paths match the not-found route", () => {
     expect(matchIds("/totally/bogus/path")).toContain("not-found");
   });
