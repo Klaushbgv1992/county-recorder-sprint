@@ -1,8 +1,15 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git add:*)",
-      "Bash(git commit -m ':*)"
+      "Bash(curl:*)",
+      "Bash(git:*)",
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(tsx:*)",
+      "Bash(python:*)",
+      "Bash(node:*)",
+      "Bash(pip install:*)",
+      "Skill(update-config)"
     ]
   }
 }
