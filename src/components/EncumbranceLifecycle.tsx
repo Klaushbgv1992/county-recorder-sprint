@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -13,10 +13,16 @@ import {
   resolveLifecycleStatus,
 } from "../logic/lifecycle-status";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties, getPartiesByRole } from "../logic/party-roles";
+import {
+  synthesizeAlgorithmicLink,
+  buildAcceptedRationale,
+  type CandidateAction,
+} from "../logic/release-candidate-matcher";
 import { MoatBanner } from "./MoatBanner";
 import { StatusBadge } from "./StatusBadge";
 import { InstrumentRow } from "./InstrumentRow";
 import { ProvenanceTag } from "./ProvenanceTag";
+import { CandidateReleasesPanel } from "./CandidateReleasesPanel";
 
 interface Props {
   parcel: Parcel;
@@ -81,6 +87,42 @@ export function EncumbranceLifecycle({
     [instruments],
   );
 
+  const reconveyancePool = useMemo(
+    () =>
+      instruments.filter(
+        (i) =>
+          i.document_type === "full_reconveyance" ||
+          i.document_type === "partial_reconveyance",
+      ),
+    [instruments],
+  );
+
+  const [candidateActions, setCandidateActions] = useState<
+    Record<string, CandidateAction>
+  >({});
+  const [acceptedCandidate, setAcceptedCandidate] = useState<
+    Record<string, { instrumentNumber: string; score: number }>
+  >({});
+
+  const handleSetCandidateAction = (
+    key: string,
+    action: CandidateAction,
+    candidate: Instrument,
+    score: number,
+  ) => {
+    setCandidateActions((prev) => ({ ...prev, [key]: action }));
+    if (action === "accepted") {
+      const [lifecycleId] = key.split("::");
+      setAcceptedCandidate((prev) => ({
+        ...prev,
+        [lifecycleId]: {
+          instrumentNumber: candidate.instrument_number,
+          score,
+        },
+      }));
+    }
+  };
+
   return (
     <div>
       <div className="mb-6">
@@ -112,10 +154,28 @@ export function EncumbranceLifecycle({
           (l) => l.link_type === "release_of",
         );
 
+        const accepted = acceptedCandidate[lifecycle.id];
+        const acceptedInst = accepted
+          ? instrumentMap.get(accepted.instrumentNumber)
+          : undefined;
+        const syntheticLink =
+          accepted && acceptedInst
+            ? synthesizeAlgorithmicLink({
+                lifecycleId: lifecycle.id,
+                dot: rootInst,
+                candidate: acceptedInst,
+                score: accepted.score,
+              })
+            : null;
+        const syntheticChildren = acceptedInst ? [acceptedInst] : [];
+        const mergedReleaseLinks = syntheticLink
+          ? [...releaseLinks, syntheticLink]
+          : releaseLinks;
+
         const computed = computeLifecycleStatus(
           rootInst,
-          childInsts,
-          releaseLinks.map((l) => ({
+          [...childInsts, ...syntheticChildren],
+          mergedReleaseLinks.map((l) => ({
             ...l,
             examiner_action: linkActions[l.id] ?? l.examiner_action,
           })),
@@ -124,6 +184,13 @@ export function EncumbranceLifecycle({
         const resolved = resolveLifecycleStatus(computed, override);
         const effectiveStatus = resolved.status;
         const isOverridden = override !== null;
+        const rationaleText =
+          accepted && override === null
+            ? buildAcceptedRationale(accepted.score)
+            : resolved.status_rationale;
+        const showCandidatePanel =
+          !accepted &&
+          (effectiveStatus === "open" || effectiveStatus === "unresolved");
 
         return (
           <div
@@ -163,11 +230,32 @@ export function EncumbranceLifecycle({
             {/* MERS annotation if applicable */}
             <MersAnnotation instrument={rootInst} />
 
+            {/* Candidate releases (matcher) - shown on open/unresolved lifecycles */}
+            {showCandidatePanel && (
+              <CandidateReleasesPanel
+                lifecycleId={lifecycle.id}
+                dot={rootInst}
+                parcel={parcel}
+                pool={reconveyancePool}
+                releaseLinks={links.filter(
+                  (l) => l.link_type === "release_of",
+                )}
+                lifecycles={lifecycles}
+                candidateActions={candidateActions}
+                onSetCandidateAction={handleSetCandidateAction}
+                onOpenDocument={onOpenDocument}
+              />
+            )}
+
             {/* Child instruments with link actions */}
-            {childInsts.map((child) => {
-              const link = releaseLinks.find(
-                (l) => l.source_instrument === child.instrument_number,
-              );
+            {[...childInsts, ...syntheticChildren].map((child) => {
+              const link =
+                syntheticLink &&
+                syntheticLink.source_instrument === child.instrument_number
+                  ? syntheticLink
+                  : releaseLinks.find(
+                      (l) => l.source_instrument === child.instrument_number,
+                    );
               return (
                 <div
                   key={child.instrument_number}
@@ -232,7 +320,7 @@ export function EncumbranceLifecycle({
             <div className="px-4 py-2 bg-gray-50 flex items-center justify-between">
               <div className="text-xs text-gray-500">
                 <span className="font-medium">Status rationale:</span>{" "}
-                {resolved.status_rationale}
+                {rationaleText}
               </div>
               <div className="flex items-center gap-1">
                 <span className="text-[10px] text-gray-400 mr-1">Override:</span>

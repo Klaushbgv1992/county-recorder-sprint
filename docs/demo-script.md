@@ -101,6 +101,40 @@ Conventions for each beat:
   we found.' That's decision #12 in the sprint context — locked on this
   screen from the start of the build."
 
+## Beat 7b — Release-candidate matcher working on stage
+
+- **Shows:** directly under the `lc-002` header, a **Candidate releases
+  (matcher)** panel renders inline. Header reads
+  *"Matcher ran against 1 reconveyance, 1 above threshold"*. One row
+  appears: `20210075858`, dated 2021-01-22, releasing party
+  *WELLS FARGO HOME MORTGAGE*, with the three pitch-labeled feature
+  bars — **Party name match** (≈ 0.00), **Date proximity** (≈ 1.00),
+  **Legal description match** (0.00) — and an overall **Score ≈ 0.33**.
+  An amber chip reads *"Already linked to lc-001"*; the **Accept**
+  button is disabled with the tooltip *"This reconveyance is already
+  accepted for another lifecycle. Releases are 1:1 with DOTs."*; the
+  **Reject** button is enabled.
+- **Click:** Reject. The row greys out; a small *rejected* pill appears;
+  `lc-001`'s confirmed release link is untouched.
+- **Say:** "This is Claim #2 on stage. The scorer is running live against
+  this parcel's actual reconveyance corpus — not a pre-baked list. It
+  surfaced the only reconveyance we have, and you can see *why* it
+  scored the way it did: perfect date proximity, zero party-name match.
+  Wells Fargo released the 2013 loan, not the 2021 one, and the matcher
+  doesn't hide that. The examiner rejects in one click. Same shape of
+  workflow at 10-document scale and at 10-million-document scale —
+  that's the county-owned portal taking passive records and turning
+  them into linked title work."
+- **Follow-up — scroll to HOGUE:** on `lc-003` (2015 DOT) the panel
+  renders with header *"Matcher ran against 0 reconveyances, 0 above
+  threshold"* and an inline moat rationale:
+  *"Matcher ran against 0 reconveyances in Shamrock Estates Phase 2A
+  corpus. Note: the public API cannot search for releases filed against
+  HOGUE JASON / MICHELE outside this parcel. A county-internal
+  full-name scan closes this gap — out of prototype scope."* This is
+  the disintermediation thesis rendered inline — the matcher's
+  emptiness is itself the moat demonstration (see Decision #36).
+
 ## Beat 8 — Proof Drawer + AI Extraction panel
 
 - **Click:** open the 2013 warranty deed (20130183449) in the Proof Drawer.

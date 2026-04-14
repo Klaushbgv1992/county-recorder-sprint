@@ -6,6 +6,7 @@ export const ProvenanceKind = z.enum([
   "public_api",
   "ocr",
   "manual_entry",
+  "algorithmic",
 ]);
 
 export const FieldWithProvenance = z.object({
