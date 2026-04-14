@@ -35,7 +35,7 @@ Expected output at each step:
 |---------|----------|
 | `npm ci` | `added 213 packages ... found 0 vulnerabilities` |
 | `npm run build` | `tsc -b` completes silently, then Vite reports `built in <NNN>ms` with three `dist/` artifacts |
-| `npm run test` | `Test Files  4 passed (4)` and `Tests  27 passed (27)` |
+| `npm run test` | `Test Files  12 passed (12)` and `Tests  108 passed (108)` |
 | `npm run dev` | `VITE v8.x.x  ready in <NNN> ms` and `Local: http://localhost:5173/` |
 
 Open `http://localhost:5173/` in a browser. The landing page is the
@@ -81,12 +81,11 @@ content warning on the `<iframe>`.
 
 ## Fresh-clone verification
 
-Reproduced end-to-end on commit `cdd7764` (worktree branch
-`worktree-agent-af062e05`) by cloning the worktree into a scratch
-directory and running the commands above in order. `npm ci` installed
-213 packages cleanly, `npm run build` emitted `built in 315ms` with
-zero TypeScript errors, `npm run test` reported `Tests 27 passed
-(27)`, and the dev server answered HTTP 200 for `/` plus all five PDFs
+Reproduced end-to-end by cloning master into a scratch directory and
+running the commands above in order. `npm ci` installs 213 packages
+cleanly, `npm run build` emits `built in ~280ms` with zero TypeScript
+errors, `npm run test` reports `Tests 108 passed (108)` across 12
+files, and the dev server answers HTTP 200 for `/` plus all seven PDFs
 at `/raw/R-003/pdfs/*.pdf`.
 
 ## Note on the Codex reviewer's build-failure claim

@@ -174,8 +174,9 @@ Verified on the current worktree branch:
 - `npm run build` — TypeScript project references compile clean,
   Vite production build emits `dist/index.html`, `dist/assets/*.css`
   (23.60 kB), `dist/assets/*.js` (323.45 kB). Build time ~224 ms.
-- `npm run test` — `Test Files 7 passed (7), Tests 69 passed (69)`.
-  Test files: `chain-builder.test.ts`, `citation-formatter.test.ts`,
+- `npm run test` — `Test Files 12 passed (12), Tests 108 passed (108)`
+  on master after all five waves merged. Core files under `tests/`:
+  `chain-builder.test.ts`, `citation-formatter.test.ts`,
   `extraction-trace.test.ts`, `lifecycle-status.test.ts`,
   `party-roles.test.ts`, `release-candidate-matcher.test.ts`,
   `search.test.ts`.
