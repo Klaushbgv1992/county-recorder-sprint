@@ -256,3 +256,43 @@ beat (see `docs/demo-script.md`).
       scope for the commitment-export branch because the component
       was not modified there; tracked here so the next branch
       touching `EncumbranceLifecycle.tsx` can fix it cleanly.
+
+18. **Provenance vocabulary drift between UI and PDF.**
+    - *What's missing:* The Proof Drawer renders provenance as
+      confidence percentages (`"County API 100%"`, `"OCR 97%"`,
+      `"Hand-Curated 100%"`, `"Matcher 88%"`); the exported
+      commitment PDF renders provenance as category tags in
+      parentheses (`"(api)"`, `"(ocr, 0.97)"`, `"(manual)"`,
+      `"(algo, 0.88)"`). Both are correct in isolation but an
+      examiner comparing the two artifacts side-by-side sees
+      superficially different vocabularies.
+    - *Why that's OK for this pitch:* alignment is a narrative +
+      minor UI tweak, not a data fix. Each surface is internally
+      consistent and traces to the same underlying provenance enum.
+      The disintermediation argument the demo carries is unaffected
+      — both surfaces cite the same source — but the moat-narrative
+      pass should land on a single vocabulary the examiner sees on
+      both screen and paper.
+    - *What production would do:* one shared formatter feeding both
+      the on-screen badge component (`src/components/ProvenanceTag.tsx`)
+      and the PDF inline tag (`src/logic/format-provenance-tag.ts`).
+      Owned by Terminal 4 in the moat-narrative pass — surfaced here
+      as concrete evidence of where surface alignment breaks today.
+
+19. **`formatProvenanceTag` silently coerces unknown values to "algo".**
+    - *What's missing:* `src/logic/format-provenance-tag.ts` uses a
+      non-exhaustive ternary that defaults anything not explicitly
+      matched to `"algo"`. A future provenance type added to the
+      Zod enum (e.g. `ai_extraction`, already discussed in CLAUDE.md
+      Decision #20) would silently mis-tag in every exported
+      commitment PDF instead of failing loudly at compile time.
+    - *Why that's OK for this pitch:* the current enum is closed
+      and every member is correctly handled. The bug is latent —
+      it only fires the moment the enum grows, and the test suite
+      would still pass because no test exercises the unknown-value
+      path. Demo unaffected.
+    - *What production would do:* exhaustive `switch` over the
+      provenance enum with a `: never` default branch, so adding a
+      new provenance value forces the formatter to grow alongside
+      the schema. Standalone follow-up task; not blocked on
+      Terminal 4.
