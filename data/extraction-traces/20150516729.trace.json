@@ -1,0 +1,72 @@
+{
+  "instrument_number": "20150516729",
+  "source_pdf": "data/raw/R-003/pdfs/20150516729.pdf",
+  "ocr_engine": "tesseract",
+  "ocr_version": "tesseract 4.1.1",
+  "extracted_at": "2026-04-14T02:30:38Z",
+  "pages": [
+    {
+      "page": 1,
+      "raw_text": "RECORDED ELECTRONICALLY U no f fj Ci QI\nBY SECURITY TITLE AGENCY\n\nRECORDING REQUESTED BY *° D O CU mM e nt\n\nSecurity Title Agency, Inc.\nAND WHEN RECORDED MAIL TO: 63\nJason Hogue “a\n2715 E Palmer St.\n\nGilbert, AZ 85298\n\nESCROW NO.: 63150745 - 063 - JBB\n\n \n\n \n\nSPACE ABOVE THIS LINE FOR RECORDER’S USE\nWarranty Deed\n\nFor the consideration of Ten Dollars, and other valuable consideration,\nRobert S Lorance, An Unmarried Man\n\n(“Grantor”) conveys to\n\nJason Hogue and Michele Hogue, Husband and Wife\n\nthe following real property situated in Maricopa County, ARIZONA:\n\nLOT 348, OF SHAMROCK ESTATES PHASE 2A, ACCORDING TO THE PLAT OF\nRECORD IN THE OFFICE OF THE COUNTY RECORDER OF MARICOPA COUNTY,\nARIZONA, RECORDED IN BOOK 799 OF MAPS, PAGE 38.\n\nSUBJECT TO: Current taxes and other assessments, reservations in patents and all easements, rights of way,\nencumbrances, liens, covenants, conditions, restrictions, obligations, and liabilities as may appear of record.\n\nGrantor warrants the title against all persons whomsoever, subject to the matters set forth above.\n\nDated: June 16, 2015\n\nGrantor(s):\n\nSELLER:\n\npect\n2 eee\n\nRobert S Lorance\n\n \n\nWdeed\n\f",
+      "word_count": 183
+    },
+    {
+      "page": 2,
+      "raw_text": "20150516729\n\nEscrow No.: 63150745-063-JBB\nWarranty Deed...Continued\n\nState of At wR\nCounty of art } ss:\n\nIndividual\nThe foregoing Warranty Deed, dated June 16, 2015 and consisting of 1 page(s), was acknowledged before\nme this AS dayof June , LOIS, by\n\nRab en~¥ S \\ Lornance.\n\n2. i ___@ U2\notary Public\n\nJASON MICHAEL WOOD\nNotary Public - Arizona\n\nres Maricopa County\nQa? My Comm. Expires Mar 1, 2017 |\n\n  \n  \n\n \n   \n\n    \n\nUnofficial Document\n\nWdeed\n\f",
+      "word_count": 72
+    },
+    {
+      "page": 3,
+      "raw_text": "20150516729\n\nESCROW NO.: 63150745 063 JBB\n\nACCEPTANCE OF COMMUNITY PROPERTY\nWITH RIGHT OF SURVIVORSHIP\n“DEED”\n\nJason Hogue and Michele Hogue, Husband and Wife, each being first duly sworn upon oath,\ndeposes and says, THAT | am one of the Grantees named in the deed attached to this\nAcceptance, dated June 16, 2015 , and executed by Robert S Lorance, An Unmarried Man as\nGrantors, to Jason Hogue and Michele Hogue, Husband and Wife as Grantees, and which\nconveys the real property described as:\n\nSee Exhibit A attached hereto and made a part hereof.\n\nto the Grantees named in the deed, not as tenants in common, nor as community property, nor as\njoint tenants with right of survivorship, but as community property with right of survivorship.\n\nEach of us individually and jointly as Grantees assert and affirm that it is our intention to accept\nthis conveyance as community property with right of survivorship and to acquire any interest we\nmay have in the real property under the terms of the Deed as community property with right of\nsurvivorship.\n\nDated: June 16, 2015\n\nUnofficial Document\n\nGRANTEES:\n\n   \n\nMichele Hogue\n\nState of Arizona } Ss:\nCounty of Maricopa\n\nIndividual\nThe foregoing Acceptance of Community Property with Right of Survivorship, dated June 16, 2015\nand consisting of 1 page(s), was acknowledged before me this day of . Luk ;\n\n   \n     \n    \n\n  \n \n\n   \n \n\n=2\n\n \n\neo\n\nCo a ei . tA_A_ an hoes ¢\nNotary Public\n\nPRion nt etek tren?\ni\n\nJASON MICHAEL WOOD\nNotary Public - Arizona\n\ns Maricopa County a\n<7 My Gomm. Expires Mar 1, 2017 }\n\n \n \n\nAcptep\n\f",
+      "word_count": 261
+    },
+    {
+      "page": 4,
+      "raw_text": "20150516729\n\nExhibit A\nLOT 348, OF SHAMROCK ESTATES PHASE 2A, ACCORDING TO THE PLAT OF\n\nRECORD IN THE OFFICE OF THE COUNTY RECORDER OF MARICOPA COUNTY,\nARIZONA, RECORDED IN BOOK 799 OF MAPS, PAGE 38.\n\nUnofficial Document\n\f",
+      "word_count": 37
+    }
+  ],
+  "extractions": [
+    {
+      "field": "legal_description",
+      "value": "LOT 348, OF SHAMROCK ESTATES PHASE 2A, ACCORDING TO THE PLAT OF RECORD IN THE OFFICE OF THE COUNTY RECORDER OF MARICOPA COUNTY, ARIZONA, RECORDED IN BOOK 799 OF MAPS, PAGE 38",
+      "confidence": 0.88,
+      "provenance": "ocr",
+      "source_page": 1,
+      "source_snippet": "situated in Maricopa County, ARIZONA: LOT 348, OF SHAMROCK ESTATES PHASE 2A, ACCORDING TO THE PLAT OF RECORD IN THE OFFICE OF THE COUNTY RECORDER OF MARICOPA COUNTY, ARIZONA, RECORDED IN BOOK 799 OF MAPS, PAGE 38. SUBJECT TO: Current taxes and other a",
+      "extraction_method": "regex-rule: Lot N ... Book N of Maps, Page N anchor pattern",
+      "note": null
+    },
+    {
+      "field": "trust_name",
+      "value": null,
+      "confidence": 0.0,
+      "provenance": "ocr",
+      "source_page": null,
+      "source_snippet": null,
+      "extraction_method": "regex-rule: '...TRUST[, dated ...]' (no match)",
+      "note": "No 'TRUST' entity name recognizable in OCR output."
+    },
+    {
+      "field": "deed_date",
+      "value": "Dated: June 16, 2015",
+      "confidence": 0.82,
+      "provenance": "ocr",
+      "source_page": 1,
+      "source_snippet": "ubject to the matters set forth above. Dated: June 16, 2015 Grantor(s): SELLER: pect 2 eee Robe",
+      "extraction_method": "regex-rule: 'Dated[:] <MM/DD/YYYY>' or 'Dated[:] <Month> <D>, <YYYY>' signature-line pattern",
+      "note": null
+    },
+    {
+      "field": "escrow_number",
+      "value": "63150745-063-JBB",
+      "confidence": 0.8,
+      "provenance": "ocr",
+      "source_page": 1,
+      "source_snippet": "a 2715 E Palmer St. Gilbert, AZ 85298 ESCROW NO.: 63150745 - 063 - JBB SPACE ABOVE THIS LINE FOR RECORD",
+      "extraction_method": "keyword-proximity: 'Escrow (No.|#)?: <alnum[-alnum]*>' label pattern; hyphen-normalized",
+      "note": null
+    }
+  ],
+  "notes": "Missing fields: trust_name (No 'TRUST' entity name recognizable in OCR output.)"
+}

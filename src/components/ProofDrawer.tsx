@@ -3,6 +3,8 @@ import type { Instrument, DocumentLink } from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
 import { ProvenanceTag } from "./ProvenanceTag";
+import { getExtractionTrace } from "../logic/extraction-trace";
+import { AiExtractionPanel } from "./AiExtractionPanel";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
@@ -21,7 +23,9 @@ interface Props {
 
 export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
+  const [showAiExtraction, setShowAiExtraction] = useState(false);
   const citation = formatCitation(instrument, COUNTY_NAME);
+  const extractionTrace = getExtractionTrace(instrument.instrument_number);
 
   const handleCopyCitation = useCallback(() => {
     navigator.clipboard.writeText(citation);
@@ -206,6 +210,30 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Pr
               </>
             )}
 
+            {/* AI Extraction replay section — shown only when a real OCR trace exists */}
+            {extractionTrace && (
+              <div className="mb-6">
+                <button
+                  type="button"
+                  onClick={() => setShowAiExtraction((v) => !v)}
+                  className="flex w-full items-center justify-between rounded border border-indigo-200 bg-indigo-50 px-3 py-2 text-left hover:bg-indigo-100"
+                  aria-expanded={showAiExtraction}
+                >
+                  <span className="text-sm font-semibold text-indigo-900">
+                    AI Extraction ({trackSummary(extractionTrace)})
+                  </span>
+                  <span className="text-xs text-indigo-700">
+                    {showAiExtraction ? "Hide" : "Show"}
+                  </span>
+                </button>
+                {showAiExtraction && (
+                  <div className="mt-3">
+                    <AiExtractionPanel trace={extractionTrace} />
+                  </div>
+                )}
+              </div>
+            )}
+
             {/* MERS note */}
             {instrument.mers_note && (
               <div className="bg-amber-50 border border-amber-200 rounded p-3 mb-6">
@@ -258,6 +286,16 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Pr
         </div>
     </div>
   );
+}
+
+function trackSummary(trace: {
+  extractions: { value: string | null }[];
+  ocr_version: string;
+}): string {
+  const recovered = trace.extractions.filter((e) => e.value).length;
+  const total = trace.extractions.length;
+  const ver = trace.ocr_version.replace(/^tesseract\s+/i, "v");
+  return `${recovered}/${total} fields \u00b7 ${ver}`;
 }
 
 function FieldDisplay({ label, value }: { label: string; value: string }) {
