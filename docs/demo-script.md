@@ -29,11 +29,20 @@ Conventions for each beat:
 - **Click:** type `20210075858` into the search box and hit Enter.
 - **Shows:** app routes straight to the POPHAM Chain-of-Title timeline with
   the Proof Drawer pre-opened on instrument 20210075858 (2021 full
-  reconveyance).
+  reconveyance). The URL bar now reads
+  `/parcel/304-78-386/instrument/20210075858`.
+- **Click:** copy that URL and paste it into a fresh browser tab.
+- **Shows:** the fresh tab lands on the exact same view — chain rendered,
+  drawer pre-opened on the reconveyance, provenance attached. No session,
+  no cookie, no app state — the URL itself carries the location.
 - **Say:** "The 11-digit recording number is unique across the entire
-  county index. Typing it deep-links you to the exact instrument, with
-  provenance attached. A title plant can index the number, but it can't
-  serve the authoritative document at that URL — that's custody."
+  county index. Typing it deep-links you to the exact instrument, and
+  the URL you see is the canonical address for that document in the
+  county's own corpus. A title plant can index the number, but it can't
+  serve the authoritative document at that URL — that's custody. Paste
+  the URL into any browser, share it in a client email, cite it in a
+  title commitment — it all resolves to the same provenance-tagged
+  instrument."
 
 ## Beat 3 — "Search another parcel" back to Search
 
