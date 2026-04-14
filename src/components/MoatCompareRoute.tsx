@@ -1,14 +1,101 @@
+import type { ReactNode } from "react";
 import { Link } from "react-router";
+import { loadParcelDataByApn } from "../data-loader";
+import { MoatBanner } from "./MoatBanner";
+import { ProvenanceTag } from "./ProvenanceTag";
+import type { ProvenanceKind } from "../types";
 
-const ROW_LABELS = [
-  { id: "row-1", label: "Current owner of record" },
-  { id: "row-2", label: "Open encumbrances (DOTs / liens)" },
-  { id: "row-3", label: "Lien search by recording code" },
-  { id: "row-4", label: "Document image source" },
-  { id: "row-5", label: "Index freshness" },
-] as const;
+const POPHAM_APN = "304-78-386";
+const POPHAM_FIRST_DEED = "20130183449";
+
+function AggregatorTag({ label }: { label: string }) {
+  return (
+    <span
+      className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] italic font-medium bg-gray-200 text-gray-600"
+      title={`Source: ${label}`}
+    >
+      {label}
+    </span>
+  );
+}
+
+function CountyPdfLink({
+  recordingNumber,
+  children,
+}: {
+  recordingNumber: string;
+  children: ReactNode;
+}) {
+  const href = `https://publicapi.recorder.maricopa.gov/preview/pdf?recordingNumber=${recordingNumber}`;
+  return (
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-blue-700 hover:underline text-xs font-mono"
+    >
+      {children}
+    </a>
+  );
+}
+
+function ComparisonRow({
+  rowId,
+  label,
+  aggregator,
+  prototype,
+}: {
+  rowId: string;
+  label: string;
+  aggregator: ReactNode;
+  prototype: ReactNode;
+}) {
+  return (
+    <div className="contents" data-row-id={rowId}>
+      <div
+        className="bg-gray-50 px-4 py-4 border-t border-gray-200 text-sm text-gray-700"
+        data-side="aggregator"
+      >
+        {aggregator}
+      </div>
+      <div className="bg-white border-t border-gray-200 px-3 py-4 text-center text-xs font-medium text-gray-700 self-start">
+        {label}
+      </div>
+      <div
+        className="bg-blue-50 px-4 py-4 border-t border-gray-200 text-sm text-gray-900"
+        data-side="prototype"
+      >
+        {prototype}
+      </div>
+    </div>
+  );
+}
+
+function ProvenanceWithKind({
+  kind,
+  confidence,
+  customLabel,
+}: {
+  kind: ProvenanceKind;
+  confidence: number;
+  customLabel?: string;
+}) {
+  if (customLabel) {
+    return (
+      <span
+        className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium bg-blue-100 text-blue-800"
+        title={`Source: ${customLabel}`}
+      >
+        {customLabel}
+      </span>
+    );
+  }
+  return <ProvenanceTag provenance={kind} confidence={confidence} />;
+}
 
 export function MoatCompareRoute() {
+  const data = loadParcelDataByApn(POPHAM_APN);
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-8">
       <header className="mb-6">
@@ -36,15 +123,132 @@ export function MoatCompareRoute() {
           </h2>
         </div>
 
-        {ROW_LABELS.map((row) => (
-          <div key={row.id} className="contents" data-row-id={row.id}>
-            <div className="bg-gray-50 px-4 py-4 border-t border-gray-200" />
-            <div className="bg-white px-3 py-4 border-t border-gray-200 text-center text-xs font-medium text-gray-700">
-              {row.label}
+        <ComparisonRow
+          rowId="row-1"
+          label="Current owner of record"
+          aggregator={
+            <div className="space-y-1">
+              <div>POPHAM CHRISTOPHER / ASHLEY</div>
+              <AggregatorTag label="aggregator index" />
             </div>
-            <div className="bg-blue-50 px-4 py-4 border-t border-gray-200" />
-          </div>
-        ))}
+          }
+          prototype={
+            <div className="space-y-1">
+              <div>POPHAM CHRISTOPHER / ASHLEY</div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <ProvenanceWithKind
+                  kind="public_api"
+                  confidence={1}
+                  customLabel="County Deed"
+                />
+                <CountyPdfLink recordingNumber={POPHAM_FIRST_DEED}>
+                  ↗ recording {POPHAM_FIRST_DEED} · 2013-02-27
+                </CountyPdfLink>
+              </div>
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-2"
+          label="Open encumbrances (DOTs / liens)"
+          aggregator={
+            <div className="space-y-1">
+              <div>1 open mortgage (estimated)</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-1">
+              <div>2 lifecycles tracked</div>
+              <ul className="list-disc list-inside text-xs text-gray-700 space-y-0.5">
+                <li>lc-001 (2013 DOT) → released 2021-01-22</li>
+                <li>lc-002 (2021 DOT) → open · "no reconveyance found in corpus"</li>
+              </ul>
+              <div className="flex items-center gap-2 flex-wrap">
+                <ProvenanceTag provenance="manual_entry" confidence={1} />
+                <CountyPdfLink recordingNumber="20210075858">
+                  ↗ recording 20210075858
+                </CountyPdfLink>
+              </div>
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-3"
+          label="Lien search by recording code"
+          aggregator={
+            <div className="space-y-1">
+              <div>No federal-tax-lien hits (estimated; refresh cadence 30 days)</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-2">
+              <div>
+                No FED TAX L / LIEN / MED LIEN matches in this parcel's
+                curated corpus.
+              </div>
+              <div className="text-xs text-gray-700 italic">
+                Public API documentCode filter is silently dropped — see
+                <code className="font-mono mx-1">docs/hunt-log-known-gap-2.md</code>
+                and
+                <code className="font-mono mx-1">data/raw/R-005/hunt-log.md</code>.
+                A county-internal index closes this gap.
+              </div>
+              <ProvenanceWithKind
+                kind="public_api"
+                confidence={1}
+                customLabel="County API + Hunt Log"
+              />
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-4"
+          label="Document image source"
+          aggregator={
+            <div className="space-y-1">
+              <div>
+                Aggregated copy stored on the aggregator's CDN; subscription
+                required for full-resolution download.
+              </div>
+              <AggregatorTag label="aggregator copy" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-1">
+              <div>
+                Canonical county PDF served by{" "}
+                <code className="font-mono text-xs">publicapi.recorder.maricopa.gov</code>.
+              </div>
+              <div className="flex items-center gap-2 flex-wrap">
+                <ProvenanceTag provenance="public_api" confidence={1} />
+                <CountyPdfLink recordingNumber={POPHAM_FIRST_DEED}>
+                  ↗ open authoritative PDF
+                </CountyPdfLink>
+              </div>
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-5"
+          label="Index freshness"
+          aggregator={
+            <div className="space-y-1">
+              <div>Indexed monthly (typical aggregator cadence)</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div>
+              <MoatBanner pipelineStatus={data.pipelineStatus} />
+            </div>
+          }
+        />
       </div>
     </div>
   );

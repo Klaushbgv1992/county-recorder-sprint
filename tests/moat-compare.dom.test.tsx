@@ -32,14 +32,84 @@ describe("MoatCompareRoute scaffold", () => {
 
   it("renders the parcel subtitle naming POPHAM 304-78-386", () => {
     renderRoute();
-    expect(screen.getByText(/304-78-386/)).toBeInTheDocument();
-    expect(screen.getByText(/POPHAM/)).toBeInTheDocument();
+    const subtitle = document.querySelector("header p") as HTMLElement;
+    expect(subtitle).not.toBeNull();
+    expect(subtitle.textContent).toMatch(/304-78-386/);
+    expect(subtitle.textContent).toMatch(/POPHAM/);
+    expect(subtitle.textContent).toMatch(/3674 E Palmer/);
   });
 
   it("renders all five row labels", () => {
     renderRoute();
     for (const label of ROW_LABELS) {
       expect(screen.getByText(label)).toBeInTheDocument();
+    }
+  });
+});
+
+describe("MoatCompareRoute row content", () => {
+  afterEach(() => cleanup());
+
+  it("Row 1 prints the same owner string on both sides with different provenance tags", () => {
+    renderRoute();
+    const row1 = document.querySelector('[data-row-id="row-1"]') as HTMLElement;
+    expect(row1).not.toBeNull();
+    const ownerNodes = Array.from(row1.querySelectorAll("*")).filter(
+      (el) => el.textContent?.trim() === "POPHAM CHRISTOPHER / ASHLEY",
+    );
+    expect(ownerNodes.length).toBeGreaterThanOrEqual(2);
+    expect(row1.textContent).toMatch(/aggregator index/);
+    expect(row1.textContent).toMatch(/County Deed/);
+  });
+
+  it("Row 2 names the two POPHAM lifecycles on the prototype side", () => {
+    renderRoute();
+    const row2 = document.querySelector('[data-row-id="row-2"]') as HTMLElement;
+    expect(row2).not.toBeNull();
+    expect(row2.textContent).toMatch(/lc-001/);
+    expect(row2.textContent).toMatch(/lc-002/);
+    expect(row2.textContent).toMatch(/released/i);
+    expect(row2.textContent).toMatch(/no reconveyance/i);
+  });
+
+  it("Row 3 cites both hunt-log paths on the prototype side", () => {
+    renderRoute();
+    const row3 = document.querySelector('[data-row-id="row-3"]') as HTMLElement;
+    expect(row3).not.toBeNull();
+    expect(row3.textContent).toMatch(/hunt-log-known-gap-2\.md/);
+    expect(row3.textContent).toMatch(/R-005\/hunt-log\.md/);
+    expect(row3.textContent).toMatch(/FED TAX L|LIEN/);
+  });
+
+  it("Row 4 prototype side links to the county PDF for instrument 20130183449", () => {
+    renderRoute();
+    const row4 = document.querySelector('[data-row-id="row-4"]') as HTMLElement;
+    expect(row4).not.toBeNull();
+    const link = row4.querySelector(
+      'a[href*="publicapi.recorder.maricopa.gov"]',
+    ) as HTMLAnchorElement;
+    expect(link).not.toBeNull();
+    expect(link.href).toMatch(/recordingNumber=20130183449/);
+  });
+
+  it("Row 5 prototype side renders the MoatBanner verified-through date", () => {
+    renderRoute();
+    const row5 = document.querySelector('[data-row-id="row-5"]') as HTMLElement;
+    expect(row5).not.toBeNull();
+    expect(row5.textContent).toMatch(/Records verified through/);
+    expect(row5.textContent).toMatch(/2026-04-09/);
+  });
+
+  it("aggregator column contains zero ProvenanceTag chips (visual asymmetry preserved)", () => {
+    renderRoute();
+    const aggregatorCells = document.querySelectorAll(
+      '[data-side="aggregator"]',
+    );
+    expect(aggregatorCells.length).toBeGreaterThan(0);
+    for (const cell of Array.from(aggregatorCells)) {
+      expect(cell.textContent).not.toMatch(
+        /\bCounty API \d+%|\bOCR \d+%|\bHand-Curated \d+%|\bMatcher \d+%/,
+      );
     }
   });
 });
