@@ -1,5 +1,6 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useParcelData } from "./hooks/useParcelData";
+import { useAllParcels } from "./hooks/useAllParcels";
 import { useExaminerActions } from "./hooks/useExaminerActions";
 import { SearchEntry } from "./components/SearchEntry";
 import { ChainOfTitle } from "./components/ChainOfTitle";
@@ -9,14 +10,45 @@ import { ProofDrawer } from "./components/ProofDrawer";
 type Screen = "search" | "chain" | "encumbrance";
 
 export default function App() {
-  const data = useParcelData();
-  const examiner = useExaminerActions(data.links);
+  const parcels = useAllParcels();
+  const [selectedApn, setSelectedApn] = useState<string | null>(null);
   const [screen, setScreen] = useState<Screen>("search");
   const [drawerInstrument, setDrawerInstrument] = useState<string | null>(null);
+
+  // Scope all downstream data to the selected parcel. When none is
+  // selected we still load the default corpus so hook ordering is stable,
+  // but the UI is on the search screen so it doesn't render.
+  const data = useParcelData(selectedApn);
+  const examiner = useExaminerActions(data.links);
 
   const openDrawer = (instrumentNumber: string) =>
     setDrawerInstrument(instrumentNumber);
   const closeDrawer = () => setDrawerInstrument(null);
+
+  const handleSelectParcel = (apn: string, instrumentNumber?: string) => {
+    setSelectedApn(apn);
+    setScreen("chain");
+    // If the search resolved an 11-digit instrument number, queue the
+    // Proof Drawer to open on that instrument once the new corpus loads.
+    setDrawerInstrument(instrumentNumber ?? null);
+  };
+
+  const handleReturnToSearch = () => {
+    setScreen("search");
+    setDrawerInstrument(null);
+  };
+
+  // Guard: if drawer is pointing at an instrument that isn't in the
+  // current parcel's corpus, close it. This would only happen mid-nav,
+  // but it keeps state coherent.
+  useEffect(() => {
+    if (
+      drawerInstrument &&
+      !data.instruments.find((i) => i.instrument_number === drawerInstrument)
+    ) {
+      setDrawerInstrument(null);
+    }
+  }, [drawerInstrument, data.instruments]);
 
   const corpusProvenance = useMemo(() => {
     return data.instruments.reduce(
@@ -33,7 +65,8 @@ export default function App() {
     );
   }, [data.instruments]);
 
-  const drawerOpen = drawerInstrument !== null;
+  const onSearchScreen = screen === "search" || selectedApn === null;
+  const drawerOpen = !onSearchScreen && drawerInstrument !== null;
   const instrumentForDrawer = drawerOpen
     ? data.instruments.find((i) => i.instrument_number === drawerInstrument)
     : undefined;
@@ -57,23 +90,38 @@ export default function App() {
           </span>
         </div>
         <button
-          onClick={() => setScreen("search")}
-          className={`px-3 py-1 rounded text-sm ${screen === "search" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+          onClick={handleReturnToSearch}
+          className={`px-3 py-1 rounded text-sm ${onSearchScreen ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
         >
           Search
         </button>
         <button
-          onClick={() => setScreen("chain")}
-          className={`px-3 py-1 rounded text-sm ${screen === "chain" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+          onClick={() => selectedApn && setScreen("chain")}
+          disabled={!selectedApn}
+          className={`px-3 py-1 rounded text-sm ${screen === "chain" && selectedApn ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"} disabled:text-gray-300 disabled:hover:text-gray-300 disabled:cursor-not-allowed`}
         >
           Chain of Title
         </button>
         <button
-          onClick={() => setScreen("encumbrance")}
-          className={`px-3 py-1 rounded text-sm ${screen === "encumbrance" ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+          onClick={() => selectedApn && setScreen("encumbrance")}
+          disabled={!selectedApn}
+          className={`px-3 py-1 rounded text-sm ${screen === "encumbrance" && selectedApn ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"} disabled:text-gray-300 disabled:hover:text-gray-300 disabled:cursor-not-allowed`}
         >
           Encumbrances
         </button>
+        {selectedApn && !onSearchScreen && (
+          <div className="ml-auto flex items-center gap-3 text-xs text-gray-500">
+            <span>
+              {data.parcel.address} &middot; APN {data.parcel.apn}
+            </span>
+            <button
+              onClick={handleReturnToSearch}
+              className="text-blue-600 hover:text-blue-800 hover:underline"
+            >
+              &larr; Search another parcel
+            </button>
+          </div>
+        )}
       </nav>
 
       {/* Split pane: main content + drawer side-by-side when drawer is open */}
@@ -82,13 +130,13 @@ export default function App() {
           className={`${drawerOpen ? "w-1/2" : "w-full"} overflow-auto transition-[width] duration-200`}
         >
           <div className="max-w-6xl mx-auto px-6 py-6">
-            {screen === "search" && (
+            {onSearchScreen && (
               <SearchEntry
-                parcel={data.parcel}
-                onSelectParcel={() => setScreen("chain")}
+                parcels={parcels}
+                onSelectParcel={handleSelectParcel}
               />
             )}
-            {screen === "chain" && (
+            {!onSearchScreen && screen === "chain" && (
               <ChainOfTitle
                 parcel={data.parcel}
                 instruments={data.instruments}
@@ -96,7 +144,7 @@ export default function App() {
                 onOpenDocument={openDrawer}
               />
             )}
-            {screen === "encumbrance" && (
+            {!onSearchScreen && screen === "encumbrance" && (
               <EncumbranceLifecycle
                 parcel={data.parcel}
                 instruments={data.instruments}
