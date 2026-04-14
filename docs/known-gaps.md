@@ -170,3 +170,26 @@ beat (see `docs/demo-script.md`).
     - *What production would do:* the pipeline is vocabulary-driven;
       adding support for additional codes is a lexicon update, not a
       re-architecture.
+
+14. **Examiner actions are session-only — no write-back to
+    `src/data/links.json`.**
+    - *What's missing:* Accept / Reject on a candidate release, accept
+      / reject / unresolved on an existing link, and lifecycle-status
+      override all live in React `useState` (see
+      `src/components/EncumbranceLifecycle.tsx` for the candidate
+      handler and `src/hooks/useExaminerActions.ts` for link and
+      lifecycle actions). A full browser reload resets them. The
+      prototype is a static Vite SPA — no API, no localStorage write.
+    - *Why that's OK for this pitch:* Decision #16 framed live sync as
+      mention-only; Decision #36 noted that server-side features are
+      stubbed in the prototype. The demo flow accepts a candidate, the
+      lifecycle status flips live, and the synthesized algorithmic
+      DocumentLink is rendered with `provenance="algorithmic"` and the
+      matcher score as `confidence` — that proves the *shape* of the
+      end-to-end loop. Persistence is the production bolt-on, not the
+      contribution.
+    - *What production would do:* every examiner action posts to a
+      county-side service that appends an audit row (who, when, why,
+      with the matcher score and feature breakdown captured at the
+      moment of acceptance) and merges the new link into the canonical
+      links table. The UI re-reads from the same authoritative store.

@@ -9,5 +9,6 @@ export default defineConfig({
   publicDir: "data",
   test: {
     exclude: [...configDefaults.exclude, ".claude/worktrees/**"],
+    environment: "jsdom",
   },
 });
