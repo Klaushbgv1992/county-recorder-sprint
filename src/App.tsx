@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
+import { Outlet } from "react-router";
 import { useParcelData } from "./hooks/useParcelData";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -6,6 +7,14 @@ import { SearchEntry } from "./components/SearchEntry";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
+
+export function AppShell() {
+  return (
+    <div className="h-screen flex flex-col bg-gray-50 text-gray-900">
+      <Outlet />
+    </div>
+  );
+}
 
 type Screen = "search" | "chain" | "encumbrance";
 
