@@ -8,11 +8,9 @@ describe("triggerCommitmentDownload", () => {
 
   beforeEach(() => {
     if (!globalThis.URL.createObjectURL) {
-      // @ts-expect-error — test shim
       globalThis.URL.createObjectURL = vi.fn(() => "blob:mock");
     }
     if (!globalThis.URL.revokeObjectURL) {
-      // @ts-expect-error — test shim
       globalThis.URL.revokeObjectURL = vi.fn();
     }
   });

@@ -15,7 +15,7 @@ const COUNTY_API_BASE = "https://publicapi.recorder.maricopa.gov";
 const SUBDIVISION_ENCUMBRANCE_ROOTS = new Set<string>(["20010093192"]);
 
 export interface ClosingImpactTemplate {
-  status: "open";
+  status: string;
   root_doc_type: string;
   template: string;
 }

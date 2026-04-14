@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useState, type ReactNode } from "react";
 import type { Instrument, DocumentLink } from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
@@ -19,9 +19,10 @@ interface Props {
   links: DocumentLink[];
   corpusProvenance: CorpusProvenance;
   onClose: () => void;
+  headerActions?: ReactNode;
 }
 
-export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Props) {
+export function ProofDrawer({ instrument, links, corpusProvenance, onClose, headerActions }: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
   const citation = formatCitation(instrument, COUNTY_NAME);
@@ -53,6 +54,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose }: Pr
             </p>
           </div>
           <div className="flex items-center gap-2">
+            {headerActions}
             <button
               onClick={handleCopyCitation}
               className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"

@@ -14,6 +14,7 @@ import { SearchEntry } from "./components/SearchEntry";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
+import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -175,6 +176,17 @@ function ChainRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}`);
 
+  const exportButton = (
+    <ExportCommitmentButton
+      parcel={data.parcel}
+      instruments={data.instruments}
+      links={data.links}
+      lifecycles={data.lifecycles}
+      pipelineStatus={data.pipelineStatus}
+      viewedInstrumentNumber={drawerInstrument ?? undefined}
+    />
+  );
+
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -182,6 +194,7 @@ function ChainRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
+        headerActions={exportButton}
       />
     ) : drawerOpen ? (
       <NotFoundPanel
@@ -236,6 +249,17 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/encumbrances/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}/encumbrances`);
 
+  const exportButton = (
+    <ExportCommitmentButton
+      parcel={data.parcel}
+      instruments={data.instruments}
+      links={data.links}
+      lifecycles={data.lifecycles}
+      pipelineStatus={data.pipelineStatus}
+      viewedInstrumentNumber={drawerInstrument ?? undefined}
+    />
+  );
+
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -243,6 +267,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
+        headerActions={exportButton}
       />
     ) : drawerOpen ? (
       <NotFoundPanel
@@ -265,6 +290,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
           onSetLinkAction={examiner.setLinkAction}
           onSetLifecycleOverride={examiner.setLifecycleOverride}
           onOpenDocument={openDrawer}
+          headerActions={exportButton}
         />
       }
       drawer={drawerNode}
