@@ -1,4 +1,14 @@
-import type { Instrument, Party } from "../types";
+import type {
+  Instrument,
+  Party,
+  Parcel,
+  DocumentLink,
+  EncumbranceLifecycle,
+} from "../types";
+
+// Minimum overall matcher score at which a candidate is worth surfacing to
+// an examiner in the UI. Single-sourced here so tests and UI agree.
+export const CANDIDATE_DISPLAY_THRESHOLD = 0.25;
 
 // -- Release-candidate scoring ----------------------------------------------
 //
@@ -144,4 +154,140 @@ export function rankReleaseCandidates(
   });
 
   return scored.sort((a, b) => b.score - a.score);
+}
+
+// -- UI-glue helpers (additive) --------------------------------------------
+//
+// Pure helpers that convert matcher output into the shape the Encumbrance
+// Lifecycle Panel renders, and that synthesize an algorithmic DocumentLink
+// when the examiner accepts a candidate. Kept here so the "suggestion layer"
+// surface area lives in one module alongside the scoring it depends on.
+// --------------------------------------------------------------------------
+
+export type CandidateAction = "accepted" | "rejected";
+
+export interface CandidateRow {
+  candidate: Instrument;
+  score: number;
+  features: {
+    partyNameSim: number;
+    dateProximity: number;
+    legalDescOverlap: number;
+  };
+  alreadyLinkedTo: string | null;
+  canAccept: boolean;
+  action: "pending" | CandidateAction;
+}
+
+export interface BuildCandidateRowsParams {
+  lifecycleId: string;
+  dot: Instrument;
+  pool: Instrument[];
+  releaseLinks: DocumentLink[];
+  lifecycles: EncumbranceLifecycle[];
+  candidateActions: Record<string, CandidateAction>;
+}
+
+export interface BuildCandidateRowsResult {
+  rows: CandidateRow[];
+  total: number;
+  aboveThresholdCount: number;
+}
+
+const MAX_CANDIDATE_ROWS = 3;
+
+export function candidateKey(
+  lifecycleId: string,
+  candidateInstrumentNumber: string,
+): string {
+  return `${lifecycleId}::${candidateInstrumentNumber}`;
+}
+
+function findAcceptedReleaseLifecycle(
+  candidate: Instrument,
+  releaseLinks: DocumentLink[],
+  lifecycles: EncumbranceLifecycle[],
+): string | null {
+  const acceptedLink = releaseLinks.find(
+    (l) =>
+      l.source_instrument === candidate.instrument_number &&
+      l.link_type === "release_of" &&
+      l.examiner_action === "accepted",
+  );
+  if (!acceptedLink) return null;
+  const owner = lifecycles.find(
+    (lc) => lc.root_instrument === acceptedLink.target_instrument,
+  );
+  return owner?.id ?? null;
+}
+
+export function buildCandidateRows({
+  lifecycleId,
+  dot,
+  pool,
+  releaseLinks,
+  lifecycles,
+  candidateActions,
+}: BuildCandidateRowsParams): BuildCandidateRowsResult {
+  const total = pool.length;
+  const ranked = rankReleaseCandidates(dot, pool);
+  const aboveThreshold = ranked.filter(
+    (r) => r.score >= CANDIDATE_DISPLAY_THRESHOLD,
+  );
+  const displayed = aboveThreshold.slice(0, MAX_CANDIDATE_ROWS);
+
+  const rows: CandidateRow[] = displayed.map((r) => {
+    const alreadyLinkedTo = findAcceptedReleaseLifecycle(
+      r.candidate,
+      releaseLinks,
+      lifecycles,
+    );
+    const key = candidateKey(lifecycleId, r.candidate.instrument_number);
+    const action = candidateActions[key] ?? "pending";
+    return {
+      candidate: r.candidate,
+      score: r.score,
+      features: r.features,
+      alreadyLinkedTo,
+      canAccept: alreadyLinkedTo === null,
+      action,
+    };
+  });
+
+  return {
+    rows,
+    total,
+    aboveThresholdCount: aboveThreshold.length,
+  };
+}
+
+export function synthesizeAlgorithmicLink(params: {
+  lifecycleId: string;
+  dot: Instrument;
+  candidate: Instrument;
+  score: number;
+}): DocumentLink {
+  const { lifecycleId, dot, candidate, score } = params;
+  return {
+    id: `synthetic-${lifecycleId}-${candidate.instrument_number}`,
+    source_instrument: candidate.instrument_number,
+    target_instrument: dot.instrument_number,
+    link_type: "release_of",
+    provenance: "algorithmic",
+    confidence: score,
+    examiner_action: "accepted",
+  };
+}
+
+export function buildAcceptedRationale(score: number): string {
+  return `Accepted via release-candidate matcher, score=${score.toFixed(2)}`;
+}
+
+export function buildEmptyStateRationale(parcel: Parcel): string {
+  return (
+    `Matcher ran against 0 reconveyances in ${parcel.subdivision} corpus. ` +
+    `Note: the public API cannot search for releases filed against ` +
+    `${parcel.current_owner} outside this parcel. A county-internal ` +
+    `full-name scan closes this gap — out of prototype scope.`
+  );
 }

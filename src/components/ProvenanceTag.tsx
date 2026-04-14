@@ -4,12 +4,14 @@ const PROVENANCE_LABELS: Record<ProvenanceKind, string> = {
   public_api: "County API",
   ocr: "OCR",
   manual_entry: "Hand-Curated",
+  algorithmic: "Matcher",
 };
 
 const PROVENANCE_COLORS: Record<ProvenanceKind, string> = {
   public_api: "bg-gray-100 text-gray-700",
   ocr: "bg-purple-100 text-purple-700",
   manual_entry: "bg-orange-100 text-orange-700",
+  algorithmic: "bg-indigo-100 text-indigo-700",
 };
 
 interface Props {
