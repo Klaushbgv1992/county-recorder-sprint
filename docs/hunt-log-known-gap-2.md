@@ -221,3 +221,25 @@ exist on the public surface today is that the current public API was
 built as a document-delivery endpoint, not a search surface. A
 custodian-owned portal inverts that — search-first, document on
 pull.
+
+---
+
+## See also
+
+- **`data/raw/R-005/hunt-log.md`** — Tier 1-B Seville master plat
+  (Book 553 Page 15) hunt against the same API. Same Known Gap #2,
+  plat-tier framing, deeper API failure surface (five blocked layers
+  including search pagination broken and the legacy book/page bridge
+  Cloudflare-gated). The two hunts are paired evidence: a single
+  failed hunt is a one-off; **two failed hunts at adjacent tiers in
+  the same taxonomy is the receipt.**
+- **`data/raw/R-005/api-receipts.md`** — exact `curl`-captured
+  proof that the lien-related document codes the Tier 1-A hunt was
+  looking for (`RE FED TX`, `FED TAX L`, `LIEN`, `MED LIEN`) are
+  *indexable* (they appear in `documentCodes` on `GET /documents/{n}`)
+  but *unsearchable* (the same codes return `totalResults: 0` from
+  `/documents/search?documentCode=…`). This sharpens Known Gap #2
+  from "search is broken" to "the index records what the search
+  surface refuses to enumerate."
+- **CLAUDE.md Decisions #38 and #40** — the canonical project-log
+  entries for the Tier 1-A pivot and the Tier 1-B hunt outcome.
