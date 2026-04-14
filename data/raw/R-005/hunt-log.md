@@ -1,5 +1,11 @@
 # R-005 Hunt Log — Locating the Seville Master Plat (Book 553, Page 15)
 
+> ## Key findings for demo (copy-pasteable)
+>
+> **The Maricopa Recorder index contains four lien-related document codes — `RE FED TX`, `FED TAX L`, `LIEN`, and `MED LIEN` — that the public API will return when probed by recording number, but that the public search surface refuses to enumerate.** A lien-tier hunt against `documentCode=FED TAX L` returns `totalResults: 0`; the same code is right there inside `documentCodes` on `GET /documents/20010092700`. Federal-tax-lien releases (`RE FED TX`), general liens (`LIEN`), and medical liens (`MED LIEN`) follow the same pattern. Receipts in `data/raw/R-005/api-receipts.md`. Title plants that claim lien coverage either scrape the legacy Cloudflare-gated UI or pay for a feed the public doesn't get — the moat is in the gap between *indexable* and *searchable*.
+>
+> Companion finding: a parallel hunt at the **plat tier** (this document, looking for Book 553 Page 15) failed at the same Known Gap #2, against five separate API layers. Two failed hunts at adjacent tiers in the same taxonomy is the receipt; see "See also" below.
+
 **Outcome:** Recording number not located. Per sprint owner's pre-approved decision tree, hunt was stopped at ~141 of 200 budgeted API calls and pivoted to Candidate C ("defer + surface"). This document is the deliverable.
 
 **Why the hunt is itself a demo asset:** the same `publicapi.recorder.maricopa.gov` API that ships the chain-of-title corpus has, in this hunt, been blocked at five separate layers from answering a question that any examiner can ask: *"What's the recording number of Book 553, Page 15?"* That question is well-formed, the answer is a single 11-digit integer, and there is no API path from the question to the answer. That's the moat shape we sell — and this log is the receipt.
@@ -95,7 +101,16 @@ This is the only path that returns Book 553 entries when probed at the right num
 
 Total bracket-scan calls (Attempt 5): ~94.
 
-Side discovery worth recording: `documentCode` value `FED TAX L` is **valid and indexed** — found incidentally at `20010092700` and elsewhere — and `LIEN` and `MED LIEN` also appear as legitimate codes. The Tier 1-A hunt log implies federal tax liens are search-invisible; the more precise statement is that the codes are *indexable but unsearchable* — the index records them, the search filter ignores all filter inputs. Refinement, not contradiction.
+Side discovery worth recording — and the headline of this hunt: four lien-related `documentCode` values are **valid and indexed** but **unsearchable**:
+
+| code (exact API string) | meaning | observed at recordingNumber |
+|---|---|---|
+| `RE FED TX` | Release of Federal Tax Lien | `19470000050` (and many later) |
+| `FED TAX L` | Federal Tax Lien | `20010092700` |
+| `LIEN` | General Lien | `20010092800` |
+| `MED LIEN` | Medical Lien | `20010090000` |
+
+Each round-trips through `GET /documents/{recordingNumber}` and shows up inside the `documentCodes` array. Each, when used as the `documentCode` filter on `/documents/search`, returns `totalResults: 0` and zero records — including for `FED TAX L`, the exact code that the *Tier 1-A* federal-tax-lien hunt was looking for. So the more precise statement of Known Gap #2 is: **the codes are indexable but unsearchable** — the index records them, the search surface refuses to enumerate by them. Refinement, not contradiction, of `docs/hunt-log-known-gap-2.md`. Verifiable receipts in `data/raw/R-005/api-receipts.md`.
 
 ### Cumulative API usage
 
@@ -135,3 +150,15 @@ We're at ~141 of 200. The remaining ~59 calls are statistically inadequate again
 - **Lifecycle inventory** is unchanged: lc-001 through lc-004 only. No lc-005 created.
 - **Schema** is unchanged: no `source_page`, `source_note`, `related_lifecycles`, or `encumbrance_authority` fields added.
 - **Demo script Beat 7c** continues to feature `docs/hunt-log-known-gap-2.md` (Tier 1-A) as the primary disintermediation receipt. This R-005 hunt log becomes a **second receipt** — same Known Gap, different question, deeper failure surface — and gets a one-line callout in the demo script.
+
+---
+
+## See also
+
+- **`docs/hunt-log-known-gap-2.md`** — Tier 1-A federal-tax-lien hunt. Same `publicapi.recorder.maricopa.gov`, same Known Gap #2, lien-tier framing. Pair the two: a single failed hunt looks like a one-off; **two failed hunts at adjacent tiers in the same taxonomy is the receipt.** The lien hunt and the plat hunt both fail because the public surface is a document-delivery endpoint, not a search surface.
+- **`data/raw/R-005/api-receipts.md`** — exact `curl`-captured `documentCodes` for `RE FED TX` / `FED TAX L` / `LIEN` / `MED LIEN`, plus the matching `documentCode` filter calls returning zero. Use this as the PR-description receipt or as a slide footer in the demo.
+- **CLAUDE.md Decision #40** — the canonical project-log entry for this hunt outcome.
+
+## Demo integration
+
+Demo integration is handled by **Tier 1-D — see `feature-moat-narrative` branch.** This document is the raw research artifact; Terminal 4 weaves the narrative. Do not edit `docs/demo-script.md` from this branch.
