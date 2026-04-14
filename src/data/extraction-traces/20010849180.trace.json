@@ -1,0 +1,62 @@
+{
+  "instrument_number": "20010849180",
+  "source_pdf": "data/raw/R-004/pdfs/20010849180.pdf",
+  "ocr_engine": "tesseract",
+  "ocr_version": "tesseract 4.1.1",
+  "extracted_at": "2026-04-14T13:44:31Z",
+  "pages": [
+    {
+      "page": 1,
+      "raw_text": "Unofficial\nDocument\n\n \n\n \n\nM\n\nNORKOCN PURLELL\n\n268!-@849188 69/17/2081 10:80 |\n\nAfter Recording, Return to: JOANN oF 5\n\nCoe & Van Loo Consultants, Inc.\n\n4550 N. 12\" Street\nPhoenix, AZ 85014\n\nAFFIDAVIT OF CORRECTION\n\nSEVILLE, PARCEL 3 |\n\nSTATE OF ARIZONA ) :\n\nE\n\n) ss\nCOUNTY OF MARICOPA)\n\nLarry E. Sullivan, a Registered Land Surveyor, being first duly sworn upon oath deposes and states that (a)\nhe prepared the Final Plat for “Seville, Parcel 1” recorded in Maricopa County, Arizona, in Book 554, Page 19 |\n(Docket 2001-0093192), (b) the Final Plat provided for a ratification and consent by the Seville Homeowners\nAssociation (the “Association”), (c) the Association did not exist at the time the Final Plat was recorded, (d) the\ninclusion of a signature block for the Association on the Final Plat was an error, and (c) the absence of signature by\nthe Association on the Final Plat shall have no effect on the validity of the Final Plat.\n\n|\n|\n\n  \n \n  \n   \n   \n  \n\n \n\nAcknowledged before me this , 2001, by Larry E. Sullivan.\n\n \n \n \n\nOFFICIAL SEAL\n‘ KAREN M. PICKETT\n\n2) Notary Public - State of Arizona\nVAs MARICOPA COUNTY\n~~“ My Comm. Expires Feb. 18, 2002\n\nQe OP LOLOL IO ON OO A POOLE TE NO\n\nNotarySitamp SS tary Public\n\n \n\nN:\\990049\\ADMIN\\49-069x.doc Page 1 of 2\n\f",
+      "word_count": 213
+    },
+    {
+      "page": 2,
+      "raw_text": "20010849180\n\nAcknowledged and accepted:\n\nSHEA HOMES LIMITED PARTNERSHIP,\na California limited partnership\n\nBy:  J.F. SHEA CO., INC., a Nevada\nCorporation, as general partner\n\n \n\nBy:\n\n \n\nDavid Gatcia\nAssistant Secretary\n\nSTATE OF ARIZONA )\n) ss.\nCounty of Maricopa )\n\nUnofficial Document\n\n \n\ney\nAcknowledged before me this Al day of A fot “2001 , by David Garcia, the Assistant\nSecretary of J.F. Shea Co., Inc., a Nevada corporation that¢ ihe awl partner of Shea Homes Limited\nPartnership, a California limited partnership, for and on behalf of the corporation acting as the general partner of\nthe limited partnership.\n\n   \n  \n\ngees as|0xa * ang\nht AG!\nLo ARR\n\nyo a\n4), Ff |\n(Hiith. Co Sf rtemer/\n\nAah ‘oO by “A . { 4 XY Tr\n\n, gWwiolasO ee : (~ AAA\nNotary Stam Notary Public\n\nCAL SEAL\nRUTH C. ase\nNotary Public - State of Anzona\nMARICOPA QUNTY\nMy Come. Eels Oct Set 18, A004\n\n \n\n  \n   \n \n\n  \n \n\nN:\\990049\\A DMIN\\49-069x.doc Page 2 of 2\n\n \n\nST ATTA oe eT Rees\n\nTTT eT Peters\n\nOWT TYG IOS PPT peg\n\n:\n:\n\noS Te eT ye\n\nTARE PRS\n\nTET\n\neer Ee\n\f",
+      "word_count": 181
+    }
+  ],
+  "extractions": [
+    {
+      "field": "legal_description",
+      "value": null,
+      "confidence": 0.0,
+      "provenance": "ocr",
+      "source_page": null,
+      "source_snippet": null,
+      "extraction_method": "regex-rule: Lot N ... Book N of Maps, Page N (no match)",
+      "note": "No 'Lot <number>' anchor found anywhere in OCR output."
+    },
+    {
+      "field": "trust_name",
+      "value": null,
+      "confidence": 0.0,
+      "provenance": "ocr",
+      "source_page": null,
+      "source_snippet": null,
+      "extraction_method": "regex-rule: '...TRUST[, dated ...]' (no match)",
+      "note": "No 'TRUST' entity name recognizable in OCR output."
+    },
+    {
+      "field": "deed_date",
+      "value": null,
+      "confidence": 0.0,
+      "provenance": "ocr",
+      "source_page": null,
+      "source_snippet": null,
+      "extraction_method": "regex-rule: deed execution date (no match)",
+      "note": "Neither 'made/dated this Nth day of Month, YYYY' nor 'Date: Month D, YYYY' matched."
+    },
+    {
+      "field": "escrow_number",
+      "value": null,
+      "confidence": 0.0,
+      "provenance": "ocr",
+      "source_page": null,
+      "source_snippet": null,
+      "extraction_method": "keyword-proximity: 'Escrow (No.|#)?: <alnum>' (no match)",
+      "note": "No 'Escrow No./#' label found — this deed may not have had a title-company escrow, or the label is outside OCR confidence."
+    }
+  ],
+  "notes": "Missing fields: legal_description (No 'Lot <number>' anchor found anywhere in OCR output.); trust_name (No 'TRUST' entity name recognizable in OCR output.); deed_date (Neither 'made/dated this Nth day of Month, YYYY' nor 'Date: Month D, YYYY' matched.); escrow_number (No 'Escrow No./#' label found — this deed may not have had a title-company escrow, or the label is outside OCR confidence.)"
+}

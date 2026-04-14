@@ -1,0 +1,90 @@
+{
+  "instrument_number": "20010849180",
+  "recording_date": "2001-09-17",
+  "document_type": "other",
+  "document_type_raw": "AFFIDAVIT",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "LARRY E. SULLIVAN, Registered Land Surveyor",
+      "role": "grantor",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    {
+      "name": "SHEA HOMES LIMITED PARTNERSHIP",
+      "role": "grantee",
+      "provenance": "ocr",
+      "confidence": 0.9
+    }
+  ],
+  "legal_description": {
+    "value": "SEVILLE PARCEL 3, Final Plat recorded in Book 554 of Maps, Page 19 (Docket 2001-0093192), Maricopa County, Arizona",
+    "provenance": "ocr",
+    "confidence": 0.95
+  },
+  "extracted_fields": {
+    "affidavit_type": {
+      "value": "Affidavit of Correction to recorded Final Plat",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "target_plat_recording": {
+      "value": "20010093192",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "target_plat_book_page": {
+      "value": "Book 554 of Maps, Page 19",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "correction_subject": {
+      "value": "Final Plat included a signature block for the Seville Homeowners Association, but the Association did not exist at the time the Final Plat was recorded; absence of Association signature has no effect on plat validity",
+      "provenance": "ocr",
+      "confidence": 0.95
+    },
+    "consenting_party": {
+      "value": "SHEA HOMES LIMITED PARTNERSHIP, a California limited partnership (acknowledged and accepted, page 2)",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "return_address": {
+      "value": "Coe & Van Loo Consultants, Inc., 4550 N. 12th Street, Phoenix, AZ 85014",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "notary_jurisdiction": {
+      "value": "Maricopa County, Arizona (Karen M. Pickett, Notary Public)",
+      "provenance": "ocr",
+      "confidence": 0.85
+    }
+  },
+  "back_references": [
+    "20010093192"
+  ],
+  "source_image_path": "/raw/R-004/pdfs/20010849180.pdf",
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "SULLIVAN LARRY E REGISTERED LAND SURVEYOR"
+    ],
+    "documentCodes": [
+      "AFFIDAVIT"
+    ],
+    "recordingDate": "9-17-2001",
+    "recordingNumber": "20010849180",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 10,
+    "manual_entry_count": 0
+  }
+}

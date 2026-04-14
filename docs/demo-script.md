@@ -135,6 +135,34 @@ Conventions for each beat:
   the disintermediation thesis rendered inline — the matcher's
   emptiness is itself the moat demonstration (see Decision #36).
 
+## Beat 7c — Moat beat #2b — the hunt log
+
+- **Click:** open `docs/hunt-log-known-gap-2.md` alongside the
+  Encumbrance panel (or pull it up on the second monitor). While
+  hovering lifecycle `lc-004` (subdivision encumbrances: plat
+  20010093192 + affidavit 20010849180) on the Encumbrance panel.
+- **Shows:** a 45-minute log of exact `publicapi.recorder.maricopa.gov`
+  queries that fail to surface a federal-tax-lien candidate on any
+  Maricopa parcel, followed by the pivot that *did* work — pulling
+  the Seville Parcel 3 plat (Book 554 Maps Page 19) by following an
+  OCR'd parenthetical inside a 2001 Affidavit of Correction that was
+  already cited in POPHAM's existing 2013 deed legal description.
+- **Say:** "This is Known Gap #2 made tangible. The API can't answer
+  'show me every federal tax lien recorded in 2021' — section 2 of
+  the hunt log has the exact failing queries. And the book/page
+  lookup the assessor page points at — `map-results.html?book=554&
+  page=19` — is Cloudflare-gated. The only reason the Seville plat
+  is in the corpus is that OCR on a 2001 affidavit surfaced the
+  plat's recordingNumber in a parenthetical inside the body text.
+  A downstream title plant cannot reproduce this. The county-internal
+  index resolves `Book 554 Page 19 → 20010093192` in one lookup.
+  That is what custody means."
+- **Why this beat is here:** the hunt log is evidence you cannot
+  fabricate — raw `curl` output against a real public API, failing
+  in specific, reproducible ways. It is the demonstration that
+  Decision #21 (no APN bridge on the recorder side, prototype
+  fixes this gap) is not academic.
+
 ## Beat 8 — Proof Drawer + AI Extraction panel
 
 - **Click:** open the 2013 warranty deed (20130183449) in the Proof Drawer.
