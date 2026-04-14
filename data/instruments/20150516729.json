@@ -1,0 +1,106 @@
+{
+  "instrument_number": "20150516729",
+  "recording_date": "2015-07-17",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [
+    "affidavit_of_disclosure"
+  ],
+  "parties": [
+    {
+      "name": "ROBERT S LORANCE",
+      "role": "grantor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "JASON HOGUE",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MICHELE HOGUE",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 348, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "ocr",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2015-06-16",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "notary_date": {
+      "value": "2015-06-25",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "escrow_number": {
+      "value": "63150745-063-JBB",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "Security Title Agency, Inc.",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "grantor_marital_status": {
+      "value": "An Unmarried Man",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2715 E Palmer St, Gilbert, AZ 85298",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "sale_price": {
+      "value": "$328,500",
+      "provenance": "manual_entry",
+      "confidence": 0.9
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20150516730"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20150516729.pdf",
+  "page_count": 4,
+  "raw_api_response": {
+    "names": [
+      "HOGUE JASON",
+      "HOGUE MICHELE",
+      "LORANCE ROBERT S"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "7-17-2015",
+    "recordingNumber": "20150516729",
+    "pageAmount": 4,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 2,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 8,
+    "manual_entry_count": 4
+  }
+}
