@@ -15,6 +15,7 @@ import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
+import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -358,6 +359,11 @@ export const routes: RouteObject[] = [
         id: "instrument-resolver",
         path: "instrument/:instrumentNumber",
         element: <InstrumentResolver />,
+      },
+      {
+        id: "moat-compare",
+        path: "moat-compare",
+        element: <MoatCompareRoute />,
       },
       {
         id: "not-found",

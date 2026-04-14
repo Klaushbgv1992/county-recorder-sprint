@@ -13,16 +13,48 @@ Conventions for each beat:
 
 ---
 
+## Beat 0 — The number that frames the next six minutes
+
+- **Click:** none. Spoken cold before the first browser interaction.
+- **Shows:** static title slide or a blank screen — the audience's
+  attention is on the speaker, not the portal.
+- **Say (the pain, deadpan):**
+  > "One residential refinance. One parcel — 3674 E Palmer Street,
+  > Gilbert. **115 discrete interactions across three disconnected
+  > domains, four browser tabs, three separate name searches** is what
+  > an examiner does today to walk the chain. We measured it with an
+  > instrumented browser session
+  > [`research/measurable-win.md` L7–L9]. The next six minutes replace
+  > that workflow with one search box and a single screen."
+- **Say (the two ground rules, deadpan):**
+  > "Two ground rules before I click anything.
+  >
+  > One — every number you see on stage carries a provenance tag:
+  > `County API`, `OCR`, `Hand-Curated`, or `Matcher`, with a
+  > confidence percentage.
+  >
+  > Two — one slide deliberately shows OCR misreading a lot number on
+  > a document whose true lot is 46. That's not a glitch. That's the
+  > credibility check the whole pitch hangs on."
+- **Why this beat is here:** the strongest evidence in this pitch is
+  the measured workflow cost (`research/measurable-win.md`,
+  `research/before-workflow.md`) and the OCR honesty discipline. Both
+  belong in the first 60 seconds, not buried at Beat 9. The Lot
+  46/65/687 reveal in Beat 9 cashes the check this beat writes.
+
 ## Beat 1 — Open on Search Entry
 
 - **Click:** open `http://localhost:5173/`
 - **Shows:** "Land Custodian Portal" header. Single search input. Chain /
   Encumbrance nav items visibly disabled until a parcel is selected.
   Placeholder text shows real corpus examples only.
-- **Say:** "This is the county's own portal. The landing screen is a single
-  parcel-keyed search box — no cross-county federation, no intake forms,
-  no payments. That narrow scope is deliberate, and it's what makes the
-  custodial moat defensible."
+- **Say:** "Here's the portal. The 115-interaction walk I just named
+  starts here in the current Maricopa stack —
+  [`research/before-workflow.md` L7] three domains, four tabs, three
+  name searches. This screen is one box, and the entire next five
+  minutes lives behind it. No cross-county federation, no intake
+  forms, no payments. That narrow scope is deliberate — it's what
+  makes the custodial moat defensible."
 
 ## Beat 2 — Instrument-number deep link (moat beat #1)
 
@@ -58,10 +90,29 @@ Conventions for each beat:
   the multi-token partial match against `current_owner:
   "POPHAM CHRISTOPHER / ASHLEY"`.
 - **Say:** "Examiners don't type recorder-format names. `chris ash`
-  resolves the same parcel a full formal search would. That owner match
+  resolves the same parcel a full formal search would — and
+  removes the same-name-contamination tax that the recorder's
+  current name search imposes
+  [`research/before-workflow.md` L33–L39]. That owner match
   is tier 3 in the search priority (see `src/logic/search.ts`) — instrument
   wins if it looks like an 11-digit number, then APN, then address, then
   owner, then subdivision."
+- **Say (the provenance-drift callout, only if the audience has both
+  the on-screen badge and the exported PDF in front of them — e.g.,
+  during the Proof Drawer in Beat 8 or the Commitment Export hand-off):**
+  > "Two surfaces, two reading modes. The UI renders provenance as a
+  > color chip because an examiner is scanning a panel at glance. The
+  > PDF renders provenance as an inline parenthetical because the
+  > commitment is read line-by-line. Same taxonomy, mode-appropriate
+  > presentation."
+- **Why this callout is here:** Known Gap #18
+  (`docs/known-gaps.md`) flagged provenance-vocabulary drift between
+  the Proof Drawer chips (`County API 100%`) and the exported PDF
+  parentheticals (`(api)`, `(ocr, 0.97)`) as Terminal 4's surface in
+  the moat-narrative pass. The callout closes the gap with the
+  reading-mode framing — no code change needed. Discipline: deliver
+  the one defensive sentence and stop. Audience follow-ups get
+  answered live, not pre-emptively in the script.
 
 ## Beat 5 — Chain-of-Title Timeline
 
@@ -187,6 +238,11 @@ Conventions for each beat:
   file page 3 raw text).
 - **Shows:** three different readings of the same field on the same
   document.
+- **Say (the callback to Beat 0, deadpan, no preamble):**
+  > "Remember the ground rule from minute one — one slide with a
+  > deliberately mis-OCR'd Lot. This is it. Confidence 92%. The
+  > system didn't hide the error; it priced it. Every other number
+  > on the screen carries the same discipline."
 - **Say:** "This is why the provenance and confidence UI exists. OCR read
   `Lot 65` on page 1 and `Lot 687` on page 3. The curated ground truth —
   from visual inspection of the recorded plat reference — is `Lot 46`.
@@ -208,7 +264,8 @@ Conventions for each beat:
   chain cannot be ruled out via the API alone."
 - **Say:** "HOGUE is the honest counter-example. We have the 2015 purchase
   and DOT. The lifecycle is marked open *with a stated rationale*: the
-  public API doesn't support name-filtered document search, so we cannot
+  public API doesn't support name-filtered document search
+  [`research/before-workflow.md` L33], so we cannot
   rule out a release we didn't find. That's the moat argument in its
   sharpest form — the county has the corpus and can search it
   authoritatively; the public API can't, and neither can a title plant
@@ -240,6 +297,7 @@ line traces to a decision in `CLAUDE.md`.
 | DOT party-role inference from API name order | Prototype uses manual curation; production would need doc-type heuristics + OCR fallback | Decision #29 |
 | Clark NV or any non-Maricopa county | Auto-flip rule never tripped — all five Maricopa criteria passed (R-001) | Decisions #5, #18 |
 | Dossier screen | Stretch goal behind the four firm-commitment screens; demo doesn't depend on it | Decision #11 |
+| Code-side merge of UI badge ↔ PDF parenthetical formatters | Both surfaces are internally consistent and trace to the same provenance enum + confidence floats. Reading-mode discipline (Beat 4 callout) is the resolution; a shared formatter is a follow-on, not a moat fix. | Known Gaps #18, #19 |
 
 If an audience member asks about any of these, the answer is in the
 right-hand column, not in a hidden "coming soon" surface we built and
