@@ -121,6 +121,10 @@ export const Parcel = z.object({
   subdivision: z.string(),
   assessor_url: z.string().optional(),
   recorder_url: z.string().optional(),
+  // List of instruments curated for this parcel. Used by multi-parcel
+  // data-loader to scope instruments/links/lifecycles to one parcel.
+  // Optional for backward compatibility with single-parcel corpora.
+  instrument_numbers: z.array(z.string()).optional(),
 });
 
 // -- Derived types (computed at runtime, not stored in curated files) --
@@ -199,6 +203,7 @@ export const PipelineStatus = z.object({
 // -- Top-level file schemas --
 
 export const ParcelFile = Parcel;
+export const ParcelsFile = z.array(Parcel);
 export const InstrumentFile = Instrument;
 export const LinksFile = z.array(DocumentLink);
 export const LifecyclesFile = z.object({

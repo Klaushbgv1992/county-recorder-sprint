@@ -1,24 +1,40 @@
-import { readFileSync, writeFileSync, readdirSync } from "fs";
+import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join } from "path";
-import { InstrumentFile, ParcelFile, LinksFile } from "../src/schemas";
+import { InstrumentFile, ParcelFile, ParcelsFile, LinksFile } from "../src/schemas";
 
 const INSTRUMENTS_DIR = "data/instruments";
-const PARCEL_PATH = "data/parcel.json";
+const PARCELS_PATH = "data/parcels.json";
+const PARCEL_LEGACY_PATH = "data/parcel.json";
 const LINKS_PATH = "data/links.json";
 
 let errors: string[] = [];
 let warnings: string[] = [];
 
-// -- Load and validate parcel --
+// -- Load and validate parcels (new array file) or legacy single-parcel file --
 
-console.log("=== Validating parcel.json ===");
-const parcelRaw = JSON.parse(readFileSync(PARCEL_PATH, "utf8"));
-const parcelResult = ParcelFile.safeParse(parcelRaw);
-if (!parcelResult.success) {
-  errors.push(`parcel.json: ${parcelResult.error.message}`);
-  console.log("  FAIL:", parcelResult.error.message);
+if (existsSync(PARCELS_PATH)) {
+  console.log("=== Validating parcels.json ===");
+  const parcelsRaw = JSON.parse(readFileSync(PARCELS_PATH, "utf8"));
+  const parcelsResult = ParcelsFile.safeParse(parcelsRaw);
+  if (!parcelsResult.success) {
+    errors.push(`parcels.json: ${parcelsResult.error.message}`);
+    console.log("  FAIL:", parcelsResult.error.message);
+  } else {
+    console.log(`  PASS (${parcelsResult.data.length} parcels)`);
+    for (const p of parcelsResult.data) {
+      console.log(`    - ${p.apn} ${p.address} (${(p.instrument_numbers ?? []).length} instruments)`);
+    }
+  }
 } else {
-  console.log("  PASS");
+  console.log("=== Validating parcel.json (legacy) ===");
+  const parcelRaw = JSON.parse(readFileSync(PARCEL_LEGACY_PATH, "utf8"));
+  const parcelResult = ParcelFile.safeParse(parcelRaw);
+  if (!parcelResult.success) {
+    errors.push(`parcel.json: ${parcelResult.error.message}`);
+    console.log("  FAIL:", parcelResult.error.message);
+  } else {
+    console.log("  PASS");
+  }
 }
 
 // -- Load and validate instruments --

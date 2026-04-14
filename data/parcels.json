@@ -1,0 +1,35 @@
+[
+  {
+    "apn": "304-78-386",
+    "address": "3674 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "current_owner": "POPHAM CHRISTOPHER / ASHLEY",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478386&mod=pd",
+    "instrument_numbers": [
+      "20130183449",
+      "20130183450",
+      "20210057846",
+      "20210057847",
+      "20210075858"
+    ]
+  },
+  {
+    "apn": "304-77-689",
+    "address": "2715 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 348, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "current_owner": "HOGUE JASON / MICHELE",
+    "subdivision": "Shamrock Estates Phase 2A",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30477689&mod=pd",
+    "instrument_numbers": [
+      "20150516729",
+      "20150516730"
+    ]
+  }
+]
