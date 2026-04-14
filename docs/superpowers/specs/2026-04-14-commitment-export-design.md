@@ -416,8 +416,11 @@ branch was taken and why. Empty until verification step decides.
 
 ### Layout decision (filled at verification)
 
-_(empty until commitment-pdf.ts smoke test in dev server resolves
-Branch A vs Branch B)_
+**Branch A shipped.** Schedule A legal description renders inside the
+Schedule A two-column table. Smoke test against POPHAM (Seville Parcel
+3 description, 224 chars) wraps to 2 lines cleanly within the
+auto-width value column; no overflow. Future descriptions longer than
+~400 chars may need Branch B.
 
 ---
 
