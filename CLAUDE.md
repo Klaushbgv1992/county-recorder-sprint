@@ -75,6 +75,7 @@ Residential title examiner / abstractor
 | 33 | Release executed by Wells Fargo / CAS Nationwide, not VIP Mortgage directly | 20210075858 shows VIP Mortgage loan was serviced or sold to Wells Fargo. MERS as beneficiary as nominee for VIP. Possible unrecorded ASSIGNMENT OF DEED OF TRUST — check in Phase 3 but not blocking. | 2026-04-13 |
 | 34 | MERS beneficiary handling in Encumbrance Lifecycle Panel | 2013 DOT (20130183450) shows MERS as beneficiary as nominee for VIP Mortgage. Release (20210075858) executed by Wells Fargo via CAS Nationwide Title Clearing. No recorded assignment of DOT between VIP and Wells Fargo — note was transferred via MERS outside the public record. Display rule: show beneficiary as "MERS as nominee for VIP Mortgage" on the 2013 DOT, and display the release with the actual releasing party (Wells Fargo), not the originator. Add a small "MERS note" annotation explaining that the note may have transferred outside the public record. This is a prototype feature, not a bug — making MERS visible is itself a disintermediation talking point. | 2026-04-13 |
 | 35 | Phase 3 complete, corpus provenance ratio locked | 5 POPHAM instruments curated and validated. Provenance split: 22 public_api (29%) / 35 ocr (47%) / 18 manual_entry (24%). This ratio is the core disintermediation talking point for the MLG pitch — the county provides a minority of the fields an examiner needs, OCR recovers another ~half from documents the county already hosts, and the remainder requires judgment the prototype demonstrates with hand curation. | 2026-04-13 |
+| 36 | Deep-linkable routes via client-side react-router v7 | URL is source of truth for parcel + instrument navigation. `/parcel/:apn` and `/parcel/:apn/instrument/:n` are pasteable canonical addresses. `/instrument/:n` resolves client-side to the owning parcel via a resolver component — this produces a one-frame "Resolving instrument…" placeholder before redirect. A production version would use react-router loaders or a server-side 302 to eliminate the flash. Family: Decision #16 (snapshot vs live sync — server-side features stubbed in prototype). Sub-note: `src/router.tsx` exports `routes` but does not instantiate the browser router; that lives in `src/main.tsx` so `router.tsx` remains import-safe from vitest. | 2026-04-14 |
 
 ## Active Skill State
 - **Current Phase:** Phase 3 complete, ready for Phase 4: UI Build (Day 2)
@@ -119,3 +120,13 @@ Residential title examiner / abstractor
 - Legacy static: `https://legacy.recorder.maricopa.gov/UnOfficialDocs/pdf/{recordingNumber}.pdf` (recent only)
 - Assessor: `https://mcassessor.maricopa.gov/mcs/?q={APN-no-dashes}&mod=pd`
 - Assessor→recorder: `https://recorder.maricopa.gov/recording/document-search-results.html?mode=book&docketBook={book}&pageMap={page}`
+
+## App Routes
+
+- `/` — Search entry
+- `/parcel/:apn` — Chain of Title for a parcel
+- `/parcel/:apn/instrument/:instrumentNumber` — Chain + Proof Drawer
+- `/parcel/:apn/encumbrances` — Encumbrance Lifecycle panel
+- `/parcel/:apn/encumbrances/instrument/:instrumentNumber` — Encumbrance + Proof Drawer
+- `/instrument/:instrumentNumber` — client-side redirect to the owning parcel URL (one-frame "Resolving instrument…" placeholder; see Decision #36)
+- anything else — "Not in this corpus" panel with link back to `/`
