@@ -135,4 +135,4 @@ Residential title examiner / abstractor
 
 ## Known hygiene gaps
 
-- vitest config should exclude `.claude/worktrees/**` to prevent cross-worktree test collection.
+_(none currently tracked)_
