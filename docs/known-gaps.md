@@ -13,7 +13,7 @@ beat (see `docs/demo-script.md`).
      corpus. No post-2015 activity is curated.
    - *Why that's OK for this pitch:* HOGUE is the honest
      counter-example. Its lifecycle `lc-003` in
-     `data/lifecycles.json` is marked **open** with a stated
+     `src/data/lifecycles.json` is marked **open** with a stated
      rationale that names the API limitation — the pitch *needs* a
      parcel where the moat argument lands harder than POPHAM's clean
      release.
@@ -37,7 +37,7 @@ beat (see `docs/demo-script.md`).
 
 3. **Extraction runs offline (hybrid replay), not at-click.**
    - *What's missing:* Clicking "AI Extraction" in the Proof Drawer
-     reads a pre-computed trace file (`data/extraction-traces/*.trace.json`),
+     reads a pre-computed trace file (`src/data/extraction-traces/*.trace.json`),
      not a live Tesseract invocation.
    - *Why that's OK for this pitch:* hybrid replay is the
      audit-friendly posture — the trace records the engine version,
@@ -61,9 +61,9 @@ beat (see `docs/demo-script.md`).
 
 5. **Confidence scores are hand-assigned except for OCR-derived fields.**
    - *What's missing:* Model-based confidence estimation. Every
-     `confidence` value in `data/instruments/*.json` was written by a
+     `confidence` value in `src/data/instruments/*.json` was written by a
      curator, not computed. The four real-OCR extractions in
-     `data/extraction-traces/20130183449.trace.json` (confidences 0.88,
+     `src/data/extraction-traces/20130183449.trace.json` (confidences 0.88,
      0.92, 0.82, 0.80) are the only exception.
    - *Why that's OK for this pitch:* Decision #17 — confidence
      modeling was explicitly out of scope for the prototype. The *shape*
@@ -89,7 +89,7 @@ beat (see `docs/demo-script.md`).
 7. **No APN ↔ recorder bidirectional bridge in Maricopa.**
    - *What's missing:* Maricopa's recorder system does not store APN
      references on instruments (Decision #21). The prototype hand-maps
-     each instrument to a parcel via `data/parcels.json`'s
+     each instrument to a parcel via `src/data/parcels.json`'s
      `instrument_numbers[]` lists.
    - *Why that's OK for this pitch:* this *is* the moat moment.
      Decision #21: "prototype fixes this gap." We're showing the gap,
@@ -127,7 +127,7 @@ beat (see `docs/demo-script.md`).
 10. **Lifecycle status is a curated assertion.**
     - *What's missing:* Automated lifecycle state inference (open /
       released / assigned). The three lifecycles in
-      `data/lifecycles.json` have hand-written `status_rationale`
+      `src/data/lifecycles.json` have hand-written `status_rationale`
       strings.
     - *Why that's OK for this pitch:* the rationale string is the
       feature — it's the part a title plant cannot reproduce because
@@ -145,7 +145,7 @@ beat (see `docs/demo-script.md`).
       deed.
     - *Why that's OK for this pitch:* HOGUE's 2015 deed is
       individual-to-individual — no trust was present to extract. The
-      trace at `data/extraction-traces/20150516729.trace.json` records
+      trace at `src/data/extraction-traces/20150516729.trace.json` records
       `trust_name: null` rather than fabricating. This is the right
       behavior for an audit log.
     - *What production would do:* exactly what we do — report null

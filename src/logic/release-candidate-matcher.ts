@@ -17,7 +17,7 @@ import type { Instrument, Party } from "../types";
 // The overall score is the equal-weighted mean of the three features. The
 // matcher intentionally does not make a binary accept/reject decision — it
 // produces a ranking that an examiner or a higher-level rule can confirm.
-// Hand-authored links in data/links.json remain the ground-truth
+// Hand-authored links in src/data/links.json remain the ground-truth
 // "confirmed" subset; the matcher is a suggestion layer that answers the
 // code-review critique that encumbrance linkage today is curated rather
 // than discovered.

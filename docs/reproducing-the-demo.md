@@ -68,10 +68,10 @@ all be true for those URLs to work:
    directory. If you accidentally change or remove this line, Vite will
    404 on every corpus URL.
 2. **The PDFs must be tracked in git.** Run `git ls-files data/raw/` —
-   you should see all five `.pdf` files. If you see only JSON metadata,
-   the PDFs were not committed and the clone arrived empty.
+   you should see all seven `.pdf` files. If you see only an empty
+   listing, the PDFs were not committed and the clone arrived empty.
 3. **The data JSON paths must match the on-disk layout.** Grep for
-   `source_image_path` in `data/instruments/*.json` and confirm the
+   `source_image_path` in `src/data/instruments/*.json` and confirm the
    paths start with `/raw/R-003/pdfs/`. The leading slash matters —
    relative paths will break when the drawer opens from a non-root URL.
 

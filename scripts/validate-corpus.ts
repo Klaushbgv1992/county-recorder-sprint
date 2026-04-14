@@ -2,10 +2,10 @@ import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join } from "path";
 import { InstrumentFile, ParcelFile, ParcelsFile, LinksFile } from "../src/schemas";
 
-const INSTRUMENTS_DIR = "data/instruments";
-const PARCELS_PATH = "data/parcels.json";
-const PARCEL_LEGACY_PATH = "data/parcel.json";
-const LINKS_PATH = "data/links.json";
+const INSTRUMENTS_DIR = "src/data/instruments";
+const PARCELS_PATH = "src/data/parcels.json";
+const PARCEL_LEGACY_PATH = "src/data/parcel.json";
+const LINKS_PATH = "src/data/links.json";
 
 let errors: string[] = [];
 let warnings: string[] = [];

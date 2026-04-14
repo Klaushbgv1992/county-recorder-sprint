@@ -20,7 +20,7 @@ The schema deviates from the sprint plan in 5 documented areas:
 
 4. **Raw API preservation:** `raw_api_response: RawApiResponse` on every instrument. Full provenance chain — curated data is traceable to the exact API response.
 
-5. **File layout:** `data/instruments/{recordingNumber}.json` (per-file) instead of a single `data/instruments.json` array.
+5. **File layout:** `src/data/instruments/{recordingNumber}.json` (per-file) instead of a single `data/instruments.json` array.
 
 ### Review changes applied (from schema review):
 - `nominee_for` strengthened from `string` to `{ party_name, party_role }` object

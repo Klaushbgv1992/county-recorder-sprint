@@ -12,16 +12,16 @@ import type {
   PipelineStatus,
 } from "./types";
 
-import parcelsRaw from "../data/parcels.json";
-import inst20130183449 from "../data/instruments/20130183449.json";
-import inst20130183450 from "../data/instruments/20130183450.json";
-import inst20210057846 from "../data/instruments/20210057846.json";
-import inst20210057847 from "../data/instruments/20210057847.json";
-import inst20210075858 from "../data/instruments/20210075858.json";
-import inst20150516729 from "../data/instruments/20150516729.json";
-import inst20150516730 from "../data/instruments/20150516730.json";
-import linksRaw from "../data/links.json";
-import lifecyclesRaw from "../data/lifecycles.json";
+import parcelsRaw from "./data/parcels.json";
+import inst20130183449 from "./data/instruments/20130183449.json";
+import inst20130183450 from "./data/instruments/20130183450.json";
+import inst20210057846 from "./data/instruments/20210057846.json";
+import inst20210057847 from "./data/instruments/20210057847.json";
+import inst20210075858 from "./data/instruments/20210075858.json";
+import inst20150516729 from "./data/instruments/20150516729.json";
+import inst20150516730 from "./data/instruments/20150516730.json";
+import linksRaw from "./data/links.json";
+import lifecyclesRaw from "./data/lifecycles.json";
 
 const instrumentsRaw = [
   inst20130183449,

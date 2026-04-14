@@ -28,7 +28,7 @@ Counties already have the data and already host the documents. The gap is that s
 - `research/phase-3-summary.md` — Schema design rationale, curation judgment calls, provenance breakdown
 - `research/measurable-win.md` — 115+ interaction count, before/after comparison table
 - `research/before-workflow.md` — Pain point catalog (architectural, UI friction, search/indexing, data governance)
-- `data/instruments/*.json` — 5 curated instruments (source of truth for Phase 4+)
+- `src/data/instruments/*.json` — 5 curated instruments (source of truth for Phase 4+)
 - `data/parcel.json` — Parcel identity and assessor data
 - `src/schemas.ts` — Zod schema definitions (Instrument, Party, Parcel, DocumentLink, EncumbranceLifecycle, etc.)
 - `src/types.ts` — TypeScript types inferred from Zod schemas

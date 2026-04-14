@@ -19,7 +19,7 @@ attributed to `304-77-689` in the candidates table.
 - **2015-07-17** — deed of trust `20150516730` (same-day financing)
 - **No post-2015 activity located in the searched corpus.**
 
-HOGUE's lifecycle entry in `data/lifecycles.json` (`lc-003`) is marked
+HOGUE's lifecycle entry in `src/data/lifecycles.json` (`lc-003`) is marked
 **open** with the rationale: "No release, assignment, or reconveyance
 located in the searched corpus for HOGUE 2015 DOT. Maricopa public API
 does not support name-filtered document search, so a release outside

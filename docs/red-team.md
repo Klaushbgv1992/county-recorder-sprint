@@ -31,12 +31,12 @@ curl -s https://publicapi.recorder.maricopa.gov/documents/20150516729
 
 Compare the returned `names`, `documentCodes`, `recordingDate`, and
 `pageAmount` to each instrument's `raw_api_response` block in
-`data/instruments/*.json`. They match.
+`src/data/instruments/*.json`. They match.
 
 ## Q2: Did you fabricate any extracted fields?
 
 **No.** The real-OCR trace for the 2013 warranty deed is stored
-verbatim at `data/extraction-traces/20130183449.trace.json`, produced by
+verbatim at `src/data/extraction-traces/20130183449.trace.json`, produced by
 Tesseract 4.1.1, timestamped `2026-04-14T02:30:33Z`. The trace contains
 the raw page-level OCR text, word counts, and the extracted-field values
 with the source snippet each came from.
@@ -44,7 +44,7 @@ with the source snippet each came from.
 Proof that we don't hide OCR noise: the trace shows `legal_description`
 extracted as `Lot 65, of SEVILLE PARCEL 3, ...` on page 1, while the same
 document's page 3 OCR'd the lot as `Lot 687`. The curated ground truth in
-`data/instruments/20130183449.json` is **`Lot 46`**, matching the parcel's
+`src/data/instruments/20130183449.json` is **`Lot 46`**, matching the parcel's
 plat reference. All three readings are preserved:
 
 - Raw page-1 OCR: "Lot 65" (trace `pages[0].raw_text`)
@@ -57,7 +57,7 @@ plat reference. All three readings are preserved:
 We show this discrepancy on stage. It's the live argument for why
 provenance + confidence + a visible source snippet are not optional.
 
-The HOGUE trace at `data/extraction-traces/20150516729.trace.json`
+The HOGUE trace at `src/data/extraction-traces/20150516729.trace.json`
 extracts `trust_name: null` because the HOGUE warranty deed is
 individual-to-individual — no trust was present to recover. We don't
 invent one.
@@ -89,7 +89,7 @@ principled pipeline and showed it end-to-end on two real parcels."
 
 Two reasons.
 
-First, the shown link is curated and auditable. `data/links.json`
+First, the shown link is curated and auditable. `src/data/links.json`
 contains the release edge:
 
 ```json
@@ -120,7 +120,7 @@ lifecycles.
 
 No — and the argument rests on three claims, not one:
 
-1. **Verified-through date.** `data/lifecycles.json` contains
+1. **Verified-through date.** `src/data/lifecycles.json` contains
    `pipeline_status.verified_through_date: "2026-04-09"` and the
    Encumbrance Lifecycle Panel surfaces it. A title plant can claim
    "indexed through date X" but not "county-authoritatively searched
@@ -158,7 +158,7 @@ MERS handled correctly:
 - The 2013 DOT (20130183450) shows **MERS as nominee for VIP**, not
   Wells Fargo.
 
-The HOGUE 2015 DOT (`data/instruments/20150516730.json`) has the same
+The HOGUE 2015 DOT (`src/data/instruments/20150516730.json`) has the same
 treatment: MERS as nominee for Pinnacle Capital Mortgage LLC, with a
 `mers_note` explaining the note may have transferred outside the public
 record.

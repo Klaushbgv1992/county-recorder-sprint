@@ -75,7 +75,7 @@ Conventions for each beat:
 - **Say:** "This is the AI that turned two separately-recorded scanned PDFs
   — filed eight years apart, under different filers — into a linked
   lifecycle. The link has provenance `ocr` and confidence 0.97 in
-  `data/links.json`. The matcher that scores release candidates lives in
+  `src/data/links.json`. The matcher that scores release candidates lives in
   `src/logic/release-candidate-matcher.ts` and has 12 tests."
 
 ## Beat 7 — Encumbrance Lifecycle Panel (moat beat #2)
@@ -98,7 +98,7 @@ Conventions for each beat:
   Expand the "AI Extraction" section.
 - **Shows:** PDF renders in the iframe. Extraction panel shows four fields
   recovered via real Tesseract 4.1.1 OCR (trace at
-  `data/extraction-traces/20130183449.trace.json`):
+  `src/data/extraction-traces/20130183449.trace.json`):
   - `legal_description` — confidence 0.88
   - `trust_name` — confidence 0.92
   - `deed_date` — confidence 0.82

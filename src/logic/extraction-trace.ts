@@ -6,14 +6,14 @@
  * at demo time so that the "AI Extraction" panel shows real extracted values
  * without any live OCR dependency.
  *
- * Traces are colocated under `data/extraction-traces/` and are imported at
- * build time via Vite (same pattern as `data-loader.ts` does for instruments).
- * Instruments without a trace simply return `null` — the UI renders a
- * neutral "trace not available" message in that case.
+ * Traces are colocated under `src/data/extraction-traces/` and are imported
+ * at build time via Vite (same pattern as `data-loader.ts` does for
+ * instruments). Instruments without a trace simply return `null` — the UI
+ * renders a neutral "trace not available" message in that case.
  */
 
-import trace20130183449 from "../../data/extraction-traces/20130183449.trace.json";
-import trace20150516729 from "../../data/extraction-traces/20150516729.trace.json";
+import trace20130183449 from "../data/extraction-traces/20130183449.trace.json";
+import trace20150516729 from "../data/extraction-traces/20150516729.trace.json";
 
 export interface ExtractionTracePage {
   page: number;

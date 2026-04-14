@@ -6,7 +6,7 @@ Given a scanned PDF, render each page to an image, run Tesseract OCR,
 then apply deterministic post-processing rules (regex + keyword proximity)
 to extract structured fields with confidence scores and source snippets.
 
-Output: data/extraction-traces/{instrument_number}.trace.json
+Output: src/data/extraction-traces/{instrument_number}.trace.json
 This trace file is the "replay tape" — the UI reads it at demo time
 instead of running OCR live.
 
@@ -455,7 +455,7 @@ def main(argv: list[str]) -> int:
         print(f"ERROR: PDF not found: {pdf_path}", file=sys.stderr)
         return 1
     # Output path mirrors the sprint's data-layout convention.
-    out_path = Path("data") / "extraction-traces" / f"{instrument_number}.trace.json"
+    out_path = Path("src") / "data" / "extraction-traces" / f"{instrument_number}.trace.json"
     run(pdf_path, instrument_number, out_path)
     return 0
 

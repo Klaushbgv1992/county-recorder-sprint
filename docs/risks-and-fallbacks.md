@@ -37,9 +37,9 @@ added.
 **Fallback:** open the raw trace JSON in a second tab. Both traces are
 tracked in git:
 
-- `data/extraction-traces/20130183449.trace.json` (POPHAM 2013 warranty
+- `src/data/extraction-traces/20130183449.trace.json` (POPHAM 2013 warranty
   deed, 1,024 words across 5 pages)
-- `data/extraction-traces/20150516729.trace.json` (HOGUE 2015 warranty
+- `src/data/extraction-traces/20150516729.trace.json` (HOGUE 2015 warranty
   deed — stretch trace; `trust_name` is honestly `null` because the
   deed is individual-to-individual)
 
@@ -58,7 +58,7 @@ Say: "The OCR already ran against this PDF on
 the engine version, the timestamp, the raw per-page text, and the
 extracted-field snippets. Here it is."
 
-Then open `data/extraction-traces/20130183449.trace.json` and walk:
+Then open `src/data/extraction-traces/20130183449.trace.json` and walk:
 
 1. `ocr_engine: "tesseract"`, `ocr_version: "tesseract 4.1.1"`,
    `extracted_at: "2026-04-14T02:30:33Z"`
