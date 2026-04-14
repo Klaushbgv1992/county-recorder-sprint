@@ -1,7 +1,18 @@
 import { describe, it, expect } from "vitest";
-import { createMemoryRouter } from "react-router";
+import { createElement } from "react";
+import { renderToString } from "react-dom/server";
+import { createMemoryRouter, RouterProvider } from "react-router";
 import { loadAllParcels } from "../src/data-loader";
-import { resolveInstrumentToApn, routes } from "../src/router";
+import {
+  redirectTargetForInstrument,
+  resolveInstrumentToApn,
+  routes,
+} from "../src/router";
+
+function renderAt(url: string): string {
+  const router = createMemoryRouter(routes, { initialEntries: [url] });
+  return renderToString(createElement(RouterProvider, { router }));
+}
 
 function matchIds(url: string): string[] {
   const router = createMemoryRouter(routes, { initialEntries: [url] });
@@ -87,5 +98,50 @@ describe("route table", () => {
 
   it("unknown paths match the not-found route", () => {
     expect(matchIds("/totally/bogus/path")).toContain("not-found");
+  });
+});
+
+describe("redirectTargetForInstrument", () => {
+  const parcels = loadAllParcels();
+
+  it("returns the parcel+instrument URL for a known instrument", () => {
+    expect(redirectTargetForInstrument("20210075858", parcels)).toBe(
+      "/parcel/304-78-386/instrument/20210075858",
+    );
+  });
+
+  it("returns null for an unknown instrument", () => {
+    expect(redirectTargetForInstrument("99999999999", parcels)).toBeNull();
+  });
+});
+
+describe("NotFound rendering", () => {
+  it("unknown APN renders the parcel-not-found panel", () => {
+    const html = renderAt("/parcel/nope-nope-nope");
+    expect(html).toContain("Parcel not in this corpus");
+    expect(html).toContain("Return to search");
+  });
+
+  it("known APN + unknown instrument renders chain in main pane and not-found in drawer", () => {
+    const html = renderAt("/parcel/304-78-386/instrument/99999999999");
+    // Chain still rendered in the main pane (parcel address proves the
+    // chain panel loaded, not the parcel-guard fallback).
+    expect(html).toContain("3674 E Palmer St");
+    // Drawer slot shows the not-found panel for the missing instrument.
+    expect(html).toContain("Instrument not on this parcel");
+    expect(html).toContain("99999999999");
+  });
+
+  it("/instrument/:n unknown renders the instrument-not-found panel", () => {
+    const html = renderAt("/instrument/99999999999");
+    expect(html).toContain("Instrument not in this corpus");
+  });
+
+  it("/instrument/:n known initial render shows resolving placeholder", () => {
+    // Before the redirect effect fires (static render never runs
+    // effects), the resolver component shows the placeholder. This
+    // asserts the "one-frame flash" copy exists and is plain text.
+    const html = renderAt("/instrument/20210075858");
+    expect(html).toContain("Resolving instrument…");
   });
 });
