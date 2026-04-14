@@ -131,3 +131,7 @@ Residential title examiner / abstractor
 - `/parcel/:apn/encumbrances/instrument/:instrumentNumber` — Encumbrance + Proof Drawer
 - `/instrument/:instrumentNumber` — client-side redirect to the owning parcel URL (one-frame "Resolving instrument…" placeholder; see Decision #36)
 - anything else — "Not in this corpus" panel with link back to `/`
+
+## Known hygiene gaps
+
+- vitest config should exclude `.claude/worktrees/**` to prevent cross-worktree test collection.
