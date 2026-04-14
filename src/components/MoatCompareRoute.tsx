@@ -39,6 +39,25 @@ function CountyPdfLink({
   );
 }
 
+function Callout({
+  anchor,
+  headline,
+}: {
+  anchor: string;
+  headline: string;
+}) {
+  return (
+    <div className="contents" data-callout-anchor={anchor}>
+      <div className="bg-blue-50 col-span-3 border-t border-blue-200 px-6 py-2 text-xs">
+        <span className="text-blue-700 font-medium mr-2">
+          › why this matters
+        </span>
+        <span className="text-blue-900 font-semibold">{headline}</span>
+      </div>
+    </div>
+  );
+}
+
 function ComparisonRow({
   rowId,
   label,
@@ -205,6 +224,10 @@ export function MoatCompareRoute() {
             </div>
           }
         />
+        <Callout
+          anchor="row-3"
+          headline="They can't search liens. The taxonomy lives in the county's own system."
+        />
 
         <ComparisonRow
           rowId="row-4"
@@ -233,6 +256,10 @@ export function MoatCompareRoute() {
             </div>
           }
         />
+        <Callout
+          anchor="row-4"
+          headline="They host a copy. We host the original."
+        />
 
         <ComparisonRow
           rowId="row-5"
@@ -248,6 +275,10 @@ export function MoatCompareRoute() {
               <MoatBanner pipelineStatus={data.pipelineStatus} />
             </div>
           }
+        />
+        <Callout
+          anchor="row-5"
+          headline="They index monthly. The county publishes same-day."
         />
       </div>
     </div>

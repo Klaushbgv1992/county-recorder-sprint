@@ -113,3 +113,58 @@ describe("MoatCompareRoute row content", () => {
     }
   });
 });
+
+describe("MoatCompareRoute callouts", () => {
+  afterEach(() => cleanup());
+
+  const CALLOUTS = [
+    {
+      anchor: "row-3",
+      headlineRegex: /They can't search liens/i,
+    },
+    {
+      anchor: "row-4",
+      headlineRegex: /They host a copy\. We host the original/i,
+    },
+    {
+      anchor: "row-5",
+      headlineRegex: /They index monthly\. The county publishes same-day/i,
+    },
+  ];
+
+  it("renders all three callouts with correct headlines", () => {
+    renderRoute();
+    for (const c of CALLOUTS) {
+      expect(screen.getByText(c.headlineRegex)).toBeInTheDocument();
+    }
+  });
+
+  it("each callout's data-callout-anchor matches an existing row's data-row-id", () => {
+    renderRoute();
+    for (const c of CALLOUTS) {
+      const callout = document.querySelector(
+        `[data-callout-anchor="${c.anchor}"]`,
+      );
+      expect(callout).not.toBeNull();
+      const row = document.querySelector(`[data-row-id="${c.anchor}"]`);
+      expect(row).not.toBeNull();
+    }
+  });
+
+  it("each callout's DOM position is immediately adjacent to its anchor row", () => {
+    renderRoute();
+    for (const c of CALLOUTS) {
+      const callout = document.querySelector(
+        `[data-callout-anchor="${c.anchor}"]`,
+      ) as HTMLElement;
+      const row = document.querySelector(
+        `[data-row-id="${c.anchor}"]`,
+      ) as HTMLElement;
+      const lastCellOfRow = row.lastElementChild as HTMLElement;
+      expect(lastCellOfRow).not.toBeNull();
+      const positionRelation =
+        lastCellOfRow.compareDocumentPosition(callout);
+      expect(positionRelation & Node.DOCUMENT_POSITION_FOLLOWING).toBe(4);
+    }
+  });
+});
