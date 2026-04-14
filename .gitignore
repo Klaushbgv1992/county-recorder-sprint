@@ -3,3 +3,4 @@ dist/
 *.log
 .claude/worktrees/
 .claude/scheduled_tasks.lock
+.worktrees/
