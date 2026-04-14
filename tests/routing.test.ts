@@ -145,3 +145,23 @@ describe("NotFound rendering", () => {
     expect(html).toContain("Resolving instrument…");
   });
 });
+
+describe("AppShell smoke render", () => {
+  // Pure renderToString is one-shot; it cannot trip React's hook-order
+  // diagnostic (which needs a re-render) and therefore cannot reproduce
+  // issue: 'parcels.some null crash on /parcel/:apn navigation'. This suite
+  // is a narrower guard: AppShell renders the authoritative URLs without
+  // throwing, locking in the null-safe boolean derivations in App.tsx.
+  const urls = [
+    "/",
+    "/parcel/304-78-386",
+    "/parcel/304-78-386/encumbrances",
+    "/parcel/304-77-689",
+    "/parcel/304-77-689/encumbrances",
+  ];
+  for (const url of urls) {
+    it(`${url} renders without throwing`, () => {
+      expect(() => renderAt(url)).not.toThrow();
+    });
+  }
+});

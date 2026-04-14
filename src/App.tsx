@@ -6,13 +6,19 @@ export function AppShell() {
   const params = useParams();
   const selectedApn = params.apn ?? null;
 
-  const onSearch = useMatch("/") !== null;
-  const onChain =
-    useMatch("/parcel/:apn") !== null ||
-    useMatch("/parcel/:apn/instrument/:instrumentNumber") !== null;
+  const matchSearch = useMatch("/");
+  const matchChain = useMatch("/parcel/:apn");
+  const matchChainInstrument = useMatch(
+    "/parcel/:apn/instrument/:instrumentNumber",
+  );
+  const matchEncumbrance = useMatch("/parcel/:apn/encumbrances");
+  const matchEncumbranceInstrument = useMatch(
+    "/parcel/:apn/encumbrances/instrument/:instrumentNumber",
+  );
+  const onSearch = matchSearch !== null;
+  const onChain = matchChain !== null || matchChainInstrument !== null;
   const onEncumbrance =
-    useMatch("/parcel/:apn/encumbrances") !== null ||
-    useMatch("/parcel/:apn/encumbrances/instrument/:instrumentNumber") !== null;
+    matchEncumbrance !== null || matchEncumbranceInstrument !== null;
 
   // Only load + render the parcel label when the APN is actually in the
   // corpus; otherwise the not-found panel will render in the outlet and
