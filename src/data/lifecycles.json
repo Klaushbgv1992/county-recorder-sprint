@@ -28,6 +28,14 @@
       "status": "open",
       "status_rationale": "No release, assignment, or reconveyance located in the searched corpus for HOGUE 2015 DOT. Maricopa public API does not support name-filtered document search, so a release outside the curated HOGUE chain cannot be ruled out via the API alone.",
       "examiner_override": null
+    },
+    {
+      "id": "lc-004",
+      "root_instrument": "20010093192",
+      "child_instruments": ["20010849180"],
+      "status": "released",
+      "status_rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat — it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record.",
+      "examiner_override": null
     }
   ]
 }

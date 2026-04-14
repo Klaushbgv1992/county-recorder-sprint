@@ -34,5 +34,32 @@
     "provenance": "public_api",
     "confidence": 1.0,
     "examiner_action": "pending"
+  },
+  {
+    "id": "link-005",
+    "source_instrument": "20010849180",
+    "target_instrument": "20010093192",
+    "link_type": "modification_of",
+    "provenance": "ocr",
+    "confidence": 0.95,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-006",
+    "source_instrument": "20130183449",
+    "target_instrument": "20010093192",
+    "link_type": "back_reference",
+    "provenance": "ocr",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-007",
+    "source_instrument": "20130183449",
+    "target_instrument": "20010849180",
+    "link_type": "back_reference",
+    "provenance": "ocr",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
   }
 ]

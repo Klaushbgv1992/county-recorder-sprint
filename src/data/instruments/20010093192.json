@@ -1,0 +1,107 @@
+{
+  "instrument_number": "20010093192",
+  "recording_date": "2001-02-07",
+  "document_type": "other",
+  "document_type_raw": "PLAT MAP",
+  "bundled_document_types": [
+    "other"
+  ],
+  "parties": [
+    {
+      "name": "SHEA HOMES LIMITED PARTNERSHIP",
+      "role": "grantor",
+      "provenance": "ocr",
+      "confidence": 0.95
+    },
+    {
+      "name": "SEVILLE PARCEL 3 (subdivision of record)",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "SEVILLE PARCEL 3, being a subdivision of a portion of the South half of Section 23, Township 2 South, Range 6 East of the Gila and Salt River Base and Meridian, Maricopa County, Arizona; Lots 1-95 and Tracts A-H; 23.592 acres more or less",
+    "provenance": "ocr",
+    "confidence": 0.9
+  },
+  "extracted_fields": {
+    "subdivision_name": {
+      "value": "SEVILLE PARCEL 3",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "lot_count": {
+      "value": "95",
+      "provenance": "ocr",
+      "confidence": 0.95
+    },
+    "tract_count": {
+      "value": "8 (Tracts A through H)",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "section_township_range": {
+      "value": "Section 23, Township 2 South, Range 6 East (G&SRB&M)",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "gross_acreage": {
+      "value": "23.592 acres",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "public_utility_easement": {
+      "value": "Public utility easements dedicated on plat face; construction within PUE limited to underground utilities except by public agencies and utility companies",
+      "provenance": "ocr",
+      "confidence": 0.88
+    },
+    "hoa_maintenance": {
+      "value": "Landscape maintenance on Tracts by SEVILLE MASTER HOMEOWNERS ASSOCIATION; no dwelling units permitted on Tracts",
+      "provenance": "ocr",
+      "confidence": 0.9
+    },
+    "building_setback_restriction": {
+      "value": "Visibility restriction triangles dedicated at street corners; 35' setback for 2-story, 25' setback for 1-story dwellings",
+      "provenance": "ocr",
+      "confidence": 0.85
+    },
+    "engineering_firm": {
+      "value": "Coe & Van Loo Consultants, Inc.",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "docket_book_page": {
+      "value": "Book 554 of Maps, Page 19",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "source_image_path": "/raw/R-004/pdfs/20010093192.pdf",
+  "page_count": 4,
+  "raw_api_response": {
+    "names": [
+      "SECTION 23 T2S R6E ETAL",
+      "SEVILLE PARCEL 3 ETAL"
+    ],
+    "documentCodes": [
+      "PLAT MAP",
+      "BIG MAP"
+    ],
+    "recordingDate": "2-07-2001",
+    "recordingNumber": "20010093192",
+    "pageAmount": 4,
+    "docketBook": 554,
+    "pageMap": 19,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 11,
+    "manual_entry_count": 1
+  }
+}
