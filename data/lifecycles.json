@@ -20,6 +20,14 @@
       "status": "open",
       "status_rationale": "No reconveyance found in corpus for DOT 20210057847",
       "examiner_override": null
+    },
+    {
+      "id": "lc-003",
+      "root_instrument": "20150516730",
+      "child_instruments": [],
+      "status": "open",
+      "status_rationale": "No release, assignment, or reconveyance located in the searched corpus for HOGUE 2015 DOT. Maricopa public API does not support name-filtered document search, so a release outside the curated HOGUE chain cannot be ruled out via the API alone.",
+      "examiner_override": null
     }
   ]
 }

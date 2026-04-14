@@ -25,5 +25,14 @@
     "provenance": "public_api",
     "confidence": 1.0,
     "examiner_action": "pending"
+  },
+  {
+    "id": "link-004",
+    "source_instrument": "20150516730",
+    "target_instrument": "20150516729",
+    "link_type": "same_day_transaction",
+    "provenance": "public_api",
+    "confidence": 1.0,
+    "examiner_action": "pending"
   }
 ]
