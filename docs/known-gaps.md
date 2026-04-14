@@ -170,3 +170,47 @@ beat (see `docs/demo-script.md`).
     - *What production would do:* the pipeline is vocabulary-driven;
       adding support for additional codes is a lexicon update, not a
       re-architecture.
+
+14. **Examiner actions are session-only — no write-back to
+    `src/data/links.json`.**
+    - *What's missing:* Accept / Reject on a candidate release, accept
+      / reject / unresolved on an existing link, and lifecycle-status
+      override all live in React `useState` (see
+      `src/components/EncumbranceLifecycle.tsx` for the candidate
+      handler and `src/hooks/useExaminerActions.ts` for link and
+      lifecycle actions). A full browser reload resets them. The
+      prototype is a static Vite SPA — no API, no localStorage write.
+    - *Why that's OK for this pitch:* Decision #16 framed live sync as
+      mention-only; Decision #36 noted that server-side features are
+      stubbed in the prototype. The demo flow accepts a candidate, the
+      lifecycle status flips live, and the synthesized algorithmic
+      DocumentLink is rendered with `provenance="algorithmic"` and the
+      matcher score as `confidence` — that proves the *shape* of the
+      end-to-end loop. Persistence is the production bolt-on, not the
+      contribution.
+    - *What production would do:* every examiner action posts to a
+      county-side service that appends an audit row (who, when, why,
+      with the matcher score and feature breakdown captured at the
+      moment of acceptance) and merges the new link into the canonical
+      links table. The UI re-reads from the same authoritative store.
+
+15. **Linked lifecycles have no examiner-unlink action.**
+    - *What's missing:* Accepting a candidate on an open lifecycle
+      creates an in-memory link (gap #14), but rejecting or unlinking
+      a *curated* link — one whose `status` is `linked` because it came
+      from `src/data/links.json` — is not wired into the UI. There is
+      no "dispute this link" or "unlink" control on a released
+      lifecycle.
+    - *Why that's OK for this pitch:* curated links represent the
+      county's indexed record. Disputing one is a QA workflow, not an
+      inline examiner action. Treating Accept (curation in progress)
+      and Unlink (challenging the curated record) as the same control
+      would muddle the trust model the demo is built on. The
+      already-linked release renders the same matcher feature bars as
+      a freshly-accepted candidate (see
+      `src/components/LinkEvidenceBars.tsx`), so the *evidence* for
+      the link is visible — just not a one-click revocation.
+    - *What production would do:* route unlink requests through a
+      review queue with an audit trail and a second-examiner sign-off,
+      not an inline button. The prototype documents this as a feature
+      of the curation discipline, not an omission.

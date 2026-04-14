@@ -23,6 +23,7 @@ import { StatusBadge } from "./StatusBadge";
 import { InstrumentRow } from "./InstrumentRow";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { CandidateReleasesPanel } from "./CandidateReleasesPanel";
+import { LinkEvidenceBars } from "./LinkEvidenceBars";
 
 interface Props {
   parcel: Parcel;
@@ -97,6 +98,13 @@ export function EncumbranceLifecycle({
     [instruments],
   );
 
+  // Candidate accept/reject lives in component-local React state on
+  // purpose. The prototype has no write path back to src/data/links.json
+  // (it is a static Vite SPA), so an Accept here is a session-only
+  // assertion that is lost on full reload. This matches the link-action
+  // and lifecycle-override surfaces in src/hooks/useExaminerActions.ts
+  // and is consistent with the prototype's snapshot-only data model
+  // (CLAUDE.md Decisions #16 and #36). Documented as known-gap #14.
   const [candidateActions, setCandidateActions] = useState<
     Record<string, CandidateAction>
   >({});
@@ -311,6 +319,9 @@ export function EncumbranceLifecycle({
                     <div className="ml-27 text-xs text-gray-500 mt-1">
                       Released by: {getReleasingParties(child).join(", ") || "Unknown"}
                     </div>
+                  )}
+                  {link?.link_type === "release_of" && (
+                    <LinkEvidenceBars dot={rootInst} release={child} />
                   )}
                 </div>
               );
