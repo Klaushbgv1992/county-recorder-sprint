@@ -237,3 +237,22 @@ beat (see `docs/demo-script.md`).
       requirements derived from chain anomalies. Every B-I item
       depends on transaction inputs (effective date, buyer, lender,
       title agent) that this prototype does not model.
+
+17. **Encumbrance panel lifecycle header hardcodes "DOT:" and "Deed of Trust" labels.**
+    - *What's missing:* `src/components/EncumbranceLifecycle.tsx`
+      renders the lifecycle header and subheader with `DOT: <number>`
+      and `Deed of Trust` strings that were hardcoded when all
+      lifecycles were deeds of trust (lc-001 through lc-003).
+      LC-004 introduced a subdivision plat as a root instrument; the
+      component still labels it as a DOT.
+    - *Why that's OK for this pitch:* the data model and the
+      commitment-export PDF both resolve the type correctly — the
+      mislabel is confined to one on-screen header in one component.
+      The exported abstract (the document an examiner would actually
+      hand off) is correct.
+    - *What production would do:* a pure UI-side label lookup driven
+      by `instrument.document_type` / `document_type_raw`, mirroring
+      the resolution that already lives on the PDF side. Out of
+      scope for the commitment-export branch because the component
+      was not modified there; tracked here so the next branch
+      touching `EncumbranceLifecycle.tsx` can fix it cleanly.
