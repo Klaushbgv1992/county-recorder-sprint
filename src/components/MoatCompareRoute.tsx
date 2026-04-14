@@ -39,6 +39,33 @@ function CountyPdfLink({
   );
 }
 
+function ViewportFallback() {
+  return (
+    <div className="lg:hidden border border-amber-300 bg-amber-50 text-amber-900 rounded-lg px-4 py-6 text-sm">
+      Moat comparison is designed for a presenter display. Widen the
+      window to at least 1024px.
+    </div>
+  );
+}
+
+function ClosingFooter() {
+  return (
+    <div className="mt-6 hidden lg:block border border-gray-200 bg-white rounded-lg px-6 py-4 text-sm text-gray-800">
+      Both surfaces produce a property report. Only the prototype emits
+      a Schedule A + B-II title commitment with per-row provenance and
+      authoritative county PDF URLs. Generate one from any parcel page
+      via{" "}
+      <Link
+        to="/parcel/304-78-386"
+        className="text-blue-700 font-medium hover:underline"
+      >
+        Export Commitment for Parcel
+      </Link>
+      .
+    </div>
+  );
+}
+
 function Callout({
   anchor,
   headline,
@@ -281,6 +308,8 @@ export function MoatCompareRoute() {
           headline="They index monthly. The county publishes same-day."
         />
       </div>
+      <ViewportFallback />
+      <ClosingFooter />
     </div>
   );
 }

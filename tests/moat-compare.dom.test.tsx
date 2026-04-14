@@ -26,7 +26,10 @@ describe("MoatCompareRoute scaffold", () => {
   it("renders the page header", () => {
     renderRoute();
     expect(
-      screen.getByText(/Moat comparison/i),
+      screen.getByRole("heading", {
+        level: 1,
+        name: /Moat comparison/i,
+      }),
     ).toBeInTheDocument();
   });
 
@@ -166,5 +169,30 @@ describe("MoatCompareRoute callouts", () => {
         lastCellOfRow.compareDocumentPosition(callout);
       expect(positionRelation & Node.DOCUMENT_POSITION_FOLLOWING).toBe(4);
     }
+  });
+});
+
+describe("MoatCompareRoute viewport fallback + closing footer", () => {
+  afterEach(() => cleanup());
+
+  it("renders a viewport fallback message that names the 1024px breakpoint", () => {
+    renderRoute();
+    expect(
+      screen.getByText(
+        /designed for a presenter display.*at least 1024px/i,
+      ),
+    ).toBeInTheDocument();
+  });
+
+  it("renders the Tier 1-C closing footer with a link to the POPHAM parcel page", () => {
+    renderRoute();
+    expect(
+      screen.getByText(/Schedule A \+ B-II title commitment/i),
+    ).toBeInTheDocument();
+    const link = screen.getByRole("link", {
+      name: /Export Commitment/i,
+    }) as HTMLAnchorElement;
+    expect(link).toBeInTheDocument();
+    expect(link.getAttribute("href")).toBe("/parcel/304-78-386");
   });
 });
