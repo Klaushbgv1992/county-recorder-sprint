@@ -1,0 +1,148 @@
+{
+  "instrument_number": "20150516730",
+  "recording_date": "2015-07-17",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "JASON HOGUE",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MICHELE HOGUE",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "PINNACLE CAPITAL MORTGAGE LLC",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "SECURITY TITLE AGENCY",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "nominee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "PINNACLE CAPITAL MORTGAGE LLC",
+        "party_role": "lender"
+      }
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 348, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "ocr",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2015-07-16",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$312,075.00",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_amount_words": {
+      "value": "Three Hundred Twelve Thousand Seventy-Five and 00/100",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_maturity_date": {
+      "value": "2045-08-01",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "100728700002452773",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "loan_number": {
+      "value": "80100001487",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "Security Title Agency",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "trustee_address": {
+      "value": "2919 South Ellsworth Road #131, Mesa, Arizona 85212",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "lender_address": {
+      "value": "3010 Lava Ridge Court, Suite 220, Roseville, California 95661",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "lender_organization": {
+      "value": "California Limited Liability Company",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife as community property",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2715 East Palmer Street, Gilbert, Arizona 85298",
+      "provenance": "ocr",
+      "confidence": 1
+    },
+    "riders": {
+      "value": "Planned Unit Development Rider",
+      "provenance": "ocr",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20150516729"
+  ],
+  "source_image_path": "/raw/R-003/pdfs/20150516730.pdf",
+  "page_count": 17,
+  "raw_api_response": {
+    "names": [
+      "HOGUE JASON",
+      "HOGUE MICHELE",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC MERS",
+      "PINNACLE CAPITAL MORTGAGE LLC",
+      "SECURITY TITLE AGENCY"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "7-17-2015",
+    "recordingNumber": "20150516730",
+    "pageAmount": 17,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS is the beneficiary of record as nominee for Pinnacle Capital Mortgage LLC (the originating lender). The note may have been transferred outside the public record via the MERS system. No release or assignment of this DOT has been located in the searched corpus; the 2020-2022 refi window was checked but the Maricopa public API does not support name-filtered search, so a refi outside the curated corpus cannot be ruled out.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 14,
+    "manual_entry_count": 5
+  }
+}
