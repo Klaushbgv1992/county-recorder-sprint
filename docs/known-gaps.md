@@ -214,3 +214,45 @@ beat (see `docs/demo-script.md`).
       review queue with an audit trail and a second-examiner sign-off,
       not an inline button. The prototype documents this as a feature
       of the curation discipline, not an omission.
+
+16. **Schedule B-I (Requirements) is not generated.**
+    - *What's missing:* The exported commitment PDF emits Schedule A
+      and Schedule B-II only. There is no Schedule B-I (Requirements)
+      section.
+    - *Why that's OK for this pitch:* B-I items are
+      transaction-scoped — payoff statements, satisfactions, curative
+      affidavits — generated when a closing opens against a specific
+      buyer, lender, and effective date. None of those inputs are part
+      of the recorded corpus. A fabricated B-I section would dilute
+      every other honest gap surfaced on stage (HOGUE empty state,
+      MERS note, hunt log). The PDF header note states this verbatim,
+      and each open Schedule B-II row carries a `Closing impact:`
+      sentence (sourced from `src/data/closing-impact-templates.json`,
+      reviewed per the rule documented in
+      `src/data/closing-impact-templates.README.md`) explaining what a
+      B-I item *would* require if a transaction were opened.
+    - *What production would do:* generate B-I when a closing file is
+      opened against the parcel — payoff requests for open DOTs,
+      satisfaction lookups for any unreleased assignments, curative
+      requirements derived from chain anomalies. Every B-I item
+      depends on transaction inputs (effective date, buyer, lender,
+      title agent) that this prototype does not model.
+
+17. **Encumbrance panel lifecycle header hardcodes "DOT:" and "Deed of Trust" labels.**
+    - *What's missing:* `src/components/EncumbranceLifecycle.tsx`
+      renders the lifecycle header and subheader with `DOT: <number>`
+      and `Deed of Trust` strings that were hardcoded when all
+      lifecycles were deeds of trust (lc-001 through lc-003).
+      LC-004 introduced a subdivision plat as a root instrument; the
+      component still labels it as a DOT.
+    - *Why that's OK for this pitch:* the data model and the
+      commitment-export PDF both resolve the type correctly — the
+      mislabel is confined to one on-screen header in one component.
+      The exported abstract (the document an examiner would actually
+      hand off) is correct.
+    - *What production would do:* a pure UI-side label lookup driven
+      by `instrument.document_type` / `document_type_raw`, mirroring
+      the resolution that already lives on the PDF side. Out of
+      scope for the commitment-export branch because the component
+      was not modified there; tracked here so the next branch
+      touching `EncumbranceLifecycle.tsx` can fix it cleanly.

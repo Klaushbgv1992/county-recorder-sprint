@@ -1,0 +1,17 @@
+[
+  {
+    "status": "open",
+    "root_doc_type": "deed_of_trust",
+    "template": "At transaction opening, this open DOT would require a payoff statement and recorded reconveyance prior to insuring the new lender's position."
+  },
+  {
+    "status": "open",
+    "root_doc_type": "assignment_of_dot",
+    "template": "At transaction opening, an unreleased assignment requires a corresponding satisfaction or release before the chain can close."
+  },
+  {
+    "status": "open",
+    "root_doc_type": "other",
+    "template": "At transaction opening, this open lifecycle requires examiner-resolved closing instructions before clear title can be insured."
+  }
+]

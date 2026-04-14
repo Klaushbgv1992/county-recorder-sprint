@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, type ReactNode } from "react";
 import type {
   Parcel,
   Instrument,
@@ -39,6 +39,7 @@ interface Props {
     status: LifecycleStatus,
   ) => void;
   onOpenDocument: (instrumentNumber: string) => void;
+  headerActions?: ReactNode;
 }
 
 function formatDotParties(instrument: Instrument): string {
@@ -82,6 +83,7 @@ export function EncumbranceLifecycle({
   onSetLinkAction,
   onSetLifecycleOverride,
   onOpenDocument,
+  headerActions,
 }: Props) {
   const instrumentMap = useMemo(
     () => new Map(instruments.map((i) => [i.instrument_number, i])),
@@ -133,13 +135,20 @@ export function EncumbranceLifecycle({
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">
-          Encumbrance Lifecycles
-        </h2>
-        <p className="text-sm text-gray-500 mt-1">
-          {parcel.address} &mdash; APN: {parcel.apn}
-        </p>
+      <div className="mb-6 flex items-start justify-between gap-4">
+        <div>
+          <h2 className="text-2xl font-bold text-gray-800">
+            Encumbrance Lifecycles
+          </h2>
+          <p className="text-sm text-gray-500 mt-1">
+            {parcel.address} &mdash; APN: {parcel.apn}
+          </p>
+        </div>
+        {headerActions && (
+          <div className="flex items-center gap-2 shrink-0 mt-1">
+            {headerActions}
+          </div>
+        )}
       </div>
 
       <MoatBanner pipelineStatus={pipelineStatus} />
