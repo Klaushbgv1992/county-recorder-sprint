@@ -98,13 +98,24 @@ function metadataUrlFor(recordingNumber: string): string {
 function instrumentRef(inst: Instrument): B2InstrumentRef {
   return {
     recordingNumber: inst.instrument_number,
-    documentType: humanizeDocType(inst.document_type),
+    documentType: humanizeDocType(inst.document_type, inst.document_type_raw),
     recordingDate: inst.recording_date,
     pdfUrl: pdfUrlFor(inst.instrument_number),
   };
 }
 
-function humanizeDocType(t: DocumentType): string {
+// Narrow allow-list for `document_type === "other"` instruments whose
+// raw Maricopa code carries the actual identity. Only contains codes
+// present in the curated corpus; unknown raw codes fall back to "Other".
+// In this corpus the lone AFFIDAVIT is the lc-004 Affidavit of
+// Correction; if a generic affidavit is added later, this lookup needs
+// to disambiguate via extracted_fields.affidavit_type, not raw alone.
+const RAW_DOC_TYPE_LABELS: Record<string, string> = {
+  "PLAT MAP": "Subdivision Plat",
+  AFFIDAVIT: "Affidavit of Correction",
+};
+
+function humanizeDocType(t: DocumentType, raw?: string): string {
   const map: Record<DocumentType, string> = {
     warranty_deed: "Warranty Deed",
     special_warranty_deed: "Special Warranty Deed",
@@ -121,6 +132,9 @@ function humanizeDocType(t: DocumentType): string {
     affidavit_of_disclosure: "Affidavit of Disclosure",
     other: "Other",
   };
+  if (t === "other" && raw && RAW_DOC_TYPE_LABELS[raw]) {
+    return RAW_DOC_TYPE_LABELS[raw];
+  }
   return map[t] ?? t;
 }
 

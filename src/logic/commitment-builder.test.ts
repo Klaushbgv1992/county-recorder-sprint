@@ -69,6 +69,16 @@ describe("buildCommitment — POPHAM", () => {
     expect(row.subtype).toBe("subdivision_encumbrance");
   });
 
+  it("lc-004 root + child resolve to readable doc-type labels (not 'Other')", () => {
+    const row = doc.scheduleB2.find((r) => r.lifecycleId === "lc-004")!;
+    expect(row.rootInstrument.documentType).toBe("Subdivision Plat");
+    const affidavit = row.childInstruments.find(
+      (c) => c.recordingNumber === "20010849180",
+    );
+    expect(affidavit).toBeDefined();
+    expect(affidavit!.documentType).toBe("Affidavit of Correction");
+  });
+
   it("citation URL on rootInstrument uses the public API PDF endpoint", () => {
     const row = doc.scheduleB2.find((r) => r.lifecycleId === "lc-001")!;
     expect(row.rootInstrument.pdfUrl).toBe(
