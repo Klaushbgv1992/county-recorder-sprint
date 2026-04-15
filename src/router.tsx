@@ -221,7 +221,7 @@ function EncumbranceRoute() {
 function EncumbranceRouteInner({ apn }: { apn: string }) {
   const { instrumentNumber } = useParams();
   const data = useParcelData(apn);
-  const examiner = useExaminerActions(data.links);
+  const examiner = useExaminerActions(data.links, apn);
   const navigate = useNavigate();
 
   const drawerInstrument = instrumentNumber ?? null;
