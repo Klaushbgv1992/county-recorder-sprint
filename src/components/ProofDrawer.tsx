@@ -46,7 +46,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
       <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 shrink-0">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-semibold text-gray-800">
+            <h3 className="font-semibold text-gray-800 font-mono">
               {instrument.instrument_number}
             </h3>
             <p className="text-xs text-gray-500 mt-0.5">

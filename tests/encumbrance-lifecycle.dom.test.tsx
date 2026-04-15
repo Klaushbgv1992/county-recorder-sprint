@@ -42,9 +42,17 @@ function renderEncumbrance(
 
 // Locate a lifecycle card by its root instrument number printed in the header.
 // After Gap #17 fix, the label prefix depends on document_type (e.g. "DOT", "Deed", "Plat Map").
+// After Task 7 (font-mono), the instrument number is wrapped in a <span>, so the text is split
+// across sibling nodes — use a function matcher against the full textContent of the parent span.
 function lifecycleCardFor(rootInstrument: string): HTMLElement {
-  // Match any label format: "<Label>: <instrumentNumber>"
-  const header = screen.getByText(new RegExp(`:\\s*${rootInstrument}$`));
+  // Match the outer <span> whose combined text content is "<Label>: <instrumentNumber>"
+  const header = screen.getByText(
+    (_content, element) => {
+      if (!element) return false;
+      const text = element.textContent ?? "";
+      return new RegExp(`:\\s*${rootInstrument}$`).test(text);
+    },
+  );
   // Walk up to the lifecycle card root (the rounded white container).
   let node: HTMLElement | null = header;
   while (node && !node.classList.contains("rounded-lg")) {
@@ -118,8 +126,13 @@ describe("EncumbranceLifecycle UI wiring", () => {
     // Should NOT render "DOT:" for this lifecycle — label should be "Plat Map"
     renderEncumbrance(POPHAM_APN);
     // After fix, "DOT: 20010093192" must not appear
-    expect(screen.queryByText(/DOT: 20010093192/)).not.toBeInTheDocument();
+    expect(
+      screen.queryByText((_c, el) => !!el && /DOT:\s*20010093192$/.test(el.textContent ?? "")),
+    ).not.toBeInTheDocument();
     // Instead, the humanized raw type should be the label prefix
-    expect(screen.getByText(/Plat Map: 20010093192/)).toBeInTheDocument();
+    // (instrument number is in a child <span>, so match against combined textContent)
+    expect(
+      screen.getByText((_c, el) => !!el && /Plat Map:\s*20010093192$/.test(el.textContent ?? "")),
+    ).toBeInTheDocument();
   });
 });

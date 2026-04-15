@@ -178,7 +178,7 @@ export function EncumbranceLifecycle({
             Encumbrance Lifecycles
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            {parcel.address} &mdash; APN: {parcel.apn}
+            {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
           </p>
         </div>
         {headerActions && (
@@ -259,7 +259,7 @@ export function EncumbranceLifecycle({
                   overridden={isOverridden}
                 />
                 <span className="font-semibold text-gray-800">
-                  {labelForDocumentType(rootInst.document_type, rootInst.document_type_raw)}: {rootInst.instrument_number}
+                  {labelForDocumentType(rootInst.document_type, rootInst.document_type_raw)}: <span className="font-mono">{rootInst.instrument_number}</span>
                 </span>
                 <span className="text-sm text-gray-500 whitespace-nowrap">
                   recorded {rootInst.recording_date}

@@ -85,7 +85,7 @@ export function ChainOfTitle({
       <div className="mb-6">
         <h2 className="text-2xl font-bold text-gray-800">Chain of Title</h2>
         <p className="text-sm text-gray-500 mt-1">
-          {parcel.address} &mdash; APN: {parcel.apn}
+          {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
         </p>
       </div>
 

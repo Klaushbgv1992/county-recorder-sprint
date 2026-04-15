@@ -32,7 +32,7 @@ export function AppShell() {
   const hasParcel = apnIsInCorpus;
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 text-gray-900">
+    <div className="h-screen flex flex-col bg-gray-50 text-gray-900 font-sans">
       <PipelineBanner />
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
         <div className="flex items-baseline gap-2">
@@ -76,7 +76,7 @@ export function AppShell() {
         {hasParcel && !onSearch && (
           <div className="ml-auto flex items-center gap-3 text-xs text-gray-500">
             <span>
-              {parcelData.parcel.address} &middot; APN {parcelData.parcel.apn}
+              {parcelData.parcel.address} &middot; APN <span className="font-mono">{parcelData.parcel.apn}</span>
             </span>
             <Link
               to="/"
