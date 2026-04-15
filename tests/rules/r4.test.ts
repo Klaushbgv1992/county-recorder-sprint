@@ -6,7 +6,7 @@ describe("R4 assignment chain break", () => {
   it("fires on POPHAM lc-001 — VIP originated, Wells Fargo released, no assignment", () => {
     const { parcel, instruments, lifecycles, links } = loadParcelDataByApn("304-78-386");
     const findings = detectR4(parcel, instruments, lifecycles, links);
-    expect(findings.length).toBeGreaterThanOrEqual(1);
+    expect(findings).toHaveLength(1);
     const f = findings.find((x) => x.evidence_instruments.includes("20130183450"))!;
     expect(f).toBeDefined();
     expect(f.rule_id).toBe("R4");

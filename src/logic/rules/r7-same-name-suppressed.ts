@@ -22,6 +22,9 @@ export function detectR7(parcel: Parcel): AnomalyFinding[] {
       ruleId: "R7",
       parcelApn: parcel.apn,
       evidenceInstruments: [],
+      // 0.7 — heuristic. A "/" in current_owner is a proxy for multi-person
+      // co-ownership (the cohort most exposed to same-name contamination),
+      // not a direct indicator that suppression events occurred.
       confidence: 0.7,
       placeholders: {
         count: "suppressed during curation (see Decision #25)",

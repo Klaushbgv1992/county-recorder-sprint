@@ -6,7 +6,7 @@ describe("R3 MERS-as-nominee beneficiary", () => {
   it("fires on POPHAM — 2013 DOT has MERS as nominee for VIP; release by Wells Fargo", () => {
     const { parcel, instruments, links } = loadParcelDataByApn("304-78-386");
     const findings = detectR3(parcel, instruments, links);
-    expect(findings.length).toBeGreaterThanOrEqual(1);
+    expect(findings).toHaveLength(1);
     const f = findings.find((x) => x.evidence_instruments.includes("20130183450"))!;
     expect(f).toBeDefined();
     expect(f.rule_id).toBe("R3");

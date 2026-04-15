@@ -229,7 +229,7 @@ export const AnomalyFindingSchema = z.object({
   }),
 });
 
-// -- Commitment B-II Items --
+// -- Commitment B-I Items --
 
 export const BIItemSchema = z.object({
   item_id: z.string(),
