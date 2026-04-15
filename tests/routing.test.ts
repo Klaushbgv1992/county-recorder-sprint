@@ -127,6 +127,15 @@ describe("route table", () => {
     expect(ids).not.toContain("not-found");
   });
 
+  it("/parcel/:apn/commitment/new matches the commitment-new route", () => {
+    expect(matchIds("/parcel/304-78-386/commitment/new")).toContain(
+      "commitment-new",
+    );
+    expect(matchParams("/parcel/304-78-386/commitment/new")).toEqual({
+      apn: "304-78-386",
+    });
+  });
+
   it("unknown paths match the not-found route", () => {
     expect(matchIds("/totally/bogus/path")).toContain("not-found");
   });

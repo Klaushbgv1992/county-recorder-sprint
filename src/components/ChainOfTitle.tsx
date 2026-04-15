@@ -1,7 +1,9 @@
 import { useMemo } from "react";
 import type { Parcel, Instrument, DocumentLink, DocumentType } from "../types";
 import { buildOwnerPeriods } from "../logic/chain-builder";
+import { detectAnomalies } from "../logic/anomaly-detector";
 import { getGrantors, getGrantees } from "../logic/party-roles";
+import { AnomalyPanel } from "./AnomalyPanel";
 import { ProvenanceTag } from "./ProvenanceTag";
 
 const DEED_TYPES = new Set([
@@ -49,6 +51,7 @@ export function ChainOfTitle({
   links: _links,
   onOpenDocument,
 }: Props) {
+  const findings = useMemo(() => detectAnomalies(parcel.apn), [parcel.apn]);
   const ownerPeriods = useMemo(
     () => buildOwnerPeriods(instruments),
     [instruments],
@@ -85,6 +88,8 @@ export function ChainOfTitle({
           {parcel.address} &mdash; APN: {parcel.apn}
         </p>
       </div>
+
+      <AnomalyPanel findings={findings} apn={parcel.apn} />
 
       {/* Owner Period Timeline */}
       <div className="mb-8">
