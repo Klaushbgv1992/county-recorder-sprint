@@ -38,23 +38,49 @@ function NotInCorpus({ apn }: { apn: string | undefined }) {
 }
 
 function StepPills({ step }: { step: Step }) {
+  const steps = [
+    { n: 1 as Step, label: "Type" },
+    { n: 2 as Step, label: "Details" },
+    { n: 3 as Step, label: "Review" },
+    { n: 4 as Step, label: "Export" },
+  ];
   return (
-    <ol className="flex items-center gap-2 mb-6 text-xs font-medium">
-      {[1, 2, 3, 4].map((n) => {
+    <ol aria-label="Progress" className="flex items-start mb-6">
+      {steps.map(({ n, label }, idx) => {
         const active = n === step;
         const done = n < step;
-        const cls = active
-          ? "bg-blue-600 text-white"
-          : done
-            ? "bg-blue-100 text-blue-800"
-            : "bg-gray-100 text-gray-500";
         return (
-          <li key={n} className={`px-3 py-1 rounded-full ${cls}`}>
-            Step {n} of 4
-            {n === 1 && ": Type"}
-            {n === 2 && ": Details"}
-            {n === 3 && ": Review"}
-            {n === 4 && ": Export"}
+          <li key={n} className="flex items-start">
+            <span className="flex flex-col items-center">
+              <span
+                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold select-none ${
+                  done
+                    ? "bg-blue-600 text-white"
+                    : active
+                      ? "border-2 border-blue-600 text-blue-700 bg-white ring-2 ring-blue-100"
+                      : "border border-gray-300 text-gray-400 bg-white"
+                }`}
+              >
+                {n}
+              </span>
+              <span
+                className={`mt-1 text-xs whitespace-nowrap ${
+                  done
+                    ? "text-blue-700"
+                    : active
+                      ? "text-blue-700 font-semibold"
+                      : "text-gray-400"
+                }`}
+              >
+                {label}
+              </span>
+            </span>
+            {idx < steps.length - 1 && (
+              <span
+                className={`w-8 h-px mt-3 mx-1 flex-shrink-0 ${done ? "bg-blue-400" : "bg-gray-200"}`}
+                aria-hidden="true"
+              />
+            )}
           </li>
         );
       })}
