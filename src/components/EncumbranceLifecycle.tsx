@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -25,6 +25,7 @@ import { InstrumentRow } from "./InstrumentRow";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { CandidateReleasesPanel } from "./CandidateReleasesPanel";
 import { LinkEvidenceBars } from "./LinkEvidenceBars";
+import { ExportCommitmentButton } from "./ExportCommitmentButton";
 
 interface Props {
   parcel: Parcel;
@@ -40,7 +41,8 @@ interface Props {
     status: LifecycleStatus,
   ) => void;
   onOpenDocument: (instrumentNumber: string) => void;
-  headerActions?: ReactNode;
+  /** Instrument currently open in the side drawer, forwarded to the PDF export as scroll anchor. */
+  viewedInstrumentNumber?: string;
 }
 
 function labelForDocumentType(docType: DocumentType, rawType: string): string {
@@ -120,7 +122,7 @@ export function EncumbranceLifecycle({
   onSetLinkAction,
   onSetLifecycleOverride,
   onOpenDocument,
-  headerActions,
+  viewedInstrumentNumber,
 }: Props) {
   const instrumentMap = useMemo(
     () => new Map(instruments.map((i) => [i.instrument_number, i])),
@@ -181,11 +183,16 @@ export function EncumbranceLifecycle({
             {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
           </p>
         </div>
-        {headerActions && (
-          <div className="flex items-center gap-2 shrink-0 mt-1">
-            {headerActions}
-          </div>
-        )}
+        <div className="flex items-center gap-2 shrink-0 mt-1">
+          <ExportCommitmentButton
+            parcel={parcel}
+            instruments={instruments}
+            links={links}
+            lifecycles={lifecycles}
+            pipelineStatus={pipelineStatus}
+            viewedInstrumentNumber={viewedInstrumentNumber}
+          />
+        </div>
       </div>
 
       <MoatBanner pipelineStatus={pipelineStatus} />

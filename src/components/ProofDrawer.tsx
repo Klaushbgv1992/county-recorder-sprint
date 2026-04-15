@@ -1,10 +1,17 @@
-import { useCallback, useState, type ReactNode } from "react";
-import type { Instrument, DocumentLink } from "../types";
+import { useCallback, useState } from "react";
+import type {
+  Instrument,
+  DocumentLink,
+  Parcel,
+  EncumbranceLifecycle,
+  PipelineStatus,
+} from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
+import { ExportCommitmentButton } from "./ExportCommitmentButton";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
@@ -19,10 +26,24 @@ interface Props {
   links: DocumentLink[];
   corpusProvenance: CorpusProvenance;
   onClose: () => void;
-  headerActions?: ReactNode;
+  parcel: Parcel;
+  allInstruments: Instrument[];
+  allLinks: DocumentLink[];
+  lifecycles: EncumbranceLifecycle[];
+  pipelineStatus: PipelineStatus;
 }
 
-export function ProofDrawer({ instrument, links, corpusProvenance, onClose, headerActions }: Props) {
+export function ProofDrawer({
+  instrument,
+  links,
+  corpusProvenance,
+  onClose,
+  parcel,
+  allInstruments,
+  allLinks,
+  lifecycles,
+  pipelineStatus,
+}: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
   const citation = formatCitation(instrument, COUNTY_NAME);
@@ -54,7 +75,14 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {headerActions}
+            <ExportCommitmentButton
+              parcel={parcel}
+              instruments={allInstruments}
+              links={allLinks}
+              lifecycles={lifecycles}
+              pipelineStatus={pipelineStatus}
+              viewedInstrumentNumber={instrument.instrument_number}
+            />
             <button
               onClick={handleCopyCitation}
               className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
