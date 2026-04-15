@@ -60,7 +60,7 @@
       "version": "1.0",
       "severity": "info",
       "title_template": "Same-name instruments suppressed by parcel attribution",
-      "description_template": "{count} instrument(s) returned by public name search matched parcel owner name but did not satisfy parcel-attribution rules (Decision #26). Suppressed from chain.",
+      "description_template": "Instruments returned by public name search that matched parcel owner name but did not satisfy parcel-attribution rules were {count}. See Decision #26 for the attribution rule; Decision #25 documents the underlying contamination finding.",
       "examiner_action_template": "No action — curator confirmed these belong to other parcels owned by same party."
     },
     {
