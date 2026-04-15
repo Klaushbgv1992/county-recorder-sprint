@@ -70,13 +70,13 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
         <div className="flex items-center gap-3 shrink-0">
           <Link
             to={`/parcel/${apn}/commitment/new`}
-            className="text-xs font-medium text-blue-700 hover:underline"
+            className="text-xs font-medium text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
           >
             Start transaction wizard &rarr;
           </Link>
           <button
             onClick={() => setExpanded((e) => !e)}
-            className="text-xs font-medium text-blue-700 hover:underline"
+            className="text-xs font-medium text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
           >
             {expanded ? "Hide details" : "Show details"}
           </button>
@@ -86,7 +86,7 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
       {expanded && (
         <div className="divide-y divide-gray-100">
           {findings.map((f, idx) => (
-            <div key={`${f.rule_id}-${idx}`} className="px-4 py-3">
+            <div key={`${f.rule_id}-${idx}`} className="px-4 py-3 shadow-sm border border-recorder-50/60 rounded-lg mx-3 my-2">
               <div className="flex items-center gap-2 mb-1">
                 <SeverityPill severity={f.severity} />
                 <h3 className="text-sm font-semibold text-gray-800">
@@ -102,7 +102,7 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
                       {i > 0 && ", "}
                       <Link
                         to={`/parcel/${apn}/instrument/${num}`}
-                        className="font-mono text-blue-700 hover:underline"
+                        className="font-mono text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
                       >
                         {num}
                       </Link>

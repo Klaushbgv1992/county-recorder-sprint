@@ -195,7 +195,7 @@ function DeedCard({ deed, onOpenDocument }: DeedCardProps) {
           </span>
           <button
             onClick={() => onOpenDocument(deed.instrument_number)}
-            className="text-sm font-mono text-blue-700 hover:underline"
+            className="text-sm font-mono text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             title="Open source document"
           >
             {deed.instrument_number}

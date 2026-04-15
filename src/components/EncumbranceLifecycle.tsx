@@ -348,7 +348,7 @@ export function EncumbranceLifecycle({
                                 <button
                                   key={action}
                                   onClick={() => onSetLinkAction(link.id, action)}
-                                  className={`px-2 py-0.5 rounded text-xs font-medium ${colors[action]}`}
+                                  className={`px-2 py-0.5 rounded text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${colors[action]}`}
                                   title={`${action.charAt(0).toUpperCase() + action.slice(1)} this link`}
                                 >
                                   {action.charAt(0).toUpperCase() + action.slice(1)}
@@ -385,7 +385,7 @@ export function EncumbranceLifecycle({
                   <button
                     key={s}
                     onClick={() => onSetLifecycleOverride(lifecycle.id, s)}
-                    className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
+                    className={`px-1.5 py-0.5 rounded text-[10px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${
                       override === s
                         ? "bg-gray-700 text-white"
                         : "bg-gray-200 text-gray-500 hover:bg-gray-300"

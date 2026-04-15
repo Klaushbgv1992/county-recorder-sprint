@@ -36,7 +36,7 @@ export function AppShell() {
       <PipelineBanner />
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
         <div className="flex items-baseline gap-2">
-          <h1 className="text-lg font-semibold text-blue-900">
+          <h1 className="text-lg font-semibold text-recorder-900">
             Land Custodian Portal
           </h1>
           <span className="text-xs text-gray-500 uppercase tracking-wide">
@@ -45,14 +45,14 @@ export function AppShell() {
         </div>
         <Link
           to="/"
-          className={`px-3 py-1 rounded text-sm ${onSearch ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+          className={`px-3 py-1 rounded text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${onSearch ? "bg-recorder-100 text-recorder-700 font-medium" : "text-gray-600 hover:text-gray-900"}`}
         >
           Search
         </Link>
         {hasParcel ? (
           <Link
             to={`/parcel/${selectedApn}`}
-            className={`px-3 py-1 rounded text-sm ${onChain ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+            className={`px-3 py-1 rounded text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${onChain ? "bg-recorder-100 text-recorder-700 font-medium" : "text-gray-600 hover:text-gray-900"}`}
           >
             Chain of Title
           </Link>
@@ -64,7 +64,7 @@ export function AppShell() {
         {hasParcel ? (
           <Link
             to={`/parcel/${selectedApn}/encumbrances`}
-            className={`px-3 py-1 rounded text-sm ${onEncumbrance ? "bg-blue-100 text-blue-800 font-medium" : "text-gray-600 hover:text-gray-900"}`}
+            className={`px-3 py-1 rounded text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${onEncumbrance ? "bg-recorder-100 text-recorder-700 font-medium" : "text-gray-600 hover:text-gray-900"}`}
           >
             Encumbrances
           </Link>
@@ -80,7 +80,7 @@ export function AppShell() {
             </span>
             <Link
               to="/"
-              className="text-blue-600 hover:text-blue-800 hover:underline"
+              className="text-recorder-500 hover:text-recorder-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             >
               &larr; Search another parcel
             </Link>

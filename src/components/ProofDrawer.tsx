@@ -57,14 +57,14 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
             {headerActions}
             <button
               onClick={handleCopyCitation}
-              className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"
+              className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
               title="Copy formatted citation to clipboard"
             >
               Copy Citation
             </button>
             <button
               onClick={onClose}
-              className="px-2 py-1.5 text-gray-400 hover:text-gray-600 text-lg"
+              className="px-2 py-1.5 text-gray-400 hover:text-gray-600 text-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             >
               &times;
             </button>
@@ -87,7 +87,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
             </span>
             <button
               onClick={() => setShowCorpusTotals((v) => !v)}
-              className="ml-1 w-4 h-4 rounded-full border border-gray-400 text-gray-500 text-[10px] leading-none flex items-center justify-center hover:bg-gray-100"
+              className="ml-1 w-4 h-4 rounded-full border border-gray-400 text-gray-500 text-[10px] leading-none flex items-center justify-center hover:bg-gray-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
               title="Show corpus-wide totals"
               aria-label="Show corpus-wide totals"
             >
@@ -218,7 +218,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
                 <button
                   type="button"
                   onClick={() => setShowAiExtraction((v) => !v)}
-                  className="flex w-full items-center justify-between rounded border border-indigo-200 bg-indigo-50 px-3 py-2 text-left hover:bg-indigo-100"
+                  className="flex w-full items-center justify-between rounded border border-indigo-200 bg-indigo-50 px-3 py-2 text-left hover:bg-indigo-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
                   aria-expanded={showAiExtraction}
                 >
                   <span className="text-sm font-semibold text-indigo-900">

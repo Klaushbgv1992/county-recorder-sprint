@@ -45,7 +45,7 @@ export function InstrumentRow({ instrument, onOpenDocument }: Props) {
         </span>
         <button
           onClick={() => onOpenDocument(instrument.instrument_number)}
-          className="text-sm font-mono text-blue-700 hover:underline"
+          className="text-sm font-mono text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
           title="Open source document"
         >
           {instrument.instrument_number}
