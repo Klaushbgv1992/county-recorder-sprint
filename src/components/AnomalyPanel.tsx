@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router";
 import type { AnomalyFinding, Severity } from "../types/anomaly";
+import { NoAnomaliesFound } from "./EmptyStates";
 
 // Severity color mapping. No shared severity→class file exists in the project
 // (StatusBadge.tsx uses per-status inline mappings, lifecycle-status.ts only
@@ -36,11 +37,7 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
   const [expanded, setExpanded] = useState(false);
 
   if (findings.length === 0) {
-    return (
-      <div className="bg-green-50 border border-green-200 text-green-800 text-sm px-4 py-3 rounded-lg mb-4">
-        No anomalies detected &mdash; chain is clean.
-      </div>
-    );
+    return <NoAnomaliesFound />;
   }
 
   const counts: Record<Severity, number> = {

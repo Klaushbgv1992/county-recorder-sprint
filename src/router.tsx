@@ -5,7 +5,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
@@ -27,6 +27,7 @@ import { StaffParcelView } from "./components/StaffParcelView";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
+import { NotInCorpusParcel } from "./components/EmptyStates";
 
 /**
  * Resolve a bare 11-digit instrument number to the APN of the single
@@ -57,23 +58,6 @@ export function redirectTargetForInstrument(
   return apn ? `/parcel/${apn}/instrument/${instrumentNumber}` : null;
 }
 
-function NotFoundPanel({
-  title = "Not in this corpus",
-  subtitle,
-}: {
-  title?: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="max-w-xl mx-auto px-6 py-16 text-center">
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
-      {subtitle && <p className="text-sm text-gray-600 mb-6">{subtitle}</p>}
-      <Link to="/" className="text-blue-600 hover:text-blue-800 hover:underline">
-        Return to search
-      </Link>
-    </div>
-  );
-}
 
 function SplitPane({
   main,
@@ -125,9 +109,9 @@ function ParcelGuard({
     return (
       <SplitPane
         main={
-          <NotFoundPanel
+          <NotInCorpusParcel
             title="Parcel not in this corpus"
-            subtitle={apn ? `APN ${apn} is not in the curated set.` : undefined}
+            message={apn ? `APN ${apn} is not in the curated set.` : undefined}
           />
         }
         drawer={null}
@@ -184,9 +168,9 @@ function ChainRouteInner({ apn }: { apn: string }) {
         headerActions={exportButton}
       />
     ) : drawerOpen ? (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not on this parcel"
-        subtitle={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
+        message={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
       />
     ) : null;
 
@@ -262,9 +246,9 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
         headerActions={exportButton}
       />
     ) : drawerOpen ? (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not on this parcel"
-        subtitle={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
+        message={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
       />
     ) : null;
 
@@ -311,9 +295,9 @@ function InstrumentResolver() {
     : null;
   if (instrumentNumber && !target) {
     return (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not in this corpus"
-        subtitle={`No parcel owns instrument ${instrumentNumber} in the curated set.`}
+        message={`No parcel owns instrument ${instrumentNumber} in the curated set.`}
       />
     );
   }
@@ -394,7 +378,7 @@ export const routes: RouteObject[] = [
       {
         id: "not-found",
         path: "*",
-        element: <NotFoundPanel />,
+        element: <NotInCorpusParcel />,
       },
     ],
   },

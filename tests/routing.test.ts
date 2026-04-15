@@ -182,7 +182,7 @@ describe("NotFound rendering", () => {
   it("unknown APN renders the parcel-not-found panel", () => {
     const html = renderAt("/parcel/nope-nope-nope");
     expect(html).toContain("Parcel not in this corpus");
-    expect(html).toContain("Return to search");
+    expect(html).toContain("Back to search");
   });
 
   it("known APN + unknown instrument renders chain in main pane and not-found in drawer", () => {
