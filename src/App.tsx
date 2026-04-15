@@ -1,6 +1,7 @@
 import { Link, Outlet, useMatch, useParams } from "react-router";
 import { useParcelData } from "./hooks/useParcelData";
 import { useAllParcels } from "./hooks/useAllParcels";
+import { PipelineBanner } from "./components/PipelineBanner";
 
 export function AppShell() {
   const params = useParams();
@@ -31,6 +32,7 @@ export function AppShell() {
 
   return (
     <div className="h-screen flex flex-col bg-gray-50 text-gray-900">
+      <PipelineBanner />
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
         <div className="flex items-baseline gap-2">
           <h1 className="text-lg font-semibold text-blue-900">
