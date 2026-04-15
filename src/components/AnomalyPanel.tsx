@@ -70,12 +70,20 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
             ))}
           </div>
         </div>
-        <button
-          onClick={() => setExpanded((e) => !e)}
-          className="text-xs font-medium text-blue-700 hover:underline shrink-0"
-        >
-          {expanded ? "Hide details" : "Show details"}
-        </button>
+        <div className="flex items-center gap-3 shrink-0">
+          <Link
+            to={`/parcel/${apn}/commitment/new`}
+            className="text-xs font-medium text-blue-700 hover:underline"
+          >
+            Start transaction wizard &rarr;
+          </Link>
+          <button
+            onClick={() => setExpanded((e) => !e)}
+            className="text-xs font-medium text-blue-700 hover:underline"
+          >
+            {expanded ? "Hide details" : "Show details"}
+          </button>
+        </div>
       </div>
 
       {expanded && (

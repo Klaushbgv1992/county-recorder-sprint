@@ -16,6 +16,7 @@ import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
+import { TransactionWizard } from "./components/TransactionWizard";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -364,6 +365,11 @@ export const routes: RouteObject[] = [
         id: "moat-compare",
         path: "moat-compare",
         element: <MoatCompareRoute />,
+      },
+      {
+        id: "commitment-new",
+        path: "parcel/:apn/commitment/new",
+        element: <TransactionWizard />,
       },
       {
         id: "not-found",
