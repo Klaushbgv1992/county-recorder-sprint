@@ -4,8 +4,18 @@ export function formatProvenanceTag(
   provenance: ProvenanceKind,
   confidence: number,
 ): string {
-  if (provenance === "public_api") return "(api)";
-  if (provenance === "manual_entry") return "(manual)";
-  const label = provenance === "ocr" ? "ocr" : "algo";
-  return `(${label}, ${confidence.toFixed(2)})`;
+  switch (provenance) {
+    case "public_api":
+      return "(api)";
+    case "manual_entry":
+      return "(manual)";
+    case "ocr":
+      return `(ocr, ${confidence.toFixed(2)})`;
+    case "algorithmic":
+      return `(algo, ${confidence.toFixed(2)})`;
+    default: {
+      const _exhaustive: never = provenance;
+      throw new Error(`Unknown ProvenanceKind: ${_exhaustive as string}`);
+    }
+  }
 }
