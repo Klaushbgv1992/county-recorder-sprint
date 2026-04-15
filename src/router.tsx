@@ -16,6 +16,7 @@ import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
+import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -309,7 +310,7 @@ function InstrumentResolver() {
 
 export const routes: RouteObject[] = [
   { path: "/", element: <LandingPage /> },
-  // /county-activity will be added in Task 6
+  { path: "/county-activity", element: <ActivityHeatMap /> },
   {
     element: <AppShell />,
     children: [

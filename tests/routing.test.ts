@@ -120,6 +120,13 @@ describe("route table", () => {
     expect(matchIds("/moat-compare")).toContain("moat-compare");
   });
 
+  it("matches /county-activity", () => {
+    const router = createMemoryRouter(routes, { initialEntries: ["/county-activity"] });
+    const matches = router.state.matches;
+    const ids = matches.map((m) => m.route.id).filter((id): id is string => typeof id === "string");
+    expect(ids).not.toContain("not-found");
+  });
+
   it("unknown paths match the not-found route", () => {
     expect(matchIds("/totally/bogus/path")).toContain("not-found");
   });
