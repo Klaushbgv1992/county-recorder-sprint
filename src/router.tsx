@@ -10,7 +10,7 @@ import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
 import { AppShell } from "./App";
-import { SearchEntry } from "./components/SearchEntry";
+import { LandingPage } from "./components/LandingPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
@@ -103,28 +103,6 @@ function corpusProvenanceOf(data: ReturnType<typeof useParcelData>) {
       };
     },
     { public_api: 0, ocr: 0, manual_entry: 0 },
-  );
-}
-
-function SearchRoute() {
-  const parcels = useAllParcels();
-  const navigate = useNavigate();
-  return (
-    <SplitPane
-      main={
-        <SearchEntry
-          parcels={parcels}
-          onSelectParcel={(apn, instrumentNumber) =>
-            navigate(
-              instrumentNumber
-                ? `/parcel/${apn}/instrument/${instrumentNumber}`
-                : `/parcel/${apn}`,
-            )
-          }
-        />
-      }
-      drawer={null}
-    />
   );
 }
 
@@ -330,11 +308,11 @@ function InstrumentResolver() {
 }
 
 export const routes: RouteObject[] = [
+  { path: "/", element: <LandingPage /> },
+  // /county-activity will be added in Task 6
   {
-    path: "/",
     element: <AppShell />,
     children: [
-      { id: "search", index: true, element: <SearchRoute /> },
       {
         id: "chain",
         path: "parcel/:apn",
