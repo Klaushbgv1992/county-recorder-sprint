@@ -14,7 +14,6 @@ import { LandingPage } from "./components/LandingPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
-import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
@@ -147,17 +146,6 @@ function ChainRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}`);
 
-  const exportButton = (
-    <ExportCommitmentButton
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={data.links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      viewedInstrumentNumber={drawerInstrument ?? undefined}
-    />
-  );
-
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -165,7 +153,11 @@ function ChainRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
-        headerActions={exportButton}
+        parcel={data.parcel}
+        allInstruments={data.instruments}
+        allLinks={data.links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
       />
     ) : drawerOpen ? (
       <NotInCorpusParcel
@@ -225,17 +217,6 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/encumbrances/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}/encumbrances`);
 
-  const exportButton = (
-    <ExportCommitmentButton
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={data.links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      viewedInstrumentNumber={drawerInstrument ?? undefined}
-    />
-  );
-
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -243,7 +224,11 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
-        headerActions={exportButton}
+        parcel={data.parcel}
+        allInstruments={data.instruments}
+        allLinks={data.links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
       />
     ) : drawerOpen ? (
       <NotInCorpusParcel
@@ -268,7 +253,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
               onSetLinkAction={examiner.setLinkAction}
               onSetLifecycleOverride={examiner.setLifecycleOverride}
               onOpenDocument={openDrawer}
-              headerActions={exportButton}
+              viewedInstrumentNumber={drawerInstrument ?? undefined}
             />
           </div>
           <SpatialContextPanel apn={apn} />

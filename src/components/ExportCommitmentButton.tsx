@@ -56,7 +56,7 @@ export function triggerCommitmentDownload(input: TriggerInput): TriggerResult {
   return { doc, blob, filename };
 }
 
-function browserDownload(blob: Blob, filename: string): void {
+export function browserDownload(blob: Blob, filename: string): void {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   a.href = url;
@@ -109,6 +109,7 @@ export function ExportCommitmentButton(props: ButtonProps) {
     "px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded hover:bg-emerald-100 transition-colors";
   return (
     <button
+      type="button"
       onClick={handleClick}
       className={cls}
       title="Download a PDF chain-and-encumbrance abstract for this parcel"
