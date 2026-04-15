@@ -40,15 +40,17 @@ function renderEncumbrance(
   return { ...utils, data, onOpenDocument };
 }
 
-// Locate a lifecycle card by its DOT instrument number printed in the header.
-function lifecycleCardFor(dotInstrument: string): HTMLElement {
-  const header = screen.getByText(`DOT: ${dotInstrument}`);
+// Locate a lifecycle card by its root instrument number printed in the header.
+// After Gap #17 fix, the label prefix depends on document_type (e.g. "DOT", "Deed", "Plat Map").
+function lifecycleCardFor(rootInstrument: string): HTMLElement {
+  // Match any label format: "<Label>: <instrumentNumber>"
+  const header = screen.getByText(new RegExp(`:\\s*${rootInstrument}$`));
   // Walk up to the lifecycle card root (the rounded white container).
   let node: HTMLElement | null = header;
   while (node && !node.classList.contains("rounded-lg")) {
     node = node.parentElement as HTMLElement | null;
   }
-  if (!node) throw new Error(`No lifecycle card found for DOT ${dotInstrument}`);
+  if (!node) throw new Error(`No lifecycle card found for instrument ${rootInstrument}`);
   return node;
 }
 
@@ -108,5 +110,16 @@ describe("EncumbranceLifecycle UI wiring", () => {
     expect(
       screen.getByText(/county-internal full-name scan closes this gap/i),
     ).toBeInTheDocument();
+  });
+
+  it("renders label derived from document_type for lc-004 (subdivision plat)", () => {
+    // lc-004 root is instrument 20010093192, document_type: "other",
+    // document_type_raw: "PLAT MAP"
+    // Should NOT render "DOT:" for this lifecycle — label should be "Plat Map"
+    renderEncumbrance(POPHAM_APN);
+    // After fix, "DOT: 20010093192" must not appear
+    expect(screen.queryByText(/DOT: 20010093192/)).not.toBeInTheDocument();
+    // Instead, the humanized raw type should be the label prefix
+    expect(screen.getByText(/Plat Map: 20010093192/)).toBeInTheDocument();
   });
 });

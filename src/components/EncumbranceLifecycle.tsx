@@ -7,6 +7,7 @@ import type {
   PipelineStatus,
   ExaminerAction,
   LifecycleStatus,
+  DocumentType,
 } from "../types";
 import {
   computeLifecycleStatus,
@@ -40,6 +41,42 @@ interface Props {
   ) => void;
   onOpenDocument: (instrumentNumber: string) => void;
   headerActions?: ReactNode;
+}
+
+function labelForDocumentType(docType: DocumentType, rawType: string): string {
+  switch (docType) {
+    case "deed_of_trust":
+    case "heloc_dot":
+      return "DOT";
+    case "warranty_deed":
+    case "special_warranty_deed":
+    case "grant_deed":
+    case "quit_claim_deed":
+      return "Deed";
+    case "full_reconveyance":
+    case "partial_reconveyance":
+      return "Release";
+    case "assignment_of_dot":
+      return "Assignment";
+    case "substitution_of_trustee":
+      return "Sub. of Trustee";
+    case "ucc_termination":
+      return "UCC Term.";
+    case "affidavit_of_disclosure":
+      return "Affidavit";
+    case "modification":
+      return "Modification";
+    case "other":
+      // Fall back to humanizing the raw type string
+      return rawType
+        .split(/[\s_]+/)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ");
+    default: {
+      const _: never = docType;
+      throw new Error(`Unknown document type: ${_ as string}`);
+    }
+  }
 }
 
 function formatDotParties(instrument: Instrument): string {
@@ -222,7 +259,7 @@ export function EncumbranceLifecycle({
                   overridden={isOverridden}
                 />
                 <span className="font-semibold text-gray-800">
-                  DOT: {rootInst.instrument_number}
+                  {labelForDocumentType(rootInst.document_type, rootInst.document_type_raw)}: {rootInst.instrument_number}
                 </span>
                 <span className="text-sm text-gray-500 whitespace-nowrap">
                   recorded {rootInst.recording_date}
