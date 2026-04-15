@@ -4,6 +4,7 @@ import {
   LinksFile,
   LifecyclesFile,
 } from "./schemas";
+import { inferSameDayGroups } from "./logic/same-day-group-inferrer";
 import type {
   Parcel,
   Instrument,
@@ -54,7 +55,21 @@ export function loadAllParcels(): Parcel[] {
 }
 
 export function loadAllInstruments(): Instrument[] {
-  return instrumentsRaw.map((raw) => InstrumentFile.parse(raw));
+  const instruments = instrumentsRaw.map((raw) => InstrumentFile.parse(raw));
+  const inferred = inferSameDayGroups(
+    instruments.map((i) => ({
+      instrument_number: i.instrument_number,
+      recording_date: i.recording_date,
+      names: i.raw_api_response.names ?? [],
+    }))
+  );
+  const groupIdByNumber = new Map(
+    inferred.map((r) => [r.instrument_number, r.same_day_group_id])
+  );
+  return instruments.map((i) => ({
+    ...i,
+    same_day_group_id: groupIdByNumber.get(i.instrument_number) ?? null,
+  }));
 }
 
 export function loadParcelDataByApn(apn: string): ParcelData {

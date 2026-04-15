@@ -92,6 +92,7 @@ export const Instrument = z.object({
 
   back_references: z.array(z.string()),
   same_day_group: z.array(z.string()).optional(),
+  same_day_group_id: z.string().nullable().optional(),
 
   source_image_path: z.string(),
   page_count: z.number().int().positive(),
