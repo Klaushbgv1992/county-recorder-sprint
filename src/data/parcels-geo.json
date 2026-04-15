@@ -1,0 +1,37 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "provenance": "manual_entry",
+    "source_note": "STUB for S2 development before S1 lands. Hand-traced approximate polygons for POPHAM (304-78-386) and HOGUE (304-77-689). Delete this stub file before merging to integration branch — S1 will provide the authoritative version.",
+    "stub_for_s1": true,
+    "captured_date": "2026-04-14"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "apn": "304-78-386",
+        "SITUS_ADDRESS": "3674 E PALMER ST",
+        "SUBDIVISION": "SEVILLE PARCEL 3",
+        "OWNER_NAME": "POPHAM CHRISTOPHER R/ASHLEY E"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-111.72240, 33.24705], [-111.72200, 33.24705], [-111.72200, 33.24725], [-111.72240, 33.24725], [-111.72240, 33.24705]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "apn": "304-77-689",
+        "SITUS_ADDRESS": "2715 E PALMER ST",
+        "SUBDIVISION": "SHAMROCK ESTATES PH 2A",
+        "OWNER_NAME": "HOGUE JASON/MICHELE"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[-111.72540, 33.24705], [-111.72500, 33.24705], [-111.72500, 33.24725], [-111.72540, 33.24725], [-111.72540, 33.24705]]]
+      }
+    }
+  ]
+}
