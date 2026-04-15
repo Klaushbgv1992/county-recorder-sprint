@@ -1,34 +1,11 @@
-import { describe, it, expect, afterEach, vi, beforeEach, beforeAll } from "vitest";
+import { describe, it, expect, afterEach, vi, beforeEach } from "vitest";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import { MemoryRouter } from "react-router";
 import type { ReactNode } from "react";
 import { SpatialContextPanel } from "../src/components/SpatialContextPanel";
 
-// jsdom 29 in this vitest setup ships a localStorage object with no methods.
-// Polyfill it so the component's persist-collapse path works in the test env.
-beforeAll(() => {
-  const store = new Map<string, string>();
-  const polyfill: Storage = {
-    getItem: (k) => (store.has(k) ? store.get(k)! : null),
-    setItem: (k, v) => {
-      store.set(k, String(v));
-    },
-    removeItem: (k) => {
-      store.delete(k);
-    },
-    clear: () => store.clear(),
-    key: (i) => Array.from(store.keys())[i] ?? null,
-    get length() {
-      return store.size;
-    },
-  };
-  vi.stubGlobal("localStorage", polyfill);
-  Object.defineProperty(window, "localStorage", {
-    value: polyfill,
-    configurable: true,
-  });
-});
+// localStorage polyfill is installed globally via tests/setup.ts
 
 vi.mock("react-map-gl/maplibre", () => ({
   default: ({ children }: { children: ReactNode }) => <div data-testid="map">{children}</div>,

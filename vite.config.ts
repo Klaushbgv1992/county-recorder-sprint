@@ -10,5 +10,6 @@ export default defineConfig({
   test: {
     exclude: [...configDefaults.exclude, ".claude/worktrees/**"],
     environment: "jsdom",
+    setupFiles: ["./tests/setup.ts"],
   },
 });
