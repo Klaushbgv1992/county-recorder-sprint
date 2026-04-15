@@ -302,3 +302,8 @@ beat (see `docs/demo-script.md`).
       new provenance value forces the formatter to grow alongside
       the schema. Standalone follow-up task; not blocked on
       Terminal 4.
+
+20. **Stale `eslint-disable` directives (cosmetic).**
+    - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
+    - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
+    - *What production would do:* promote the rule to `"error"` severity and run `eslint --report-unused-disable-directives` in CI so stale suppression comments are caught automatically.
