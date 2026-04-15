@@ -1,0 +1,3607 @@
+{
+  "generated_at": "2026-04-14",
+  "source": "synthetic",
+  "window_days": 30,
+  "records": [
+    {
+      "date": "2026-03-11",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 63
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 63
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 36
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-11",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 55
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 55
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 31
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-12",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 61
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 61
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 6
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-13",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 56
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 56
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 32
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-14",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-15",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 62
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 62
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-16",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 53
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 53
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 30
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 4
+    },
+    {
+      "date": "2026-03-17",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 56
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 56
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 32
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 15
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-18",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 53
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 53
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 30
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 15
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 4
+    },
+    {
+      "date": "2026-03-19",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 55
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 55
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 31
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 15
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-20",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 61
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 61
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-21",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 32
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-22",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 60
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 60
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 34
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 18
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 6
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-23",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 58
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 58
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-24",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 61
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 61
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 6
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-25",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 62
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 62
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 18
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-26",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 63
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 63
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 36
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 19
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-27",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-28",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 56
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 56
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 32
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 15
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-29",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 60
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 60
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 34
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 18
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 6
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-03-30",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 54
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 54
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 31
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 14
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 4
+    },
+    {
+      "date": "2026-03-31",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 58
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 58
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-01",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 62
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 62
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 18
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-02",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 59
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 59
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 34
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-03",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 61
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 61
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 35
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 17
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 17
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 10
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-04",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 17
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-05",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 53
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 53
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 30
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 14
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 14
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 14
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 9
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 9
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 4
+    },
+    {
+      "date": "2026-04-06",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 53
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 53
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 30
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 8
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 12
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 12
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 10
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 10
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 4
+    },
+    {
+      "date": "2026-04-07",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 16
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 16
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 4
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-08",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Phoenix",
+      "doc_code": "WAR DEED",
+      "count": 57
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Phoenix",
+      "doc_code": "DEED TRST",
+      "count": 57
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Phoenix",
+      "doc_code": "REL D/T",
+      "count": 33
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Phoenix",
+      "doc_code": "AF DISCLS",
+      "count": 16
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Mesa",
+      "doc_code": "WAR DEED",
+      "count": 15
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Mesa",
+      "doc_code": "DEED TRST",
+      "count": 15
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Mesa",
+      "doc_code": "REL D/T",
+      "count": 9
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Mesa",
+      "doc_code": "AF DISCLS",
+      "count": 5
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Scottsdale",
+      "doc_code": "WAR DEED",
+      "count": 13
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Scottsdale",
+      "doc_code": "DEED TRST",
+      "count": 13
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Scottsdale",
+      "doc_code": "REL D/T",
+      "count": 7
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Scottsdale",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Chandler",
+      "doc_code": "WAR DEED",
+      "count": 11
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Chandler",
+      "doc_code": "DEED TRST",
+      "count": 11
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Chandler",
+      "doc_code": "REL D/T",
+      "count": 6
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Chandler",
+      "doc_code": "AF DISCLS",
+      "count": 2
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Gilbert",
+      "doc_code": "WAR DEED",
+      "count": 8
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Gilbert",
+      "doc_code": "DEED TRST",
+      "count": 8
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Gilbert",
+      "doc_code": "REL D/T",
+      "count": 5
+    },
+    {
+      "date": "2026-04-09",
+      "municipality": "Gilbert",
+      "doc_code": "AF DISCLS",
+      "count": 3
+    }
+  ]
+}
