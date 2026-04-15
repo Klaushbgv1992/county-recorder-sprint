@@ -1,0 +1,209 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "id": 980656,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -111.71021205256368,
+              33.23571497262206
+            ],
+            [
+              -111.71025443238383,
+              33.23602903403805
+            ],
+            [
+              -111.71045266721083,
+              33.236010143875156
+            ],
+            [
+              -111.71041028469573,
+              33.23569608314273
+            ],
+            [
+              -111.71021205256368,
+              33.23571497262206
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 980656,
+        "APN": "30478386",
+        "FLOOR": 1,
+        "BOOK": "304",
+        "MAP": "78",
+        "ITEM": "386",
+        "OWNER_NAME": "POPHAM CHRISTOPHER/ASHLEY",
+        "MAIL_ADDR1": "3674 E PALMER ST",
+        "MAIL_ADDR2": null,
+        "MAIL_CITY": "GILBERT",
+        "MAIL_STATE": "AZ",
+        "MAIL_ZIP": "85298",
+        "PHYSICAL_STREET_NUM": "3674",
+        "PHYSICAL_STREET_DIR": "E",
+        "PHYSICAL_STREET_NAME": "PALMER",
+        "PHYSICAL_STREET_TYPE": "ST",
+        "PHYSICAL_SUITE": null,
+        "PHYSICAL_CITY": "GILBERT",
+        "PHYSICAL_ZIP": "85298",
+        "Shape_Length": 128.54771920771077,
+        "Shape_Area": 934.2377565407884,
+        "APN_DASH": "304-78-386",
+        "LONGITUDE": -111.71033235924038,
+        "LATITUDE": 33.235862558784916,
+        "PHYSICAL_ADDRESS": "3674 E PALMER ST   GILBERT  85298",
+        "MAIL_ADDRESS": "3674 E PALMER ST GILBERT AZ USA 85298",
+        "MAIL_CNTRY": "USA",
+        "PHYSICAL_STREET_SUFFIX": "",
+        "PHYSICAL_STREET_POSTDIR": null,
+        "DEED_NUMBER": "20130183449",
+        "DEED_DATE": 1361923200000,
+        "SALE_DATE": "02/01/2013",
+        "SALE_PRICE": "257500",
+        "MCRNUM": "554-19",
+        "SUBNAME": "SEVILLE PARCEL 3",
+        "LAND_SIZE": 7015,
+        "LOT_NUM": "64",
+        "STR": "23 2S 6E",
+        "CONST_YEAR": "2005",
+        "LIVING_SPACE": "   2,874",
+        "INCAREOF": null,
+        "TAX_YR_CUR": "2027",
+        "FCV_CUR": "     561,200",
+        "LPV_CUR": "     324,822",
+        "TAX_YR_PREV": "2026",
+        "FCV_PREV": "     556,600",
+        "LPV_PREV": "     309,354",
+        "PUC": "0141",
+        "MCR_BOOK": "554",
+        "MCR_PAGE": "19",
+        "CITY_ZONING": "CONTACT LOCAL JURISDICTION",
+        "JURISDICTION": "GILBERT",
+        "LC_CUR": "3.1",
+        "LC_PREV": "3.1",
+        "BLOCK": null,
+        "TRACT": null,
+        "apn": "304-78-386",
+        "owner": "POPHAM CHRISTOPHER/ASHLEY",
+        "corpus_status": "primary"
+      }
+    },
+    {
+      "type": "Feature",
+      "id": 980013,
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              -111.73113565438221,
+              33.23609125561047
+            ],
+            [
+              -111.73113628230458,
+              33.23643481503005
+            ],
+            [
+              -111.73135845364065,
+              33.236434528008544
+            ],
+            [
+              -111.73137131785506,
+              33.236433690970415
+            ],
+            [
+              -111.73138394031588,
+              33.23643107140402
+            ],
+            [
+              -111.73139607525172,
+              33.23642672031483
+            ],
+            [
+              -111.7314074863838,
+              33.2364207224227
+            ],
+            [
+              -111.73140688271594,
+              33.23609090472152
+            ],
+            [
+              -111.73114523671136,
+              33.23609124283721
+            ],
+            [
+              -111.73113565438221,
+              33.23609125561047
+            ]
+          ]
+        ]
+      },
+      "properties": {
+        "OBJECTID": 980013,
+        "APN": "30477689",
+        "FLOOR": 1,
+        "BOOK": "304",
+        "MAP": "77",
+        "ITEM": "689",
+        "OWNER_NAME": "HOGUE JASON/MICHELE",
+        "MAIL_ADDR1": "2715 E PALMER ST",
+        "MAIL_ADDR2": null,
+        "MAIL_CITY": "GILBERT",
+        "MAIL_STATE": "AZ",
+        "MAIL_ZIP": "85298",
+        "PHYSICAL_STREET_NUM": "2715",
+        "PHYSICAL_STREET_DIR": "E",
+        "PHYSICAL_STREET_NAME": "PALMER",
+        "PHYSICAL_STREET_TYPE": "ST",
+        "PHYSICAL_SUITE": null,
+        "PHYSICAL_CITY": "GILBERT",
+        "PHYSICAL_ZIP": "85298",
+        "Shape_Length": 150.406064020625,
+        "Shape_Area": 1377.38647800548,
+        "APN_DASH": "304-77-689",
+        "LONGITUDE": -111.73127129597147,
+        "LATITUDE": 33.23626247246797,
+        "PHYSICAL_ADDRESS": "2715 E PALMER ST   GILBERT  85298",
+        "MAIL_ADDRESS": "2715 E PALMER ST GILBERT AZ USA 85298",
+        "MAIL_CNTRY": "USA",
+        "PHYSICAL_STREET_SUFFIX": "",
+        "PHYSICAL_STREET_POSTDIR": null,
+        "DEED_NUMBER": "20150516729",
+        "DEED_DATE": 1437091200000,
+        "SALE_DATE": "06/01/2015",
+        "SALE_PRICE": "328500",
+        "MCRNUM": "799-38",
+        "SUBNAME": "SHAMROCK ESTATES PHASE 2A",
+        "LAND_SIZE": 10342,
+        "LOT_NUM": "348",
+        "STR": "22 2S 6E",
+        "CONST_YEAR": "2007",
+        "LIVING_SPACE": "   2,690",
+        "INCAREOF": null,
+        "TAX_YR_CUR": "2027",
+        "FCV_CUR": "     565,800",
+        "LPV_CUR": "     390,368",
+        "TAX_YR_PREV": "2026",
+        "FCV_PREV": "     570,600",
+        "LPV_PREV": "     371,779",
+        "PUC": "0141",
+        "MCR_BOOK": "799",
+        "MCR_PAGE": "38",
+        "CITY_ZONING": "CONTACT LOCAL JURISDICTION",
+        "JURISDICTION": "GILBERT",
+        "LC_CUR": "3.1",
+        "LC_PREV": "3.1",
+        "BLOCK": null,
+        "TRACT": null,
+        "apn": "304-77-689",
+        "owner": "HOGUE JASON/MICHELE",
+        "corpus_status": "backup"
+      }
+    }
+  ]
+}
