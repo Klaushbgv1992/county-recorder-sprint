@@ -7,12 +7,13 @@ describe("R1 same-day transaction cluster", () => {
     const { parcel, instruments } = loadParcelDataByApn("304-78-386");
     const findings = detectR1(parcel, instruments);
 
-    // POPHAM has three same-day pairs in the curated data:
-    //   2013-02-27: 20130183449 (warranty deed) + 20130183450 (DOT)
-    //   2021-01-19: 20210057846 (UCC term) + 20210057847 (DOT)
-    // Only pairs with shared parties fire. The 2013 pair shares the POPHAMs
-    // (trustor/grantee); the 2021 pair shares POPHAM too.
-    expect(findings.length).toBeGreaterThanOrEqual(1);
+    // POPHAM has two same-day date clusters in the curated data:
+    //   2013-02-27: 20130183449 (warranty deed) + 20130183450 (DOT) — shares CHRISTOPHER POPHAM
+    //   2021-01-19: 20210057846 (UCC term) + 20210057847 (DOT) — name strings differ
+    //     ("POPHAM CHRISTOPHER" on 46 vs "CHRISTOPHER POPHAM" on 47), so R1 does not
+    //     match on its case-insensitive exact-string compare. Only the 2013 pair fires.
+    //   Name-order variants are the entity-resolution gap tracked in Decision #15.
+    expect(findings).toHaveLength(1);
     const popham2013 = findings.find(
       (f) =>
         f.evidence_instruments.includes("20130183449") &&

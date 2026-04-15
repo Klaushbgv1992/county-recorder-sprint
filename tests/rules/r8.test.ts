@@ -15,6 +15,11 @@ describe("R8 chain stale", () => {
     expect(f.description).toContain("304-77-689");
     expect(f.description).toContain("2015-07-17");
     expect(f.detection_provenance.confidence).toBe(0.9);
+    // Evidence must cite the most-recent instrument that established `last_date`.
+    // HOGUE has two instruments on 2015-07-17 (20150516729 + 20150516730);
+    // the rule breaks the tie by instrument_number, so 20150516730 wins.
+    expect(f.evidence_instruments).not.toEqual([]);
+    expect(f.evidence_instruments).toEqual(["20150516730"]);
   });
 
   it("does NOT fire on POPHAM — last instrument 2021-01-22 (~5.2 years, below 7-year threshold)", () => {

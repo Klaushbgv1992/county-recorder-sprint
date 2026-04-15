@@ -26,14 +26,25 @@ export function detectR8(
 ): AnomalyFinding[] {
   if (instruments.length === 0) return [];
 
-  let latestDate = "";
+  let latest: Instrument | null = null;
   for (const inst of instruments) {
-    if (inst.recording_date > latestDate) {
-      latestDate = inst.recording_date;
+    if (latest === null) {
+      latest = inst;
+      continue;
+    }
+    if (inst.recording_date > latest.recording_date) {
+      latest = inst;
+    } else if (
+      inst.recording_date === latest.recording_date &&
+      inst.instrument_number > latest.instrument_number
+    ) {
+      // Same-day tie: prefer the higher instrument number (later sequence in day).
+      latest = inst;
     }
   }
-  if (!latestDate) return [];
+  if (!latest) return [];
 
+  const latestDate = latest.recording_date;
   const years = (now.getTime() - new Date(latestDate).getTime()) / MS_PER_YEAR;
   if (years < STALE_YEARS) return [];
 
@@ -41,7 +52,7 @@ export function detectR8(
     makeFinding({
       ruleId: "R8",
       parcelApn: parcel.apn,
-      evidenceInstruments: [],
+      evidenceInstruments: [latest.instrument_number],
       confidence: 0.9,
       placeholders: {
         apn: parcel.apn,
