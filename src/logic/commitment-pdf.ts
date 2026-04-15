@@ -263,7 +263,7 @@ function renderScheduleBI(
 
   pdf.setFont("helvetica", "bold");
   pdf.setFontSize(SUBHEADING_FONT_SIZE);
-  pdf.text("Schedule B-I \u2014 Requirements", MARGIN_X, y);
+  pdf.text("Schedule B-I -- Requirements", MARGIN_X, y);
   y += 5;
 
   if (inputs) {

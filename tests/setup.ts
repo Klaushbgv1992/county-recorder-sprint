@@ -1,7 +1,21 @@
-// jsdom 29 in this vitest setup ships a localStorage object with no
-// methods; polyfill it here so any component depending on localStorage
-// can render in tests without each suite needing its own polyfill.
-// (sessionStorage mirrors localStorage in the browser — polyfill both.)
+// jsdom ≤ 26 ships a Blob that wraps Node's Blob but does not re-export the
+// WHATWG Blob level-2 methods (arrayBuffer, text, stream).  Polyfill
+// arrayBuffer() using FileReader, which IS available in jsdom, so that PDF
+// tests can decode the jsPDF output blob without requiring jsdom@29.
+if (typeof Blob !== "undefined" && !Blob.prototype.arrayBuffer) {
+  Blob.prototype.arrayBuffer = function () {
+    return new Promise<ArrayBuffer>((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onloadend = () => resolve(reader.result as ArrayBuffer);
+      reader.onerror = reject;
+      reader.readAsArrayBuffer(this);
+    });
+  };
+}
+
+// jsdom ships a localStorage object with no methods; polyfill it here so any
+// component depending on localStorage can render in tests without each suite
+// needing its own polyfill.  (sessionStorage mirrors localStorage.)
 
 function makeStoragePolyfill(): Storage {
   const store = new Map<string, string>();
