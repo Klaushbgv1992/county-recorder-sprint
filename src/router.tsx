@@ -10,12 +10,13 @@ import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
 import { AppShell } from "./App";
-import { SearchEntry } from "./components/SearchEntry";
+import { LandingPage } from "./components/LandingPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
+import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -103,28 +104,6 @@ function corpusProvenanceOf(data: ReturnType<typeof useParcelData>) {
       };
     },
     { public_api: 0, ocr: 0, manual_entry: 0 },
-  );
-}
-
-function SearchRoute() {
-  const parcels = useAllParcels();
-  const navigate = useNavigate();
-  return (
-    <SplitPane
-      main={
-        <SearchEntry
-          parcels={parcels}
-          onSelectParcel={(apn, instrumentNumber) =>
-            navigate(
-              instrumentNumber
-                ? `/parcel/${apn}/instrument/${instrumentNumber}`
-                : `/parcel/${apn}`,
-            )
-          }
-        />
-      }
-      drawer={null}
-    />
   );
 }
 
@@ -330,11 +309,11 @@ function InstrumentResolver() {
 }
 
 export const routes: RouteObject[] = [
+  { path: "/", element: <LandingPage /> },
+  { path: "/county-activity", element: <ActivityHeatMap /> },
   {
-    path: "/",
     element: <AppShell />,
     children: [
-      { id: "search", index: true, element: <SearchRoute /> },
       {
         id: "chain",
         path: "parcel/:apn",

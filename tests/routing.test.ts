@@ -1,4 +1,4 @@
-import { describe, it, expect } from "vitest";
+import { describe, it, expect, vi } from "vitest";
 import { createElement } from "react";
 import { renderToString } from "react-dom/server";
 import { createMemoryRouter, RouterProvider } from "react-router";
@@ -8,6 +8,16 @@ import {
   resolveInstrumentToApn,
   routes,
 } from "../src/router";
+
+// LandingPage (now at /) renders CountyMap which uses react-map-gl/maplibre.
+// MapLibre requires WebGL which is unavailable in jsdom. Mock the module so
+// renderToString on "/" doesn't throw.
+vi.mock("react-map-gl/maplibre", () => ({
+  default: () => null,
+  Source: () => null,
+  Layer: () => null,
+  Marker: () => null,
+}));
 
 function renderAt(url: string): string {
   const router = createMemoryRouter(routes, { initialEntries: [url] });
@@ -50,8 +60,18 @@ describe("resolveInstrumentToApn", () => {
 });
 
 describe("route table", () => {
-  it("/ matches the search route", () => {
-    expect(matchIds("/")).toContain("search");
+  it("/ matches the landing page (LandingPage is outside AppShell)", () => {
+    // The root route renders LandingPage directly.
+    // Verify it matches exactly one route segment and does NOT match any
+    // of the named working-view routes (chain, encumbrance, etc.).
+    const router = createMemoryRouter(routes, { initialEntries: ["/"] });
+    const matches = router.state.matches;
+    expect(matches).toHaveLength(1);
+    const namedIds = matches
+      .map((m) => m.route.id)
+      .filter((id): id is string => typeof id === "string");
+    expect(namedIds).not.toContain("chain");
+    expect(namedIds).not.toContain("encumbrance");
   });
 
   it("/parcel/:apn matches the chain route", () => {
@@ -98,6 +118,13 @@ describe("route table", () => {
 
   it("/moat-compare matches the moat-compare route", () => {
     expect(matchIds("/moat-compare")).toContain("moat-compare");
+  });
+
+  it("matches /county-activity", () => {
+    const router = createMemoryRouter(routes, { initialEntries: ["/county-activity"] });
+    const matches = router.state.matches;
+    const ids = matches.map((m) => m.route.id).filter((id): id is string => typeof id === "string");
+    expect(ids).not.toContain("not-found");
   });
 
   it("unknown paths match the not-found route", () => {

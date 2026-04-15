@@ -1,3 +1,4 @@
+import "maplibre-gl/dist/maplibre-gl.css";
 import { Link, Outlet, useMatch, useParams } from "react-router";
 import { useParcelData } from "./hooks/useParcelData";
 import { useAllParcels } from "./hooks/useAllParcels";
