@@ -58,9 +58,13 @@ export interface SpatialContextPanelProps {
 
 export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
   const navigate = useNavigate();
-  const [collapsed, setCollapsed] = useState<boolean>(
-    () => localStorage.getItem(COLLAPSE_KEY) === "true",
-  );
+  const [collapsed, setCollapsed] = useState<boolean>(() => {
+    const persisted = localStorage.getItem(COLLAPSE_KEY);
+    if (persisted !== null) return persisted === "true";
+    // Default collapsed on mobile-width viewports when the user has no
+    // expressed preference yet.
+    return typeof window !== "undefined" && window.innerWidth < 768;
+  });
 
   const subject = useMemo(
     () =>
