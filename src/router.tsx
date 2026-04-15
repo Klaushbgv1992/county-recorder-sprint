@@ -17,6 +17,10 @@ import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { PipelineDashboard } from "./components/PipelineDashboard";
+import { StaffWorkbench } from "./components/StaffWorkbench";
+import { NameFilteredSearch } from "./components/NameFilteredSearch";
+import { CuratorQueue } from "./components/CuratorQueue";
+import { StaffParcelView } from "./components/StaffParcelView";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -370,6 +374,26 @@ export const routes: RouteObject[] = [
         id: "pipeline",
         path: "pipeline",
         element: <PipelineDashboard />,
+      },
+      {
+        id: "staff",
+        path: "staff",
+        element: <StaffWorkbench />,
+      },
+      {
+        id: "staff-search",
+        path: "staff/search",
+        element: <NameFilteredSearch />,
+      },
+      {
+        id: "staff-queue",
+        path: "staff/queue",
+        element: <CuratorQueue />,
+      },
+      {
+        id: "staff-parcel",
+        path: "staff/parcel/:apn",
+        element: <StaffParcelView />,
       },
       {
         id: "not-found",
