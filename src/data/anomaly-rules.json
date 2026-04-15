@@ -1,0 +1,76 @@
+{
+  "rules": [
+    {
+      "rule_id": "R1",
+      "name": "Same-day transaction cluster",
+      "version": "1.0",
+      "severity": "info",
+      "title_template": "Same-day transaction detected",
+      "description_template": "Instruments {a} and {b} were recorded on {date}. Shared parties suggest a linked transaction (e.g., purchase-money DOT).",
+      "examiner_action_template": "No action — grouping is informational. Confirm the DOT secures the same-day deed."
+    },
+    {
+      "rule_id": "R2",
+      "name": "Open DOT past expected release window",
+      "version": "1.0",
+      "severity": "high",
+      "title_template": "Open lien older than typical residential term",
+      "description_template": "DOT {a} recorded {date} (lifecycle {lc}) remains open after {years} years. Typical residential refinance or payoff would have generated a release by now.",
+      "examiner_action_template": "Request payoff from current beneficiary. Verify lifecycle against the county's internal cross-parcel name search."
+    },
+    {
+      "rule_id": "R3",
+      "name": "MERS-as-nominee beneficiary",
+      "version": "1.0",
+      "severity": "medium",
+      "title_template": "MERS beneficiary — note may have transferred outside public record",
+      "description_template": "DOT {a} names MERS as beneficiary as nominee for {lender}. Release was executed by {releaser}, not {lender} directly. The note may have transferred via MERS outside the public record.",
+      "examiner_action_template": "Confirm chain of custody for the note via MERS Milestone Report or direct payoff request. Assignment may be unrecorded."
+    },
+    {
+      "rule_id": "R4",
+      "name": "Assignment chain break",
+      "version": "1.0",
+      "severity": "medium",
+      "title_template": "Release by entity other than original beneficiary",
+      "description_template": "DOT {a} originated with {originator} as beneficiary. Release {b} executed by {releaser}. No recorded assignment bridges the two.",
+      "examiner_action_template": "Request assignment documentation or accept MERS transfer. Flag for title-policy exception if unresolved."
+    },
+    {
+      "rule_id": "R5",
+      "name": "Grantor is trust entity",
+      "version": "1.0",
+      "severity": "info",
+      "title_template": "Grantor is a trust",
+      "description_template": "Deed {a} conveys from {trust_name}. Trust conveyances require verification of trustee authority.",
+      "examiner_action_template": "Obtain trust certification or certificate of trust. Verify trustee signed in representative capacity."
+    },
+    {
+      "rule_id": "R6",
+      "name": "Root plat unrecoverable via public API",
+      "version": "1.0",
+      "severity": "info",
+      "title_template": "Parent plat not recoverable via public API",
+      "description_template": "Subdivision plat {a} references parent plat {parent_ref} which is not retrievable through the Maricopa public API. See hunt log at docs/hunt-log-known-gap-2.md.",
+      "examiner_action_template": "Legal description is adequate for commitment purposes. Parent-plat reference preserved for chain audit."
+    },
+    {
+      "rule_id": "R7",
+      "name": "Same-name contamination suppressed",
+      "version": "1.0",
+      "severity": "info",
+      "title_template": "Same-name instruments suppressed by parcel attribution",
+      "description_template": "{count} instrument(s) returned by public name search matched parcel owner name but did not satisfy parcel-attribution rules (Decision #26). Suppressed from chain.",
+      "examiner_action_template": "No action — curator confirmed these belong to other parcels owned by same party."
+    },
+    {
+      "rule_id": "R8",
+      "name": "Chain stale",
+      "version": "1.0",
+      "severity": "low",
+      "title_template": "Chain shows no activity for {years} years",
+      "description_template": "Last recorded instrument for parcel {apn} was on {last_date}. Typical residential parcels see refinance or sale activity every 5–10 years.",
+      "examiner_action_template": "Not a defect. Verify current ownership has not changed by confirming assessor record matches last deed grantee."
+    }
+  ]
+}
