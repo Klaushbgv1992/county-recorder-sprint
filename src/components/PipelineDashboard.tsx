@@ -10,15 +10,16 @@ const pipelineState = state as unknown as PipelineState;
 
 function formatAsOf(iso: string): string {
   const d = new Date(iso);
-  return d.toLocaleString("en-US", {
+  const formatted = d.toLocaleString("en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
     day: "numeric",
     hour: "numeric",
     minute: "2-digit",
-    timeZoneName: "short",
+    timeZone: "America/Phoenix",
   });
+  return `${formatted} MST (Arizona time)`;
 }
 
 function daysBetween(a: string, b: string): number {
