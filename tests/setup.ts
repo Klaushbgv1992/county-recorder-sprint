@@ -22,6 +22,8 @@ function makeStoragePolyfill(): Storage {
 }
 
 function installStorage(name: "localStorage" | "sessionStorage") {
+  // Guard for future environment: "node" test suites where window is absent.
+  if (typeof window === "undefined") return;
   const existing = (globalThis as unknown as Record<string, Storage>)[name];
   if (existing && typeof existing.getItem === "function") return;
   const polyfill = makeStoragePolyfill();

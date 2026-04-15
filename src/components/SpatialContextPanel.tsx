@@ -6,6 +6,7 @@ import subdivisionPlats from "../data/subdivision-plats.json";
 import adjacentParcels from "../data/adjacent-parcels.json";
 import {
   markerForInstrument,
+  titleForIcon,
   type MarkerInput,
   type MarkerPosition,
 } from "../logic/instrument-markers";
@@ -207,13 +208,7 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
                   }
                 >
                   <span
-                    title={
-                      m.icon === "plat"
-                        ? "Subdivision plat"
-                        : m.icon === "correction"
-                          ? "Affidavit of correction"
-                          : "Instrument"
-                    }
+                    title={titleForIcon(m.icon)}
                     className="inline-block w-4 h-4 rounded-full bg-slate-900 border-2 border-white shadow"
                   />
                 </Marker>
