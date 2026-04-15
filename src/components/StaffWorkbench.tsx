@@ -53,11 +53,16 @@ export function StaffWorkbench() {
           value={fresh.curator}
           note={`index ${fresh.index} · OCR ${fresh.ocr}`}
         />
-        <Card
-          label="Recent audit activity"
-          value="0"
-          note="Session-only; accept/reject actions append here"
-        />
+        <div className="border border-gray-200 rounded-lg p-4 bg-white">
+          <div className="text-xs font-medium text-gray-500 uppercase tracking-wide">
+            Session audit log
+          </div>
+          <div className="text-xs text-gray-600 mt-2 leading-snug">
+            Actions on /staff/queue and /staff/parcel/:apn append to a per-page
+            session log. Production: signed database entries with actor
+            identity.
+          </div>
+        </div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
