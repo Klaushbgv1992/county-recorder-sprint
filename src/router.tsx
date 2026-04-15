@@ -19,6 +19,11 @@ import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
 import { TransactionWizard } from "./components/TransactionWizard";
+import { PipelineDashboard } from "./components/PipelineDashboard";
+import { StaffWorkbench } from "./components/StaffWorkbench";
+import { NameFilteredSearch } from "./components/NameFilteredSearch";
+import { CuratorQueue } from "./components/CuratorQueue";
+import { StaffParcelView } from "./components/StaffParcelView";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -360,6 +365,31 @@ export const routes: RouteObject[] = [
         id: "commitment-new",
         path: "parcel/:apn/commitment/new",
         element: <TransactionWizard />,
+      },
+      {
+        id: "pipeline",
+        path: "pipeline",
+        element: <PipelineDashboard />,
+      },
+      {
+        id: "staff",
+        path: "staff",
+        element: <StaffWorkbench />,
+      },
+      {
+        id: "staff-search",
+        path: "staff/search",
+        element: <NameFilteredSearch />,
+      },
+      {
+        id: "staff-queue",
+        path: "staff/queue",
+        element: <CuratorQueue />,
+      },
+      {
+        id: "staff-parcel",
+        path: "staff/parcel/:apn",
+        element: <StaffParcelView />,
       },
       {
         id: "not-found",

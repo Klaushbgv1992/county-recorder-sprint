@@ -1,0 +1,44 @@
+[
+  {
+    "id": "an-001",
+    "parcel_apn": "304-78-386",
+    "severity": "high",
+    "title": "Instrument 20210075858 beneficiary mismatch",
+    "description": "Release executed by Wells Fargo via CAS Nationwide, but 2013 DOT beneficiary is MERS as nominee for VIP Mortgage. No recorded assignment bridges the gap — curator sign-off required before publishing as a clean lifecycle pair."
+  },
+  {
+    "id": "an-002",
+    "parcel_apn": "304-77-689",
+    "severity": "high",
+    "title": "HOGUE lc-003 release candidate not yet located",
+    "description": "2015 DOT (20150516730) has no matched release in the parcel-local corpus. Cross-parcel release hunt is available as a staff-only escalation path before flagging for title plant comparison."
+  },
+  {
+    "id": "an-003",
+    "parcel_apn": "304-78-386",
+    "severity": "medium",
+    "title": "Same-name contamination: POPHAM C on 999-99-00x lots",
+    "description": "Name-index search for POPHAM CHRISTOPHER returns 9 instruments outside the curated parcel. Phase 3 curation suppressed these from the public chain-of-title but they remain visible in the staff workbench for investigation."
+  },
+  {
+    "id": "an-004",
+    "parcel_apn": "304-77-689",
+    "severity": "medium",
+    "title": "HOGUE same-name candidates (3 instruments)",
+    "description": "Three instruments on unrelated parcels (301-12-001, 402-55-033, 510-88-021) include HOGUE JASON or HOGUE MICHELE but are not on 304-77-689's chain. Suppressed from public view; curator should confirm they stay suppressed."
+  },
+  {
+    "id": "an-005",
+    "parcel_apn": "304-78-386",
+    "severity": "low",
+    "title": "Trust name truncation recovered via OCR (20130183449)",
+    "description": "Public API returned THE BRIAN J. AND TANYA R. MADISON LIVIN (53-char truncation). OCR recovered full name plus trust execution date. Provenance tag is OCR — curator should spot-check the recovered value before publishing."
+  },
+  {
+    "id": "an-006",
+    "parcel_apn": "304-78-386",
+    "severity": "low",
+    "title": "lc-004 plat cross-reference to Book 553 Page 15 unresolved",
+    "description": "Seville Parcel 3 final plat (20010093192) resubdivides Book 553 Page 15 (Seville Tract H), but the master plat's recording number is not locatable via the public API. Hunt log promoted to demo asset; no further curator action required."
+  }
+]

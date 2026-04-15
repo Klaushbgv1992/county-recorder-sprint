@@ -136,6 +136,29 @@ describe("route table", () => {
     });
   });
 
+  it("matches /pipeline", () => {
+    expect(matchIds("/pipeline")).toContain("pipeline");
+  });
+
+  it("matches /staff", () => {
+    expect(matchIds("/staff")).toContain("staff");
+  });
+
+  it("matches /staff/search", () => {
+    expect(matchIds("/staff/search")).toContain("staff-search");
+  });
+
+  it("matches /staff/queue", () => {
+    expect(matchIds("/staff/queue")).toContain("staff-queue");
+  });
+
+  it("matches /staff/parcel/:apn", () => {
+    expect(matchIds("/staff/parcel/304-78-386")).toContain("staff-parcel");
+    expect(matchParams("/staff/parcel/304-78-386")).toEqual({
+      apn: "304-78-386",
+    });
+  });
+
   it("unknown paths match the not-found route", () => {
     expect(matchIds("/totally/bogus/path")).toContain("not-found");
   });
