@@ -111,7 +111,8 @@ beat (see `docs/demo-script.md`).
      borrower, the institutional name is the lender) plus OCR fallback
      on the PDF body for edge cases.
 
-9. **Same-day transaction linking is asserted, not inferred.**
+9. ~~**Same-day transaction linking is asserted, not inferred.**~~
+   > **Closed in S5** — `src/logic/same-day-group-inferrer.ts` via commit on `claude/keen-bassi`.
    - *What's missing:* An automated "these two instruments are part of
      a single transaction" signal. The prototype sets `same_day_group`
      by hand in each instrument JSON.
@@ -171,8 +172,9 @@ beat (see `docs/demo-script.md`).
       adding support for additional codes is a lexicon update, not a
       re-architecture.
 
-14. **Examiner actions are session-only — no write-back to
-    `src/data/links.json`.**
+14. ~~**Examiner actions are session-only — no write-back to
+    `src/data/links.json`.**~~
+    > **Closed in S5** — `src/hooks/useExaminerActions.ts` via commit on `claude/keen-bassi`.
     - *What's missing:* Accept / Reject on a candidate release, accept
       / reject / unresolved on an existing link, and lifecycle-status
       override all live in React `useState` (see
@@ -215,7 +217,8 @@ beat (see `docs/demo-script.md`).
       not an inline button. The prototype documents this as a feature
       of the curation discipline, not an omission.
 
-16. **Schedule B-I (Requirements) is not generated.**
+16. ~~**Schedule B-I (Requirements) is not generated.**~~
+    > **Partially addressed in S5** — Schedule B-I rendering was implemented in `src/logic/commitment-pdf.ts` but remains transaction-input-scoped (not auto-generated on export without a wizard step).
     - *What's missing:* The exported commitment PDF emits Schedule A
       and Schedule B-II only. There is no Schedule B-I (Requirements)
       section.
@@ -238,7 +241,8 @@ beat (see `docs/demo-script.md`).
       depends on transaction inputs (effective date, buyer, lender,
       title agent) that this prototype does not model.
 
-17. **Encumbrance panel lifecycle header hardcodes "DOT:" and "Deed of Trust" labels.**
+17. ~~**Encumbrance panel lifecycle header hardcodes "DOT:" and "Deed of Trust" labels.**~~
+    > **Closed in S5** — `src/components/EncumbranceLifecycle.tsx` via commit on `claude/keen-bassi`.
     - *What's missing:* `src/components/EncumbranceLifecycle.tsx`
       renders the lifecycle header and subheader with `DOT: <number>`
       and `Deed of Trust` strings that were hardcoded when all
@@ -257,7 +261,8 @@ beat (see `docs/demo-script.md`).
       was not modified there; tracked here so the next branch
       touching `EncumbranceLifecycle.tsx` can fix it cleanly.
 
-18. **Provenance vocabulary drift between UI and PDF.**
+18. ~~**Provenance vocabulary drift between UI and PDF.**~~
+    > **Closed in S5** — `src/logic/provenance-vocab.ts` via commit on `claude/keen-bassi`.
     - *What's missing:* The Proof Drawer renders provenance as
       confidence percentages (`"County API 100%"`, `"OCR 97%"`,
       `"Hand-Curated 100%"`, `"Matcher 88%"`); the exported
@@ -279,7 +284,8 @@ beat (see `docs/demo-script.md`).
       Owned by Terminal 4 in the moat-narrative pass — surfaced here
       as concrete evidence of where surface alignment breaks today.
 
-19. **`formatProvenanceTag` silently coerces unknown values to "algo".**
+19. ~~**`formatProvenanceTag` silently coerces unknown values to "algo".**~~
+    > **Closed in S5** — `src/logic/format-provenance-tag.ts` via commit on `claude/keen-bassi`.
     - *What's missing:* `src/logic/format-provenance-tag.ts` uses a
       non-exhaustive ternary that defaults anything not explicitly
       matched to `"algo"`. A future provenance type added to the
