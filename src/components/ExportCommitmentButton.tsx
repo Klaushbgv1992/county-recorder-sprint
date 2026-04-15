@@ -6,6 +6,7 @@ import type {
   EncumbranceLifecycle,
   PipelineStatus,
 } from "../types";
+import type { BIItem, TransactionInputs } from "../types/commitment";
 import {
   buildCommitment,
   type CommitmentDocument,
@@ -23,6 +24,8 @@ export interface TriggerInput {
   closingImpactTemplates: ClosingImpactTemplate[];
   generatedAt: string;
   viewedInstrumentNumber?: string;
+  biItems?: BIItem[];
+  transactionInputs?: TransactionInputs;
   download: (blob: Blob, filename: string) => void;
 }
 
@@ -43,7 +46,10 @@ export function triggerCommitmentDownload(input: TriggerInput): TriggerResult {
     generatedAt: input.generatedAt,
     viewedInstrumentNumber: input.viewedInstrumentNumber,
   });
-  const blob = renderCommitmentPdf(doc);
+  const blob = renderCommitmentPdf(doc, {
+    biItems: input.biItems,
+    transactionInputs: input.transactionInputs,
+  });
   const apnNoDashes = input.parcel.apn.replace(/-/g, "");
   const filename = `commitment-${apnNoDashes}-${input.pipelineStatus.verified_through_date}.pdf`;
   input.download(blob, filename);
@@ -68,6 +74,9 @@ interface ButtonProps {
   lifecycles: EncumbranceLifecycle[];
   pipelineStatus: PipelineStatus;
   viewedInstrumentNumber?: string;
+  biItems?: BIItem[];
+  transactionInputs?: TransactionInputs;
+  label?: string;
 }
 
 export function ExportCommitmentButton(props: ButtonProps) {
@@ -81,6 +90,8 @@ export function ExportCommitmentButton(props: ButtonProps) {
       closingImpactTemplates: closingImpactTemplates as ClosingImpactTemplate[],
       generatedAt: new Date().toISOString(),
       viewedInstrumentNumber: props.viewedInstrumentNumber,
+      biItems: props.biItems,
+      transactionInputs: props.transactionInputs,
       download: browserDownload,
     });
   }, [
@@ -90,6 +101,8 @@ export function ExportCommitmentButton(props: ButtonProps) {
     props.lifecycles,
     props.pipelineStatus,
     props.viewedInstrumentNumber,
+    props.biItems,
+    props.transactionInputs,
   ]);
 
   const cls =
@@ -100,7 +113,7 @@ export function ExportCommitmentButton(props: ButtonProps) {
       className={cls}
       title="Download a PDF chain-and-encumbrance abstract for this parcel"
     >
-      Export Commitment for Parcel
+      {props.label ?? "Export Commitment for Parcel"}
     </button>
   );
 }

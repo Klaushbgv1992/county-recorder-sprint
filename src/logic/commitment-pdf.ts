@@ -2,6 +2,7 @@ import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import type { CommitmentDocument, ScheduleB2Row } from "./commitment-builder";
 import { formatProvenanceTag } from "./format-provenance-tag";
+import type { BIItem, TransactionInputs } from "../types/commitment";
 
 const MARGIN_X = 14;
 const PAGE_WIDTH_PT = 210;
@@ -10,7 +11,23 @@ const SUBHEADING_FONT_SIZE = 11;
 const BODY_FONT_SIZE = 10;
 const SMALL_FONT_SIZE = 8;
 
-export function renderCommitmentPdf(doc: CommitmentDocument): Blob {
+const TRANSACTION_TYPE_LABELS: Record<string, string> = {
+  purchase: "Purchase",
+  refinance: "Refinance",
+  second_dot: "2nd Deed of Trust",
+  heloc: "HELOC",
+  cash_sale: "Cash Sale",
+};
+
+export interface RenderCommitmentPdfOptions {
+  biItems?: BIItem[];
+  transactionInputs?: TransactionInputs;
+}
+
+export function renderCommitmentPdf(
+  doc: CommitmentDocument,
+  options: RenderCommitmentPdfOptions = {},
+): Blob {
   const pdf = new jsPDF({ unit: "mm", format: "a4" });
   let y = 18;
 
@@ -82,6 +99,10 @@ export function renderCommitmentPdf(doc: CommitmentDocument): Blob {
     columnStyles: { 0: { cellWidth: 38 }, 1: { cellWidth: "auto" } },
   });
   y = (pdf as unknown as { lastAutoTable: { finalY: number } }).lastAutoTable.finalY + 8;
+
+  if (options.biItems && options.biItems.length > 0) {
+    y = renderScheduleBI(pdf, options.biItems, options.transactionInputs, y);
+  }
 
   pdf.setFont("helvetica", "bold");
   pdf.setFontSize(SUBHEADING_FONT_SIZE);
@@ -225,4 +246,73 @@ function renderB2Row(pdf: jsPDF, row: ScheduleB2Row, startY: number): number {
 function rowLabelForRoot(row: ScheduleB2Row): string {
   if (row.status === "released") return "root (released)";
   return "root";
+}
+
+function renderScheduleBI(
+  pdf: jsPDF,
+  items: BIItem[],
+  inputs: TransactionInputs | undefined,
+  startY: number,
+): number {
+  let y = startY;
+
+  if (y > 260) {
+    pdf.addPage();
+    y = 18;
+  }
+
+  pdf.setFont("helvetica", "bold");
+  pdf.setFontSize(SUBHEADING_FONT_SIZE);
+  pdf.text("Schedule B-I \u2014 Requirements", MARGIN_X, y);
+  y += 5;
+
+  if (inputs) {
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(SMALL_FONT_SIZE);
+    const typeLabel =
+      TRANSACTION_TYPE_LABELS[inputs.transaction_type] ?? inputs.transaction_type;
+    const summaryParts = [
+      `Transaction: ${typeLabel}`,
+      `Effective: ${inputs.effective_date}`,
+      `Buyer/Borrower: ${inputs.buyer_or_borrower}`,
+      `Lender: ${inputs.new_lender ?? "\u2014"}`,
+    ];
+    const summaryLines = pdf.splitTextToSize(
+      summaryParts.join("  \u2022  "),
+      PAGE_WIDTH_PT - MARGIN_X * 2,
+    );
+    pdf.text(summaryLines, MARGIN_X, y);
+    y += summaryLines.length * 3.5 + 2;
+  } else {
+    y += 2;
+  }
+
+  items.forEach((item, idx) => {
+    if (y > 270) {
+      pdf.addPage();
+      y = 18;
+    }
+    const number = idx + 1;
+
+    pdf.setFont("helvetica", "normal");
+    pdf.setFontSize(BODY_FONT_SIZE);
+    const itemLines = pdf.splitTextToSize(
+      `${number}. ${item.text}`,
+      PAGE_WIDTH_PT - MARGIN_X * 2,
+    );
+    pdf.text(itemLines, MARGIN_X, y);
+    y += itemLines.length * 4;
+
+    pdf.setFont("helvetica", "italic");
+    pdf.setFontSize(SMALL_FONT_SIZE);
+    const whyLines = pdf.splitTextToSize(
+      `Why this item: ${item.why}`,
+      PAGE_WIDTH_PT - MARGIN_X * 2 - 4,
+    );
+    pdf.text(whyLines, MARGIN_X + 4, y);
+    y += whyLines.length * 3.5 + 3;
+  });
+
+  y += 4;
+  return y;
 }

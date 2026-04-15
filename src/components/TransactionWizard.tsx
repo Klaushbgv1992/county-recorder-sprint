@@ -5,6 +5,7 @@ import { loadParcelDataByApn, type ParcelData } from "../data-loader";
 import { detectAnomalies } from "../logic/anomaly-detector";
 import { generateScheduleBI } from "../logic/schedule-bi-generator";
 import { TransactionWizardStep3 } from "./TransactionWizardStep3";
+import { ExportCommitmentButton } from "./ExportCommitmentButton";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -198,20 +199,12 @@ function Step2({ inputs, setInputs, onBack, onNext }: Step2Props) {
 interface Step4Props {
   inputs: TransactionInputs;
   itemCount: number;
+  data: ParcelData;
+  biItems: BIItem[];
   onBack: () => void;
 }
 
-function Step4({ inputs, itemCount, onBack }: Step4Props) {
-  const handleExport = () => {
-    const message = `Exporting A + B-I (${itemCount} items) + B-II … PDF export will be wired in S3B.4.`;
-    // S3B.4 will replace this with a real exportCommitmentPdf({ ..., biItems }) call.
-    // eslint-disable-next-line no-console
-    console.log(message);
-    if (typeof window !== "undefined" && typeof window.alert === "function") {
-      window.alert(message);
-    }
-  };
-
+function Step4({ inputs, itemCount, data, biItems, onBack }: Step4Props) {
   const typeLabel =
     TRANSACTION_TYPES.find((t) => t.value === inputs.transaction_type)?.label ??
     inputs.transaction_type;
@@ -233,7 +226,7 @@ function Step4({ inputs, itemCount, onBack }: Step4Props) {
         <dt className="text-xs font-medium text-gray-500">B-I items</dt>
         <dd className="text-gray-800">{itemCount}</dd>
       </dl>
-      <div className="flex justify-between">
+      <div className="flex justify-between items-center">
         <button
           type="button"
           onClick={onBack}
@@ -241,13 +234,16 @@ function Step4({ inputs, itemCount, onBack }: Step4Props) {
         >
           Back
         </button>
-        <button
-          type="button"
-          onClick={handleExport}
-          className="px-4 py-2 text-sm font-medium bg-emerald-600 text-white rounded hover:bg-emerald-700"
-        >
-          Export Commitment PDF
-        </button>
+        <ExportCommitmentButton
+          parcel={data.parcel}
+          instruments={data.instruments}
+          links={data.links}
+          lifecycles={data.lifecycles}
+          pipelineStatus={data.pipelineStatus}
+          biItems={biItems}
+          transactionInputs={inputs}
+          label="Export Commitment PDF"
+        />
       </div>
     </section>
   );
@@ -365,6 +361,8 @@ export function TransactionWizard(): ReactElement {
         <Step4
           inputs={inputs as TransactionInputs}
           itemCount={biItems.length}
+          data={data}
+          biItems={biItems}
           onBack={() => setStep(3)}
         />
       )}
