@@ -1,0 +1,39 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "provenance": "manual_entry",
+    "source_note": "Hand-traced boundary polygon for Seville Parcel 3, sized to encompass the 10 hand-traced Seville lots in adjacent-parcels.json plus the POPHAM subject polygon. Coordinates are illustrative for the demo map, not survey-grade. Plat recording metadata (book/page/dedicator/dates/parent reference) comes from authoritative sources: the plat PDF 20010093192 and the R-005 hunt log.",
+    "captured_date": "2026-04-14"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "subdivision_id": "seville-parcel-3",
+        "display_name": "Seville Parcel 3",
+        "plat_instrument": "20010093192",
+        "plat_book": "554",
+        "plat_page": "19",
+        "dedicated_by": "SHEA HOMES",
+        "dedication_date": "2001-01-30",
+        "parent_plat_reference": "Book 553 Page 15 (Seville Tract H)",
+        "parent_plat_recoverable": false,
+        "parent_plat_hunt_log": "data/raw/R-005/hunt-log.md",
+        "provenance": "manual_entry",
+        "source": "Hand-traced boundary encompassing the hand-traced Seville Parcel 3 lots; plat metadata from authoritative sources."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [-111.72380, 33.24695],
+            [-111.72100, 33.24695],
+            [-111.72100, 33.24765],
+            [-111.72380, 33.24765],
+            [-111.72380, 33.24695]
+          ]
+        ]
+      }
+    }
+  ]
+}
