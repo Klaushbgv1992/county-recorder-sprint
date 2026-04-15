@@ -1,0 +1,207 @@
+[
+  {
+    "instrument_number": "20010093192",
+    "recording_date": "2001-02-07",
+    "document_type": "PLAT MAP",
+    "names": ["SHEA HOMES LIMITED PARTNERSHIP", "SEVILLE PARCEL 3"],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20010849180",
+    "recording_date": "2001-09-17",
+    "document_type": "AFFIDAVIT",
+    "names": ["SULLIVAN LARRY E", "SHEA HOMES LIMITED PARTNERSHIP"],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20130183449",
+    "recording_date": "2013-02-27",
+    "document_type": "WAR DEED",
+    "names": [
+      "MADISON BRIAN J",
+      "MADISON TANYA R",
+      "POPHAM CHRISTOPHER",
+      "POPHAM ASHLEY"
+    ],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20130183450",
+    "recording_date": "2013-02-27",
+    "document_type": "DEED TRST",
+    "names": [
+      "POPHAM CHRISTOPHER",
+      "POPHAM ASHLEY",
+      "V I P MORTGAGE INC",
+      "AMERICAN TITLE SERVICE AGENCY LLC",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC"
+    ],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20150516729",
+    "recording_date": "2015-07-17",
+    "document_type": "WAR DEED",
+    "names": ["LORANCE ROBERT S", "HOGUE JASON", "HOGUE MICHELE"],
+    "attributed_parcel_apn": "304-77-689",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20150516730",
+    "recording_date": "2015-07-17",
+    "document_type": "DEED TRST",
+    "names": [
+      "HOGUE JASON",
+      "HOGUE MICHELE",
+      "PINNACLE CAPITAL MORTGAGE LLC",
+      "SECURITY TITLE AGENCY",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC"
+    ],
+    "attributed_parcel_apn": "304-77-689",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20210057846",
+    "recording_date": "2021-01-19",
+    "document_type": "T FIN ST",
+    "names": ["POPHAM CHRISTOPHER", "SPWR USB 2013 2 LLC"],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20210057847",
+    "recording_date": "2021-01-19",
+    "document_type": "DEED TRST",
+    "names": [
+      "POPHAM CHRISTOPHER",
+      "POPHAM ASHLEY",
+      "BAY EQUITY LLC",
+      "OLD REPUBLIC TITLE INSURANCE AGENCY INC"
+    ],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20210075858",
+    "recording_date": "2021-01-22",
+    "document_type": "REL D/T",
+    "names": [
+      "WELLS FARGO HOME MORTGAGE",
+      "CAS NATIONWIDE TITLE CLEARING INC",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "V I P MORTGAGE INC",
+      "POPHAM CHRISTOPHER",
+      "POPHAM ASHLEY"
+    ],
+    "attributed_parcel_apn": "304-78-386",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20180443221",
+    "recording_date": "2018-06-14",
+    "document_type": "WAR DEED",
+    "names": ["HOGUE JASON", "KELLY BRIAN T"],
+    "attributed_parcel_apn": "301-12-001",
+    "suppressed_same_name_of": "304-77-689"
+  },
+  {
+    "instrument_number": "20190238771",
+    "recording_date": "2019-04-02",
+    "document_type": "QUIT CLAIM",
+    "names": ["HOGUE MICHELE", "HOGUE DANIEL"],
+    "attributed_parcel_apn": "402-55-033",
+    "suppressed_same_name_of": "304-77-689"
+  },
+  {
+    "instrument_number": "20220612045",
+    "recording_date": "2022-08-11",
+    "document_type": "AFFIDAVIT",
+    "names": ["HOGUE JASON", "HOGUE MICHELE"],
+    "attributed_parcel_apn": "510-88-021",
+    "suppressed_same_name_of": "304-77-689"
+  },
+  {
+    "instrument_number": "20160334521",
+    "recording_date": "2016-05-09",
+    "document_type": "WAR DEED",
+    "names": ["POPHAM C", "ANDERSON MARY"],
+    "attributed_parcel_apn": "999-99-001",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20170127884",
+    "recording_date": "2017-02-23",
+    "document_type": "DEED TRST",
+    "names": ["POPHAM CHRIS", "GUARDIAN MORTGAGE LLC"],
+    "attributed_parcel_apn": "999-99-002",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20180998112",
+    "recording_date": "2018-12-03",
+    "document_type": "REL D/T",
+    "names": ["POPHAM CHRISTOPHER", "GUARDIAN MORTGAGE LLC"],
+    "attributed_parcel_apn": "999-99-002",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20190045623",
+    "recording_date": "2019-01-18",
+    "document_type": "WAR DEED",
+    "names": ["POPHAM CHRISTOPHER J", "POPHAM LINDA"],
+    "attributed_parcel_apn": "999-99-003",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20190445112",
+    "recording_date": "2019-07-08",
+    "document_type": "QUIT CLAIM",
+    "names": ["POPHAM C", "GREENFIELD HOLDINGS LLC"],
+    "attributed_parcel_apn": "999-99-004",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20200112008",
+    "recording_date": "2020-02-14",
+    "document_type": "DEED TRST",
+    "names": ["POPHAM CHRISTOPHER A", "SUMMIT BANK NA"],
+    "attributed_parcel_apn": "999-99-005",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20200887444",
+    "recording_date": "2020-11-30",
+    "document_type": "WAR DEED",
+    "names": ["POPHAM CHRISTOPHER", "WEST VALLEY TRUST CO"],
+    "attributed_parcel_apn": "999-99-006",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20210334901",
+    "recording_date": "2021-05-19",
+    "document_type": "DEED TRST",
+    "names": ["POPHAM CHRIS", "DESERT RIDGE BANK"],
+    "attributed_parcel_apn": "999-99-007",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20221120098",
+    "recording_date": "2022-11-02",
+    "document_type": "AFFIDAVIT",
+    "names": ["POPHAM CHRISTOPHER J"],
+    "attributed_parcel_apn": "999-99-008",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20230214557",
+    "recording_date": "2023-03-15",
+    "document_type": "WAR DEED",
+    "names": ["POPHAM CHRISTOPHER", "ZOLNIKOV GRACE"],
+    "attributed_parcel_apn": "999-99-009",
+    "suppressed_same_name_of": null
+  }
+]
