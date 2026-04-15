@@ -211,3 +211,31 @@ export const LifecyclesFile = z.object({
   pipeline_status: PipelineStatus,
   lifecycles: z.array(EncumbranceLifecycle),
 });
+
+// -- Anomaly Findings --
+
+export const AnomalyFindingSchema = z.object({
+  rule_id: z.string(),
+  parcel_apn: z.string(),
+  severity: z.enum(["high", "medium", "low", "info"]),
+  title: z.string(),
+  description: z.string(),
+  evidence_instruments: z.array(z.string()),
+  examiner_action: z.string(),
+  detection_provenance: z.object({
+    rule_name: z.string(),
+    rule_version: z.string(),
+    confidence: z.number().min(0).max(1),
+  }),
+});
+
+// -- Commitment B-II Items --
+
+export const BIItemSchema = z.object({
+  item_id: z.string(),
+  text: z.string(),
+  why: z.string(),
+  template_id: z.string(),
+  origin_anomaly_id: z.string().nullable(),
+  origin_lifecycle_id: z.string().nullable(),
+});
