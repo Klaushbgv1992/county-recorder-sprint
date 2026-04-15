@@ -1,0 +1,80 @@
+{
+  "type": "FeatureCollection",
+  "metadata": {
+    "provenance": "manual_entry",
+    "source_note": "Hand-traced approximate lot polygons around POPHAM (304-78-386) in Seville Parcel 3 and HOGUE (304-77-689) in Shamrock Estates. Coordinates are illustrative for the demo map, not survey-grade. Plan Task 1 ArcGIS URL returned 400; per CLAUDE.md constraint 'manual curation preferred over flaky automation', pivoted to hand-tracing. Center of Seville subdivision approximated from Gilbert AZ E Palmer St geocode (~33.2470, -111.7230).",
+    "captured_date": "2026-04-14"
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-381", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3650 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72360, 33.24705], [-111.72320, 33.24705], [-111.72320, 33.24725], [-111.72360, 33.24725], [-111.72360, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-383", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3658 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72320, 33.24705], [-111.72280, 33.24705], [-111.72280, 33.24725], [-111.72320, 33.24725], [-111.72320, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-385", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3666 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72280, 33.24705], [-111.72240, 33.24705], [-111.72240, 33.24725], [-111.72280, 33.24725], [-111.72280, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-387", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3682 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72200, 33.24705], [-111.72160, 33.24705], [-111.72160, 33.24725], [-111.72200, 33.24725], [-111.72200, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-389", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3690 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72160, 33.24705], [-111.72120, 33.24705], [-111.72120, 33.24725], [-111.72160, 33.24725], [-111.72160, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-370", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3655 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72340, 33.24735], [-111.72300, 33.24735], [-111.72300, 33.24755], [-111.72340, 33.24755], [-111.72340, 33.24735]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-372", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3663 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72300, 33.24735], [-111.72260, 33.24735], [-111.72260, 33.24755], [-111.72300, 33.24755], [-111.72300, 33.24735]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-374", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3671 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72260, 33.24735], [-111.72220, 33.24735], [-111.72220, 33.24755], [-111.72260, 33.24755], [-111.72260, 33.24735]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-376", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3679 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72220, 33.24735], [-111.72180, 33.24735], [-111.72180, 33.24755], [-111.72220, 33.24755], [-111.72220, 33.24735]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-78-378", "SUBDIVISION": "SEVILLE PARCEL 3", "SITUS_ADDRESS": "3687 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72180, 33.24735], [-111.72140, 33.24735], [-111.72140, 33.24755], [-111.72180, 33.24755], [-111.72180, 33.24735]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-77-685", "SUBDIVISION": "SHAMROCK ESTATES PH 2A", "SITUS_ADDRESS": "2707 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72620, 33.24705], [-111.72580, 33.24705], [-111.72580, 33.24725], [-111.72620, 33.24725], [-111.72620, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-77-687", "SUBDIVISION": "SHAMROCK ESTATES PH 2A", "SITUS_ADDRESS": "2711 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72580, 33.24705], [-111.72540, 33.24705], [-111.72540, 33.24725], [-111.72580, 33.24725], [-111.72580, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-77-691", "SUBDIVISION": "SHAMROCK ESTATES PH 2A", "SITUS_ADDRESS": "2719 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72500, 33.24705], [-111.72460, 33.24705], [-111.72460, 33.24725], [-111.72500, 33.24725], [-111.72500, 33.24705]]] }
+    },
+    {
+      "type": "Feature",
+      "properties": { "APN": "304-77-693", "SUBDIVISION": "SHAMROCK ESTATES PH 2A", "SITUS_ADDRESS": "2723 E PALMER ST" },
+      "geometry": { "type": "Polygon", "coordinates": [[[-111.72460, 33.24705], [-111.72420, 33.24705], [-111.72420, 33.24725], [-111.72460, 33.24725], [-111.72460, 33.24705]]] }
+    }
+  ]
+}

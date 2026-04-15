@@ -17,6 +17,7 @@ import { ProofDrawer } from "./components/ProofDrawer";
 import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
+import { SpatialContextPanel } from "./components/SpatialContextPanel";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -186,12 +187,17 @@ function ChainRouteInner({ apn }: { apn: string }) {
   return (
     <SplitPane
       main={
-        <ChainOfTitle
-          parcel={data.parcel}
-          instruments={data.instruments}
-          links={data.links}
-          onOpenDocument={openDrawer}
-        />
+        <div className="flex gap-4">
+          <div className="flex-1 min-w-0">
+            <ChainOfTitle
+              parcel={data.parcel}
+              instruments={data.instruments}
+              links={data.links}
+              onOpenDocument={openDrawer}
+            />
+          </div>
+          <SpatialContextPanel apn={apn} />
+        </div>
       }
       drawer={drawerNode}
     />
@@ -259,19 +265,24 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
   return (
     <SplitPane
       main={
-        <EncumbranceLifecycle
-          parcel={data.parcel}
-          instruments={data.instruments}
-          links={data.links}
-          lifecycles={data.lifecycles}
-          pipelineStatus={data.pipelineStatus}
-          linkActions={examiner.linkActions}
-          lifecycleOverrides={examiner.lifecycleOverrides}
-          onSetLinkAction={examiner.setLinkAction}
-          onSetLifecycleOverride={examiner.setLifecycleOverride}
-          onOpenDocument={openDrawer}
-          headerActions={exportButton}
-        />
+        <div className="flex gap-4">
+          <div className="flex-1 min-w-0">
+            <EncumbranceLifecycle
+              parcel={data.parcel}
+              instruments={data.instruments}
+              links={data.links}
+              lifecycles={data.lifecycles}
+              pipelineStatus={data.pipelineStatus}
+              linkActions={examiner.linkActions}
+              lifecycleOverrides={examiner.lifecycleOverrides}
+              onSetLinkAction={examiner.setLinkAction}
+              onSetLifecycleOverride={examiner.setLifecycleOverride}
+              onOpenDocument={openDrawer}
+              headerActions={exportButton}
+            />
+          </div>
+          <SpatialContextPanel apn={apn} />
+        </div>
       }
       drawer={drawerNode}
     />
