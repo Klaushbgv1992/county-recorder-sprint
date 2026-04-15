@@ -9,6 +9,7 @@ const RELEASE_CODES = /RELEASE|RECONVEYANCE|REL D\/T/i;
 export interface HuntInput {
   lifecycle_id: string;
   parcel_apn: string;
+  // Borrower full names in "LASTNAME FIRSTNAME" order (Arizona recorder convention).
   borrower_names: string[];
 }
 
@@ -31,8 +32,10 @@ export function huntCrossParcelRelease(input: HuntInput): HuntResult {
       r.attributed_parcel_apn !== input.parcel_apn,
   );
   const surnames = new Set(normalized.map((n) => n.split(" ")[0]));
-  const scannedPartyCount = rows.filter((r) =>
-    r.names.some((n) => surnames.has(n.split(" ")[0]?.toUpperCase())),
+  const scannedPartyCount = rows.filter(
+    (r) =>
+      r.attributed_parcel_apn !== input.parcel_apn &&
+      r.names.some((n) => surnames.has(n.split(" ")[0]?.toUpperCase())),
   ).length;
   return {
     lifecycle_id: input.lifecycle_id,
