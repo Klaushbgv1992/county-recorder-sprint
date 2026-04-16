@@ -12,6 +12,10 @@ import lifecyclesRaw from "../data/lifecycles.json";
 import { MapPopup } from "./MapPopup";
 import { MapLegend } from "./MapLegend";
 import { MapZoomControls } from "./MapZoomControls";
+import type { OverlayName } from "../logic/overlay-state";
+import { EncumbranceOverlayLayer } from "./map/EncumbranceOverlayLayer";
+import { AnomalyOverlayLayer } from "./map/AnomalyOverlayLayer";
+import { LastDeedOverlayLayer } from "./map/LastDeedOverlayLayer";
 
 export interface HighlightedParcel {
   apn: string;
@@ -22,6 +26,14 @@ export interface HighlightedParcel {
 export interface CountyMapProps {
   highlightedParcels: HighlightedParcel[];
   onParcelClick: (apn: string) => void;
+  // New optional props (defaults ensure backward compat with existing call sites)
+  assessorPolygons?: GeoJSON.FeatureCollection;
+  cachedApns?: Set<string>;
+  overlays?: Set<OverlayName>;
+  onAssessorParcelClick?: (apn: string) => void;
+  lifecycles?: Array<{ id: string; root_instrument: string; status: string }>;
+  anomalies?: Array<{ parcel_apn: string; severity: "high" | "medium" | "low" }>;
+  instrumentToApn?: Map<string, string>;
 }
 
 // Derived from midpoint of POPHAM (304-78-386) ↔ HOA tract (304-78-409) centroids.
@@ -122,6 +134,13 @@ function MobileBoundsFitter({ apnsKey }: MobileBoundsFitterProps) {
 export function CountyMap({
   highlightedParcels,
   onParcelClick,
+  assessorPolygons = { type: "FeatureCollection", features: [] } as GeoJSON.FeatureCollection,
+  cachedApns = new Set<string>(),
+  overlays = new Set<OverlayName>(),
+  onAssessorParcelClick = () => {},
+  lifecycles,
+  anomalies,
+  instrumentToApn,
 }: CountyMapProps) {
   const { isMobile } = useViewport();
   const [hoveredApn, setHoveredApn] = useState<string | null>(null);
@@ -137,10 +156,16 @@ export function CountyMap({
     return m;
   }, []);
 
-  const interactiveLayerIds = useMemo(
-    () => highlightedParcels.map((p) => `parcel-${p.apn}-fill`),
-    [highlightedParcels],
-  );
+  const interactiveLayerIds = useMemo(() => {
+    const ids: string[] = [];
+    // Curated parcels first (highest priority)
+    for (const p of highlightedParcels) ids.push(`parcel-${p.apn}-fill`);
+    // Cached-neighbor hit target
+    ids.push("cached-neighbors-fill-hit");
+    // Assessor-only polygons last
+    ids.push("assessor-only-fill");
+    return ids;
+  }, [highlightedParcels]);
 
   const apnFromEvent = (e: MapLayerMouseEvent): string | null => {
     const feat = e.features?.[0];
@@ -152,10 +177,22 @@ export function CountyMap({
 
   const handleClick = useCallback(
     (e: MapLayerMouseEvent) => {
-      const apn = apnFromEvent(e);
-      if (apn) onParcelClick(apn);
+      const feat = e.features?.[0];
+      if (!feat) return;
+      const layerId = feat.layer?.id ?? "";
+      // Curated parcel click
+      const curatedMatch = layerId.match(/^parcel-(.+)-fill$/);
+      if (curatedMatch) {
+        onParcelClick(curatedMatch[1]);
+        return;
+      }
+      // Assessor or cached-neighbor click
+      const apn = (feat.properties as { APN_DASH?: string } | null)?.APN_DASH;
+      if (apn && (layerId === "assessor-only-fill" || layerId === "cached-neighbors-fill-hit")) {
+        onAssessorParcelClick(apn);
+      }
     },
-    [onParcelClick],
+    [onParcelClick, onAssessorParcelClick],
   );
 
   const handleMouseMove = useCallback((e: MapLayerMouseEvent) => {
@@ -274,6 +311,54 @@ export function CountyMap({
             </Source>
           );
         })}
+
+        {/* Assessor-only polygons — visible at zoom >= 13 */}
+        <Source id="assessor-only" type="geojson" data={assessorPolygons}>
+          <Layer
+            id="assessor-only-fill"
+            type="fill"
+            minzoom={13}
+            paint={{ "fill-color": "#cbd5e1", "fill-opacity": 0.08 }}
+          />
+          <Layer
+            id="assessor-only-outline"
+            type="line"
+            minzoom={13}
+            paint={{ "line-color": "#64748b", "line-width": 0.5 }}
+          />
+        </Source>
+
+        {/* Cached-neighbor polygons — always visible, outline-only + invisible hit target */}
+        <Source
+          id="cached-neighbors"
+          type="geojson"
+          data={{
+            type: "FeatureCollection",
+            features: (assessorPolygons.features as GeoJSON.Feature[]).filter(
+              (f) => cachedApns.has((f.properties as { APN_DASH?: string } | null)?.APN_DASH ?? ""),
+            ),
+          }}
+        >
+          <Layer id="cached-neighbors-fill-hit" type="fill" paint={{ "fill-color": "#3b82f6", "fill-opacity": 0.01 }} />
+          <Layer id="cached-neighbors-outline" type="line" paint={{ "line-color": "#3b82f6", "line-width": 2 }} />
+        </Source>
+
+        {/* Overlay layers — render on top, never in interactiveLayerIds */}
+        <EncumbranceOverlayLayer
+          active={overlays.has("encumbrance")}
+          lifecycles={lifecycles ?? LIFECYCLES}
+          instrumentToApn={instrumentToApn ?? new Map()}
+          parcelsGeo={assessorPolygons}
+        />
+        <AnomalyOverlayLayer
+          active={overlays.has("anomaly")}
+          anomalies={anomalies ?? []}
+          parcelsGeo={assessorPolygons}
+        />
+        <LastDeedOverlayLayer
+          active={overlays.has("lastdeed")}
+          geojson={assessorPolygons}
+        />
 
         {popupData && popupCoord && (
           <MapPopup
