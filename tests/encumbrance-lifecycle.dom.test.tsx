@@ -121,10 +121,10 @@ describe("EncumbranceLifecycle UI wiring", () => {
     await user.click(expandBtn);
     // Moat-talking-point text from buildEmptyStateRationale + parcel data.
     expect(
-      screen.getByText(/Matcher ran against 0 reconveyances in/i),
+      screen.getByText(/Cross-parcel scan: scanned/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/Shamrock Estates Phase 2A corpus/i),
+      screen.getByText(/Shamrock Estates Phase 2A parcel corpus/i),
     ).toBeInTheDocument();
     expect(
       screen.getByText(/county-internal full-name scan closes this gap/i),
