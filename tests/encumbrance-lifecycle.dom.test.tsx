@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import { EncumbranceLifecycle } from "../src/components/EncumbranceLifecycle";
 import { loadParcelDataByApn } from "../src/data-loader";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 const POPHAM_APN = "304-78-386";
 const HOGUE_APN = "304-77-689";
@@ -22,20 +23,22 @@ function renderEncumbrance(
   const onSetLifecycleOverride = vi.fn();
   const onOpenDocument = vi.fn();
   const utils = render(
-    <EncumbranceLifecycle
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      linkActions={Object.fromEntries(
-        links.map((l) => [l.id, l.examiner_action]),
-      )}
-      lifecycleOverrides={{}}
-      onSetLinkAction={onSetLinkAction}
-      onSetLifecycleOverride={onSetLifecycleOverride}
-      onOpenDocument={onOpenDocument}
-    />,
+    <TerminologyProvider>
+      <EncumbranceLifecycle
+        parcel={data.parcel}
+        instruments={data.instruments}
+        links={links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
+        linkActions={Object.fromEntries(
+          links.map((l) => [l.id, l.examiner_action]),
+        )}
+        lifecycleOverrides={{}}
+        onSetLinkAction={onSetLinkAction}
+        onSetLifecycleOverride={onSetLifecycleOverride}
+        onOpenDocument={onOpenDocument}
+      />
+    </TerminologyProvider>,
   );
   return { ...utils, data, onOpenDocument };
 }
