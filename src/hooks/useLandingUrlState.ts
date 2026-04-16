@@ -11,9 +11,10 @@ export function useLandingUrlState() {
   const [searchParams, setSearchParams] = useSearchParams();
 
   // react-router v7 setSearchParams functional form does not queue — multiple
-  // same-tick calls each read from the same render-snapshot. We accumulate
-  // mutations in a ref so that consecutive synchronous calls within one act()
-  // all build on the same working copy.
+  // same-tick calls each read from the same render-snapshot, not the prior
+  // call's result. Search "setSearchParams stale closure" in react-router
+  // issues for the canonical discussion. We accumulate mutations in a ref so
+  // that consecutive synchronous calls within one act() build on one copy.
   const pendingRef = useRef<URLSearchParams | null>(null);
 
   const query = searchParams.get("q") ?? "";
