@@ -95,6 +95,7 @@ function deferToNextFrame(cb: () => void): void {
 
 export function ExportCommitmentButton(props: ButtonProps) {
   const [toast, setToast] = useState<ToastState | null>(null);
+  const dismissToast = useCallback(() => setToast(null), []);
 
   const handleClick = useCallback(() => {
     setToast({
@@ -151,7 +152,7 @@ export function ExportCommitmentButton(props: ButtonProps) {
         <Toast
           message={toast.message}
           variant={toast.variant}
-          onDismiss={() => setToast(null)}
+          onDismiss={dismissToast}
         />
       ) : null}
     </>
