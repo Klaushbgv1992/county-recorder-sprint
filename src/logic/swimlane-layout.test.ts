@@ -5,6 +5,7 @@ import {
   groupSameDayInstruments,
   resolveMatcherSlotState,
   detectMersGap,
+  layoutNodesWithCollisionAvoidance,
 } from "./swimlane-layout";
 import type { Instrument } from "../types";
 import type { AnomalyFinding } from "../types/anomaly";
@@ -163,6 +164,53 @@ describe("detectMersGap", () => {
     expect(gap).not.toBeNull();
     expect(gap!.originator).toBe("V I P MORTGAGE INC");
     expect(gap!.releaser).toBe("WELLS FARGO HOME MORTGAGE");
+  });
+});
+
+describe("layoutNodesWithCollisionAvoidance", () => {
+  it("returns nodes unchanged when none collide", () => {
+    const result = layoutNodesWithCollisionAvoidance(
+      [{ axisX: 100 }, { axisX: 300 }, { axisX: 500 }],
+      36,
+    );
+    expect(result).toEqual([
+      { axisX: 100, visualX: 100, leader: false },
+      { axisX: 300, visualX: 300, leader: false },
+      { axisX: 500, visualX: 500, leader: false },
+    ]);
+  });
+
+  it("nudges a colliding node to the right by minSpacing and flags a leader", () => {
+    const result = layoutNodesWithCollisionAvoidance(
+      [{ axisX: 100 }, { axisX: 110 }],
+      36,
+    );
+    expect(result).toEqual([
+      { axisX: 100, visualX: 100, leader: false },
+      { axisX: 110, visualX: 136, leader: true },
+    ]);
+  });
+
+  it("cascades nudges through a chain of close nodes", () => {
+    const result = layoutNodesWithCollisionAvoidance(
+      [{ axisX: 100 }, { axisX: 105 }, { axisX: 110 }],
+      36,
+    );
+    expect(result.map((r) => r.visualX)).toEqual([100, 136, 172]);
+    expect(result.map((r) => r.leader)).toEqual([false, true, true]);
+  });
+
+  it("preserves order and keeps already-spaced groups intact after a nudge", () => {
+    const result = layoutNodesWithCollisionAvoidance(
+      [{ axisX: 100 }, { axisX: 110 }, { axisX: 400 }],
+      36,
+    );
+    expect(result.map((r) => r.visualX)).toEqual([100, 136, 400]);
+    expect(result.map((r) => r.leader)).toEqual([false, true, false]);
+  });
+
+  it("returns empty array for empty input", () => {
+    expect(layoutNodesWithCollisionAvoidance([], 36)).toEqual([]);
   });
 });
 

@@ -19,6 +19,7 @@ import {
   computeNodeX,
   groupSameDayInstruments,
   detectMersGap,
+  layoutNodesWithCollisionAvoidance,
 } from "../../logic/swimlane-layout";
 import {
   computeLifecycleStatus,
@@ -155,6 +156,17 @@ export function Swimlane(props: Props) {
   const domain = props.domain;
   const widthPx = props.trackWidthPx;
 
+  const nodesWithLayout = layoutNodesWithCollisionAvoidance(
+    nodes.map((n) => ({
+      axisX: computeNodeX(
+        n.kind === "single" ? n.instrument.recording_date : n.date,
+        domain,
+        widthPx,
+      ),
+    })),
+    36,
+  );
+
   const reconveyancePool = useMemo(
     () =>
       props.allInstruments.filter(
@@ -214,15 +226,10 @@ export function Swimlane(props: Props) {
             stroke="#e2e8f0"
             strokeWidth={1}
           />
-          {nodes.map((n, i) => {
+          {nodes.map((_n, i) => {
             if (i === 0) return null;
-            const prev = nodes[i - 1];
-            const prevDate =
-              prev.kind === "single" ? prev.instrument.recording_date : prev.date;
-            const curDate =
-              n.kind === "single" ? n.instrument.recording_date : n.date;
-            const startX = computeNodeX(prevDate, domain, widthPx);
-            const endX = computeNodeX(curDate, domain, widthPx);
+            const startX = nodesWithLayout[i - 1].visualX;
+            const endX = nodesWithLayout[i].visualX;
             const style = mersGap && i === nodes.length - 1 ? "dashed" : "solid";
             return (
               <line
@@ -237,11 +244,35 @@ export function Swimlane(props: Props) {
               />
             );
           })}
+          {nodesWithLayout.map((nl, i) =>
+            nl.leader ? (
+              <g key={`leader-${i}`}>
+                {/* vertical tick at the true axis x */}
+                <line
+                  x1={nl.axisX}
+                  x2={nl.axisX}
+                  y1={Y_CENTER - 10}
+                  y2={Y_CENTER}
+                  stroke="#94a3b8"
+                  strokeWidth={1}
+                />
+                {/* horizontal bridge from true axis to visual position */}
+                <line
+                  x1={nl.axisX}
+                  x2={nl.visualX}
+                  y1={Y_CENTER - 10}
+                  y2={Y_CENTER - 10}
+                  stroke="#94a3b8"
+                  strokeWidth={1}
+                />
+              </g>
+            ) : null,
+          )}
         </svg>
 
-        {nodes.map((n) => {
+        {nodes.map((n, i) => {
           const date = n.kind === "single" ? n.instrument.recording_date : n.date;
-          const x = computeNodeX(date, domain, widthPx);
+          const x = nodesWithLayout[i].visualX;
           const isMersRoot =
             mersGap && n.kind === "single" && n.instrument.instrument_number === mersGap.dot_instrument;
           const isMersRelease =
@@ -271,11 +302,12 @@ export function Swimlane(props: Props) {
         })}
 
         {mersGap && (() => {
-          const x1 = computeNodeX(rootInst.recording_date, domain, widthPx);
-          const releaseInst = instrumentMap.get(mersGap.release_instrument);
-          if (!releaseInst) return null;
-          const x2 = computeNodeX(releaseInst.recording_date, domain, widthPx);
-          return <MersCallout gap={mersGap} xPx={(x1 + x2) / 2} yCenter={Y_CENTER} />;
+          const dotIdx = nodes.findIndex((n) => n.kind === "single" && n.instrument.instrument_number === mersGap.dot_instrument);
+          const releaseIdx = nodes.findIndex((n) => n.kind === "single" && n.instrument.instrument_number === mersGap.release_instrument);
+          if (dotIdx === -1 || releaseIdx === -1) return null;
+          const dotX = nodesWithLayout[dotIdx].visualX;
+          const releaseX = nodesWithLayout[releaseIdx].visualX;
+          return <MersCallout gap={mersGap} xPx={(dotX + releaseX) / 2} yCenter={Y_CENTER} />;
         })()}
       </div>
 

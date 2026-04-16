@@ -115,6 +115,44 @@ export function detectMersGap(
 }
 
 // ---------------------------------------------------------------------------
+// layoutNodesWithCollisionAvoidance
+// ---------------------------------------------------------------------------
+
+export interface NodeLayoutInput {
+  axisX: number;
+}
+export interface NodeLayoutOutput {
+  axisX: number;
+  visualX: number;
+  leader: boolean;
+}
+
+/**
+ * Resolve horizontal collisions among same-swimlane nodes by nudging each
+ * colliding node to the right of the previous node + minSpacing, and flagging
+ * those that were nudged so the renderer can draw a leader line back to the
+ * true axis position.
+ *
+ * Input nodes are assumed to be in chronological order (caller's
+ * responsibility — same as groupSameDayInstruments).
+ */
+export function layoutNodesWithCollisionAvoidance(
+  nodes: NodeLayoutInput[],
+  minSpacing: number,
+): NodeLayoutOutput[] {
+  const out: NodeLayoutOutput[] = [];
+  let prevVisualX = -Infinity;
+  for (const n of nodes) {
+    const minVisualX = prevVisualX + minSpacing;
+    const collided = n.axisX < minVisualX;
+    const visualX = collided ? minVisualX : n.axisX;
+    out.push({ axisX: n.axisX, visualX, leader: collided });
+    prevVisualX = visualX;
+  }
+  return out;
+}
+
+// ---------------------------------------------------------------------------
 // resolveMatcherSlotState
 // ---------------------------------------------------------------------------
 
