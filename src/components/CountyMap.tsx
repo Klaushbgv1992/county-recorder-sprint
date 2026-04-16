@@ -80,13 +80,17 @@ function useViewport(): { isMobile: boolean } {
 }
 
 interface MobileBoundsFitterProps {
-  apns: string[];
+  // Comma-joined APN list. String-valued so useEffect dependency is stable
+  // across parent re-renders (a new array identity would re-fire fitBounds
+  // on every render).
+  apnsKey: string;
 }
 
-function MobileBoundsFitter({ apns }: MobileBoundsFitterProps) {
+function MobileBoundsFitter({ apnsKey }: MobileBoundsFitterProps) {
   const { current: map } = useMap();
   useEffect(() => {
     if (!map) return;
+    const apns = apnsKey.split(",");
     const features = (parcelsGeo.features as GeoJSON.Feature[]).filter((f) =>
       apns.includes((f.properties as { apn?: string } | null)?.apn ?? ""),
     );
@@ -111,7 +115,7 @@ function MobileBoundsFitter({ apns }: MobileBoundsFitterProps) {
       ],
       { padding: 24, maxZoom: 15, duration: 0 },
     );
-  }, [map, apns]);
+  }, [map, apnsKey]);
   return null;
 }
 
@@ -204,7 +208,9 @@ export function CountyMap({
         onIdle={handleReady}
       >
         {isMobile && (
-          <MobileBoundsFitter apns={highlightedParcels.map((p) => p.apn)} />
+          <MobileBoundsFitter
+            apnsKey={highlightedParcels.map((p) => p.apn).join(",")}
+          />
         )}
 
         <Source

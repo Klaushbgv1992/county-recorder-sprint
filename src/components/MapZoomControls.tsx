@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import countyBoundary from "../data/maricopa-county-boundary.json";
 
@@ -53,6 +53,21 @@ export function MapZoomControls({
   // programmatic vs. user moves and adds complexity for marginal gain.
   const [showingCounterExample, setShowingCounterExample] = useState(false);
 
+  // Mirror map zoom into local state so the conditional "Reset view" button
+  // re-renders when the user zooms via "Show full county" or wheel. Without
+  // this, getZoom() is only evaluated on unrelated re-renders and the button
+  // won't appear until something else triggers one.
+  const [currentZoom, setCurrentZoom] = useState(defaultZoom);
+  useEffect(() => {
+    if (!map) return;
+    setCurrentZoom(map.getZoom());
+    const handler = () => setCurrentZoom(map.getZoom());
+    map.on("zoomend", handler);
+    return () => {
+      map.off("zoomend", handler);
+    };
+  }, [map]);
+
   function showFullCounty() {
     if (!map) return;
     const [minLon, minLat, maxLon, maxLat] = computeBboxFromFeatureCollection(
@@ -95,7 +110,6 @@ export function MapZoomControls({
     }
   }
 
-  const currentZoom = map?.getZoom() ?? defaultZoom;
   const showReset = currentZoom < 13;
 
   return (
