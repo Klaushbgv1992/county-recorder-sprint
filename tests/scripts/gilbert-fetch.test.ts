@@ -61,4 +61,7 @@ describe("nextPage", () => {
   it("returns null to end pagination", () => {
     expect(nextPage({ exceededTransferLimit: false, count: 1234 }, 2000)).toBeNull();
   });
+  it("returns null when exceededTransferLimit but count is 0 (pathological)", () => {
+    expect(nextPage({ exceededTransferLimit: true, count: 0 }, 2000)).toBeNull();
+  });
 });

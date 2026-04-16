@@ -61,5 +61,6 @@ export function nextPage(
 ): number | null {
   if (!page.exceededTransferLimit) return null;
   const n = page.count ?? 0;
+  if (n <= 0) return null; // pathological: server claims more but delivered none
   return prevOffset + n;
 }
