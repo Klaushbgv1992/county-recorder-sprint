@@ -73,7 +73,7 @@ export type ProbeResult =
   | { ok: true; base: string }
   | { ok: false; attempts: Array<{ url: string; error: string }> };
 
-type ProbeFetch = (url: string) => Promise<{ ok: boolean; status: number }>;
+export type ProbeFetch = (url: string) => Promise<{ ok: boolean; status: number }>;
 
 export async function probeEndpoint(
   urls: readonly string[],
