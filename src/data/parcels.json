@@ -64,5 +64,21 @@
       "20130087108",
       "20130087109"
     ]
+  },
+  {
+    "apn": "304-78-383",
+    "address": "3702 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85297",
+    "legal_description": "Lot 61, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 2001-0849180, and in Instrument No. 2001-0984501",
+    "current_owner": "LOWRY AMY E",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478383&mod=pd",
+    "instrument_numbers": [
+      "20010093192",
+      "20070834753",
+      "20070834755"
+    ]
   }
 ]
