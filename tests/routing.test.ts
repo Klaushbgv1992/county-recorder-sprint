@@ -63,13 +63,14 @@ describe("resolveInstrumentToApn", () => {
 });
 
 describe("route table", () => {
-  it("/ matches the landing page (LandingPage is outside AppShell)", () => {
-    // The root route renders LandingPage directly.
-    // Verify it matches exactly one route segment and does NOT match any
-    // of the named working-view routes (chain, encumbrance, etc.).
+  it("/ matches the landing page (LandingPage is a direct child of RootLayout, outside AppShell)", () => {
+    // The root route renders LandingPage as a child of the path-less RootLayout
+    // wrapper. Verify it does NOT match any of the named working-view routes
+    // (chain, encumbrance, etc.) — those live inside the AppShell layer.
     const router = createMemoryRouter(routes, { initialEntries: ["/"] });
     const matches = router.state.matches;
-    expect(matches).toHaveLength(1);
+    // 2 segments: path-less RootLayout + the "/" LandingPage route
+    expect(matches).toHaveLength(2);
     const namedIds = matches
       .map((m) => m.route.id)
       .filter((id): id is string => typeof id === "string");
@@ -137,6 +138,10 @@ describe("route table", () => {
     expect(matchParams("/parcel/304-78-386/commitment/new")).toEqual({
       apn: "304-78-386",
     });
+  });
+
+  it("/why matches the why-page route", () => {
+    expect(matchIds("/why")).toContain("why-page");
   });
 
   it("matches /pipeline", () => {
@@ -209,6 +214,22 @@ describe("NotFound rendering", () => {
     // asserts the "one-frame flash" copy exists and is plain text.
     const html = renderAt("/instrument/20210075858");
     expect(html).toContain("Resolving instrument…");
+  });
+});
+
+describe("/why integration via full router", () => {
+  it("renders WhyPage H1 and the sitewide banner link together", () => {
+    const html = renderAt("/why");
+    // WhyPage's H1
+    expect(html).toContain("Why county-owned title data");
+    // Banner's link to /pipeline — proves RootLayout is in the wrap
+    expect(html).toContain("See pipeline");
+  });
+
+  it("does not render the banner on /staff", () => {
+    const html = renderAt("/staff");
+    // Staff routes skip the banner per RootLayout's useMatch.
+    expect(html).not.toContain("See pipeline");
   });
 });
 

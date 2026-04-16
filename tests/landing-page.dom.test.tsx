@@ -52,3 +52,33 @@ describe("LandingPage", () => {
     expect(activityLink).toHaveAttribute("href", "/county-activity");
   });
 });
+
+describe("LandingPage — /why links", () => {
+  afterEach(() => cleanup());
+
+  it("renders a 'Why this matters' link in the header", () => {
+    render(
+      <MemoryRouter>
+        <LandingPage />
+      </MemoryRouter>,
+    );
+    const header = document.querySelector("header");
+    expect(header).toBeTruthy();
+    const link = header!.querySelector('a[href="/why"]');
+    expect(link).toBeTruthy();
+    expect(link?.textContent?.toLowerCase()).toContain("why this matters");
+  });
+
+  it("renders a 'Why this matters' link in the footer", () => {
+    render(
+      <MemoryRouter>
+        <LandingPage />
+      </MemoryRouter>,
+    );
+    const footer = document.querySelector("footer");
+    expect(footer).toBeTruthy();
+    const link = footer!.querySelector('a[href="/why"]');
+    expect(link).toBeTruthy();
+    expect(link?.textContent?.toLowerCase()).toContain("why this matters");
+  });
+});

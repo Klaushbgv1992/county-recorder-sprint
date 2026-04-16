@@ -18,12 +18,22 @@ export function LandingPage() {
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
       <header className="px-6 py-4 border-b border-slate-200 bg-white">
-        <h1 className="text-2xl font-semibold text-recorder-900">
-          Maricopa County Recorder
-        </h1>
-        <p className="text-sm text-recorder-500">
-          The county owns the record. Everyone else owns a copy.
-        </p>
+        <div className="flex items-start justify-between gap-4 flex-wrap">
+          <div>
+            <h1 className="text-2xl font-semibold text-recorder-900">
+              Maricopa County Recorder
+            </h1>
+            <p className="text-sm text-recorder-500">
+              The county owns the record. Everyone else owns a copy.
+            </p>
+          </div>
+          <Link
+            to="/why"
+            className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 pt-1"
+          >
+            Why this matters →
+          </Link>
+        </div>
       </header>
 
       <section className="relative h-[60vh] min-h-[420px] border-b border-slate-200">
@@ -92,12 +102,18 @@ export function LandingPage() {
         </div>
       </section>
 
-      <footer className="px-6 py-4 flex justify-between items-center text-xs text-slate-500">
+      <footer className="px-6 py-4 flex justify-between items-center text-xs text-slate-500 flex-wrap gap-2">
         <Link
           to="/county-activity"
           className="underline underline-offset-2 hover:text-slate-700"
         >
           → View county activity
+        </Link>
+        <Link
+          to="/why"
+          className="underline underline-offset-2 hover:text-slate-700"
+        >
+          → Why this matters
         </Link>
         <Link
           to="/moat-compare"

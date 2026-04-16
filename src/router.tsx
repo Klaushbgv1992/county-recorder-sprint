@@ -16,6 +16,7 @@ import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
+import { WhyPage } from "./components/WhyPage";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
 import { TransactionWizard } from "./components/TransactionWizard";
 import { PipelineDashboard } from "./components/PipelineDashboard";
@@ -28,6 +29,7 @@ import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
 import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "./components/EmptyStates";
+import { RootLayout } from "./components/RootLayout";
 
 /**
  * Resolve a bare 11-digit instrument number to the APN of the single
@@ -353,75 +355,81 @@ function InstrumentResolver() {
 }
 
 export const routes: RouteObject[] = [
-  { path: "/", element: <LandingPage /> },
-  { path: "/county-activity", element: <ActivityHeatMap /> },
   {
-    element: <AppShell />,
+    element: <RootLayout />,
     children: [
+      { path: "/", element: <LandingPage /> },
+      { path: "/county-activity", element: <ActivityHeatMap /> },
+      { path: "/why", id: "why-page", element: <WhyPage /> },
       {
-        id: "chain",
-        path: "parcel/:apn",
-        element: <ChainRoute />,
-      },
-      {
-        id: "chain-instrument",
-        path: "parcel/:apn/instrument/:instrumentNumber",
-        element: <ChainRoute />,
-      },
-      {
-        id: "encumbrance",
-        path: "parcel/:apn/encumbrances",
-        element: <EncumbranceRoute />,
-      },
-      {
-        id: "encumbrance-instrument",
-        path: "parcel/:apn/encumbrances/instrument/:instrumentNumber",
-        element: <EncumbranceRoute />,
-      },
-      {
-        id: "instrument-resolver",
-        path: "instrument/:instrumentNumber",
-        element: <InstrumentResolver />,
-      },
-      {
-        id: "moat-compare",
-        path: "moat-compare",
-        element: <MoatCompareRoute />,
-      },
-      {
-        id: "commitment-new",
-        path: "parcel/:apn/commitment/new",
-        element: <TransactionWizard />,
-      },
-      {
-        id: "pipeline",
-        path: "pipeline",
-        element: <PipelineDashboard />,
-      },
-      {
-        id: "staff",
-        path: "staff",
-        element: <StaffWorkbench />,
-      },
-      {
-        id: "staff-search",
-        path: "staff/search",
-        element: <NameFilteredSearch />,
-      },
-      {
-        id: "staff-queue",
-        path: "staff/queue",
-        element: <CuratorQueue />,
-      },
-      {
-        id: "staff-parcel",
-        path: "staff/parcel/:apn",
-        element: <StaffParcelView />,
-      },
-      {
-        id: "not-found",
-        path: "*",
-        element: <NotInCorpusParcel />,
+        element: <AppShell />,
+        children: [
+          {
+            id: "chain",
+            path: "parcel/:apn",
+            element: <ChainRoute />,
+          },
+          {
+            id: "chain-instrument",
+            path: "parcel/:apn/instrument/:instrumentNumber",
+            element: <ChainRoute />,
+          },
+          {
+            id: "encumbrance",
+            path: "parcel/:apn/encumbrances",
+            element: <EncumbranceRoute />,
+          },
+          {
+            id: "encumbrance-instrument",
+            path: "parcel/:apn/encumbrances/instrument/:instrumentNumber",
+            element: <EncumbranceRoute />,
+          },
+          {
+            id: "instrument-resolver",
+            path: "instrument/:instrumentNumber",
+            element: <InstrumentResolver />,
+          },
+          {
+            id: "moat-compare",
+            path: "moat-compare",
+            element: <MoatCompareRoute />,
+          },
+          {
+            id: "commitment-new",
+            path: "parcel/:apn/commitment/new",
+            element: <TransactionWizard />,
+          },
+          {
+            id: "pipeline",
+            path: "pipeline",
+            element: <PipelineDashboard />,
+          },
+          {
+            id: "staff",
+            path: "staff",
+            element: <StaffWorkbench />,
+          },
+          {
+            id: "staff-search",
+            path: "staff/search",
+            element: <NameFilteredSearch />,
+          },
+          {
+            id: "staff-queue",
+            path: "staff/queue",
+            element: <CuratorQueue />,
+          },
+          {
+            id: "staff-parcel",
+            path: "staff/parcel/:apn",
+            element: <StaffParcelView />,
+          },
+          {
+            id: "not-found",
+            path: "*",
+            element: <NotInCorpusParcel />,
+          },
+        ],
       },
     ],
   },

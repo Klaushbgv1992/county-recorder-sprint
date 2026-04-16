@@ -2,7 +2,6 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Link, Outlet, useMatch, useParams } from "react-router";
 import { useParcelData } from "./hooks/useParcelData";
 import { useAllParcels } from "./hooks/useAllParcels";
-import { PipelineBanner } from "./components/PipelineBanner";
 import { useTerminology } from "./terminology/TerminologyContext";
 import { Term, TermSection } from "./terminology/Term";
 
@@ -35,8 +34,7 @@ export function AppShell() {
   const hasParcel = apnIsInCorpus;
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 text-gray-900 font-sans">
-      <PipelineBanner />
+    <div className="h-full flex flex-col bg-gray-50 text-gray-900 font-sans">
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
         <div className="flex items-baseline gap-2">
           <h1 className="text-lg font-semibold text-recorder-900">
