@@ -285,9 +285,10 @@ export function buildAcceptedRationale(score: number): string {
 
 export function buildEmptyStateRationale(parcel: Parcel): string {
   return (
-    `Matcher ran against 0 reconveyances in ${parcel.subdivision} corpus. ` +
-    `Note: the public API cannot search for releases filed against ` +
-    `${parcel.current_owner} outside this parcel. A county-internal ` +
-    `full-name scan closes this gap — out of prototype scope.`
+    `Cross-parcel scan: scanned ${parcel.subdivision} parcel corpus, ` +
+    `0 reconveyance candidates above threshold. ` +
+    `The public API cannot search for releases filed against ` +
+    `${parcel.current_owner} outside this parcel — a county-internal ` +
+    `full-name scan closes this gap (out of prototype scope).`
   );
 }

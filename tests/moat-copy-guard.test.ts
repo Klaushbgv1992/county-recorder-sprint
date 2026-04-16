@@ -27,10 +27,11 @@ const HOGUE_PARCEL: Parcel = {
 };
 
 const EXPECTED_HOGUE_EMPTY_RATIONALE =
-  "Matcher ran against 0 reconveyances in Shamrock Estates Phase 2A corpus. " +
-  "Note: the public API cannot search for releases filed against " +
-  "HOGUE JASON / MICHELE outside this parcel. A county-internal " +
-  "full-name scan closes this gap — out of prototype scope.";
+  "Cross-parcel scan: scanned Shamrock Estates Phase 2A parcel corpus, " +
+  "0 reconveyance candidates above threshold. " +
+  "The public API cannot search for releases filed against " +
+  "HOGUE JASON / MICHELE outside this parcel — a county-internal " +
+  "full-name scan closes this gap (out of prototype scope).";
 
 describe("HOGUE lc-003 moat-rationale regression guard", () => {
   it("lc-003.status_rationale in lifecycles.json matches the demo-script copy verbatim", () => {
