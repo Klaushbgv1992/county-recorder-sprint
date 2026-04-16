@@ -42,12 +42,11 @@ export function SearchEntry({ parcels, onSelectParcel }: Props) {
         />
       </div>
 
-      {count > 0 && (
+      {count > 0 && hasQuery && (
         <div className="bg-white border border-gray-200 rounded-lg overflow-hidden">
           <div className="px-4 py-2 bg-gray-50 border-b border-gray-200">
             <span className="text-sm font-medium text-gray-600">
-              {count} {count === 1 ? "result" : "results"}
-              {hasQuery ? " matched" : " indexed"}
+              {count} {count === 1 ? "result" : "results"} matched
             </span>
           </div>
           <ul className="divide-y divide-gray-200">
