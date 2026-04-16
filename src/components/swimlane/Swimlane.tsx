@@ -31,7 +31,14 @@ import {
 } from "../../logic/release-candidate-matcher";
 import { useTerminology } from "../../terminology/TerminologyContext";
 
-function rootLabel(docType: DocumentType): string {
+function humanizeRaw(raw: string): string {
+  return raw
+    .split(/[\s_]+/)
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .join(" ");
+}
+
+function rootLabel(docType: DocumentType, rawType: string): string {
   switch (docType) {
     case "deed_of_trust":
     case "heloc_dot":
@@ -44,9 +51,9 @@ function rootLabel(docType: DocumentType): string {
     case "modification":
       return "Modification";
     case "other":
-      return "Doc";
+      return humanizeRaw(rawType);
     default:
-      return "Doc";
+      return humanizeRaw(rawType);
   }
 }
 
@@ -179,7 +186,7 @@ export function Swimlane(props: Props) {
         <div className="flex items-center gap-3 min-w-0">
           <StatusBadge status={resolved.status} overridden={override !== null} />
           <span id={`${props.lifecycle.id}-title`} className="font-semibold text-slate-800">
-            {t(rootLabel(rootInst.document_type))}: <span className="font-mono">{rootInst.instrument_number}</span>
+            {t(rootLabel(rootInst.document_type, rootInst.document_type_raw))}: <span className="font-mono">{rootInst.instrument_number}</span>
           </span>
           <span className="text-[11px] text-slate-500 truncate">
             {props.lifecycle.id}
