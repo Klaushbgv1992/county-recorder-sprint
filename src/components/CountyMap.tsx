@@ -24,13 +24,22 @@ export interface CountyMapProps {
   onParcelClick: (apn: string) => void;
 }
 
-// Derived from midpoint of POPHAM (304-78-386) ↔ HOGUE (304-77-689) centroids.
-// Recompute via computeLandingMapCenter() if the highlighted parcel set changes.
+// Derived from midpoint of POPHAM (304-78-386) ↔ HOA tract (304-78-409) centroids.
+// These two sit ~50m apart in Seville Parcel 3; zoom 16 frames them together
+// with E Palmer St street labels visible. HOGUE (304-77-689) is ~2km west and
+// out of this frame — reachable via the "Show counter-example" button below.
+// Recompute via computeLandingMapCenter() if the highlighted cluster changes.
 const LANDING_MAP_CENTER = computeLandingMapCenter(
-  ["304-78-386", "304-77-689"],
+  ["304-78-386", "304-78-409"],
   parcelsGeo as GeoJSON.FeatureCollection,
 );
-const LANDING_MAP_ZOOM = 15;
+const LANDING_MAP_ZOOM = 16;
+
+// HOGUE centroid for the "Show counter-example" pan target.
+const COUNTER_EXAMPLE_COORD = computeLandingMapCenter(
+  ["304-77-689"],
+  parcelsGeo as GeoJSON.FeatureCollection,
+);
 
 const STATUS_FILL: Record<HighlightedParcel["status"], string> = {
   primary: "#10b981", // emerald-500
@@ -271,6 +280,7 @@ export function CountyMap({
         <MapZoomControls
           defaultCenter={LANDING_MAP_CENTER}
           defaultZoom={LANDING_MAP_ZOOM}
+          counterExampleCoord={COUNTER_EXAMPLE_COORD}
         />
       </MapGL>
       <MapLegend />

@@ -4,6 +4,9 @@ import countyBoundary from "../data/maricopa-county-boundary.json";
 export interface MapZoomControlsProps {
   defaultCenter: { longitude: number; latitude: number };
   defaultZoom: number;
+  // Optional pan target for a named counter-example parcel (HOGUE on landing).
+  // Rendered as "Show counter-example" button when provided.
+  counterExampleCoord?: { longitude: number; latitude: number };
 }
 
 function computeBboxFromFeatureCollection(
@@ -33,13 +36,17 @@ function computeBboxFromFeatureCollection(
   return [minLon, minLat, maxLon, maxLat];
 }
 
+const BUTTON_CLASS =
+  "px-2 py-1 text-xs font-medium bg-white border border-slate-300 rounded shadow hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500";
+
 export function MapZoomControls({
   defaultCenter,
   defaultZoom,
+  counterExampleCoord,
 }: MapZoomControlsProps) {
   const { current: map } = useMap();
 
-  function fitCounty() {
+  function showFullCounty() {
     if (!map) return;
     const [minLon, minLat, maxLon, maxLat] = computeBboxFromFeatureCollection(
       countyBoundary as GeoJSON.FeatureCollection,
@@ -62,6 +69,15 @@ export function MapZoomControls({
     });
   }
 
+  function showCounterExample() {
+    if (!map || !counterExampleCoord) return;
+    map.flyTo({
+      center: [counterExampleCoord.longitude, counterExampleCoord.latitude],
+      zoom: defaultZoom,
+      duration: 700,
+    });
+  }
+
   const currentZoom = map?.getZoom() ?? defaultZoom;
   const showReset = currentZoom < 13;
 
@@ -69,18 +85,28 @@ export function MapZoomControls({
     <div className="absolute top-20 left-2 z-10 flex flex-col gap-1">
       <button
         type="button"
-        onClick={fitCounty}
+        onClick={showFullCounty}
         title="Zoom out to see all of Maricopa County."
-        className="px-2 py-1 text-xs font-medium bg-white border border-slate-300 rounded shadow hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+        className={BUTTON_CLASS}
       >
-        Fit county
+        Show full county
       </button>
+      {counterExampleCoord && (
+        <button
+          type="button"
+          onClick={showCounterExample}
+          title="Pan to the HOGUE counter-example parcel."
+          className={BUTTON_CLASS}
+        >
+          Show counter-example
+        </button>
+      )}
       {showReset && (
         <button
           type="button"
           onClick={resetView}
           title="Return to street-level view of the example parcels."
-          className="px-2 py-1 text-xs font-medium bg-white border border-slate-300 rounded shadow hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+          className={BUTTON_CLASS}
         >
           Reset view
         </button>
