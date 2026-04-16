@@ -121,6 +121,10 @@ export const Parcel = z.object({
   legal_description: z.string(),
   current_owner: z.string(),
   subdivision: z.string(),
+  // Display variant. Drives popup variant on landing map and any future
+  // per-type rendering. Omit for legacy residential records (defaults
+  // applied at consumer site).
+  type: z.enum(["residential", "subdivision_common"]).optional(),
   assessor_url: z.string().optional(),
   recorder_url: z.string().optional(),
   // List of instruments curated for this parcel. Used by multi-parcel

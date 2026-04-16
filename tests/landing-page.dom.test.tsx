@@ -10,6 +10,8 @@ vi.mock("react-map-gl/maplibre", () => ({
   Source: ({ children }: { children: React.ReactNode }) => <div data-testid="source">{children}</div>,
   Layer: (props: { id: string }) => <div data-testid={`layer-${props.id}`} />,
   Marker: ({ children }: { children: React.ReactNode }) => <div data-testid="marker">{children}</div>,
+  Popup: ({ children }: { children: React.ReactNode }) => <div data-testid="popup">{children}</div>,
+  useMap: () => ({ current: undefined }),
 }));
 
 describe("LandingPage", () => {
@@ -59,7 +61,9 @@ describe("LandingPage — /why links", () => {
   it("renders a 'Why this matters' link in the header", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     const header = document.querySelector("header");
@@ -72,7 +76,9 @@ describe("LandingPage — /why links", () => {
   it("renders a 'Why this matters' link in the footer", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     const footer = document.querySelector("footer");

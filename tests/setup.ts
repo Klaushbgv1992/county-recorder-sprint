@@ -53,3 +53,26 @@ function installStorage(name: "localStorage" | "sessionStorage") {
 
 installStorage("localStorage");
 installStorage("sessionStorage");
+
+// jsdom does not implement window.matchMedia. Components that branch on
+// viewport width (MapLegend, CountyMap's useViewport hook) call it at mount
+// time; without this polyfill any render of LandingPage/CountyMap throws
+// "window.matchMedia is not a function". Returns a non-matching media query
+// list so tests default to the desktop branch — viewport-specific behavior
+// is covered by dedicated DOM tests that override matchMedia per-suite.
+if (typeof window !== "undefined" && typeof window.matchMedia !== "function") {
+  Object.defineProperty(window, "matchMedia", {
+    configurable: true,
+    writable: true,
+    value: (query: string): MediaQueryList => ({
+      matches: false,
+      media: query,
+      onchange: null,
+      addListener: () => {},
+      removeListener: () => {},
+      addEventListener: () => {},
+      removeEventListener: () => {},
+      dispatchEvent: () => false,
+    }),
+  });
+}

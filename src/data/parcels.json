@@ -7,6 +7,7 @@
     "zip": "85298",
     "legal_description": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
     "current_owner": "POPHAM CHRISTOPHER / ASHLEY",
+    "type": "residential",
     "subdivision": "Seville Parcel 3",
     "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478386&mod=pd",
     "instrument_numbers": [
@@ -27,6 +28,7 @@
     "zip": "85298",
     "legal_description": "Lot 348, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
     "current_owner": "HOGUE JASON / MICHELE",
+    "type": "residential",
     "subdivision": "Shamrock Estates Phase 2A",
     "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30477689&mod=pd",
     "instrument_numbers": [
@@ -42,6 +44,7 @@
     "zip": "85295",
     "legal_description": "TRACT A, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
     "current_owner": "SEVILLE HOMEOWNERS ASSOCIATION",
+    "type": "subdivision_common",
     "subdivision": "Seville Parcel 3",
     "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478409&mod=pd",
     "instrument_numbers": [
@@ -57,6 +60,7 @@
     "zip": "85298",
     "legal_description": "Lot 52, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19 and Affidavit of Correction recorded in Document No. 2001-0849180",
     "current_owner": "WARNER KAMA",
+    "type": "residential",
     "subdivision": "Seville Parcel 3",
     "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478374&mod=pd",
     "instrument_numbers": [
@@ -73,6 +77,7 @@
     "zip": "85297",
     "legal_description": "Lot 61, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 2001-0849180, and in Instrument No. 2001-0984501",
     "current_owner": "LOWRY AMY E",
+    "type": "residential",
     "subdivision": "Seville Parcel 3",
     "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478383&mod=pd",
     "instrument_numbers": [

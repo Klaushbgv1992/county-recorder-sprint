@@ -1,34 +1,129 @@
 // src/components/CountyMap.tsx
-import { useMemo, useCallback, useState } from "react";
-import MapGL, { Source, Layer } from "react-map-gl/maplibre";
+import { useMemo, useCallback, useState, useEffect } from "react";
+import MapGL, { Source, Layer, useMap } from "react-map-gl/maplibre";
 import type { MapLayerMouseEvent } from "react-map-gl/maplibre";
 import countyBoundary from "../data/maricopa-county-boundary.json";
 import parcelsGeo from "../data/parcels-geo.json";
+import { computeLandingMapCenter } from "../logic/compute-map-center";
+import { resolvePopupData } from "../logic/popup-data";
+import { loadAllParcels, loadAllInstruments } from "../data-loader";
+import { LifecyclesFile } from "../schemas";
+import lifecyclesRaw from "../data/lifecycles.json";
+import { MapPopup } from "./MapPopup";
+import { MapLegend } from "./MapLegend";
+import { MapZoomControls } from "./MapZoomControls";
 
 export interface HighlightedParcel {
   apn: string;
-  status: "primary" | "backup";
+  status: "primary" | "backup" | "subdivision_common";
   label?: string;
 }
 
 export interface CountyMapProps {
   highlightedParcels: HighlightedParcel[];
   onParcelClick: (apn: string) => void;
-  initialViewState?: { longitude: number; latitude: number; zoom: number };
 }
 
-const DEFAULT_VIEW = { longitude: -112.05, latitude: 33.45, zoom: 8.5 };
+// Derived from midpoint of POPHAM (304-78-386) ↔ HOA tract (304-78-409) centroids.
+// These two sit ~50m apart in Seville Parcel 3; zoom 16 frames them together
+// with E Palmer St street labels visible. HOGUE (304-77-689) is ~2km west and
+// out of this frame — reachable via the "Show counter-example" button below.
+// Recompute via computeLandingMapCenter() if the highlighted cluster changes.
+const LANDING_MAP_CENTER = computeLandingMapCenter(
+  ["304-78-386", "304-78-409"],
+  parcelsGeo as GeoJSON.FeatureCollection,
+);
+const LANDING_MAP_ZOOM = 16;
+
+// HOGUE centroid for the "Show counter-example" pan target.
+const COUNTER_EXAMPLE_COORD = computeLandingMapCenter(
+  ["304-77-689"],
+  parcelsGeo as GeoJSON.FeatureCollection,
+);
 
 const STATUS_FILL: Record<HighlightedParcel["status"], string> = {
   primary: "#10b981", // emerald-500
   backup: "#f59e0b", // amber-500
+  subdivision_common: "#94a3b8", // slate-400
 };
+
+const STATUS_OUTLINE: Record<HighlightedParcel["status"], string> = {
+  primary: "#10b981",
+  backup: "#f59e0b",
+  subdivision_common: "#64748b", // slate-500
+};
+
+const STATUS_FILL_OPACITY: Record<HighlightedParcel["status"], number> = {
+  primary: 0.55,
+  backup: 0.55,
+  subdivision_common: 0.35,
+};
+
+// Used at module load; safe because corpus is static.
+const PARCELS = loadAllParcels();
+const INSTRUMENTS = loadAllInstruments();
+const LIFECYCLES = LifecyclesFile.parse(lifecyclesRaw).lifecycles;
+
+function useViewport(): { isMobile: boolean } {
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined"
+      ? window.matchMedia("(max-width: 767px)").matches
+      : false,
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = () => setIsMobile(mq.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+  return { isMobile };
+}
+
+interface MobileBoundsFitterProps {
+  // Comma-joined APN list. String-valued so useEffect dependency is stable
+  // across parent re-renders (a new array identity would re-fire fitBounds
+  // on every render).
+  apnsKey: string;
+}
+
+function MobileBoundsFitter({ apnsKey }: MobileBoundsFitterProps) {
+  const { current: map } = useMap();
+  useEffect(() => {
+    if (!map) return;
+    const apns = apnsKey.split(",");
+    const features = (parcelsGeo.features as GeoJSON.Feature[]).filter((f) =>
+      apns.includes((f.properties as { apn?: string } | null)?.apn ?? ""),
+    );
+    if (features.length === 0) return;
+    let minLon = Infinity,
+      minLat = Infinity,
+      maxLon = -Infinity,
+      maxLat = -Infinity;
+    for (const f of features) {
+      if (f.geometry.type !== "Polygon") continue;
+      for (const [lon, lat] of (f.geometry as GeoJSON.Polygon).coordinates[0]) {
+        if (lon < minLon) minLon = lon;
+        if (lat < minLat) minLat = lat;
+        if (lon > maxLon) maxLon = lon;
+        if (lat > maxLat) maxLat = lat;
+      }
+    }
+    map.fitBounds(
+      [
+        [minLon, minLat],
+        [maxLon, maxLat],
+      ],
+      { padding: 24, maxZoom: 15, duration: 0 },
+    );
+  }, [map, apnsKey]);
+  return null;
+}
 
 export function CountyMap({
   highlightedParcels,
   onParcelClick,
-  initialViewState = DEFAULT_VIEW,
 }: CountyMapProps) {
+  const { isMobile } = useViewport();
   const [hoveredApn, setHoveredApn] = useState<string | null>(null);
   const [mapReady, setMapReady] = useState(false);
   const handleReady = useCallback(() => setMapReady(true), []);
@@ -36,7 +131,7 @@ export function CountyMap({
   const parcelById = useMemo(() => {
     const m = new Map<string, GeoJSON.Feature>();
     for (const f of parcelsGeo.features as GeoJSON.Feature[]) {
-      const apn = (f.properties as { apn: string } | null)?.apn;
+      const apn = (f.properties as { apn?: string } | null)?.apn;
       if (apn) m.set(apn, f);
     }
     return m;
@@ -68,14 +163,40 @@ export function CountyMap({
     setHoveredApn((prev) => (prev === apn ? prev : apn));
   }, []);
 
-  const handleMouseLeave = useCallback(() => {
-    setHoveredApn(null);
-  }, []);
+  const handleMouseLeave = useCallback(() => setHoveredApn(null), []);
+
+  const popupData = hoveredApn
+    ? resolvePopupData(hoveredApn, {
+        parcels: PARCELS,
+        instruments: INSTRUMENTS,
+        lifecycles: LIFECYCLES,
+      })
+    : null;
+  const popupFeature = hoveredApn ? parcelById.get(hoveredApn) : undefined;
+  const popupCoord = popupFeature
+    ? (() => {
+        const ring = (popupFeature.geometry as GeoJSON.Polygon).coordinates[0];
+        const verts = ring.slice(0, -1);
+        const lon = verts.reduce((s, v) => s + v[0], 0) / verts.length;
+        const lat = verts.reduce((s, v) => s + v[1], 0) / verts.length;
+        return { longitude: lon, latitude: lat };
+      })()
+    : null;
+
+  // Activity overlay intentionally omitted (spec 2026-04-15-landing-map §10):
+  // - municipality-grained, not parcel-grained (unit mismatch on parcel-zoom)
+  // - already rendered at /county-activity (ActivityHeatMap)
+  // - freshness signal already covered by Terminal 3's verified-through banner
+  // Future: parcel-grained activity belongs in the popup, not as global overlay.
 
   return (
     <div className="relative h-full w-full">
       <MapGL
-        initialViewState={initialViewState}
+        initialViewState={{
+          longitude: LANDING_MAP_CENTER.longitude,
+          latitude: LANDING_MAP_CENTER.latitude,
+          zoom: LANDING_MAP_ZOOM,
+        }}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
         style={{ width: "100%", height: "100%" }}
         interactiveLayerIds={interactiveLayerIds}
@@ -86,7 +207,17 @@ export function CountyMap({
         onLoad={handleReady}
         onIdle={handleReady}
       >
-        <Source id="county-boundary" type="geojson" data={countyBoundary as GeoJSON.FeatureCollection}>
+        {isMobile && (
+          <MobileBoundsFitter
+            apnsKey={highlightedParcels.map((p) => p.apn).join(",")}
+          />
+        )}
+
+        <Source
+          id="county-boundary"
+          type="geojson"
+          data={countyBoundary as GeoJSON.FeatureCollection}
+        >
           <Layer
             id="county-boundary-outline"
             type="line"
@@ -98,6 +229,7 @@ export function CountyMap({
           const feat = parcelById.get(p.apn);
           if (!feat) return null;
           const isHovered = hoveredApn === p.apn;
+          const dashedOutline = p.status === "subdivision_common";
           return (
             <Source
               key={p.apn}
@@ -110,26 +242,54 @@ export function CountyMap({
                 type="fill"
                 paint={{
                   "fill-color": STATUS_FILL[p.status],
-                  "fill-opacity": isHovered ? 0.75 : 0.55,
+                  "fill-opacity": isHovered
+                    ? STATUS_FILL_OPACITY[p.status] + 0.2
+                    : STATUS_FILL_OPACITY[p.status],
                 }}
               />
               <Layer
                 id={`parcel-${p.apn}-outline`}
                 type="line"
-                paint={{ "line-color": STATUS_FILL[p.status], "line-width": 2 }}
+                paint={
+                  dashedOutline
+                    ? {
+                        "line-color": STATUS_OUTLINE[p.status],
+                        "line-width": 2,
+                        "line-dasharray": [2, 2],
+                      }
+                    : {
+                        "line-color": STATUS_OUTLINE[p.status],
+                        "line-width": 2,
+                      }
+                }
               />
               <Layer
                 id={`parcel-${p.apn}-outline-hover`}
                 type="line"
                 paint={{
-                  "line-color": STATUS_FILL[p.status],
+                  "line-color": STATUS_OUTLINE[p.status],
                   "line-width": isHovered ? 5 : 0,
                 }}
               />
             </Source>
           );
         })}
+
+        {popupData && popupCoord && (
+          <MapPopup
+            data={popupData}
+            longitude={popupCoord.longitude}
+            latitude={popupCoord.latitude}
+          />
+        )}
+
+        <MapZoomControls
+          defaultCenter={LANDING_MAP_CENTER}
+          defaultZoom={LANDING_MAP_ZOOM}
+          counterExampleCoord={COUNTER_EXAMPLE_COORD}
+        />
       </MapGL>
+      <MapLegend />
       <div
         aria-hidden={mapReady}
         className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-100/85 transition-opacity duration-500 ${

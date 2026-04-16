@@ -2,6 +2,8 @@ const GLOSSARY: Record<string, string> = {
   "chain of title": "Ownership History",
   "encumbrances": "Claims Against Property",
   "encumbrance lifecycles": "Claims Against Property",
+  "lifecycle": "Claim Against Property",
+  "lifecycles": "Claims Against Property",
   "deed of trust": "Mortgage",
   "full reconveyance": "Mortgage Paid Off",
   "partial reconveyance": "Partial Payoff",
@@ -15,6 +17,7 @@ const GLOSSARY: Record<string, string> = {
   "assignment of dot": "Mortgage Transfer",
   "heloc dot": "Home Equity Loan",
   "trustor/borrower": "Borrower",
+  "parcel": "property",
 };
 
 export function translate(term: string): string {
