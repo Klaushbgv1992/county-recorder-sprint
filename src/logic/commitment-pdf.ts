@@ -1,7 +1,7 @@
 import { jsPDF } from "jspdf";
 import autoTable from "jspdf-autotable";
 import type { CommitmentDocument, ScheduleB2Row } from "./commitment-builder";
-import { formatProvenanceTag } from "./format-provenance-tag";
+import { provenanceInlineTag } from "./provenance-vocab";
 import type { BIItem, TransactionInputs } from "../types/commitment";
 
 const MARGIN_X = 14;
@@ -72,7 +72,7 @@ export function renderCommitmentPdf(
       ["Subdivision", doc.scheduleA.subdivision],
       [
         "Current Owner",
-        `${doc.scheduleA.currentOwner.value} ${formatProvenanceTag(
+        `${doc.scheduleA.currentOwner.value} ${provenanceInlineTag(
           doc.scheduleA.currentOwner.provenance,
           doc.scheduleA.currentOwner.confidence,
         )}`,
@@ -81,7 +81,7 @@ export function renderCommitmentPdf(
         ? [
             [
               "Vesting",
-              `${doc.scheduleA.vesting.value} ${formatProvenanceTag(
+              `${doc.scheduleA.vesting.value} ${provenanceInlineTag(
                 doc.scheduleA.vesting.provenance,
                 doc.scheduleA.vesting.confidence,
               )}`,
@@ -90,7 +90,7 @@ export function renderCommitmentPdf(
         : []),
       [
         "Legal Description",
-        `${doc.scheduleA.legalDescription.value} ${formatProvenanceTag(
+        `${doc.scheduleA.legalDescription.value} ${provenanceInlineTag(
           doc.scheduleA.legalDescription.provenance,
           doc.scheduleA.legalDescription.confidence,
         )}`,
@@ -230,7 +230,7 @@ function renderB2Row(pdf: jsPDF, row: ScheduleB2Row, startY: number): number {
     pdf.setFont("helvetica", "normal");
     const partyLines = row.parties.map(
       (p) =>
-        `  ${p.role}: ${p.name} ${formatProvenanceTag(p.provenance, p.confidence)}`,
+        `  ${p.role}: ${p.name} ${provenanceInlineTag(p.provenance, p.confidence)}`,
     );
     const wrapped = pdf.splitTextToSize(
       partyLines.join("\n"),

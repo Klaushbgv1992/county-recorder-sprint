@@ -1,0 +1,187 @@
+{
+  "instrument_number": "20070834755",
+  "recording_date": "2007-07-24",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "AMY LOWRY",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "COUNTRYWIDE HOME LOANS INC",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "FIDELITY NATIONAL TITLE INSURANCE COMPANY",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "nominee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "COUNTRYWIDE HOME LOANS INC",
+        "party_role": "lender"
+      }
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona",
+    "provenance": "manual_entry",
+    "confidence": 0.9,
+    "source_page": 3,
+    "source_note": "Visually read from DOT body, page 3. Recorded DOT contains two typos in the legal description: 'SEVELLE PARCEL 3' (should be SEVILLE) and 'MAPRICOPA COUNTY' (should be MARICOPA). These are real title-defect artifacts — a production title examiner would flag these as scrivener's errors. The value here is normalized to the correct spelling; the typos are preserved in this source_note."
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2007-07-06",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Security Instrument date, page 1"
+    },
+    "loan_amount": {
+      "value": "$280,000.00",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 2,
+      "source_note": "Principal sum, page 2"
+    },
+    "loan_number": {
+      "value": "171418423",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 12,
+      "source_note": "Loan # stated on Adjustable Rate Rider header, page 12"
+    },
+    "min_number": {
+      "value": "1000157-0008292767-0",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "MERS Identification Number below DEED OF TRUST title, page 1"
+    },
+    "doc_id": {
+      "value": "00017141842307007",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Countrywide Doc ID # header, page 1"
+    },
+    "maturity_date": {
+      "value": "2037-08-01",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 2,
+      "source_note": "Loan maturity date, page 2"
+    },
+    "property_address": {
+      "value": "3702 E Palmer St, Gilbert, AZ 85297",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 3,
+      "source_note": "Property address stated in DOT body, page 3"
+    },
+    "pud_name": {
+      "value": "SEVILLE",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 17,
+      "source_note": "Planned Unit Development name in PUD Rider, page 17. Confirms Seville HOA covenants bind this lot."
+    },
+    "vesting": {
+      "value": "A Married Woman as her Sole and Separate Property",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Borrower vesting, page 1"
+    },
+    "loan_product": {
+      "value": "LIBOR One-Year Index Adjustable Rate, Interest First/Only",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 12,
+      "source_note": "Adjustable Rate Rider header, page 12. Interest-only ARM is a classic pre-crash subprime/Alt-A loan product."
+    },
+    "initial_interest_rate": {
+      "value": "6.375%",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 12,
+      "source_note": "Initial rate stated in Adjustable Rate Rider Section A, page 12"
+    },
+    "first_rate_change": {
+      "value": "2010-08-01",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 12,
+      "source_note": "First change date stated in Adjustable Rate Rider Section 4(A), page 12"
+    },
+    "rate_cap": {
+      "value": "12.375% (maximum)",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 13,
+      "source_note": "Maximum interest rate from Adjustable Rate Rider Section 4(D), page 13"
+    },
+    "margin": {
+      "value": "2.250 percentage points over LIBOR One-Year Index",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 13,
+      "source_note": "Rate margin from Adjustable Rate Rider Section 4(C), page 13"
+    },
+    "lender_dba": {
+      "value": "America's Wholesale Lender (dba for Countrywide Home Loans, Inc.)",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Lender dba stated page 1. 'America's Wholesale Lender' was Countrywide's wholesale origination channel."
+    }
+  },
+  "back_references": [
+    "20010093192",
+    "20010849180",
+    "20010984501"
+  ],
+  "same_day_group": [
+    "20070834753"
+  ],
+  "source_image_path": "/raw/R-006/pdfs/20070834755.pdf",
+  "page_count": 18,
+  "raw_api_response": {
+    "names": [
+      "AMERICAS WHOLESALE LENDER",
+      "COUNTRYWIDE HOME LOANS INC",
+      "LOWRY AMY",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "7-24-2007",
+    "recordingNumber": "20070834755",
+    "pageAmount": 18,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09. Lifecycle remains open in the curated corpus: no release, substitution of trustee, notice of sale, or subsequent refinance DOT has been located for this 2007 Countrywide Interest-Only ARM. Countrywide was acquired by Bank of America in 2008; any downstream assignment or release would typically be executed by Bank of America Home Loans or a successor servicer. A targeted Phase 2 probe of 2020–2021 refinance-era recording numbers was not productive — see R-007 for Known Gap #2 search-limitation context.",
+  "mers_note": "MERS is beneficiary of record as nominee for Countrywide Home Loans, Inc. dba America's Wholesale Lender — Countrywide's wholesale origination channel. This is a pre-crash 2007 interest-only adjustable-rate mortgage (LIBOR One-Year Index + 2.250% margin; initial 6.375%, cap 12.375%; first rate reset 2010-08-01). Interest-only ARMs from Countrywide are a signature product of the 2006–2008 subprime lending era and drove significant 2008–2011 foreclosure activity. Countrywide was acquired by Bank of America in July 2008; any servicing transfer or note assignment would typically occur outside the public record via the MERS system. The note may currently be held by Bank of America Home Loans, a successor servicer, or a securitization trust.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 20
+  }
+}

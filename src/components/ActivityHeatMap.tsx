@@ -47,7 +47,7 @@ export function ActivityHeatMap() {
           County Recording Activity
         </h1>
         <p className="text-sm text-slate-600">
-          Last 30 days · indexed through 2026-04-09 · synthesized for demo
+          Last {windowDays} days · indexed through 2026-04-09 · synthesized for demo
         </p>
       </header>
 

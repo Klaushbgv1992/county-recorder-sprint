@@ -1,10 +1,18 @@
-import { useCallback, useState, type ReactNode } from "react";
-import type { Instrument, DocumentLink } from "../types";
+import { useCallback, useState } from "react";
+import type {
+  Instrument,
+  DocumentLink,
+  Parcel,
+  EncumbranceLifecycle,
+  PipelineStatus,
+} from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
+import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { Term, TermSection } from "../terminology/Term";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
@@ -19,10 +27,24 @@ interface Props {
   links: DocumentLink[];
   corpusProvenance: CorpusProvenance;
   onClose: () => void;
-  headerActions?: ReactNode;
+  parcel: Parcel;
+  allInstruments: Instrument[];
+  allLinks: DocumentLink[];
+  lifecycles: EncumbranceLifecycle[];
+  pipelineStatus: PipelineStatus;
 }
 
-export function ProofDrawer({ instrument, links, corpusProvenance, onClose, headerActions }: Props) {
+export function ProofDrawer({
+  instrument,
+  links,
+  corpusProvenance,
+  onClose,
+  parcel,
+  allInstruments,
+  allLinks,
+  lifecycles,
+  pipelineStatus,
+}: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
   const citation = formatCitation(instrument, COUNTY_NAME);
@@ -46,7 +68,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
       <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 shrink-0">
         <div className="flex items-center justify-between">
           <div>
-            <h3 className="font-semibold text-gray-800">
+            <h3 className="font-semibold text-gray-800 font-mono">
               {instrument.instrument_number}
             </h3>
             <p className="text-xs text-gray-500 mt-0.5">
@@ -54,17 +76,24 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
             </p>
           </div>
           <div className="flex items-center gap-2">
-            {headerActions}
+            <ExportCommitmentButton
+              parcel={parcel}
+              instruments={allInstruments}
+              links={allLinks}
+              lifecycles={lifecycles}
+              pipelineStatus={pipelineStatus}
+              viewedInstrumentNumber={instrument.instrument_number}
+            />
             <button
               onClick={handleCopyCitation}
-              className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors"
+              className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
               title="Copy formatted citation to clipboard"
             >
               Copy Citation
             </button>
             <button
               onClick={onClose}
-              className="px-2 py-1.5 text-gray-400 hover:text-gray-600 text-lg"
+              className="px-2 py-1.5 text-gray-400 hover:text-gray-600 text-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             >
               &times;
             </button>
@@ -87,7 +116,7 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
             </span>
             <button
               onClick={() => setShowCorpusTotals((v) => !v)}
-              className="ml-1 w-4 h-4 rounded-full border border-gray-400 text-gray-500 text-[10px] leading-none flex items-center justify-center hover:bg-gray-100"
+              className="ml-1 w-4 h-4 rounded-full border border-gray-400 text-gray-500 text-[10px] leading-none flex items-center justify-center hover:bg-gray-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
               title="Show corpus-wide totals"
               aria-label="Show corpus-wide totals"
             >
@@ -133,19 +162,20 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
 
           {/* Right: Extracted Fields */}
           <div className="w-1/2 overflow-auto p-6">
+            <TermSection id="proof-extracted-fields">
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
               Extracted Fields
             </h4>
 
             <div className="space-y-3 mb-6">
               {grantors.length > 0 && (
-                <FieldDisplay label="Grantor" value={grantors.join("; ")} />
+                <FieldDisplay label={<Term professional="Grantor" />} value={grantors.join("; ")} />
               )}
               {grantees.length > 0 && (
-                <FieldDisplay label="Grantee" value={grantees.join("; ")} />
+                <FieldDisplay label={<Term professional="Grantee" />} value={grantees.join("; ")} />
               )}
               {trustors.length > 0 && (
-                <FieldDisplay label="Trustor/Borrower" value={trustors.join("; ")} />
+                <FieldDisplay label={<Term professional="Trustor/Borrower" />} value={trustors.join("; ")} />
               )}
               {lenders.length > 0 && (
                 <FieldDisplay label="Lender" value={lenders.join("; ")} />
@@ -212,13 +242,15 @@ export function ProofDrawer({ instrument, links, corpusProvenance, onClose, head
               </>
             )}
 
+            </TermSection>
+
             {/* AI Extraction replay section — shown only when a real OCR trace exists */}
             {extractionTrace && (
               <div className="mb-6">
                 <button
                   type="button"
                   onClick={() => setShowAiExtraction((v) => !v)}
-                  className="flex w-full items-center justify-between rounded border border-indigo-200 bg-indigo-50 px-3 py-2 text-left hover:bg-indigo-100"
+                  className="flex w-full items-center justify-between rounded border border-indigo-200 bg-indigo-50 px-3 py-2 text-left hover:bg-indigo-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
                   aria-expanded={showAiExtraction}
                 >
                   <span className="text-sm font-semibold text-indigo-900">
@@ -300,7 +332,7 @@ function trackSummary(trace: {
   return `${recovered}/${total} fields \u00b7 ${ver}`;
 }
 
-function FieldDisplay({ label, value }: { label: string; value: string }) {
+function FieldDisplay({ label, value }: { label: React.ReactNode; value: string }) {
   return (
     <div>
       <span className="text-xs font-medium text-gray-500">{label}</span>

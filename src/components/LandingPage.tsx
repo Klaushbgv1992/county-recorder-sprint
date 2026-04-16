@@ -2,6 +2,8 @@
 import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
 import { SearchEntry } from "./SearchEntry";
+import { FeaturedParcels } from "./FeaturedParcels";
+import { PersonaRow } from "./PersonaRow";
 import { useAllParcels } from "../hooks/useAllParcels";
 
 const HIGHLIGHTED: HighlightedParcel[] = [
@@ -16,9 +18,11 @@ export function LandingPage() {
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
       <header className="px-6 py-4 border-b border-slate-200 bg-white">
-        <h1 className="text-xl font-semibold text-slate-900">Land Custodian Portal</h1>
-        <p className="text-sm text-slate-600">
-          Maricopa County Recorder · the authoritative source, presented spatially
+        <h1 className="text-2xl font-semibold text-recorder-900">
+          Maricopa County Recorder
+        </h1>
+        <p className="text-sm text-recorder-500">
+          The county owns the record. Everyone else owns a copy.
         </p>
       </header>
 
@@ -38,13 +42,16 @@ export function LandingPage() {
         </aside>
       </section>
 
+      <FeaturedParcels parcels={parcels} />
+
       <section
         role="search"
         className="px-6 py-8 bg-white border-b border-slate-200"
       >
         <div className="max-w-2xl mx-auto">
+          <PersonaRow />
           <h2 className="text-sm font-medium text-slate-700 mb-2">
-            Or enter a parcel or instrument number directly
+            Or look up a parcel directly
           </h2>
           <SearchEntry
             parcels={parcels}
@@ -56,6 +63,32 @@ export function LandingPage() {
               )
             }
           />
+        </div>
+      </section>
+
+      <section className="px-6 py-6 bg-recorder-50 border-b border-recorder-100">
+        <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <Link
+            to="/"
+            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          >
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Spatial custody</p>
+            <p className="text-xs text-recorder-500 mt-1">County-authoritative parcel polygons from the assessor. No licensing layer.</p>
+          </Link>
+          <Link
+            to="/pipeline"
+            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          >
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Verified freshness</p>
+            <p className="text-xs text-recorder-500 mt-1">Per-stage pipeline verification with SLA tracking. Know exactly how current your data is.</p>
+          </Link>
+          <Link
+            to={`/parcel/304-78-386/encumbrances`}
+            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          >
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Chain intelligence</p>
+            <p className="text-xs text-recorder-500 mt-1">Same-day transaction grouping, MERS annotations, and release matching. Structured title work, not a document list.</p>
+          </Link>
         </div>
       </section>
 
@@ -71,6 +104,12 @@ export function LandingPage() {
           className="underline underline-offset-2 hover:text-slate-700"
         >
           → Compare to a title-plant report
+        </Link>
+        <Link
+          to="/staff"
+          className="underline underline-offset-2 text-slate-400 hover:text-slate-600"
+        >
+          County staff? Open workbench &rarr;
         </Link>
       </footer>
     </main>

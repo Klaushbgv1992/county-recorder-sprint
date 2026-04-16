@@ -1,1 +1,30 @@
 @import "tailwindcss";
+
+@import url("https://rsms.me/inter/inter.css");
+@import url("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&display=swap");
+
+@theme {
+  /* Brand palette — county recorder blues */
+  --color-recorder-50: #f1f5f9;
+  --color-recorder-100: #e2e8f0;
+  --color-recorder-500: #475569;
+  --color-recorder-700: #334155;
+  --color-recorder-900: #0f172a;
+
+  /* Moat accent — emerald for "county advantage" */
+  --color-moat-50: #ecfdf5;
+  --color-moat-100: #d1fae5;
+  --color-moat-500: #10b981;
+  --color-moat-700: #047857;
+  --color-moat-900: #064e3b;
+
+  /* Provenance badge colors */
+  --color-provenance-api: #3b82f6;
+  --color-provenance-ocr: #f59e0b;
+  --color-provenance-curator: #8b5cf6;
+  --color-provenance-algo: #64748b;
+
+  /* Typography */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Code", monospace;
+}

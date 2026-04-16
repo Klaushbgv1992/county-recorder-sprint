@@ -4,6 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Land Custodian Portal — Maricopa County, AZ</title>
+    <meta
+      name="description"
+      content="AI-enhanced county recorder search portal. Parcel-keyed chain of title, encumbrance lifecycle, and anomaly detection for Maricopa County."
+    />
+
+    <!--
+      Static OG defaults below are read by social crawlers and search
+      indexers, which fetch raw HTML and do not execute JS. Per-parcel
+      overrides happen client-side via src/hooks/useDocumentMeta.ts.
+      That hook injects new <meta data-managed="useDocumentMeta"> nodes
+      AFTER these defaults, so any post-hydration crawler that takes
+      "last wins" sees the parcel-specific tags. Crawlers that don't
+      execute JS see only these defaults — which is correct for the
+      shared-link generic preview case.
+    -->
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Land Custodian Portal" />
+    <meta
+      property="og:title"
+      content="Land Custodian Portal — Maricopa County, AZ"
+    />
+    <meta
+      property="og:description"
+      content="AI-enhanced county recorder search portal. Parcel-keyed chain of title, encumbrance lifecycle, and anomaly detection for Maricopa County."
+    />
+    <meta property="og:image" content="/og-default.png" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Land Custodian Portal — Maricopa County, AZ"
+    />
+    <meta
+      name="twitter:description"
+      content="AI-enhanced county recorder search portal. Parcel-keyed chain of title, encumbrance lifecycle, and anomaly detection for Maricopa County."
+    />
+    <meta name="twitter:image" content="/og-default.png" />
   </head>
   <body>
     <div id="root"></div>

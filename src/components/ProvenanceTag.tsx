@@ -1,11 +1,5 @@
 import type { ProvenanceKind } from "../types";
-
-const PROVENANCE_LABELS: Record<ProvenanceKind, string> = {
-  public_api: "County API",
-  ocr: "OCR",
-  manual_entry: "Hand-Curated",
-  algorithmic: "Matcher",
-};
+import { provenanceLabel } from "../logic/provenance-vocab";
 
 const PROVENANCE_COLORS: Record<ProvenanceKind, string> = {
   public_api: "bg-gray-100 text-gray-700",
@@ -21,12 +15,13 @@ interface Props {
 
 export function ProvenanceTag({ provenance, confidence }: Props) {
   const pct = Math.round(confidence * 100);
+  const label = provenanceLabel(provenance);
   return (
     <span
       className={`inline-flex items-center gap-1 px-1.5 py-0.5 rounded text-[11px] font-medium ${PROVENANCE_COLORS[provenance]}`}
-      title={`Source: ${PROVENANCE_LABELS[provenance]}, Confidence: ${pct}%`}
+      title={`Source: ${label}, Confidence: ${pct}%`}
     >
-      {PROVENANCE_LABELS[provenance]} {pct}%
+      {label} {pct}%
     </span>
   );
 }

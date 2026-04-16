@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import { EncumbranceLifecycle } from "../src/components/EncumbranceLifecycle";
 import { loadParcelDataByApn } from "../src/data-loader";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 const POPHAM_APN = "304-78-386";
 const HOGUE_APN = "304-77-689";
@@ -22,33 +23,45 @@ function renderEncumbrance(
   const onSetLifecycleOverride = vi.fn();
   const onOpenDocument = vi.fn();
   const utils = render(
-    <EncumbranceLifecycle
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      linkActions={Object.fromEntries(
-        links.map((l) => [l.id, l.examiner_action]),
-      )}
-      lifecycleOverrides={{}}
-      onSetLinkAction={onSetLinkAction}
-      onSetLifecycleOverride={onSetLifecycleOverride}
-      onOpenDocument={onOpenDocument}
-    />,
+    <TerminologyProvider>
+      <EncumbranceLifecycle
+        parcel={data.parcel}
+        instruments={data.instruments}
+        links={links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
+        linkActions={Object.fromEntries(
+          links.map((l) => [l.id, l.examiner_action]),
+        )}
+        lifecycleOverrides={{}}
+        onSetLinkAction={onSetLinkAction}
+        onSetLifecycleOverride={onSetLifecycleOverride}
+        onOpenDocument={onOpenDocument}
+      />
+    </TerminologyProvider>,
   );
   return { ...utils, data, onOpenDocument };
 }
 
-// Locate a lifecycle card by its DOT instrument number printed in the header.
-function lifecycleCardFor(dotInstrument: string): HTMLElement {
-  const header = screen.getByText(`DOT: ${dotInstrument}`);
+// Locate a lifecycle card by its root instrument number printed in the header.
+// After Gap #17 fix, the label prefix depends on document_type (e.g. "DOT", "Deed", "Plat Map").
+// After Task 7 (font-mono), the instrument number is wrapped in a <span>, so the text is split
+// across sibling nodes — use a function matcher against the full textContent of the parent span.
+function lifecycleCardFor(rootInstrument: string): HTMLElement {
+  // Match the outer <span> whose combined text content is "<Label>: <instrumentNumber>"
+  const header = screen.getByText(
+    (_content, element) => {
+      if (!element) return false;
+      const text = element.textContent ?? "";
+      return new RegExp(`:\\s*${rootInstrument}$`).test(text);
+    },
+  );
   // Walk up to the lifecycle card root (the rounded white container).
   let node: HTMLElement | null = header;
   while (node && !node.classList.contains("rounded-lg")) {
     node = node.parentElement as HTMLElement | null;
   }
-  if (!node) throw new Error(`No lifecycle card found for DOT ${dotInstrument}`);
+  if (!node) throw new Error(`No lifecycle card found for instrument ${rootInstrument}`);
   return node;
 }
 
@@ -107,6 +120,22 @@ describe("EncumbranceLifecycle UI wiring", () => {
     ).toBeInTheDocument();
     expect(
       screen.getByText(/county-internal full-name scan closes this gap/i),
+    ).toBeInTheDocument();
+  });
+
+  it("renders label derived from document_type for lc-004 (subdivision plat)", () => {
+    // lc-004 root is instrument 20010093192, document_type: "other",
+    // document_type_raw: "PLAT MAP"
+    // Should NOT render "DOT:" for this lifecycle — label should be "Plat Map"
+    renderEncumbrance(POPHAM_APN);
+    // After fix, "DOT: 20010093192" must not appear
+    expect(
+      screen.queryByText((_c, el) => !!el && /DOT:\s*20010093192$/.test(el.textContent ?? "")),
+    ).not.toBeInTheDocument();
+    // Instead, the humanized raw type should be the label prefix
+    // (instrument number is in a child <span>, so match against combined textContent)
+    expect(
+      screen.getByText((_c, el) => !!el && /Plat Map:\s*20010093192$/.test(el.textContent ?? "")),
     ).toBeInTheDocument();
   });
 });

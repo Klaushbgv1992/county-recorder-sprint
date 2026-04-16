@@ -114,7 +114,7 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
 
   return (
     <aside
-      className={`border-l border-slate-200 bg-white flex flex-col shrink-0 ${
+      className={`border-l border-recorder-50/60 bg-white flex flex-col shrink-0 shadow-sm ${
         collapsed ? "w-10" : "w-full md:w-[40%]"
       }`}
     >
@@ -128,7 +128,7 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
           type="button"
           onClick={toggle}
           aria-label={collapsed ? "Expand panel" : "Collapse panel"}
-          className="text-slate-500 hover:text-slate-900 text-lg leading-none"
+          className="text-slate-500 hover:text-slate-900 text-lg leading-none transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
         >
           {collapsed ? "»" : "«"}
         </button>
@@ -247,7 +247,7 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
               href={`https://mcassessor.maricopa.gov/mcs/?q=${apn.replace(/-/g, "")}&mod=pd`}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-1 text-[11px] underline underline-offset-2 text-slate-700"
+              className="inline-block mt-1 text-[11px] underline underline-offset-2 text-slate-700 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             >
               Open in MC Assessor →
             </a>

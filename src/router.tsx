@@ -5,7 +5,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect } from "react";
-import { Link, useNavigate, useParams } from "react-router";
+import { useNavigate, useParams } from "react-router";
 import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
@@ -14,7 +14,6 @@ import { LandingPage } from "./components/LandingPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
-import { ExportCommitmentButton } from "./components/ExportCommitmentButton";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
@@ -27,6 +26,8 @@ import { StaffParcelView } from "./components/StaffParcelView";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
+import { useDocumentMeta } from "./hooks/useDocumentMeta";
+import { NotInCorpusParcel } from "./components/EmptyStates";
 
 /**
  * Resolve a bare 11-digit instrument number to the APN of the single
@@ -57,23 +58,6 @@ export function redirectTargetForInstrument(
   return apn ? `/parcel/${apn}/instrument/${instrumentNumber}` : null;
 }
 
-function NotFoundPanel({
-  title = "Not in this corpus",
-  subtitle,
-}: {
-  title?: string;
-  subtitle?: string;
-}) {
-  return (
-    <div className="max-w-xl mx-auto px-6 py-16 text-center">
-      <h2 className="text-xl font-semibold text-gray-800 mb-2">{title}</h2>
-      {subtitle && <p className="text-sm text-gray-600 mb-6">{subtitle}</p>}
-      <Link to="/" className="text-blue-600 hover:text-blue-800 hover:underline">
-        Return to search
-      </Link>
-    </div>
-  );
-}
 
 function SplitPane({
   main,
@@ -125,9 +109,9 @@ function ParcelGuard({
     return (
       <SplitPane
         main={
-          <NotFoundPanel
+          <NotInCorpusParcel
             title="Parcel not in this corpus"
-            subtitle={apn ? `APN ${apn} is not in the curated set.` : undefined}
+            message={apn ? `APN ${apn} is not in the curated set.` : undefined}
           />
         }
         drawer={null}
@@ -146,6 +130,43 @@ function ChainRouteInner({ apn }: { apn: string }) {
   const data = useParcelData(apn);
   const navigate = useNavigate();
 
+  useDocumentMeta({
+    title: `Chain of title — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
+    description: `Parcel-keyed chain of title for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. ${data.instruments.length} instruments curated, verified through ${data.pipelineStatus.verified_through_date}.`,
+    ogImage: "/og-default.png",
+    ogUrl: `${typeof window !== "undefined" ? window.location.origin : ""}/parcel/${data.parcel.apn}`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      name: `Parcel ${data.parcel.apn} — ${data.parcel.address}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: data.parcel.address,
+        addressLocality: data.parcel.city,
+        addressRegion: data.parcel.state,
+        postalCode: data.parcel.zip,
+        addressCountry: "US",
+      },
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "APN",
+          value: data.parcel.apn,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Subdivision",
+          value: data.parcel.subdivision,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Verified through",
+          value: data.pipelineStatus.verified_through_date,
+        },
+      ],
+    },
+  });
+
   const drawerInstrument = instrumentNumber ?? null;
   const drawerOpen = drawerInstrument !== null;
   const instrumentForDrawer = drawerOpen
@@ -163,17 +184,6 @@ function ChainRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}`);
 
-  const exportButton = (
-    <ExportCommitmentButton
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={data.links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      viewedInstrumentNumber={drawerInstrument ?? undefined}
-    />
-  );
-
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -181,12 +191,16 @@ function ChainRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
-        headerActions={exportButton}
+        parcel={data.parcel}
+        allInstruments={data.instruments}
+        allLinks={data.links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
       />
     ) : drawerOpen ? (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not on this parcel"
-        subtitle={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
+        message={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
       />
     ) : null;
 
@@ -221,8 +235,28 @@ function EncumbranceRoute() {
 function EncumbranceRouteInner({ apn }: { apn: string }) {
   const { instrumentNumber } = useParams();
   const data = useParcelData(apn);
-  const examiner = useExaminerActions(data.links);
+  const examiner = useExaminerActions(data.links, apn);
   const navigate = useNavigate();
+
+  useDocumentMeta({
+    title: `Encumbrance lifecycle — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
+    description: `Open and closed encumbrance lifecycles for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. Verified through ${data.pipelineStatus.verified_through_date}.`,
+    ogImage: "/og-default.png",
+    ogUrl: `${typeof window !== "undefined" ? window.location.origin : ""}/parcel/${data.parcel.apn}/encumbrances`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      name: `Parcel ${data.parcel.apn} — ${data.parcel.address}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: data.parcel.address,
+        addressLocality: data.parcel.city,
+        addressRegion: data.parcel.state,
+        postalCode: data.parcel.zip,
+        addressCountry: "US",
+      },
+    },
+  });
 
   const drawerInstrument = instrumentNumber ?? null;
   const drawerOpen = drawerInstrument !== null;
@@ -241,17 +275,6 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
     navigate(`/parcel/${apn}/encumbrances/instrument/${n}`);
   const closeDrawer = () => navigate(`/parcel/${apn}/encumbrances`);
 
-  const exportButton = (
-    <ExportCommitmentButton
-      parcel={data.parcel}
-      instruments={data.instruments}
-      links={data.links}
-      lifecycles={data.lifecycles}
-      pipelineStatus={data.pipelineStatus}
-      viewedInstrumentNumber={drawerInstrument ?? undefined}
-    />
-  );
-
   const drawerNode =
     drawerOpen && instrumentForDrawer ? (
       <ProofDrawer
@@ -259,12 +282,16 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
         links={linksForDrawer}
         corpusProvenance={corpusProvenanceOf(data)}
         onClose={closeDrawer}
-        headerActions={exportButton}
+        parcel={data.parcel}
+        allInstruments={data.instruments}
+        allLinks={data.links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
       />
     ) : drawerOpen ? (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not on this parcel"
-        subtitle={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
+        message={`Instrument ${drawerInstrument} is not in the curated set for APN ${apn}.`}
       />
     ) : null;
 
@@ -284,7 +311,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
               onSetLinkAction={examiner.setLinkAction}
               onSetLifecycleOverride={examiner.setLifecycleOverride}
               onOpenDocument={openDrawer}
-              headerActions={exportButton}
+              viewedInstrumentNumber={drawerInstrument ?? undefined}
             />
           </div>
           <SpatialContextPanel apn={apn} />
@@ -311,9 +338,9 @@ function InstrumentResolver() {
     : null;
   if (instrumentNumber && !target) {
     return (
-      <NotFoundPanel
+      <NotInCorpusParcel
         title="Instrument not in this corpus"
-        subtitle={`No parcel owns instrument ${instrumentNumber} in the curated set.`}
+        message={`No parcel owns instrument ${instrumentNumber} in the curated set.`}
       />
     );
   }
@@ -394,7 +421,7 @@ export const routes: RouteObject[] = [
       {
         id: "not-found",
         path: "*",
-        element: <NotFoundPanel />,
+        element: <NotInCorpusParcel />,
       },
     ],
   },

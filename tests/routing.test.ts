@@ -8,6 +8,7 @@ import {
   resolveInstrumentToApn,
   routes,
 } from "../src/router";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 // LandingPage (now at /) renders CountyMap which uses react-map-gl/maplibre.
 // MapLibre requires WebGL which is unavailable in jsdom. Mock the module so
@@ -21,7 +22,9 @@ vi.mock("react-map-gl/maplibre", () => ({
 
 function renderAt(url: string): string {
   const router = createMemoryRouter(routes, { initialEntries: [url] });
-  return renderToString(createElement(RouterProvider, { router }));
+  return renderToString(
+    createElement(TerminologyProvider, null, createElement(RouterProvider, { router })),
+  );
 }
 
 function matchIds(url: string): string[] {
@@ -182,7 +185,7 @@ describe("NotFound rendering", () => {
   it("unknown APN renders the parcel-not-found panel", () => {
     const html = renderAt("/parcel/nope-nope-nope");
     expect(html).toContain("Parcel not in this corpus");
-    expect(html).toContain("Return to search");
+    expect(html).toContain("Back to search");
   });
 
   it("known APN + unknown instrument renders chain in main pane and not-found in drawer", () => {
