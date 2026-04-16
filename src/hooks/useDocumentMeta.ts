@@ -27,7 +27,7 @@ function upsertMeta(
   el.content = content;
 }
 
-function upsertJsonLd(payload: unknown): void {
+function upsertJsonLdRaw(serialized: string): void {
   let el = document.head.querySelector<HTMLScriptElement>(
     `script[data-managed="${DATA_MARKER}"][type="application/ld+json"]`,
   );
@@ -37,7 +37,7 @@ function upsertJsonLd(payload: unknown): void {
     el.setAttribute("data-managed", DATA_MARKER);
     document.head.appendChild(el);
   }
-  el.textContent = JSON.stringify(payload);
+  el.textContent = serialized;
 }
 
 function removeJsonLd(): void {
@@ -55,6 +55,11 @@ function removeAllManaged(): void {
 }
 
 export function useDocumentMeta(input: DocumentMetaInput): void {
+  // Stringify once so the dep array depends on string content, not on a
+  // fresh object reference every render.
+  const jsonLdSerialized =
+    input.jsonLd === undefined ? null : JSON.stringify(input.jsonLd);
+
   useEffect(() => {
     document.title = input.title;
     upsertMeta("name", "description", input.description);
@@ -68,8 +73,8 @@ export function useDocumentMeta(input: DocumentMetaInput): void {
     upsertMeta("name", "twitter:description", input.description);
     if (input.ogImage) upsertMeta("name", "twitter:image", input.ogImage);
 
-    if (input.jsonLd !== undefined) {
-      upsertJsonLd(input.jsonLd);
+    if (jsonLdSerialized !== null) {
+      upsertJsonLdRaw(jsonLdSerialized);
     } else {
       removeJsonLd();
     }
@@ -80,6 +85,6 @@ export function useDocumentMeta(input: DocumentMetaInput): void {
     input.description,
     input.ogImage,
     input.ogUrl,
-    input.jsonLd,
+    jsonLdSerialized,
   ]);
 }

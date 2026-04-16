@@ -51,7 +51,7 @@ export function LandingPage() {
         <div className="max-w-2xl mx-auto">
           <PersonaRow />
           <h2 className="text-sm font-medium text-slate-700 mb-2">
-            Direct lookup
+            Or look up a parcel directly
           </h2>
           <SearchEntry
             parcels={parcels}

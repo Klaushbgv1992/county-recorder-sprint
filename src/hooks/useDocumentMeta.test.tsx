@@ -77,6 +77,15 @@ describe("useDocumentMeta", () => {
     ).toBe(0);
   });
 
+  it("removes JSON-LD when jsonLd prop becomes undefined on rerender", () => {
+    const { rerender } = render(
+      <Probe title="t" description="d" jsonLd={{ x: 1 }} />,
+    );
+    expect(jsonLd()).not.toBeNull();
+    rerender(<Probe title="t" description="d" />);
+    expect(jsonLd()).toBeNull();
+  });
+
   it("updates managed elements when props change (no duplicates)", () => {
     const { rerender } = render(<Probe title="A" description="da" />);
     expect(metaFor("og:title")).toBe("A");

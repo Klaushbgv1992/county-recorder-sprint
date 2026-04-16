@@ -134,7 +134,7 @@ function ChainRouteInner({ apn }: { apn: string }) {
     title: `Chain of title — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
     description: `Parcel-keyed chain of title for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. ${data.instruments.length} instruments curated, verified through ${data.pipelineStatus.verified_through_date}.`,
     ogImage: "/og-default.png",
-    ogUrl: `${window.location.origin}/parcel/${data.parcel.apn}`,
+    ogUrl: `${typeof window !== "undefined" ? window.location.origin : ""}/parcel/${data.parcel.apn}`,
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Place",
@@ -242,7 +242,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
     title: `Encumbrance lifecycle — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
     description: `Open and closed encumbrance lifecycles for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. Verified through ${data.pipelineStatus.verified_through_date}.`,
     ogImage: "/og-default.png",
-    ogUrl: `${window.location.origin}/parcel/${data.parcel.apn}/encumbrances`,
+    ogUrl: `${typeof window !== "undefined" ? window.location.origin : ""}/parcel/${data.parcel.apn}/encumbrances`,
     jsonLd: {
       "@context": "https://schema.org",
       "@type": "Place",
