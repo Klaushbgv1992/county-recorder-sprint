@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useMap } from "react-map-gl/maplibre";
 import countyBoundary from "../data/maricopa-county-boundary.json";
 
@@ -45,6 +46,12 @@ export function MapZoomControls({
   counterExampleCoord,
 }: MapZoomControlsProps) {
   const { current: map } = useMap();
+  // Tracks last-clicked intent, not current map position. If the user
+  // manually pans after clicking "Show counter-example", the next click
+  // still returns them to the POPHAM/HOA view — which is the expected
+  // reverse action. Resetting on manual pan would require filtering
+  // programmatic vs. user moves and adds complexity for marginal gain.
+  const [showingCounterExample, setShowingCounterExample] = useState(false);
 
   function showFullCounty() {
     if (!map) return;
@@ -69,13 +76,23 @@ export function MapZoomControls({
     });
   }
 
-  function showCounterExample() {
+  function toggleCounterExample() {
     if (!map || !counterExampleCoord) return;
-    map.flyTo({
-      center: [counterExampleCoord.longitude, counterExampleCoord.latitude],
-      zoom: defaultZoom,
-      duration: 700,
-    });
+    if (showingCounterExample) {
+      map.flyTo({
+        center: [defaultCenter.longitude, defaultCenter.latitude],
+        zoom: defaultZoom,
+        duration: 700,
+      });
+      setShowingCounterExample(false);
+    } else {
+      map.flyTo({
+        center: [counterExampleCoord.longitude, counterExampleCoord.latitude],
+        zoom: defaultZoom,
+        duration: 700,
+      });
+      setShowingCounterExample(true);
+    }
   }
 
   const currentZoom = map?.getZoom() ?? defaultZoom;
@@ -94,11 +111,15 @@ export function MapZoomControls({
       {counterExampleCoord && (
         <button
           type="button"
-          onClick={showCounterExample}
-          title="Pan to the HOGUE counter-example parcel."
+          onClick={toggleCounterExample}
+          title={
+            showingCounterExample
+              ? "Return to POPHAM / HOA view."
+              : "Pan to the HOGUE counter-example parcel."
+          }
           className={BUTTON_CLASS}
         >
-          Show counter-example
+          {showingCounterExample ? "Back to examples" : "Show counter-example"}
         </button>
       )}
       {showReset && (
