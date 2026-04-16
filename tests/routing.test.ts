@@ -140,6 +140,10 @@ describe("route table", () => {
     });
   });
 
+  it("/why matches the why-page route", () => {
+    expect(matchIds("/why")).toContain("why-page");
+  });
+
   it("matches /pipeline", () => {
     expect(matchIds("/pipeline")).toContain("pipeline");
   });

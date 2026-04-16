@@ -16,6 +16,7 @@ import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
+import { WhyPage } from "./components/WhyPage";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
 import { TransactionWizard } from "./components/TransactionWizard";
 import { PipelineDashboard } from "./components/PipelineDashboard";
@@ -301,6 +302,7 @@ export const routes: RouteObject[] = [
     children: [
       { path: "/", element: <LandingPage /> },
       { path: "/county-activity", element: <ActivityHeatMap /> },
+      { path: "/why", id: "why-page", element: <WhyPage /> },
       {
         element: <AppShell />,
         children: [
