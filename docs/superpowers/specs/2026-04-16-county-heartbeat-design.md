@@ -191,7 +191,7 @@ export function shouldRenderHeartbeat(input: {
 ### Public API
 
 ```tsx
-export function CountyHeartbeat({ now }: { now?: number }): JSX.Element | null;
+export function CountyHeartbeat({ now }: { now?: number }): ReactElement | null;
 ```
 
 - `now` is epoch milliseconds. **Only this shape** — no `Date`, no ISO string, no union. Callers with a `Date` call `.getTime()`.
@@ -201,7 +201,7 @@ export function CountyHeartbeat({ now }: { now?: number }): JSX.Element | null;
 ### Lifecycle
 
 ```tsx
-export function CountyHeartbeat({ now }: { now?: number }): JSX.Element | null {
+export function CountyHeartbeat({ now }: { now?: number }): ReactElement | null {
   const freshness = currentFreshness(pipelineState);
   const verifiedThrough = freshness.index;
   const { lag_days_min: lagMin, lag_days_max: lagMax } =
