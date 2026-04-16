@@ -17,7 +17,7 @@ document our data supply chain end-to-end.
 
 - Source: Maricopa County Assessor public ArcGIS FeatureServer
 - Endpoint probe order:
-  1. `https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer`
+  1. `https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/FeatureServer`
   2. `https://maps.mcassessor.maricopa.gov/arcgis/rest/services/`
   3. Open-data indirection via `https://maps-mcassessor.opendata.arcgis.com/`
 - Bounding box (WGS84): `xmin=-111.755, ymin=33.225, xmax=-111.695, ymax=33.258`
@@ -27,10 +27,10 @@ document our data supply chain end-to-end.
 - Attribution: Maricopa County Assessor, per A.R.S. § 11-495 (public records).
 - Post-run: record count and gzipped file size below.
 
-Record count at capture: 1000
-File size (gzipped): 117,018 bytes (0.11 MB)
-Capture date: 2026-04-16
-Endpoint used: https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer
+Record count at capture: (to be filled by operator)
+File size (gzipped): (to be filled by operator)
+Capture date: (to be filled by operator)
+Endpoint used: (to be filled by operator)
 
 ## 2. Candidate filter (run once by hand after Gilbert fetch)
 
