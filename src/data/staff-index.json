@@ -203,5 +203,47 @@
     "names": ["POPHAM CHRISTOPHER", "ZOLNIKOV GRACE"],
     "attributed_parcel_apn": "999-99-009",
     "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20070834753",
+    "recording_date": "2007-07-24",
+    "document_type": "WAR DEED",
+    "names": ["FLORES LUPE", "LOWRY AMY E"],
+    "attributed_parcel_apn": "304-78-383",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20070834755",
+    "recording_date": "2007-07-24",
+    "document_type": "DEED TRST",
+    "names": [
+      "AMERICAS WHOLESALE LENDER",
+      "COUNTRYWIDE HOME LOANS INC",
+      "LOWRY AMY",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC"
+    ],
+    "attributed_parcel_apn": "304-78-383",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20130087108",
+    "recording_date": "2013-01-28",
+    "document_type": "WAR DEED",
+    "names": ["NUFF SAID ENTERPRISES LLC", "WARNER KAMA"],
+    "attributed_parcel_apn": "304-78-374",
+    "suppressed_same_name_of": null
+  },
+  {
+    "instrument_number": "20130087109",
+    "recording_date": "2013-01-28",
+    "document_type": "DEED TRST",
+    "names": [
+      "ACADEMY MORTGAGE CORP",
+      "FIDELITY NATIONAL TITLE AGENCY",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "WARNER KAMA"
+    ],
+    "attributed_parcel_apn": "304-78-374",
+    "suppressed_same_name_of": null
   }
 ]
