@@ -5,6 +5,7 @@ type Mode = "professional" | "plain";
 
 interface TerminologyContextValue {
   mode: Mode;
+  setMode: (mode: Mode) => void;
   toggle: () => void;
   t: (term: string) => string;
 }
@@ -20,13 +21,22 @@ function readStoredMode(): Mode {
   }
 }
 
+function persist(mode: Mode): void {
+  try { localStorage.setItem("terminology-mode", mode); } catch {}
+}
+
 export function TerminologyProvider({ children }: { children: ReactNode }) {
-  const [mode, setMode] = useState<Mode>(readStoredMode);
+  const [mode, setModeState] = useState<Mode>(readStoredMode);
+
+  const setMode = useCallback((next: Mode) => {
+    setModeState(next);
+    persist(next);
+  }, []);
 
   const toggle = useCallback(() => {
-    setMode((prev) => {
+    setModeState((prev) => {
       const next = prev === "professional" ? "plain" : "professional";
-      try { localStorage.setItem("terminology-mode", next); } catch {}
+      persist(next);
       return next;
     });
   }, []);
@@ -36,7 +46,7 @@ export function TerminologyProvider({ children }: { children: ReactNode }) {
     [mode],
   );
 
-  return <Ctx value={{ mode, toggle, t }}>{children}</Ctx>;
+  return <Ctx value={{ mode, setMode, toggle, t }}>{children}</Ctx>;
 }
 
 export function useTerminology(): TerminologyContextValue {
