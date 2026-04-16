@@ -9,6 +9,7 @@ import { useAllParcels } from "../hooks/useAllParcels";
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },
   { apn: "304-77-689", status: "backup", label: "HOGUE (counter-example)" },
+  { apn: "304-78-409", status: "subdivision_common", label: "Seville HOA tract" },
 ];
 
 export function LandingPage() {
