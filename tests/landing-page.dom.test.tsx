@@ -10,6 +10,8 @@ vi.mock("react-map-gl/maplibre", () => ({
   Source: ({ children }: { children: React.ReactNode }) => <div data-testid="source">{children}</div>,
   Layer: (props: { id: string }) => <div data-testid={`layer-${props.id}`} />,
   Marker: ({ children }: { children: React.ReactNode }) => <div data-testid="marker">{children}</div>,
+  Popup: ({ children }: { children: React.ReactNode }) => <div data-testid="popup">{children}</div>,
+  useMap: () => ({ current: undefined }),
 }));
 
 describe("LandingPage", () => {
