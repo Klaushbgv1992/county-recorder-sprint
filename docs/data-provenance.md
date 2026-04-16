@@ -69,19 +69,23 @@ out for the next candidate in the filtered list.
 
 The 5 × 3 = 15 recording numbers live in
 `scripts/lib/neighbor-instruments.ts` as a frozen constant. Research
-date: (to be filled by operator).
+date: 2026-04-16.
 
 | APN | Owner | Recording # 1 | Recording # 2 | Recording # 3 |
 |---|---|---|---|---|
-| (to be filled) | | | | |
+| 304-78-406 | BROTHERTON FAMILY TRUST | 20211104802 | 20211104803 | 20211104804 |
+| 304-78-338 | SCHERF JESSICA/GARRETT | 20210839272 | 20210839273 | 20210839274 |
+| 304-78-369 | KALANITHI/KARUPPIAH | 20201215255 | 20201215256 | 20201215257 |
+| 304-78-408 | SOMMERFELD MILTON R JR | 20190726318 | 20190726319 | 20190726320 |
+| 304-78-367 | ANGUS SCOTT J | 20200620456 | 20200620457 | (2 only) |
 
 ## 5. Seville fetch confirmation
 
-- 5 files under `src/data/api-cache/recorder/`, one per APN
-- 15 total `/documents/{n}` calls
-- Total API calls (including probes): (to be filled)
+- 5 files under `src/data/api-cache/recorder/`, one per APN, plus `index.json`
+- 14 total `/documents/{n}` calls (ANGUS has 2 instruments, all others have 3)
+- Total API calls: 14
 - Spacing enforced: ≥ 500 ms between calls
-- Cap: 30 calls; halt on 429/5xx
+- Cap: 30 calls (14 used); halt on 429/5xx
 
 ## 6. Re-run instructions
 
