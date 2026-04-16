@@ -16,10 +16,13 @@ describe("PipelineBanner (verified-through)", () => {
   afterEach(() => cleanup());
 
   it("renders the verified-through date and days-ahead claim in the exact spec format", () => {
+    // Values coupled to src/data/pipeline-state.json; roll forward when the
+    // fixture is refreshed. See pipeline-selectors.test.ts "fixture health
+    // invariant" describe block for the contract that stays stable.
     const { container } = renderBanner();
     const text = container.textContent ?? "";
-    expect(text).toMatch(/Verified through\s*2026-04-09/);
-    expect(text).toMatch(/9\s*days ahead of typical title-plant cycle/);
+    expect(text).toMatch(/Verified through\s*2026-04-16/);
+    expect(text).toMatch(/14\s*days ahead of typical title-plant cycle/);
     expect(text).toMatch(/See pipeline\s*→/);
   });
 
@@ -33,7 +36,7 @@ describe("PipelineBanner (verified-through)", () => {
     const { container } = renderBanner();
     const emphasized = container.querySelector('[data-testid="days-ahead-count"]');
     expect(emphasized).toBeTruthy();
-    expect(emphasized).toHaveTextContent("9");
+    expect(emphasized).toHaveTextContent("14");
     expect(emphasized?.className ?? "").toMatch(/font-medium/);
     expect(emphasized?.className ?? "").toMatch(/text-slate-900/);
   });

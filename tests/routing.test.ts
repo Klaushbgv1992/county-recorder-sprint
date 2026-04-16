@@ -233,6 +233,52 @@ describe("/why integration via full router", () => {
   });
 });
 
+describe("wildcard not-found: smart messaging by context", () => {
+  // When a URL like /parcel/304-78-386/foobar hits the AppShell "*" wildcard,
+  // the default "This parcel or instrument is not in the curated demo corpus"
+  // message is inaccurate — POPHAM IS in the corpus; only the subpath is
+  // bad. The smart variant tells the user what's actually wrong and how to
+  // recover. See findings report 2026-04-16, Bug 2.
+  it("unknown subpath under a known parcel names the parcel and offers Chain + Encumbrance links", () => {
+    const html = renderAt("/parcel/304-78-386/foobar");
+    expect(html).toContain("304-78-386");
+    expect(html).toMatch(/not a valid section/i);
+    expect(html).toContain("/parcel/304-78-386");
+    expect(html).toContain("/parcel/304-78-386/encumbrances");
+  });
+
+  it("completely unknown path still falls back to the generic not-in-corpus message", () => {
+    const html = renderAt("/totally/bogus/path");
+    expect(html).toContain("This parcel or instrument is not in the curated demo corpus");
+  });
+
+  it("unknown subpath under an unknown parcel falls back to generic message", () => {
+    const html = renderAt("/parcel/nope-nope-nope/foobar");
+    // The parent ParcelGuard already catches unknown APNs with its own
+    // "Parcel not in this corpus" panel; this test asserts the wildcard
+    // doesn't contradict or double-render.
+    expect(html).not.toMatch(/not a valid section/i);
+  });
+});
+
+describe("Chain of title: sparse-corpus explainer", () => {
+  // HOGUE (304-77-689) has one curated deed and one DOT — its chain view is
+  // intentionally thin to narrate the counter-example. Without an inline
+  // explainer the page reads as "something didn't load"; with one it reads
+  // as "the county is honest about what it recorded." See findings report
+  // 2026-04-16, Bug 1. The note must NOT render on POPHAM (which has a
+  // richer chain) to avoid implying POPHAM is also sparse.
+  it("HOGUE chain renders the sparse-by-design explainer", () => {
+    const html = renderAt("/parcel/304-77-689");
+    expect(html).toContain("Sparse by design");
+  });
+
+  it("POPHAM chain does NOT render the sparse-by-design explainer", () => {
+    const html = renderAt("/parcel/304-78-386");
+    expect(html).not.toContain("Sparse by design");
+  });
+});
+
 describe("AppShell smoke render", () => {
   // Pure renderToString is one-shot; it cannot trip React's hook-order
   // diagnostic (which needs a re-render) and therefore cannot reproduce

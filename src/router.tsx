@@ -5,7 +5,7 @@
 
 import type { ReactNode } from "react";
 import { useEffect } from "react";
-import { useNavigate, useParams } from "react-router";
+import { Link, useLocation, useNavigate, useParams } from "react-router";
 import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
@@ -324,6 +324,61 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
   );
 }
 
+/**
+ * Catch-all for URLs that fall through every defined route. The default
+ * generic "This parcel or instrument is not in the curated demo corpus"
+ * message is inaccurate when the URL is /parcel/<known-apn>/<bad-subpath>
+ * — the parcel IS in the corpus, only the subpath is bad. This component
+ * detects that case and tells the user precisely what's wrong plus the
+ * two valid sub-routes they were probably trying to reach.
+ */
+function UnknownRoute() {
+  const location = useLocation();
+  const parcels = useAllParcels();
+  const parcelMatch = location.pathname.match(/^\/parcel\/([^/]+)\//);
+  const apn = parcelMatch?.[1];
+  const parcelExists = apn ? parcels.some((p) => p.apn === apn) : false;
+
+  if (parcelExists && apn) {
+    return (
+      <SplitPane
+        main={
+          <div className="flex flex-col items-center justify-center py-12 px-4 text-center space-y-3 max-w-xl mx-auto">
+            <p className="font-semibold text-gray-700">
+              Not a valid section of this parcel
+            </p>
+            <p className="text-sm text-gray-500">
+              APN <span className="font-mono">{apn}</span> is in the corpus,
+              but{" "}
+              <span className="font-mono">{location.pathname}</span>{" "}
+              is not a valid section.
+            </p>
+            <div className="flex items-center gap-4 pt-2 text-sm">
+              <Link
+                to={`/parcel/${apn}`}
+                className="text-blue-600 hover:underline focus-visible:ring-2 focus-visible:ring-blue-500"
+              >
+                → Chain of title
+              </Link>
+              <Link
+                to={`/parcel/${apn}/encumbrances`}
+                className="text-blue-600 hover:underline focus-visible:ring-2 focus-visible:ring-blue-500"
+              >
+                → Encumbrances
+              </Link>
+            </div>
+          </div>
+        }
+        drawer={null}
+      />
+    );
+  }
+
+  return (
+    <SplitPane main={<NotInCorpusParcel />} drawer={null} />
+  );
+}
+
 function InstrumentResolver() {
   const { instrumentNumber } = useParams();
   const parcels = useAllParcels();
@@ -427,7 +482,7 @@ export const routes: RouteObject[] = [
           {
             id: "not-found",
             path: "*",
-            element: <NotInCorpusParcel />,
+            element: <UnknownRoute />,
           },
         ],
       },
