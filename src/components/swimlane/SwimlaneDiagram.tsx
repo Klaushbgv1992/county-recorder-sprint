@@ -179,12 +179,19 @@ export function SwimlaneDiagram(props: Props) {
   }, []);
 
   const [flashingId, setFlashingId] = useState<string | null>(null);
+  const flashTimeoutRef = useRef<number | null>(null);
   const handleJumpLifecycle = useCallback((lifecycleId: string) => {
     const el = document.getElementById(lifecycleId);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (flashTimeoutRef.current !== null) {
+      window.clearTimeout(flashTimeoutRef.current);
+    }
     setFlashingId(lifecycleId);
-    window.setTimeout(() => setFlashingId(null), 1200);
+    flashTimeoutRef.current = window.setTimeout(() => {
+      setFlashingId(null);
+      flashTimeoutRef.current = null;
+    }, 1200);
   }, []);
 
   if (!domain[0] || !domain[1]) {

@@ -332,7 +332,6 @@ export function Swimlane(props: Props) {
         )}
         <CitationsRow
           inbound={props.inboundCitations}
-          outbound={[]}
           onJump={props.onJumpLifecycle}
         />
       </div>

@@ -11,7 +11,6 @@ import type { AnomalyFinding } from "../types/anomaly";
 import { MoatBanner } from "./MoatBanner";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
 import { SwimlaneDiagram } from "./swimlane";
-import { useTerminology } from "../terminology/TerminologyContext";
 import { Term, TermSection } from "../terminology/Term";
 
 interface Props {
@@ -43,7 +42,6 @@ export function EncumbranceLifecycle({
   onOpenDocument,
   viewedInstrumentNumber,
 }: Props) {
-  useTerminology();
   return (
     <div>
       <TermSection id="encumbrance-heading">
