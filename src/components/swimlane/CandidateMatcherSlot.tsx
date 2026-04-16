@@ -68,7 +68,7 @@ export function CandidateMatcherSlot(props: Props) {
         onClick={() => setForceExpanded(true)}
         className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded bg-indigo-50 text-indigo-800 border border-indigo-100 hover:bg-indigo-100"
       >
-        Matcher · scanned {total} instrument{total === 1 ? "" : "s"} · {aboveThresholdCount} above threshold · Expand →
+        Cross-parcel scan · scanned {total} instrument{total === 1 ? "" : "s"} · {aboveThresholdCount} above threshold · Expand →
       </button>
     );
   }

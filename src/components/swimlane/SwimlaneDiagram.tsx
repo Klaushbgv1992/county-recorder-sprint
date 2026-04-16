@@ -6,6 +6,7 @@ import type {
   EncumbranceLifecycle as LifecycleType,
   LifecycleStatus,
   ExaminerAction,
+  PipelineStatus,
 } from "../../types";
 import type { AnomalyFinding } from "../../types/anomaly";
 import { computeTimeAxisDomain } from "../../logic/swimlane-layout";
@@ -35,6 +36,7 @@ interface Props {
   instruments: Instrument[];
   links: DocumentLink[];
   lifecycles: LifecycleType[];
+  pipelineStatus: PipelineStatus;
   findings: AnomalyFinding[];
   linkActions: Record<string, ExaminerAction>;
   lifecycleOverrides: Record<string, LifecycleStatus>;
@@ -53,8 +55,12 @@ export function SwimlaneDiagram(props: Props) {
     [props.lifecycles, byNumber],
   );
   const domain = useMemo(
-    () => computeTimeAxisDomain(props.instruments),
-    [props.instruments],
+    () =>
+      computeTimeAxisDomain(
+        props.instruments,
+        props.pipelineStatus.verified_through_date,
+      ),
+    [props.instruments, props.pipelineStatus.verified_through_date],
   );
 
   const [candidateActions, setCandidateActions] = useState<
@@ -202,7 +208,11 @@ export function SwimlaneDiagram(props: Props) {
   return (
     <div ref={containerRef}>
       <div className="px-3">
-        <TimeAxis domain={safeDomain} widthPx={widthPx} />
+        <TimeAxis
+          domain={safeDomain}
+          widthPx={widthPx}
+          nowDate={props.pipelineStatus.verified_through_date}
+        />
       </div>
       {sorted.map((lc) => {
         const outboundMap =

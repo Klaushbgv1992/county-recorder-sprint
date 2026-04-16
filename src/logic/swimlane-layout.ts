@@ -7,6 +7,7 @@ import type { AnomalyFinding } from "../types/anomaly";
 
 export function computeTimeAxisDomain(
   instruments: Instrument[],
+  verifiedThroughDate?: string,
 ): [string, string] | [null, null] {
   if (instruments.length === 0) return [null, null];
   let minT = Infinity;
@@ -15,6 +16,10 @@ export function computeTimeAxisDomain(
     const t = new Date(i.recording_date).getTime();
     if (t < minT) minT = t;
     if (t > maxT) maxT = t;
+  }
+  if (verifiedThroughDate) {
+    const vt = new Date(verifiedThroughDate).getTime();
+    if (!Number.isNaN(vt) && vt > maxT) maxT = vt;
   }
   const minYear = new Date(minT).getUTCFullYear();
   const maxYear = new Date(maxT).getUTCFullYear();

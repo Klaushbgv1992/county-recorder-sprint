@@ -115,9 +115,11 @@ describe("EncumbranceLifecycle UI wiring", () => {
   it("lc-003 (HOGUE) renders the empty-state moat rationale verbatim", async () => {
     const user = userEvent.setup();
     renderEncumbrance(HOGUE_APN);
-    // The swimlane starts with a collapsed-pill showing the matcher summary.
-    // Clicking it expands CandidateReleasesPanel which contains the moat text.
-    const expandBtn = screen.getByRole("button", { name: /Matcher.*Expand/i });
+    // The swimlane starts with a collapsed-pill showing the cross-parcel scan
+    // summary. Clicking it expands CandidateReleasesPanel with the moat text.
+    const expandBtn = screen.getByRole("button", {
+      name: /Cross-parcel scan.*Expand/i,
+    });
     await user.click(expandBtn);
     // Moat-talking-point text from buildEmptyStateRationale + parcel data.
     expect(

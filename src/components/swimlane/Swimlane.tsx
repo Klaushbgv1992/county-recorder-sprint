@@ -11,7 +11,7 @@ import type {
 import type { AnomalyFinding } from "../../types/anomaly";
 import { StatusBadge } from "../StatusBadge";
 import { InstrumentNode } from "./InstrumentNode";
-import { MersCallout } from "./MersCallout";
+import { MersCallout, MERS_CALLOUT_WIDTH } from "./MersCallout";
 import { CandidateMatcherSlot } from "./CandidateMatcherSlot";
 import { CitationsRow, type CitationEntry } from "./CitationsRow";
 import { OverrideMenu } from "./OverrideMenu";
@@ -230,7 +230,48 @@ export function Swimlane(props: Props) {
             if (i === 0) return null;
             const startX = nodesWithLayout[i - 1].visualX;
             const endX = nodesWithLayout[i].visualX;
-            const style = mersGap && i === nodes.length - 1 ? "dashed" : "solid";
+            // MERS-gap segment: split into solid → dashed → solid so the line
+            // itself narrates "record-record-GAP-record-record" around the
+            // callout. Fallback to a single solid stroke outside the gap.
+            const isMersSegment = mersGap && i === nodes.length - 1;
+            if (isMersSegment) {
+              const midX = (startX + endX) / 2;
+              const halfW = MERS_CALLOUT_WIDTH / 2;
+              // Clamp the dashed window to the segment so a very narrow axis
+              // (callout wider than the DOT→Release gap) still renders three
+              // segments instead of flipping the solid stubs inside-out.
+              const dashStartX = Math.max(startX, midX - halfW);
+              const dashEndX = Math.min(endX, midX + halfW);
+              return (
+                <g key={i}>
+                  <line
+                    x1={startX}
+                    x2={dashStartX}
+                    y1={Y_CENTER}
+                    y2={Y_CENTER}
+                    stroke="#64748b"
+                    strokeWidth={2}
+                  />
+                  <line
+                    x1={dashStartX}
+                    x2={dashEndX}
+                    y1={Y_CENTER}
+                    y2={Y_CENTER}
+                    stroke="#64748b"
+                    strokeWidth={2}
+                    strokeDasharray="4 3"
+                  />
+                  <line
+                    x1={dashEndX}
+                    x2={endX}
+                    y1={Y_CENTER}
+                    y2={Y_CENTER}
+                    stroke="#64748b"
+                    strokeWidth={2}
+                  />
+                </g>
+              );
+            }
             return (
               <line
                 key={i}
@@ -240,7 +281,6 @@ export function Swimlane(props: Props) {
                 y2={Y_CENTER}
                 stroke="#64748b"
                 strokeWidth={2}
-                strokeDasharray={style === "dashed" ? "4 3" : undefined}
               />
             );
           })}

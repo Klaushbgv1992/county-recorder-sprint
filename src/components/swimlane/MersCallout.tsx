@@ -1,5 +1,7 @@
 import type { MersGap } from "../../logic/swimlane-layout";
 
+export const MERS_CALLOUT_WIDTH = 200;
+
 interface Props {
   gap: MersGap;
   xPx: number;
@@ -10,7 +12,7 @@ export function MersCallout({ gap, xPx, yCenter }: Props) {
   return (
     <div
       className="absolute -translate-x-1/2 bg-white border border-amber-300 rounded shadow-sm px-2 py-1.5 z-10"
-      style={{ left: xPx, top: yCenter - 30, width: 200 }}
+      style={{ left: xPx, top: yCenter - 30, width: MERS_CALLOUT_WIDTH }}
       role="note"
       aria-label={gap.rule_finding.title}
     >

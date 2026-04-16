@@ -72,6 +72,7 @@ export function EncumbranceLifecycle({
         instruments={instruments}
         links={links}
         lifecycles={lifecycles}
+        pipelineStatus={pipelineStatus}
         findings={findings}
         linkActions={linkActions}
         lifecycleOverrides={lifecycleOverrides}
