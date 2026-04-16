@@ -17,6 +17,7 @@ const GLOSSARY: Record<string, string> = {
   "assignment of dot": "Mortgage Transfer",
   "heloc dot": "Home Equity Loan",
   "trustor/borrower": "Borrower",
+  "parcel": "property",
 };
 
 export function translate(term: string): string {
