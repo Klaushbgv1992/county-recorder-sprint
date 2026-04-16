@@ -102,3 +102,20 @@ causes are (in order): Node version too old (< 20.19), a corrupted
 package-lock.json && npm install`), or an OS-specific `@rollup/rollup-*`
 optional dependency that npm skipped — `npm ci` from scratch typically
 resolves the last one.
+
+## S5 Routes (added in home-run/s5-hygiene-polish)
+
+The following routes were added or significantly updated in the S5 sprint. Include them in any reproduce checklist:
+
+| Route | Component | Notes |
+|-------|-----------|-------|
+| `/` | `LandingPage` | Hero updated; three-pillar row added |
+| `/pipeline` | `PipelineDashboard` | Stage freshness cards |
+| `/staff` | `StaffWorkbench` | Staff landing with queue + search links |
+| `/staff/search` | `NameFilteredSearch` | Cross-parcel name search |
+| `/staff/queue` | `CuratorQueue` | Curator review queue |
+| `/staff/parcel/:apn` | `StaffParcelView` | Staff parcel detail |
+| `/parcel/:apn/commitment/new` | `TransactionWizard` | Commitment wizard with live B-I |
+| `/moat-compare` | `MoatCompareRoute` | Now 9 rows (4 new in S5) |
+
+> **ArcGIS capture script:** `scripts/capture-arcgis.ts` is idempotent. Output files are checked into `public/` and served by Vite. Re-run only if assessor polygon data needs refreshing.

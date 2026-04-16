@@ -39,7 +39,7 @@ function StageCard({
   const daysBehind = daysBetween(referenceDate, stage.verified_through);
   const daysOverSLA = daysBehind - stage.sla_days;
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4 flex flex-col gap-2">
+    <div className="bg-white border border-recorder-50/60 rounded-lg p-4 flex flex-col gap-2 shadow-sm">
       <div className="flex items-center justify-between">
         <h3 className="text-sm font-semibold text-gray-800">{stage.label}</h3>
         {overSLA ? (
@@ -222,17 +222,17 @@ export function PipelineDashboard() {
           <HistoryChart />
         </section>
 
-        <section className="bg-blue-50 border border-blue-200 rounded-lg p-5">
-          <p className="text-lg text-blue-900">
+        <section className="bg-moat-50 border border-moat-100 rounded-lg p-5 shadow-sm">
+          <p className="text-lg text-moat-900">
             <strong className="font-semibold">
               {lag.days_ahead_of_min_plant_lag} days ahead of typical title
               plant
             </strong>{" "}
-            <span className="text-blue-700">
+            <span className="text-moat-700">
               ({plantRef.lag_days_min}–{plantRef.lag_days_max} day lag)
             </span>
           </p>
-          <p className="text-xs text-blue-700 mt-2">{plantRef.source_note}</p>
+          <p className="text-xs text-moat-700 mt-2">{plantRef.source_note}</p>
         </section>
 
         <section className="bg-gray-50 border border-gray-200 rounded-lg p-5">

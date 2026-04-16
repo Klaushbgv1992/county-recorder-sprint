@@ -39,7 +39,7 @@ export function PipelineBanner() {
       </div>
       <Link
         to="/pipeline"
-        className="hover:text-white underline underline-offset-2"
+        className="hover:text-white underline underline-offset-2 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
       >
         Pipeline →
       </Link>

@@ -21,7 +21,7 @@ describe("LandingPage", () => {
       </MemoryRouter>,
     );
     expect(screen.getByRole("search")).toBeInTheDocument();
-    expect(screen.getByText(/Land Custodian Portal/i)).toBeInTheDocument();
+    expect(screen.getByText(/Maricopa County Recorder/i)).toBeInTheDocument();
   });
 
   it("renders the moat WHY copy for the map", () => {

@@ -1,0 +1,100 @@
+{
+  "instrument_number": "20070834753",
+  "recording_date": "2007-07-24",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [
+    "affidavit_of_disclosure"
+  ],
+  "parties": [
+    {
+      "name": "LUPE FLORES",
+      "role": "grantor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "AMY E LOWRY",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona",
+    "provenance": "manual_entry",
+    "confidence": 1,
+    "source_page": 1,
+    "source_note": "Visually read from deed body, page 1. Note: this deed cites TWO affidavits — 01-849180 (in corpus as 20010849180) and 01-984501 (not in corpus; would be 20010984501)."
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2007-07-06",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Deed execution date, page 1"
+    },
+    "escrow_number": {
+      "value": "60008150-JLD",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Escrow number, page 1"
+    },
+    "title_company": {
+      "value": "Fidelity National Title",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Recording title company header, page 1"
+    },
+    "grantor_marital_status": {
+      "value": "an unmarried woman",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Grantor vesting clause, page 1"
+    },
+    "vesting": {
+      "value": "A Married Woman as her Sole and Separate Property",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Grantee vesting clause, page 1. Sole-and-separate vesting is why same-day DISCLAIMR (20070834754) was recorded — Aaron Lowry disclaimed community-property interest."
+    }
+  },
+  "back_references": [
+    "20010093192",
+    "20010849180",
+    "20010984501"
+  ],
+  "same_day_group": [
+    "20070834755"
+  ],
+  "source_image_path": "/raw/R-006/pdfs/20070834753.pdf",
+  "page_count": 1,
+  "raw_api_response": {
+    "names": [
+      "FLORES LUPE",
+      "LOWRY AMY E"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "7-24-2007",
+    "recordingNumber": "20070834753",
+    "pageAmount": 1,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 2,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09. A same-day DISCLAIMR (20070834754) was recorded alongside this deed; Aaron Lowry disclaimed community-property interest to effect the sole-and-separate vesting. Disclaimer is not separately curated in this prototype corpus.",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 0,
+    "manual_entry_count": 8
+  }
+}

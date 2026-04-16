@@ -4,6 +4,7 @@ import {
   LinksFile,
   LifecyclesFile,
 } from "./schemas";
+import { inferSameDayGroups } from "./logic/same-day-group-inferrer";
 import type {
   Parcel,
   Instrument,
@@ -22,6 +23,10 @@ import inst20150516729 from "./data/instruments/20150516729.json";
 import inst20150516730 from "./data/instruments/20150516730.json";
 import inst20010093192 from "./data/instruments/20010093192.json";
 import inst20010849180 from "./data/instruments/20010849180.json";
+import inst20070834753 from "./data/instruments/20070834753.json";
+import inst20070834755 from "./data/instruments/20070834755.json";
+import inst20130087108 from "./data/instruments/20130087108.json";
+import inst20130087109 from "./data/instruments/20130087109.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -35,6 +40,10 @@ const instrumentsRaw = [
   inst20150516730,
   inst20010093192,
   inst20010849180,
+  inst20070834753,
+  inst20070834755,
+  inst20130087108,
+  inst20130087109,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.
@@ -54,7 +63,21 @@ export function loadAllParcels(): Parcel[] {
 }
 
 export function loadAllInstruments(): Instrument[] {
-  return instrumentsRaw.map((raw) => InstrumentFile.parse(raw));
+  const instruments = instrumentsRaw.map((raw) => InstrumentFile.parse(raw));
+  const inferred = inferSameDayGroups(
+    instruments.map((i) => ({
+      instrument_number: i.instrument_number,
+      recording_date: i.recording_date,
+      names: i.raw_api_response.names ?? [],
+    }))
+  );
+  const groupIdByNumber = new Map(
+    inferred.map((r) => [r.instrument_number, r.same_day_group_id])
+  );
+  return instruments.map((i) => ({
+    ...i,
+    same_day_group_id: groupIdByNumber.get(i.instrument_number) ?? null,
+  }));
 }
 
 export function loadParcelDataByApn(apn: string): ParcelData {

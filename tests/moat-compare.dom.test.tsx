@@ -18,6 +18,10 @@ const ROW_LABELS = [
   "Lien search by recording code",
   "Document image source",
   "Index freshness",
+  "Spatial custody",
+  "Pipeline transparency",
+  "Chain judgment",
+  "Internal search flip",
 ];
 
 describe("MoatCompareRoute scaffold", () => {
@@ -42,7 +46,7 @@ describe("MoatCompareRoute scaffold", () => {
     expect(subtitle.textContent).toMatch(/3674 E Palmer/);
   });
 
-  it("renders all five row labels", () => {
+  it("renders all nine row labels", () => {
     renderRoute();
     for (const label of ROW_LABELS) {
       expect(screen.getByText(label)).toBeInTheDocument();
@@ -101,6 +105,14 @@ describe("MoatCompareRoute row content", () => {
     expect(row5).not.toBeNull();
     expect(row5.textContent).toMatch(/Records verified through/);
     expect(row5.textContent).toMatch(/2026-04-09/);
+  });
+
+  it("renders the 4 new moat claim rows", () => {
+    renderRoute();
+    expect(screen.getByText("Spatial custody")).toBeInTheDocument();
+    expect(screen.getByText("Pipeline transparency")).toBeInTheDocument();
+    expect(screen.getByText("Chain judgment")).toBeInTheDocument();
+    expect(screen.getByText("Internal search flip")).toBeInTheDocument();
   });
 
   it("aggregator column contains zero ProvenanceTag chips (visual asymmetry preserved)", () => {

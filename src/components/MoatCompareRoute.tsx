@@ -307,6 +307,90 @@ export function MoatCompareRoute() {
           anchor="row-5"
           headline="They index monthly. The county publishes same-day."
         />
+
+        <ComparisonRow
+          rowId="row-6"
+          label="Spatial custody"
+          aggregator={
+            <div className="space-y-1">
+              <div>Third-party licensed polygon. Assessor owns the source; title plants pay a licensing layer.</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-1">
+              <div>Assessor polygon served direct. No licensing intermediary. Parcel boundary visible on landing map alongside chain.</div>
+              <ProvenanceWithKind
+                kind="public_api"
+                confidence={1}
+                customLabel="County Assessor"
+              />
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-7"
+          label="Pipeline transparency"
+          aggregator={
+            <div className="space-y-1">
+              <div>Report dated but no stage breakdown. No way to verify when each component was last confirmed.</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-2">
+              <div>5 verified-through dates — index ingestion, OCR run, curator sign-off, anomaly scan, pipeline status. Each stage has its own SLA and is visible to the examiner.</div>
+              <ProvenanceWithKind
+                kind="public_api"
+                confidence={1}
+                customLabel="County Pipeline"
+              />
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-8"
+          label="Chain judgment"
+          aggregator={
+            <div className="space-y-1">
+              <div>Document list in date order. Flagging anomalies is the examiner's manual work.</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-2">
+              <div>5 anomalies detected and surfaced automatically (MERS beneficiary, potential missed assignment, UCC termination gap). Each carries severity + examiner action surface.</div>
+              <ProvenanceWithKind
+                kind="public_api"
+                confidence={1}
+                customLabel="County Detection"
+              />
+            </div>
+          }
+        />
+
+        <ComparisonRow
+          rowId="row-9"
+          label="Internal search flip"
+          aggregator={
+            <div className="space-y-1">
+              <div>Name-based search returns results from the public recorder portal — same API any browser can reach.</div>
+              <AggregatorTag label="aggregator index" />
+            </div>
+          }
+          prototype={
+            <div className="space-y-2">
+              <div>Staff search runs against a name-indexed view of the county's full corpus. Same instruments, different access path. The county is the only party that can offer this.</div>
+              <ProvenanceWithKind
+                kind="public_api"
+                confidence={1}
+                customLabel="County Staff Access"
+              />
+            </div>
+          }
+        />
       </div>
       <ViewportFallback />
       <ClosingFooter />

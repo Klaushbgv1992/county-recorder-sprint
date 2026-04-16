@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -7,6 +7,7 @@ import type {
   PipelineStatus,
   ExaminerAction,
   LifecycleStatus,
+  DocumentType,
 } from "../types";
 import {
   computeLifecycleStatus,
@@ -24,6 +25,9 @@ import { InstrumentRow } from "./InstrumentRow";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { CandidateReleasesPanel } from "./CandidateReleasesPanel";
 import { LinkEvidenceBars } from "./LinkEvidenceBars";
+import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { useTerminology } from "../terminology/TerminologyContext";
+import { Term, TermSection } from "../terminology/Term";
 
 interface Props {
   parcel: Parcel;
@@ -39,7 +43,44 @@ interface Props {
     status: LifecycleStatus,
   ) => void;
   onOpenDocument: (instrumentNumber: string) => void;
-  headerActions?: ReactNode;
+  /** Instrument currently open in the side drawer, forwarded to the PDF export as scroll anchor. */
+  viewedInstrumentNumber?: string;
+}
+
+function labelForDocumentType(docType: DocumentType, rawType: string): string {
+  switch (docType) {
+    case "deed_of_trust":
+    case "heloc_dot":
+      return "DOT";
+    case "warranty_deed":
+    case "special_warranty_deed":
+    case "grant_deed":
+    case "quit_claim_deed":
+      return "Deed";
+    case "full_reconveyance":
+    case "partial_reconveyance":
+      return "Release";
+    case "assignment_of_dot":
+      return "Assignment";
+    case "substitution_of_trustee":
+      return "Sub. of Trustee";
+    case "ucc_termination":
+      return "UCC Term.";
+    case "affidavit_of_disclosure":
+      return "Affidavit";
+    case "modification":
+      return "Modification";
+    case "other":
+      // Fall back to humanizing the raw type string
+      return rawType
+        .split(/[\s_]+/)
+        .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+        .join(" ");
+    default: {
+      const _: never = docType;
+      throw new Error(`Unknown document type: ${_ as string}`);
+    }
+  }
 }
 
 function formatDotParties(instrument: Instrument): string {
@@ -83,8 +124,9 @@ export function EncumbranceLifecycle({
   onSetLinkAction,
   onSetLifecycleOverride,
   onOpenDocument,
-  headerActions,
+  viewedInstrumentNumber,
 }: Props) {
+  const { t } = useTerminology();
   const instrumentMap = useMemo(
     () => new Map(instruments.map((i) => [i.instrument_number, i])),
     [instruments],
@@ -135,23 +177,30 @@ export function EncumbranceLifecycle({
 
   return (
     <div>
+      <TermSection id="encumbrance-heading">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">
-            Encumbrance Lifecycles
+            <Term professional="Encumbrance Lifecycles" />
           </h2>
           <p className="text-sm text-gray-500 mt-1">
-            {parcel.address} &mdash; APN: {parcel.apn}
+            {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
           </p>
         </div>
-        {headerActions && (
-          <div className="flex items-center gap-2 shrink-0 mt-1">
-            {headerActions}
-          </div>
-        )}
+        <div className="flex items-center gap-2 shrink-0 mt-1">
+          <ExportCommitmentButton
+            parcel={parcel}
+            instruments={instruments}
+            links={links}
+            lifecycles={lifecycles}
+            pipelineStatus={pipelineStatus}
+            viewedInstrumentNumber={viewedInstrumentNumber}
+          />
+        </div>
       </div>
 
       <MoatBanner pipelineStatus={pipelineStatus} />
+      </TermSection>
 
       {lifecycles.map((lifecycle) => {
         const rootInst = instrumentMap.get(lifecycle.root_instrument);
@@ -210,8 +259,8 @@ export function EncumbranceLifecycle({
           (effectiveStatus === "open" || effectiveStatus === "unresolved");
 
         return (
+          <TermSection id={lifecycle.id} key={lifecycle.id}>
           <div
-            key={lifecycle.id}
             className="bg-white border border-gray-200 rounded-lg mb-4 overflow-hidden"
           >
             {/* Lifecycle Header */}
@@ -222,7 +271,7 @@ export function EncumbranceLifecycle({
                   overridden={isOverridden}
                 />
                 <span className="font-semibold text-gray-800">
-                  DOT: {rootInst.instrument_number}
+                  {t(labelForDocumentType(rootInst.document_type, rootInst.document_type_raw))}: <span className="font-mono">{rootInst.instrument_number}</span>
                 </span>
                 <span className="text-sm text-gray-500 whitespace-nowrap">
                   recorded {rootInst.recording_date}
@@ -311,7 +360,7 @@ export function EncumbranceLifecycle({
                                 <button
                                   key={action}
                                   onClick={() => onSetLinkAction(link.id, action)}
-                                  className={`px-2 py-0.5 rounded text-xs font-medium ${colors[action]}`}
+                                  className={`px-2 py-0.5 rounded text-xs font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${colors[action]}`}
                                   title={`${action.charAt(0).toUpperCase() + action.slice(1)} this link`}
                                 >
                                   {action.charAt(0).toUpperCase() + action.slice(1)}
@@ -348,7 +397,7 @@ export function EncumbranceLifecycle({
                   <button
                     key={s}
                     onClick={() => onSetLifecycleOverride(lifecycle.id, s)}
-                    className={`px-1.5 py-0.5 rounded text-[10px] font-medium ${
+                    className={`px-1.5 py-0.5 rounded text-[10px] font-medium transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${
                       override === s
                         ? "bg-gray-700 text-white"
                         : "bg-gray-200 text-gray-500 hover:bg-gray-300"
@@ -360,6 +409,7 @@ export function EncumbranceLifecycle({
               </div>
             </div>
           </div>
+          </TermSection>
         );
       })}
 

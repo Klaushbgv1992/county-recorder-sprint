@@ -1,0 +1,144 @@
+{
+  "instrument_number": "20130087109",
+  "recording_date": "2013-01-28",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "KAMA WARNER",
+      "role": "trustor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "ACADEMY MORTGAGE CORPORATION",
+      "role": "lender",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "FIDELITY NATIONAL TITLE AGENCY",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "nominee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "ACADEMY MORTGAGE CORPORATION",
+        "party_role": "lender"
+      }
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona",
+    "provenance": "manual_entry",
+    "confidence": 1,
+    "source_page": 1,
+    "source_note": "Visually read from DOT body, page 1"
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2013-01-25",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Note date stated on page 1 of DOT"
+    },
+    "loan_amount": {
+      "value": "$270,146.00",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Principal sum, page 1"
+    },
+    "loan_number": {
+      "value": "2276458",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Loan number header block, page 1"
+    },
+    "min_number": {
+      "value": "100060800022764581",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "MERS Identification Number (MIN) header block, page 1"
+    },
+    "fha_case_number": {
+      "value": "023-5190155-703",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "FHA Case number header block, page 1 — confirms FHA-insured loan under National Housing Act"
+    },
+    "maturity_date": {
+      "value": "2043-02-01",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Loan maturity date, page 1"
+    },
+    "property_address": {
+      "value": "6265 South Twilight Court, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Property address stated in DOT body, page 1"
+    },
+    "pud_name": {
+      "value": "SEVILLE",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 10,
+      "source_note": "Planned Unit Development name in PUD Rider, page 10. Confirms Seville HOA encumbrances bind this lot."
+    },
+    "vesting": {
+      "value": "an unmarried woman",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Borrower vesting, page 1"
+    }
+  },
+  "back_references": [
+    "20010093192",
+    "20010849180"
+  ],
+  "same_day_group": [
+    "20130087108"
+  ],
+  "source_image_path": "/raw/R-006/pdfs/20130087109.pdf",
+  "page_count": 11,
+  "raw_api_response": {
+    "names": [
+      "ACADEMY MORTGAGE CORP",
+      "FIDELITY NATIONAL TITLE AGENCY",
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "WARNER KAMA"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "1-28-2013",
+    "recordingNumber": "20130087109",
+    "pageAmount": 11,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS is beneficiary of record as nominee for Academy Mortgage Corporation. This is an FHA-insured loan (Case #023-5190155-703) under the National Housing Act. DOT includes references to HUD Secretary authority for acceleration and foreclosure procedures. A Planned Unit Development Rider (PUD Rider) is attached, acknowledging the Seville HOA as the PUD owners association. The note may be transferred outside the public record via the MERS system.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 14
+  }
+}

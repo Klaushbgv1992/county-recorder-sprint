@@ -1,0 +1,106 @@
+{
+  "instrument_number": "20130087108",
+  "recording_date": "2013-01-28",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [
+    "affidavit_of_disclosure"
+  ],
+  "parties": [
+    {
+      "name": "NUFF SAID ENTERPRISES LLC",
+      "role": "grantor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "KAMA WARNER",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19 and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona",
+    "provenance": "manual_entry",
+    "confidence": 1,
+    "source_page": 2,
+    "source_note": "Visually read from Exhibit A, page 2 of PDF — scanned image, no embedded text"
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2013-01-17",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Deed execution date, page 1"
+    },
+    "escrow_number": {
+      "value": "35000915-035-JD1",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Escrow number, upper left page 1"
+    },
+    "title_company": {
+      "value": "Fidelity National Title Agency",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Recording requested by, page 1"
+    },
+    "vesting": {
+      "value": "an unmarried woman",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Grantee vesting clause, page 1"
+    },
+    "grantor_entity_type": {
+      "value": "Arizona Limited Liability Company",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Grantor entity type stated in deed body, page 1"
+    },
+    "grantor_signatory": {
+      "value": "Brandon Hunt, CEO, by Brandon Hunt Realty Services PC",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_page": 1,
+      "source_note": "Authorized signatory for Nuff Said Enterprises LLC, page 1"
+    }
+  },
+  "back_references": [
+    "20010093192",
+    "20010849180"
+  ],
+  "same_day_group": [
+    "20130087109"
+  ],
+  "source_image_path": "/raw/R-006/pdfs/20130087108.pdf",
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "NUFF SAID ENTERPRISES LLC",
+      "WARNER KAMA"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "1-28-2013",
+    "recordingNumber": "20130087108",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 2,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 0,
+    "manual_entry_count": 9
+  }
+}
