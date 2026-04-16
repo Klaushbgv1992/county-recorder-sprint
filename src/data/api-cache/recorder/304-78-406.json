@@ -1,0 +1,110 @@
+{
+  "apn": "304-78-406",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20211104802",
+    "https://publicapi.recorder.maricopa.gov/documents/20211104803",
+    "https://publicapi.recorder.maricopa.gov/documents/20211104804"
+  ],
+  "captured_date": "2026-04-16",
+  "source_note": "Pre-cached at build-time for prototype; production would query live at click.",
+  "display_fields": {
+    "last_recorded_date": "2021-10-13",
+    "last_doc_type": "T FIN ST",
+    "recent_instruments": [
+      {
+        "recording_number": "20211104802",
+        "recording_date": "2021-10-13",
+        "doc_type": "T FIN ST",
+        "parties": [
+          "HAHN DANIEL",
+          "HAHN MOLLY",
+          "SOLARCITY CORPORATION"
+        ]
+      },
+      {
+        "recording_number": "20211104803",
+        "recording_date": "2021-10-13",
+        "doc_type": "WAR DEED",
+        "parties": [
+          "BROTHERTON ANDREW",
+          "BROTHERTON BRANDI",
+          "BROTHERTON FAMILY TRUST",
+          "DANIEL AND MOLLY HAHN LIVING TRUST",
+          "HAHN MOLLY E",
+          "HAHN PAMELA J"
+        ]
+      },
+      {
+        "recording_number": "20211104804",
+        "recording_date": "2021-10-13",
+        "doc_type": "DEED TRST",
+        "parties": [
+          "BROTHERTON ANDREW",
+          "BROTHERTON BRANDI",
+          "FAIRWAY INDEPENDENT MORTGAGE CORPORATION"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "HAHN DANIEL",
+          "HAHN MOLLY",
+          "SOLARCITY CORPORATION"
+        ],
+        "documentCodes": [
+          "T FIN ST"
+        ],
+        "recordingDate": "10-13-2021",
+        "recordingNumber": "20211104802",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "BROTHERTON ANDREW",
+          "BROTHERTON BRANDI",
+          "BROTHERTON FAMILY TRUST",
+          "DANIEL AND MOLLY HAHN LIVING TRUST",
+          "HAHN MOLLY E",
+          "HAHN PAMELA J"
+        ],
+        "documentCodes": [
+          "WAR DEED"
+        ],
+        "recordingDate": "10-13-2021",
+        "recordingNumber": "20211104803",
+        "pageAmount": 5,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": true,
+        "affidavitPageAmount": 4,
+        "restricted": false
+      },
+      {
+        "names": [
+          "BROTHERTON ANDREW",
+          "BROTHERTON BRANDI",
+          "FAIRWAY INDEPENDENT MORTGAGE CORPORATION"
+        ],
+        "documentCodes": [
+          "DEED TRST"
+        ],
+        "recordingDate": "10-13-2021",
+        "recordingNumber": "20211104804",
+        "pageAmount": 27,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}

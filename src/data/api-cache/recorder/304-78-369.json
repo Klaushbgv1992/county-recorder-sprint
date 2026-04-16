@@ -1,0 +1,102 @@
+{
+  "apn": "304-78-369",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20201215255",
+    "https://publicapi.recorder.maricopa.gov/documents/20201215256",
+    "https://publicapi.recorder.maricopa.gov/documents/20201215257"
+  ],
+  "captured_date": "2026-04-16",
+  "source_note": "Pre-cached at build-time for prototype; production would query live at click.",
+  "display_fields": {
+    "last_recorded_date": "2020-12-09",
+    "last_doc_type": "T FIN ST",
+    "recent_instruments": [
+      {
+        "recording_number": "20201215255",
+        "recording_date": "2020-12-09",
+        "doc_type": "T FIN ST",
+        "parties": [
+          "ROSS RYAN",
+          "SOLARCITY CORPORATION"
+        ]
+      },
+      {
+        "recording_number": "20201215256",
+        "recording_date": "2020-12-09",
+        "doc_type": "WAR DEED",
+        "parties": [
+          "KALANITHI RAVI KUMAR RATHINAVELU",
+          "KARUPPIAH SARANYA",
+          "ROSS RYAN"
+        ]
+      },
+      {
+        "recording_number": "20201215257",
+        "recording_date": "2020-12-09",
+        "doc_type": "DEED TRST",
+        "parties": [
+          "KALANITHI RAVI KUMAR RATHINAVELU",
+          "KARUPPIAH SARANYA",
+          "PENNYMAC LOAN SERVICES LLC"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "ROSS RYAN",
+          "SOLARCITY CORPORATION"
+        ],
+        "documentCodes": [
+          "T FIN ST"
+        ],
+        "recordingDate": "12-09-2020",
+        "recordingNumber": "20201215255",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "KALANITHI RAVI KUMAR RATHINAVELU",
+          "KARUPPIAH SARANYA",
+          "ROSS RYAN"
+        ],
+        "documentCodes": [
+          "WAR DEED"
+        ],
+        "recordingDate": "12-09-2020",
+        "recordingNumber": "20201215256",
+        "pageAmount": 3,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": true,
+        "affidavitPageAmount": 2,
+        "restricted": false
+      },
+      {
+        "names": [
+          "KALANITHI RAVI KUMAR RATHINAVELU",
+          "KARUPPIAH SARANYA",
+          "PENNYMAC LOAN SERVICES LLC"
+        ],
+        "documentCodes": [
+          "DEED TRST"
+        ],
+        "recordingDate": "12-09-2020",
+        "recordingNumber": "20201215257",
+        "pageAmount": 12,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}

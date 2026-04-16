@@ -1,0 +1,71 @@
+{
+  "apn": "304-78-367",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20200620456",
+    "https://publicapi.recorder.maricopa.gov/documents/20200620457"
+  ],
+  "captured_date": "2026-04-16",
+  "source_note": "Pre-cached at build-time for prototype; production would query live at click.",
+  "display_fields": {
+    "last_recorded_date": "2020-07-13",
+    "last_doc_type": "Q/CL DEED",
+    "recent_instruments": [
+      {
+        "recording_number": "20200620456",
+        "recording_date": "2020-07-13",
+        "doc_type": "Q/CL DEED",
+        "parties": [
+          "ANGUS SCOTT J",
+          "PHOENIX VACATION HOUSES"
+        ]
+      },
+      {
+        "recording_number": "20200620457",
+        "recording_date": "2020-07-13",
+        "doc_type": "DEED TRST",
+        "parties": [
+          "ANGUS SCOTT J",
+          "UNITED WHOLESALE MORTGAGE"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "ANGUS SCOTT J",
+          "PHOENIX VACATION HOUSES"
+        ],
+        "documentCodes": [
+          "Q/CL DEED"
+        ],
+        "recordingDate": "7-13-2020",
+        "recordingNumber": "20200620456",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "ANGUS SCOTT J",
+          "UNITED WHOLESALE MORTGAGE"
+        ],
+        "documentCodes": [
+          "DEED TRST"
+        ],
+        "recordingDate": "7-13-2020",
+        "recordingNumber": "20200620457",
+        "pageAmount": 19,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}

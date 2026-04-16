@@ -1,0 +1,108 @@
+{
+  "apn": "304-78-338",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20210839272",
+    "https://publicapi.recorder.maricopa.gov/documents/20210839273",
+    "https://publicapi.recorder.maricopa.gov/documents/20210839274"
+  ],
+  "captured_date": "2026-04-16",
+  "source_note": "Pre-cached at build-time for prototype; production would query live at click.",
+  "display_fields": {
+    "last_recorded_date": "2021-08-03",
+    "last_doc_type": "T FIN ST",
+    "recent_instruments": [
+      {
+        "recording_number": "20210839272",
+        "recording_date": "2021-08-03",
+        "doc_type": "T FIN ST",
+        "parties": [
+          "BARNETT JEFF A",
+          "SOLARCITY CORPORATION"
+        ]
+      },
+      {
+        "recording_number": "20210839273",
+        "recording_date": "2021-08-03",
+        "doc_type": "WAR DEED",
+        "parties": [
+          "BARNETT JEFFREY M",
+          "BARNETT JESSICA A",
+          "SCHERF GARRETT",
+          "SCHERF JESSICA"
+        ]
+      },
+      {
+        "recording_number": "20210839274",
+        "recording_date": "2021-08-03",
+        "doc_type": "DEED TRST",
+        "parties": [
+          "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+          "OAKTREE FUNDING CORP",
+          "SCHERF GARRETT",
+          "SCHERF JESSICA",
+          "STEWART TITLE GUARANTY COMPANY"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "BARNETT JEFF A",
+          "SOLARCITY CORPORATION"
+        ],
+        "documentCodes": [
+          "T FIN ST"
+        ],
+        "recordingDate": "8-03-2021",
+        "recordingNumber": "20210839272",
+        "pageAmount": 3,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "BARNETT JEFFREY M",
+          "BARNETT JESSICA A",
+          "SCHERF GARRETT",
+          "SCHERF JESSICA"
+        ],
+        "documentCodes": [
+          "WAR DEED"
+        ],
+        "recordingDate": "8-03-2021",
+        "recordingNumber": "20210839273",
+        "pageAmount": 3,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": true,
+        "affidavitPageAmount": 1,
+        "restricted": false
+      },
+      {
+        "names": [
+          "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+          "OAKTREE FUNDING CORP",
+          "SCHERF GARRETT",
+          "SCHERF JESSICA",
+          "STEWART TITLE GUARANTY COMPANY"
+        ],
+        "documentCodes": [
+          "DEED TRST"
+        ],
+        "recordingDate": "8-03-2021",
+        "recordingNumber": "20210839274",
+        "pageAmount": 17,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}
