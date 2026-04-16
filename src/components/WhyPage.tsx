@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { Link } from "react-router";
 
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
@@ -127,6 +128,55 @@ export function WhyPage() {
           <h2 className="text-xl font-semibold text-slate-900 mb-3">
             What title plants can't do
           </h2>
+          <ul className="space-y-3 text-sm text-slate-700 leading-relaxed">
+            <li>
+              <strong className="text-slate-900">
+                Lien search by recording code is literally impossible on the public
+                API.
+              </strong>{" "}
+              The four lien-related codes —{" "}
+              <code className="font-mono text-xs">RE FED TX</code>,{" "}
+              <code className="font-mono text-xs">FED TAX L</code>,{" "}
+              <code className="font-mono text-xs">LIEN</code>,{" "}
+              <code className="font-mono text-xs">MED LIEN</code> — are in the index,
+              but the search surface refuses to enumerate by them.{" "}
+              <code className="font-mono text-xs">totalResults: 0</code> every time.
+            </li>
+            <li>
+              <strong className="text-slate-900">
+                Title plants host copies; the county hosts originals.
+              </strong>{" "}
+              Every PDF linked from this portal comes from{" "}
+              <code className="font-mono text-xs">publicapi.recorder.maricopa.gov</code>{" "}
+              directly. Aggregators serve their own CDN copy behind a subscription.
+            </li>
+            <li>
+              <strong className="text-slate-900">
+                Plants index on a 14–28-day lag; the county publishes same-day.
+              </strong>{" "}
+              Every recorded document is available through the public API the moment
+              it's filed. Indexing lag exists upstream of the plants, not at the
+              county.
+            </li>
+            <li>
+              <strong className="text-slate-900">
+                Pipeline transparency is custodian-only.
+              </strong>{" "}
+              This portal shows five verified-through dates (index, image, OCR,
+              entity resolution, curator) each with its own SLA. No aggregator can
+              report on stages they don't run.
+            </li>
+          </ul>
+          <p className="mt-4 text-sm text-slate-600">
+            Full side-by-side at{" "}
+            <Link
+              to="/moat-compare"
+              className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+            >
+              /moat-compare
+            </Link>
+            .
+          </p>
         </section>
 
         <section id="receipts" className="mb-10">

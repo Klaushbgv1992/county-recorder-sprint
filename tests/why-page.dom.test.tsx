@@ -55,3 +55,34 @@ describe("WhyPage — Section 1 plain-English primer", () => {
     expect(section?.textContent).toMatch(/birth.*release/i);
   });
 });
+
+describe("WhyPage — Section 2 moat claims", () => {
+  afterEach(() => cleanup());
+
+  it("renders all four moat bullets with the verbatim phrasing", () => {
+    renderWhy();
+    const section = document.getElementById("plants-cannot");
+    expect(section).toBeTruthy();
+    const txt = section?.textContent ?? "";
+    expect(txt).toMatch(/Lien search by recording code is literally impossible/i);
+    expect(txt).toMatch(/RE FED TX/);
+    expect(txt).toMatch(/FED TAX L/);
+    expect(txt).toMatch(/LIEN/);
+    expect(txt).toMatch(/MED LIEN/);
+    expect(txt).toMatch(/totalResults:\s*0/);
+    expect(txt).toMatch(/Title plants host copies; the county hosts originals/i);
+    expect(txt).toMatch(/publicapi\.recorder\.maricopa\.gov/);
+    expect(txt).toMatch(/14–28-day lag/);
+    expect(txt).toMatch(/publishes same-day/i);
+    expect(txt).toMatch(/Pipeline transparency is custodian-only/i);
+    expect(txt).toMatch(/five verified-through dates/i);
+  });
+
+  it("links to /moat-compare at the end of Section 2", () => {
+    renderWhy();
+    const section = document.getElementById("plants-cannot");
+    expect(section).toBeTruthy();
+    const link = section!.querySelector('a[href="/moat-compare"]');
+    expect(link).toBeTruthy();
+  });
+});
