@@ -2,6 +2,8 @@
 import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
 import { SearchEntry } from "./SearchEntry";
+import { FeaturedParcels } from "./FeaturedParcels";
+import { PersonaRow } from "./PersonaRow";
 import { useAllParcels } from "../hooks/useAllParcels";
 
 const HIGHLIGHTED: HighlightedParcel[] = [
@@ -40,13 +42,16 @@ export function LandingPage() {
         </aside>
       </section>
 
+      <FeaturedParcels parcels={parcels} />
+
       <section
         role="search"
         className="px-6 py-8 bg-white border-b border-slate-200"
       >
         <div className="max-w-2xl mx-auto">
+          <PersonaRow />
           <h2 className="text-sm font-medium text-slate-700 mb-2">
-            Or enter a parcel or instrument number directly
+            Direct lookup
           </h2>
           <SearchEntry
             parcels={parcels}

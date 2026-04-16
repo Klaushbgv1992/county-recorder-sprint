@@ -3,6 +3,7 @@ import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import { MemoryRouter } from "react-router";
 import { LandingPage } from "../src/components/LandingPage";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 vi.mock("react-map-gl/maplibre", () => ({
   default: ({ children }: { children: React.ReactNode }) => <div data-testid="map">{children}</div>,
@@ -17,7 +18,9 @@ describe("LandingPage", () => {
   it("renders map region + search box below", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     expect(screen.getByRole("search")).toBeInTheDocument();
@@ -27,7 +30,9 @@ describe("LandingPage", () => {
   it("renders the moat WHY copy for the map", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     expect(
@@ -38,7 +43,9 @@ describe("LandingPage", () => {
   it("renders link to /county-activity", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     const activityLink = screen.getByRole("link", { name: /county activity/i });
