@@ -6,6 +6,11 @@ import {
   nextPage,
   probeEndpoint,
   formatFailLoudMessage,
+  chunkIds,
+  hasAllRequiredApns,
+  fetchObjectIds,
+  fetchFeaturesByIdChunk,
+  type Bbox,
 } from "../../scripts/lib/gilbert-fetch";
 
 describe("stampFeature", () => {
@@ -158,5 +163,124 @@ describe("formatFailLoudMessage", () => {
   it("produces stable, deterministic output (no timestamps or random fields)", () => {
     const urls = ["https://a/", "https://b/"];
     expect(formatFailLoudMessage(urls)).toBe(formatFailLoudMessage(urls));
+  });
+});
+
+describe("chunkIds", () => {
+  it("returns [] for empty array", () => {
+    expect(chunkIds([], 100)).toEqual([]);
+  });
+  it("returns [[all]] when length === chunkSize", () => {
+    expect(chunkIds([1, 2, 3], 3)).toEqual([[1, 2, 3]]);
+  });
+  it("returns [[all]] when length < chunkSize", () => {
+    expect(chunkIds([1, 2], 5)).toEqual([[1, 2]]);
+  });
+  it("splits into multiple chunks when length > chunkSize", () => {
+    expect(chunkIds([1, 2, 3, 4, 5], 2)).toEqual([[1, 2], [3, 4], [5]]);
+  });
+  it("exact multiple produces no trailing short chunk", () => {
+    expect(chunkIds([1, 2, 3, 4, 5, 6], 3)).toEqual([[1, 2, 3], [4, 5, 6]]);
+  });
+  it("flattening chunks preserves original order", () => {
+    const ids = [10, 20, 30, 40, 50, 60, 70];
+    expect(chunkIds(ids, 3).flat()).toEqual(ids);
+  });
+});
+
+describe("hasAllRequiredApns", () => {
+  const feat = (apn: string) => ({ properties: { APN_DASH: apn } });
+
+  it("returns ok when all required APNs are present", () => {
+    const features = [feat("304-78-386"), feat("304-77-689"), feat("999-99-999")];
+    expect(hasAllRequiredApns(features, ["304-78-386", "304-77-689"])).toEqual({ ok: true });
+  });
+
+  it("returns missing APNs when some are absent", () => {
+    const features = [feat("304-78-386"), feat("999-99-999")];
+    const r = hasAllRequiredApns(features, ["304-78-386", "304-77-689", "304-78-409"]);
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.missing).toEqual(["304-77-689", "304-78-409"]);
+    }
+  });
+
+  it("handles empty feature set", () => {
+    const r = hasAllRequiredApns([], ["304-78-386"]);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.missing).toEqual(["304-78-386"]);
+  });
+
+  it("handles features with missing APN_DASH property", () => {
+    const features = [{ properties: { OTHER: "val" } }];
+    const r = hasAllRequiredApns(features, ["304-78-386"]);
+    expect(r.ok).toBe(false);
+    if (!r.ok) expect(r.missing).toEqual(["304-78-386"]);
+  });
+});
+
+describe("fetchObjectIds", () => {
+  const bbox: Bbox = { xmin: -112, ymin: 33, xmax: -111, ymax: 34 };
+
+  function mockResponse(body: unknown, ok = true, status = 200): Response {
+    return { ok, status, json: async () => body } as unknown as Response;
+  }
+
+  it("returns sorted objectIds from a normal response", async () => {
+    const doFetch = async () => mockResponse({ objectIds: [300, 100, 200] });
+    const ids = await fetchObjectIds("https://gis/", "/0", bbox, doFetch);
+    expect(ids).toEqual([100, 200, 300]);
+  });
+
+  it("throws on non-ok response", async () => {
+    const doFetch = async () => mockResponse(null, false, 500);
+    await expect(fetchObjectIds("https://gis/", "/0", bbox, doFetch)).rejects.toThrow(/failed: 500/);
+  });
+
+  it("throws when response has no objectIds array", async () => {
+    const doFetch = async () => mockResponse({ error: "no layer" });
+    await expect(fetchObjectIds("https://gis/", "/0", bbox, doFetch)).rejects.toThrow(/no objectIds array/);
+  });
+
+  it("returns empty array when objectIds is []", async () => {
+    const doFetch = async () => mockResponse({ objectIds: [] });
+    const ids = await fetchObjectIds("https://gis/", "/0", bbox, doFetch);
+    expect(ids).toEqual([]);
+  });
+});
+
+describe("fetchFeaturesByIdChunk", () => {
+  function mockResponse(body: unknown, ok = true, status = 200): Response {
+    return { ok, status, json: async () => body } as unknown as Response;
+  }
+
+  it("returns features from a normal response", async () => {
+    const doFetch = async () => mockResponse({
+      type: "FeatureCollection",
+      features: [{ type: "Feature", properties: { APN: "1" }, geometry: null }],
+    });
+    const feats = await fetchFeaturesByIdChunk("https://gis/", "/0", [100], "APN", doFetch);
+    expect(feats).toHaveLength(1);
+  });
+
+  it("throws on non-ok response", async () => {
+    const doFetch = async () => mockResponse(null, false, 404);
+    await expect(fetchFeaturesByIdChunk("https://gis/", "/0", [1], "APN", doFetch)).rejects.toThrow(/failed: 404/);
+  });
+
+  it("throws when response features exceed requested IDs (unexpected expansion)", async () => {
+    const doFetch = async () => mockResponse({
+      features: [{ properties: {} }, { properties: {} }, { properties: {} }],
+    });
+    await expect(fetchFeaturesByIdChunk("https://gis/", "/0", [1, 2], "APN", doFetch))
+      .rejects.toThrow(/unexpected expansion/);
+  });
+
+  it("accepts fewer features than IDs (some IDs may be invalid)", async () => {
+    const doFetch = async () => mockResponse({
+      features: [{ properties: { APN: "1" } }],
+    });
+    const feats = await fetchFeaturesByIdChunk("https://gis/", "/0", [100, 200], "APN", doFetch);
+    expect(feats).toHaveLength(1);
   });
 });

@@ -102,3 +102,98 @@ export function formatFailLoudMessage(urls: readonly string[]): string {
   }
   return lines.join("\n");
 }
+
+// ---------------------------------------------------------------------------
+// OBJECTID-based pagination helpers + post-fetch integrity assertion
+// ---------------------------------------------------------------------------
+
+// A richer fetch type needed for helpers that call .json() on the response.
+// probeEndpoint keeps its narrow ProbeFetch contract.
+export type RichFetch = (url: string) => Promise<Response>;
+
+// Report type returned by hasAllRequiredApns.
+export type MissingApnsReport =
+  | { ok: true }
+  | { ok: false; missing: string[] };
+
+// Pure array chunker. No I/O.
+export function chunkIds(ids: number[], chunkSize: number): number[][] {
+  const out: number[][] = [];
+  for (let i = 0; i < ids.length; i += chunkSize) {
+    out.push(ids.slice(i, i + chunkSize));
+  }
+  return out;
+}
+
+// Post-fetch integrity check. Returns a report object. No I/O.
+export function hasAllRequiredApns(
+  features: Array<{ properties: Record<string, unknown> }>,
+  requiredApns: readonly string[],
+): MissingApnsReport {
+  const present = new Set(
+    features.map((f) => f.properties.APN_DASH as string).filter(Boolean),
+  );
+  const missing = requiredApns.filter((apn) => !present.has(apn));
+  if (missing.length === 0) return { ok: true };
+  return { ok: false, missing };
+}
+
+// Async, injectable fetch. Queries returnIdsOnly=true to get the full OBJECTID
+// list for a bbox.
+export async function fetchObjectIds(
+  baseUrl: string,
+  layerPath: string,
+  bbox: Bbox,
+  doFetch: RichFetch,
+): Promise<number[]> {
+  const params = new URLSearchParams({
+    where: "1=1",
+    geometryType: "esriGeometryEnvelope",
+    geometry: `${bbox.xmin},${bbox.ymin},${bbox.xmax},${bbox.ymax}`,
+    inSR: "4326",
+    spatialRel: "esriSpatialRelIntersects",
+    returnIdsOnly: "true",
+    f: "json",
+  });
+  const url = `${baseUrl}${layerPath}/query?${params}`;
+  const r = await doFetch(url);
+  if (!r.ok) throw new Error(`fetchObjectIds failed: ${r.status} ${url}`);
+  const body = await r.json();
+  const ids: unknown = body.objectIds;
+  if (!Array.isArray(ids)) {
+    throw new Error(`fetchObjectIds: no objectIds array in response from ${url}`);
+  }
+  return (ids as number[]).sort((a, b) => a - b);
+}
+
+// Async, injectable fetch. Fetches features for a specific set of OBJECTIDs.
+export async function fetchFeaturesByIdChunk(
+  baseUrl: string,
+  layerPath: string,
+  ids: number[],
+  outFields: string,
+  doFetch: RichFetch,
+): Promise<unknown[]> {
+  const params = new URLSearchParams({
+    where: `OBJECTID IN (${ids.join(",")})`,
+    outFields,
+    returnGeometry: "true",
+    outSR: "4326",
+    f: "geojson",
+    geometryPrecision: "6",
+  });
+  const url = `${baseUrl}${layerPath}/query?${params}`;
+  const r = await doFetch(url);
+  if (!r.ok) throw new Error(`fetchFeaturesByIdChunk failed: ${r.status} ${url}`);
+  const body = await r.json();
+  const features = body.features;
+  if (!Array.isArray(features)) {
+    throw new Error(`fetchFeaturesByIdChunk: no features array in response from ${url}`);
+  }
+  if (features.length > ids.length) {
+    throw new Error(
+      `fetchFeaturesByIdChunk: response has ${features.length} features for ${ids.length} requested IDs — unexpected expansion`,
+    );
+  }
+  return features;
+}
