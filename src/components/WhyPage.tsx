@@ -1,5 +1,8 @@
 import { useEffect } from "react";
+import type { ReactNode } from "react";
 import { Link } from "react-router";
+import tier1ARaw from "../../docs/hunt-log-known-gap-2.md?raw";
+import tier1BRaw from "../../data/raw/R-005/hunt-log.md?raw";
 
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
@@ -14,6 +17,38 @@ function usePageMeta(title: string, description: string) {
     }
     meta.setAttribute("content", description);
   }, [title, description]);
+}
+
+function HuntLogSection({
+  heading,
+  narrative,
+  fullLog,
+  sourcePath,
+}: {
+  heading: string;
+  narrative: ReactNode;
+  fullLog: string;
+  sourcePath: string;
+}) {
+  return (
+    <article className="mb-8">
+      <h3 className="text-lg font-semibold text-slate-900 mb-2">{heading}</h3>
+      <div className="text-sm text-slate-700 leading-relaxed space-y-3">
+        {narrative}
+      </div>
+      <details className="mt-3 rounded-md border border-slate-200 bg-white">
+        <summary className="cursor-pointer select-none px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50">
+          Full log ({sourcePath})
+        </summary>
+        <pre className="overflow-x-auto px-3 py-3 text-[11px] leading-relaxed text-slate-800 whitespace-pre-wrap font-mono">
+          {fullLog}
+        </pre>
+      </details>
+      <p className="mt-1 text-xs text-slate-400 font-mono">
+        Source file in repo: {sourcePath}
+      </p>
+    </article>
+  );
 }
 
 export function WhyPage() {
@@ -183,6 +218,128 @@ export function WhyPage() {
           <h2 className="text-xl font-semibold text-slate-900 mb-4">
             Receipts: what we tried, what the public API blocked
           </h2>
+
+          <HuntLogSection
+            heading="Federal-tax-lien hunt (Tier 1-A)"
+            sourcePath="docs/hunt-log-known-gap-2.md"
+            fullLog={tier1ARaw}
+            narrative={
+              <>
+                <p>
+                  45 minutes. One goal: find a federal tax lien using only the API
+                  the county exposes to the public.
+                </p>
+                <p>
+                  The search endpoint accepts a{" "}
+                  <code className="font-mono text-xs">documentCode</code> filter. Every
+                  spelling of "federal tax lien" (
+                  <code className="font-mono text-xs">FED TAX LIEN</code>,{" "}
+                  <code className="font-mono text-xs">FEDERAL TAX LIEN</code>,{" "}
+                  <code className="font-mono text-xs">IRS LIEN</code>,{" "}
+                  <code className="font-mono text-xs">NFTL</code>, ten others) returned
+                  zero. The short code for federal tax lien isn't in the search
+                  vocabulary.
+                </p>
+                <p>
+                  Date filters? Silently dropped. The endpoint accepts the parameter
+                  but ignores it. Default sort is ascending by recording number, so
+                  every query starts in 1947 and would need ~50,000 pages of
+                  pagination to reach 2020. There's no descending sort.
+                </p>
+                <p>
+                  The modern web search page is Cloudflare-gated. The legacy ASP.NET
+                  page requires replaying{" "}
+                  <code className="font-mono text-xs">__VIEWSTATE</code> tokens that
+                  no scripting API can generate. Structural blocker hit in 20
+                  minutes. Stopped.
+                </p>
+                <p>
+                  The hunt pivoted to subdivision encumbrances already cited in
+                  POPHAM's deed legal description — and that pivot succeeded,
+                  because it didn't require name or code search. Every step was{" "}
+                  <code className="font-mono text-xs">GET /documents/{"{known_number}"}</code>.
+                  That's the shape of what works here and what doesn't.
+                </p>
+              </>
+            }
+          />
+
+          <HuntLogSection
+            heading="Master-plat hunt (Tier 1-B)"
+            sourcePath="data/raw/R-005/hunt-log.md"
+            fullLog={tier1BRaw}
+            narrative={
+              <>
+                <p>Different question, same API, deeper failure.</p>
+                <p>
+                  Parcel 3's final plat (
+                  <code className="font-mono text-xs">20010093192</code>) says on its
+                  face: <em>"being a resubdivision of a portion of Seville Tract H as
+                  recorded in Book 553, Page 15."</em> One well-formed question with
+                  a single-integer answer: what's the recording number for Book 553,
+                  Page 15?
+                </p>
+                <p>
+                  Budgeted 200 API calls. Stopped at ~141 of 200 calls. Zero hits.
+                </p>
+                <p>Five API layers blocked the lookup:</p>
+                <ol className="list-decimal list-inside space-y-0.5 pl-2">
+                  <li>
+                    <code className="font-mono text-xs">documentCode</code> filter
+                    on <code className="font-mono text-xs">/documents/search</code>{" "}
+                    silently dropped.
+                  </li>
+                  <li>
+                    <code className="font-mono text-xs">docketBook</code> and{" "}
+                    <code className="font-mono text-xs">pageMap</code> filters
+                    silently dropped.
+                  </li>
+                  <li>
+                    Pagination broken — page 10 returns the same 50 records from
+                    1947 that page 1 returned.
+                  </li>
+                  <li>
+                    Hypothesised{" "}
+                    <code className="font-mono text-xs">byBook/page</code> and{" "}
+                    <code className="font-mono text-xs">book/{"{n}"}/{"{p}"}</code>{" "}
+                    endpoints both 404.
+                  </li>
+                  <li>Legacy book/page bridge URL Cloudflare-gated.</li>
+                </ol>
+                <p>
+                  Bracket-scanned{" "}
+                  <code className="font-mono text-xs">GET /documents/{"{recordingNumber}"}</code>{" "}
+                  across ~94 sample points in the approved range{" "}
+                  <code className="font-mono text-xs">20000600000–20010100000</code>.
+                  Plats are 1-in-thousands sparse. No hits.
+                </p>
+                <p>
+                  The side discovery matters more than the miss: four lien-related
+                  document codes —{" "}
+                  <code className="font-mono text-xs">RE FED TX</code>,{" "}
+                  <code className="font-mono text-xs">FED TAX L</code>,{" "}
+                  <code className="font-mono text-xs">LIEN</code>,{" "}
+                  <code className="font-mono text-xs">MED LIEN</code> —{" "}
+                  <em>are</em> present in the index (they appear inside{" "}
+                  <code className="font-mono text-xs">documentCodes</code> when you
+                  fetch by recording number) but return{" "}
+                  <code className="font-mono text-xs">totalResults: 0</code> from{" "}
+                  <code className="font-mono text-xs">/documents/search?documentCode=…</code>.{" "}
+                  <strong>The codes are indexable but unsearchable</strong> — the
+                  index records what the search surface refuses to enumerate.
+                </p>
+              </>
+            }
+          />
+
+          <p className="mt-6 text-sm text-slate-700 leading-relaxed">
+            Two failed hunts at adjacent tiers in the same taxonomy is the receipt.
+            One is a one-off. Two is a pattern. The county holds the data. The public
+            API serves documents, not searches. A county-owned portal closes these
+            gaps because only the custodian has both the authoritative source
+            records and the ingestion pipeline to build the indexes the public
+            surface refuses to expose.
+          </p>
         </section>
       </article>
     </main>

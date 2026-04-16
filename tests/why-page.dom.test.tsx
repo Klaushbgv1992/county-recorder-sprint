@@ -86,3 +86,67 @@ describe("WhyPage — Section 2 moat claims", () => {
     expect(link).toBeTruthy();
   });
 });
+
+describe("WhyPage — Section 3 receipts", () => {
+  afterEach(() => cleanup());
+
+  it("renders both hunt narratives with all the verbatim numbers", () => {
+    renderWhy();
+    const section = document.getElementById("receipts");
+    expect(section).toBeTruthy();
+    const txt = section?.textContent ?? "";
+
+    expect(txt).toMatch(/45 minutes/);
+    expect(txt).toMatch(/20 minutes/);
+    expect(txt).toMatch(/50,000 pages/);
+    expect(txt).toMatch(/1947/);
+    expect(txt).toMatch(/__VIEWSTATE/);
+
+    expect(txt).toMatch(/141 of 200 calls/);
+    expect(txt).toMatch(/20010093192/);
+    expect(txt).toMatch(/Book 553, Page 15/);
+    expect(txt).toMatch(/94 sample points/);
+    expect(txt).toMatch(/20000600000.{0,3}20010100000/);
+
+    expect(txt).toMatch(/indexable but unsearchable/i);
+  });
+
+  it("enumerates the five API layers as a numbered list", () => {
+    renderWhy();
+    const section = document.getElementById("receipts");
+    const text = section?.textContent ?? "";
+    expect(text).toMatch(/documentCode.*filter.*silently dropped/is);
+    expect(text).toMatch(/docketBook.*pageMap.*silently dropped/is);
+    expect(text).toMatch(/pagination broken/i);
+    expect(text).toMatch(/404/);
+    expect(text).toMatch(/Cloudflare/);
+  });
+
+  it("renders two collapsed <details> elements holding the raw hunt logs", () => {
+    renderWhy();
+    const details = document.querySelectorAll(
+      "#receipts details",
+    ) as NodeListOf<HTMLDetailsElement>;
+    expect(details.length).toBe(2);
+    details.forEach((el) => {
+      expect(el.open).toBe(false);
+      const summary = el.querySelector("summary");
+      expect(summary?.textContent?.toLowerCase() ?? "").toMatch(/full log/);
+    });
+  });
+
+  it("renders a muted source-file citation under each hunt log", () => {
+    renderWhy();
+    const section = document.getElementById("receipts");
+    const txt = section?.textContent ?? "";
+    expect(txt).toMatch(/docs\/hunt-log-known-gap-2\.md/);
+    expect(txt).toMatch(/data\/raw\/R-005\/hunt-log\.md/);
+  });
+
+  it("renders the closing paragraph with the 'authoritative source records' phrasing", () => {
+    renderWhy();
+    const section = document.getElementById("receipts");
+    expect(section?.textContent).toMatch(/Two failed hunts at adjacent tiers/i);
+    expect(section?.textContent).toMatch(/authoritative source records and the ingestion pipeline/i);
+  });
+});
