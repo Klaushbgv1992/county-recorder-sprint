@@ -100,6 +100,12 @@ export function LandingPage() {
         >
           → Compare to a title-plant report
         </Link>
+        <Link
+          to="/staff"
+          className="underline underline-offset-2 text-slate-400 hover:text-slate-600"
+        >
+          County staff? Open workbench &rarr;
+        </Link>
       </footer>
     </main>
   );

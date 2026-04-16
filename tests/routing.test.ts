@@ -8,6 +8,7 @@ import {
   resolveInstrumentToApn,
   routes,
 } from "../src/router";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 // LandingPage (now at /) renders CountyMap which uses react-map-gl/maplibre.
 // MapLibre requires WebGL which is unavailable in jsdom. Mock the module so
@@ -21,7 +22,9 @@ vi.mock("react-map-gl/maplibre", () => ({
 
 function renderAt(url: string): string {
   const router = createMemoryRouter(routes, { initialEntries: [url] });
-  return renderToString(createElement(RouterProvider, { router }));
+  return renderToString(
+    createElement(TerminologyProvider, null, createElement(RouterProvider, { router })),
+  );
 }
 
 function matchIds(url: string): string[] {

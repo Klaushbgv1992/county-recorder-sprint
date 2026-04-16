@@ -5,6 +5,8 @@ import { detectAnomalies } from "../logic/anomaly-detector";
 import { getGrantors, getGrantees } from "../logic/party-roles";
 import { AnomalyPanel } from "./AnomalyPanel";
 import { ProvenanceTag } from "./ProvenanceTag";
+import { useTerminology } from "../terminology/TerminologyContext";
+import { Term, TermSection } from "../terminology/Term";
 
 const DEED_TYPES = new Set([
   "warranty_deed",
@@ -82,16 +84,19 @@ export function ChainOfTitle({
 
   return (
     <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-bold text-gray-800">Chain of Title</h2>
-        <p className="text-sm text-gray-500 mt-1">
-          {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
-        </p>
-      </div>
+      <TermSection id="chain-heading">
+        <div className="mb-6">
+          <h2 className="text-2xl font-bold text-gray-800"><Term professional="Chain of Title" /></h2>
+          <p className="text-sm text-gray-500 mt-1">
+            {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
+          </p>
+        </div>
+      </TermSection>
 
       <AnomalyPanel findings={findings} apn={parcel.apn} />
 
       {/* Owner Period Timeline */}
+      <TermSection id="ownership-periods">
       <div className="mb-8">
         <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
           Ownership Periods
@@ -154,7 +159,10 @@ export function ChainOfTitle({
         </div>
       </div>
 
+      </TermSection>
+
       {/* Deed List — labeled rows */}
+      <TermSection id="conveyance-instruments">
       <div>
         <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
           Conveyance Instruments
@@ -169,6 +177,7 @@ export function ChainOfTitle({
           ))}
         </div>
       </div>
+      </TermSection>
 
       <p className="text-xs text-gray-400 mt-6 text-right">
         {deeds[0]?.corpus_boundary_note ?? ""}
@@ -183,6 +192,7 @@ interface DeedCardProps {
 }
 
 function DeedCard({ deed, onOpenDocument }: DeedCardProps) {
+  const { t } = useTerminology();
   const grantors = getGrantors(deed);
   const grantees = getGrantees(deed);
 
@@ -191,7 +201,7 @@ function DeedCard({ deed, onOpenDocument }: DeedCardProps) {
       <div className="flex items-center justify-between mb-3 pb-2 border-b border-gray-100">
         <div className="flex items-center gap-3">
           <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700">
-            {TYPE_LABELS[deed.document_type]}
+            {t(TYPE_LABELS[deed.document_type])}
           </span>
           <button
             onClick={() => onOpenDocument(deed.instrument_number)}
@@ -208,14 +218,14 @@ function DeedCard({ deed, onOpenDocument }: DeedCardProps) {
 
       <dl className="grid grid-cols-[120px_1fr] gap-y-2 gap-x-3 text-sm">
         <dt className="text-xs font-medium text-gray-500 self-start pt-0.5">
-          Grantor
+          <Term professional="Grantor" />
         </dt>
         <dd className="text-gray-800 break-words">
           {grantors.length > 0 ? grantors.join("; ") : <span className="text-gray-400">—</span>}
         </dd>
 
         <dt className="text-xs font-medium text-gray-500 self-start pt-0.5">
-          Grantee
+          <Term professional="Grantee" />
         </dt>
         <dd className="text-gray-800 break-words">
           {grantees.length > 0 ? grantees.join("; ") : <span className="text-gray-400">—</span>}

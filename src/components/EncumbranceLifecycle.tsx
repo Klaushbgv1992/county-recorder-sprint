@@ -26,6 +26,8 @@ import { ProvenanceTag } from "./ProvenanceTag";
 import { CandidateReleasesPanel } from "./CandidateReleasesPanel";
 import { LinkEvidenceBars } from "./LinkEvidenceBars";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { useTerminology } from "../terminology/TerminologyContext";
+import { Term, TermSection } from "../terminology/Term";
 
 interface Props {
   parcel: Parcel;
@@ -124,6 +126,7 @@ export function EncumbranceLifecycle({
   onOpenDocument,
   viewedInstrumentNumber,
 }: Props) {
+  const { t } = useTerminology();
   const instrumentMap = useMemo(
     () => new Map(instruments.map((i) => [i.instrument_number, i])),
     [instruments],
@@ -174,10 +177,11 @@ export function EncumbranceLifecycle({
 
   return (
     <div>
+      <TermSection id="encumbrance-heading">
       <div className="mb-6 flex items-start justify-between gap-4">
         <div>
           <h2 className="text-2xl font-bold text-gray-800">
-            Encumbrance Lifecycles
+            <Term professional="Encumbrance Lifecycles" />
           </h2>
           <p className="text-sm text-gray-500 mt-1">
             {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
@@ -196,6 +200,7 @@ export function EncumbranceLifecycle({
       </div>
 
       <MoatBanner pipelineStatus={pipelineStatus} />
+      </TermSection>
 
       {lifecycles.map((lifecycle) => {
         const rootInst = instrumentMap.get(lifecycle.root_instrument);
@@ -254,8 +259,8 @@ export function EncumbranceLifecycle({
           (effectiveStatus === "open" || effectiveStatus === "unresolved");
 
         return (
+          <TermSection id={lifecycle.id} key={lifecycle.id}>
           <div
-            key={lifecycle.id}
             className="bg-white border border-gray-200 rounded-lg mb-4 overflow-hidden"
           >
             {/* Lifecycle Header */}
@@ -266,7 +271,7 @@ export function EncumbranceLifecycle({
                   overridden={isOverridden}
                 />
                 <span className="font-semibold text-gray-800">
-                  {labelForDocumentType(rootInst.document_type, rootInst.document_type_raw)}: <span className="font-mono">{rootInst.instrument_number}</span>
+                  {t(labelForDocumentType(rootInst.document_type, rootInst.document_type_raw))}: <span className="font-mono">{rootInst.instrument_number}</span>
                 </span>
                 <span className="text-sm text-gray-500 whitespace-nowrap">
                   recorded {rootInst.recording_date}
@@ -404,6 +409,7 @@ export function EncumbranceLifecycle({
               </div>
             </div>
           </div>
+          </TermSection>
         );
       })}
 

@@ -12,6 +12,7 @@ import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { Term, TermSection } from "../terminology/Term";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
@@ -161,19 +162,20 @@ export function ProofDrawer({
 
           {/* Right: Extracted Fields */}
           <div className="w-1/2 overflow-auto p-6">
+            <TermSection id="proof-extracted-fields">
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
               Extracted Fields
             </h4>
 
             <div className="space-y-3 mb-6">
               {grantors.length > 0 && (
-                <FieldDisplay label="Grantor" value={grantors.join("; ")} />
+                <FieldDisplay label={<Term professional="Grantor" />} value={grantors.join("; ")} />
               )}
               {grantees.length > 0 && (
-                <FieldDisplay label="Grantee" value={grantees.join("; ")} />
+                <FieldDisplay label={<Term professional="Grantee" />} value={grantees.join("; ")} />
               )}
               {trustors.length > 0 && (
-                <FieldDisplay label="Trustor/Borrower" value={trustors.join("; ")} />
+                <FieldDisplay label={<Term professional="Trustor/Borrower" />} value={trustors.join("; ")} />
               )}
               {lenders.length > 0 && (
                 <FieldDisplay label="Lender" value={lenders.join("; ")} />
@@ -239,6 +241,8 @@ export function ProofDrawer({
                 </div>
               </>
             )}
+
+            </TermSection>
 
             {/* AI Extraction replay section — shown only when a real OCR trace exists */}
             {extractionTrace && (
@@ -328,7 +332,7 @@ function trackSummary(trace: {
   return `${recovered}/${total} fields \u00b7 ${ver}`;
 }
 
-function FieldDisplay({ label, value }: { label: string; value: string }) {
+function FieldDisplay({ label, value }: { label: React.ReactNode; value: string }) {
   return (
     <div>
       <span className="text-xs font-medium text-gray-500">{label}</span>

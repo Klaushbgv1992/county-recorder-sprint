@@ -1,5 +1,6 @@
 import type { Instrument, DocumentType } from "../types";
 import { getGrantors, getGrantees } from "../logic/party-roles";
+import { useTerminology } from "../terminology/TerminologyContext";
 
 const TYPE_LABELS: Record<DocumentType, string> = {
   warranty_deed: "Warranty Deed",
@@ -24,6 +25,7 @@ interface Props {
 }
 
 export function InstrumentRow({ instrument, onOpenDocument }: Props) {
+  const { t } = useTerminology();
   const grantors = getGrantors(instrument);
   const grantees = getGrantees(instrument);
 
@@ -41,7 +43,7 @@ export function InstrumentRow({ instrument, onOpenDocument }: Props) {
           {instrument.recording_date}
         </span>
         <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700 whitespace-nowrap">
-          {TYPE_LABELS[instrument.document_type]}
+          {t(TYPE_LABELS[instrument.document_type])}
         </span>
         <button
           onClick={() => onOpenDocument(instrument.instrument_number)}
