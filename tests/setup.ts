@@ -1,3 +1,5 @@
+import "@testing-library/jest-dom/vitest";
+
 // jsdom ≤ 26 ships a Blob that wraps Node's Blob but does not re-export the
 // WHATWG Blob level-2 methods (arrayBuffer, text, stream).  Polyfill
 // arrayBuffer() using FileReader, which IS available in jsdom, so that PDF
