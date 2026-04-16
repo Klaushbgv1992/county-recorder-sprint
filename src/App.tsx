@@ -34,7 +34,7 @@ export function AppShell() {
   const hasParcel = apnIsInCorpus;
 
   return (
-    <div className="h-screen flex flex-col bg-gray-50 text-gray-900 font-sans">
+    <div className="h-full flex flex-col bg-gray-50 text-gray-900 font-sans">
       <nav className="bg-white border-b border-gray-200 px-6 py-3 flex items-center gap-6 shrink-0">
         <div className="flex items-baseline gap-2">
           <h1 className="text-lg font-semibold text-recorder-900">

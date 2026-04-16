@@ -217,6 +217,22 @@ describe("NotFound rendering", () => {
   });
 });
 
+describe("/why integration via full router", () => {
+  it("renders WhyPage H1 and the sitewide banner link together", () => {
+    const html = renderAt("/why");
+    // WhyPage's H1
+    expect(html).toContain("Why county-owned title data");
+    // Banner's link to /pipeline — proves RootLayout is in the wrap
+    expect(html).toContain("See pipeline");
+  });
+
+  it("does not render the banner on /staff", () => {
+    const html = renderAt("/staff");
+    // Staff routes skip the banner per RootLayout's useMatch.
+    expect(html).not.toContain("See pipeline");
+  });
+});
+
 describe("AppShell smoke render", () => {
   // Pure renderToString is one-shot; it cannot trip React's hook-order
   // diagnostic (which needs a re-render) and therefore cannot reproduce

@@ -33,4 +33,34 @@ describe("WhyPage SEO", () => {
       "How county recording, indexing, and title-plant search actually work — plus what the public API blocks, with receipts from two failed hunts against Maricopa's publicapi.recorder.maricopa.gov.",
     );
   });
+
+  it("restores document.title when unmounted", () => {
+    const priorTitle = "Prior page title";
+    document.title = priorTitle;
+    const view = render(
+      <MemoryRouter>
+        <WhyPage />
+      </MemoryRouter>,
+    );
+    expect(document.title).toBe(
+      "Why county-owned title data — Maricopa County Recorder Portal",
+    );
+    view.unmount();
+    expect(document.title).toBe(priorTitle);
+  });
+
+  it("removes the injected meta description when unmounted (if it was not pre-existing)", () => {
+    // Ensure no meta description exists at the start.
+    document.querySelectorAll('meta[name="description"]').forEach((el) => el.remove());
+
+    const view = render(
+      <MemoryRouter>
+        <WhyPage />
+      </MemoryRouter>,
+    );
+    expect(document.querySelector('meta[name="description"]')).toBeTruthy();
+
+    view.unmount();
+    expect(document.querySelector('meta[name="description"]')).toBeNull();
+  });
 });

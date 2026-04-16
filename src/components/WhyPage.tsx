@@ -6,16 +6,31 @@ import tier1BRaw from "../../data/raw/R-005/hunt-log.md?raw";
 
 function usePageMeta(title: string, description: string) {
   useEffect(() => {
-    document.title = title;
+    const prevTitle = document.title;
+
     let meta = document.head.querySelector<HTMLMetaElement>(
       'meta[name="description"]',
     );
+    const metaWasPreexisting = meta !== null;
+    const prevDescription = meta?.getAttribute("content") ?? null;
+
     if (!meta) {
       meta = document.createElement("meta");
       meta.setAttribute("name", "description");
       document.head.appendChild(meta);
     }
+
+    document.title = title;
     meta.setAttribute("content", description);
+
+    return () => {
+      document.title = prevTitle;
+      if (!metaWasPreexisting) {
+        meta!.remove();
+      } else if (prevDescription !== null) {
+        meta!.setAttribute("content", prevDescription);
+      }
+    };
   }, [title, description]);
 }
 
