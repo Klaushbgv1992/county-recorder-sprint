@@ -321,3 +321,15 @@ Re-introducing per-link popovers is a 30-min wiring task if a future demo run sh
     - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
     - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
     - *What production would do:* promote the rule to `"error"` severity and run `eslint --report-unused-disable-directives` in CI so stale suppression comments are caught automatically.
+
+22. **Encumbrance swimlane — deferred review polish.**
+
+## Encumbrance swimlane — deferred review polish
+
+Three follow-up items from the swimlane code review (`6f4a185` + downstream fixes) are intentionally deferred. None affect demo behavior or merge-readiness.
+
+1. **Extract `useResolvedSwimlaneStatus` hook from `Swimlane.tsx`** — the status-resolution block (computing `mergedReleaseLinks`, `computed`, `resolved`, `rationale`) has nontrivial precedence (override → accepted-candidate → curated link) and currently has no unit-test seam. End-to-end behavior is covered by `tests/encumbrance-lifecycle.dom.test.tsx`. ~30 min refactor when next touching swimlane status logic.
+
+2. **Extract `buildCitationIndex` and `buildScanCounts` to `src/logic/swimlane-layout.ts`** — the data-shape transformations inside `SwimlaneDiagram`'s `useMemo` blocks are pure given inputs but lack unit coverage. Same rationale as #1: dom tests cover end-to-end. ~20 min if/when the citation grouping rule needs to change.
+
+3. **Refactor `r3-mers-nominee.ts` to emit structured `evidence_fields`** — `detectMersGap` in `swimlane-layout.ts` currently regex-parses the R3 `description_template`. Coupling is JSDoc-disclosed (lines 80–91) and guarded by a roundtrip test that loads `anomaly-rules.json`. Cleaner shape: extend `AnomalyFinding` with `evidence_fields?: Record<string, string>`, populate `{ originator, releaser }` in `r3-mers-nominee.ts`, drop the regex. ~30 min next time the `AnomalyFinding` shape is touched.
