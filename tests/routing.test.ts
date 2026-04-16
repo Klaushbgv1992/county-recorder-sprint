@@ -63,13 +63,14 @@ describe("resolveInstrumentToApn", () => {
 });
 
 describe("route table", () => {
-  it("/ matches the landing page (LandingPage is outside AppShell)", () => {
-    // The root route renders LandingPage directly.
-    // Verify it matches exactly one route segment and does NOT match any
-    // of the named working-view routes (chain, encumbrance, etc.).
+  it("/ matches the landing page (LandingPage is a direct child of RootLayout, outside AppShell)", () => {
+    // The root route renders LandingPage as a child of the path-less RootLayout
+    // wrapper. Verify it does NOT match any of the named working-view routes
+    // (chain, encumbrance, etc.) — those live inside the AppShell layer.
     const router = createMemoryRouter(routes, { initialEntries: ["/"] });
     const matches = router.state.matches;
-    expect(matches).toHaveLength(1);
+    // 2 segments: path-less RootLayout + the "/" LandingPage route
+    expect(matches).toHaveLength(2);
     const namedIds = matches
       .map((m) => m.route.id)
       .filter((id): id is string => typeof id === "string");
