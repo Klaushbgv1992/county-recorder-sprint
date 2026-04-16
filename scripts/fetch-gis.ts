@@ -13,6 +13,7 @@ const PARCEL_LAYER =
 const PARCELS = [
   { apn: "304-78-386", owner: "POPHAM CHRISTOPHER/ASHLEY", status: "primary" },
   { apn: "304-77-689", owner: "HOGUE JASON/MICHELE", status: "backup" },
+  { apn: "304-78-409", owner: "SEVILLE HOMEOWNERS ASSOCIATION", status: "subdivision_common" },
 ];
 
 async function fetchGeoJson(url: string, where: string): Promise<unknown> {
