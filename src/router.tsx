@@ -26,6 +26,7 @@ import { StaffParcelView } from "./components/StaffParcelView";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
+import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "./components/EmptyStates";
 
 /**
@@ -129,6 +130,43 @@ function ChainRouteInner({ apn }: { apn: string }) {
   const data = useParcelData(apn);
   const navigate = useNavigate();
 
+  useDocumentMeta({
+    title: `Chain of title — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
+    description: `Parcel-keyed chain of title for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. ${data.instruments.length} instruments curated, verified through ${data.pipelineStatus.verified_through_date}.`,
+    ogImage: "/og-default.png",
+    ogUrl: `${window.location.origin}/parcel/${data.parcel.apn}`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      name: `Parcel ${data.parcel.apn} — ${data.parcel.address}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: data.parcel.address,
+        addressLocality: data.parcel.city,
+        addressRegion: data.parcel.state,
+        postalCode: data.parcel.zip,
+        addressCountry: "US",
+      },
+      additionalProperty: [
+        {
+          "@type": "PropertyValue",
+          name: "APN",
+          value: data.parcel.apn,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Subdivision",
+          value: data.parcel.subdivision,
+        },
+        {
+          "@type": "PropertyValue",
+          name: "Verified through",
+          value: data.pipelineStatus.verified_through_date,
+        },
+      ],
+    },
+  });
+
   const drawerInstrument = instrumentNumber ?? null;
   const drawerOpen = drawerInstrument !== null;
   const instrumentForDrawer = drawerOpen
@@ -199,6 +237,26 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
   const data = useParcelData(apn);
   const examiner = useExaminerActions(data.links, apn);
   const navigate = useNavigate();
+
+  useDocumentMeta({
+    title: `Encumbrance lifecycle — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
+    description: `Open and closed encumbrance lifecycles for APN ${data.parcel.apn}, owned by ${data.parcel.current_owner}. Verified through ${data.pipelineStatus.verified_through_date}.`,
+    ogImage: "/og-default.png",
+    ogUrl: `${window.location.origin}/parcel/${data.parcel.apn}/encumbrances`,
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "Place",
+      name: `Parcel ${data.parcel.apn} — ${data.parcel.address}`,
+      address: {
+        "@type": "PostalAddress",
+        streetAddress: data.parcel.address,
+        addressLocality: data.parcel.city,
+        addressRegion: data.parcel.state,
+        postalCode: data.parcel.zip,
+        addressCountry: "US",
+      },
+    },
+  });
 
   const drawerInstrument = instrumentNumber ?? null;
   const drawerOpen = drawerInstrument !== null;
