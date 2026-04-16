@@ -5,6 +5,8 @@ import { SearchEntry } from "./SearchEntry";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { PersonaRow } from "./PersonaRow";
 import { useAllParcels } from "../hooks/useAllParcels";
+import { CountyHeartbeat } from "./CountyHeartbeat";
+import { useNowOverrideFromSearchParams } from "../hooks/useNowOverrideFromSearchParams";
 
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },
@@ -15,9 +17,17 @@ const HIGHLIGHTED: HighlightedParcel[] = [
 export function LandingPage() {
   const navigate = useNavigate();
   const parcels = useAllParcels();
+  const nowOverride = useNowOverrideFromSearchParams();
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
+      {/* === BEGIN CountyHeartbeat block (feature/landing-heartbeat) ===
+          Do not refactor this block as part of map-redesign work — it is
+          scoped to a single <CountyHeartbeat/> mount so the parallel
+          agent's diff path stays clean. === */}
+      <CountyHeartbeat now={nowOverride} />
+      {/* === END CountyHeartbeat block === */}
+
       <header className="px-6 py-4 border-b border-slate-200 bg-white">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
