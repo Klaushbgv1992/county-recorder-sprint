@@ -1,5 +1,5 @@
 // src/components/CountyMap.tsx
-import { useMemo, useCallback } from "react";
+import { useMemo, useCallback, useState } from "react";
 import MapGL, { Source, Layer } from "react-map-gl/maplibre";
 import type { MapLayerMouseEvent } from "react-map-gl/maplibre";
 import countyBoundary from "../data/maricopa-county-boundary.json";
@@ -29,6 +29,8 @@ export function CountyMap({
   onParcelClick,
   initialViewState = DEFAULT_VIEW,
 }: CountyMapProps) {
+  const [hoveredApn, setHoveredApn] = useState<string | null>(null);
+
   const parcelById = useMemo(() => {
     const m = new Map<string, GeoJSON.Feature>();
     for (const f of parcelsGeo.features as GeoJSON.Feature[]) {
@@ -43,16 +45,30 @@ export function CountyMap({
     [highlightedParcels],
   );
 
+  const apnFromEvent = (e: MapLayerMouseEvent): string | null => {
+    const feat = e.features?.[0];
+    if (!feat) return null;
+    const layerId = feat.layer?.id ?? "";
+    const match = layerId.match(/^parcel-(.+)-fill$/);
+    return match ? match[1] : null;
+  };
+
   const handleClick = useCallback(
     (e: MapLayerMouseEvent) => {
-      const feat = e.features?.[0];
-      if (!feat) return;
-      const layerId = feat.layer?.id ?? "";
-      const match = layerId.match(/^parcel-(.+)-fill$/);
-      if (match) onParcelClick(match[1]);
+      const apn = apnFromEvent(e);
+      if (apn) onParcelClick(apn);
     },
     [onParcelClick],
   );
+
+  const handleMouseMove = useCallback((e: MapLayerMouseEvent) => {
+    const apn = apnFromEvent(e);
+    setHoveredApn((prev) => (prev === apn ? prev : apn));
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setHoveredApn(null);
+  }, []);
 
   return (
     <MapGL
@@ -60,7 +76,10 @@ export function CountyMap({
       mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
       style={{ width: "100%", height: "100%" }}
       interactiveLayerIds={interactiveLayerIds}
+      cursor={hoveredApn ? "pointer" : "grab"}
       onClick={handleClick}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
     >
       <Source id="county-boundary" type="geojson" data={countyBoundary as GeoJSON.FeatureCollection}>
         <Layer
@@ -73,6 +92,7 @@ export function CountyMap({
       {highlightedParcels.map((p) => {
         const feat = parcelById.get(p.apn);
         if (!feat) return null;
+        const isHovered = hoveredApn === p.apn;
         return (
           <Source
             key={p.apn}
@@ -83,12 +103,23 @@ export function CountyMap({
             <Layer
               id={`parcel-${p.apn}-fill`}
               type="fill"
-              paint={{ "fill-color": STATUS_FILL[p.status], "fill-opacity": 0.55 }}
+              paint={{
+                "fill-color": STATUS_FILL[p.status],
+                "fill-opacity": isHovered ? 0.75 : 0.55,
+              }}
             />
             <Layer
               id={`parcel-${p.apn}-outline`}
               type="line"
               paint={{ "line-color": STATUS_FILL[p.status], "line-width": 2 }}
+            />
+            <Layer
+              id={`parcel-${p.apn}-outline-hover`}
+              type="line"
+              paint={{
+                "line-color": STATUS_FILL[p.status],
+                "line-width": isHovered ? 5 : 0,
+              }}
             />
           </Source>
         );

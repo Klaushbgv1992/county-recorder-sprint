@@ -36,4 +36,18 @@ describe("CountyMap", () => {
     expect(getByTestId("layer-parcel-304-78-386-fill")).toBeInTheDocument();
     expect(getByTestId("layer-parcel-304-77-689-fill")).toBeInTheDocument();
   });
+
+  it("renders a hover-outline layer per highlighted parcel", () => {
+    const { getByTestId } = render(
+      <CountyMap
+        highlightedParcels={[
+          { apn: "304-78-386", status: "primary" },
+          { apn: "304-77-689", status: "backup" },
+        ]}
+        onParcelClick={vi.fn()}
+      />,
+    );
+    expect(getByTestId("layer-parcel-304-78-386-outline-hover")).toBeInTheDocument();
+    expect(getByTestId("layer-parcel-304-77-689-outline-hover")).toBeInTheDocument();
+  });
 });
