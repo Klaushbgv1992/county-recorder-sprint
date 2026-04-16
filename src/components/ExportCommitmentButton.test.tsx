@@ -1,5 +1,11 @@
-import { describe, expect, it, vi, beforeEach } from "vitest";
-import { triggerCommitmentDownload } from "./ExportCommitmentButton";
+import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
+import { render, screen, cleanup } from "@testing-library/react";
+import "@testing-library/jest-dom/vitest";
+import userEvent from "@testing-library/user-event";
+import {
+  ExportCommitmentButton,
+  triggerCommitmentDownload,
+} from "./ExportCommitmentButton";
 import { loadParcelDataByApn } from "../data-loader";
 import closingImpactTemplates from "../data/closing-impact-templates.json";
 
@@ -77,5 +83,37 @@ describe("triggerCommitmentDownload", () => {
     });
     const [, filename] = download.mock.calls[0];
     expect(filename).toBe("commitment-30478386-2026-04-09.pdf");
+  });
+});
+
+describe("ExportCommitmentButton — toast UX", () => {
+  const data = loadParcelDataByApn("304-78-386");
+
+  beforeEach(() => {
+    if (!globalThis.URL.createObjectURL) {
+      globalThis.URL.createObjectURL = vi.fn(() => "blob:mock");
+    }
+    if (!globalThis.URL.revokeObjectURL) {
+      globalThis.URL.revokeObjectURL = vi.fn();
+    }
+  });
+
+  afterEach(() => cleanup());
+
+  it("shows a 'Downloaded:' toast with the filename after click resolves", async () => {
+    const user = userEvent.setup();
+    render(
+      <ExportCommitmentButton
+        parcel={data.parcel}
+        instruments={data.instruments}
+        links={data.links}
+        lifecycles={data.lifecycles}
+        pipelineStatus={data.pipelineStatus}
+      />,
+    );
+    await user.click(screen.getByRole("button", { name: /Export Commitment/i }));
+    await screen.findByText(/Downloaded: commitment-30478386-/i, undefined, {
+      timeout: 2000,
+    });
   });
 });
