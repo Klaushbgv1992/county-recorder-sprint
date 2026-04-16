@@ -20,6 +20,10 @@ export function Term({ professional }: { professional: string }) {
   const isTranslated = translated !== professional;
   const showHint = isTranslated && seen !== null && !seen.has(professional.toLowerCase());
 
+  // Render-phase mutation: safe in this prototype because re-render only
+  // causes a duplicate add (idempotent on Set). Under concurrent React,
+  // an aborted render could mark the term "seen" prematurely — move to
+  // useEffect if concurrent features are adopted.
   if (showHint) {
     seen!.add(professional.toLowerCase());
   }
