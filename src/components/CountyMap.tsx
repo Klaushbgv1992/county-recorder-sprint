@@ -30,6 +30,8 @@ export function CountyMap({
   initialViewState = DEFAULT_VIEW,
 }: CountyMapProps) {
   const [hoveredApn, setHoveredApn] = useState<string | null>(null);
+  const [mapReady, setMapReady] = useState(false);
+  const handleReady = useCallback(() => setMapReady(true), []);
 
   const parcelById = useMemo(() => {
     const m = new Map<string, GeoJSON.Feature>();
@@ -71,6 +73,7 @@ export function CountyMap({
   }, []);
 
   return (
+    <div className="relative h-full w-full">
     <MapGL
       initialViewState={initialViewState}
       mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
@@ -80,6 +83,8 @@ export function CountyMap({
       onClick={handleClick}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
+      onLoad={handleReady}
+      onIdle={handleReady}
     >
       <Source id="county-boundary" type="geojson" data={countyBoundary as GeoJSON.FeatureCollection}>
         <Layer
@@ -125,5 +130,16 @@ export function CountyMap({
         );
       })}
     </MapGL>
+      <div
+        aria-hidden={mapReady}
+        className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-100/85 transition-opacity duration-500 ${
+          mapReady ? "opacity-0" : "opacity-100"
+        }`}
+      >
+        <p className="text-sm font-medium text-slate-600">
+          Loading county map&hellip;
+        </p>
+      </div>
+    </div>
   );
 }
