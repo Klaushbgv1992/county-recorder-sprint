@@ -18,6 +18,14 @@ const GLOSSARY: Record<string, string> = {
   "heloc dot": "Home Equity Loan",
   "trustor/borrower": "Borrower",
   "parcel": "property",
+  "back-reference": "Citation",
+  "back-references": "Citations",
+  "citation": "Citation",
+  "citations": "Citations",
+  "cites": "Cites",
+  "cited by": "Cited By",
+  "inbound references": "Cited By",
+  "outbound references": "Cites",
 };
 
 export function translate(term: string): string {
