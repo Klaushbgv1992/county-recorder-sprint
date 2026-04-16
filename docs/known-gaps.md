@@ -303,6 +303,20 @@ beat (see `docs/demo-script.md`).
       the schema. Standalone follow-up task; not blocked on
       Terminal 4.
 
+21. **Per-link popover deferred on encumbrance swimlanes.**
+
+## Per-link popover deferred on encumbrance swimlanes
+
+Connector lines between swimlane nodes are purely visual — clicking them does not open a popover with link metadata or per-link Accept/Reject actions. The originally planned `LinkConnector` component (Task 6 of the swimlane plan) was created and then removed during visual verification because:
+
+- Decision #41 already states curated links have no inline unlink. Most release_of and modification_of links in the corpus are curated.
+- The ⋯ menu on each swimlane already surfaces the lifecycle status rationale and override controls — the place where examiner intent lands.
+- The CandidateMatcherSlot panel already surfaces evidence bars (LinkEvidenceBars) for any open lifecycle's release candidates, including the lc-001 accepted curated release.
+
+Re-introducing per-link popovers is a 30-min wiring task if a future demo run shows examiners expect to click connectors. Until then, the visual cue is: solid connector = link of record; dashed connector = MERS gap (lc-001 only).
+
+---
+
 20. **Stale `eslint-disable` directives (cosmetic).**
     - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
     - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
