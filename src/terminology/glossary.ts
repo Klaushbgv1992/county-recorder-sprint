@@ -2,6 +2,8 @@ const GLOSSARY: Record<string, string> = {
   "chain of title": "Ownership History",
   "encumbrances": "Claims Against Property",
   "encumbrance lifecycles": "Claims Against Property",
+  "lifecycle": "Claim Against Property",
+  "lifecycles": "Claims Against Property",
   "deed of trust": "Mortgage",
   "full reconveyance": "Mortgage Paid Off",
   "partial reconveyance": "Partial Payoff",
