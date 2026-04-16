@@ -4,6 +4,8 @@ import {
   shrinkBboxTowardCentroid,
   enforceGzippedBudget,
   nextPage,
+  probeEndpoint,
+  formatFailLoudMessage,
 } from "../../scripts/lib/gilbert-fetch";
 
 describe("stampFeature", () => {
@@ -63,5 +65,98 @@ describe("nextPage", () => {
   });
   it("returns null when exceededTransferLimit but count is 0 (pathological)", () => {
     expect(nextPage({ exceededTransferLimit: true, count: 0 }, 2000)).toBeNull();
+  });
+});
+
+type FetchLike = (url: string) => Promise<{ ok: boolean; status: number }>;
+
+describe("probeEndpoint", () => {
+  it("returns first success with correct base URL", async () => {
+    const fetch: FetchLike = async () => ({ ok: true, status: 200 });
+    const r = await probeEndpoint(["https://a/", "https://b/"], fetch);
+    expect(r).toEqual({ ok: true, base: "https://a/" });
+  });
+
+  it("falls through all N failures when every endpoint returns !ok", async () => {
+    const fetch: FetchLike = async () => ({ ok: false, status: 404 });
+    const r = await probeEndpoint(
+      ["https://a/", "https://b/", "https://c/"],
+      fetch,
+    );
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.attempts).toHaveLength(3);
+      expect(r.attempts.every((a) => a.error === "status 404")).toBe(true);
+    }
+  });
+
+  it("catches fetch throws (DNS/network/CORS) and continues to next URL", async () => {
+    const fetch: FetchLike = async (url) => {
+      if (url.includes("a/")) throw new Error("DNS lookup failed");
+      return { ok: true, status: 200 };
+    };
+    const r = await probeEndpoint(["https://a/", "https://b/"], fetch);
+    expect(r).toEqual({ ok: true, base: "https://b/" });
+  });
+
+  it("records attempts in order across the fallback chain, preserving error source", async () => {
+    const fetch: FetchLike = async (url) => {
+      if (url.includes("a/")) return { ok: false, status: 404 };
+      if (url.includes("b/")) throw new Error("network timeout");
+      return { ok: false, status: 500 };
+    };
+    const r = await probeEndpoint(
+      ["https://a/", "https://b/", "https://c/"],
+      fetch,
+    );
+    expect(r.ok).toBe(false);
+    if (!r.ok) {
+      expect(r.attempts.map((a) => a.url)).toEqual([
+        "https://a/",
+        "https://b/",
+        "https://c/",
+      ]);
+      expect(r.attempts[0].error).toBe("status 404");
+      expect(r.attempts[1].error).toBe("network timeout");
+      expect(r.attempts[2].error).toBe("status 500");
+    }
+  });
+
+  it("stops after first success (does not call subsequent URLs)", async () => {
+    const calls: string[] = [];
+    const fetch: FetchLike = async (url) => {
+      calls.push(url);
+      return { ok: true, status: 200 };
+    };
+    await probeEndpoint(
+      ["https://a/", "https://b/", "https://c/"],
+      fetch,
+    );
+    expect(calls).toHaveLength(1);
+    expect(calls[0]).toBe("https://a/?f=json");
+  });
+});
+
+describe("formatFailLoudMessage", () => {
+  it("includes all N URLs in the output", () => {
+    const msg = formatFailLoudMessage([
+      "https://a/",
+      "https://b/",
+      "https://c/",
+    ]);
+    expect(msg).toContain("https://a/");
+    expect(msg).toContain("https://b/");
+    expect(msg).toContain("https://c/");
+  });
+
+  it("includes a runnable curl command for each URL", () => {
+    const msg = formatFailLoudMessage(["https://a/", "https://b/"]);
+    expect(msg).toMatch(/curl -sSf "https:\/\/a\/\?f=json"/);
+    expect(msg).toMatch(/curl -sSf "https:\/\/b\/\?f=json"/);
+  });
+
+  it("produces stable, deterministic output (no timestamps or random fields)", () => {
+    const urls = ["https://a/", "https://b/"];
+    expect(formatFailLoudMessage(urls)).toBe(formatFailLoudMessage(urls));
   });
 });

@@ -64,3 +64,41 @@ export function nextPage(
   if (n <= 0) return null; // pathological: server claims more but delivered none
   return prevOffset + n;
 }
+
+// Endpoint probe: try each URL in order, return first that fetches ok.
+// Injectable fetch for testability. Network errors (rejections) are caught
+// and recorded; HTTP errors (response.ok === false) are recorded too.
+
+export type ProbeResult =
+  | { ok: true; base: string }
+  | { ok: false; attempts: Array<{ url: string; error: string }> };
+
+type ProbeFetch = (url: string) => Promise<{ ok: boolean; status: number }>;
+
+export async function probeEndpoint(
+  urls: readonly string[],
+  doFetch: ProbeFetch,
+): Promise<ProbeResult> {
+  const attempts: Array<{ url: string; error: string }> = [];
+  for (const base of urls) {
+    const probeUrl = `${base}?f=json`;
+    try {
+      const r = await doFetch(probeUrl);
+      if (r.ok) return { ok: true, base };
+      attempts.push({ url: base, error: `status ${r.status}` });
+    } catch (e) {
+      attempts.push({ url: base, error: (e as Error).message });
+    }
+  }
+  return { ok: false, attempts };
+}
+
+// Pure formatter for the "all probes failed" error output. The shell prints
+// this to stderr and exits non-zero.
+export function formatFailLoudMessage(urls: readonly string[]): string {
+  const lines = ["ERROR: all probe URLs failed. Try one of these by hand:"];
+  for (const u of urls) {
+    lines.push(`  curl -sSf "${u}?f=json" | head -c 400`);
+  }
+  return lines.join("\n");
+}
