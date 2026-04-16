@@ -61,7 +61,9 @@ describe("LandingPage — /why links", () => {
   it("renders a 'Why this matters' link in the header", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     const header = document.querySelector("header");
@@ -74,7 +76,9 @@ describe("LandingPage — /why links", () => {
   it("renders a 'Why this matters' link in the footer", () => {
     render(
       <MemoryRouter>
-        <LandingPage />
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
       </MemoryRouter>,
     );
     const footer = document.querySelector("footer");
