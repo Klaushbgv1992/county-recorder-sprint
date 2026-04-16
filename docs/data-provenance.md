@@ -17,9 +17,10 @@ document our data supply chain end-to-end.
 
 - Source: Maricopa County Assessor public ArcGIS FeatureServer
 - Endpoint probe order:
-  1. `https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/FeatureServer`
+  1. `https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer`
   2. `https://maps.mcassessor.maricopa.gov/arcgis/rest/services/`
   3. Open-data indirection via `https://maps-mcassessor.opendata.arcgis.com/`
+  - Note: FeatureServer returns 200-with-error-body on `/0/query`; MapServer is the working endpoint.
 - Bounding box (WGS84): `xmin=-111.755, ymin=33.225, xmax=-111.695, ymax=33.258`
 - outFields: APN, APN_DASH, OWNER_NAME, PHYSICAL_STREET_*, PHYSICAL_CITY, PHYSICAL_ZIP,
   SUBNAME, LOT_NUM, DEED_NUMBER, DEED_DATE, SALE_DATE, LAND_SIZE, CONST_YEAR,
@@ -27,10 +28,10 @@ document our data supply chain end-to-end.
 - Attribution: Maricopa County Assessor, per A.R.S. § 11-495 (public records).
 - Post-run: record count and gzipped file size below.
 
-Record count at capture: (to be filled by operator)
-File size (gzipped): (to be filled by operator)
-Capture date: (to be filled by operator)
-Endpoint used: (to be filled by operator)
+Record count at capture: 8570
+File size (gzipped): 1,078,324 bytes (1.03 MB; budget 2,097,152 bytes)
+Capture date: 2026-04-16
+Endpoint used: https://gis.mcassessor.maricopa.gov/arcgis/rest/services/Parcels/MapServer/0
 
 ## 2. Candidate filter (run once by hand after Gilbert fetch)
 
