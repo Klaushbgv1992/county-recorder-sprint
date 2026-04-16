@@ -19,6 +19,10 @@ function usePageMeta(title: string, description: string) {
   }, [title, description]);
 }
 
+function Code({ children }: { children: ReactNode }) {
+  return <code className="font-mono text-xs">{children}</code>;
+}
+
 function HuntLogSection({
   heading,
   narrative,
@@ -170,19 +174,19 @@ export function WhyPage() {
                 API.
               </strong>{" "}
               The four lien-related codes —{" "}
-              <code className="font-mono text-xs">RE FED TX</code>,{" "}
-              <code className="font-mono text-xs">FED TAX L</code>,{" "}
-              <code className="font-mono text-xs">LIEN</code>,{" "}
-              <code className="font-mono text-xs">MED LIEN</code> — are in the index,
+              <Code>RE FED TX</Code>,{" "}
+              <Code>FED TAX L</Code>,{" "}
+              <Code>LIEN</Code>,{" "}
+              <Code>MED LIEN</Code> — are in the index,
               but the search surface refuses to enumerate by them.{" "}
-              <code className="font-mono text-xs">totalResults: 0</code> every time.
+              <Code>totalResults: 0</Code> every time.
             </li>
             <li>
               <strong className="text-slate-900">
                 Title plants host copies; the county hosts originals.
               </strong>{" "}
               Every PDF linked from this portal comes from{" "}
-              <code className="font-mono text-xs">publicapi.recorder.maricopa.gov</code>{" "}
+              <Code>publicapi.recorder.maricopa.gov</Code>{" "}
               directly. Aggregators serve their own CDN copy behind a subscription.
             </li>
             <li>
@@ -231,12 +235,12 @@ export function WhyPage() {
                 </p>
                 <p>
                   The search endpoint accepts a{" "}
-                  <code className="font-mono text-xs">documentCode</code> filter. Every
+                  <Code>documentCode</Code> filter. Every
                   spelling of "federal tax lien" (
-                  <code className="font-mono text-xs">FED TAX LIEN</code>,{" "}
-                  <code className="font-mono text-xs">FEDERAL TAX LIEN</code>,{" "}
-                  <code className="font-mono text-xs">IRS LIEN</code>,{" "}
-                  <code className="font-mono text-xs">NFTL</code>, ten others) returned
+                  <Code>FED TAX LIEN</Code>,{" "}
+                  <Code>FEDERAL TAX LIEN</Code>,{" "}
+                  <Code>IRS LIEN</Code>,{" "}
+                  <Code>NFTL</Code>, ten others) returned
                   zero. The short code for federal tax lien isn't in the search
                   vocabulary.
                 </p>
@@ -249,7 +253,7 @@ export function WhyPage() {
                 <p>
                   The modern web search page is Cloudflare-gated. The legacy ASP.NET
                   page requires replaying{" "}
-                  <code className="font-mono text-xs">__VIEWSTATE</code> tokens that
+                  <Code>__VIEWSTATE</Code> tokens that
                   no scripting API can generate. Structural blocker hit in 20
                   minutes. Stopped.
                 </p>
@@ -257,7 +261,7 @@ export function WhyPage() {
                   The hunt pivoted to subdivision encumbrances already cited in
                   POPHAM's deed legal description — and that pivot succeeded,
                   because it didn't require name or code search. Every step was{" "}
-                  <code className="font-mono text-xs">GET /documents/{"{known_number}"}</code>.
+                  <Code>GET /documents/{"{known_number}"}</Code>.
                   That's the shape of what works here and what doesn't.
                 </p>
               </>
@@ -273,7 +277,7 @@ export function WhyPage() {
                 <p>Different question, same API, deeper failure.</p>
                 <p>
                   Parcel 3's final plat (
-                  <code className="font-mono text-xs">20010093192</code>) says on its
+                  <Code>20010093192</Code>) says on its
                   face: <em>"being a resubdivision of a portion of Seville Tract H as
                   recorded in Book 553, Page 15."</em> One well-formed question with
                   a single-integer answer: what's the recording number for Book 553,
@@ -285,13 +289,13 @@ export function WhyPage() {
                 <p>Five API layers blocked the lookup:</p>
                 <ol className="list-decimal list-inside space-y-0.5 pl-2">
                   <li>
-                    <code className="font-mono text-xs">documentCode</code> filter
-                    on <code className="font-mono text-xs">/documents/search</code>{" "}
+                    <Code>documentCode</Code> filter
+                    on <Code>/documents/search</Code>{" "}
                     silently dropped.
                   </li>
                   <li>
-                    <code className="font-mono text-xs">docketBook</code> and{" "}
-                    <code className="font-mono text-xs">pageMap</code> filters
+                    <Code>docketBook</Code> and{" "}
+                    <Code>pageMap</Code> filters
                     silently dropped.
                   </li>
                   <li>
@@ -300,31 +304,31 @@ export function WhyPage() {
                   </li>
                   <li>
                     Hypothesised{" "}
-                    <code className="font-mono text-xs">byBook/page</code> and{" "}
-                    <code className="font-mono text-xs">book/{"{n}"}/{"{p}"}</code>{" "}
+                    <Code>byBook/page</Code> and{" "}
+                    <Code>book/{"{n}"}/{"{p}"}</Code>{" "}
                     endpoints both 404.
                   </li>
                   <li>Legacy book/page bridge URL Cloudflare-gated.</li>
                 </ol>
                 <p>
                   Bracket-scanned{" "}
-                  <code className="font-mono text-xs">GET /documents/{"{recordingNumber}"}</code>{" "}
+                  <Code>GET /documents/{"{recordingNumber}"}</Code>{" "}
                   across ~94 sample points in the approved range{" "}
-                  <code className="font-mono text-xs">20000600000–20010100000</code>.
+                  <Code>20000600000–20010100000</Code>.
                   Plats are 1-in-thousands sparse. No hits.
                 </p>
                 <p>
                   The side discovery matters more than the miss: four lien-related
                   document codes —{" "}
-                  <code className="font-mono text-xs">RE FED TX</code>,{" "}
-                  <code className="font-mono text-xs">FED TAX L</code>,{" "}
-                  <code className="font-mono text-xs">LIEN</code>,{" "}
-                  <code className="font-mono text-xs">MED LIEN</code> —{" "}
+                  <Code>RE FED TX</Code>,{" "}
+                  <Code>FED TAX L</Code>,{" "}
+                  <Code>LIEN</Code>,{" "}
+                  <Code>MED LIEN</Code> —{" "}
                   <em>are</em> present in the index (they appear inside{" "}
-                  <code className="font-mono text-xs">documentCodes</code> when you
+                  <Code>documentCodes</Code> when you
                   fetch by recording number) but return{" "}
-                  <code className="font-mono text-xs">totalResults: 0</code> from{" "}
-                  <code className="font-mono text-xs">/documents/search?documentCode=…</code>.{" "}
+                  <Code>totalResults: 0</Code> from{" "}
+                  <Code>/documents/search?documentCode=…</Code>.{" "}
                   <strong>The codes are indexable but unsearchable</strong> — the
                   index records what the search surface refuses to enumerate.
                 </p>
