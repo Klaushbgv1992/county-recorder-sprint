@@ -25,6 +25,7 @@ import { NameFilteredSearch } from "./components/NameFilteredSearch";
 import { CuratorQueue } from "./components/CuratorQueue";
 import { StaffParcelView } from "./components/StaffParcelView";
 import { StoryPage } from "./components/story/StoryPage";
+import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -454,6 +455,11 @@ export const routes: RouteObject[] = [
             id: "moat-compare",
             path: "moat-compare",
             element: <MoatCompareRoute />,
+          },
+          {
+            id: "subscribe",
+            path: "subscribe",
+            element: <SubscribePlaceholder />,
           },
           {
             id: "commitment-new",

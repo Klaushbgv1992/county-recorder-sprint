@@ -8,6 +8,7 @@ import { StoryTimeline } from "./StoryTimeline";
 import { StoryNeighborhood } from "./StoryNeighborhood";
 import { StoryWhatThisMeans } from "./StoryWhatThisMeans";
 import { StoryMoatCallout } from "./StoryMoatCallout";
+import { StoryFooterCtas } from "./StoryFooterCtas";
 
 export function StoryPage() {
   const { apn } = useParams();
@@ -43,7 +44,7 @@ export function StoryPage() {
       <StoryNeighborhood data={data} />
       <StoryWhatThisMeans data={data} />
       <StoryMoatCallout data={data} />
-      {/* StoryFooterCtas added in Task 16 */}
+      <StoryFooterCtas data={data} />
     </main>
   );
 }
