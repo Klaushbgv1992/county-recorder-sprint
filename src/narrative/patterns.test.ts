@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { PATTERNS, findMatchingPattern } from "./patterns";
+import { PATTERNS, findMatchingPattern, partial_chain_disclosure } from "./patterns";
 import type { PatternContext, InstrumentGroup } from "./types";
 import type { Instrument } from "../types";
 
@@ -293,9 +293,10 @@ describe("generic_recording pattern (partial mode)", () => {
 });
 
 describe("partial_chain_disclosure pattern", () => {
-  it("exists in the registry", () => {
+  it("is exported but intentionally absent from PATTERNS (engine invokes it directly)", () => {
     const ids = PATTERNS.map((p) => p.id);
-    expect(ids).toContain("partial_chain_disclosure");
+    expect(ids).not.toContain("partial_chain_disclosure");
+    expect(partial_chain_disclosure.id).toBe("partial_chain_disclosure");
   });
 });
 

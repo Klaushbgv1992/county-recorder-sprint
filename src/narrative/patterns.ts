@@ -257,7 +257,7 @@ const ucc_termination: Pattern = {
   },
 };
 
-const partial_chain_disclosure: Pattern = {
+export const partial_chain_disclosure: Pattern = {
   id: "partial_chain_disclosure",
   match: (_g, ctx) => ctx.mode === "partial",
   // This pattern is rendered once at the top of the timeline, separate from
@@ -323,8 +323,6 @@ export const PATTERNS: Pattern[] = [
   generic_recording,
   fallback,
 ];
-
-export { partial_chain_disclosure };
 
 export function findMatchingPattern(
   group: InstrumentGroup,
