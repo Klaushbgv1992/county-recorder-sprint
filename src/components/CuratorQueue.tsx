@@ -4,16 +4,9 @@ import anomaliesFixture from "../data/staff-anomalies.json";
 import { useAuditLog } from "../hooks/useAuditLog";
 import { AuditLogPanel } from "./AuditLogPanel";
 import { StaffPageFrame } from "./StaffPageFrame";
+import type { StaffAnomaly, AnomalySeverity } from "../types/staff-anomaly";
 
-interface Anomaly {
-  id: string;
-  parcel_apn: string;
-  severity: "high" | "medium" | "low";
-  title: string;
-  description: string;
-}
-
-function SeverityBadge({ severity }: { severity: Anomaly["severity"] }) {
+function SeverityBadge({ severity }: { severity: AnomalySeverity }) {
   const cls =
     severity === "high"
       ? "bg-red-100 text-red-800"
@@ -30,13 +23,14 @@ function SeverityBadge({ severity }: { severity: Anomaly["severity"] }) {
 }
 
 export function CuratorQueue() {
-  const all = anomaliesFixture as Anomaly[];
+  // TODO(C.3): remove this cast after schema migration
+  const all = anomaliesFixture as unknown as StaffAnomaly[];
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
   const { rows, append } = useAuditLog();
 
   const visible = all.filter((a) => !dismissed.has(a.id));
 
-  const act = (anomaly: Anomaly, action: "ACCEPTED" | "REJECTED") => {
+  const act = (anomaly: StaffAnomaly, action: "ACCEPTED" | "REJECTED") => {
     append({
       actor: "demo-curator",
       action,

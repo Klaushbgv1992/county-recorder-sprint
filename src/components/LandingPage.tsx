@@ -22,9 +22,10 @@ import { loadAllInstruments, loadAllParcels } from "../data-loader";
 import lifecyclesRaw from "../data/lifecycles.json";
 import anomaliesRaw_ from "../data/staff-anomalies.json";
 import type { CacheEntry } from "../data/load-cached-neighbors";
+import type { StaffAnomaly } from "../types/staff-anomaly";
 
-type AnomalyItem = { id: string; parcel_apn: string; severity: "high" | "medium" | "low"; title: string; description: string };
-const anomaliesRaw = anomaliesRaw_ as AnomalyItem[];
+// TODO(C.3): remove this cast after schema migration
+const anomaliesRaw = anomaliesRaw_ as unknown as StaffAnomaly[];
 
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },

@@ -1,13 +1,16 @@
 import { Link } from "react-router";
 import pipelineState from "../data/pipeline-state.json";
-import anomalies from "../data/staff-anomalies.json";
+import anomaliesRaw from "../data/staff-anomalies.json";
 import {
   currentFreshness,
   type PipelineState,
 } from "../logic/pipeline-selectors";
 import { StaffPageFrame } from "./StaffPageFrame";
+import type { StaffAnomaly } from "../types/staff-anomaly";
 
 const state = pipelineState as unknown as PipelineState;
+// TODO(C.3): remove this cast after schema migration
+const anomalies = anomaliesRaw as unknown as StaffAnomaly[];
 
 interface CardProps {
   label: string;
