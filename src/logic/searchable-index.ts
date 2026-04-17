@@ -80,17 +80,17 @@ export function buildSearchableIndex(
   return out;
 }
 
-function addressOf(s: Searchable): string {
+export function addressOf(s: Searchable): string {
   if (s.tier === "curated") return s.parcel.address;
   return assembleAddress(s.polygon);
 }
 
-function ownerOf(s: Searchable): string {
+export function ownerOf(s: Searchable): string {
   if (s.tier === "curated") return s.parcel.current_owner;
   return s.polygon.OWNER_NAME ?? "";
 }
 
-function subdivisionOf(s: Searchable): string {
+export function subdivisionOf(s: Searchable): string {
   if (s.tier === "curated") return s.parcel.subdivision;
   return s.polygon.SUBNAME ?? "";
 }
