@@ -1,10 +1,9 @@
-import Anthropic from "@anthropic-ai/sdk";
 import type {
   Parcel,
   Instrument,
   EncumbranceLifecycle,
 } from "../types";
-import type { AnomalyFinding } from "../types/anomaly";
+import type { StaffAnomaly } from "../schemas";
 import {
   getGrantors,
   getGrantees,
@@ -13,35 +12,27 @@ import {
   getReleasingParties,
 } from "../logic/party-roles";
 
-// Prototype-only: we call Claude directly from the browser. A production
-// build would proxy this through a server so the API key never leaves the
-// custodian's infrastructure. The dangerouslyAllowBrowser flag is a
-// conscious tradeoff for the 2-day demo.
-function makeClient(apiKey: string): Anthropic {
-  return new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
-}
-
-interface SummaryContext {
+export interface SummaryInput {
   parcel: Parcel;
   instruments: Instrument[];
   lifecycles: EncumbranceLifecycle[];
-  findings: AnomalyFinding[];
+  findings: StaffAnomaly[];
 }
 
 // Compact the corpus into a JSON shape that's small, grounded, and
 // unambiguous. Every factual field Claude might cite is present with a
 // recording_number for citation back — no invented parties, no date
 // drift.
-function buildContext(ctx: SummaryContext) {
+function buildContext(input: SummaryInput) {
   return {
     parcel: {
-      apn: ctx.parcel.apn,
-      address: `${ctx.parcel.address}, ${ctx.parcel.city} ${ctx.parcel.state}`,
-      subdivision: ctx.parcel.subdivision,
-      current_owner: ctx.parcel.current_owner,
-      legal_description: ctx.parcel.legal_description,
+      apn: input.parcel.apn,
+      address: `${input.parcel.address}, ${input.parcel.city} ${input.parcel.state}`,
+      subdivision: input.parcel.subdivision,
+      current_owner: input.parcel.current_owner,
+      legal_description: input.parcel.legal_description,
     },
-    instruments: ctx.instruments
+    instruments: input.instruments
       .slice()
       .sort(
         (a, b) =>
@@ -59,21 +50,21 @@ function buildContext(ctx: SummaryContext) {
         releasing_parties: getReleasingParties(i),
         legal_description: i.legal_description?.value?.slice(0, 300) ?? null,
       })),
-    lifecycles: ctx.lifecycles.map((lc) => ({
+    lifecycles: input.lifecycles.map((lc) => ({
       root_instrument: lc.root_instrument,
       child_instruments: lc.child_instruments,
       status: lc.status,
       rationale: lc.status_rationale,
     })),
-    anomalies: ctx.findings.map((f) => ({
+    anomalies: input.findings.map((f) => ({
       severity: f.severity,
       title: f.title,
-      evidence_instruments: f.evidence_instruments,
+      evidence_instruments: f.references,
     })),
   };
 }
 
-const SYSTEM_PROMPT = `You are a title examiner explaining a residential property's chain of title to the homeowner in plain English.
+export const SYSTEM_PROMPT: string = `You are a title examiner explaining a residential property's chain of title to the homeowner in plain English.
 
 Rules (non-negotiable):
 1. Use ONLY facts present in the supplied JSON. Never invent parties, dates, loan amounts, or document types.
@@ -84,65 +75,7 @@ Rules (non-negotiable):
 6. If the chain has gaps (e.g. owner before the first recorded deed is not in the data), say so — do not guess.
 7. No disclaimers, no "I'm an AI", no restating the rules. Just the summary.`;
 
-export interface SummaryCallbacks {
-  onText: (delta: string) => void;
-  onDone: (fullText: string) => void;
-  onError: (err: Error) => void;
-  signal?: AbortSignal;
-}
-
-export async function streamChainSummary(
-  apiKey: string,
-  ctx: SummaryContext,
-  cb: SummaryCallbacks,
-): Promise<void> {
-  const client = makeClient(apiKey);
-  const payload = buildContext(ctx);
-
-  try {
-    const stream = client.messages.stream(
-      {
-        model: "claude-opus-4-7",
-        max_tokens: 1024,
-        system: [
-          {
-            type: "text",
-            text: SYSTEM_PROMPT,
-            cache_control: { type: "ephemeral" },
-          },
-        ],
-        messages: [
-          {
-            role: "user",
-            content: `Parcel corpus (JSON):\n\n${JSON.stringify(payload, null, 2)}\n\nSummarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.`,
-          },
-        ],
-      },
-      { signal: cb.signal },
-    );
-
-    stream.on("text", (delta) => cb.onText(delta));
-    const finalMessage = await stream.finalMessage();
-    const fullText = finalMessage.content
-      .filter((b): b is Anthropic.TextBlock => b.type === "text")
-      .map((b) => b.text)
-      .join("");
-    cb.onDone(fullText);
-  } catch (err) {
-    if (err instanceof Anthropic.AuthenticationError) {
-      cb.onError(
-        new Error(
-          "Anthropic rejected the API key. Paste a valid key and retry.",
-        ),
-      );
-    } else if (err instanceof Anthropic.RateLimitError) {
-      cb.onError(new Error("Rate limited by Anthropic — wait a moment and retry."));
-    } else if (err instanceof Anthropic.APIError) {
-      cb.onError(new Error(`Anthropic API error ${err.status}: ${err.message}`));
-    } else if (err instanceof Error) {
-      cb.onError(err);
-    } else {
-      cb.onError(new Error("Unknown error calling Anthropic."));
-    }
-  }
+export function buildUserMessage(input: SummaryInput): string {
+  const payload = buildContext(input);
+  return `Parcel corpus (JSON):\n\n${JSON.stringify(payload, null, 2)}\n\nSummarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.`;
 }

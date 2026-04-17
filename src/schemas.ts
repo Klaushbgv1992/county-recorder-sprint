@@ -288,3 +288,5 @@ export const StaffAnomalySchema = z.union([
 ]);
 
 export const StaffAnomalyFileSchema = z.array(StaffAnomalySchema);
+
+export type StaffAnomaly = z.infer<typeof StaffAnomalySchema>;

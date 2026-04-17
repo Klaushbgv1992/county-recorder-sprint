@@ -5,6 +5,7 @@ import { buildOwnerPeriods } from "../logic/chain-builder";
 import { detectAnomalies } from "../logic/anomaly-detector";
 import { getGrantors, getGrantees } from "../logic/party-roles";
 import { AnomalyPanel } from "./AnomalyPanel";
+import { AiSummaryStatic } from "./AiSummaryStatic";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { useTerminology } from "../terminology/TerminologyContext";
 import { Term, TermSection } from "../terminology/Term";
@@ -72,6 +73,11 @@ export function ChainOfTitle({
     [instruments],
   );
 
+  const knownInstruments = useMemo(
+    () => new Set(instruments.map((i) => i.instrument_number)),
+    [instruments],
+  );
+
   // Prior-to-corpus owner: derived from the first deed's grantor.
   const priorOwner = useMemo(() => {
     if (deeds.length === 0) return null;
@@ -106,6 +112,12 @@ export function ChainOfTitle({
       </TermSection>
 
       <AnomalyPanel findings={findings} apn={parcel.apn} />
+
+      <AiSummaryStatic
+        parcel={parcel}
+        knownInstruments={knownInstruments}
+        onOpenDocument={onOpenDocument}
+      />
 
       {/* Owner Period Timeline */}
       <TermSection id="ownership-periods">

@@ -1,0 +1,67 @@
+Parcel corpus (JSON):
+
+{
+  "parcel": {
+    "apn": "304-77-689",
+    "address": "2715 E Palmer St, Gilbert AZ",
+    "subdivision": "Shamrock Estates Phase 2A",
+    "current_owner": "HOGUE JASON / MICHELE",
+    "legal_description": "Lot 348, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38"
+  },
+  "instruments": [
+    {
+      "recording_number": "20150516729",
+      "document_type": "warranty_deed",
+      "recording_date": "2015-07-17",
+      "grantors": [
+        "ROBERT S LORANCE"
+      ],
+      "grantees": [
+        "JASON HOGUE",
+        "MICHELE HOGUE"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 348, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38"
+    },
+    {
+      "recording_number": "20150516730",
+      "document_type": "deed_of_trust",
+      "recording_date": "2015-07-17",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [
+        "JASON HOGUE",
+        "MICHELE HOGUE"
+      ],
+      "lenders": [
+        "PINNACLE CAPITAL MORTGAGE LLC"
+      ],
+      "releasing_parties": [],
+      "legal_description": "Lot 348, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38"
+    }
+  ],
+  "lifecycles": [
+    {
+      "root_instrument": "20150516730",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "No release, assignment, or reconveyance located in the searched corpus for HOGUE 2015 DOT. Maricopa public API does not support name-filtered document search, so a release outside the curated HOGUE chain cannot be ruled out via the API alone."
+    }
+  ],
+  "anomalies": [
+    {
+      "severity": "high",
+      "title": "HOGUE lc-003 release candidate not yet located",
+      "evidence_instruments": []
+    },
+    {
+      "severity": "medium",
+      "title": "HOGUE same-name candidates (3 instruments)",
+      "evidence_instruments": []
+    }
+  ]
+}
+
+Summarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.

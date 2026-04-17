@@ -1,0 +1,101 @@
+Parcel corpus (JSON):
+
+{
+  "parcel": {
+    "apn": "304-78-383",
+    "address": "3702 E Palmer St, Gilbert AZ",
+    "subdivision": "Seville Parcel 3",
+    "current_owner": "LOWRY AMY E",
+    "legal_description": "Lot 61, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 2001-0849180, and in Instrument No. 2001-0984501"
+  },
+  "instruments": [
+    {
+      "recording_number": "20010093192",
+      "document_type": "other",
+      "recording_date": "2001-02-07",
+      "grantors": [
+        "SHEA HOMES LIMITED PARTNERSHIP"
+      ],
+      "grantees": [
+        "SEVILLE PARCEL 3 (subdivision of record)"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "SEVILLE PARCEL 3, being a subdivision of a portion of the South half of Section 23, Township 2 South, Range 6 East of the Gila and Salt River Base and Meridian, Maricopa County, Arizona; Lots 1-95 and Tracts A-H; 23.592 acres more or less"
+    },
+    {
+      "recording_number": "20070834753",
+      "document_type": "warranty_deed",
+      "recording_date": "2007-07-24",
+      "grantors": [
+        "LUPE FLORES"
+      ],
+      "grantees": [
+        "AMY E LOWRY"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona"
+    },
+    {
+      "recording_number": "20070834755",
+      "document_type": "deed_of_trust",
+      "recording_date": "2007-07-24",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [
+        "AMY LOWRY"
+      ],
+      "lenders": [
+        "COUNTRYWIDE HOME LOANS INC"
+      ],
+      "releasing_parties": [],
+      "legal_description": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona"
+    },
+    {
+      "recording_number": "20090100001",
+      "document_type": "assignment_of_dot",
+      "recording_date": "2009-08-21",
+      "grantors": [
+        "COUNTRYWIDE HOME LOANS INC"
+      ],
+      "grantees": [
+        "BANK OF AMERICA NA"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona"
+    }
+  ],
+  "lifecycles": [
+    {
+      "root_instrument": "20010093192",
+      "child_instruments": [
+        "20010849180"
+      ],
+      "status": "released",
+      "rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat — it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record."
+    },
+    {
+      "root_instrument": "20070834755",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "No reconveyance, substitution of trustee, or subsequent refinance DOT found in corpus for LOWRY 2007 Countrywide Interest-Only ARM (MIN 1000157-0008292767-0). Lot 61, Seville Parcel 3. Pre-crash subprime-era loan; Countrywide was acquired by Bank of America in July 2008. Any downstream assignment, release, or refinance would typically be executed by Bank of America Home Loans or a securitization trust successor servicer. Phase 2 recording-number probes for a 2020–2021 refinance were not productive (API name search broken — see R-007 hunt log)."
+    }
+  ],
+  "anomalies": [
+    {
+      "severity": "medium",
+      "title": "Recorded assignment chain — Countrywide to Bank of America (LOWRY)",
+      "evidence_instruments": [
+        "20090100001",
+        "20070834755"
+      ]
+    }
+  ]
+}
+
+Summarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.

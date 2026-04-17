@@ -1,0 +1,85 @@
+import type { Parcel } from "../types";
+import { renderWithCitations } from "../narrative/render-citations";
+
+import popham_md from "../data/ai-summaries/304-78-386/summary.md?raw";
+import popham_prompt from "../data/ai-summaries/304-78-386/prompt.txt?raw";
+import popham_meta from "../data/ai-summaries/304-78-386/metadata.json";
+import hogue_md from "../data/ai-summaries/304-77-689/summary.md?raw";
+import hogue_prompt from "../data/ai-summaries/304-77-689/prompt.txt?raw";
+import hogue_meta from "../data/ai-summaries/304-77-689/metadata.json";
+import hoa_md from "../data/ai-summaries/304-78-409/summary.md?raw";
+import hoa_prompt from "../data/ai-summaries/304-78-409/prompt.txt?raw";
+import hoa_meta from "../data/ai-summaries/304-78-409/metadata.json";
+import warner_md from "../data/ai-summaries/304-78-374/summary.md?raw";
+import warner_prompt from "../data/ai-summaries/304-78-374/prompt.txt?raw";
+import warner_meta from "../data/ai-summaries/304-78-374/metadata.json";
+import lowry_md from "../data/ai-summaries/304-78-383/summary.md?raw";
+import lowry_prompt from "../data/ai-summaries/304-78-383/prompt.txt?raw";
+import lowry_meta from "../data/ai-summaries/304-78-383/metadata.json";
+import phoenix_md from "../data/ai-summaries/304-78-367/summary.md?raw";
+import phoenix_prompt from "../data/ai-summaries/304-78-367/prompt.txt?raw";
+import phoenix_meta from "../data/ai-summaries/304-78-367/metadata.json";
+
+type Metadata = {
+  generated_at: string;
+  model_id: string;
+  input_token_count: number;
+  output_token_count: number;
+  prompt_hash: string;
+};
+
+type Artifacts = { md: string; prompt: string; meta: Metadata };
+
+const BY_APN: Record<string, Artifacts> = {
+  "304-78-386": { md: popham_md, prompt: popham_prompt, meta: popham_meta as Metadata },
+  "304-77-689": { md: hogue_md, prompt: hogue_prompt, meta: hogue_meta as Metadata },
+  "304-78-409": { md: hoa_md, prompt: hoa_prompt, meta: hoa_meta as Metadata },
+  "304-78-374": { md: warner_md, prompt: warner_prompt, meta: warner_meta as Metadata },
+  "304-78-383": { md: lowry_md, prompt: lowry_prompt, meta: lowry_meta as Metadata },
+  "304-78-367": { md: phoenix_md, prompt: phoenix_prompt, meta: phoenix_meta as Metadata },
+};
+
+interface Props {
+  parcel: Parcel;
+  knownInstruments: Set<string>;
+  onOpenDocument: (instrumentNumber: string) => void;
+}
+
+export function AiSummaryStatic({ parcel, knownInstruments, onOpenDocument }: Props) {
+  const a = BY_APN[parcel.apn];
+  if (!a) return null;
+  const dateShort = a.meta.generated_at.slice(0, 10);
+
+  return (
+    <section className="mb-6 border border-moat-200 rounded-lg bg-white overflow-hidden">
+      <div className="px-4 py-3 bg-moat-50 border-b border-moat-200">
+        <h3 className="text-sm font-semibold text-moat-900">AI Chain Summary</h3>
+        <span className="text-[11px] text-moat-700">
+          Baked at build time · grounded in this parcel&apos;s corpus · citations clickable
+        </span>
+      </div>
+      <div className="px-4 py-3">
+        <div className="prose prose-sm max-w-none text-gray-800 whitespace-pre-wrap leading-relaxed">
+          {renderWithCitations(a.md, knownInstruments, onOpenDocument)}
+        </div>
+        <footer className="mt-3 text-[11px] text-slate-500 border-t border-slate-100 pt-2">
+          Generated {dateShort} by {a.meta.model_id}
+          <span className="mx-1">·</span>
+          <details className="inline">
+            <summary className="inline cursor-pointer underline">view prompt</summary>
+            <pre className="mt-1 max-h-64 overflow-auto whitespace-pre-wrap bg-slate-50 p-2 text-[10px]">
+              {a.prompt}
+            </pre>
+          </details>
+          <span className="mx-1">·</span>
+          <details className="inline">
+            <summary className="inline cursor-pointer underline">view metadata</summary>
+            <pre className="mt-1 whitespace-pre-wrap bg-slate-50 p-2 text-[10px]">
+              {JSON.stringify(a.meta, null, 2)}
+            </pre>
+          </details>
+        </footer>
+      </div>
+    </section>
+  );
+}
