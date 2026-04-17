@@ -1,0 +1,106 @@
+{
+  "apn": "304-78-408",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20190726318",
+    "https://publicapi.recorder.maricopa.gov/documents/20190726319",
+    "https://publicapi.recorder.maricopa.gov/documents/20190726320"
+  ],
+  "captured_date": "2026-04-16",
+  "source_note": "Pre-cached at build-time for prototype; production would query live at click.",
+  "display_fields": {
+    "last_recorded_date": "2019-09-16",
+    "last_doc_type": "WAR DEED",
+    "recent_instruments": [
+      {
+        "recording_number": "20190726318",
+        "recording_date": "2019-09-16",
+        "doc_type": "WAR DEED",
+        "parties": [
+          "GREENE BARBARA",
+          "GREENE BARBARA J",
+          "GREENE BERNARD",
+          "GREENE BERNARD H",
+          "SOMMERFELD MILTON R JR"
+        ]
+      },
+      {
+        "recording_number": "20190726319",
+        "recording_date": "2019-09-16",
+        "doc_type": "DISCLAIMR",
+        "parties": [
+          "SOMMERFELD JULIE M",
+          "SOMMERFELD MILTON R JR"
+        ]
+      },
+      {
+        "recording_number": "20190726320",
+        "recording_date": "2019-09-16",
+        "doc_type": "DEED TRST",
+        "parties": [
+          "MORIA DEVELOPMENT INC",
+          "PEOPLES MORTGAGE",
+          "SOMMERFELD MILTON R JR"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "GREENE BARBARA",
+          "GREENE BARBARA J",
+          "GREENE BERNARD",
+          "GREENE BERNARD H",
+          "SOMMERFELD MILTON R JR"
+        ],
+        "documentCodes": [
+          "WAR DEED"
+        ],
+        "recordingDate": "9-16-2019",
+        "recordingNumber": "20190726318",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": true,
+        "affidavitPageAmount": 1,
+        "restricted": false
+      },
+      {
+        "names": [
+          "SOMMERFELD JULIE M",
+          "SOMMERFELD MILTON R JR"
+        ],
+        "documentCodes": [
+          "DISCLAIMR"
+        ],
+        "recordingDate": "9-16-2019",
+        "recordingNumber": "20190726319",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "MORIA DEVELOPMENT INC",
+          "PEOPLES MORTGAGE",
+          "SOMMERFELD MILTON R JR"
+        ],
+        "documentCodes": [
+          "DEED TRST"
+        ],
+        "recordingDate": "9-16-2019",
+        "recordingNumber": "20190726320",
+        "pageAmount": 12,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}

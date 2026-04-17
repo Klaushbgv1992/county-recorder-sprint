@@ -307,3 +307,27 @@ beat (see `docs/demo-script.md`).
     - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
     - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
     - *What production would do:* promote the rule to `"error"` severity and run `eslint --report-unused-disable-directives` in CI so stale suppression comments are caught automatically.
+
+21. **Landing-only UI in the shared entry chunk (~303 KB overhead for non-landing routes).**
+    - *What's missing:* Per-route code splitting via `React.lazy`.
+      All route components are statically imported via `router.tsx` →
+      one Vite entry chunk. New landing-map components (MapSearchBar,
+      OverlayToggles, ParcelDrawer variants, overlay layers, CountyMap
+      extensions, searchable-index logic) add ~303 KB to this shared
+      chunk. Users navigating to `/parcel/:apn` or `/encumbrances`
+      download landing-map JS they never execute.
+    - *Why that's OK for this pitch:* the Gilbert parcel seed (8 MB raw,
+      1.09 MB gzipped) *is* dynamic-imported — the dominant data
+      payload is correctly lazy-loaded. The ~303 KB of landing-map
+      component JS is small next to the existing entry chunk (~1.4 MB)
+      and the MapLibre GL bundle (~272 KB gzipped). The demo is a
+      single-session guided walkthrough, not a multi-page navigation
+      scenario where the overhead would compound.
+    - *What production would do:* `React.lazy` split the landing-vs-
+      examiner route boundary. `LandingPage`, `MapSearchBar`,
+      `OverlayToggles`, `ParcelDrawer`, and the three overlay layer
+      components would be a landing-only chunk. Examiner routes
+      (`/parcel/:apn`, `/encumbrances`) would not import them.
+      `tests/landing-bundle.test.ts` would then enforce per-route
+      size limits with a hard +2 KB gate (currently informational —
+      see the comment in that test file).

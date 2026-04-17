@@ -7,6 +7,9 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   publicDir: "data",
+  build: {
+    manifest: true,
+  },
   test: {
     exclude: [...configDefaults.exclude, ".claude/worktrees/**"],
     environment: "jsdom",

@@ -1,12 +1,30 @@
 // src/components/LandingPage.tsx
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
+import { MapSearchBar } from "./MapSearchBar";
+import { OverlayToggles } from "./OverlayToggles";
+import { ParcelDrawer } from "./ParcelDrawer";
+import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { SearchEntry } from "./SearchEntry";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { PersonaRow } from "./PersonaRow";
 import { useAllParcels } from "../hooks/useAllParcels";
 import { CountyHeartbeat } from "./CountyHeartbeat";
 import { useNowOverrideFromSearchParams } from "../hooks/useNowOverrideFromSearchParams";
+import { useLandingUrlState } from "../hooks/useLandingUrlState";
+import { buildSearchableIndex } from "../logic/searchable-index";
+import { AssessorParcel } from "../logic/assessor-parcel";
+import { resolveDrawerVariant } from "../logic/drawer-variant";
+import { SEED_COUNT } from "../data/gilbert-seed-count";
+import { LifecyclesFile } from "../schemas";
+import { loadAllInstruments, loadAllParcels } from "../data-loader";
+import lifecyclesRaw from "../data/lifecycles.json";
+import anomaliesRaw_ from "../data/staff-anomalies.json";
+import type { CacheEntry } from "../data/load-cached-neighbors";
+
+type AnomalyItem = { id: string; parcel_apn: string; severity: "high" | "medium" | "low"; title: string; description: string };
+const anomaliesRaw = anomaliesRaw_ as AnomalyItem[];
 
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },
@@ -14,10 +32,142 @@ const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-409", status: "subdivision_common", label: "Seville HOA tract" },
 ];
 
+const LIFECYCLES = LifecyclesFile.parse(lifecyclesRaw).lifecycles;
+
 export function LandingPage() {
   const navigate = useNavigate();
   const parcels = useAllParcels();
   const nowOverride = useNowOverrideFromSearchParams();
+  const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
+    useLandingUrlState();
+
+  // Mobile detection (768px breakpoint matches Tailwind md:)
+  const [isMobile, setIsMobile] = useState(() =>
+    typeof window !== "undefined" ? window.innerWidth < 768 : false
+  );
+  useEffect(() => {
+    const mq = window.matchMedia("(max-width: 767px)");
+    const handler = (e: MediaQueryListEvent) => setIsMobile(e.matches);
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
+  // Dynamic import: Gilbert assessor GIS polygons (~8MB — kept out of initial bundle)
+  const [assessor, setAssessor] = useState<GeoJSON.FeatureCollection | null>(null);
+  useEffect(() => {
+    import("../data/gilbert-parcels-geo.json").then((m) =>
+      setAssessor(m.default as GeoJSON.FeatureCollection)
+    );
+  }, []);
+
+  // Dynamic import: pre-cached recorder neighbor data
+  const [cachedData, setCachedData] = useState<Map<string, CacheEntry> | null>(null);
+  useEffect(() => {
+    import("../data/load-cached-neighbors").then((m) => setCachedData(m.default));
+  }, []);
+
+  // Derived APN sets for variant resolution
+  const curatedApns = useMemo(() => new Set(parcels.map((p) => p.apn)), [parcels]);
+  const cachedApns = useMemo(
+    () => (cachedData ? new Set(cachedData.keys()) : new Set<string>()),
+    [cachedData]
+  );
+  const seededApns = useMemo(() => {
+    if (!assessor) return new Set<string>();
+    return new Set(
+      assessor.features
+        .map((f) => f.properties?.APN_DASH as string | undefined)
+        .filter((apn): apn is string => Boolean(apn))
+    );
+  }, [assessor]);
+
+  // Searchable index (requires both assessor + cachedData to be populated)
+  const searchables = useMemo(() => {
+    if (!assessor) return [];
+    const parsed = assessor.features
+      .map((f) => {
+        try {
+          return AssessorParcel.parse(f.properties);
+        } catch {
+          return null;
+        }
+      })
+      .filter((p): p is ReturnType<typeof AssessorParcel.parse> => p !== null);
+    const cacheMap = new Map(
+      [...(cachedData?.entries() ?? [])].map(([apn, v]) => [
+        apn,
+        { recent_instruments: v.recent_instruments },
+      ])
+    );
+    return buildSearchableIndex(parcels, cacheMap, parsed);
+  }, [parcels, assessor, cachedData]);
+
+  // Drawer variant + payload
+  const variant = selectedApn
+    ? resolveDrawerVariant(selectedApn, { curatedApns, cachedApns, seededApns })
+    : null;
+
+  const drawerPayload = useMemo(() => {
+    if (!selectedApn || !variant) return null;
+
+    if (variant === "curated") {
+      const p = parcels.find((pp) => pp.apn === selectedApn);
+      return p ? { parcel: p } : null;
+    }
+
+    if (variant === "recorder_cached" && cachedData) {
+      const c = cachedData.get(selectedApn);
+      if (!c) return null;
+      const feat = assessor?.features.find(
+        (f) => f.properties?.APN_DASH === selectedApn
+      );
+      if (!feat) return null;
+      const polygon = AssessorParcel.parse(feat.properties);
+      return {
+        polygon,
+        lastRecordedDate: c.lastRecordedDate,
+        lastDocType: c.lastDocType,
+        recent_instruments: c.recent_instruments,
+      };
+    }
+
+    if (variant === "assessor_only" && assessor) {
+      const feat = assessor.features.find(
+        (f) => f.properties?.APN_DASH === selectedApn
+      );
+      if (!feat) return null;
+      return { polygon: AssessorParcel.parse(feat.properties) };
+    }
+
+    // not_in_seeded_area — no payload needed (component uses seededCount prop)
+    return null;
+  }, [selectedApn, variant, parcels, cachedData, assessor]);
+
+  // Anomaly panel open state (tied to the anomaly overlay toggle)
+  const [anomalyPanelOpen, setAnomalyPanelOpen] = useState(false);
+  useEffect(() => {
+    if (!overlays.has("anomaly")) setAnomalyPanelOpen(false);
+  }, [overlays]);
+
+  // Instrument → APN map (for encumbrance overlay layer)
+  // We derive this by cross-referencing each parcel's instrument_numbers list.
+  const instrumentToApn = useMemo(() => {
+    const allParcels = loadAllParcels();
+    const m = new Map<string, string>();
+    for (const p of allParcels) {
+      for (const num of p.instrument_numbers ?? []) {
+        m.set(num, p.apn);
+      }
+    }
+    // Also pick up any instruments loaded directly (belt-and-suspenders)
+    for (const inst of loadAllInstruments()) {
+      if (!m.has(inst.instrument_number)) {
+        // Use the first parcel that owns this instrument (already mapped above)
+        // If not found via parcels, skip — no parcel_apn on Instrument type.
+      }
+    }
+    return m;
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
@@ -28,6 +178,7 @@ export function LandingPage() {
       <CountyHeartbeat now={nowOverride} />
       {/* === END CountyHeartbeat block === */}
 
+      {/* Header — unchanged */}
       <header className="px-6 py-4 border-b border-slate-200 bg-white">
         <div className="flex items-start justify-between gap-4 flex-wrap">
           <div>
@@ -47,23 +198,52 @@ export function LandingPage() {
         </div>
       </header>
 
-      <section className="relative h-[60vh] min-h-[420px] border-b border-slate-200">
+      {/* Full-bleed map — flex-1 fills remaining viewport below header */}
+      <section className="relative flex-1 min-h-[60vh] border-b border-slate-200">
         <CountyMap
           highlightedParcels={HIGHLIGHTED}
-          onParcelClick={(apn) => navigate(`/parcel/${apn}`)}
+          onParcelClick={(apn) => setSelectedApn(apn)}
+          assessorPolygons={assessor ?? { type: "FeatureCollection", features: [] }}
+          cachedApns={cachedApns}
+          overlays={overlays}
+          onAssessorParcelClick={(apn) => setSelectedApn(apn)}
+          lifecycles={LIFECYCLES}
+          anomalies={anomaliesRaw}
+          instrumentToApn={instrumentToApn}
         />
-        <aside className="absolute bottom-4 left-4 right-4 md:right-auto md:max-w-md rounded-lg bg-white/95 p-4 shadow-lg border border-slate-200 backdrop-blur-sm">
-          <p className="text-xs text-slate-700 leading-relaxed">
-            <strong className="text-slate-900">Why this map matters.</strong>{" "}
-            These polygons come from the county assessor's file. Title plants
-            license them via third parties. The recorder system has no APN
-            bridge (Known Gap #7) — the county is the only party that can
-            serve this spatial layer authoritatively.
-          </p>
-        </aside>
+        <MapSearchBar
+          value={query}
+          onChange={setQuery}
+          searchables={searchables}
+          onSelect={(s) => setSelectedApn(s.apn)}
+        />
+        <OverlayToggles
+          overlays={overlays}
+          onToggle={(name) => {
+            toggleOverlay(name);
+            if (name === "anomaly") setAnomalyPanelOpen((prev) => !prev);
+          }}
+        />
+        <AnomalySummaryPanel
+          anomalies={anomaliesRaw}
+          open={anomalyPanelOpen && overlays.has("anomaly")}
+          onClose={() => setAnomalyPanelOpen(false)}
+        />
+        {selectedApn && variant && (
+          <ParcelDrawer
+            variant={variant}
+            payload={drawerPayload}
+            onClose={() => setSelectedApn(null)}
+            seededCount={SEED_COUNT}
+            isMobile={isMobile}
+          />
+        )}
       </section>
 
-      <FeaturedParcels parcels={parcels} />
+      {/* Below-map content — preserved from original */}
+      <div id="featured-parcels">
+        <FeaturedParcels parcels={parcels} />
+      </div>
 
       <section
         role="search"
@@ -80,7 +260,7 @@ export function LandingPage() {
               navigate(
                 instrumentNumber
                   ? `/parcel/${apn}/instrument/${instrumentNumber}`
-                  : `/parcel/${apn}`,
+                  : `/parcel/${apn}`
               )
             }
           />
@@ -93,22 +273,37 @@ export function LandingPage() {
             to="/"
             className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
           >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Spatial custody</p>
-            <p className="text-xs text-recorder-500 mt-1">County-authoritative parcel polygons from the assessor. No licensing layer.</p>
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
+              Spatial custody
+            </p>
+            <p className="text-xs text-recorder-500 mt-1">
+              County-authoritative parcel polygons from the assessor's file. No
+              licensing layer.
+            </p>
           </Link>
           <Link
             to="/pipeline"
             className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
           >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Verified freshness</p>
-            <p className="text-xs text-recorder-500 mt-1">Per-stage pipeline verification with SLA tracking. Know exactly how current your data is.</p>
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
+              Verified freshness
+            </p>
+            <p className="text-xs text-recorder-500 mt-1">
+              Per-stage pipeline verification with SLA tracking. Know exactly
+              how current your data is.
+            </p>
           </Link>
           <Link
             to={`/parcel/304-78-386/encumbrances`}
             className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
           >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">Chain intelligence</p>
-            <p className="text-xs text-recorder-500 mt-1">Same-day transaction grouping, MERS annotations, and release matching. Structured title work, not a document list.</p>
+            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
+              Chain intelligence
+            </p>
+            <p className="text-xs text-recorder-500 mt-1">
+              Same-day transaction grouping, MERS annotations, and release
+              matching. Structured title work, not a document list.
+            </p>
           </Link>
         </div>
       </section>

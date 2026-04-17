@@ -1,0 +1,13 @@
+{
+  "captured_date": "2026-04-16",
+  "commit": "fb4c43d1b1f6df6b1b1b2c0e64e35ab6677cf0ad",
+  "per_route_bytes": {
+    "src/components/LandingPage.tsx": 1408001,
+    "src/components/ChainOfTitle.tsx": 1408001,
+    "src/components/EncumbranceLifecycle.tsx": 1408001,
+    "src/components/ProofDrawer.tsx": 1408001,
+    "src/components/MoatCompareRoute.tsx": 1408001,
+    "src/components/ActivityHeatMap.tsx": 1408001,
+    "src/components/StaffWorkbench.tsx": 1408001
+  }
+}
