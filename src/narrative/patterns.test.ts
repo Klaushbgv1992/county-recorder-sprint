@@ -212,3 +212,95 @@ describe("PATTERNS registry", () => {
     );
   });
 });
+
+describe("release_by_third_party pattern (MERS case)", () => {
+  it("matches a reconveyance whose releasing_party is not the original beneficiary", () => {
+    const release = stubInstrument({
+      instrument_number: "20210075858",
+      recording_date: "2021-01-22",
+      document_type: "full_reconveyance",
+      parties: [
+        { name: "WELLS FARGO", role: "releasing_party", provenance: "ocr", confidence: 1 },
+      ] as never,
+      back_references: ["20130183450"],
+    });
+    const originalDot = stubInstrument({
+      instrument_number: "20130183450",
+      recording_date: "2013-02-27",
+      document_type: "deed_of_trust",
+      parties: [
+        { name: "VIP MORTGAGE", role: "beneficiary", provenance: "ocr", confidence: 1 },
+      ] as never,
+    });
+    const ctx = { ...popham, allInstruments: [release, originalDot] };
+    const match = findMatchingPattern(groupOf(release), ctx);
+    expect(match?.id).toBe("release_by_third_party");
+  });
+});
+
+describe("release_clean pattern", () => {
+  it("matches a reconveyance whose releasing_party matches the original beneficiary", () => {
+    const release = stubInstrument({
+      instrument_number: "20000000009",
+      recording_date: "2020-06-01",
+      document_type: "full_reconveyance",
+      parties: [
+        { name: "VIP MORTGAGE", role: "releasing_party", provenance: "ocr", confidence: 1 },
+      ] as never,
+      back_references: ["20000000008"],
+    });
+    const dot = stubInstrument({
+      instrument_number: "20000000008",
+      recording_date: "2015-01-01",
+      document_type: "deed_of_trust",
+      parties: [
+        { name: "VIP MORTGAGE", role: "beneficiary", provenance: "ocr", confidence: 1 },
+      ] as never,
+    });
+    const ctx = { ...popham, allInstruments: [release, dot] };
+    const match = findMatchingPattern(groupOf(release), ctx);
+    expect(match?.id).toBe("release_clean");
+  });
+});
+
+describe("ucc_termination pattern", () => {
+  it("matches a UCC termination", () => {
+    const inst = stubInstrument({ document_type: "ucc_termination", recording_date: "2020-05-05" });
+    const match = findMatchingPattern(groupOf(inst), popham);
+    expect(match?.id).toBe("ucc_termination");
+  });
+});
+
+describe("generic_recording pattern (partial mode)", () => {
+  it("fires for cached-neighbor instruments when no role-aware pattern matches", () => {
+    const inst = stubInstrument({
+      document_type: "warranty_deed",
+      parties: [], // no role data — adapter behavior
+      raw_api_response: {
+        names: ["SELLER SAM", "BUYER BETTY"],
+        documentCodes: ["WAR DEED"],
+        recordingDate: "6-15-2019",
+        recordingNumber: "20190123456",
+        pageAmount: 2,
+        docketBook: 0, pageMap: 0, affidavitPresent: false,
+        affidavitPageAmount: 0, restricted: false,
+      },
+    });
+    const ctx = { ...popham, mode: "partial" as const };
+    const match = findMatchingPattern(groupOf(inst), ctx);
+    expect(match?.id).toBe("generic_recording");
+  });
+});
+
+describe("partial_chain_disclosure pattern", () => {
+  it("exists in the registry", () => {
+    const ids = PATTERNS.map((p) => p.id);
+    expect(ids).toContain("partial_chain_disclosure");
+  });
+});
+
+describe("fallback pattern", () => {
+  it("is last in the registry", () => {
+    expect(PATTERNS[PATTERNS.length - 1].id).toBe("fallback");
+  });
+});
