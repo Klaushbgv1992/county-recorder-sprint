@@ -6,6 +6,8 @@ import { StoryHero } from "./StoryHero";
 import { StoryCurrentClaims } from "./StoryCurrentClaims";
 import { StoryTimeline } from "./StoryTimeline";
 import { StoryNeighborhood } from "./StoryNeighborhood";
+import { StoryWhatThisMeans } from "./StoryWhatThisMeans";
+import { StoryMoatCallout } from "./StoryMoatCallout";
 
 export function StoryPage() {
   const { apn } = useParams();
@@ -39,7 +41,8 @@ export function StoryPage() {
       <StoryTimeline data={data} />
       <StoryCurrentClaims data={data} />
       <StoryNeighborhood data={data} />
-      {/* StoryWhatThisMeans + StoryMoatCallout added in Task 15 */}
+      <StoryWhatThisMeans data={data} />
+      <StoryMoatCallout data={data} />
       {/* StoryFooterCtas added in Task 16 */}
     </main>
   );
