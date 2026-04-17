@@ -24,6 +24,7 @@ import { StaffWorkbench } from "./components/StaffWorkbench";
 import { NameFilteredSearch } from "./components/NameFilteredSearch";
 import { CuratorQueue } from "./components/CuratorQueue";
 import { StaffParcelView } from "./components/StaffParcelView";
+import { StoryPage } from "./components/story/StoryPage";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { useExaminerActions } from "./hooks/useExaminerActions";
@@ -438,6 +439,11 @@ export const routes: RouteObject[] = [
             id: "encumbrance-instrument",
             path: "parcel/:apn/encumbrances/instrument/:instrumentNumber",
             element: <EncumbranceRoute />,
+          },
+          {
+            id: "story",
+            path: "parcel/:apn/story",
+            element: <StoryPage />,
           },
           {
             id: "instrument-resolver",
