@@ -77,7 +77,7 @@ const subdivision_plat: Pattern = {
     g.instruments.some((i) => PLAT_INSTRUMENTS[i.instrument_number] !== undefined),
   render: (g) => {
     const inst = g.instruments.find(
-      (i) => PLAT_INSTRUMENTS[i.instrument_number]
+      (i) => PLAT_INSTRUMENTS[i.instrument_number] !== undefined
     )!;
     const meta = PLAT_INSTRUMENTS[inst.instrument_number];
     return `Your lot was first platted as part of ${meta.display_name}, a subdivision recorded ${meta.dedication_date} by ${titleCase(meta.dedicated_by)}.`;
@@ -91,7 +91,9 @@ const affidavit_of_correction: Pattern = {
       i.back_references.some((ref) => PLAT_INSTRUMENTS[ref] !== undefined)
     ),
   render: (g) => {
-    const inst = g.instruments[0];
+    const inst = g.instruments.find((i) =>
+      i.back_references.some((ref) => PLAT_INSTRUMENTS[ref] !== undefined)
+    )!;
     return `The plat was later corrected by an affidavit recorded ${inst.recording_date} — this fixed a minor legal-description issue the county caught before sales began.`;
   },
 };
