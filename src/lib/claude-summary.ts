@@ -1,4 +1,3 @@
-import Anthropic from "@anthropic-ai/sdk";
 import type {
   Parcel,
   Instrument,
@@ -12,14 +11,6 @@ import {
   getLenders,
   getReleasingParties,
 } from "../logic/party-roles";
-
-// Prototype-only: we call Claude directly from the browser. A production
-// build would proxy this through a server so the API key never leaves the
-// custodian's infrastructure. The dangerouslyAllowBrowser flag is a
-// conscious tradeoff for the 2-day demo.
-function makeClient(apiKey: string): Anthropic {
-  return new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
-}
 
 export interface SummaryInput {
   parcel: Parcel;
@@ -87,67 +78,4 @@ Rules (non-negotiable):
 export function buildUserMessage(input: SummaryInput): string {
   const payload = buildContext(input);
   return `Parcel corpus (JSON):\n\n${JSON.stringify(payload, null, 2)}\n\nSummarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.`;
-}
-
-export interface SummaryCallbacks {
-  onText: (delta: string) => void;
-  onDone: (fullText: string) => void;
-  onError: (err: Error) => void;
-  signal?: AbortSignal;
-}
-
-export async function streamChainSummary(
-  apiKey: string,
-  input: SummaryInput,
-  cb: SummaryCallbacks,
-): Promise<void> {
-  const client = makeClient(apiKey);
-  const userMessage = buildUserMessage(input);
-
-  try {
-    const stream = client.messages.stream(
-      {
-        model: "claude-opus-4-7",
-        max_tokens: 1024,
-        system: [
-          {
-            type: "text",
-            text: SYSTEM_PROMPT,
-            cache_control: { type: "ephemeral" },
-          },
-        ],
-        messages: [
-          {
-            role: "user",
-            content: userMessage,
-          },
-        ],
-      },
-      { signal: cb.signal },
-    );
-
-    stream.on("text", (delta) => cb.onText(delta));
-    const finalMessage = await stream.finalMessage();
-    const fullText = finalMessage.content
-      .filter((b): b is Anthropic.TextBlock => b.type === "text")
-      .map((b) => b.text)
-      .join("");
-    cb.onDone(fullText);
-  } catch (err) {
-    if (err instanceof Anthropic.AuthenticationError) {
-      cb.onError(
-        new Error(
-          "Anthropic rejected the API key. Paste a valid key and retry.",
-        ),
-      );
-    } else if (err instanceof Anthropic.RateLimitError) {
-      cb.onError(new Error("Rate limited by Anthropic — wait a moment and retry."));
-    } else if (err instanceof Anthropic.APIError) {
-      cb.onError(new Error(`Anthropic API error ${err.status}: ${err.message}`));
-    } else if (err instanceof Error) {
-      cb.onError(err);
-    } else {
-      cb.onError(new Error("Unknown error calling Anthropic."));
-    }
-  }
 }
