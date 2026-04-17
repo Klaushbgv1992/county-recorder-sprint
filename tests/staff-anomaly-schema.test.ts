@@ -1,5 +1,7 @@
 import { describe, it, expect } from "vitest";
-import { StaffAnomalySchema } from "../src/schemas";
+import { StaffAnomalySchema, StaffAnomalyFileSchema } from "../src/schemas";
+import fs from "node:fs";
+import path from "node:path";
 
 describe("StaffAnomalySchema", () => {
   const base = {
@@ -68,4 +70,15 @@ describe("StaffAnomalySchema", () => {
       }),
     ).toThrow();
   });
+});
+
+it("validates the committed staff-anomalies.json", () => {
+  const raw = JSON.parse(
+    fs.readFileSync(
+      path.resolve(__dirname, "../src/data/staff-anomalies.json"),
+      "utf8",
+    ),
+  );
+  expect(() => StaffAnomalyFileSchema.parse(raw)).not.toThrow();
+  expect(raw).toHaveLength(9);
 });

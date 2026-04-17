@@ -6,11 +6,10 @@ import {
   type PipelineState,
 } from "../logic/pipeline-selectors";
 import { StaffPageFrame } from "./StaffPageFrame";
-import type { StaffAnomaly } from "../types/staff-anomaly";
+import { StaffAnomalyFileSchema } from "../schemas";
 
 const state = pipelineState as unknown as PipelineState;
-// TODO(C.3): remove this cast after schema migration
-const anomalies = anomaliesRaw as unknown as StaffAnomaly[];
+const anomalies = StaffAnomalyFileSchema.parse(anomaliesRaw);
 
 interface CardProps {
   label: string;

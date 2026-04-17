@@ -17,15 +17,13 @@ import { buildSearchableIndex } from "../logic/searchable-index";
 import { AssessorParcel } from "../logic/assessor-parcel";
 import { resolveDrawerVariant } from "../logic/drawer-variant";
 import { SEED_COUNT } from "../data/gilbert-seed-count";
-import { LifecyclesFile } from "../schemas";
+import { LifecyclesFile, StaffAnomalyFileSchema } from "../schemas";
 import { loadAllInstruments, loadAllParcels } from "../data-loader";
 import lifecyclesRaw from "../data/lifecycles.json";
 import anomaliesRaw_ from "../data/staff-anomalies.json";
 import type { CacheEntry } from "../data/load-cached-neighbors";
-import type { StaffAnomaly } from "../types/staff-anomaly";
 
-// TODO(C.3): remove this cast after schema migration
-const anomaliesRaw = anomaliesRaw_ as unknown as StaffAnomaly[];
+const anomaliesRaw = StaffAnomalyFileSchema.parse(anomaliesRaw_);
 
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },
