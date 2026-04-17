@@ -16,7 +16,7 @@
     {
       "id": "lc-002",
       "root_instrument": "20210057847",
-      "child_instruments": [],
+      "child_instruments": ["20210057846"],
       "status": "open",
       "status_rationale": "No reconveyance found in corpus for DOT 20210057847",
       "examiner_override": null

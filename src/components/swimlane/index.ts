@@ -1,0 +1,1 @@
+export { SwimlaneDiagram } from "./SwimlaneDiagram";

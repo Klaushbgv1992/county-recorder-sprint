@@ -239,7 +239,7 @@ describe("hero: already-linked candidate", () => {
 describe("HOGUE empty-state (no reconveyances in parcel corpus)", () => {
   it("builds the moat-reinforcing rationale text", () => {
     const rationale = buildEmptyStateRationale(hogueParcel());
-    expect(rationale).toContain("Matcher ran against 0 reconveyances");
+    expect(rationale).toContain("Cross-parcel scan");
     expect(rationale).toContain("Shamrock Estates Phase 2A");
     expect(rationale).toContain("HOGUE JASON / MICHELE");
     expect(rationale).toContain("county-internal full-name scan");

@@ -78,3 +78,20 @@ if (typeof window !== "undefined" && typeof window.matchMedia !== "function") {
     }),
   });
 }
+
+// jsdom does not implement ResizeObserver; provide a no-op stub so components
+// that observe container size (e.g. SwimlaneDiagram) can mount in unit tests.
+if (typeof window !== "undefined" && typeof window.ResizeObserver === "undefined") {
+  class ResizeObserverStub {
+    observe() {}
+    unobserve() {}
+    disconnect() {}
+  }
+  Object.defineProperty(window, "ResizeObserver", {
+    value: ResizeObserverStub,
+    configurable: true,
+    writable: true,
+  });
+  (globalThis as unknown as Record<string, unknown>).ResizeObserver =
+    ResizeObserverStub;
+}

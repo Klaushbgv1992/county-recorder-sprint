@@ -18,6 +18,22 @@ const GLOSSARY: Record<string, string> = {
   "heloc dot": "Home Equity Loan",
   "trustor/borrower": "Borrower",
   "parcel": "property",
+  "back-reference": "Citation",
+  "back-references": "Citations",
+  "citation": "Citation",
+  "citations": "Citations",
+  "cites": "Cites",
+  "cited by": "Cited By",
+  "inbound references": "Cited By",
+  "outbound references": "Cites",
+  "release": "Mortgage Paid Off",
+  "modification": "Modification (Plain)",
+  "assignment": "Mortgage Transfer",
+  "deed": "Sale Deed",
+  "mod.": "Modification (Plain)",
+  "ucc-3": "UCC Termination",
+  "affid.": "Affidavit",
+  "sub.t.": "Sub. of Trustee",
 };
 
 export function translate(term: string): string {

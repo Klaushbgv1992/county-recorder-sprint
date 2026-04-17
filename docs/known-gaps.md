@@ -303,6 +303,20 @@ beat (see `docs/demo-script.md`).
       the schema. Standalone follow-up task; not blocked on
       Terminal 4.
 
+21. **Per-link popover deferred on encumbrance swimlanes.**
+
+## Per-link popover deferred on encumbrance swimlanes
+
+Connector lines between swimlane nodes are purely visual — clicking them does not open a popover with link metadata or per-link Accept/Reject actions. The originally planned `LinkConnector` component (Task 6 of the swimlane plan) was created and then removed during visual verification because:
+
+- Decision #41 already states curated links have no inline unlink. Most release_of and modification_of links in the corpus are curated.
+- The ⋯ menu on each swimlane already surfaces the lifecycle status rationale and override controls — the place where examiner intent lands.
+- The CandidateMatcherSlot panel already surfaces evidence bars (LinkEvidenceBars) for any open lifecycle's release candidates, including the lc-001 accepted curated release.
+
+Re-introducing per-link popovers is a 30-min wiring task if a future demo run shows examiners expect to click connectors. Until then, the visual cue is: solid connector = link of record; dashed connector = MERS gap (lc-001 only).
+
+---
+
 20. **Stale `eslint-disable` directives (cosmetic).**
     - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
     - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
@@ -331,3 +345,15 @@ beat (see `docs/demo-script.md`).
       `tests/landing-bundle.test.ts` would then enforce per-route
       size limits with a hard +2 KB gate (currently informational —
       see the comment in that test file).
+
+22. **Encumbrance swimlane — deferred review polish.**
+
+## Encumbrance swimlane — deferred review polish
+
+Three follow-up items from the swimlane code review (`6f4a185` + downstream fixes) are intentionally deferred. None affect demo behavior or merge-readiness.
+
+1. **Extract `useResolvedSwimlaneStatus` hook from `Swimlane.tsx`** — the status-resolution block (computing `mergedReleaseLinks`, `computed`, `resolved`, `rationale`) has nontrivial precedence (override → accepted-candidate → curated link) and currently has no unit-test seam. End-to-end behavior is covered by `tests/encumbrance-lifecycle.dom.test.tsx`. ~30 min refactor when next touching swimlane status logic.
+
+2. **Extract `buildCitationIndex` and `buildScanCounts` to `src/logic/swimlane-layout.ts`** — the data-shape transformations inside `SwimlaneDiagram`'s `useMemo` blocks are pure given inputs but lack unit coverage. Same rationale as #1: dom tests cover end-to-end. ~20 min if/when the citation grouping rule needs to change.
+
+3. **Refactor `r3-mers-nominee.ts` to emit structured `evidence_fields`** — `detectMersGap` in `swimlane-layout.ts` currently regex-parses the R3 `description_template`. Coupling is JSDoc-disclosed (lines 80–91) and guarded by a roundtrip test that loads `anomaly-rules.json`. Cleaner shape: extend `AnomalyFinding` with `evidence_fields?: Record<string, string>`, populate `{ originator, releaser }` in `r3-mers-nominee.ts`, drop the regex. ~30 min next time the `AnomalyFinding` shape is touched.

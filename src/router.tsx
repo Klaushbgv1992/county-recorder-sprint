@@ -4,7 +4,7 @@
 // back here without breaking the routing test suite.
 
 import type { ReactNode } from "react";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
@@ -30,6 +30,7 @@ import { useExaminerActions } from "./hooks/useExaminerActions";
 import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "./components/EmptyStates";
 import { RootLayout } from "./components/RootLayout";
+import { detectAnomalies } from "./logic/anomaly-detector";
 
 /**
  * Resolve a bare 11-digit instrument number to the APN of the single
@@ -239,6 +240,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
   const data = useParcelData(apn);
   const examiner = useExaminerActions(data.links, apn);
   const navigate = useNavigate();
+  const findings = useMemo(() => detectAnomalies(apn), [apn]);
 
   useDocumentMeta({
     title: `Encumbrance lifecycle — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
@@ -308,6 +310,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
               links={data.links}
               lifecycles={data.lifecycles}
               pipelineStatus={data.pipelineStatus}
+              findings={findings}
               linkActions={examiner.linkActions}
               lifecycleOverrides={examiner.lifecycleOverrides}
               onSetLinkAction={examiner.setLinkAction}
