@@ -4,6 +4,7 @@ import { useDocumentMeta } from "../../hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "../EmptyStates";
 import { StoryHero } from "./StoryHero";
 import { StoryCurrentClaims } from "./StoryCurrentClaims";
+import { StoryTimeline } from "./StoryTimeline";
 
 export function StoryPage() {
   const { apn } = useParams();
@@ -34,7 +35,7 @@ export function StoryPage() {
   return (
     <main className="max-w-3xl mx-auto px-6 py-8 space-y-10">
       <StoryHero data={data} />
-      {/* StoryTimeline added in Task 13 */}
+      <StoryTimeline data={data} />
       <StoryCurrentClaims data={data} />
       {/* StoryNeighborhood added in Task 14 */}
       {/* StoryWhatThisMeans + StoryMoatCallout added in Task 15 */}
