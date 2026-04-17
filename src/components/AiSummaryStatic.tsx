@@ -1,5 +1,6 @@
 import type { Parcel } from "../types";
 import { renderWithCitations } from "../narrative/render-citations";
+import { parcelHasSyntheticInstrument } from "../lib/synthetic-instruments";
 
 import popham_md from "../data/ai-summaries/304-78-386/summary.md?raw";
 import popham_prompt from "../data/ai-summaries/304-78-386/prompt.txt?raw";
@@ -49,6 +50,7 @@ export function AiSummaryStatic({ parcel, knownInstruments, onOpenDocument }: Pr
   const a = BY_APN[parcel.apn];
   if (!a) return null;
   const dateShort = a.meta.generated_at.slice(0, 10);
+  const hasSynthetic = parcelHasSyntheticInstrument(parcel.apn);
 
   return (
     <section className="mb-6 border border-moat-200 rounded-lg bg-white overflow-hidden">
@@ -59,6 +61,22 @@ export function AiSummaryStatic({ parcel, knownInstruments, onOpenDocument }: Pr
         </span>
       </div>
       <div className="px-4 py-3">
+        {hasSynthetic && (
+          <div
+            role="note"
+            data-testid="ai-summary-synthetic-banner"
+            className="mb-3 rounded border border-amber-300 bg-amber-50 px-3 py-2 text-[12px] leading-snug text-amber-900"
+          >
+            <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-2 py-0.5 text-[11px] font-medium text-amber-900 mr-1 align-[1px]">
+              synthetic · demo-only
+            </span>
+            This summary references instruments tagged{" "}
+            <span className="font-medium">synthetic &middot; demo-only</span> &mdash; fabricated
+            to illustrate a title pathology, not present in
+            publicapi.recorder.maricopa.gov. Click any recording number to open
+            the full per-instrument disclosure.
+          </div>
+        )}
         <div className="prose prose-sm max-w-none text-gray-800 whitespace-pre-wrap leading-relaxed">
           {renderWithCitations(a.md, knownInstruments, onOpenDocument)}
         </div>
