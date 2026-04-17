@@ -1,4 +1,7 @@
+import type { ReactNode } from "react";
+import type { z } from "zod";
 import type { Instrument, Parcel } from "../types";
+import type { StaffAnomalySchema } from "../schemas";
 import type {
   InstrumentGroup,
   PatternContext,
@@ -6,6 +9,16 @@ import type {
   NarrativeOverlay,
 } from "./types";
 import { findMatchingPattern, partial_chain_disclosure } from "./patterns";
+import { renderWithCitations } from "./render-citations";
+import { anomalyPatterns } from "./anomaly-patterns";
+
+type StaffAnomaly = z.infer<typeof StaffAnomalySchema>;
+
+function isEngineAnomaly(
+  a: StaffAnomaly,
+): a is Extract<StaffAnomaly, { pattern_id: string }> {
+  return a.references.length > 0;
+}
 
 export function groupBySameDay(instruments: Instrument[]): InstrumentGroup[] {
   const byGroupId = new Map<string, Instrument[]>();
@@ -130,4 +143,19 @@ export function renderHero(
   const year = deed.recording_date.slice(0, 4);
   const sentence = `${parcel.address} in ${parcel.city}, ${parcel.state} is owned by ${family}, who acquired it in ${year} according to the county's recorded ownership history.`;
   return { oneLiner: sentence, metaDescription: sentence };
+}
+
+export function renderAnomalyProse(
+  anomaly: StaffAnomaly,
+  instruments: Instrument[],
+  onOpenDocument: (n: string) => void,
+): ReactNode[] {
+  const knownInstruments = new Set(instruments.map((i) => i.instrument_number));
+  const prose = isEngineAnomaly(anomaly)
+    ? anomalyPatterns[anomaly.pattern_id]({
+        references: anomaly.references,
+        instruments,
+      })
+    : anomaly.plain_english;
+  return renderWithCitations(prose, knownInstruments, onOpenDocument);
 }
