@@ -5,7 +5,7 @@ import type {
   TimelineBlock,
   NarrativeOverlay,
 } from "./types";
-import { findMatchingPattern } from "./patterns";
+import { findMatchingPattern, partial_chain_disclosure } from "./patterns";
 
 export function groupBySameDay(instruments: Instrument[]): InstrumentGroup[] {
   const byGroupId = new Map<string, Instrument[]>();
@@ -38,10 +38,6 @@ export function groupBySameDay(instruments: Instrument[]): InstrumentGroup[] {
   return groups;
 }
 
-// Dedicated partial-disclosure pattern — intentionally lives outside the
-// matcher loop. Called once per partial-mode page to render the hero aside.
-const PARTIAL_DISCLOSURE_ID = "partial_chain_disclosure";
-
 export function renderTimeline(
   instruments: Instrument[],
   ctx: PatternContext,
@@ -50,11 +46,15 @@ export function renderTimeline(
   const blocks: TimelineBlock[] = [];
 
   if (ctx.mode === "partial") {
-    const n = ctx.allInstruments.length;
+    const emptyGroup: InstrumentGroup = {
+      instruments: [],
+      recording_date: "",
+      same_day_group_id: null,
+    };
     blocks.push({
       instrument_numbers: [],
-      pattern_id: PARTIAL_DISCLOSURE_ID,
-      prose: `The county has ${n} recorded document${n === 1 ? "" : "s"} for this parcel — here's what we can see. This isn't a complete ownership history; for older records, a title examiner would request the county archive. You're seeing the same authoritative record they'd see.`,
+      pattern_id: partial_chain_disclosure.id,
+      prose: partial_chain_disclosure.render(emptyGroup, ctx),
       callouts: [],
     });
   }
