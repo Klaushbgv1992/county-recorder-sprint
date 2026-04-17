@@ -137,26 +137,37 @@ export function ProofDrawer({
       <div className="flex-1 overflow-hidden flex">
           {/* Left: Document Image */}
           <div className="w-1/2 border-r border-gray-200 overflow-auto bg-gray-100 p-4">
-            {instrument.source_image_path.endsWith(".pdf") ? (
-              <iframe
-                src={instrument.source_image_path}
-                className="w-full h-full min-h-[600px] bg-white"
-                title={`Document ${instrument.instrument_number}`}
-              />
-            ) : (
-              <img
-                src={instrument.source_image_path}
-                alt={`Document ${instrument.instrument_number}`}
-                className="w-full shadow-md bg-white"
-                onError={(e) => {
-                  const img = e.target as HTMLImageElement;
-                  img.style.display = "none";
-                  img.insertAdjacentHTML(
+            {instrument.source_image_path ? (
+              instrument.source_image_path.endsWith(".pdf") ? (
+                <iframe
+                  src={instrument.source_image_path}
+                  className="w-full h-full min-h-[600px] bg-white"
+                  title={`Document ${instrument.instrument_number}`}
+                />
+              ) : (
+                <img
+                  src={instrument.source_image_path}
+                  alt={`Document ${instrument.instrument_number}`}
+                  className="w-full shadow-md bg-white"
+                  onError={(e) => {
+                    const img = e.target as HTMLImageElement;
+                    img.style.display = "none";
+                    img.insertAdjacentHTML(
                     "afterend",
                     '<div class="text-center text-gray-400 py-12">Image not available</div>',
                   );
                 }}
               />
+            )
+            ) : (
+              <div className="flex items-center justify-center h-full text-gray-400">
+                <div className="text-center">
+                  <p className="text-sm">Image not available</p>
+                  <p className="text-xs mt-2">
+                    Cached from public API — no local document
+                  </p>
+                </div>
+              </div>
             )}
           </div>
 

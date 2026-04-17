@@ -84,7 +84,7 @@ export const Instrument = z.object({
   document_type_raw: z.string(),
   bundled_document_types: z.array(DocumentType).default([]),
 
-  parties: z.array(Party).min(1),
+  parties: z.array(Party),
 
   legal_description: FieldWithProvenance.optional(),
 
@@ -94,8 +94,8 @@ export const Instrument = z.object({
   same_day_group: z.array(z.string()).optional(),
   same_day_group_id: z.string().nullable().optional(),
 
-  source_image_path: z.string(),
-  page_count: z.number().int().positive(),
+  source_image_path: z.string().nullable(),
+  page_count: z.number().int().nonnegative().nullable(),
 
   raw_api_response: RawApiResponse,
 
