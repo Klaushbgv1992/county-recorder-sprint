@@ -315,7 +315,7 @@ describe("ParcelDrawer — desktop Esc dismissal", () => {
     expect(onClose).toHaveBeenCalledTimes(1);
   });
 
-  it("does NOT call onClose on Esc when isMobile=true (mobile uses popstate)", () => {
+  it("calls onClose on Esc when isMobile=true (bottom sheet is a dialog)", () => {
     const onClose = vi.fn();
     renderDrawer({
       variant: "not_in_seeded_area",
@@ -324,8 +324,11 @@ describe("ParcelDrawer — desktop Esc dismissal", () => {
       isMobile: true,
     });
     fireEvent.keyDown(window, { key: "Escape" });
-    // Mobile uses popstate, not Esc; onClose should not have been called
-    expect(onClose).not.toHaveBeenCalled();
+    // The mobile shell switched from full-screen modal (no keyboard handling)
+    // to a BottomSheet dialog that follows standard Esc-closes semantics for
+    // accessibility. Hardware-back continues to work via the popstate listener
+    // exercised in the next test.
+    expect(onClose).toHaveBeenCalledTimes(1);
   });
 });
 

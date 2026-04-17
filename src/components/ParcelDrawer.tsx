@@ -8,8 +8,10 @@
 //
 // Shell responsibilities:
 //   - Desktop (≥768px): fixed right drawer 420px, Esc closes, focus on close button
-//   - Mobile (<768px): full-screen modal, back-chevron top-left, pushes history
-//     entry on mount + listens for popstate to close
+//   - Mobile (<768px): bottom-sheet dialog via <BottomSheet/> — backdrop scrim,
+//     drag-handle affordance, slide-in animation, close button aria-labeled
+//     "Back to map" so existing tests + mobile mental model hold. Pushes a
+//     history entry on mount + listens for popstate so hardware-back closes.
 //   - role="dialog", aria-modal={isMobile}, aria-label="Parcel details"
 
 import { useEffect, useRef } from "react";
@@ -18,6 +20,7 @@ import type { Parcel } from "../types";
 import type { AssessorParcel } from "../logic/assessor-parcel";
 import { assembleAddress } from "../logic/assessor-parcel";
 import type { DrawerVariant } from "../logic/drawer-variant";
+import { BottomSheet } from "./BottomSheet";
 
 // ---------------------------------------------------------------------------
 // Prop types
@@ -445,34 +448,20 @@ export function ParcelDrawer({
     }
   }
 
-  // Mobile: full-screen modal
+  // Mobile: slide-up bottom sheet (keeps ~15vh of map visible for spatial
+  // context). BottomSheet owns the scrim, slide-in animation, Esc handling,
+  // and focuses its own close button on mount — so the `closeButtonRef`
+  // declared above is a desktop-only concern.
   if (isMobile) {
     return (
-      <div
-        role="dialog"
-        aria-modal={true}
-        aria-label="Parcel details"
-        className="fixed inset-0 z-50 flex flex-col bg-white overflow-y-auto"
+      <BottomSheet
+        ariaLabel="Parcel details"
+        title={variantTitle()}
+        closeButtonLabel="Back to map"
+        onClose={onClose}
       >
-        {/* Mobile top bar */}
-        <div className="flex items-center gap-3 border-b border-slate-200 px-4 py-3">
-          <button
-            ref={closeButtonRef}
-            aria-label="Back to map"
-            onClick={onClose}
-            className="flex items-center gap-1 text-sm text-slate-600 hover:text-slate-900 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none rounded"
-          >
-            <span aria-hidden="true">&lsaquo;</span>
-            <span>Back to map</span>
-          </button>
-          <h2 className="ml-auto text-sm font-medium text-slate-700">
-            {variantTitle()}
-          </h2>
-        </div>
-
-        {/* Body */}
-        <div className="flex-1 px-4 py-4">{renderBody()}</div>
-      </div>
+        {renderBody()}
+      </BottomSheet>
     );
   }
 

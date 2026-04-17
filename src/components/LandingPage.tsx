@@ -210,6 +210,7 @@ export function LandingPage() {
             toggleOverlay(name);
             if (name === "anomaly") setAnomalyPanelOpen((prev) => !prev);
           }}
+          isMobile={isMobile}
         />
         <AnomalySummaryPanel
           anomalies={anomaliesRaw}
