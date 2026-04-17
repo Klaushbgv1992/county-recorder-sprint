@@ -5,6 +5,7 @@ import { NotInCorpusParcel } from "../EmptyStates";
 import { StoryHero } from "./StoryHero";
 import { StoryCurrentClaims } from "./StoryCurrentClaims";
 import { StoryTimeline } from "./StoryTimeline";
+import { StoryNeighborhood } from "./StoryNeighborhood";
 
 export function StoryPage() {
   const { apn } = useParams();
@@ -37,7 +38,7 @@ export function StoryPage() {
       <StoryHero data={data} />
       <StoryTimeline data={data} />
       <StoryCurrentClaims data={data} />
-      {/* StoryNeighborhood added in Task 14 */}
+      <StoryNeighborhood data={data} />
       {/* StoryWhatThisMeans + StoryMoatCallout added in Task 15 */}
       {/* StoryFooterCtas added in Task 16 */}
     </main>
