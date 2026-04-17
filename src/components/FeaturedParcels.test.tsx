@@ -68,4 +68,9 @@ describe("FeaturedParcels", () => {
     expect(badge).toBeInTheDocument();
     expect(badge.tagName.toLowerCase()).toBe("span");
   });
+
+  it("renders a 'Read the story' link for each curated parcel", () => {
+    renderUI();
+    expect(screen.getAllByRole("link", { name: /read the story/i }).length).toBeGreaterThan(0);
+  });
 });

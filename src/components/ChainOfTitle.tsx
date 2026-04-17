@@ -1,4 +1,5 @@
 import { useMemo } from "react";
+import { Link } from "react-router";
 import type { Parcel, Instrument, DocumentLink, DocumentType } from "../types";
 import { buildOwnerPeriods } from "../logic/chain-builder";
 import { detectAnomalies } from "../logic/anomaly-detector";
@@ -7,6 +8,7 @@ import { AnomalyPanel } from "./AnomalyPanel";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { useTerminology } from "../terminology/TerminologyContext";
 import { Term, TermSection } from "../terminology/Term";
+import { storyPageExists } from "../narrative/availability";
 
 const DEED_TYPES = new Set([
   "warranty_deed",
@@ -86,7 +88,17 @@ export function ChainOfTitle({
     <div>
       <TermSection id="chain-heading">
         <div className="mb-6">
-          <h2 className="text-2xl font-bold text-gray-800"><Term professional="Chain of Title" /></h2>
+          <div className="flex items-baseline gap-3 flex-wrap">
+            <h2 className="text-2xl font-bold text-gray-800"><Term professional="Chain of Title" /></h2>
+            {storyPageExists(parcel.apn) && (
+              <Link
+                to={`/parcel/${parcel.apn}/story`}
+                className="text-xs text-moat-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+              >
+                Read as a story →
+              </Link>
+            )}
+          </div>
           <p className="text-sm text-gray-500 mt-1">
             {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
           </p>

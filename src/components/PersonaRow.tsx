@@ -12,7 +12,7 @@ export function PersonaRow() {
 
   const goHomeowner = () => {
     setMode("plain");
-    navigate("/parcel/304-78-386");
+    navigate("/parcel/304-78-386/story");
   };
   const goTitlePro = () => {
     setMode("professional");
@@ -29,7 +29,7 @@ export function PersonaRow() {
         type="button"
         onClick={goHomeowner}
         className={PILL_CLASS}
-        aria-label="For homeowners — open chain of title in plain English"
+        aria-label="For homeowners — read this parcel's ownership story"
       >
         For homeowners
       </button>

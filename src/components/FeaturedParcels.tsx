@@ -1,5 +1,6 @@
 import { Link } from "react-router";
 import type { Parcel } from "../types";
+import { storyPageExists } from "../narrative/availability";
 
 const RECOMMENDED_APN = "304-78-386";
 
@@ -24,30 +25,42 @@ export function FeaturedParcels({ parcels }: Props) {
             const isRecommended = p.apn === RECOMMENDED_APN;
             return (
               <li key={p.apn}>
-                <Link
-                  to={`/parcel/${p.apn}`}
-                  aria-label={`Open chain of title for ${p.current_owner}, ${p.address}`}
-                  className="group block rounded-lg border border-recorder-100 bg-white p-3 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
-                >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="min-w-0">
-                      <div className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700 truncate">
-                        {p.current_owner}
+                <div className="rounded-lg border border-recorder-100 bg-white shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150">
+                  <Link
+                    to={`/parcel/${p.apn}`}
+                    aria-label={`Open chain of title for ${p.current_owner}, ${p.address}`}
+                    className="group block p-3 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+                  >
+                    <div className="flex items-start justify-between gap-2">
+                      <div className="min-w-0">
+                        <div className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700 truncate">
+                          {p.current_owner}
+                        </div>
+                        <div className="text-xs text-recorder-500 truncate">
+                          {p.address}, {p.city}
+                        </div>
+                        <div className="text-xs text-gray-400 mt-0.5">
+                          APN <span className="font-mono">{p.apn}</span>
+                        </div>
                       </div>
-                      <div className="text-xs text-recorder-500 truncate">
-                        {p.address}, {p.city}
-                      </div>
-                      <div className="text-xs text-gray-400 mt-0.5">
-                        APN <span className="font-mono">{p.apn}</span>
-                      </div>
+                      {isRecommended && (
+                        <span className="shrink-0 text-[10px] uppercase tracking-wide bg-moat-50 text-moat-700 border border-moat-200 rounded-full px-2 py-0.5">
+                          Recommended demo
+                        </span>
+                      )}
                     </div>
-                    {isRecommended && (
-                      <span className="shrink-0 text-[10px] uppercase tracking-wide bg-moat-50 text-moat-700 border border-moat-200 rounded-full px-2 py-0.5">
-                        Recommended demo
-                      </span>
-                    )}
-                  </div>
-                </Link>
+                  </Link>
+                  {storyPageExists(p.apn) && (
+                    <div className="px-3 pb-2">
+                      <Link
+                        to={`/parcel/${p.apn}/story`}
+                        className="text-xs text-moat-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+                      >
+                        Read the story →
+                      </Link>
+                    </div>
+                  )}
+                </div>
               </li>
             );
           })}

@@ -19,10 +19,12 @@ export function AppShell() {
   const matchEncumbranceInstrument = useMatch(
     "/parcel/:apn/encumbrances/instrument/:instrumentNumber",
   );
+  const matchStory = useMatch("/parcel/:apn/story");
   const onSearch = matchSearch !== null;
   const onChain = matchChain !== null || matchChainInstrument !== null;
   const onEncumbrance =
     matchEncumbrance !== null || matchEncumbranceInstrument !== null;
+  const onStory = matchStory !== null;
 
   // Only load + render the parcel label when the APN is actually in the
   // corpus; otherwise the not-found panel will render in the outlet and
@@ -77,23 +79,25 @@ export function AppShell() {
           )}
         </TermSection>
         <div className="ml-auto flex items-center gap-3">
-          <div className="flex items-center gap-1 text-xs">
-            <span className="text-gray-400">Terminology:</span>
-            <button
-              aria-pressed={mode === "professional"}
-              onClick={mode === "plain" ? toggle : undefined}
-              className={`px-1.5 py-0.5 rounded transition-colors duration-150 ${mode === "professional" ? "font-semibold text-gray-800" : "text-gray-400 hover:text-gray-600 cursor-pointer"}`}
-            >
-              Professional
-            </button>
-            <button
-              aria-pressed={mode === "plain"}
-              onClick={mode === "professional" ? toggle : undefined}
-              className={`px-1.5 py-0.5 rounded transition-colors duration-150 ${mode === "plain" ? "font-semibold text-gray-800" : "text-gray-400 hover:text-gray-600 cursor-pointer"}`}
-            >
-              Plain English
-            </button>
-          </div>
+          {!onStory && (
+            <div className="flex items-center gap-1 text-xs">
+              <span className="text-gray-400">Terminology:</span>
+              <button
+                aria-pressed={mode === "professional"}
+                onClick={mode === "plain" ? toggle : undefined}
+                className={`px-1.5 py-0.5 rounded transition-colors duration-150 ${mode === "professional" ? "font-semibold text-gray-800" : "text-gray-400 hover:text-gray-600 cursor-pointer"}`}
+              >
+                Professional
+              </button>
+              <button
+                aria-pressed={mode === "plain"}
+                onClick={mode === "professional" ? toggle : undefined}
+                className={`px-1.5 py-0.5 rounded transition-colors duration-150 ${mode === "plain" ? "font-semibold text-gray-800" : "text-gray-400 hover:text-gray-600 cursor-pointer"}`}
+              >
+                Plain English
+              </button>
+            </div>
+          )}
           {hasParcel && !onSearch && (
             <div className="flex items-center gap-3 text-xs text-gray-500">
               <span>
