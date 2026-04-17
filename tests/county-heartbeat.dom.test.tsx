@@ -95,45 +95,21 @@ describe("CountyHeartbeat — counter + ribbon + provenance", () => {
   });
 });
 
-describe("CountyHeartbeat sparkline — 24-hour shape and elapsed state", () => {
+// The 24-hour sparkline was removed from CountyHeartbeat post-merge — user
+// feedback that the bars read as decorative rather than informative, and the
+// 7-zero + 10-equal + 7-trickle shape was confusing without a visible
+// caption or time-axis markers. The pure function `sparklineBars` remains
+// in src/logic/heartbeat-model.ts and is still tested in
+// tests/heartbeat-model.test.ts — if the sparkline is ever reintroduced
+// with proper labeling, the data layer is ready. DOM-level sparkline tests
+// are gone because there is no sparkline DOM to assert on.
+describe("CountyHeartbeat sparkline — removed, data function retained", () => {
   afterEach(() => cleanup());
 
-  it("wraps the sparkline SVG with role='img' and a dynamic aria-label", () => {
-    renderAt(AT_1400);
-    const img = screen.getByRole("img", { name: /Filing volume by hour/i });
-    expect(img).toBeInTheDocument();
-    expect(img.getAttribute("aria-label")).toMatch(
-      /14 of 24 hours elapsed, business-hour pacing/,
-    );
-  });
-
-  it("renders 17 <rect> elements (hours 7..23); hours 0..6 emit no rect", () => {
+  it("does not render any SVG in the heartbeat band", () => {
     const { container } = renderAt(AT_1400);
-    const rects = container.querySelectorAll("svg rect");
-    expect(rects.length).toBe(17);
-    for (let h = 0; h < 7; h++) {
-      expect(container.querySelector(`svg rect[data-hour="${h}"]`)).toBeNull();
-    }
-    for (let h = 7; h < 24; h++) {
-      expect(container.querySelector(`svg rect[data-hour="${h}"]`)).not.toBeNull();
-    }
-  });
-
-  it("marks rects at h < 14 as elapsed at now=14:00", () => {
-    const { container } = renderAt(AT_1400);
-    expect(
-      container.querySelector('svg rect[data-hour="13"]')?.getAttribute("data-elapsed"),
-    ).toBe("true");
-    expect(
-      container.querySelector('svg rect[data-hour="14"]')?.getAttribute("data-elapsed"),
-    ).toBe("false");
-  });
-
-  it("renders a 1px slate-200 baseline line across the sparkline width", () => {
-    const { container } = renderAt(AT_1400);
-    const line = container.querySelector("svg line");
-    expect(line).not.toBeNull();
-    expect(line!.getAttribute("stroke")).toBe("#e2e8f0");
+    const svgs = container.querySelectorAll("svg");
+    expect(svgs.length).toBe(0);
   });
 });
 

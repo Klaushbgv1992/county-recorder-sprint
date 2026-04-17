@@ -7,11 +7,8 @@ import {
 } from "../logic/pipeline-selectors";
 import {
   MARICOPA_BUSINESS_DAY_RECORDING_VOLUME,
-  arizonaHour,
   countAtTime,
   shouldRenderHeartbeat,
-  sparklineBars,
-  type SparklineBar,
 } from "../logic/heartbeat-model";
 
 const pipelineState = state as unknown as PipelineState;
@@ -60,8 +57,6 @@ function HeartbeatInner({
   }, [now]);
 
   const count = countAtTime(t);
-  const bars = sparklineBars(t);
-  const elapsedHours = Math.floor(arizonaHour(t));
 
   return (
     <section
@@ -69,7 +64,7 @@ function HeartbeatInner({
       aria-describedby="heartbeat-provenance"
       className="border-b border-slate-200 bg-white"
     >
-      <div className="px-6 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:gap-8">
+      <div className="px-6 py-3 md:py-4 flex flex-col md:flex-row md:items-center md:justify-between md:gap-8">
         <div className="flex flex-col items-center md:items-start">
           <span
             aria-label="Documents filed by this hour in a Maricopa business day"
@@ -82,12 +77,8 @@ function HeartbeatInner({
           </span>
         </div>
 
-        <div className="hidden md:block md:flex-1">
-          <Sparkline bars={bars} elapsedHours={elapsedHours} />
-        </div>
-
         <div className="hidden md:flex md:items-center md:gap-6">
-          <p className="text-sm text-slate-700 max-w-xs">
+          <p className="text-sm text-slate-700 max-w-md">
             <strong className="font-semibold text-slate-900">
               The county operates the recording day.
             </strong>{" "}
@@ -129,55 +120,9 @@ function HeartbeatInner({
   );
 }
 
-function Sparkline({
-  bars,
-  elapsedHours,
-}: {
-  bars: SparklineBar[];
-  elapsedHours: number;
-}): ReactElement {
-  const WIDTH = 240;
-  const HEIGHT = 100;
-  const BAR_GAP = 2;
-  const BAR_WIDTH = (WIDTH - 23 * BAR_GAP) / 24;
-  const BASELINE_Y = HEIGHT - 1;
-
-  return (
-    <svg
-      role="img"
-      aria-label={`Filing volume by hour — ${elapsedHours} of 24 hours elapsed, business-hour pacing`}
-      viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
-      className="w-full h-auto max-h-[100px]"
-      preserveAspectRatio="none"
-    >
-      <line
-        x1={0}
-        y1={BASELINE_Y}
-        x2={WIDTH}
-        y2={BASELINE_Y}
-        stroke="#e2e8f0"
-        strokeWidth={1}
-      />
-      {bars.map((bar) => {
-        if (bar.heightFraction === 0) return null;
-        const barHeight = bar.heightFraction * (HEIGHT - 2);
-        const x = bar.hour * (BAR_WIDTH + BAR_GAP);
-        const y = BASELINE_Y - barHeight;
-        const commonProps = {
-          key: bar.hour,
-          "data-hour": bar.hour,
-          "data-elapsed": bar.elapsed ? "true" : "false",
-          x,
-          y,
-          width: BAR_WIDTH,
-          height: barHeight,
-        } as const;
-        return bar.elapsed ? (
-          <rect {...commonProps} fill="#475569" />
-        ) : (
-          <rect {...commonProps} fill="none" stroke="#cbd5e1" strokeWidth={1} />
-        );
-      })}
-    </svg>
-  );
-}
+// The 24-hour sparkline was removed post-merge after user feedback that
+// the bars read as decorative rather than informative — without a visible
+// caption or time-axis markers, the 7-zero + 10-equal + 7-trickle shape
+// was confusing to demo. The pure function sparklineBars remains in
+// src/logic/heartbeat-model.ts (unused but exported) in case we want to
+// reintroduce a labeled version later. See user feedback 2026-04-17.
