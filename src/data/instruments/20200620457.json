@@ -23,13 +23,7 @@
     "provenance": "manual_entry",
     "confidence": 0.9
   },
-  "extracted_fields": {
-    "vesting_note": {
-      "value": "Trustor is SCOTT J ANGUS; grantee on same-day quit claim (20200620456) is PHOENIX VACATION HOUSES LLC. Investor/STR acquisition pattern; examiner should confirm loan is on investment property, not owner-occupied.",
-      "provenance": "manual_entry",
-      "confidence": 0.9
-    }
-  },
+  "extracted_fields": {},
   "back_references": [],
   "same_day_group": ["20200620456"],
   "source_image_path": null,
@@ -50,6 +44,6 @@
   "provenance_summary": {
     "public_api_count": 6,
     "ocr_count": 0,
-    "manual_entry_count": 4
+    "manual_entry_count": 3
   }
 }
