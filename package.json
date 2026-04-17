@@ -8,9 +8,11 @@
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "test": "vitest run"
+    "test": "vitest run",
+    "bake:summaries": "tsx scripts/bake-ai-summaries.ts"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.90.0",
     "jspdf": "^4.2.1",
     "jspdf-autotable": "^5.0.7",
     "maplibre-gl": "^5.23.0",
