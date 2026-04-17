@@ -40,7 +40,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Illustrative — synthesized to demonstrate HOA-lien examiner workflow. Recorded lien hunt (R-006) did not locate a real Seville Parcel 3 HOA lien within the 15-minute budget against publicapi.recorder.maricopa.gov. The API does not support documentCode-filtered or name-filtered search (Known Gap #2 — see data/raw/R-006/hunt-log.md for the reproduction). Pattern grounded in the investor/short-term-rental ownership profile of ANGUS Lot 45 (same-day quit claim 20200620456 from SCOTT J ANGUS to PHOENIX VACATION HOUSES LLC).",
+      "value": "Illustrative — synthesized to demonstrate HOA-lien examiner workflow. Recorded lien hunt (R-006) did not locate a real Seville Parcel 3 HOA lien within the 15-minute budget against publicapi.recorder.maricopa.gov. The API does not support documentCode-filtered or name-filtered search (Known Gap #2 — see data/raw/R-006/hunt-log.md for the reproduction). Pattern grounded in the investor/short-term-rental ownership profile of ANGUS Lot 45 (same-day quit claim 20200620456 from SCOTT J ANGUS to PHOENIX VACATION HOUSES LLC). The raw_api_response field on this instrument is also synthesized — recording number 20230100000 does not resolve against the real public API, and is used here only because the Instrument schema requires the field to be non-null.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
