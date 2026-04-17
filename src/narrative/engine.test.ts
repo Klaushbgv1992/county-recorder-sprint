@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { renderTimeline, groupBySameDay } from "./engine";
+import { renderTimeline, groupBySameDay, renderHero } from "./engine";
 import type { PatternContext } from "./types";
 import type { Instrument } from "../types";
 
@@ -111,5 +111,37 @@ describe("renderTimeline", () => {
     const overlay = { hero_override: null, callouts: { "20130183449": "callout!" }, what_this_means: null, moat_note: null };
     const blocks = renderTimeline([deed], ctx, overlay);
     expect(blocks[0].callouts).toEqual(["callout!"]);
+  });
+});
+
+describe("renderHero", () => {
+  it("uses overlay.hero_override when provided", () => {
+    const parcel = ctxBase.parcel;
+    const overlay = { hero_override: "Custom hero", callouts: {}, what_this_means: null, moat_note: null };
+    const hero = renderHero(parcel, [], overlay);
+    expect(hero.oneLiner).toBe("Custom hero");
+    expect(hero.metaDescription).toBe("Custom hero");
+  });
+
+  it("generates a one-liner from most recent deed grantees", () => {
+    const deed = stubInstrument({
+      instrument_number: "20130183449",
+      recording_date: "2013-02-27",
+      document_type: "warranty_deed",
+      parties: [
+        { name: "THE MADISON LIVING TRUST", role: "grantor", provenance: "ocr", confidence: 1 },
+        { name: "CHRISTOPHER POPHAM", role: "grantee", provenance: "ocr", confidence: 1 },
+        { name: "ASHLEY POPHAM", role: "grantee", provenance: "ocr", confidence: 1 },
+      ] as never,
+    });
+    const hero = renderHero(ctxBase.parcel, [deed], null);
+    expect(hero.oneLiner).toContain("3674 E Palmer St");
+    expect(hero.oneLiner).toMatch(/Popham/i);
+    expect(hero.oneLiner).toContain("2013");
+  });
+
+  it("falls back to a generic sentence with no deeds", () => {
+    const hero = renderHero(ctxBase.parcel, [], null);
+    expect(hero.oneLiner).toContain("3674 E Palmer St");
   });
 });
