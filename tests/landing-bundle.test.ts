@@ -1,3 +1,15 @@
+// Bundle-split acceptance test for the landing map feature.
+//
+// Why informational (not a hard gate) on per-route size comparison:
+// The app has no React.lazy route splitting — all components share one
+// entry chunk. Landing-map UI adds ~303 KB to that shared chunk.
+// See docs/known-gaps.md #21 for the full rationale and production fix.
+//
+// The HARD gates here are:
+// 1. gilbert-parcels-geo.json must be isDynamicEntry: true (not static)
+// 2. load-cached-neighbors.ts must be isDynamicEntry: true
+// 3. Gilbert seed gzipped size must be under 2 MB
+
 import { describe, it, expect, beforeAll } from "vitest";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
