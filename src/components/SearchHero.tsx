@@ -54,7 +54,20 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
 
   return (
     <section aria-label="Parcel search" className="bg-white border-b border-slate-200 px-6 py-8">
-      <div className="max-w-3xl mx-auto relative">
+      <div className="max-w-3xl mx-auto">
+        <p className="text-xs font-semibold uppercase tracking-wider text-moat-700">
+          Maricopa County Recorder
+        </p>
+        <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-recorder-900 tracking-tight">
+          Land Custodian Portal
+        </h1>
+        <p className="mt-2 text-sm text-slate-600 max-w-2xl">
+          Structured title research for abstractors and examiners — chain of title,
+          encumbrance lifecycle, and release matching, served directly from the
+          custodian of the record.
+        </p>
+      </div>
+      <div className="max-w-3xl mx-auto relative mt-6">
         <input
           type="search"
           role="combobox"
