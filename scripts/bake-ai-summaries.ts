@@ -15,6 +15,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import Anthropic from "@anthropic-ai/sdk";
 import { promptHash } from "./lib/canonical-json";
 import {
@@ -71,13 +72,14 @@ function loadAnomaliesForApn(apn: string): StaffAnomaly[] {
   return all.filter((a) => a.parcel_apn === apn);
 }
 
-async function bakeOne(
+export async function bakeOne(
   client: Anthropic,
   apn: string,
   input: SummaryInput,
   force: boolean,
+  outBase: string = OUT_BASE,
 ): Promise<void> {
-  const outDir = path.join(OUT_BASE, apn);
+  const outDir = path.join(outBase, apn);
   const metaPath = path.join(outDir, "metadata.json");
   const hash = promptHash(input);
 
@@ -93,9 +95,7 @@ async function bakeOne(
     return;
   }
 
-  fs.mkdirSync(outDir, { recursive: true });
   const userMessage = buildUserMessage(input);
-  fs.writeFileSync(path.join(outDir, "prompt.txt"), userMessage, "utf8");
 
   const res = await client.messages.create({
     model: MODEL_ID,
@@ -115,7 +115,25 @@ async function bakeOne(
     .map((b) => b.text)
     .join("\n");
 
+  // Empty-response guard: the Anthropic call "succeeded" but returned zero
+  // text blocks (or only whitespace). If we wrote artifacts now, the metadata
+  // hash stamp would cache-gate this parcel to a permanently blank summary.
+  // Throw before any side effect so the next run re-bakes cleanly.
+  if (summary.trim().length === 0) {
+    throw new Error(
+      `[${apn}] Anthropic response contained no text content — refusing to write empty summary. ` +
+        `No artifacts were written; re-run to retry.`,
+    );
+  }
+
+  // Write order is load-bearing: metadata.json is the cache key. If any
+  // earlier write throws, the (possibly stale) metadata still points at the
+  // last successful bake — so the next run sees a hash mismatch (or no
+  // metadata) and re-bakes. Writing metadata last makes the hash stamp the
+  // commit point.
+  fs.mkdirSync(outDir, { recursive: true });
   fs.writeFileSync(path.join(outDir, "summary.md"), summary, "utf8");
+  fs.writeFileSync(path.join(outDir, "prompt.txt"), userMessage, "utf8");
   const metadata = {
     generated_at: new Date().toISOString(),
     model_id: MODEL_ID,
@@ -152,7 +170,24 @@ async function main(): Promise<void> {
   }
 }
 
-main().catch((e) => {
-  console.error(e);
-  process.exit(1);
-});
+// Run main() only when executed directly via `tsx` / `node`. Importing this
+// module (e.g. from a unit test that targets `bakeOne`) must not trigger a
+// real API bake.
+const isDirectRun = (() => {
+  if (!process.argv[1]) return false;
+  try {
+    return (
+      path.resolve(process.argv[1]) ===
+      path.resolve(fileURLToPath(import.meta.url))
+    );
+  } catch {
+    return false;
+  }
+})();
+
+if (isDirectRun) {
+  main().catch((e) => {
+    console.error(e);
+    process.exit(1);
+  });
+}
