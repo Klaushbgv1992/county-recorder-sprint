@@ -8,8 +8,6 @@ import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { SearchHero } from "./SearchHero";
 import { useAllParcels } from "../hooks/useAllParcels";
-import { CountyHeartbeat } from "./CountyHeartbeat";
-import { useNowOverrideFromSearchParams } from "../hooks/useNowOverrideFromSearchParams";
 import { useLandingUrlState } from "../hooks/useLandingUrlState";
 import { buildSearchableIndex } from "../logic/searchable-index";
 import { AssessorParcel } from "../logic/assessor-parcel";
@@ -34,7 +32,6 @@ const LIFECYCLES = LifecyclesFile.parse(lifecyclesRaw).lifecycles;
 export function LandingPage() {
   const navigate = useNavigate();
   const parcels = useAllParcels();
-  const nowOverride = useNowOverrideFromSearchParams();
   const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
     useLandingUrlState();
 
@@ -171,13 +168,6 @@ export function LandingPage() {
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
-      {/* === BEGIN CountyHeartbeat block (feature/landing-heartbeat) ===
-          Do not refactor this block as part of map-redesign work — it is
-          scoped to a single <CountyHeartbeat/> mount so the parallel
-          agent's diff path stays clean. === */}
-      <CountyHeartbeat now={nowOverride} />
-      {/* === END CountyHeartbeat block === */}
-
       <SearchHero
         value={query}
         onChange={setQuery}
@@ -188,11 +178,8 @@ export function LandingPage() {
       />
 
       {/* Full-bleed map — flex-1 fills remaining viewport below the
-          PipelineBanner + CountyHeartbeat. Old "Maricopa County Recorder"
-          hero block removed post-merge: the map + verified-through banner
-          carry the county-authority signal on their own, and keeping the
-          text hero alongside the map cluttered the landing. /why remains
-          reachable from the footer. */}
+          PipelineBanner + SearchHero. The verified-through strip in
+          RootLayout carries the moat claim; map + search are the hero. */}
       <section className="relative flex-1 min-h-[70vh] border-b border-slate-200">
         <CountyMap
           highlightedParcels={HIGHLIGHTED}

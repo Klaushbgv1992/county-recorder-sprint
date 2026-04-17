@@ -34,10 +34,10 @@ function wrap(ui: React.ReactNode, initialEntries?: string[]) {
 describe("LandingPage", () => {
   afterEach(() => cleanup());
 
-  it("renders SearchHero between CountyHeartbeat and the map section", () => {
-    // SearchHero replaced the old <section role="search"> below the map.
-    // The search surface is now above the map (between CountyHeartbeat and
-    // the map section). Verify it precedes the map section in the DOM.
+  it("renders SearchHero above the map section", () => {
+    // SearchHero is now the first child of <main> (CountyHeartbeat was
+    // removed — the slim verified-through strip in RootLayout carries the
+    // moat claim on its own). Verify SearchHero precedes the map section.
     render(wrap(<LandingPage />));
     const combobox = screen.getByRole("combobox");
     expect(combobox).toBeInTheDocument();
@@ -108,10 +108,10 @@ describe("LandingPage — /why links", () => {
   });
 });
 
-describe("LandingPage — CountyHeartbeat mount", () => {
+describe("LandingPage — CountyHeartbeat removed", () => {
   afterEach(() => cleanup());
 
-  it("renders the heartbeat band above the map section", () => {
+  it("does not render the heartbeat band on the landing page", () => {
     render(
       <MemoryRouter>
         <TerminologyProvider>
@@ -119,28 +119,14 @@ describe("LandingPage — CountyHeartbeat mount", () => {
         </TerminologyProvider>
       </MemoryRouter>,
     );
+    // The heartbeat band was removed from the landing page because its
+    // big counter + "recording day" paragraph competed with the primary
+    // search task. The one-line verified-through strip (PipelineBanner in
+    // RootLayout) carries the moat claim without the dashboard framing.
     const section = document.querySelector(
       'section[aria-label="Maricopa Recorder live-pacing band"]',
     );
-    expect(section).toBeTruthy();
-    // Post-merge, the old <header> is gone; heartbeat sits directly
-    // above the full-bleed map section. The heartbeat itself renders as
-    // a <section aria-label="Maricopa Recorder live-pacing band"> so
-    // "first section" alone doesn't disambiguate — find the first
-    // section that is NOT the heartbeat.
-    const main = document.querySelector("main");
-    const children = Array.from(main!.children);
-    const heartbeatIndex = children.findIndex(
-      (el) => el.getAttribute("aria-label") === "Maricopa Recorder live-pacing band",
-    );
-    const mapSectionIndex = children.findIndex(
-      (el, i) =>
-        el.tagName === "SECTION" &&
-        i !== heartbeatIndex &&
-        el.getAttribute("aria-label") !== "Maricopa Recorder live-pacing band",
-    );
-    expect(heartbeatIndex).toBeGreaterThanOrEqual(0);
-    expect(mapSectionIndex).toBeGreaterThan(heartbeatIndex);
+    expect(section).toBeNull();
   });
 });
 
