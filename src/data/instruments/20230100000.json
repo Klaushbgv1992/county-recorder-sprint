@@ -59,7 +59,9 @@
     "pageMap": 0,
     "affidavitPresent": false,
     "affidavitPageAmount": 0,
-    "restricted": false
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only HOA-lien instrument illustrating examiner workflow on PHOENIX VACATION HOUSES LLC parcel 304-78-367; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
