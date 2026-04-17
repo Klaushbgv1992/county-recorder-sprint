@@ -178,28 +178,13 @@ export function LandingPage() {
       <CountyHeartbeat now={nowOverride} />
       {/* === END CountyHeartbeat block === */}
 
-      {/* Header — unchanged */}
-      <header className="px-6 py-4 border-b border-slate-200 bg-white">
-        <div className="flex items-start justify-between gap-4 flex-wrap">
-          <div>
-            <h1 className="text-2xl font-semibold text-recorder-900">
-              Maricopa County Recorder
-            </h1>
-            <p className="text-sm text-recorder-500">
-              The county owns the record. Everyone else owns a copy.
-            </p>
-          </div>
-          <Link
-            to="/why"
-            className="text-xs text-slate-500 hover:text-slate-700 underline underline-offset-2 pt-1"
-          >
-            Why this matters →
-          </Link>
-        </div>
-      </header>
-
-      {/* Full-bleed map — flex-1 fills remaining viewport below header */}
-      <section className="relative flex-1 min-h-[60vh] border-b border-slate-200">
+      {/* Full-bleed map — flex-1 fills remaining viewport below the
+          PipelineBanner + CountyHeartbeat. Old "Maricopa County Recorder"
+          hero block removed post-merge: the map + verified-through banner
+          carry the county-authority signal on their own, and keeping the
+          text hero alongside the map cluttered the landing. /why remains
+          reachable from the footer. */}
+      <section className="relative flex-1 min-h-[70vh] border-b border-slate-200">
         <CountyMap
           highlightedParcels={HIGHLIGHTED}
           onParcelClick={(apn) => setSelectedApn(apn)}

@@ -35,9 +35,12 @@ describe("LandingPage", () => {
   afterEach(() => cleanup());
 
   it("renders map region + search box below", () => {
+    // Old hero block ("Maricopa County Recorder" heading) was removed
+    // post-merge to unclutter the landing — the map + verified-through
+    // banner carry the county-authority signal. See LandingPage.tsx
+    // comment where the header used to live.
     render(wrap(<LandingPage />));
     expect(screen.getByRole("search")).toBeInTheDocument();
-    expect(screen.getByText(/Maricopa County Recorder/i)).toBeInTheDocument();
   });
 
   it("renders the moat WHY copy for the map", () => {
@@ -89,14 +92,9 @@ describe("LandingPage", () => {
 describe("LandingPage — /why links", () => {
   afterEach(() => cleanup());
 
-  it("renders a 'Why this matters' link in the header", () => {
-    render(wrap(<LandingPage />));
-    const header = document.querySelector("header");
-    expect(header).toBeTruthy();
-    const link = header!.querySelector('a[href="/why"]');
-    expect(link).toBeTruthy();
-    expect(link?.textContent?.toLowerCase()).toContain("why this matters");
-  });
+  // The header's "Why this matters" link was removed alongside the old
+  // hero block. The footer link below is the sole landing-page entry
+  // point to /why, which is the intended single-path behavior.
 
   it("renders a 'Why this matters' link in the footer", () => {
     render(wrap(<LandingPage />));
@@ -123,16 +121,24 @@ describe("LandingPage — CountyHeartbeat mount", () => {
       'section[aria-label="Maricopa Recorder live-pacing band"]',
     );
     expect(section).toBeTruthy();
-    // Heartbeat sits before the <header>; <header> sits before the map.
+    // Post-merge, the old <header> is gone; heartbeat sits directly
+    // above the full-bleed map section. The heartbeat itself renders as
+    // a <section aria-label="Maricopa Recorder live-pacing band"> so
+    // "first section" alone doesn't disambiguate — find the first
+    // section that is NOT the heartbeat.
     const main = document.querySelector("main");
-    const heartbeatIndex = Array.from(main!.children).findIndex(
+    const children = Array.from(main!.children);
+    const heartbeatIndex = children.findIndex(
       (el) => el.getAttribute("aria-label") === "Maricopa Recorder live-pacing band",
     );
-    const headerIndex = Array.from(main!.children).findIndex(
-      (el) => el.tagName === "HEADER",
+    const mapSectionIndex = children.findIndex(
+      (el, i) =>
+        el.tagName === "SECTION" &&
+        i !== heartbeatIndex &&
+        el.getAttribute("aria-label") !== "Maricopa Recorder live-pacing band",
     );
     expect(heartbeatIndex).toBeGreaterThanOrEqual(0);
-    expect(headerIndex).toBeGreaterThan(heartbeatIndex);
+    expect(mapSectionIndex).toBeGreaterThan(heartbeatIndex);
   });
 });
 
