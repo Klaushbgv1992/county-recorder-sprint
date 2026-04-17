@@ -1,0 +1,10 @@
+{
+  "hero_override": "3674 E Palmer St in Gilbert is owned by Christopher & Ashley Popham, who bought the home from the Madison Family Living Trust in February 2013. One mortgage is currently open with Wells Fargo.",
+  "callouts": {
+    "20130183449": "The Madison Living Trust selling the house is the piece of data the county has that a title plant doesn't: the trust's full name and its 2006 execution date live only in the deed's PDF body. The county preserves them; the plant drops them.",
+    "20210057846": "The refinance was recorded three days before the old mortgage was paid off — the standard pattern lenders use so the new loan is on title before the old one comes off.",
+    "20210075858": "This release was signed by Wells Fargo via CAS Nationwide Title Clearing, not by VIP Mortgage. The note moved between servicers outside the public record — MERS, the Mortgage Electronic Registration Systems, exists precisely to track that invisible transfer. The county records the release either way; a title plant has to guess which entity actually held the loan."
+  },
+  "what_this_means": "If you're selling or refinancing 3674 E Palmer St, a title examiner would look at exactly what you see here — plus deeper context on the 2013 Madison Trust conveyance and the 2021 MERS-signed release. Both are well-documented and resolvable; they're the kind of details the county preserves so the next buyer doesn't inherit a mystery.",
+  "moat_note": "A title-plant snapshot of this parcel would show you the instrument list, but would miss the Madison Trust's full name, the Seville Parcel 3 plat reference (Book 554, Page 19), and the MERS-as-nominee relationship on the 2013 mortgage. Those live only in the documents the county holds."
+}
