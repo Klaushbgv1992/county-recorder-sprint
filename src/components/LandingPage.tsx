@@ -2,13 +2,11 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
-import { MapSearchBar } from "./MapSearchBar";
 import { OverlayToggles } from "./OverlayToggles";
 import { ParcelDrawer } from "./ParcelDrawer";
 import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
-import { SearchEntry } from "./SearchEntry";
 import { FeaturedParcels } from "./FeaturedParcels";
-import { PersonaRow } from "./PersonaRow";
+import { SearchHero } from "./SearchHero";
 import { useAllParcels } from "../hooks/useAllParcels";
 import { CountyHeartbeat } from "./CountyHeartbeat";
 import { useNowOverrideFromSearchParams } from "../hooks/useNowOverrideFromSearchParams";
@@ -178,6 +176,15 @@ export function LandingPage() {
       <CountyHeartbeat now={nowOverride} />
       {/* === END CountyHeartbeat block === */}
 
+      <SearchHero
+        value={query}
+        onChange={setQuery}
+        searchables={searchables}
+        onSelectCurated={(apn) => navigate(`/parcel/${apn}`)}
+        onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
+        onSelectDrawer={(apn) => setSelectedApn(apn)}
+      />
+
       {/* Full-bleed map — flex-1 fills remaining viewport below the
           PipelineBanner + CountyHeartbeat. Old "Maricopa County Recorder"
           hero block removed post-merge: the map + verified-through banner
@@ -197,12 +204,6 @@ export function LandingPage() {
           instrumentToApn={instrumentToApn}
           showIntro={!selectedApn && !query && overlays.size === 0}
           onIntroClick={() => setSelectedApn("304-78-386")}
-        />
-        <MapSearchBar
-          value={query}
-          onChange={setQuery}
-          searchables={searchables}
-          onSelect={(s) => setSelectedApn(s.apn)}
         />
         <OverlayToggles
           overlays={overlays}
@@ -232,28 +233,6 @@ export function LandingPage() {
       <div id="featured-parcels">
         <FeaturedParcels parcels={parcels} />
       </div>
-
-      <section
-        role="search"
-        className="px-6 py-8 bg-white border-b border-slate-200"
-      >
-        <div className="max-w-2xl mx-auto">
-          <PersonaRow />
-          <h2 className="text-sm font-medium text-slate-700 mb-2">
-            Or look up a parcel directly
-          </h2>
-          <SearchEntry
-            parcels={parcels}
-            onSelectParcel={(apn, instrumentNumber) =>
-              navigate(
-                instrumentNumber
-                  ? `/parcel/${apn}/instrument/${instrumentNumber}`
-                  : `/parcel/${apn}`
-              )
-            }
-          />
-        </div>
-      </section>
 
       <section className="px-6 py-6 bg-recorder-50 border-b border-recorder-100">
         <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">

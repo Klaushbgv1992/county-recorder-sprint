@@ -34,13 +34,21 @@ function wrap(ui: React.ReactNode, initialEntries?: string[]) {
 describe("LandingPage", () => {
   afterEach(() => cleanup());
 
-  it("renders map region + search box below", () => {
-    // Old hero block ("Maricopa County Recorder" heading) was removed
-    // post-merge to unclutter the landing — the map + verified-through
-    // banner carry the county-authority signal. See LandingPage.tsx
-    // comment where the header used to live.
+  it("renders SearchHero between CountyHeartbeat and the map section", () => {
+    // SearchHero replaced the old <section role="search"> below the map.
+    // The search surface is now above the map (between CountyHeartbeat and
+    // the map section). Verify it precedes the map section in the DOM.
     render(wrap(<LandingPage />));
-    expect(screen.getByRole("search")).toBeInTheDocument();
+    const combobox = screen.getByRole("combobox");
+    expect(combobox).toBeInTheDocument();
+    const main = document.querySelector("main")!;
+    const children = Array.from(main.children);
+    const heroIndex = children.findIndex((el) => el.contains(combobox));
+    const mapSectionIndex = children.findIndex((el) =>
+      el.tagName === "SECTION" && el.querySelector('[data-testid="map"]') !== null
+    );
+    expect(heroIndex).toBeGreaterThanOrEqual(0);
+    expect(mapSectionIndex).toBeGreaterThan(heroIndex);
   });
 
   it("renders the moat WHY copy for the map", () => {

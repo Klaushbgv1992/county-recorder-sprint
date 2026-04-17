@@ -1,6 +1,5 @@
 import { useMemo, useState } from "react";
-import { searchAll, type Searchable, type SearchHit, type MatchType } from "../logic/searchable-index";
-import { assembleAddress } from "../logic/assessor-parcel";
+import { searchAll, addressOf, ownerOf, subdivisionOf, type Searchable, type SearchHit, type MatchType } from "../logic/searchable-index";
 
 const TIER_CHIP: Record<Searchable["tier"], { label: string; className: string }> = {
   curated: { label: "Curated", className: "bg-emerald-100 text-emerald-900" },
@@ -15,19 +14,6 @@ const ENTITY_CHIP: Record<MatchType, { label: string; className: string }> = {
   owner: { label: "Owner", className: "bg-purple-100 text-purple-900" },
   subdivision: { label: "Subdivision", className: "bg-amber-100 text-amber-900" },
 };
-
-function addressOf(s: Searchable): string {
-  if (s.tier === "curated") return s.parcel.address;
-  return assembleAddress(s.polygon);
-}
-function ownerOf(s: Searchable): string {
-  if (s.tier === "curated") return s.parcel.current_owner;
-  return s.polygon.OWNER_NAME ?? "";
-}
-function subdivisionOf(s: Searchable): string {
-  if (s.tier === "curated") return s.parcel.subdivision;
-  return s.polygon.SUBNAME ?? "";
-}
 
 interface Props {
   value: string;
