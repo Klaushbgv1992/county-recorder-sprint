@@ -1,6 +1,8 @@
 node_modules/
 dist/
 *.log
+*.stackdump
 .claude/worktrees/
 .claude/scheduled_tasks.lock
+.claude/launch.json
 .worktrees/
