@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import type {
   Instrument,
   Parcel,
@@ -12,7 +12,11 @@ import {
   type CandidateAction,
   type CandidateRow,
 } from "../logic/release-candidate-matcher";
-import { getReleasingParties } from "../logic/party-roles";
+import { getReleasingParties, getTrustors } from "../logic/party-roles";
+import {
+  huntCrossParcelRelease,
+  type HuntResult,
+} from "../logic/cross-parcel-release-hunt";
 
 interface Props {
   lifecycleId: string;
@@ -173,6 +177,137 @@ function CandidateRowView({
   );
 }
 
+// Trustor party names on DOT instruments are stored first-last
+// ("JASON HOGUE") but the Maricopa staff name index (and the hunt's
+// surname bucket on `split(" ")[0]`) uses last-first ("HOGUE JASON").
+// Flip the last token to the front; passthrough for single-token
+// (company) names.
+function toRecorderNameOrder(name: string): string {
+  const parts = name.trim().split(/\s+/);
+  if (parts.length < 2) return name;
+  const last = parts[parts.length - 1];
+  const rest = parts.slice(0, -1).join(" ");
+  return `${last} ${rest}`;
+}
+
+interface CountyWideScanProps {
+  dot: Instrument;
+  parcel: Parcel;
+  lifecycleId: string;
+  onOpenDocument: (n: string) => void;
+}
+
+function CountyWideScanAffordance({
+  dot,
+  parcel,
+  lifecycleId,
+  onOpenDocument,
+}: CountyWideScanProps) {
+  const [result, setResult] = useState<HuntResult | null>(null);
+
+  const borrowerNames = useMemo(() => {
+    const trustors = getTrustors(dot).map(toRecorderNameOrder);
+    if (trustors.length > 0) return trustors;
+    // Fallback: current owner tokens split on common separators.
+    return parcel.current_owner
+      .split(/\s*[&/]\s*|\s+AND\s+/i)
+      .map((n) => toRecorderNameOrder(n.trim()))
+      .filter(Boolean);
+  }, [dot, parcel]);
+
+  const runHunt = () => {
+    setResult(
+      huntCrossParcelRelease({
+        lifecycle_id: lifecycleId,
+        parcel_apn: parcel.apn,
+        borrower_names: borrowerNames,
+      }),
+    );
+  };
+
+  return (
+    <div className="px-4 pb-3">
+      <div className="border border-moat-300 bg-moat-50 rounded p-3">
+        <div className="flex items-start justify-between gap-3 flex-wrap">
+          <div className="min-w-0 flex-1">
+            <div className="text-xs font-semibold text-moat-900">
+              Run county-wide name scan
+            </div>
+            <p className="text-[11px] text-moat-800/80 mt-1 leading-relaxed">
+              The public recorder API cannot filter releases by name. The
+              county&apos;s internal full-name index can — this is the moat.
+              Scanning for{" "}
+              <span className="font-mono">
+                {borrowerNames.join(", ")}
+              </span>{" "}
+              across every parcel attributed in the index.
+            </p>
+          </div>
+          {result === null && (
+            <button
+              type="button"
+              onClick={runHunt}
+              className="shrink-0 text-xs font-medium px-3 py-1 rounded bg-moat-700 text-white hover:bg-moat-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            >
+              Run county-wide scan →
+            </button>
+          )}
+        </div>
+
+        {result && (
+          <div className="mt-3 border-t border-moat-200 pt-3">
+            <div className="flex items-baseline justify-between gap-2 flex-wrap">
+              <div className="text-xs font-semibold text-moat-900">
+                Scanned {result.scanned_party_count} same-surname instrument
+                {result.scanned_party_count === 1 ? "" : "s"} across county
+                — {result.candidates.length} release-type match
+                {result.candidates.length === 1 ? "" : "es"}
+              </div>
+              <div className="text-[11px] font-mono text-moat-700">
+                verified through {result.verified_through}
+              </div>
+            </div>
+            {result.candidates.length === 0 ? (
+              <p className="text-[11px] text-moat-800/80 mt-2 leading-relaxed">
+                Honest zero. No release-type instrument for these borrowers is
+                attributed to any other parcel in the county corpus. The
+                lifecycle stays open — and now the examiner knows it&apos;s
+                open because the record is silent, not because the search was
+                blind.
+              </p>
+            ) : (
+              <ul className="mt-2 space-y-1">
+                {result.candidates.map((c) => (
+                  <li
+                    key={c.instrument_number}
+                    className="text-[11px] font-mono text-moat-900 flex items-center gap-2 flex-wrap"
+                  >
+                    <button
+                      onClick={() => onOpenDocument(c.instrument_number)}
+                      className="text-moat-700 hover:underline"
+                    >
+                      {c.instrument_number}
+                    </button>
+                    <span className="text-moat-700/70">
+                      {c.document_type}
+                    </span>
+                    <span className="text-moat-700/70">
+                      {c.recording_date}
+                    </span>
+                    <span className="text-moat-600/80">
+                      attributed to {c.attributed_parcel_apn}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
 export function CandidateReleasesPanel({
   lifecycleId,
   dot,
@@ -214,6 +349,14 @@ export function CandidateReleasesPanel({
         <div className="px-4 pb-3 text-xs text-indigo-900/80 leading-relaxed">
           {emptyMoatNote}
         </div>
+      )}
+      {emptyMoatNote && (
+        <CountyWideScanAffordance
+          dot={dot}
+          parcel={parcel}
+          lifecycleId={lifecycleId}
+          onOpenDocument={onOpenDocument}
+        />
       )}
       {rows.map((row) => (
         <CandidateRowView
