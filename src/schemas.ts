@@ -244,3 +244,12 @@ export const BIItemSchema = z.object({
   origin_anomaly_id: z.string().nullable(),
   origin_lifecycle_id: z.string().nullable(),
 });
+
+// -- Narrative overlay --
+
+export const NarrativeOverlayFile = z.object({
+  hero_override: z.string().nullable(),
+  callouts: z.record(z.string(), z.string()),
+  what_this_means: z.string().nullable(),
+  moat_note: z.string().nullable(),
+});
