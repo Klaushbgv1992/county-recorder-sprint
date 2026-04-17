@@ -1,0 +1,95 @@
+Parcel corpus (JSON):
+
+{
+  "parcel": {
+    "apn": "304-78-367",
+    "address": "3671 E Palmer St, Gilbert AZ",
+    "subdivision": "Seville Parcel 3",
+    "current_owner": "PHOENIX VACATION HOUSES LLC",
+    "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180"
+  },
+  "instruments": [
+    {
+      "recording_number": "20200620456",
+      "document_type": "quit_claim_deed",
+      "recording_date": "2020-07-13",
+      "grantors": [
+        "SCOTT J ANGUS"
+      ],
+      "grantees": [
+        "PHOENIX VACATION HOUSES LLC"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180"
+    },
+    {
+      "recording_number": "20200620457",
+      "document_type": "deed_of_trust",
+      "recording_date": "2020-07-13",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [
+        "SCOTT J ANGUS"
+      ],
+      "lenders": [
+        "UNITED WHOLESALE MORTGAGE LLC"
+      ],
+      "releasing_parties": [],
+      "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180"
+    },
+    {
+      "recording_number": "20220100001",
+      "document_type": "quit_claim_deed",
+      "recording_date": "2022-05-03",
+      "grantors": [
+        "PHOENIX VACATION HOUSES LLC"
+      ],
+      "grantees": [
+        "PHOENIX MEMBER TRUST"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180"
+    },
+    {
+      "recording_number": "20230100000",
+      "document_type": "hoa_lien",
+      "recording_date": "2023-01-03",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19"
+    }
+  ],
+  "lifecycles": [
+    {
+      "root_instrument": "20200620457",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "No release, substitution of trustee, or assignment of deed of trust located in the searched corpus for ANGUS 2020 United Wholesale Mortgage DOT. R-006 sub-hunt 2 ran against publicapi.recorder.maricopa.gov without a hit — the public API silently drops every search filter (name, documentCode, recordingDate) and returns the same 1947-seeded page regardless, so a release filed against PHOENIX VACATION HOUSES LLC outside this parcel's curated corpus cannot be located via the public API. See data/raw/R-006/hunt-log.md. The CandidateReleasesPanel renders its cross-parcel empty-state moat note on this lifecycle — a county-internal full-name scan would close this gap."
+    },
+    {
+      "root_instrument": "20230100000",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "Active HOA lien recorded by Seville Homeowners Association against Lot 45 (Phoenix Vacation Houses LLC) for delinquent assessments covering 2022-04-01 through 2022-12-31. No release, withdrawal, or payoff recorded in corpus. Demo-only synthesized instance — see 20230100000 source_note and data/raw/R-006/hunt-log.md for the failed recorded-lien hunt that this synthesis stands in for."
+    }
+  ],
+  "anomalies": [
+    {
+      "severity": "medium",
+      "title": "LLC-to-member Q/CL — evaluate title insurability window (PHOENIX)",
+      "evidence_instruments": [
+        "20220100001",
+        "20200620456"
+      ]
+    }
+  ]
+}
+
+Summarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.

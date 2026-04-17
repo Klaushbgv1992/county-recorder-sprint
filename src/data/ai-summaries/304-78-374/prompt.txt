@@ -1,0 +1,107 @@
+Parcel corpus (JSON):
+
+{
+  "parcel": {
+    "apn": "304-78-374",
+    "address": "6265 S Twilight Ct, Gilbert AZ",
+    "subdivision": "Seville Parcel 3",
+    "current_owner": "WARNER KAMA",
+    "legal_description": "Lot 52, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19 and Affidavit of Correction recorded in Document No. 2001-0849180"
+  },
+  "instruments": [
+    {
+      "recording_number": "20010093192",
+      "document_type": "other",
+      "recording_date": "2001-02-07",
+      "grantors": [
+        "SHEA HOMES LIMITED PARTNERSHIP"
+      ],
+      "grantees": [
+        "SEVILLE PARCEL 3 (subdivision of record)"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "SEVILLE PARCEL 3, being a subdivision of a portion of the South half of Section 23, Township 2 South, Range 6 East of the Gila and Salt River Base and Meridian, Maricopa County, Arizona; Lots 1-95 and Tracts A-H; 23.592 acres more or less"
+    },
+    {
+      "recording_number": "20130087108",
+      "document_type": "warranty_deed",
+      "recording_date": "2013-01-28",
+      "grantors": [
+        "NUFF SAID ENTERPRISES LLC"
+      ],
+      "grantees": [
+        "KAMA WARNER"
+      ],
+      "trustors": [],
+      "lenders": [],
+      "releasing_parties": [],
+      "legal_description": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19 and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona"
+    },
+    {
+      "recording_number": "20130087109",
+      "document_type": "deed_of_trust",
+      "recording_date": "2013-01-28",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [
+        "KAMA WARNER"
+      ],
+      "lenders": [
+        "ACADEMY MORTGAGE CORPORATION"
+      ],
+      "releasing_parties": [],
+      "legal_description": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona"
+    },
+    {
+      "recording_number": "20190100001",
+      "document_type": "heloc_dot",
+      "recording_date": "2019-02-14",
+      "grantors": [],
+      "grantees": [],
+      "trustors": [
+        "WARNER KAMA"
+      ],
+      "lenders": [
+        "DESERT SCHOOLS FEDERAL CREDIT UNION"
+      ],
+      "releasing_parties": [],
+      "legal_description": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona"
+    }
+  ],
+  "lifecycles": [
+    {
+      "root_instrument": "20010093192",
+      "child_instruments": [
+        "20010849180"
+      ],
+      "status": "released",
+      "rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat — it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record."
+    },
+    {
+      "root_instrument": "20130087109",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "No reconveyance found in corpus for WARNER FHA-insured DOT (Academy Mortgage Corporation, FHA Case #023-5190155-703, MIN 100060800022764581). Lot 52, Seville Parcel 3. Loan has been open since 2013-01-28; maturity date 2043-02-01. MERS is beneficiary as nominee for Academy Mortgage."
+    },
+    {
+      "root_instrument": "20190100001",
+      "child_instruments": [],
+      "status": "open",
+      "rationale": "Demo-only synthetic junior HELOC DOT (Desert Schools Federal Credit Union, $45,000) recorded 2019-02-14 on WARNER parcel 304-78-374 (Lot 52, Seville Parcel 3). No release or payoff recorded in corpus. Sits junior to the open 2013 FHA-insured senior DOT (20130087109, Academy Mortgage Corporation, $270,146) — two overlapping open lifecycles on one parcel. Both must be addressed at closing. See an-007 (Junior-lien priority interpretation)."
+    }
+  ],
+  "anomalies": [
+    {
+      "severity": "high",
+      "title": "Junior-lien priority interpretation (WARNER)",
+      "evidence_instruments": [
+        "20190100001",
+        "20130087109"
+      ]
+    }
+  ]
+}
+
+Summarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.
