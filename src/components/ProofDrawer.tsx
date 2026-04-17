@@ -16,6 +16,17 @@ import { Term, TermSection } from "../terminology/Term";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
+function instrumentHasSyntheticField(instrument: Instrument): boolean {
+  if (instrument.legal_description?.provenance === "demo_synthetic") return true;
+  for (const p of instrument.parties) {
+    if (p.provenance === "demo_synthetic") return true;
+  }
+  for (const f of Object.values(instrument.extracted_fields)) {
+    if (f.provenance === "demo_synthetic") return true;
+  }
+  return false;
+}
+
 export interface CorpusProvenance {
   public_api: number;
   ocr: number;
@@ -173,6 +184,12 @@ export function ProofDrawer({
 
           {/* Right: Extracted Fields */}
           <div className="w-1/2 overflow-auto p-6">
+            {instrumentHasSyntheticField(instrument) && (
+              <div className="mb-4 rounded border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900">
+                <strong>Demo-only synthesized record.</strong> Not a real recorded instrument.
+                See <code>source_note</code> field for the R-006 sub-hunt that failed to locate a real instance.
+              </div>
+            )}
             <TermSection id="proof-extracted-fields">
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
               Extracted Fields
