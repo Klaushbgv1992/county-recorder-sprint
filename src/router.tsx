@@ -28,6 +28,7 @@ import { StoryPage } from "./components/story/StoryPage";
 import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
+import { loadAllLifecycles, loadAllInstruments } from "./data-loader";
 import { useExaminerActions } from "./hooks/useExaminerActions";
 import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "./components/EmptyStates";
@@ -243,6 +244,9 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
   const examiner = useExaminerActions(data.links, apn);
   const navigate = useNavigate();
   const findings = useMemo(() => detectAnomalies(apn), [apn]);
+  const allParcels = useAllParcels();
+  const allLifecycles = useMemo(() => loadAllLifecycles(), []);
+  const allInstruments = useMemo(() => loadAllInstruments(), []);
 
   useDocumentMeta({
     title: `Encumbrance lifecycle — ${data.parcel.address}, ${data.parcel.city} ${data.parcel.state} (APN ${data.parcel.apn}) — Maricopa County Recorder`,
@@ -319,6 +323,9 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
               onSetLifecycleOverride={examiner.setLifecycleOverride}
               onOpenDocument={openDrawer}
               viewedInstrumentNumber={drawerInstrument ?? undefined}
+              allParcels={allParcels}
+              allLifecycles={allLifecycles}
+              allInstruments={allInstruments}
             />
           </div>
           <SpatialContextPanel apn={apn} />

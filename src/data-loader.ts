@@ -131,3 +131,7 @@ export function loadParcelDataByApn(apn: string): ParcelData {
 export function loadParcelData(): ParcelData {
   return loadParcelDataByApn(DEFAULT_APN);
 }
+
+export function loadAllLifecycles(): EncumbranceLifecycle[] {
+  return LifecyclesFile.parse(lifecyclesRaw).lifecycles;
+}
