@@ -26,6 +26,7 @@ function renderWithRouter() {
             }
           />
           <Route path="/parcel/:apn" element={<LocationProbe />} />
+          <Route path="/parcel/:apn/story" element={<LocationProbe />} />
           <Route
             path="/parcel/:apn/encumbrances"
             element={<LocationProbe />}
@@ -58,7 +59,7 @@ describe("PersonaRow", () => {
     const user = userEvent.setup();
     renderWithRouter();
     await user.click(screen.getByRole("button", { name: /homeowners/i }));
-    expect(screen.getByTestId("loc")).toHaveTextContent("/parcel/304-78-386");
+    expect(screen.getByTestId("loc")).toHaveTextContent("/parcel/304-78-386/story");
     expect(localStorage.getItem("terminology-mode")).toBe("plain");
   });
 
