@@ -77,11 +77,11 @@ export function MapLegend() {
   }, []);
 
   // Pinned bottom-left to avoid colliding with OverlayToggles (top-right,
-  // z-10) and MapSearchBar (top-center, z-10) introduced by the
-  // landing-map feature. The top-left corner of the map is occupied by
-  // "Show full county" / "Show counter-example" CountyMap controls, and
-  // the bottom-right carries the MapLibre attribution line — so
-  // bottom-left is the only remaining quiet corner.
+  // z-10) introduced by the landing-map feature. The top-left corner of
+  // the map is occupied by "Show full county" / "Show counter-example"
+  // CountyMap controls, and the bottom-right carries the MapLibre
+  // attribution line — so bottom-left is the only remaining quiet corner.
+  // The hero search bar above the map does not collide with this placement.
   if (mobile && !expanded) {
     return (
       <button
