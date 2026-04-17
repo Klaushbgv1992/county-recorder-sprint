@@ -1,13 +1,15 @@
 import { Link } from "react-router";
 import pipelineState from "../data/pipeline-state.json";
-import anomalies from "../data/staff-anomalies.json";
+import anomaliesRaw from "../data/staff-anomalies.json";
 import {
   currentFreshness,
   type PipelineState,
 } from "../logic/pipeline-selectors";
 import { StaffPageFrame } from "./StaffPageFrame";
+import { StaffAnomalyFileSchema } from "../schemas";
 
 const state = pipelineState as unknown as PipelineState;
+const anomalies = StaffAnomalyFileSchema.parse(anomaliesRaw);
 
 interface CardProps {
   label: string;

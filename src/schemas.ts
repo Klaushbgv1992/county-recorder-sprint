@@ -77,6 +77,10 @@ export const RawApiResponse = z.object({
   affidavitPresent: z.boolean(),
   affidavitPageAmount: z.number(),
   restricted: z.boolean(),
+  // Synthetic-instrument fields: present only on demo-only instruments
+  // whose recording numbers are in the reserved YYYY010000N block.
+  synthesized: z.boolean().optional(),
+  synthesized_note: z.string().optional(),
 });
 
 // -- Instrument --
@@ -257,3 +261,30 @@ export const NarrativeOverlayFile = z.object({
   what_this_means: z.string().nullable(),
   moat_note: z.string().nullable(),
 });
+
+// -- Staff Anomaly (discriminated union: engine vs override) --
+
+const AnomalyBaseSchema = z.object({
+  id: z.string(),
+  parcel_apn: z.string(),
+  severity: z.enum(["high", "medium", "low"]),
+  title: z.string(),
+  description: z.string(),
+});
+
+const EngineAnomalySchema = AnomalyBaseSchema.extend({
+  references: z.array(z.string()).min(1),
+  pattern_id: z.string(),
+}).strict();
+
+const OverrideAnomalySchema = AnomalyBaseSchema.extend({
+  references: z.array(z.string()).length(0),
+  plain_english: z.string(),
+}).strict();
+
+export const StaffAnomalySchema = z.union([
+  EngineAnomalySchema,
+  OverrideAnomalySchema,
+]);
+
+export const StaffAnomalyFileSchema = z.array(StaffAnomalySchema);

@@ -4,41 +4,80 @@
     "parcel_apn": "304-78-386",
     "severity": "high",
     "title": "Instrument 20210075858 beneficiary mismatch",
-    "description": "Release executed by Wells Fargo via CAS Nationwide, but 2013 DOT beneficiary is MERS as nominee for VIP Mortgage. No recorded assignment bridges the gap — curator sign-off required before publishing as a clean lifecycle pair."
+    "description": "Release executed by Wells Fargo via CAS Nationwide, but 2013 DOT beneficiary is MERS as nominee for VIP Mortgage. No recorded assignment bridges the gap — curator sign-off required before publishing as a clean lifecycle pair.",
+    "references": ["20210075858", "20130183450"],
+    "pattern_id": "mers-beneficiary-gap"
   },
   {
     "id": "an-002",
     "parcel_apn": "304-77-689",
     "severity": "high",
     "title": "HOGUE lc-003 release candidate not yet located",
-    "description": "2015 DOT (20150516730) has no matched release in the parcel-local corpus. Cross-parcel release hunt is available as a staff-only escalation path before flagging for title plant comparison."
+    "description": "2015 DOT (20150516730) has no matched release in the parcel-local corpus. Cross-parcel release hunt is available as a staff-only escalation path before flagging for title plant comparison.",
+    "references": [],
+    "plain_english": "The 2015 deed of trust on this parcel [20150516730] has no matching release on its own chain. The parcel-local search is exhaustive — a true missing release would show here. Before flagging this against a title plant, staff can run a county-wide name-scoped release hunt; the public API cannot perform that query, so it is a county-only workflow."
   },
   {
     "id": "an-003",
     "parcel_apn": "304-78-386",
     "severity": "medium",
     "title": "Same-name contamination: POPHAM C on 999-99-00x lots",
-    "description": "Name-index search for POPHAM CHRISTOPHER returns 9 instruments outside the curated parcel. Phase 3 curation suppressed these from the public chain-of-title but they remain visible in the staff workbench for investigation."
+    "description": "Name-index search for POPHAM CHRISTOPHER returns 9 instruments outside the curated parcel. Phase 3 curation suppressed these from the public chain-of-title but they remain visible in the staff workbench for investigation.",
+    "references": [],
+    "plain_english": "A simple name search for POPHAM CHRISTOPHER returns nine instruments on other parcels this person owns. None of them belong to this chain. The curated chain shows only instruments attributable to 304-78-386 — a parcel-keyed index that a name-based title plant cannot provide."
   },
   {
     "id": "an-004",
     "parcel_apn": "304-77-689",
     "severity": "medium",
     "title": "HOGUE same-name candidates (3 instruments)",
-    "description": "Three instruments on unrelated parcels (301-12-001, 402-55-033, 510-88-021) include HOGUE JASON or HOGUE MICHELE but are not on 304-77-689's chain. Suppressed from public view; curator should confirm they stay suppressed."
+    "description": "Three instruments on unrelated parcels (301-12-001, 402-55-033, 510-88-021) include HOGUE JASON or HOGUE MICHELE but are not on 304-77-689's chain. Suppressed from public view; curator should confirm they stay suppressed.",
+    "references": [],
+    "plain_english": "Three unrelated instruments share the HOGUE name. They are suppressed from the chain because no independent evidence attributes them to this parcel. Name-based title plants cannot safely perform this suppression."
   },
   {
     "id": "an-005",
     "parcel_apn": "304-78-386",
     "severity": "low",
     "title": "Trust name truncation recovered via OCR (20130183449)",
-    "description": "Public API returned THE BRIAN J. AND TANYA R. MADISON LIVIN (53-char truncation). OCR recovered full name plus trust execution date. Provenance tag is OCR — curator should spot-check the recovered value before publishing."
+    "description": "Public API returned THE BRIAN J. AND TANYA R. MADISON LIVIN (53-char truncation). OCR recovered full name plus trust execution date. Provenance tag is OCR — curator should spot-check the recovered value before publishing.",
+    "references": ["20130183449"],
+    "pattern_id": "ocr-trust-recovery"
   },
   {
     "id": "an-006",
     "parcel_apn": "304-78-386",
     "severity": "low",
     "title": "lc-004 plat cross-reference to Book 553 Page 15 unresolved",
-    "description": "Seville Parcel 3 final plat (20010093192) resubdivides Book 553 Page 15 (Seville Tract H), but the master plat's recording number is not locatable via the public API. Hunt log promoted to demo asset; no further curator action required."
+    "description": "Seville Parcel 3 final plat (20010093192) resubdivides Book 553 Page 15 (Seville Tract H), but the master plat's recording number is not locatable via the public API. Hunt log promoted to demo asset; no further curator action required.",
+    "references": [],
+    "plain_english": "The Seville Parcel 3 final plat [20010093192] resubdivides an earlier master plat at Book 553 Page 15, whose recording number is not locatable via the public API. The hunt log is preserved as evidence of the gap. No curator action remains."
+  },
+  {
+    "id": "an-007",
+    "parcel_apn": "304-78-374",
+    "severity": "high",
+    "title": "Junior-lien priority interpretation (WARNER)",
+    "description": "Synthetic 2019 DEED TRST (20190100001) appears in the curated corpus as a junior-lien example. Verify priority interpretation against the 2013 senior (20130087109): open senior + open junior = two overlapping lifecycles on one parcel, closing impact on both.",
+    "references": ["20190100001", "20130087109"],
+    "pattern_id": "junior-lien-priority"
+  },
+  {
+    "id": "an-008",
+    "parcel_apn": "304-78-383",
+    "severity": "medium",
+    "title": "Recorded assignment chain — Countrywide to Bank of America (LOWRY)",
+    "description": "Synthetic 2009 AOM (20090100001) assigns the 2007 Countrywide DOT (20070834755) to Bank of America. Note servicer history on this parcel: origination → recorded assignment → present beneficiary.",
+    "references": ["20090100001", "20070834755"],
+    "pattern_id": "recorded-assignment-chain"
+  },
+  {
+    "id": "an-009",
+    "parcel_apn": "304-78-367",
+    "severity": "medium",
+    "title": "LLC-to-member Q/CL — evaluate title insurability window (PHOENIX)",
+    "description": "Synthetic 2022 Q/CL DEED (20220100001) from PHOENIX VACATION HOUSES LLC to an individual member trust. Evaluate title insurability window: some underwriters treat LLC-to-member re-titlings within 24 months of a purchase as a cloud until the member's interest has seasoned.",
+    "references": ["20220100001", "20200620456"],
+    "pattern_id": "llc-to-member-retitle"
   }
 ]

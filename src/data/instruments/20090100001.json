@@ -1,0 +1,69 @@
+{
+  "instrument_number": "20090100001",
+  "recording_date": "2009-08-21",
+  "document_type": "assignment_of_dot",
+  "document_type_raw": "ASSIGN DT",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "COUNTRYWIDE HOME LOANS INC",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "BANK OF AMERICA NA",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 61, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Instrument No. 01-849180, and in Instrument No. 01-984501, records of Maricopa County, Arizona",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "assigned_dot_instrument": {
+      "value": "20070834755",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only instrument illustrating recorded assignment chain on LOWRY parcel 304-78-383. Countrywide Home Loans, Inc. was acquired by Bank of America in July 2008; assignments of MERS-nominee DOTs to Bank of America Home Loans were recorded in bulk through 2009-2010. The assigned DOT (20070834755) originated in 2007 as a LIBOR One-Year Interest-Only ARM via Countrywide's wholesale channel (America's Wholesale Lender dba). Recording number 20090100001 does not resolve against publicapi.recorder.maricopa.gov — this specific assignment was not individually located in the public corpus.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20070834755"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "BANK OF AMERICA NA",
+      "COUNTRYWIDE HOME LOANS INC"
+    ],
+    "documentCodes": [
+      "ASSIGN DT"
+    ],
+    "recordingDate": "8-21-2009",
+    "recordingNumber": "20090100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument illustrating recorded assignment chain on LOWRY parcel 304-78-383; Countrywide→Bank of America reflects the real 2008-2009 consolidation pattern but this specific assignment was not recorded or located in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

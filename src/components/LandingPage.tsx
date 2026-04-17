@@ -15,14 +15,13 @@ import { buildSearchableIndex } from "../logic/searchable-index";
 import { AssessorParcel } from "../logic/assessor-parcel";
 import { resolveDrawerVariant } from "../logic/drawer-variant";
 import { SEED_COUNT } from "../data/gilbert-seed-count";
-import { LifecyclesFile } from "../schemas";
+import { LifecyclesFile, StaffAnomalyFileSchema } from "../schemas";
 import { loadAllInstruments, loadAllParcels } from "../data-loader";
 import lifecyclesRaw from "../data/lifecycles.json";
 import anomaliesRaw_ from "../data/staff-anomalies.json";
 import type { CacheEntry } from "../data/load-cached-neighbors";
 
-type AnomalyItem = { id: string; parcel_apn: string; severity: "high" | "medium" | "low"; title: string; description: string };
-const anomaliesRaw = anomaliesRaw_ as AnomalyItem[];
+const anomaliesRaw = StaffAnomalyFileSchema.parse(anomaliesRaw_);
 
 const HIGHLIGHTED: HighlightedParcel[] = [
   { apn: "304-78-386", status: "primary", label: "POPHAM" },
@@ -147,6 +146,9 @@ export function LandingPage() {
     if (!overlays.has("anomaly")) setAnomalyPanelOpen(false);
   }, [overlays]);
 
+  // All curated instruments (used by AnomalySummaryPanel for citation rendering)
+  const allInstruments = useMemo(() => loadAllInstruments(), []);
+
   // Instrument → APN map (for encumbrance overlay layer)
   // We derive this by cross-referencing each parcel's instrument_numbers list.
   const instrumentToApn = useMemo(() => {
@@ -158,14 +160,14 @@ export function LandingPage() {
       }
     }
     // Also pick up any instruments loaded directly (belt-and-suspenders)
-    for (const inst of loadAllInstruments()) {
+    for (const inst of allInstruments) {
       if (!m.has(inst.instrument_number)) {
         // Use the first parcel that owns this instrument (already mapped above)
         // If not found via parcels, skip — no parcel_apn on Instrument type.
       }
     }
     return m;
-  }, []);
+  }, [allInstruments]);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
@@ -215,8 +217,10 @@ export function LandingPage() {
         />
         <AnomalySummaryPanel
           anomalies={anomaliesRaw}
+          instruments={allInstruments}
           open={anomalyPanelOpen && overlays.has("anomaly")}
           onClose={() => setAnomalyPanelOpen(false)}
+          onOpenDocument={(n) => navigate(`/instrument/${n}`)}
         />
         {selectedApn && variant && (
           <ParcelDrawer
