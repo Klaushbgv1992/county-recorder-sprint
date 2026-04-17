@@ -35,7 +35,7 @@ const CACHE_BY_APN: Record<string, CachedNeighborFile> = {
 
 function normalizeDate(mmDdYyyy: string): string {
   const [m, d, y] = mmDdYyyy.split("-");
-  return `${y}-${m}-${d}`;
+  return `${y}-${m.padStart(2, "0")}-${d.padStart(2, "0")}`;
 }
 
 function documentTypeFromCode(codes: string[]): Instrument["document_type"] {
