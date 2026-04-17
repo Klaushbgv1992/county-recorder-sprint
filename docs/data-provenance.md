@@ -163,3 +163,20 @@ Attribution: "Maricopa County Assessor" is supplied on every surface that
 renders a field from this feed. The Maricopa Recorder's public API
 (`publicapi.recorder.maricopa.gov`) has been used for research; every
 response we cache is stamped with `source_url` and `captured_date`.
+
+---
+
+## Synthetic instrument number reservation
+
+Demo-synthetic instruments use recording numbers in the reserved block `YYYY010000N`:
+
+- Year prefix preserved (matches the real Maricopa recording-number format).
+- `010000N` sequence is a deliberate round-number tell so a reader who recognizes the block knows the instrument is synthetic on sight.
+- All synthetic instruments also carry `provenance: "demo_synthetic"` on every extracted field and `raw_api_response.synthesized: true` at the instrument root.
+
+Current reservations:
+
+- `20230100000` — PHOENIX ASSOC LIEN (commit `f0c372b`, `d026198`)
+- `20190100001` — WARNER junior-lien (an-007, lc-009)
+- `20090100001` — LOWRY recorded AOM (an-008)
+- `20220100001` — PHOENIX LLC-to-member Q/CL (an-009)

@@ -77,6 +77,10 @@ export const RawApiResponse = z.object({
   affidavitPresent: z.boolean(),
   affidavitPageAmount: z.number(),
   restricted: z.boolean(),
+  // Synthetic-instrument fields: present only on demo-only instruments
+  // whose recording numbers are in the reserved YYYY010000N block.
+  synthesized: z.boolean().optional(),
+  synthesized_note: z.string().optional(),
 });
 
 // -- Instrument --
