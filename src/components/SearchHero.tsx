@@ -53,7 +53,7 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
   const showDropdown = open && value.length > 0 && hits.length > 0;
 
   return (
-    <section className="bg-white border-b border-slate-200 px-6 py-8">
+    <section aria-label="Parcel search" className="bg-white border-b border-slate-200 px-6 py-8">
       <div className="max-w-3xl mx-auto relative">
         <input
           type="search"

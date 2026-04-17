@@ -43,6 +43,22 @@ describe("SearchHero", () => {
     ).toBeInTheDocument();
   });
 
+  it("exposes a Parcel search landmark for screen readers", () => {
+    render(
+      <MemoryRouter>
+        <SearchHero
+          value=""
+          onChange={() => {}}
+          searchables={[]}
+          onSelectCurated={() => {}}
+          onSelectDrawer={() => {}}
+          onSelectInstrument={() => {}}
+        />
+      </MemoryRouter>,
+    );
+    expect(screen.getByRole("region", { name: "Parcel search" })).toBeInTheDocument();
+  });
+
   it("shows entity-type pill and tier pill on each result", () => {
     render(
       <MemoryRouter>

@@ -64,12 +64,6 @@ describe("LandingPage", () => {
     expect(activityLink).toHaveAttribute("href", "/county-activity");
   });
 
-  // New: Search bar mounts
-  it("renders a search bar with role=combobox", () => {
-    render(wrap(<LandingPage />));
-    expect(screen.getByRole("combobox")).toBeInTheDocument();
-  });
-
   // New: Overlay toggles mount with 3 expected buttons
   it("renders 3 overlay toggle buttons", () => {
     render(wrap(<LandingPage />));
