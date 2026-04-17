@@ -29,7 +29,7 @@ function partialParcelOrNull(apn: string): CuratedSlice | null {
     subdivision: "Seville Parcel 3",
     assessor_url: `https://mcassessor.maricopa.gov/mcs/?q=${apn.replace(/-/g, "")}&mod=pd`,
     instrument_numbers: instruments.map((i) => i.instrument_number),
-  } as never;
+  };
   return { parcel, instruments };
 }
 
