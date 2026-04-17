@@ -54,5 +54,12 @@
     "severity": "medium",
     "title": "Recorded assignment chain — Countrywide to Bank of America (LOWRY)",
     "description": "Synthetic 2009 AOM (20090100001) assigns the 2007 Countrywide DOT (20070834755) to Bank of America. Note servicer history on this parcel: origination → recorded assignment → present beneficiary."
+  },
+  {
+    "id": "an-009",
+    "parcel_apn": "304-78-367",
+    "severity": "medium",
+    "title": "LLC-to-member Q/CL — evaluate title insurability window (PHOENIX)",
+    "description": "Synthetic 2022 Q/CL DEED (20220100001) from PHOENIX VACATION HOUSES LLC to an individual member trust. Evaluate title insurability window: some underwriters treat LLC-to-member re-titlings within 24 months of a purchase as a cloud until the member's interest has seasoned."
   }
 ]

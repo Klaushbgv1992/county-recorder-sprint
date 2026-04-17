@@ -1,0 +1,64 @@
+{
+  "instrument_number": "20220100001",
+  "recording_date": "2022-05-03",
+  "document_type": "quit_claim_deed",
+  "document_type_raw": "Q/CL DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "PHOENIX VACATION HOUSES LLC",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "PHOENIX MEMBER TRUST",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument illustrating entity-to-member re-titling pathology on PHOENIX VACATION HOUSES LLC parcel 304-78-367 (Lot 45, Seville Parcel 3). LLC-to-member Q/CL recorded approximately 22 months after the 2020 purchase (20200620456); some underwriters treat this re-titling pattern as a cloud until the member's interest has seasoned past 24 months. Recording number 20220100001 does not resolve against publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20200620456"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "PHOENIX MEMBER TRUST",
+      "PHOENIX VACATION HOUSES LLC"
+    ],
+    "documentCodes": [
+      "Q/CL DEED"
+    ],
+    "recordingDate": "5-3-2022",
+    "recordingNumber": "20220100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument illustrating entity-to-member re-titling pathology on PHOENIX VACATION HOUSES LLC parcel 304-78-367; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

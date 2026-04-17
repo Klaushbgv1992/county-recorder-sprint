@@ -32,6 +32,7 @@ import inst20200620457 from "./data/instruments/20200620457.json";
 import inst20230100000 from "./data/instruments/20230100000.json";
 import inst20190100001 from "./data/instruments/20190100001.json";
 import inst20090100001 from "./data/instruments/20090100001.json";
+import inst20220100001 from "./data/instruments/20220100001.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -54,6 +55,7 @@ const instrumentsRaw = [
   inst20230100000,
   inst20190100001,
   inst20090100001,
+  inst20220100001,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.
