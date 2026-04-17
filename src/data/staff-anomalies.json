@@ -47,5 +47,12 @@
     "severity": "high",
     "title": "Junior-lien priority interpretation (WARNER)",
     "description": "Synthetic 2019 DEED TRST (20190100001) appears in the curated corpus as a junior-lien example. Verify priority interpretation against the 2013 senior (20130087109): open senior + open junior = two overlapping lifecycles on one parcel, closing impact on both."
+  },
+  {
+    "id": "an-008",
+    "parcel_apn": "304-78-383",
+    "severity": "medium",
+    "title": "Recorded assignment chain — Countrywide to Bank of America (LOWRY)",
+    "description": "Synthetic 2009 AOM (20090100001) assigns the 2007 Countrywide DOT (20070834755) to Bank of America. Note servicer history on this parcel: origination → recorded assignment → present beneficiary."
   }
 ]
