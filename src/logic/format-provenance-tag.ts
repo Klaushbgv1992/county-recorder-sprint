@@ -13,6 +13,8 @@ export function formatProvenanceTag(
       return `(ocr, ${confidence.toFixed(2)})`;
     case "algorithmic":
       return `(algo, ${confidence.toFixed(2)})`;
+    case "demo_synthetic":
+      return "[demo-only]";
     default: {
       const _exhaustive: never = provenance;
       throw new Error(`Unknown ProvenanceKind: ${_exhaustive as string}`);

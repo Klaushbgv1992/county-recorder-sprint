@@ -7,6 +7,7 @@ export const ProvenanceKind = z.enum([
   "ocr",
   "manual_entry",
   "algorithmic",
+  "demo_synthetic",
 ]);
 
 export const FieldWithProvenance = z.object({
@@ -28,6 +29,8 @@ export const PartyRole = z.enum([
   "nominee",
   "releasing_party",
   "servicer",
+  "claimant",
+  "debtor",
 ]);
 
 export const Party = z.object({
@@ -56,6 +59,7 @@ export const DocumentType = z.enum([
   "modification",
   "heloc_dot",
   "ucc_termination",
+  "hoa_lien",
   "affidavit_of_disclosure",
   "other",
 ]);

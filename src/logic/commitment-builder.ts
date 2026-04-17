@@ -129,6 +129,7 @@ function humanizeDocType(t: DocumentType, raw?: string): string {
     modification: "Modification",
     heloc_dot: "HELOC Deed of Trust",
     ucc_termination: "UCC Termination",
+    hoa_lien: "HOA Lien",
     affidavit_of_disclosure: "Affidavit of Disclosure",
     other: "Other",
   };

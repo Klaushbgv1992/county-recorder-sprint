@@ -30,6 +30,7 @@ const TYPE_LABELS: Record<DocumentType, string> = {
   modification: "Modification",
   heloc_dot: "HELOC DOT",
   ucc_termination: "UCC Termination",
+  hoa_lien: "HOA Lien",
   affidavit_of_disclosure: "Affidavit of Disclosure",
   other: "Other",
 };

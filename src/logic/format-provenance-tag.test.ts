@@ -22,6 +22,10 @@ describe("formatProvenanceTag", () => {
     expect(formatProvenanceTag("algorithmic", 0.881)).toBe("(algo, 0.88)");
   });
 
+  it("formats demo_synthetic inline tag", () => {
+    expect(formatProvenanceTag("demo_synthetic", 1)).toBe("[demo-only]");
+  });
+
   it("rejects unknown provenance values via exhaustive check", () => {
     // @ts-expect-error — unknown value must not be accepted by the type
     expect(() => formatProvenanceTag("unknown_value", 0.5)).toThrow("Unknown ProvenanceKind");
