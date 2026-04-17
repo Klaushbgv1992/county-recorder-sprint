@@ -4,7 +4,7 @@ import type {
   Instrument,
   EncumbranceLifecycle,
 } from "../types";
-import type { AnomalyFinding } from "../types/anomaly";
+import type { StaffAnomaly } from "../schemas";
 import {
   getGrantors,
   getGrantees,
@@ -21,27 +21,27 @@ function makeClient(apiKey: string): Anthropic {
   return new Anthropic({ apiKey, dangerouslyAllowBrowser: true });
 }
 
-interface SummaryContext {
+export interface SummaryInput {
   parcel: Parcel;
   instruments: Instrument[];
   lifecycles: EncumbranceLifecycle[];
-  findings: AnomalyFinding[];
+  findings: StaffAnomaly[];
 }
 
 // Compact the corpus into a JSON shape that's small, grounded, and
 // unambiguous. Every factual field Claude might cite is present with a
 // recording_number for citation back — no invented parties, no date
 // drift.
-function buildContext(ctx: SummaryContext) {
+function buildContext(input: SummaryInput) {
   return {
     parcel: {
-      apn: ctx.parcel.apn,
-      address: `${ctx.parcel.address}, ${ctx.parcel.city} ${ctx.parcel.state}`,
-      subdivision: ctx.parcel.subdivision,
-      current_owner: ctx.parcel.current_owner,
-      legal_description: ctx.parcel.legal_description,
+      apn: input.parcel.apn,
+      address: `${input.parcel.address}, ${input.parcel.city} ${input.parcel.state}`,
+      subdivision: input.parcel.subdivision,
+      current_owner: input.parcel.current_owner,
+      legal_description: input.parcel.legal_description,
     },
-    instruments: ctx.instruments
+    instruments: input.instruments
       .slice()
       .sort(
         (a, b) =>
@@ -59,21 +59,21 @@ function buildContext(ctx: SummaryContext) {
         releasing_parties: getReleasingParties(i),
         legal_description: i.legal_description?.value?.slice(0, 300) ?? null,
       })),
-    lifecycles: ctx.lifecycles.map((lc) => ({
+    lifecycles: input.lifecycles.map((lc) => ({
       root_instrument: lc.root_instrument,
       child_instruments: lc.child_instruments,
       status: lc.status,
       rationale: lc.status_rationale,
     })),
-    anomalies: ctx.findings.map((f) => ({
+    anomalies: input.findings.map((f) => ({
       severity: f.severity,
       title: f.title,
-      evidence_instruments: f.evidence_instruments,
+      evidence_instruments: f.references,
     })),
   };
 }
 
-const SYSTEM_PROMPT = `You are a title examiner explaining a residential property's chain of title to the homeowner in plain English.
+export const SYSTEM_PROMPT: string = `You are a title examiner explaining a residential property's chain of title to the homeowner in plain English.
 
 Rules (non-negotiable):
 1. Use ONLY facts present in the supplied JSON. Never invent parties, dates, loan amounts, or document types.
@@ -84,6 +84,11 @@ Rules (non-negotiable):
 6. If the chain has gaps (e.g. owner before the first recorded deed is not in the data), say so — do not guess.
 7. No disclaimers, no "I'm an AI", no restating the rules. Just the summary.`;
 
+export function buildUserMessage(input: SummaryInput): string {
+  const payload = buildContext(input);
+  return `Parcel corpus (JSON):\n\n${JSON.stringify(payload, null, 2)}\n\nSummarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.`;
+}
+
 export interface SummaryCallbacks {
   onText: (delta: string) => void;
   onDone: (fullText: string) => void;
@@ -93,11 +98,11 @@ export interface SummaryCallbacks {
 
 export async function streamChainSummary(
   apiKey: string,
-  ctx: SummaryContext,
+  input: SummaryInput,
   cb: SummaryCallbacks,
 ): Promise<void> {
   const client = makeClient(apiKey);
-  const payload = buildContext(ctx);
+  const userMessage = buildUserMessage(input);
 
   try {
     const stream = client.messages.stream(
@@ -114,7 +119,7 @@ export async function streamChainSummary(
         messages: [
           {
             role: "user",
-            content: `Parcel corpus (JSON):\n\n${JSON.stringify(payload, null, 2)}\n\nSummarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.`,
+            content: userMessage,
           },
         ],
       },

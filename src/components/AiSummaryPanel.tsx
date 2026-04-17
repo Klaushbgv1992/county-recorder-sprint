@@ -4,7 +4,7 @@ import type {
   Instrument,
   EncumbranceLifecycle,
 } from "../types";
-import type { AnomalyFinding } from "../types/anomaly";
+import type { StaffAnomaly } from "../schemas";
 import { useAnthropicKey } from "../hooks/useAnthropicKey";
 import { streamChainSummary } from "../lib/claude-summary";
 import { renderWithCitations } from "../narrative/render-citations";
@@ -13,7 +13,7 @@ interface Props {
   parcel: Parcel;
   instruments: Instrument[];
   lifecycles: EncumbranceLifecycle[];
-  findings: AnomalyFinding[];
+  findings: StaffAnomaly[];
   onOpenDocument: (instrumentNumber: string) => void;
 }
 
