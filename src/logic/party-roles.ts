@@ -67,3 +67,11 @@ export function getPartiesByRole(
 ): Party[] {
   return instrument.parties.filter((p) => p.role === role);
 }
+
+export function getClaimants(instrument: Instrument): string[] {
+  return namesByRole(instrument.parties, "claimant");
+}
+
+export function getDebtors(instrument: Instrument): string[] {
+  return namesByRole(instrument.parties, "debtor");
+}

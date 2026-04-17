@@ -303,6 +303,7 @@ function docTypeLabel(t: Instrument["document_type"]): string {
     modification: "Modification",
     heloc_dot: "HELOC Deed of Trust",
     ucc_termination: "UCC Termination",
+    hoa_lien: "HOA Lien",
     affidavit_of_disclosure: "Affidavit of Disclosure",
     other: "document",
   };

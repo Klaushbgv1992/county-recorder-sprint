@@ -12,6 +12,8 @@ import { MoatBanner } from "./MoatBanner";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
 import { SwimlaneDiagram } from "./swimlane";
 import { Term, TermSection } from "../terminology/Term";
+import { getOpenLiensInSubdivision } from "../logic/subdivision-signals";
+import { SubdivisionSignalsCard } from "./SubdivisionSignalsCard";
 
 interface Props {
   parcel: Parcel;
@@ -26,6 +28,9 @@ interface Props {
   onSetLifecycleOverride: (lifecycleId: string, status: LifecycleStatus) => void;
   onOpenDocument: (instrumentNumber: string) => void;
   viewedInstrumentNumber?: string;
+  allParcels?: Parcel[];
+  allLifecycles?: LifecycleType[];
+  allInstruments?: Instrument[];
 }
 
 export function EncumbranceLifecycle({
@@ -41,7 +46,21 @@ export function EncumbranceLifecycle({
   onSetLifecycleOverride,
   onOpenDocument,
   viewedInstrumentNumber,
+  allParcels,
+  allLifecycles,
+  allInstruments,
 }: Props) {
+  const signals =
+    allParcels && allLifecycles && allInstruments
+      ? getOpenLiensInSubdivision(
+          parcel.subdivision,
+          parcel.apn,
+          allParcels,
+          allLifecycles,
+          allInstruments,
+        )
+      : [];
+
   return (
     <div>
       <TermSection id="encumbrance-heading">
@@ -67,6 +86,7 @@ export function EncumbranceLifecycle({
         </div>
         <MoatBanner pipelineStatus={pipelineStatus} />
       </TermSection>
+      <SubdivisionSignalsCard signals={signals} subdivision={parcel.subdivision} />
       <SwimlaneDiagram
         parcel={parcel}
         instruments={instruments}

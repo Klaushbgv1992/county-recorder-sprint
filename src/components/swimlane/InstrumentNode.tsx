@@ -15,6 +15,7 @@ const SHORT_LABEL: Record<DocumentType, string> = {
   partial_reconveyance: "Release",
   modification: "Mod.",
   ucc_termination: "UCC-3",
+  hoa_lien: "Lien",
   affidavit_of_disclosure: "Affid.",
   other: "Doc",
 };

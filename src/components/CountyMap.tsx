@@ -32,7 +32,7 @@ export interface CountyMapProps {
   cachedApns?: Set<string>;
   overlays?: Set<OverlayName>;
   onAssessorParcelClick?: (apn: string) => void;
-  lifecycles?: Array<{ id: string; root_instrument: string; status: string }>;
+  lifecycles?: Array<{ id: string; root_instrument: string; status: string; examiner_override?: string | null }>;
   anomalies?: Array<{ parcel_apn: string; severity: "high" | "medium" | "low" }>;
   instrumentToApn?: Map<string, string>;
   // When true, the map starts zoomed out and auto-flies into POPHAM with a
@@ -94,6 +94,7 @@ const STATUS_FILL_OPACITY: Record<HighlightedParcel["status"], number> = {
 const PARCELS = loadAllParcels();
 const INSTRUMENTS = loadAllInstruments();
 const LIFECYCLES = LifecyclesFile.parse(lifecyclesRaw).lifecycles;
+const INSTRUMENT_BY_NUMBER = new Map(INSTRUMENTS.map((i) => [i.instrument_number, i]));
 
 function useViewport(): { isMobile: boolean } {
   const [isMobile, setIsMobile] = useState(() =>
@@ -176,6 +177,22 @@ export function CountyMap({
     }
     return m;
   }, []);
+
+  // Enrich lifecycles with root_document_type for the dual-color overlay.
+  // "hoa_lien" instruments paint amber; everything else stays blue.
+  const lifecyclesForOverlay = useMemo(() => {
+    const source = lifecycles ?? LIFECYCLES;
+    return source.map((lc) => ({
+      id: lc.id,
+      root_instrument: lc.root_instrument,
+      status: lc.status,
+      root_document_type: (
+        INSTRUMENT_BY_NUMBER.get(lc.root_instrument)?.document_type === "hoa_lien"
+          ? "hoa_lien"
+          : "other"
+      ) as "hoa_lien" | "other",
+    }));
+  }, [lifecycles]);
 
   const interactiveLayerIds = useMemo(() => {
     const ids: string[] = [];
@@ -377,7 +394,7 @@ export function CountyMap({
         {/* Overlay layers — render on top, never in interactiveLayerIds */}
         <EncumbranceOverlayLayer
           active={overlays.has("encumbrance")}
-          lifecycles={lifecycles ?? LIFECYCLES}
+          lifecycles={lifecyclesForOverlay}
           instrumentToApn={instrumentToApn ?? new Map()}
           parcelsGeo={assessorPolygons}
         />

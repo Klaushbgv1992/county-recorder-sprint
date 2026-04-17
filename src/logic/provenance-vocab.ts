@@ -12,6 +12,8 @@ export function provenanceLabel(p: ProvenanceKind): string {
       return "Curator";
     case "algorithmic":
       return "Inferred";
+    case "demo_synthetic":
+      return "Demo-only";
     default: {
       const _: never = p;
       throw new Error(`Unknown ProvenanceKind: ${_ as string}`);

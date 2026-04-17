@@ -1,0 +1,49 @@
+{
+  "instrument_number": "20200620456",
+  "recording_date": "2020-07-13",
+  "document_type": "quit_claim_deed",
+  "document_type_raw": "Q/CL DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "SCOTT J ANGUS",
+      "role": "grantor",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    {
+      "name": "PHOENIX VACATION HOUSES LLC",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "manual_entry",
+    "confidence": 0.9
+  },
+  "extracted_fields": {},
+  "back_references": [],
+  "same_day_group": ["20200620457"],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["ANGUS SCOTT J", "PHOENIX VACATION HOUSES"],
+    "documentCodes": ["Q/CL DEED"],
+    "recordingDate": "7-13-2020",
+    "recordingNumber": "20200620456",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 6,
+    "ocr_count": 0,
+    "manual_entry_count": 3
+  }
+}

@@ -85,5 +85,22 @@
       "20070834753",
       "20070834755"
     ]
+  },
+  {
+    "apn": "304-78-367",
+    "address": "3671 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 45, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "current_owner": "PHOENIX VACATION HOUSES LLC",
+    "type": "residential",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478367&mod=pd",
+    "instrument_numbers": [
+      "20200620456",
+      "20200620457",
+      "20230100000"
+    ]
   }
 ]

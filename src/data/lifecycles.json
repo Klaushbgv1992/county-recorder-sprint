@@ -52,6 +52,22 @@
       "status": "open",
       "status_rationale": "No reconveyance, substitution of trustee, or subsequent refinance DOT found in corpus for LOWRY 2007 Countrywide Interest-Only ARM (MIN 1000157-0008292767-0). Lot 61, Seville Parcel 3. Pre-crash subprime-era loan; Countrywide was acquired by Bank of America in July 2008. Any downstream assignment, release, or refinance would typically be executed by Bank of America Home Loans or a securitization trust successor servicer. Phase 2 recording-number probes for a 2020–2021 refinance were not productive (API name search broken — see R-007 hunt log).",
       "examiner_override": null
+    },
+    {
+      "id": "lc-007",
+      "root_instrument": "20200620457",
+      "child_instruments": [],
+      "status": "open",
+      "status_rationale": "No release, substitution of trustee, or assignment of deed of trust located in the searched corpus for ANGUS 2020 United Wholesale Mortgage DOT. R-006 sub-hunt 2 ran against publicapi.recorder.maricopa.gov without a hit — the public API silently drops every search filter (name, documentCode, recordingDate) and returns the same 1947-seeded page regardless, so a release filed against PHOENIX VACATION HOUSES LLC outside this parcel's curated corpus cannot be located via the public API. See data/raw/R-006/hunt-log.md. The CandidateReleasesPanel renders its cross-parcel empty-state moat note on this lifecycle — a county-internal full-name scan would close this gap.",
+      "examiner_override": null
+    },
+    {
+      "id": "lc-008",
+      "root_instrument": "20230100000",
+      "child_instruments": [],
+      "status": "open",
+      "status_rationale": "Active HOA lien recorded by Seville Homeowners Association against Lot 45 (Phoenix Vacation Houses LLC) for delinquent assessments covering 2022-04-01 through 2022-12-31. No release, withdrawal, or payoff recorded in corpus. Demo-only synthesized instance — see 20230100000 source_note and data/raw/R-006/hunt-log.md for the failed recorded-lien hunt that this synthesis stands in for.",
+      "examiner_override": null
     }
   ]
 }

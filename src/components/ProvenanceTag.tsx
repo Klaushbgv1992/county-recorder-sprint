@@ -6,6 +6,7 @@ const PROVENANCE_COLORS: Record<ProvenanceKind, string> = {
   ocr: "bg-purple-100 text-purple-700",
   manual_entry: "bg-orange-100 text-orange-700",
   algorithmic: "bg-indigo-100 text-indigo-700",
+  demo_synthetic: "bg-yellow-100 text-yellow-700",
 };
 
 interface Props {
