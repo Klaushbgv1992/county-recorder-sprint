@@ -1,10 +1,12 @@
-import { useState } from "react";
-import { Link } from "react-router";
+import { useMemo, useState } from "react";
+import { Link, useNavigate } from "react-router";
 import anomaliesFixture from "../data/staff-anomalies.json";
 import { useAuditLog } from "../hooks/useAuditLog";
 import { AuditLogPanel } from "./AuditLogPanel";
 import { StaffPageFrame } from "./StaffPageFrame";
 import { StaffAnomalyFileSchema } from "../schemas";
+import { renderAnomalyProse } from "../narrative/engine";
+import { loadAllInstruments } from "../data-loader";
 import type { z } from "zod";
 import type { AnomalySeverity } from "../types/staff-anomaly";
 
@@ -30,6 +32,9 @@ export function CuratorQueue() {
   const all = StaffAnomalyFileSchema.parse(anomaliesFixture);
   const [dismissed, setDismissed] = useState<Set<string>>(new Set());
   const { rows, append } = useAuditLog();
+  const instruments = useMemo(() => loadAllInstruments(), []);
+  const navigate = useNavigate();
+  const onOpenDocument = (n: string) => void navigate(`/instrument/${n}`);
 
   const visible = all.filter((a) => !dismissed.has(a.id));
 
@@ -86,7 +91,15 @@ export function CuratorQueue() {
                   </button>
                 </div>
               </div>
-              <p className="text-sm text-gray-600 mt-2">{a.description}</p>
+              <div className="mt-2">
+                <div className="text-sm text-gray-700">
+                  {renderAnomalyProse(a, instruments, onOpenDocument)}
+                </div>
+                <details className="mt-1 text-xs text-slate-500">
+                  <summary className="cursor-pointer">Curator note</summary>
+                  <p className="mt-1">{a.description}</p>
+                </details>
+              </div>
             </li>
           ))}
         </ul>
