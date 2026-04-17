@@ -195,6 +195,8 @@ export function LandingPage() {
           lifecycles={LIFECYCLES}
           anomalies={anomaliesRaw}
           instrumentToApn={instrumentToApn}
+          showIntro={!selectedApn && !query && overlays.size === 0}
+          onIntroClick={() => setSelectedApn("304-78-386")}
         />
         <MapSearchBar
           value={query}

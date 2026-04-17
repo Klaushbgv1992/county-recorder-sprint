@@ -16,6 +16,7 @@ import type { OverlayName } from "../logic/overlay-state";
 import { EncumbranceOverlayLayer } from "./map/EncumbranceOverlayLayer";
 import { AnomalyOverlayLayer } from "./map/AnomalyOverlayLayer";
 import { LastDeedOverlayLayer } from "./map/LastDeedOverlayLayer";
+import { DemoIntro } from "./DemoIntro";
 
 export interface HighlightedParcel {
   apn: string;
@@ -34,6 +35,13 @@ export interface CountyMapProps {
   lifecycles?: Array<{ id: string; root_instrument: string; status: string }>;
   anomalies?: Array<{ parcel_apn: string; severity: "high" | "medium" | "low" }>;
   instrumentToApn?: Map<string, string>;
+  // When true, the map starts zoomed out and auto-flies into POPHAM with a
+  // pulsing callout. Parent decides this based on URL state — a deep link
+  // with ?apn/?q/?overlay set suppresses the intro on that visit.
+  showIntro?: boolean;
+  // Invoked when the intro callout is clicked. Parent wires this to open the
+  // POPHAM parcel drawer.
+  onIntroClick?: () => void;
 }
 
 // Derived from midpoint of POPHAM (304-78-386) ↔ HOA tract (304-78-409) centroids.
@@ -46,6 +54,17 @@ const LANDING_MAP_CENTER = computeLandingMapCenter(
   parcelsGeo as GeoJSON.FeatureCollection,
 );
 const LANDING_MAP_ZOOM = 16;
+
+// Zoomed-out frame used as the *starting* viewport when the demo intro is
+// active. Picked so Gilbert street grid is visible — the fly-in to zoom 16
+// reads as a deliberate reveal rather than a jump.
+const INTRO_START_ZOOM = 12.5;
+
+// POPHAM centroid — the intro fly target and callout anchor.
+const POPHAM_COORD = computeLandingMapCenter(
+  ["304-78-386"],
+  parcelsGeo as GeoJSON.FeatureCollection,
+);
 
 // HOGUE centroid for the "Show counter-example" pan target.
 const COUNTER_EXAMPLE_COORD = computeLandingMapCenter(
@@ -141,6 +160,8 @@ export function CountyMap({
   lifecycles,
   anomalies,
   instrumentToApn,
+  showIntro = false,
+  onIntroClick,
 }: CountyMapProps) {
   const { isMobile } = useViewport();
   const [hoveredApn, setHoveredApn] = useState<string | null>(null);
@@ -236,9 +257,13 @@ export function CountyMap({
     <div className="absolute inset-0">
       <MapGL
         initialViewState={{
-          longitude: LANDING_MAP_CENTER.longitude,
-          latitude: LANDING_MAP_CENTER.latitude,
-          zoom: LANDING_MAP_ZOOM,
+          longitude: showIntro
+            ? POPHAM_COORD.longitude
+            : LANDING_MAP_CENTER.longitude,
+          latitude: showIntro
+            ? POPHAM_COORD.latitude
+            : LANDING_MAP_CENTER.latitude,
+          zoom: showIntro ? INTRO_START_ZOOM : LANDING_MAP_ZOOM,
         }}
         mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
         style={{ width: "100%", height: "100%" }}
@@ -373,6 +398,13 @@ export function CountyMap({
             latitude={popupCoord.latitude}
           />
         )}
+
+        <DemoIntro
+          active={showIntro}
+          target={POPHAM_COORD}
+          targetZoom={LANDING_MAP_ZOOM}
+          onClick={() => onIntroClick?.()}
+        />
 
         <MapZoomControls
           defaultCenter={LANDING_MAP_CENTER}
