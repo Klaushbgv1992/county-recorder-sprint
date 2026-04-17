@@ -76,13 +76,19 @@ export function MapLegend() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  // Pinned bottom-left to avoid colliding with OverlayToggles (top-right,
+  // z-10) and MapSearchBar (top-center, z-10) introduced by the
+  // landing-map feature. The top-left corner of the map is occupied by
+  // "Show full county" / "Show counter-example" CountyMap controls, and
+  // the bottom-right carries the MapLibre attribution line — so
+  // bottom-left is the only remaining quiet corner.
   if (mobile && !expanded) {
     return (
       <button
         type="button"
         aria-label="Show map legend"
         onClick={() => setExpanded(true)}
-        className="absolute top-2 right-2 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 shadow text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+        className="absolute bottom-4 left-4 z-10 w-8 h-8 rounded-full bg-white border border-slate-300 shadow text-sm font-medium text-slate-700 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
       >
         &#9432;
       </button>
@@ -91,7 +97,7 @@ export function MapLegend() {
 
   return (
     <div
-      className="absolute top-2 right-2 z-10 w-[200px] bg-white border border-slate-200 rounded shadow p-3"
+      className="absolute bottom-4 left-4 z-10 w-[200px] bg-white border border-slate-200 rounded shadow p-3"
       onClick={(e) => e.stopPropagation()}
     >
       {mobile && (

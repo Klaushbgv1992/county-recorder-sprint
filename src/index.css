@@ -11,11 +11,20 @@
   --color-recorder-700: #334155;
   --color-recorder-900: #0f172a;
 
-  /* Moat accent — emerald for "county advantage" */
+  /* Moat accent — emerald for "county advantage". Full 50–900 range
+     because the map-as-product + heartbeat features use moat-200/300/
+     400/600/800 that weren't defined pre-merge; undefined Tailwind
+     tokens silently resolve to nothing, which made
+     bg-moat-600 buttons render transparent (invisible on white). */
   --color-moat-50: #ecfdf5;
   --color-moat-100: #d1fae5;
+  --color-moat-200: #a7f3d0;
+  --color-moat-300: #6ee7b7;
+  --color-moat-400: #34d399;
   --color-moat-500: #10b981;
+  --color-moat-600: #059669;
   --color-moat-700: #047857;
+  --color-moat-800: #065f46;
   --color-moat-900: #064e3b;
 
   /* Provenance badge colors */

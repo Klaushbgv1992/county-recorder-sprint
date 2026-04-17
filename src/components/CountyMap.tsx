@@ -227,7 +227,13 @@ export function CountyMap({
   // Future: parcel-grained activity belongs in the popup, not as global overlay.
 
   return (
-    <div className="relative h-full w-full">
+    // absolute inset-0 (not h-full w-full) because the parent <section>
+    // sizes via flex-1 + min-h-[70vh], which gives a computed layout
+    // height but no CSS `height` property. height:100% resolves against
+    // the parent's CSS `height` (auto) and collapses to 0. Absolute
+    // positioning against the relative parent pins all four edges to
+    // the parent's border box, which IS the flex-resolved 70vh.
+    <div className="absolute inset-0">
       <MapGL
         initialViewState={{
           longitude: LANDING_MAP_CENTER.longitude,
