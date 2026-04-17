@@ -152,6 +152,58 @@ describe("render output", () => {
   });
 });
 
+describe("purchase_money_dot pattern", () => {
+  it("matches a DOT same-day-grouped with a deed", () => {
+    const deed = stubInstrument({
+      instrument_number: "20130183449",
+      recording_date: "2013-02-27",
+      document_type: "warranty_deed",
+      parties: [
+        { name: "SELLER", role: "grantor", provenance: "ocr", confidence: 1 },
+        { name: "BUYER", role: "grantee", provenance: "ocr", confidence: 1 },
+      ] as never,
+      same_day_group: ["20130183450"],
+    });
+    const dot = stubInstrument({
+      instrument_number: "20130183450",
+      recording_date: "2013-02-27",
+      document_type: "deed_of_trust",
+      parties: [
+        { name: "BUYER", role: "trustor", provenance: "ocr", confidence: 1 },
+        { name: "VIP MORTGAGE", role: "lender", provenance: "ocr", confidence: 1 },
+      ] as never,
+      same_day_group: ["20130183449"],
+    });
+    const ctx = { ...popham, allInstruments: [deed, dot] };
+    const match = findMatchingPattern(groupOf(dot), ctx);
+    expect(match?.id).toBe("purchase_money_dot");
+  });
+});
+
+describe("refinance_dot pattern", () => {
+  it("matches a DOT not same-day-grouped with a deed", () => {
+    const dot = stubInstrument({
+      instrument_number: "20210057846",
+      recording_date: "2021-01-19",
+      document_type: "deed_of_trust",
+      parties: [
+        { name: "POPHAM", role: "trustor", provenance: "ocr", confidence: 1 },
+        { name: "WELLS FARGO", role: "lender", provenance: "ocr", confidence: 1 },
+      ] as never,
+    });
+    const match = findMatchingPattern(groupOf(dot), popham);
+    expect(match?.id).toBe("refinance_dot");
+  });
+});
+
+describe("heloc_dot pattern", () => {
+  it("matches a heloc_dot document type", () => {
+    const inst = stubInstrument({ document_type: "heloc_dot" });
+    const match = findMatchingPattern(groupOf(inst), popham);
+    expect(match?.id).toBe("heloc_dot");
+  });
+});
+
 describe("PATTERNS registry", () => {
   it("exports patterns in first-match-wins order", () => {
     const ids = PATTERNS.map((p) => p.id);

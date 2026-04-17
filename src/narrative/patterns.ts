@@ -71,6 +71,20 @@ function isDeed(i: Instrument): boolean {
   );
 }
 
+function lenderName(inst: Instrument): string {
+  const lender = inst.parties.find((p) => p.role === "lender");
+  if (lender) return titleCase(lender.name);
+  // MERS-as-nominee edge case: unwrap to real lender if available
+  const beneficiary = inst.parties.find((p) => p.role === "beneficiary");
+  if (beneficiary?.nominee_for) return titleCase(beneficiary.nominee_for.party_name);
+  if (beneficiary) return titleCase(beneficiary.name);
+  return "a lender";
+}
+
+function isDOT(i: Instrument): boolean {
+  return i.document_type === "deed_of_trust";
+}
+
 const subdivision_plat: Pattern = {
   id: "subdivision_plat",
   match: (g) =>
@@ -130,11 +144,57 @@ const purchase_from_individual: Pattern = {
   },
 };
 
+const purchase_money_dot: Pattern = {
+  id: "purchase_money_dot",
+  match: (g, ctx) => {
+    const dot = g.instruments.find(isDOT);
+    if (!dot) return false;
+    const sameDay = dot.same_day_group ?? [];
+    if (sameDay.length === 0) return false;
+    return sameDay.some((n) =>
+      ctx.allInstruments.some((i) => i.instrument_number === n && isDeed(i)),
+    );
+  },
+  render: (g) => {
+    const dot = g.instruments.find(isDOT)!;
+    return `They financed the purchase with a mortgage from ${lenderName(dot)}, recorded the same day as the sale.`;
+  },
+};
+
+const refinance_dot: Pattern = {
+  id: "refinance_dot",
+  match: (g, ctx) => {
+    const dot = g.instruments.find(isDOT);
+    if (!dot) return false;
+    const sameDay = dot.same_day_group ?? [];
+    const hasSameDayDeed = sameDay.some((n) =>
+      ctx.allInstruments.some((i) => i.instrument_number === n && isDeed(i)),
+    );
+    return !hasSameDayDeed;
+  },
+  render: (g) => {
+    const dot = g.instruments.find(isDOT)!;
+    return `On ${dot.recording_date}, they refinanced with a new mortgage from ${lenderName(dot)} — a typical pattern for homeowners locking in lower rates.`;
+  },
+};
+
+const heloc_dot: Pattern = {
+  id: "heloc_dot",
+  match: (g) => g.instruments.some((i) => i.document_type === "heloc_dot"),
+  render: (g) => {
+    const inst = g.instruments.find((i) => i.document_type === "heloc_dot")!;
+    return `On ${inst.recording_date}, they opened a home-equity line of credit with ${lenderName(inst)}.`;
+  },
+};
+
 export const PATTERNS: Pattern[] = [
   subdivision_plat,
   affidavit_of_correction,
   purchase_from_trust,
   purchase_from_individual,
+  purchase_money_dot,
+  heloc_dot,
+  refinance_dot,
 ];
 
 export function findMatchingPattern(
