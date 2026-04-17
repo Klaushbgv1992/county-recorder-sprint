@@ -17,7 +17,7 @@ export function findInst(
 export const anomalyPatterns: Record<string, PatternFn> = {
   "mers-beneficiary-gap": ({ references }) => {
     const [release, dot] = references;
-    return `The release [${release}] was executed by a servicer that is not the original beneficiary on the ${dot ? `deed of trust [${dot}]` : "underlying deed of trust"}. The DOT names MERS as nominee for the lender of record; the note travelled through MERS to the releasing servicer without a recorded assignment. Making the gap visible is itself the point — a name-based title plant would show the release as clean.`;
+    return `The release [${release}] was executed by a servicer that is not the original beneficiary on the ${dot ? `deed of trust [${dot}]` : "underlying deed of trust"}. The DOT names MERS as nominee for the lender of record; the note travelled through MERS to the releasing servicer without a recorded assignment.`;
   },
   "ocr-trust-recovery": ({ references }) => {
     const [dot] = references;
