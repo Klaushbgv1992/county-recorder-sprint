@@ -1,0 +1,74 @@
+{
+  "instrument_number": "20190100001",
+  "recording_date": "2019-02-14",
+  "document_type": "heloc_dot",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "WARNER KAMA",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "DESERT SCHOOLS FEDERAL CREDIT UNION",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 52, SEVILLE PARCEL 3, according to Book 554 of Maps, Page 19, and Affidavit of Correction recorded in Document No. 01-849180, Records of Maricopa County, Arizona",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "loan_amount": {
+      "value": "$45,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "deed_date": {
+      "value": "2019-02-11",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only instrument illustrating junior-lien priority pathology on WARNER parcel 304-78-374 (Lot 52, Seville Parcel 3). A HELOC recorded in 2019 would sit junior to the 2013 FHA-insured senior DOT (20130087109, Academy Mortgage Corporation). Not present in publicapi.recorder.maricopa.gov — recording number 20190100001 does not resolve against the real public API.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20130087109"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "DESERT SCHOOLS FEDERAL CREDIT UNION",
+      "WARNER KAMA"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "2-14-2019",
+    "recordingNumber": "20190100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument illustrating junior-lien priority pathology on WARNER parcel 304-78-374; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}
