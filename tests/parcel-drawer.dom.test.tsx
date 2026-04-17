@@ -3,7 +3,7 @@
 // DOM tests for ParcelDrawer + exported popup sub-components.
 // Convention: jsdom env, @testing-library/jest-dom/vitest, afterEach(cleanup).
 
-import { describe, it, expect, afterEach, vi, beforeEach } from "vitest";
+import { describe, it, expect, afterEach, vi } from "vitest";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import { MemoryRouter } from "react-router";
@@ -50,11 +50,6 @@ const ASSESSOR_FIXTURE: AssessorParcel = {
   situs_state: "AZ",
   situs_zip: "85233",
   cached_date: "2026-04-09",
-};
-
-const ASSESSOR_NO_OWNER: AssessorParcel = {
-  ...ASSESSOR_FIXTURE,
-  OWNER_NAME: null,
 };
 
 const RECENT_INSTRUMENTS: RecentInstrument[] = [

@@ -52,7 +52,6 @@ function legalDescriptionSnippet(legal: string): string {
 export function ChainOfTitle({
   parcel,
   instruments,
-  links: _links,
   onOpenDocument,
 }: Props) {
   const findings = useMemo(() => detectAnomalies(parcel.apn), [parcel.apn]);

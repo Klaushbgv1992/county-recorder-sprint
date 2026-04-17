@@ -1,4 +1,4 @@
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef } from "react";
 import {
   searchAll,
   type Searchable,
@@ -55,11 +55,6 @@ export function MapSearchBar({ value, onChange, searchables, onSelect }: Props) 
     [value, searchables],
   );
 
-  useEffect(() => {
-    if (value) setOpen(true);
-    setActiveIdx(0);
-  }, [value]);
-
   const showDropdown = open && value.length > 0 && hits.length > 0;
 
   return (
@@ -71,7 +66,11 @@ export function MapSearchBar({ value, onChange, searchables, onSelect }: Props) 
         aria-controls="map-search-results"
         aria-autocomplete="list"
         value={value}
-        onChange={(e) => onChange(e.target.value)}
+        onChange={(e) => {
+          onChange(e.target.value);
+          if (e.target.value) setOpen(true);
+          setActiveIdx(0);
+        }}
         placeholder="Search APN, address, owner, subdivision, or 11-digit instrument"
         className="w-full rounded-lg border border-slate-300 bg-white/95 px-4 py-3 text-base shadow-lg focus:outline-none focus:ring-2 focus:ring-recorder-500 focus:border-transparent backdrop-blur-sm"
         onKeyDown={(e) => {

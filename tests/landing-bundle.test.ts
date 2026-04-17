@@ -13,6 +13,7 @@
 import { describe, it, expect, beforeAll } from "vitest";
 import { execSync } from "node:child_process";
 import fs from "node:fs";
+import { gzipSync } from "node:zlib";
 
 type ManifestEntry = {
   file: string;
@@ -60,7 +61,6 @@ describe("landing-bundle", () => {
     const gilbert = manifest["src/data/gilbert-parcels-geo.json"];
     const filePath = `dist/${gilbert.file}`;
     const raw = fs.readFileSync(filePath);
-    const { gzipSync } = require("node:zlib");
     const gz = gzipSync(raw);
     expect(gz.byteLength).toBeLessThan(2 * 1024 * 1024);
   });

@@ -97,6 +97,17 @@ export function Swimlane(props: Props) {
     () => new Map(props.instruments.map((i) => [i.instrument_number, i])),
     [props.instruments],
   );
+
+  const reconveyancePool = useMemo(
+    () =>
+      props.allInstruments.filter(
+        (i) =>
+          i.document_type === "full_reconveyance" ||
+          i.document_type === "partial_reconveyance",
+      ),
+    [props.allInstruments],
+  );
+
   const rootInst = instrumentMap.get(props.lifecycle.root_instrument);
   if (!rootInst) return null;
 
@@ -165,16 +176,6 @@ export function Swimlane(props: Props) {
       ),
     })),
     36,
-  );
-
-  const reconveyancePool = useMemo(
-    () =>
-      props.allInstruments.filter(
-        (i) =>
-          i.document_type === "full_reconveyance" ||
-          i.document_type === "partial_reconveyance",
-      ),
-    [props.allInstruments],
   );
 
   const hasAcceptedRelease = Boolean(

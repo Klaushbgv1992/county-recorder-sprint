@@ -241,7 +241,7 @@ const release_by_third_party: Pattern = {
     if (!releaser || !original) return false;
     return !namesEquivalent(releaser, original);
   },
-  render: (g, _ctx) => {
+  render: (g) => {
     const inst = g.instruments.find((i) => i.document_type === "full_reconveyance")!;
     const releaser = titleCase(releasingPartyName(inst)!);
     return `That mortgage was paid off on ${inst.recording_date} — the release was signed by ${releaser}, not the original lender, because the loan had been sold or transferred. The county records the release either way.`;

@@ -45,17 +45,15 @@ function HeartbeatInner({
   lagMin: number;
   lagMax: number;
 }): ReactElement {
-  const [t, setT] = useState<number>(() => now ?? Date.now());
+  const [tickT, setTickT] = useState<number>(() => Date.now());
 
   useEffect(() => {
-    if (now !== undefined) {
-      setT(now);
-      return;
-    }
-    const id = setInterval(() => setT(Date.now()), 1000);
+    if (now !== undefined) return;
+    const id = setInterval(() => setTickT(Date.now()), 1000);
     return () => clearInterval(id);
   }, [now]);
 
+  const t = now !== undefined ? now : tickT;
   const count = countAtTime(t);
 
   return (

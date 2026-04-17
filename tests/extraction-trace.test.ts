@@ -44,7 +44,7 @@ describe("extraction-trace loader", () => {
     const escrow = trace.extractions.find((e) => e.field === "escrow_number");
     expect(escrow).toBeDefined();
     // Hyphen-normalized: no spaces between segments.
-    expect(escrow!.value).toMatch(/^[A-Z0-9][A-Z0-9\-]+$/);
+    expect(escrow!.value).toMatch(/^[A-Z0-9][A-Z0-9-]+$/);
     // POPHAM's specific escrow id.
     expect(escrow!.value).toContain("00044857");
   });

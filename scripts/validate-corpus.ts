@@ -1,14 +1,14 @@
 import { readFileSync, writeFileSync, readdirSync, existsSync } from "fs";
 import { join } from "path";
-import { InstrumentFile, ParcelFile, ParcelsFile, LinksFile } from "../src/schemas";
+import { z } from "zod";
+import { InstrumentFile, ParcelFile, ParcelsFile, Party } from "../src/schemas";
 
 const INSTRUMENTS_DIR = "src/data/instruments";
 const PARCELS_PATH = "src/data/parcels.json";
 const PARCEL_LEGACY_PATH = "src/data/parcel.json";
-const LINKS_PATH = "src/data/links.json";
 
-let errors: string[] = [];
-let warnings: string[] = [];
+const errors: string[] = [];
+const warnings: string[] = [];
 
 // -- Load and validate parcels (new array file) or legacy single-parcel file --
 
@@ -43,7 +43,7 @@ console.log("\n=== Validating instruments ===");
 const instrumentFiles = readdirSync(INSTRUMENTS_DIR).filter((f) =>
   f.endsWith(".json")
 );
-const instruments: Map<string, any> = new Map();
+const instruments: Map<string, z.infer<typeof InstrumentFile>> = new Map();
 
 for (const file of instrumentFiles) {
   const path = join(INSTRUMENTS_DIR, file);
@@ -108,7 +108,7 @@ for (const [id, inst] of instruments) {
   for (const party of inst.parties) {
     if (party.nominee_for) {
       const match = inst.parties.find(
-        (p: any) =>
+        (p: z.infer<typeof Party>) =>
           p.name === party.nominee_for.party_name &&
           p.role === party.nominee_for.party_role
       );

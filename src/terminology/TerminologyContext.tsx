@@ -22,7 +22,7 @@ function readStoredMode(): Mode {
 }
 
 function persist(mode: Mode): void {
-  try { localStorage.setItem("terminology-mode", mode); } catch {}
+  try { localStorage.setItem("terminology-mode", mode); } catch { /* storage unavailable */ }
 }
 
 export function TerminologyProvider({ children }: { children: ReactNode }) {

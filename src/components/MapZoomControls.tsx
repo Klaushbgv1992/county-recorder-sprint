@@ -60,8 +60,8 @@ export function MapZoomControls({
   const [currentZoom, setCurrentZoom] = useState(defaultZoom);
   useEffect(() => {
     if (!map) return;
-    setCurrentZoom(map.getZoom());
     const handler = () => setCurrentZoom(map.getZoom());
+    handler();
     map.on("zoomend", handler);
     return () => {
       map.off("zoomend", handler);

@@ -48,30 +48,6 @@ function makeInstrument(
 }
 
 // Real-world-shape fixtures mirroring the POPHAM corpus
-function pophamDot2013(): Instrument {
-  return makeInstrument({
-    instrument_number: "20130183450",
-    recording_date: "2013-02-27",
-    document_type: "deed_of_trust",
-    parties: [
-      {
-        name: "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
-        role: "nominee",
-        provenance: "manual_entry",
-        confidence: 1,
-        nominee_for: {
-          party_name: "V.I.P. MORTGAGE INC",
-          party_role: "lender",
-        },
-      },
-    ],
-    legal_description: {
-      value: "Lot 46 SEVILLE PARCEL 3 Book 554 Maps Page 19",
-      provenance: "ocr",
-      confidence: 1,
-    },
-  });
-}
 function pophamDot2021(): Instrument {
   return makeInstrument({
     instrument_number: "20210057847",

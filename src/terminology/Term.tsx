@@ -1,11 +1,11 @@
-import { createContext, useContext, useRef, type ReactNode } from "react";
+import { createContext, useContext, useMemo, type ReactNode } from "react";
 import { useTerminology } from "./TerminologyContext";
 
 const SectionCtx = createContext<Set<string> | null>(null);
 
-export function TermSection({ id: _id, children }: { id: string; children: ReactNode }) {
-  const seenRef = useRef(new Set<string>());
-  return <SectionCtx value={seenRef.current}>{children}</SectionCtx>;
+export function TermSection({ children }: { id: string; children: ReactNode }) {
+  const seen = useMemo(() => new Set<string>(), []);
+  return <SectionCtx value={seen}>{children}</SectionCtx>;
 }
 
 export function Term({ professional }: { professional: string }) {
