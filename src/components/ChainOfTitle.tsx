@@ -176,6 +176,24 @@ export function ChainOfTitle({
             />
           ))}
         </div>
+        {parcel.apn === "304-77-689" && (
+          // HOGUE is the counter-example parcel. The 2015 purchase is the
+          // only curated deed; without an inline explainer the chain reads
+          // "something didn't load" instead of "the county is honest about
+          // what it recorded." Paired with the empty-matcher rationale on
+          // the Encumbrance view, this surfaces Known Gap #4 inline rather
+          // than burying it in docs/.
+          <p className="mt-4 text-xs text-slate-600 bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 leading-relaxed">
+            <strong className="font-semibold text-slate-900">
+              Sparse by design.
+            </strong>{" "}
+            HOGUE is the demo&apos;s counter-example parcel. The 2015 purchase
+            is the only curated deed &mdash; no post-2015 sale or refinance is
+            in the corpus. Title plants paper over gaps like this with
+            third-party feeds; a county custodian is honest about what it
+            recorded.
+          </p>
+        )}
       </div>
       </TermSection>
 

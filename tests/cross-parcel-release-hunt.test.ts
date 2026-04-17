@@ -12,7 +12,9 @@ describe("huntCrossParcelRelease", () => {
     });
     expect(result.candidates).toEqual([]);
     expect(result.scanned_party_count).toBeGreaterThan(0);
-    expect(result.verified_through).toBe("2026-04-05");
+    // verified_through mirrors the curator stage's verified_through in
+    // src/data/pipeline-state.json — roll when the fixture is refreshed.
+    expect(result.verified_through).toBe("2026-04-12");
   });
 
   it("excludes the subject parcel from scanned_party_count and from candidates", () => {

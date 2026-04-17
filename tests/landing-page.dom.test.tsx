@@ -88,3 +88,31 @@ describe("LandingPage — /why links", () => {
     expect(link?.textContent?.toLowerCase()).toContain("why this matters");
   });
 });
+
+describe("LandingPage — CountyHeartbeat mount", () => {
+  afterEach(() => cleanup());
+
+  it("renders the heartbeat band above the map section", () => {
+    render(
+      <MemoryRouter>
+        <TerminologyProvider>
+          <LandingPage />
+        </TerminologyProvider>
+      </MemoryRouter>,
+    );
+    const section = document.querySelector(
+      'section[aria-label="Maricopa Recorder live-pacing band"]',
+    );
+    expect(section).toBeTruthy();
+    // Heartbeat sits before the <header>; <header> sits before the map.
+    const main = document.querySelector("main");
+    const heartbeatIndex = Array.from(main!.children).findIndex(
+      (el) => el.getAttribute("aria-label") === "Maricopa Recorder live-pacing band",
+    );
+    const headerIndex = Array.from(main!.children).findIndex(
+      (el) => el.tagName === "HEADER",
+    );
+    expect(heartbeatIndex).toBeGreaterThanOrEqual(0);
+    expect(headerIndex).toBeGreaterThan(heartbeatIndex);
+  });
+});
