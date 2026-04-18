@@ -84,17 +84,162 @@ export function WhyPage() {
             Why county-owned title data
           </h1>
           <p className="mt-2 text-sm text-slate-600">
-            How residential title work actually happens, and where the public
-            pipeline falls short.
+            Three beats: <em>why title plants exist</em>, <em>why they've
+            become a tax</em>, and <em>why the custodian can leapfrog</em>.
           </p>
         </header>
+
+        <section id="three-beats" className="mb-10 space-y-4">
+          <div className="rounded-md border border-moat-200 bg-white p-5 shadow-sm">
+            <div className="flex items-baseline gap-3">
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-moat-100 text-sm font-semibold text-moat-800">
+                1
+              </span>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Why title plants exist in the first place
+              </h2>
+            </div>
+            <div className="mt-3 pl-10 space-y-2 text-sm text-slate-700 leading-relaxed">
+              <p>
+                Counties record deeds one at a time, in 50-state taxonomies
+                that diverge on document codes, name formatting, and legal
+                descriptions. Until the 1990s most indexes were on paper or
+                microfilm. By the time an examiner finished walking a chain
+                back thirty years, the pile of photocopies was the work
+                product.
+              </p>
+              <p>
+                Title plants emerged to solve a real problem: they re-indexed
+                the county's records into a geography-keyed database so an
+                underwriter could quote a residential refinance without
+                sending a human into a basement. A plant was faster than a
+                courthouse visit, and underwriters bought what the plants
+                sold because the county had no equivalent offering. That was
+                a correct arbitrage in 1975.
+              </p>
+              <p className="text-slate-600">
+                See how records actually move from filed to searchable:{" "}
+                <a
+                  href="#how-records-work"
+                  className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+                >
+                  ↓ How county records actually work
+                </a>
+                .
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-md border border-moat-200 bg-white p-5 shadow-sm">
+            <div className="flex items-baseline gap-3">
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-moat-100 text-sm font-semibold text-moat-800">
+                2
+              </span>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Why title plants have become a tax
+              </h2>
+            </div>
+            <div className="mt-3 pl-10 space-y-2 text-sm text-slate-700 leading-relaxed">
+              <p>
+                The county's side of the arbitrage has closed. Every recorded
+                document Maricopa files today is available through{" "}
+                <Code>publicapi.recorder.maricopa.gov</Code> the same day,
+                with a deterministic PDF URL and a machine-readable metadata
+                payload. The <em>custodial</em> advantage — authoritative
+                source, real-time availability, no licensing layer — now sits
+                with the county, not the plant.
+              </p>
+              <p>
+                What the plant still sells is <em>convenience</em>: a search
+                interface the county doesn't expose, a cleaned name index,
+                and a 2–4 week re-indexing pass. All three of those are now
+                things the county could do better — if it shipped a portal
+                like this one. The plant's margin is the county's
+                un-published inventory.
+              </p>
+              <p>
+                And the margin is paid twice. First by examiners, who license
+                plant access to do county work. Second by underwriters, who
+                pass the cost into premiums. Neither sale goes back to the
+                custodian that originated the record.
+              </p>
+              <p className="text-slate-600">
+                Specific capabilities the public API withholds:{" "}
+                <a
+                  href="#plants-cannot"
+                  className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+                >
+                  ↓ What title plants can't do
+                </a>{" "}
+                · Side-by-side at{" "}
+                <Link
+                  to="/moat-compare"
+                  className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+                >
+                  /moat-compare
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+
+          <div className="rounded-md border border-moat-200 bg-white p-5 shadow-sm">
+            <div className="flex items-baseline gap-3">
+              <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-moat-100 text-sm font-semibold text-moat-800">
+                3
+              </span>
+              <h2 className="text-lg font-semibold text-slate-900">
+                Why the custodian can leapfrog
+              </h2>
+            </div>
+            <div className="mt-3 pl-10 space-y-2 text-sm text-slate-700 leading-relaxed">
+              <p>
+                Three structural advantages belong to the recorder's office
+                and nobody else. <strong>Provenance</strong>: every field
+                shown on this portal is tagged with its source (public_api /
+                ocr / manual_entry) and a confidence score. Plants don't do
+                this because they don't know which of their fields were
+                scraped vs typed vs inferred. <strong>Pipeline
+                transparency</strong>: the verified-through strip at the top
+                of every page shows five stages and their SLAs. Plants don't
+                publish stages they don't run. <strong>Cross-parcel
+                search</strong>: only the custodian can answer "has this
+                person's lien been released against any property they
+                recorded against?" — the public API has no name-filtered
+                search; the county's internal index does.
+              </p>
+              <p>
+                The moat isn't AI. AI is a multiplier on a data asset the
+                county already owns. The moat is <em>which side of the
+                public search surface you sit on</em>.
+              </p>
+              <p className="text-slate-600">
+                Reproducible proof, with failed-hunt logs:{" "}
+                <a
+                  href="#receipts"
+                  className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+                >
+                  ↓ Receipts: what we tried, what the public API blocked
+                </a>{" "}
+                · Commercial counter-offer:{" "}
+                <Link
+                  to="/enterprise"
+                  className="text-moat-700 hover:text-moat-900 underline underline-offset-2"
+                >
+                  /enterprise
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </section>
 
         <nav
           aria-label="On this page"
           className="mb-10 rounded-md border border-slate-200 bg-white px-4 py-3 text-sm text-slate-700"
         >
           <div className="text-xs uppercase tracking-wide text-slate-500 mb-1">
-            On this page
+            Evidence and receipts
           </div>
           <ul className="space-y-0.5">
             <li>

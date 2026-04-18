@@ -10,6 +10,7 @@ import type {
 import type { AnomalyFinding } from "../types/anomaly";
 import { MoatBanner } from "./MoatBanner";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { PartyJudgmentSweep } from "./PartyJudgmentSweep";
 import { SwimlaneDiagram } from "./swimlane";
 import { Term, TermSection } from "../terminology/Term";
 import { getOpenLiensInSubdivision } from "../logic/subdivision-signals";
@@ -111,6 +112,7 @@ export function EncumbranceLifecycle({
         onSetLifecycleOverride={onSetLifecycleOverride}
         onOpenDocument={onOpenDocument}
       />
+      <PartyJudgmentSweep parcel={parcel} onOpenDocument={onOpenDocument} />
       <p className="text-xs text-gray-400 mt-6 text-right">
         {instruments[0]?.corpus_boundary_note ?? ""}
       </p>

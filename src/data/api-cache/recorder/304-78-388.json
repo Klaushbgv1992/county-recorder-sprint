@@ -1,0 +1,70 @@
+{
+  "apn": "304-78-388",
+  "source_url_per_document": [
+    "https://publicapi.recorder.maricopa.gov/documents/20010093192",
+    "https://publicapi.recorder.maricopa.gov/documents/20010849180"
+  ],
+  "captured_date": "2026-04-18",
+  "source_note": "Subdivision-tier entry. The two instruments below apply to every lot in Seville Parcel 3 (Book 554 of Maps, Page 19) as a matter of record. Per-parcel recent activity (deeds, DOTs, releases) is NOT cached for this APN in the prototype — production would fetch live at click. Still, the subdivision-level recorded documents are authoritative and resolve from publicapi.recorder.maricopa.gov.",
+  "display_fields": {
+    "last_recorded_date": "2001-09-17",
+    "last_doc_type": "AFFIDAVIT",
+    "recent_instruments": [
+      {
+        "recording_number": "20010849180",
+        "recording_date": "2001-09-17",
+        "doc_type": "AFFIDAVIT",
+        "parties": [
+          "SULLIVAN LARRY E REGISTERED LAND SURVEYOR"
+        ]
+      },
+      {
+        "recording_number": "20010093192",
+        "recording_date": "2001-02-07",
+        "doc_type": "PLAT MAP",
+        "parties": [
+          "SECTION 23 T2S R6E ETAL",
+          "SEVILLE PARCEL 3 ETAL"
+        ]
+      }
+    ]
+  },
+  "api_response": {
+    "documents": [
+      {
+        "names": [
+          "SULLIVAN LARRY E REGISTERED LAND SURVEYOR"
+        ],
+        "documentCodes": [
+          "AFFIDAVIT"
+        ],
+        "recordingDate": "9-17-2001",
+        "recordingNumber": "20010849180",
+        "pageAmount": 2,
+        "docketBook": 0,
+        "pageMap": 0,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      },
+      {
+        "names": [
+          "SECTION 23 T2S R6E ETAL",
+          "SEVILLE PARCEL 3 ETAL"
+        ],
+        "documentCodes": [
+          "PLAT MAP",
+          "BIG MAP"
+        ],
+        "recordingDate": "2-07-2001",
+        "recordingNumber": "20010093192",
+        "pageAmount": 4,
+        "docketBook": 554,
+        "pageMap": 19,
+        "affidavitPresent": false,
+        "affidavitPageAmount": 0,
+        "restricted": false
+      }
+    ]
+  }
+}

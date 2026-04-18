@@ -9,6 +9,9 @@
 import raw338 from "./api-cache/recorder/304-78-338.json";
 import raw367 from "./api-cache/recorder/304-78-367.json";
 import raw369 from "./api-cache/recorder/304-78-369.json";
+import raw385 from "./api-cache/recorder/304-78-385.json";
+import raw388 from "./api-cache/recorder/304-78-388.json";
+import raw390 from "./api-cache/recorder/304-78-390.json";
 import raw406 from "./api-cache/recorder/304-78-406.json";
 import raw408 from "./api-cache/recorder/304-78-408.json";
 
@@ -51,6 +54,9 @@ const ENTRIES: Array<[string, CacheEntry]> = [
   [raw338.apn, fromRaw(raw338)],
   [raw367.apn, fromRaw(raw367)],
   [raw369.apn, fromRaw(raw369)],
+  [raw385.apn, fromRaw(raw385)],
+  [raw388.apn, fromRaw(raw388)],
+  [raw390.apn, fromRaw(raw390)],
   [raw406.apn, fromRaw(raw406)],
   [raw408.apn, fromRaw(raw408)],
 ];

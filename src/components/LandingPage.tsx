@@ -219,6 +219,21 @@ export function LandingPage() {
           PipelineBanner + SearchHero. The verified-through strip in
           RootLayout carries the moat claim; map + search are the hero. */}
       <section className="relative flex-1 min-h-[70vh] border-b border-slate-200">
+        {!assessor && (
+          <div
+            className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-slate-100/80 backdrop-blur-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <div className="h-7 w-7 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600" />
+            <p className="text-xs font-medium text-slate-600">
+              Loading Gilbert assessor parcels ({SEED_COUNT.toLocaleString()} polygons)…
+            </p>
+            <p className="text-[10px] text-slate-400">
+              Source: Maricopa County Assessor public GIS · A.R.S. § 11-495 public record
+            </p>
+          </div>
+        )}
         <CountyMap
           highlightedParcels={HIGHLIGHTED}
           onParcelClick={(apn) => setSelectedApn(apn)}
@@ -285,6 +300,12 @@ export function LandingPage() {
             className="hover:text-slate-800 hover:underline underline-offset-2"
           >
             Compare vs. title plant
+          </Link>
+          <Link
+            to="/enterprise"
+            className="hover:text-slate-800 hover:underline underline-offset-2"
+          >
+            Enterprise feed
           </Link>
           <Link
             to="/staff"
