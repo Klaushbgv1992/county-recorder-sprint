@@ -360,6 +360,50 @@ export function WhyPage() {
             surface refuses to expose.
           </p>
         </section>
+
+        <section id="see-it" className="mb-10">
+          <h2 className="text-xl font-semibold text-slate-900 mb-4">
+            See it in action
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <Link
+              to="/"
+              className="group block rounded-md border border-slate-200 bg-white p-4 hover:border-moat-300 hover:shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            >
+              <p className="text-sm font-semibold text-slate-900 group-hover:text-moat-700">
+                Spatial custody
+              </p>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                County-authoritative parcel polygons from the assessor's file. No
+                licensing layer.
+              </p>
+            </Link>
+            <Link
+              to="/pipeline"
+              className="group block rounded-md border border-slate-200 bg-white p-4 hover:border-moat-300 hover:shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            >
+              <p className="text-sm font-semibold text-slate-900 group-hover:text-moat-700">
+                Verified freshness
+              </p>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Per-stage pipeline verification with SLA tracking. Know exactly
+                how current your data is.
+              </p>
+            </Link>
+            <Link
+              to="/parcel/304-78-386/encumbrances"
+              className="group block rounded-md border border-slate-200 bg-white p-4 hover:border-moat-300 hover:shadow-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            >
+              <p className="text-sm font-semibold text-slate-900 group-hover:text-moat-700">
+                Chain intelligence
+              </p>
+              <p className="text-xs text-slate-600 mt-1 leading-relaxed">
+                Same-day transaction grouping, MERS annotations, and release
+                matching. Structured title work, not a document list.
+              </p>
+            </Link>
+          </div>
+        </section>
       </article>
     </main>
   );
