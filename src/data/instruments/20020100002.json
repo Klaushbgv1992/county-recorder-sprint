@@ -1,0 +1,105 @@
+{
+  "instrument_number": "20020100002",
+  "recording_date": "2002-04-12",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "ROBERTS MATTHEW A",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERTS JENNIFER L",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO HOME MORTGAGE INC",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "STEWART TITLE OF PHOENIX INC",
+      "role": "trustee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC",
+      "role": "nominee",
+      "provenance": "demo_synthetic",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "WELLS FARGO HOME MORTGAGE INC",
+        "party_role": "lender"
+      }
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Purchase-money deed of trust for the Roberts family's 2002 acquisition of Lot 46 (same-day-grouped with synthetic deed 20020100001). MERS as nominee pattern was already in widespread use by 2002 on conforming residential loans, so this structure mirrors the later POPHAM 2013 DOT (20130183450) where the note travels outside the public record. Set up this way on purpose so the demo can show continuity of the MERS-note disintermediation pattern across two ownership eras. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$206,955.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_type": {
+      "value": "30-year fixed conforming",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1000312-0000100002-0",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [
+    "20020100001"
+  ],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS INC MERS",
+      "ROBERTS JENNIFER L",
+      "ROBERTS MATTHEW A",
+      "STEWART TITLE OF PHOENIX INC",
+      "WELLS FARGO HOME MORTGAGE INC"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
+    "recordingDate": "4-12-2002",
+    "recordingNumber": "20020100002",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase-money DOT for the Roberts family's synthetic 2002 acquisition. MERS-as-nominee pattern chosen to show continuity with the real 2013 POPHAM DOT (20130183450). No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS is the beneficiary of record as nominee for Wells Fargo Home Mortgage, Inc. — the same disintermediation pattern the examiner sees again on the 2013 DOT (20130183450). If the note was ever sold or assigned, those transfers happened inside MERS and not on the public recorder — only the eventual release (20050100001) hit the record.",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

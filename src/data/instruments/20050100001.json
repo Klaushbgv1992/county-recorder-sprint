@@ -1,0 +1,69 @@
+{
+  "instrument_number": "20050100001",
+  "recording_date": "2005-07-22",
+  "document_type": "full_reconveyance",
+  "document_type_raw": "REL D/T",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "WELLS FARGO BANK NA",
+      "role": "releasing_party",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Full reconveyance of the synthetic 2002 purchase-money DOT (20020100002). Releasing entity is 'Wells Fargo Bank NA' rather than 'Wells Fargo Home Mortgage Inc' because the servicing side of the business booked releases under the commercial-bank charter by 2005 — a real-world convention that matches the 2021 POPHAM release pattern where Wells Fargo (not VIP Mortgage, the originator) executed the reconveyance. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "released_dot_instrument": {
+      "value": "20020100002",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "release_reason": {
+      "value": "Loan paid in full — refinance",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20020100002"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "ROBERTS JENNIFER L",
+      "ROBERTS MATTHEW A",
+      "WELLS FARGO BANK NA"
+    ],
+    "documentCodes": [
+      "REL D/T"
+    ],
+    "recordingDate": "7-22-2005",
+    "recordingNumber": "20050100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only reconveyance of the synthetic 2002 Roberts-family purchase DOT (20020100002). Releasing entity Wells Fargo Bank NA rather than Wells Fargo Home Mortgage Inc mirrors the real 2021 POPHAM pattern where the servicing-side successor executed the release. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

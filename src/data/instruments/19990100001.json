@@ -1,0 +1,69 @@
+{
+  "instrument_number": "19990100001",
+  "recording_date": "1999-03-18",
+  "document_type": "special_warranty_deed",
+  "document_type_raw": "SWD",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "SEVILLE VENTURES LLC",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "SHEA HOMES LIMITED PARTNERSHIP",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "A portion of the Southwest Quarter of Section 23, Township 2 South, Range 6 East, Gila and Salt River Base and Meridian, Maricopa County, Arizona; containing 40.00 acres more or less. Parent tract of SEVILLE PARCEL 3 (to be platted 2001).",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Models the developer acquisition that preceded the 2001-01-30 plat recording (20010093192). Shea Homes was the actual platting entity on Seville Parcel 3 — that much is documented in the plat itself. The fabricated part is the specific prior-holder sequence (Williams heirs → Seville Ventures LLC → Shea Homes). A special warranty deed on the developer-to-developer step is common in Arizona; the seller warrants only against defects arising during its own ownership.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$1,250,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "19950100001"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "SEVILLE VENTURES LLC",
+      "SHEA HOMES LIMITED PARTNERSHIP"
+    ],
+    "documentCodes": [
+      "SWD"
+    ],
+    "recordingDate": "3-18-1999",
+    "recordingNumber": "19990100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument reconstructing the developer-acquisition step before Shea Homes recorded the 2001 Seville Parcel 3 plat. Shea Homes as platting entity is real; the specific prior-holder LLC is fabricated. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "instrument_number": "20020100001",
+  "recording_date": "2002-04-12",
+  "document_type": "special_warranty_deed",
+  "document_type_raw": "SWD",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "SHEA HOMES LIMITED PARTNERSHIP",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERTS MATTHEW A",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERTS JENNIFER L",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Models the Shea Homes new-construction sale of Lot 46 to its first owner. This is the first instrument in which Lot 46 appears as a distinct platted parcel — prior instruments in this chain describe the parent tract. Builder-to-homebuyer conveyance is typically a special warranty deed in Arizona. The Roberts family is a fabricated first buyer; no real conveyance of this lot by this recording number exists in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$229,950.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife as joint tenants with right of survivorship",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "Stewart Title of Phoenix, Inc.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20010093192",
+    "20010849180"
+  ],
+  "same_day_group": [
+    "20020100002"
+  ],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "ROBERTS JENNIFER L",
+      "ROBERTS MATTHEW A",
+      "SHEA HOMES LIMITED PARTNERSHIP"
+    ],
+    "documentCodes": [
+      "SWD"
+    ],
+    "recordingDate": "4-12-2002",
+    "recordingNumber": "20020100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument reconstructing Shea Homes's first-sale of Lot 46 to the original post-plat homeowner. Same-day-grouped with synthetic DOT 20020100002 (purchase financing). No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

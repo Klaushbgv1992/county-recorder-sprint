@@ -1,0 +1,88 @@
+{
+  "instrument_number": "19780100001",
+  "recording_date": "1978-06-14",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "ESTATE OF LLOYD R. WILLIAMS, DECEASED",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS BARBARA J",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS LLOYD R JR",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS MARK E",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS SUSAN ANN",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "A portion of the Southwest Quarter of Section 23, Township 2 South, Range 6 East, Gila and Salt River Base and Meridian, Maricopa County, Arizona; containing 40.00 acres more or less. Agricultural use — cotton and alfalfa. (Parent tract of what later becomes SEVILLE PARCEL 3; Lot 46 does not yet exist of record.)",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Illustrates the pre-subdivision agricultural ownership of the parent tract that would later be platted as SEVILLE PARCEL 3 (20010093192) in 2001. This distribution deed models a typical Maricopa rural-inheritance pattern of the late 1970s — Gilbert's east side was predominantly cotton and alfalfa farmland until the mid-1990s. The Williams family and estate do not appear in the Maricopa recorder public API; no real instrument by this number exists. Included to extend POPHAM's chain beyond the 2001 plat boundary so the demo shows a full 40-year examiner lookback rather than a 13-year refi slice.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "distribution to heirs — no money changed hands",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "ESTATE OF LLOYD R WILLIAMS",
+      "WILLIAMS BARBARA J",
+      "WILLIAMS LLOYD R JR",
+      "WILLIAMS MARK E",
+      "WILLIAMS SUSAN ANN"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "6-14-1978",
+    "recordingNumber": "19780100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument reconstructing the pre-plat parent-tract ownership under Seville Parcel 3. Illustrates a typical late-1970s Gilbert agricultural inheritance distribution. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}
