@@ -54,7 +54,7 @@ function smartTitle(word: string): string {
   if (/^[A-Z]{2,}$/.test(word)) {
     // Short ALL-CAPS sequences that aren't connectors are treated as opaque
     // acronyms/initialisms (e.g. "ABC" in a company name).
-    if (!CONNECTORS.has(word) && word.length <= 4) return word;
+    if (!CONNECTORS.has(word) && word.length <= 4) return word; // Preserves short ALL-CAPS as acronyms (e.g., "ABC Properties LLC" keeps "ABC" uppercase)
     // Special-case "JPMORGAN" style compound capitalizations.
     if (word === "JPMORGAN") return "JPMorgan";
     return word[0] + word.slice(1).toLowerCase();
@@ -85,6 +85,7 @@ export function cleanEntityName(raw: string): string {
   return titleCaseFreeform(noDateTail);
 }
 
+// Assumes curated grantee parties on deeds/DOTs where names are FIRSTNAME-LAST; flat raw_api_response.names (LASTNAME-FIRST) are never passed here.
 function lastNameOfIndividual(fullName: string): string {
   // Curated parties data uses "FIRSTNAME LAST" format (e.g. "CHRISTOPHER POPHAM"),
   // so the last whitespace-split token is the surname. Title-case the result.

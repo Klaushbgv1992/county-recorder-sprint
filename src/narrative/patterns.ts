@@ -32,10 +32,6 @@ function grantorNames(inst: Instrument): string[] {
   return inst.parties.filter((p) => p.role === "grantor").map((p) => p.name);
 }
 
-function granteeNames(inst: Instrument): string[] {
-  return inst.parties.filter((p) => p.role === "grantee").map((p) => p.name);
-}
-
 function prettyName(s: string): string {
   if (isEntityName(s)) return cleanEntityName(s);
   return s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
