@@ -28,6 +28,7 @@ import { StoryPage } from "./components/story/StoryPage";
 import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { PartyPage } from "./components/PartyPage";
 import { ReceiptsPage } from "./components/ReceiptsPage";
+import { AiExtractLivePanel } from "./components/AiExtractLivePanel";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { loadAllLifecycles, loadAllInstruments } from "./data-loader";
@@ -484,6 +485,11 @@ export const routes: RouteObject[] = [
             id: "receipts",
             path: "receipts/:slug",
             element: <ReceiptsPage />,
+          },
+          {
+            id: "ai-demo",
+            path: "ai-demo",
+            element: <AiExtractLivePanel />,
           },
           {
             id: "commitment-new",
