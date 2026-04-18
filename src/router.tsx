@@ -10,6 +10,14 @@ import type { RouteObject } from "react-router";
 import type { Parcel } from "./types";
 import { searchParcels } from "./logic/search";
 import { AppShell } from "./App";
+import { AccountLayout } from "./components/account/AccountLayout";
+import { AccountDashboard } from "./components/account/AccountDashboard";
+import { AccountWatchlist } from "./components/account/AccountWatchlist";
+import { AccountInbox } from "./components/account/AccountInbox";
+import { AccountPreferences } from "./components/account/AccountPreferences";
+import { AccountStatutoryNotices } from "./components/account/AccountStatutoryNotices";
+import { AccountRecordsRequest } from "./components/account/AccountRecordsRequest";
+import { AccountCommitments } from "./components/account/AccountCommitments";
 import { LandingPage } from "./components/LandingPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
@@ -536,6 +544,20 @@ export const routes: RouteObject[] = [
             id: "staff-parcel",
             path: "staff/parcel/:apn",
             element: <StaffParcelView />,
+          },
+          {
+            id: "account",
+            path: "account",
+            element: <AccountLayout />,
+            children: [
+              { index: true, element: <AccountDashboard /> },
+              { path: "watchlist", element: <AccountWatchlist /> },
+              { path: "inbox", element: <AccountInbox /> },
+              { path: "preferences", element: <AccountPreferences /> },
+              { path: "notices", element: <AccountStatutoryNotices /> },
+              { path: "records-request", element: <AccountRecordsRequest /> },
+              { path: "commitments", element: <AccountCommitments /> },
+            ],
           },
           {
             id: "not-found",
