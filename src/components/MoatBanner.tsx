@@ -39,12 +39,12 @@ export function MoatBanner({ pipelineStatus }: Props) {
                   isLit
                     ? "bg-moat-500 text-white"
                     : "bg-moat-800 text-moat-400"
-                } ${isActive ? "animate-pulse-glow ring-1 ring-moat-300" : ""}`}
+                } ${isActive ? "ring-1 ring-moat-300 bg-moat-50" : ""}`}
               >
                 {isActive && (
                   <span
                     aria-hidden="true"
-                    className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-pulse-glow"
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-white ring-2 ring-white/50"
                   />
                 )}
                 {stage}

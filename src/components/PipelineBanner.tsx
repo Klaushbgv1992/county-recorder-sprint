@@ -38,7 +38,7 @@ export function PipelineBanner() {
           suppressed under prefers-reduced-motion (see index.css). */}
       <span
         aria-label="Live data feed"
-        className="inline-block w-2 h-2 rounded-full bg-moat-500 animate-pulse-glow shrink-0"
+        className="inline-block w-2 h-2 rounded-full bg-moat-500 ring-2 ring-moat-100 shrink-0"
       />
       <span className="text-slate-600">
         Verified through{" "}

@@ -236,7 +236,7 @@ export function LandingPage() {
             </div>
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-transparent via-white/40 to-transparent">
               <div className="rounded-full bg-white/90 px-4 py-2 shadow-sm ring-1 ring-slate-200 flex items-center gap-2">
-                <span className="inline-block w-2 h-2 rounded-full bg-moat-500 animate-pulse-glow" />
+                <span className="inline-block w-2 h-2 rounded-full bg-moat-500" />
                 <p className="text-xs font-medium text-slate-700">
                   Loading {SEED_COUNT.toLocaleString()} Gilbert parcels…
                 </p>
