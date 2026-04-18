@@ -50,7 +50,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized Affidavit of Property Value (A.R.S. § 11-1133) accompanying the LLC conveyance (20220200003) on Delgado parcel 304-78-411. Required in Arizona on every deed unless an exemption applies; the nominal $10 consideration triggers scrutiny but is accepted for individual-to-wholly-owned-LLC transfers. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized Affidavit of Property Value (A.R.S. § 11-1133) accompanying the LLC conveyance (20220200003) on Delgado parcel 999-03-411. Required in Arizona on every deed unless an exemption applies; the nominal $10 consideration triggers scrutiny but is accepted for individual-to-wholly-owned-LLC transfers. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -71,7 +71,7 @@
     "affidavitPageAmount": 1,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only Affidavit of Property Value for Delgado parcel 304-78-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only Affidavit of Property Value for Delgado parcel 999-03-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

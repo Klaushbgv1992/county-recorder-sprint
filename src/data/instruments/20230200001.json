@@ -50,7 +50,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized Affidavit of Death of Joint Tenant for Chen family parcel 304-78-362. In Arizona, community-property-with-right-of-survivorship title (as established in 20080200001) passes to the surviving spouse by operation of law on death; the affidavit simply cures the record and is recorded with an attached death certificate. No probate required for this first death. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized Affidavit of Death of Joint Tenant for Chen family parcel 999-01-362. In Arizona, community-property-with-right-of-survivorship title (as established in 20080200001) passes to the surviving spouse by operation of law on death; the affidavit simply cures the record and is recorded with an attached death certificate. No probate required for this first death. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -71,7 +71,7 @@
     "affidavitPageAmount": 2,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only affidavit of death of joint tenant for Chen family parcel 304-78-362; not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only affidavit of death of joint tenant for Chen family parcel 999-01-362; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

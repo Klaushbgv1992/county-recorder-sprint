@@ -1,0 +1,16 @@
+Scenario: divorce quit-claim, loan stays joint (demo-only synthesized corpus for parcel 999-02-555, MARTINEZ). Every instrument on this parcel carries raw_api_response.synthesized: true and is disclosed per-document.
+
+Corpus (synthesized):
+
+Parcel: 999-02-555, 2741 E Palmer St, Gilbert AZ 85298, Shamrock Estates Phase 2A Lot 322.
+
+Instruments:
+- 20160200001 (WAR DEED, 2016-05-10): CalAtlantic Group Inc dba Standard Pacific Homes → Martinez Carlos A and Martinez Sofia Andrea, community property. $362,000 purchase price.
+- 20160200002 (DEED TRST, 2016-05-10): Martinezes → JPMorgan Chase Bank, MERS nominee; $289,600 purchase-money. Both spouses on note.
+- 20210200001 (DECREE, 2021-03-30): Notice of Filing of Decree of Dissolution of Marriage. Case FN2020-XXXXXX. Awards property to Sofia; orders Carlos to execute quit-claim within 30 days. Debt-assignment language: DOT remains community obligation, Sofia assumes payment, Carlos remains contingently liable until lender release.
+- 20210200002 (Q/CL DEED, 2021-04-22): Carlos → Sofia (as her sole and separate property).
+- 20220200001 (ASSIGN DT, 2022-08-15): Chase → Nationstar Mortgage LLC dba Mr. Cooper. Servicing transfer; borrower list unchanged.
+
+Lifecycles: lc-011 (root 20160200002, open — DOT still names both spouses despite title transfer).
+
+Produce a chain-of-title brief for this parcel. Reader is a title examiner preparing a commitment. The core examiner concern is that title transferred but the note didn't — call this out clearly, and generate closing-stage follow-ups that reflect how an underwriter would handle Carlos's contingent liability. Be specific about the decree's debt-assignment language.

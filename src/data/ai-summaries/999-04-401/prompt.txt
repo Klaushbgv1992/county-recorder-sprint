@@ -1,0 +1,16 @@
+Scenario: tax-sale REO, prior DOT extinguished by operation of law (demo-only synthesized corpus for parcel 999-04-401, BRYANT). Every instrument on this parcel carries raw_api_response.synthesized: true and is disclosed per-document.
+
+Corpus (synthesized):
+
+Parcel: 999-04-401, 3722 E Parkview Ave, Gilbert AZ 85298, Seville Parcel 3 Lot 56.
+
+Instruments:
+- 20050200001 (WAR DEED, 2005-03-21): Shea Homes Arizona LP → Henderson James D & Tammy L, JT with ROS. $319,950.
+- 20050200002 (DEED TRST, 2005-03-21): Hendersons → Countrywide Home Loans Inc, MERS nominee; $287,955. Countrywide acquired by BofA 2008; no assignment of DOT recorded.
+- 20220200005 (TREAS DEED, 2022-06-15): Maricopa County Treasurer → Tucson Investments LLC under A.R.S. § 42-18267. CP 2019-XXXXXX, redemption expired 2022-02-12, quiet-title judgment CV2022-XXXXXX entered 2022-05-20. Extinguishes 2005 DOT by operation of law.
+- 20230200002 (SPEC WAR DEED, 2023-01-30): Tucson Investments LLC → Bryant James T. $425,000 investor flip. Special warranty only.
+- 20230200003 (DEED TRST, 2023-01-30): Bryant → AmeriSave Mortgage Corp, MERS nominee; $340,000 purchase-money.
+
+Lifecycles: lc-013 (root 20050200002, unresolved — DOT extinguished of law but no release of record).
+
+Produce a chain-of-title brief for this parcel. Reader is a title examiner preparing a commitment. Core examiner concern is the Schedule B treatment of the extinguished 2005 Countrywide DOT — the underwriter discussion is real and the brief should reflect industry practice (exception vs. corrective quit-claim). Do not oversimplify: federal liens under 26 USC § 7425(d) have a separate redemption period that matters.

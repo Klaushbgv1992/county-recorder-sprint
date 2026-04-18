@@ -1,0 +1,16 @@
+Scenario: probate / heir takes title (demo-only synthesized corpus for parcel 999-01-362, CHEN family). Every instrument on this parcel carries raw_api_response.synthesized: true and is disclosed per-document; the purpose of the curated set is to illustrate residential-title probate workflow for a title examiner.
+
+Corpus (synthesized):
+
+Parcel: 999-01-362, 3650 E Palmer St, Gilbert AZ 85298, Seville Parcel 3 Lot 44.
+
+Instruments:
+- 20080200001 (WAR DEED, 2008-04-15): Shea Homes Arizona LP → Chen Robert K and Chen Lilian M, community property with right of survivorship.
+- 20080200002 (DEED TRST, 2008-04-15): Chens → Wells Fargo Bank, MERS nominee; $305,000 purchase-money.
+- 20190200001 (REL D/T, 2019-03-22): Wells Fargo releases 20080200002; loan paid in full.
+- 20230200001 (AF DEATH JT, 2023-06-20): Affidavit of Death of Joint Tenant recording Lilian Chen's death (2023-04-10); Robert becomes sole owner by community-property ROS.
+- 20240200001 (PR DEED, 2024-08-05): Estate of Robert K Chen (by David J Chen as Personal Representative) → David James Chen, sole heir. Probate case PB2024-XXXXXX. Robert died 2024-01-08.
+
+Lifecycles: lc-010 (root 20080200002, released by 20190200001).
+
+Produce a chain-of-title brief for this parcel. Reader is a title examiner preparing a commitment. Be specific about what changes between the first death (survivorship, AF Death cures record) and the second (probate, PR Deed with limited-warranty conveyance). Bake the follow-ups at examiner-copy depth.

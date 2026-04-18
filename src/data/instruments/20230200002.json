@@ -55,7 +55,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized investor-resale deed on parcel 304-78-401 (tax-sale REO scenario) — Tucson Investments flips the tax-acquired property to Bryant approximately 7 months after the Treasurer's Deed. Special warranty is standard on investor flips. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized investor-resale deed on parcel 999-04-401 (tax-sale REO scenario) — Tucson Investments flips the tax-acquired property to Bryant approximately 7 months after the Treasurer's Deed. Special warranty is standard on investor flips. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -76,7 +76,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only investor flip deed for parcel 304-78-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only investor flip deed for parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

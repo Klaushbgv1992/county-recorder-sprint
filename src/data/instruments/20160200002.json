@@ -72,7 +72,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase-money DOT on Martinez parcel 304-77-555 (divorce scenario). Borrowers are both spouses jointly; post-divorce quit claim (20210200002) transfers title to Sofia only but does NOT remove Carlos from the note — a common examiner concern this scenario demonstrates. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase-money DOT on Martinez parcel 999-02-555 (divorce scenario). Borrowers are both spouses jointly; post-divorce quit claim (20210200002) transfers title to Sofia only but does NOT remove Carlos from the note — a common examiner concern this scenario demonstrates. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -93,7 +93,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase-money DOT for Martinez parcel 304-77-555 (divorce scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase-money DOT for Martinez parcel 999-02-555 (divorce scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for JPMorgan Chase Bank, N.A.",

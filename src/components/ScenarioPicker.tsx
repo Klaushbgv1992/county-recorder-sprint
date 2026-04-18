@@ -18,7 +18,7 @@ interface Scenario {
 const SCENARIOS: Scenario[] = [
   {
     key: "probate",
-    apn: "304-78-362",
+    apn: "999-01-362",
     label: "Probate",
     heading: "Heir takes title after death of owner",
     pain: "AF Death clears first-spouse record by survivorship — second death needs probate and a Personal Representative's Deed. Two instruments, two very different chains.",
@@ -26,7 +26,7 @@ const SCENARIOS: Scenario[] = [
   },
   {
     key: "divorce",
-    apn: "304-77-555",
+    apn: "999-02-555",
     label: "Divorce Q/CL",
     heading: "Quit-claim after divorce — loan stays joint",
     pain: "Decree awards title to one spouse, quit-claim conveys record title, but the DOT still names both borrowers jointly. Ex-spouse remains contingently liable until lender releases.",
@@ -34,7 +34,7 @@ const SCENARIOS: Scenario[] = [
   },
   {
     key: "llc",
-    apn: "304-78-411",
+    apn: "999-03-411",
     label: "LLC transfer",
     heading: "Individual conveys to wholly-owned LLC",
     pain: "Statement of Authority + deed + Affidavit of Property Value recorded same day. DOT stays in individual's name — due-on-sale exposure must be disclosed as a Schedule B exception.",
@@ -42,7 +42,7 @@ const SCENARIOS: Scenario[] = [
   },
   {
     key: "tax-sale",
-    apn: "304-78-401",
+    apn: "999-04-401",
     label: "Tax-sale REO",
     heading: "Treasurer's Deed extinguishes prior DOT",
     pain: "A.R.S. § 42-18267 wipes junior liens by operation of law — but the 2005 Countrywide DOT has no release of record. Appears open; substantively cleared. Classic underwriter discussion.",

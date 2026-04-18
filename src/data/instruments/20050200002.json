@@ -67,7 +67,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase-money DOT on Henderson parcel 304-78-401 (tax-sale REO scenario). This DOT is the critical examiner concern: it was EXTINGUISHED BY OPERATION OF LAW upon recording of the Treasurer's Deed (20220200005) under A.R.S. § 42-18267, but no release was ever recorded. Appears 'open' in a raw index query — an examiner must reconcile this. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase-money DOT on Henderson parcel 999-04-401 (tax-sale REO scenario). This DOT is the critical examiner concern: it was EXTINGUISHED BY OPERATION OF LAW upon recording of the Treasurer's Deed (20220200005) under A.R.S. § 42-18267, but no release was ever recorded. Appears 'open' in a raw index query — an examiner must reconcile this. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -88,7 +88,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only pre-crash Countrywide DOT on Henderson parcel 304-78-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only pre-crash Countrywide DOT on Henderson parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for Countrywide Home Loans, Inc. Countrywide was acquired by Bank of America in July 2008. No assignment of DOT to Bank of America or a securitization trust has been recorded in this parcel's corpus. Note: the underlying DOT is extinguished of record by the 2022 Treasurer's Deed (20220200005); a successor-in-interest release is the industry-standard cure but has not been obtained.",

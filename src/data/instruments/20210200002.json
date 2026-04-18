@@ -45,7 +45,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized quit claim deed for Martinez parcel 304-77-555 — conveys Carlos's community-property interest to Sofia pursuant to the divorce decree (20210200001). NOTE: a Q/CL conveys only whatever interest the grantor has, with no warranty. The underlying 2016 DOT (20160200002) is not released by this deed; Carlos remains on the note. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized quit claim deed for Martinez parcel 999-02-555 — conveys Carlos's community-property interest to Sofia pursuant to the divorce decree (20210200001). NOTE: a Q/CL conveys only whatever interest the grantor has, with no warranty. The underlying 2016 DOT (20160200002) is not released by this deed; Carlos remains on the note. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -66,7 +66,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only post-divorce quit claim deed for Martinez parcel 304-77-555; not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only post-divorce quit claim deed for Martinez parcel 999-02-555; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

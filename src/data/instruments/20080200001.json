@@ -51,7 +51,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized probate-scenario deed for Chen family parcel 304-78-362. Not present in publicapi.recorder.maricopa.gov. Grounded in the real Seville Parcel 3 dedicator (Shea Homes AZ LP, per 20010093192 plat) and real subdivision book/page cites; party names and financial figures fabricated to illustrate examiner workflow through a death-of-joint-tenant + probate conveyance. See src/data/instruments/20080200001.json provenance tags.",
+      "value": "Demo-only synthesized probate-scenario deed for Chen family parcel 999-01-362. Not present in publicapi.recorder.maricopa.gov. Grounded in the real Seville Parcel 3 dedicator (Shea Homes AZ LP, per 20010093192 plat) and real subdivision book/page cites; party names and financial figures fabricated to illustrate examiner workflow through a death-of-joint-tenant + probate conveyance. See src/data/instruments/20080200001.json provenance tags.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -72,7 +72,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase deed for Chen family parcel 304-78-362 (probate scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase deed for Chen family parcel 999-01-362 (probate scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

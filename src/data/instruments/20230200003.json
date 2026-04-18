@@ -61,7 +61,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase-money DOT for Bryant on parcel 304-78-401 (tax-sale REO scenario). The title insurer underwrote over the extinguished 2005 Countrywide DOT by treating it as a Schedule B exception; the AmeriSave policy relies on the tax-sale chain established by 20220200005. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase-money DOT for Bryant on parcel 999-04-401 (tax-sale REO scenario). The title insurer underwrote over the extinguished 2005 Countrywide DOT by treating it as a Schedule B exception; the AmeriSave policy relies on the tax-sale chain established by 20220200005. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -82,7 +82,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase-money DOT for Bryant on parcel 304-78-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase-money DOT for Bryant on parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for AmeriSave Mortgage Corporation.",

@@ -66,7 +66,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase-money DOT on Delgado parcel 304-78-411 (LLC scenario). This DOT remains open and in Maria Elena Delgado's individual name even after the 2022 LLC conveyance — a live examiner concern explored in lc-012. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase-money DOT on Delgado parcel 999-03-411 (LLC scenario). This DOT remains open and in Maria Elena Delgado's individual name even after the 2022 LLC conveyance — a live examiner concern explored in lc-012. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -87,7 +87,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase-money DOT for Delgado parcel 304-78-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase-money DOT for Delgado parcel 999-03-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for Quicken Loans Inc. Note was subsequently sold to Rocket Mortgage LLC (successor-in-interest), but no assignment of DOT has been recorded in the parcel corpus.",

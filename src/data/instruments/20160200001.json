@@ -51,7 +51,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase deed for Martinez family parcel 304-77-555 (divorce quit-claim scenario). Grounded in the real Shamrock Estates Phase 2A book/page cite from the real HOGUE parcel 304-77-689; party names and financials fabricated. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase deed for Martinez family parcel 999-02-555 (divorce quit-claim scenario). Grounded in the real Shamrock Estates Phase 2A book/page cite from the real HOGUE parcel 304-77-689; party names and financials fabricated. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -72,7 +72,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase deed for Martinez parcel 304-77-555 (divorce scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase deed for Martinez parcel 999-02-555 (divorce scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

@@ -60,7 +60,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized Personal Representative's Deed for Chen family parcel 304-78-362 — transfers the estate's fee title to the adult son and sole heir following Robert K. Chen's death (recorded 2023 AF Death cured Lilian's prior death; see 20230200001). Examiner concerns typically include: (a) validity of the Letters of Personal Representative as of the deed date, (b) whether the estate was properly closed or remains open, (c) any creditor claims against the estate that could encumber the conveyed property. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized Personal Representative's Deed for Chen family parcel 999-01-362 — transfers the estate's fee title to the adult son and sole heir following Robert K. Chen's death (recorded 2023 AF Death cured Lilian's prior death; see 20230200001). Examiner concerns typically include: (a) validity of the Letters of Personal Representative as of the deed date, (b) whether the estate was properly closed or remains open, (c) any creditor claims against the estate that could encumber the conveyed property. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -81,7 +81,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only Personal Representative's Deed for Chen family parcel 304-78-362 (probate conveyance scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only Personal Representative's Deed for Chen family parcel 999-01-362 (probate conveyance scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

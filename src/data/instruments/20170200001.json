@@ -45,7 +45,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase deed for Delgado parcel 304-78-411 (LLC conveyance scenario). Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase deed for Delgado parcel 999-03-411 (LLC conveyance scenario). Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -66,7 +66,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase deed for Delgado parcel 304-78-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase deed for Delgado parcel 999-03-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

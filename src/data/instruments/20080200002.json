@@ -67,7 +67,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized purchase-money deed of trust accompanying 20080200001 on Chen family parcel 304-78-362. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized purchase-money deed of trust accompanying 20080200001 on Chen family parcel 999-01-362. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -88,7 +88,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only purchase-money DOT for Chen family parcel 304-78-362 (probate scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only purchase-money DOT for Chen family parcel 999-01-362 (probate scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for Wells Fargo Bank, N.A.",

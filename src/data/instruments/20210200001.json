@@ -55,7 +55,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized Notice of Filing of Decree of Dissolution for Martinez parcel 304-77-555. Courts do not record decrees directly; parties or attorneys record a Notice of Filing with the relevant portion of the decree as Exhibit A to clear title. The debt-assignment language is the specific examiner-relevant clause — it illustrates why the 2016 DOT's open lifecycle cannot be closed merely by the Q/CL deed (20210200002). Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized Notice of Filing of Decree of Dissolution for Martinez parcel 999-02-555. Courts do not record decrees directly; parties or attorneys record a Notice of Filing with the relevant portion of the decree as Exhibit A to clear title. The debt-assignment language is the specific examiner-relevant clause — it illustrates why the 2016 DOT's open lifecycle cannot be closed merely by the Q/CL deed (20210200002). Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -76,7 +76,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only divorce-decree recording for Martinez parcel 304-77-555; not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only divorce-decree recording for Martinez parcel 999-02-555; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

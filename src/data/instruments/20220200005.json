@@ -62,7 +62,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized Treasurer's Deed for Henderson parcel 304-78-401 (tax-sale REO scenario). This is the pivotal instrument — it breaks the chain from Henderson to Tucson Investments via tax foreclosure, and by operation of A.R.S. § 42-18267 extinguishes the 2005 Countrywide DOT without a recorded release. An examiner MUST flag this as a Schedule B exception or obtain a quit-claim from Countrywide's successor. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized Treasurer's Deed for Henderson parcel 999-04-401 (tax-sale REO scenario). This is the pivotal instrument — it breaks the chain from Henderson to Tucson Investments via tax foreclosure, and by operation of A.R.S. § 42-18267 extinguishes the 2005 Countrywide DOT without a recorded release. An examiner MUST flag this as a Schedule B exception or obtain a quit-claim from Countrywide's successor. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -83,7 +83,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only Treasurer's Deed for parcel 304-78-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only Treasurer's Deed for parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

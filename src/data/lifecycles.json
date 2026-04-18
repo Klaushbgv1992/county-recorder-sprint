@@ -82,7 +82,7 @@
       "root_instrument": "20080200002",
       "child_instruments": ["20190200001"],
       "status": "released",
-      "status_rationale": "Demo-only synthetic 2008 Wells Fargo purchase-money DOT on CHEN parcel 304-78-362 (probate scenario). Released 2019-03-22 by full reconveyance 20190200001 — mortgage paid in full before either spouse's death, so the probate chain (Lilian's AF DEATH 20230200001, Robert's PR DEED 20240200001) transfers unencumbered fee to the heir.",
+      "status_rationale": "Demo-only synthetic 2008 Wells Fargo purchase-money DOT on CHEN parcel 999-01-362 (probate scenario). Released 2019-03-22 by full reconveyance 20190200001 — mortgage paid in full before either spouse's death, so the probate chain (Lilian's AF DEATH 20230200001, Robert's PR DEED 20240200001) transfers unencumbered fee to the heir.",
       "examiner_override": null
     },
     {
@@ -90,7 +90,7 @@
       "root_instrument": "20160200002",
       "child_instruments": ["20220200001"],
       "status": "open",
-      "status_rationale": "Demo-only synthetic 2016 Chase purchase-money DOT on MARTINEZ parcel 304-77-555 (divorce quit-claim scenario). Borrowers are CARLOS A MARTINEZ and SOFIA ANDREA MARTINEZ jointly and severally per original DOT. The 2021 divorce decree (20210200001) and subsequent quit-claim (20210200002) transferred record title to Sofia only, but did NOT release Carlos from the note — he remains contingently liable on debt secured by property he no longer owns of record. The 2022 assignment to Mr. Cooper (20220200001) is a servicing transfer and does not alter the borrower names. Examiner must raise: confirm lender release of Carlos or refinance into Sofia-only loan before closing.",
+      "status_rationale": "Demo-only synthetic 2016 Chase purchase-money DOT on MARTINEZ parcel 999-02-555 (divorce quit-claim scenario). Borrowers are CARLOS A MARTINEZ and SOFIA ANDREA MARTINEZ jointly and severally per original DOT. The 2021 divorce decree (20210200001) and subsequent quit-claim (20210200002) transferred record title to Sofia only, but did NOT release Carlos from the note — he remains contingently liable on debt secured by property he no longer owns of record. The 2022 assignment to Mr. Cooper (20220200001) is a servicing transfer and does not alter the borrower names. Examiner must raise: confirm lender release of Carlos or refinance into Sofia-only loan before closing.",
       "examiner_override": null
     },
     {
@@ -98,7 +98,7 @@
       "root_instrument": "20170200002",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "Demo-only synthetic 2017 Quicken Loans (now Rocket Mortgage) purchase-money DOT on DELGADO parcel 304-78-411 (LLC-conveyance scenario). DOT remains in MARIA ELENA DELGADO's individual name even after the 2022-11-08 individual-to-LLC conveyance (20220200003). Due-on-sale clause under 12 USC § 1701j-3 is technically available to the lender but rarely enforced for owner-occupied SFR transferred to a grantor-owned pass-through LLC. No assumption agreement has been recorded. Examiner must disclose: (a) due-on-sale exposure, (b) note remains in individual name despite LLC title, (c) Rocket Mortgage successor-in-interest to Quicken Loans but no assignment of DOT recorded.",
+      "status_rationale": "Demo-only synthetic 2017 Quicken Loans (now Rocket Mortgage) purchase-money DOT on DELGADO parcel 999-03-411 (LLC-conveyance scenario). DOT remains in MARIA ELENA DELGADO's individual name even after the 2022-11-08 individual-to-LLC conveyance (20220200003). Due-on-sale clause under 12 USC § 1701j-3 is technically available to the lender but rarely enforced for owner-occupied SFR transferred to a grantor-owned pass-through LLC. No assumption agreement has been recorded. Examiner must disclose: (a) due-on-sale exposure, (b) note remains in individual name despite LLC title, (c) Rocket Mortgage successor-in-interest to Quicken Loans but no assignment of DOT recorded.",
       "examiner_override": null
     },
     {
@@ -106,7 +106,7 @@
       "root_instrument": "20050200002",
       "child_instruments": ["20220200005"],
       "status": "unresolved",
-      "status_rationale": "Demo-only synthetic 2005 Countrywide Home Loans purchase-money DOT on BRYANT parcel 304-78-401 (tax-sale REO scenario). The DOT was EXTINGUISHED BY OPERATION OF LAW under A.R.S. § 42-18267 upon recording of the 2022-06-15 Treasurer's Deed (20220200005) — tax liens take priority over all junior encumbrances. However, no release was ever recorded, and no successor-in-interest quit-claim has been obtained from Bank of America (Countrywide's 2008 acquirer) or any securitization trust. The DOT therefore appears 'open' in a raw index query but is substantively cleared by operation of law. Examiner must flag this as a Schedule B exception with a specific quiet-title rationale, or obtain a corrective quit-claim to cure the record.",
+      "status_rationale": "Demo-only synthetic 2005 Countrywide Home Loans purchase-money DOT on BRYANT parcel 999-04-401 (tax-sale REO scenario). The DOT was EXTINGUISHED BY OPERATION OF LAW under A.R.S. § 42-18267 upon recording of the 2022-06-15 Treasurer's Deed (20220200005) — tax liens take priority over all junior encumbrances. However, no release was ever recorded, and no successor-in-interest quit-claim has been obtained from Bank of America (Countrywide's 2008 acquirer) or any securitization trust. The DOT therefore appears 'open' in a raw index query but is substantively cleared by operation of law. Examiner must flag this as a Schedule B exception with a specific quiet-title rationale, or obtain a corrective quit-claim to cure the record.",
       "examiner_override": null
     }
   ]

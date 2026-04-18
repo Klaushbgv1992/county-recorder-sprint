@@ -11,7 +11,11 @@ export default defineConfig({
     manifest: true,
   },
   test: {
-    exclude: [...configDefaults.exclude, ".claude/worktrees/**"],
+    exclude: [
+      ...configDefaults.exclude,
+      ".claude/worktrees/**",
+      ".worktrees/**",
+    ],
     environment: "jsdom",
     setupFiles: ["./tests/setup.ts"],
   },

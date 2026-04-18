@@ -55,7 +55,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized LLC conveyance for Delgado parcel 304-78-411 — transfers title from Maria Elena Delgado (individual) to her wholly-owned AZ LLC for estate-planning / asset-protection purposes. The 2017 DOT (20170200002) is NOT released by this conveyance; it remains open in Maria's individual name (lc-012), creating a live examiner disclosure. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized LLC conveyance for Delgado parcel 999-03-411 — transfers title from Maria Elena Delgado (individual) to her wholly-owned AZ LLC for estate-planning / asset-protection purposes. The 2017 DOT (20170200002) is NOT released by this conveyance; it remains open in Maria's individual name (lc-012), creating a live examiner disclosure. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -76,7 +76,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only individual-to-LLC conveyance for Delgado parcel 304-78-411; not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only individual-to-LLC conveyance for Delgado parcel 999-03-411; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {

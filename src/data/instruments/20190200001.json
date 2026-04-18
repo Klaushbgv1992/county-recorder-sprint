@@ -41,7 +41,7 @@
       "confidence": 1
     },
     "source_note": {
-      "value": "Demo-only synthesized release of 20080200002 on Chen family parcel 304-78-362 — represents the 2019 payoff of the original 2008 Wells Fargo mortgage. Not present in publicapi.recorder.maricopa.gov.",
+      "value": "Demo-only synthesized release of 20080200002 on Chen family parcel 999-01-362 — represents the 2019 payoff of the original 2008 Wells Fargo mortgage. Not present in publicapi.recorder.maricopa.gov.",
       "provenance": "demo_synthetic",
       "confidence": 1
     }
@@ -62,7 +62,7 @@
     "affidavitPageAmount": 0,
     "restricted": false,
     "synthesized": true,
-    "synthesized_note": "Demo-only release of 20080200002 on Chen family parcel 304-78-362; not present in publicapi.recorder.maricopa.gov."
+    "synthesized_note": "Demo-only release of 20080200002 on Chen family parcel 999-01-362; not present in publicapi.recorder.maricopa.gov."
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
