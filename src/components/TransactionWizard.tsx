@@ -6,6 +6,7 @@ import { detectAnomalies } from "../logic/anomaly-detector";
 import { generateScheduleBI } from "../logic/schedule-bi-generator";
 import { TransactionWizardStep3 } from "./TransactionWizardStep3";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { useWalkthrough } from "../walkthrough/useWalkthrough";
 
 type Step = 1 | 2 | 3 | 4;
 
@@ -290,8 +291,17 @@ export function TransactionWizard(): ReactElement {
     [apn, data],
   );
 
+  const { currentStep: walkthroughStep } = useWalkthrough();
+  const onWalkthrough = walkthroughStep?.step === 5;
+
   const [step, setStep] = useState<Step>(1);
-  const [inputs, setInputsState] = useState<Partial<TransactionInputs>>({});
+  // When the examiner walkthrough lands on this wizard as step 5, pre-select
+  // a transaction type so the reviewer can advance without guessing. The
+  // wizard still walks through all four steps — the default just unblocks
+  // the Next button on step 1 so the 60-second script keeps moving.
+  const [inputs, setInputsState] = useState<Partial<TransactionInputs>>(
+    () => (onWalkthrough ? { transaction_type: "purchase" } : {}),
+  );
   const [biItems, setBiItems] = useState<BIItem[]>([]);
   const [expandedItemIds, setExpandedItemIds] = useState<Set<string>>(
     () => new Set(),
@@ -357,6 +367,14 @@ export function TransactionWizard(): ReactElement {
         <h1 className="text-xl font-semibold text-gray-900">
           New commitment
         </h1>
+        {onWalkthrough && (
+          <p className="mt-2 text-[13px] leading-snug text-slate-700 bg-moat-50 border border-moat-200 rounded px-3 py-2">
+            This is what turns the abstract into a real title commitment.
+            Schedule B-I (what must happen at closing) is generated from the
+            transaction you scope below; Schedule B-II (what the buyer takes
+            subject to) already came out of the chain review.
+          </p>
+        )}
       </header>
       <StepPills step={step} />
       {step === 1 && (

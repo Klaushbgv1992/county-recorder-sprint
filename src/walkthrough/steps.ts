@@ -47,15 +47,15 @@ export const STEPS: WalkthroughStep[] = [
     step: 4,
     heading: "Review the candidate release",
     why: "Cross-reference on borrower name, date proximity, and legal description surfaces a likely release. The examiner reviews the evidence and accepts.",
-    ctaLabel: "Export the commitment →",
+    ctaLabel: "Add transaction scope →",
     path: `/parcel/${WALKTHROUGH_HERO_APN}/encumbrances?tour=${TOUR_PARAM_VALUE}&step=4`,
   },
   {
     step: 5,
-    heading: "Export the commitment",
-    why: "The abstractor's deliverable — Schedule A + Schedule B-II with county-authoritative citations. Click Export Commitment above.",
+    heading: "Fill the transaction scope",
+    why: "A raw abstract becomes a real title commitment once buyer, loan, and effective date are bound in. Schedule B-I lists what must happen at closing; Schedule B-II lists what the buyer takes subject to.",
     ctaLabel: "Finish walkthrough",
-    path: `/parcel/${WALKTHROUGH_HERO_APN}/encumbrances?tour=${TOUR_PARAM_VALUE}&step=5`,
+    path: `/parcel/${WALKTHROUGH_HERO_APN}/commitment/new?tour=${TOUR_PARAM_VALUE}&step=5`,
   },
 ];
 
