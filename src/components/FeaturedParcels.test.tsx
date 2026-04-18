@@ -61,10 +61,11 @@ describe("FeaturedParcels", () => {
     expect(hogue).toHaveAttribute("href", "/parcel/304-77-689");
   });
 
-  it("badges POPHAM as the recommended demo", () => {
+  it("badges POPHAM with a neutral 'Start here' chip", () => {
     renderUI();
-    // Match the badge specifically (uppercase letters, not the explainer paragraph)
-    const badge = screen.getByText("Recommended demo");
+    // Chip is intentionally neutral (slate, not green) so the card order
+    // implies primacy rather than a colored priority signal.
+    const badge = screen.getByText("Start here");
     expect(badge).toBeInTheDocument();
     expect(badge.tagName.toLowerCase()).toBe("span");
   });
