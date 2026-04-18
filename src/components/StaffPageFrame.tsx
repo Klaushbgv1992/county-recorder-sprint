@@ -9,9 +9,21 @@ interface Props {
 export function StaffPageFrame({ title, subtitle, children }: Props) {
   return (
     <div className="flex-1 overflow-auto">
-      <div className="bg-amber-100 text-amber-800 text-xs text-center py-1.5 px-4 border-b border-amber-200">
-        Staff preview (demo) &mdash; actions here are session-only and not
-        persisted
+      {/* Staff surface identity strip. These routes (/staff, /staff/*)
+          simulate the internal county workbench and are out of the
+          public examiner workflow — the strip makes that unambiguous
+          for anyone who arrives via the landing footer link. Actions
+          here are intentionally session-only. */}
+      <div className="bg-amber-50 border-b border-amber-300 px-6 py-2.5 flex items-center justify-between gap-4 text-xs">
+        <div className="text-amber-900 font-medium">
+          County staff view &mdash; internal workbench simulation
+        </div>
+        <div className="text-amber-800">
+          Actions are session-only &middot;{" "}
+          <a href="/" className="underline underline-offset-2 hover:text-amber-900">
+            Back to public search
+          </a>
+        </div>
       </div>
       <div className="max-w-6xl mx-auto px-6 py-6">
         <div className="mb-5">

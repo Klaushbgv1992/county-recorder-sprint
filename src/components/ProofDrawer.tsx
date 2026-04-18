@@ -43,6 +43,10 @@ interface Props {
   allLinks: DocumentLink[];
   lifecycles: EncumbranceLifecycle[];
   pipelineStatus: PipelineStatus;
+  // True when the enclosing page already renders an Export Commitment
+  // button (encumbrance route). Avoids the side-by-side duplicate where
+  // the page header and drawer header both carry the same action.
+  hideExportButton?: boolean;
 }
 
 export function ProofDrawer({
@@ -55,6 +59,7 @@ export function ProofDrawer({
   allLinks,
   lifecycles,
   pipelineStatus,
+  hideExportButton = false,
 }: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
@@ -97,14 +102,16 @@ export function ProofDrawer({
             </p>
           </div>
           <div className="flex items-center gap-2">
-            <ExportCommitmentButton
-              parcel={parcel}
-              instruments={allInstruments}
-              links={allLinks}
-              lifecycles={lifecycles}
-              pipelineStatus={pipelineStatus}
-              viewedInstrumentNumber={instrument.instrument_number}
-            />
+            {!hideExportButton && (
+              <ExportCommitmentButton
+                parcel={parcel}
+                instruments={allInstruments}
+                links={allLinks}
+                lifecycles={lifecycles}
+                pipelineStatus={pipelineStatus}
+                viewedInstrumentNumber={instrument.instrument_number}
+              />
+            )}
             <button
               onClick={handleCopyCitation}
               className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"

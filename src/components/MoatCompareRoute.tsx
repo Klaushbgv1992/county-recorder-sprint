@@ -151,8 +151,8 @@ export function MoatCompareRoute() {
         <p className="text-sm text-gray-600 mt-1">
           Showing parcel 304-78-386 — POPHAM CHRISTOPHER / ASHLEY,
           3674 E Palmer Street, Gilbert. Prototype corpus contains
-          two parcels; the second (HOGUE 304-77-689) is reachable
-          via <Link to="/" className="text-blue-700 hover:underline">Search</Link>.
+          six curated parcels reachable via{" "}
+          <Link to="/" className="text-blue-700 hover:underline">Search</Link>.
         </p>
       </header>
 
