@@ -206,7 +206,7 @@ export function SwimlaneDiagram(props: Props) {
   const safeDomain: [string, string] = [domain[0], domain[1]];
 
   return (
-    <div ref={containerRef}>
+    <div ref={containerRef} className="animate-fade-in">
       <div className="px-3">
         <TimeAxis
           domain={safeDomain}

@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -108,6 +108,19 @@ export function Swimlane(props: Props) {
     }
     // scroll on entering step 3 or 4; re-scroll if step flips between them.
   }, [walkthroughFocused, currentStep?.step]);
+
+  // Fire a one-shot pulse on the just-accepted candidate node so the
+  // examiner's click produces an immediate visual receipt. We key off the
+  // accepted instrument number and clear after the 600ms pulse-once keyframe
+  // (+100ms slack) so a fast second acceptance still re-fires cleanly.
+  const acceptedNumber = props.acceptedCandidate?.instrumentNumber ?? null;
+  const [justAcceptedId, setJustAcceptedId] = useState<string | null>(null);
+  useEffect(() => {
+    if (!acceptedNumber) return;
+    setJustAcceptedId(acceptedNumber);
+    const handle = window.setTimeout(() => setJustAcceptedId(null), 700);
+    return () => window.clearTimeout(handle);
+  }, [acceptedNumber]);
 
   const instrumentMap = useMemo(
     () => new Map(props.instruments.map((i) => [i.instrument_number, i])),
@@ -248,10 +261,18 @@ export function Swimlane(props: Props) {
             stroke="#e2e8f0"
             strokeWidth={1}
           />
-          {nodes.map((_n, i) => {
+          {nodes.map((n, i) => {
             if (i === 0) return null;
             const startX = nodesWithLayout[i - 1].visualX;
             const endX = nodesWithLayout[i].visualX;
+            // A segment whose endpoint is the freshly-accepted (or already
+            // curated-linked) release paints moat-green at 2.5 stroke so the
+            // newly-formed chain link reads as confirmed rather than open.
+            const segEndInstrument =
+              n.kind === "single" ? n.instrument.instrument_number : null;
+            const isLinkedSegment =
+              !!acceptedInst &&
+              segEndInstrument === acceptedInst.instrument_number;
             // MERS-gap segment: split into solid → dashed → solid so the line
             // itself narrates "record-record-GAP-record-record" around the
             // callout. Fallback to a single solid stroke outside the gap.
@@ -301,8 +322,9 @@ export function Swimlane(props: Props) {
                 x2={endX}
                 y1={Y_CENTER}
                 y2={Y_CENTER}
-                stroke="#64748b"
-                strokeWidth={2}
+                stroke={isLinkedSegment ? "#10b981" : "#64748b"}
+                strokeWidth={isLinkedSegment ? 2.5 : 2}
+                className="transition-all duration-300 motion-reduce:transition-none"
               />
             );
           })}
@@ -369,7 +391,36 @@ export function Swimlane(props: Props) {
           if (dotIdx === -1 || releaseIdx === -1) return null;
           const dotX = nodesWithLayout[dotIdx].visualX;
           const releaseX = nodesWithLayout[releaseIdx].visualX;
-          return <MersCallout gap={mersGap} xPx={(dotX + releaseX) / 2} yCenter={Y_CENTER} />;
+          // The MERS callout is the swimlane's "missing link" indicator.
+          // A hover-triggered shake nudges the examiner to investigate it
+          // without hijacking attention while they scan elsewhere.
+          return (
+            <div className="hover:animate-shake">
+              <MersCallout gap={mersGap} xPx={(dotX + releaseX) / 2} yCenter={Y_CENTER} />
+            </div>
+          );
+        })()}
+
+        {justAcceptedId && acceptedInst && (() => {
+          const idx = nodes.findIndex(
+            (nn) =>
+              nn.kind === "single" &&
+              nn.instrument.instrument_number === justAcceptedId,
+          );
+          if (idx === -1) return null;
+          const x = nodesWithLayout[idx].visualX;
+          // Decorative ring overlay: the underlying InstrumentNode owns its
+          // click target and label, so we render a pointer-events-none halo
+          // that fires animate-pulse-once (600ms green ring + scale) at the
+          // accepted node's axis position — visual receipt without touching
+          // the node component's DOM.
+          return (
+            <div
+              aria-hidden
+              className="absolute pointer-events-none -translate-x-1/2 -translate-y-1/2 w-8 h-8 rounded-full animate-pulse-once"
+              style={{ left: x, top: Y_CENTER }}
+            />
+          );
         })()}
       </div>
 

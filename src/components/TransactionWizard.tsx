@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactElement } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactElement } from "react";
 import { useParams, Link } from "react-router";
 import type { BIItem, TransactionInputs, TransactionType } from "../types/commitment";
 import { loadParcelDataByApn, type ParcelData } from "../data-loader";
@@ -45,24 +45,75 @@ function StepPills({ step }: { step: Step }) {
     { n: 3 as Step, label: "Review" },
     { n: 4 as Step, label: "Export" },
   ];
+
+  // Track previous step value so we can detect the *just-completed* pill
+  // and fire a one-shot pulse on that specific circle only.
+  const prevStepRef = useRef<Step>(step);
+  const [justCompleted, setJustCompleted] = useState<Step | null>(null);
+  const [justFilledConnector, setJustFilledConnector] = useState<Step | null>(null);
+
+  useEffect(() => {
+    const prev = prevStepRef.current;
+    if (step > prev) {
+      // advanced from prev -> step: prev is the just-completed pill,
+      // and the connector after prev is the just-filled connector.
+      setJustCompleted(prev);
+      setJustFilledConnector(prev);
+      const t = window.setTimeout(() => {
+        setJustCompleted(null);
+        setJustFilledConnector(null);
+      }, 650);
+      prevStepRef.current = step;
+      return () => window.clearTimeout(t);
+    }
+    prevStepRef.current = step;
+  }, [step]);
+
   return (
     <ol aria-label="Progress" className="flex items-start mb-6">
       {steps.map(({ n, label }, idx) => {
         const active = n === step;
         const done = n < step;
+        const pulseOnce = justCompleted === n;
+        const connectorFilled = done;
+        const connectorJustFilled = justFilledConnector === n;
         return (
-          <li key={n} className="flex items-start">
+          <li
+            key={n}
+            className="flex items-start animate-fade-in-up"
+            style={{ animationDelay: `${idx * 80}ms` }}
+          >
             <span className="flex flex-col items-center">
               <span
-                className={`w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold select-none ${
+                className={`relative w-6 h-6 rounded-full flex items-center justify-center text-xs font-semibold select-none transition-colors ${
                   done
                     ? "bg-blue-600 text-white"
                     : active
-                      ? "border-2 border-blue-600 text-blue-700 bg-white ring-2 ring-blue-100"
+                      ? "border-2 border-blue-600 text-blue-700 bg-white ring-2 ring-blue-100 animate-pulse-glow"
                       : "border border-gray-300 text-gray-400 bg-white"
-                }`}
+                } ${pulseOnce ? "animate-pulse-once" : ""}`}
               >
-                {n}
+                {done ? (
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-4 h-4"
+                    aria-hidden="true"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={3}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <polyline
+                      points="5,12 10,17 19,7"
+                      strokeDasharray={24}
+                      strokeDashoffset={pulseOnce ? 24 : 0}
+                      className={pulseOnce ? "animate-checkmark-draw" : ""}
+                    />
+                  </svg>
+                ) : (
+                  n
+                )}
               </span>
               <span
                 className={`mt-1 text-xs whitespace-nowrap ${
@@ -78,9 +129,17 @@ function StepPills({ step }: { step: Step }) {
             </span>
             {idx < steps.length - 1 && (
               <span
-                className={`w-8 h-px mt-3 mx-1 flex-shrink-0 ${done ? "bg-blue-400" : "bg-gray-200"}`}
+                className="relative block w-8 h-px mt-3 mx-1 flex-shrink-0 bg-gray-200 overflow-hidden"
                 aria-hidden="true"
-              />
+              >
+                {connectorFilled && (
+                  <span
+                    className={`absolute inset-0 origin-left bg-moat-500 ${
+                      connectorJustFilled ? "animate-track-grow" : ""
+                    }`}
+                  />
+                )}
+              </span>
             )}
           </li>
         );

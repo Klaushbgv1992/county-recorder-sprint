@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState, type ReactNode } from "react";
 import type { Instrument, PartyRole } from "../types";
 import {
   searchAll,
@@ -49,6 +49,34 @@ const ROLE_LABEL: Record<PartyRole, string> = {
 
 const PARTY_LIMIT = 5;
 
+// Case-insensitive substring highlight. Splits `text` around each occurrence
+// of `query` and wraps matches in a <mark>. Empty queries pass through.
+function highlight(text: string, query: string): ReactNode {
+  const q = query.trim();
+  if (!q || !text) return text;
+  const lowerText = text.toLowerCase();
+  const lowerQ = q.toLowerCase();
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  let idx = lowerText.indexOf(lowerQ, cursor);
+  let keyN = 0;
+  while (idx !== -1) {
+    if (idx > cursor) parts.push(<Fragment key={`t${keyN++}`}>{text.slice(cursor, idx)}</Fragment>);
+    parts.push(
+      <mark
+        key={`m${keyN++}`}
+        className="bg-amber-100 text-amber-900 rounded-sm px-0.5"
+      >
+        {text.slice(idx, idx + q.length)}
+      </mark>,
+    );
+    cursor = idx + q.length;
+    idx = lowerText.indexOf(lowerQ, cursor);
+  }
+  if (cursor < text.length) parts.push(<Fragment key={`t${keyN++}`}>{text.slice(cursor)}</Fragment>);
+  return <>{parts}</>;
+}
+
 interface Props {
   value: string;
   onChange: (v: string) => void;
@@ -74,6 +102,7 @@ export function SearchHero({
 }: Props) {
   const [open, setOpen] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
+  const [selectedKey, setSelectedKey] = useState<string | null>(null);
 
   const hits = useMemo(
     () => (value ? searchAll(value, searchables, { limit: 8 }) : []),
@@ -160,18 +189,21 @@ export function SearchHero({
                   const entity = ENTITY_CHIP[h.matchType];
                   const tier = TIER_CHIP[s.tier];
                   const active = i === activeIdx;
+                  const rowKey = `${value}:hit:${s.apn}:${h.matchType}:${i}`;
+                  const isSelected = selectedKey === rowKey;
                   return (
                     <li
-                      key={s.apn + ":" + h.matchType}
+                      key={rowKey}
                       role="option"
                       aria-selected={active}
-                      className={`flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"}`}
+                      className={`animate-fade-in-up flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"} ${isSelected ? "animate-bounce-soft" : ""}`}
+                      style={{ animationDelay: `${i * 20}ms` }}
                       onMouseEnter={() => setActiveIdx(i)}
-                      onClick={() => onPick(h, value)}
+                      onClick={() => { setSelectedKey(rowKey); onPick(h, value); }}
                     >
                       <div className="min-w-0 flex-1">
                         <div className="font-semibold text-recorder-900 truncate">
-                          {addressOf(s) || s.apn}
+                          {highlight(addressOf(s) || s.apn, value)}
                         </div>
                         <div className="text-xs text-slate-600 truncate">
                           {ownerOf(s) || "—"}{" · "}
@@ -203,17 +235,21 @@ export function SearchHero({
                   Parties · {partyTotal} match{partyTotal === 1 ? "" : "es"}
                 </div>
                 <ul role="listbox" aria-label="Matching parties" className="bg-white">
-                  {partyHits.map((p) => (
+                  {partyHits.map((p, i) => {
+                    const partyKey = `${value}:party:${p.normalizedName}:${i}`;
+                    const partySelected = selectedKey === partyKey;
+                    return (
                     <li
-                      key={p.normalizedName}
+                      key={partyKey}
                       role="option"
                       aria-selected={false}
-                      className="flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50"
-                      onClick={() => onSelectParty(p.normalizedName)}
+                      className={`animate-fade-in-up flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50 ${partySelected ? "animate-bounce-soft" : ""}`}
+                      style={{ animationDelay: `${i * 20}ms` }}
+                      onClick={() => { setSelectedKey(partyKey); onSelectParty(p.normalizedName); }}
                     >
                       <div className="min-w-0 flex-1">
                         <div className="font-semibold text-recorder-900 truncate">
-                          {p.displayName}
+                          {highlight(p.displayName, value)}
                         </div>
                         <div className="mt-1 flex flex-wrap gap-1">
                           {Object.entries(p.byRole).map(([role, count]) => (
@@ -235,7 +271,8 @@ export function SearchHero({
                         </span>
                       </div>
                     </li>
-                  ))}
+                    );
+                  })}
                   {partyTotal > partyHits.length && (
                     <li className="px-4 py-2 text-xs text-slate-500">
                       +{partyTotal - partyHits.length} more parties — narrow your search
