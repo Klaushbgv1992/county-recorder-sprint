@@ -38,7 +38,8 @@ describe("LandingPage", () => {
     // SearchHero is now the first child of <main> (CountyHeartbeat was
     // removed — the slim verified-through strip in RootLayout carries the
     // moat claim on its own). Verify SearchHero precedes the map section.
-    render(wrap(<LandingPage />));
+    // Must use ?mode=examiner because the default portal mode is homeowner.
+    render(wrap(<LandingPage />, ["/?mode=examiner"]));
     const combobox = screen.getByRole("combobox");
     expect(combobox).toBeInTheDocument();
     const main = document.querySelector("main")!;
@@ -100,7 +101,8 @@ describe("LandingPage — PlantVsCountyProof band", () => {
   afterEach(() => cleanup());
 
   it("renders PlantVsCountyProof between SearchHero and FeaturedParcels", () => {
-    render(wrap(<LandingPage />));
+    // Must use ?mode=examiner — combobox is only present in examiner mode.
+    render(wrap(<LandingPage />, ["/?mode=examiner"]));
     const main = document.querySelector("main")!;
     const combobox = screen.getByRole("combobox");
     const proof = screen.getByRole("region", { name: /plant.*county|county.*plant/i });
@@ -160,7 +162,8 @@ describe("LandingPage — URL state deep-link", () => {
 
   // New: deep-link test — URL ?q=popham should populate the search bar
   it("pre-populates search bar from URL ?q= parameter", () => {
-    render(wrap(<LandingPage />, ["/?q=popham&apn=304-78-386&overlay=encumbrance"]));
+    // Must include mode=examiner — combobox only mounts in examiner mode.
+    render(wrap(<LandingPage />, ["/?q=popham&apn=304-78-386&overlay=encumbrance&mode=examiner"]));
     const searchBar = screen.getByRole("combobox") as HTMLInputElement;
     expect(searchBar.value).toBe("popham");
   });

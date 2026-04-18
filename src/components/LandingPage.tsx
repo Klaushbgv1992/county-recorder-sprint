@@ -8,6 +8,9 @@ import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { PlantVsCountyProof } from "./PlantVsCountyProof";
 import { SearchHero } from "./SearchHero";
+import { usePortalMode } from "../hooks/usePortalMode";
+import { PortalModeToggle } from "./PortalModeToggle";
+import { HomeownerHero } from "./HomeownerHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
 import { ScenarioPicker } from "./ScenarioPicker";
 import { useWalkthrough } from "../walkthrough/useWalkthrough";
@@ -38,6 +41,7 @@ export function LandingPage() {
   const parcels = useAllParcels();
   const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
     useLandingUrlState();
+  const { mode, setMode } = usePortalMode();
   // Examiner walkthrough sets ?tour=examiner on the URL. When it's on, the
   // WalkthroughBanner owns on-screen guidance and the map's intro pulse is
   // suppressed so the two don't compete.
@@ -176,17 +180,30 @@ export function LandingPage() {
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
-      <SearchHero
-        value={query}
-        onChange={setQuery}
-        searchables={searchables}
-        instruments={allInstruments}
-        instrumentToApn={instrumentToApn}
-        onSelectCurated={(apn) => navigate(`/parcel/${apn}`)}
-        onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
-        onSelectDrawer={(apn) => setSelectedApn(apn)}
-        onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
-      />
+      <div className="border-b border-slate-200 bg-white">
+        <div className="max-w-6xl mx-auto flex items-center justify-end px-6 pt-3">
+          <PortalModeToggle mode={mode} onChange={setMode} />
+        </div>
+        {mode === "homeowner" ? (
+          <HomeownerHero
+            searchables={searchables}
+            onResolve={(apn) => navigate(`/parcel/${apn}/home`)}
+          />
+        ) : (
+          <SearchHero
+            value={query}
+            onChange={setQuery}
+            searchables={searchables}
+            instruments={allInstruments}
+            instrumentToApn={instrumentToApn}
+            onSelectCurated={(apn) => navigate(`/parcel/${apn}`)}
+            onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
+            onSelectDrawer={(apn) => setSelectedApn(apn)}
+            onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
+          />
+        )}
+        {/* party-search hero card — Agent 3 */}
+      </div>
       {walkthrough.active ? <WalkthroughBanner /> : <ScenarioPicker />}
 
       {/* Moat-as-evidence band — stages the plant-vs-county comparison
