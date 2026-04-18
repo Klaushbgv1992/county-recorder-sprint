@@ -7,6 +7,7 @@ import { ParcelDrawer } from "./ParcelDrawer";
 import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { PlantVsCountyProof } from "./PlantVsCountyProof";
+import { PartySearchHeroCard } from "./PartySearchHeroCard";
 import { SearchHero } from "./SearchHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
 import { ScenarioPicker } from "./ScenarioPicker";
@@ -187,6 +188,8 @@ export function LandingPage() {
         onSelectDrawer={(apn) => setSelectedApn(apn)}
         onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
       />
+      {/* party-search hero card — Agent 3 */}
+      <PartySearchHeroCard />
       {walkthrough.active ? <WalkthroughBanner /> : <ScenarioPicker />}
 
       {/* Moat-as-evidence band — stages the plant-vs-county comparison
