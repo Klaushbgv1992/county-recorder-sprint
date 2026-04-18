@@ -61,8 +61,14 @@
   "source_image_path": null,
   "page_count": 2,
   "raw_api_response": {
-    "names": ["SHEA HOMES ARIZONA LP", "CHEN ROBERT K", "CHEN LILIAN M"],
-    "documentCodes": ["WAR DEED"],
+    "names": [
+      "SHEA HOMES ARIZONA LP",
+      "CHEN ROBERT K",
+      "CHEN LILIAN M"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
     "recordingDate": "4-15-2008",
     "recordingNumber": "20080200001",
     "pageAmount": 2,
@@ -76,7 +82,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

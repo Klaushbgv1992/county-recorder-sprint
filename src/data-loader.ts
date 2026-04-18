@@ -65,6 +65,7 @@ import inst20020100001 from "./data/instruments/20020100001.json";
 import inst20020100002 from "./data/instruments/20020100002.json";
 import inst20050100001 from "./data/instruments/20050100001.json";
 import inst20060100001 from "./data/instruments/20060100001.json";
+import inst20240100001 from "./data/instruments/20240100001.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -117,6 +118,8 @@ const instrumentsRaw = [
   inst20020100002,
   inst20050100001,
   inst20060100001,
+  // POPHAM federal tax lien (demo_synthetic) — see lc-015 and R10.
+  inst20240100001,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.

@@ -16,8 +16,9 @@ describe("resolvePopupData", () => {
     expect(data!.owner).toBe("POPHAM CHRISTOPHER / ASHLEY");
     expect(data!.address).toBe("3674 E Palmer St");
     expect(data!.apn).toBe("304-78-386");
-    // POPHAM has lc-002 open (DOT 20210057847)
-    expect(data!.openLifecycleCount).toBe(1);
+    // POPHAM has 2 open lifecycles: lc-002 (DOT 20210057847) and
+    // lc-015 (demo-only NFTL 20240100001 — federal tax lien).
+    expect(data!.openLifecycleCount).toBe(2);
     expect(data!.lastRecordingDate).toMatch(/^\d{4}-\d{2}-\d{2}$/);
   });
 
@@ -51,8 +52,9 @@ describe("resolvePopupData", () => {
 
   it("returns the latest recording_date among the parcel's curated instruments", () => {
     const data = resolvePopupData("304-78-386", { parcels, instruments, lifecycles });
-    // POPHAM corpus latest is 2021-01-22 (release 20210075858 recorded
-    // 3 days after the 2021-01-19 deed + DOT pair).
-    expect(data!.lastRecordingDate).toBe("2021-01-22");
+    // POPHAM corpus latest is 2024-03-12 — the demo-only NFTL
+    // (20240100001) added to demonstrate R10 open-statutory-lien
+    // handling. Prior to that addition the latest was 2021-01-22.
+    expect(data!.lastRecordingDate).toBe("2024-03-12");
   });
 });

@@ -55,13 +55,23 @@
       "confidence": 1
     }
   },
-  "back_references": ["20220200003"],
-  "same_day_group": ["20220200002", "20220200003"],
+  "back_references": [
+    "20220200003"
+  ],
+  "same_day_group": [
+    "20220200002",
+    "20220200003"
+  ],
   "source_image_path": null,
   "page_count": 1,
   "raw_api_response": {
-    "names": ["DELGADO MARIA ELENA", "DELGADO PROPERTY HOLDINGS LLC"],
-    "documentCodes": ["AF VALUE"],
+    "names": [
+      "DELGADO MARIA ELENA",
+      "DELGADO PROPERTY HOLDINGS LLC"
+    ],
+    "documentCodes": [
+      "AF VALUE"
+    ],
     "recordingDate": "11-8-2022",
     "recordingNumber": "20220200004",
     "pageAmount": 1,
@@ -75,7 +85,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 5,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

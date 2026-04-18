@@ -72,12 +72,21 @@
     }
   },
   "back_references": [],
-  "same_day_group": ["20170200001"],
+  "same_day_group": [
+    "20170200001"
+  ],
   "source_image_path": null,
   "page_count": 19,
   "raw_api_response": {
-    "names": ["DELGADO MARIA ELENA", "QUICKEN LOANS INC", "MERS", "STEWART TITLE"],
-    "documentCodes": ["DEED TRST"],
+    "names": [
+      "DELGADO MARIA ELENA",
+      "QUICKEN LOANS INC",
+      "MERS",
+      "STEWART TITLE"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
     "recordingDate": "9-14-2017",
     "recordingNumber": "20170200002",
     "pageAmount": 19,
@@ -92,7 +101,7 @@
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for Quicken Loans Inc. Note was subsequently sold to Rocket Mortgage LLC (successor-in-interest), but no assignment of DOT has been recorded in the parcel corpus.",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

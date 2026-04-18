@@ -67,13 +67,23 @@
       "confidence": 1
     }
   },
-  "back_references": ["20050200001", "20050200002"],
+  "back_references": [
+    "20050200001",
+    "20050200002"
+  ],
   "same_day_group": [],
   "source_image_path": null,
   "page_count": 6,
   "raw_api_response": {
-    "names": ["MARICOPA COUNTY TREASURER", "TUCSON INVESTMENTS LLC", "HENDERSON JAMES D", "HENDERSON TAMMY L"],
-    "documentCodes": ["TREAS DEED"],
+    "names": [
+      "MARICOPA COUNTY TREASURER",
+      "TUCSON INVESTMENTS LLC",
+      "HENDERSON JAMES D",
+      "HENDERSON TAMMY L"
+    ],
+    "documentCodes": [
+      "TREAS DEED"
+    ],
     "recordingDate": "6-15-2022",
     "recordingNumber": "20220200005",
     "pageAmount": 6,
@@ -87,7 +97,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

@@ -1,0 +1,108 @@
+{
+  "instrument_number": "20240100001",
+  "recording_date": "2024-03-12",
+  "document_type": "other",
+  "document_type_raw": "FED TAX L",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "UNITED STATES OF AMERICA (INTERNAL REVENUE SERVICE)",
+      "role": "claimant",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "POPHAM CHRISTOPHER J",
+      "role": "debtor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; the NFTL is filed under 26 U.S.C. § 6323 against all property and rights to property belonging to the debtor — the legal description is provided for indexing only and does not limit the statutory lien's reach.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "form_number": {
+      "value": "IRS Form 668(Y)(c) — Notice of Federal Tax Lien",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "serial_number": {
+      "value": "768349201-24",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "statute": {
+      "value": "26 U.S.C. § 6321 (federal tax lien arises by operation of law); 26 U.S.C. § 6323 (perfection vs subsequent purchasers requires NFTL recording); A.R.S. § 33-411 (Arizona recording statute, makes NFTL constructive notice when indexed).",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "tax_periods": {
+      "value": "Form 1040 — tax period ending 2019-12-31 ($18,204.12); Form 1040 — tax period ending 2020-12-31 ($29,108.36). Total: $47,312.48 (excluding statutory interest and additions accruing under 26 U.S.C. § 6601 after the assessment date).",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "assessment_date": {
+      "value": "2022-08-15 (most recent; earlier assessment 2021-05-17)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "refile_deadline": {
+      "value": "2032-09-14 (10 years from latest assessment + 30 days per 26 U.S.C. § 6502(a); lien self-releases by operation of law if not refiled by IRS — 26 U.S.C. § 6325(f)(1)).",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "irs_office": {
+      "value": "Small Business / Self-Employed Division, ACS Support — Stop 5050, Phoenix, AZ. Revenue officer signature: [illegible], Group Manager approval on file.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "release_mechanism": {
+      "value": "Released by IRS Form 668(Z) Certificate of Release of Federal Tax Lien after full payment, acceptance of offer-in-compromise, or expiration of the Collection Statute Expiration Date (CSED). The Form 668(Z) must be recorded in this county's recorder office to clear the index.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "priority_note": {
+      "value": "Federal tax liens prime subsequent purchasers, mortgagees, mechanic's lienors, and judgment-lien creditors once the NFTL is recorded (26 U.S.C. § 6323(a)). They do NOT prime a prior-recorded, fully-perfected purchase-money mortgage — but the 2013 DOT on this parcel (20130183450) was released 2021-01-22 (20210075858), so this NFTL is currently the senior encumbrance of record against POPHAM.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Notice of Federal Tax Lien against POPHAM CHRISTOPHER J. Not present in publicapi.recorder.maricopa.gov. Inserted to demonstrate the product's handling of a real title cloud: federal tax liens are one of the top-five most common reasons title insurance claims pay out, they are filed without notice to the property owner, and the Maricopa public API silently drops the document-code filter that would let an abstractor locate them by code (see docs/hunt-log-known-gap-2.md). This instrument lets the encumbrance lifecycle panel and title-opinion synthesizer demonstrate 'open lien, examiner must resolve before closing' end-to-end.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "UNITED STATES OF AMERICA",
+      "INTERNAL REVENUE SERVICE",
+      "POPHAM CHRISTOPHER J"
+    ],
+    "documentCodes": [
+      "FED TAX L"
+    ],
+    "recordingDate": "3-12-2024",
+    "recordingNumber": "20240100001",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only NFTL against POPHAM; not present in publicapi.recorder.maricopa.gov. Surfaces federal-tax-lien handling that Known Gap #2 (API documentCode filter silently dropped) makes invisible in plant products."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

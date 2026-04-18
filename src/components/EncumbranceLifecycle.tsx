@@ -14,6 +14,7 @@ import { SwimlaneDiagram } from "./swimlane";
 import { Term, TermSection } from "../terminology/Term";
 import { getOpenLiensInSubdivision } from "../logic/subdivision-signals";
 import { SubdivisionSignalsCard } from "./SubdivisionSignalsCard";
+import { TitleOpinionPanel } from "./TitleOpinionPanel";
 
 interface Props {
   parcel: Parcel;
@@ -89,6 +90,13 @@ export function EncumbranceLifecycle({
         </div>
         <MoatBanner pipelineStatus={pipelineStatus} />
       </TermSection>
+      <TitleOpinionPanel
+        parcel={parcel}
+        instruments={instruments}
+        lifecycles={lifecycles}
+        findings={findings}
+        pipelineStatus={pipelineStatus}
+      />
       <SubdivisionSignalsCard signals={signals} subdivision={parcel.subdivision} />
       <SwimlaneDiagram
         parcel={parcel}

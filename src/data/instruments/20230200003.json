@@ -67,12 +67,21 @@
     }
   },
   "back_references": [],
-  "same_day_group": ["20230200002"],
+  "same_day_group": [
+    "20230200002"
+  ],
   "source_image_path": null,
   "page_count": 20,
   "raw_api_response": {
-    "names": ["BRYANT JAMES T", "AMERISAVE MORTGAGE CORPORATION", "MERS", "OLD REPUBLIC TITLE"],
-    "documentCodes": ["DEED TRST"],
+    "names": [
+      "BRYANT JAMES T",
+      "AMERISAVE MORTGAGE CORPORATION",
+      "MERS",
+      "OLD REPUBLIC TITLE"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
     "recordingDate": "1-30-2023",
     "recordingNumber": "20230200003",
     "pageAmount": 20,
@@ -87,7 +96,7 @@
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for AmeriSave Mortgage Corporation.",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

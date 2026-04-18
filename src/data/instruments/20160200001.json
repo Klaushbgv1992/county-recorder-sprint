@@ -61,8 +61,14 @@
   "source_image_path": null,
   "page_count": 2,
   "raw_api_response": {
-    "names": ["CALATLANTIC GROUP INC", "MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA"],
-    "documentCodes": ["WAR DEED"],
+    "names": [
+      "CALATLANTIC GROUP INC",
+      "MARTINEZ CARLOS A",
+      "MARTINEZ SOFIA ANDREA"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
     "recordingDate": "5-10-2016",
     "recordingNumber": "20160200001",
     "pageAmount": 2,
@@ -76,7 +82,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

@@ -12,6 +12,7 @@ import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { LegalDescription } from "./LegalDescription";
 import { Term, TermSection } from "../terminology/Term";
 
 const COUNTY_NAME = "Maricopa County, AZ";
@@ -243,9 +244,10 @@ export function ProofDrawer({
                       confidence={instrument.legal_description.confidence}
                     />
                   </div>
-                  <span className="text-sm text-gray-800 font-mono">
-                    {instrument.legal_description.value}
-                  </span>
+                  <LegalDescription
+                    value={instrument.legal_description.value}
+                    parcelApn={parcel.apn}
+                  />
                 </div>
               )}
               {instrument.back_references.length > 0 && (
