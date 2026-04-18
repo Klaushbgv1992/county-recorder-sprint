@@ -11,6 +11,7 @@ import type {
 import { findMatchingPattern, partial_chain_disclosure } from "./patterns";
 import { renderWithCitations } from "./render-citations";
 import { anomalyPatterns } from "./anomaly-patterns";
+import { subjectPhraseFromParties } from "./subject-phrase";
 
 type StaffAnomaly = z.infer<typeof StaffAnomalySchema>;
 
@@ -95,10 +96,6 @@ export function renderTimeline(
   return blocks;
 }
 
-function titleCaseName(s: string): string {
-  return s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
 function latestDeed(instruments: Instrument[]): Instrument | null {
   const deeds = instruments
     .filter((i) =>
@@ -109,21 +106,6 @@ function latestDeed(instruments: Instrument[]): Instrument | null {
     )
     .sort((a, b) => b.recording_date.localeCompare(a.recording_date));
   return deeds[0] ?? null;
-}
-
-function granteeFamilyShortForm(inst: Instrument): string {
-  const grantees = inst.parties.filter((p) => p.role === "grantee").map((p) => p.name);
-  const lastNames = Array.from(
-    new Set(
-      grantees.map((full) => {
-        const parts = full.trim().split(/\s+/);
-        return titleCaseName(parts[parts.length - 1] ?? full);
-      }),
-    ),
-  );
-  if (lastNames.length === 0) return "the current owners";
-  if (lastNames.length === 1) return `the ${lastNames[0]}s`;
-  return lastNames.join(" & ");
 }
 
 export function renderHero(
@@ -139,7 +121,7 @@ export function renderHero(
     const sentence = `${parcel.address} in ${parcel.city}, ${parcel.state}. The county's records for this parcel are summarized below.`;
     return { oneLiner: sentence, metaDescription: sentence };
   }
-  const family = granteeFamilyShortForm(deed);
+  const family = subjectPhraseFromParties(deed.parties, "grantee");
   const year = deed.recording_date.slice(0, 4);
   const sentence = `${parcel.address} in ${parcel.city}, ${parcel.state} is owned by ${family}, who acquired it in ${year} according to the county's recorded ownership history.`;
   return { oneLiner: sentence, metaDescription: sentence };

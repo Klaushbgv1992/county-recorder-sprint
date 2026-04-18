@@ -27,6 +27,7 @@ import { StaffParcelView } from "./components/StaffParcelView";
 import { StoryPage } from "./components/story/StoryPage";
 import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { PartyPage } from "./components/PartyPage";
+import { HomeownerCardPage } from "./components/homeowner/HomeownerCardPage";
 import { ReceiptsPage } from "./components/ReceiptsPage";
 import { AiExtractLivePanel } from "./components/AiExtractLivePanel";
 import { ApiDocsPage } from "./components/ApiDocsPage";
@@ -456,6 +457,11 @@ export const routes: RouteObject[] = [
             id: "encumbrance-instrument",
             path: "parcel/:apn/encumbrances/instrument/:instrumentNumber",
             element: <EncumbranceRoute />,
+          },
+          {
+            id: "homeowner",
+            path: "parcel/:apn/home",
+            element: <HomeownerCardPage />,
           },
           {
             id: "story",

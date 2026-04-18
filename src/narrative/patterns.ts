@@ -1,5 +1,6 @@
 import type { Pattern, InstrumentGroup, PatternContext } from "./types";
 import type { Instrument } from "../types";
+import { subjectPhraseFromParties, cleanEntityName, isEntityName } from "./subject-phrase";
 import subdivisionPlatsRaw from "../data/subdivision-plats.json";
 
 interface SubdivisionPlatFeature {
@@ -31,35 +32,9 @@ function grantorNames(inst: Instrument): string[] {
   return inst.parties.filter((p) => p.role === "grantor").map((p) => p.name);
 }
 
-function granteeNames(inst: Instrument): string[] {
-  return inst.parties.filter((p) => p.role === "grantee").map((p) => p.name);
-}
-
-function titleCase(s: string): string {
+function prettyName(s: string): string {
+  if (isEntityName(s)) return cleanEntityName(s);
   return s.toLowerCase().replace(/\b\w/g, (c) => c.toUpperCase());
-}
-
-function lastNameOf(fullName: string): string {
-  if (isTrustEntity(fullName)) return fullName;
-  const parts = fullName.trim().split(/\s+/);
-  return titleCase(parts[parts.length - 1] ?? fullName);
-}
-
-function grantorsPhrase(inst: Instrument): string {
-  return grantorNames(inst).map(titleCase).join(" and ");
-}
-
-function granteesPhrase(inst: Instrument): string {
-  const names = granteeNames(inst);
-  if (names.length === 2)
-    return `${titleCase(names[0])} and ${titleCase(names[1])}`;
-  return names.map(titleCase).join(", ");
-}
-
-function granteeFamilyPhrase(inst: Instrument): string {
-  const lastNames = Array.from(new Set(granteeNames(inst).map(lastNameOf)));
-  if (lastNames.length === 1) return `the ${lastNames[0]}s`;
-  return granteesPhrase(inst);
 }
 
 function isDeed(i: Instrument): boolean {
@@ -73,11 +48,11 @@ function isDeed(i: Instrument): boolean {
 
 function lenderName(inst: Instrument): string {
   const lender = inst.parties.find((p) => p.role === "lender");
-  if (lender) return titleCase(lender.name);
+  if (lender) return prettyName(lender.name);
   // MERS-as-nominee edge case: unwrap to real lender if available
   const beneficiary = inst.parties.find((p) => p.role === "beneficiary");
-  if (beneficiary?.nominee_for) return titleCase(beneficiary.nominee_for.party_name);
-  if (beneficiary) return titleCase(beneficiary.name);
+  if (beneficiary?.nominee_for) return prettyName(beneficiary.nominee_for.party_name);
+  if (beneficiary) return prettyName(beneficiary.name);
   return "a lender";
 }
 
@@ -94,7 +69,7 @@ const subdivision_plat: Pattern = {
       (i) => PLAT_INSTRUMENTS[i.instrument_number] !== undefined
     )!;
     const meta = PLAT_INSTRUMENTS[inst.instrument_number];
-    return `Your lot was first platted as part of ${meta.display_name}, a subdivision recorded ${meta.dedication_date} by ${titleCase(meta.dedicated_by)}.`;
+    return `Your lot was first platted as part of ${meta.display_name}, a subdivision recorded ${meta.dedication_date} by ${prettyName(meta.dedicated_by)}.`;
   },
 };
 
@@ -122,8 +97,8 @@ const purchase_from_trust: Pattern = {
   },
   render: (g) => {
     const deed = g.instruments.find(isDeed)!;
-    const trustName = grantorNames(deed)[0];
-    const buyers = granteeFamilyPhrase(deed);
+    const trustName = cleanEntityName(grantorNames(deed)[0]);
+    const buyers = subjectPhraseFromParties(deed.parties, "grantee");
     return `In ${year(deed.recording_date)}, ${buyers} purchased the home from ${trustName} — a revocable family living trust, a common way families pass homes between generations.`;
   },
 };
@@ -138,8 +113,8 @@ const purchase_from_individual: Pattern = {
   },
   render: (g) => {
     const deed = g.instruments.find(isDeed)!;
-    const buyers = granteeFamilyPhrase(deed);
-    const sellers = grantorsPhrase(deed);
+    const buyers = subjectPhraseFromParties(deed.parties, "grantee");
+    const sellers = subjectPhraseFromParties(deed.parties, "grantor");
     return `In ${year(deed.recording_date)}, ${buyers} bought the home from ${sellers}.`;
   },
 };
@@ -243,7 +218,7 @@ const release_by_third_party: Pattern = {
   },
   render: (g) => {
     const inst = g.instruments.find((i) => i.document_type === "full_reconveyance")!;
-    const releaser = titleCase(releasingPartyName(inst)!);
+    const releaser = prettyName(releasingPartyName(inst)!);
     return `That mortgage was paid off on ${inst.recording_date} — the release was signed by ${releaser}, not the original lender, because the loan had been sold or transferred. The county records the release either way.`;
   },
 };
@@ -273,7 +248,7 @@ const generic_recording: Pattern = {
   match: (_g, ctx) => ctx.mode === "partial",
   render: (g) => {
     const inst = g.instruments[0];
-    const names = inst.raw_api_response.names.slice(0, 3).map(titleCase).join(", ");
+    const names = inst.raw_api_response.names.slice(0, 3).map(prettyName).join(", ");
     const label = docTypeLabel(inst.document_type);
     const nameList = names.length > 0 ? ` naming ${names}` : "";
     return `On ${inst.recording_date}, a ${label} was recorded for this parcel${nameList}.`;
