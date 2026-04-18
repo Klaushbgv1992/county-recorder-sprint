@@ -1,5 +1,6 @@
 import { describe, it, expect } from "vitest";
 import { FixtureSchema, type Fixture } from "./custodian-query-engine.schema";
+import fixture from "../data/custodian-sweep-fixture.json";
 
 const MINIMAL: Fixture = {
   schema_version: 1,
@@ -68,5 +69,9 @@ describe("FixtureSchema", () => {
       }],
     };
     expect(() => FixtureSchema.parse(bad)).toThrow();
+  });
+
+  it("dev-seed fixture passes schema", () => {
+    expect(() => FixtureSchema.parse(fixture)).not.toThrow();
   });
 });

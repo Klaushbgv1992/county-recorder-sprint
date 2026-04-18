@@ -1,0 +1,95 @@
+{
+  "schema_version": 1,
+  "captured_at": "2026-04-18T00:00:00Z",
+  "capture_duration_ms": 0,
+  "operator_notes": "DEV SEED — overwritten by scripts/capture-sweep.ts. Do not cite in the demo until capture has run.",
+  "parties": [
+    "CHRISTOPHER POPHAM",
+    "ASHLEY POPHAM",
+    "BRIAN J MADISON",
+    "TANYA R MADISON",
+    "BRIAN J AND TANYA R MADISON LIVING TRUST"
+  ],
+  "live_indexes": [
+    {
+      "id": "mcr-name",
+      "name": "Maricopa County Recorder — full name index",
+      "short": "MCR name index",
+      "custodian": "Maricopa County Recorder",
+      "coverage": "1871-06-01 through 2026-04-18"
+    },
+    {
+      "id": "mcsc-civil",
+      "name": "Maricopa County Superior Court — civil judgments",
+      "short": "MCSC civil judgments",
+      "custodian": "Maricopa County Clerk of Superior Court",
+      "coverage": "1990 through 2026-04-18"
+    }
+  ],
+  "dead_ends": [
+    {
+      "id": "az-dor-liens",
+      "name": "Arizona Department of Revenue — state tax liens",
+      "reason": "No free name search. Filed at the recorder under state-lien document codes, but the public API's documentCode filter is silently dropped — same Known Gap #2 surface."
+    },
+    {
+      "id": "irs-nftl",
+      "name": "IRS Notices of Federal Tax Lien",
+      "reason": "Filed at the recorder as FED TAX L. Public API silently drops documentCode filters. No free IRS-side name search."
+    },
+    {
+      "id": "usbc-az",
+      "name": "U.S. Bankruptcy Court — District of Arizona",
+      "reason": "PACER requires a paid account plus CAPTCHA. No free name search."
+    }
+  ],
+  "cells": {
+    "CHRISTOPHER POPHAM__mcr-name__public-api":                               { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "CHRISTOPHER POPHAM__mcr-name__county-internal":                           { "status": "zero" },
+    "CHRISTOPHER POPHAM__mcsc-civil__public-api":                              { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "CHRISTOPHER POPHAM__mcsc-civil__county-internal":                         { "status": "zero" },
+    "ASHLEY POPHAM__mcr-name__public-api":                                     { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "ASHLEY POPHAM__mcr-name__county-internal":                                { "status": "zero" },
+    "ASHLEY POPHAM__mcsc-civil__public-api":                                   { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "ASHLEY POPHAM__mcsc-civil__county-internal":                              { "status": "zero" },
+    "BRIAN J MADISON__mcr-name__public-api":                                   { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "BRIAN J MADISON__mcr-name__county-internal":                              { "status": "zero" },
+    "BRIAN J MADISON__mcsc-civil__public-api":                                 { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "BRIAN J MADISON__mcsc-civil__county-internal":                            { "status": "hit", "hits": [{ "id": "sweep-dev-001", "party_name": "BRIAN MADISON", "recording_number": "PENDING", "recording_date": "PENDING", "doc_type_raw": "CIVIL JDG", "summary": "DEV SEED — Brian Madison civil judgment, different address. Overwritten during Playwright capture.", "ai_judgment": "probable_false_positive", "ai_rationale": "DEV SEED — different address, not the Brian J Madison named on the 2013 DOT in this parcel's chain.", "confidence": 0.9, "provenance": "county_internal_index", "action_required": "none" }] },
+    "TANYA R MADISON__mcr-name__public-api":                                   { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "TANYA R MADISON__mcr-name__county-internal":                              { "status": "zero" },
+    "TANYA R MADISON__mcsc-civil__public-api":                                 { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "TANYA R MADISON__mcsc-civil__county-internal":                            { "status": "zero" },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__public-api":          { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__county-internal":     { "status": "zero" },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__public-api":        { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__county-internal":   { "status": "zero" }
+  },
+  "parcel_sweeps": {
+    "304-78-386": {
+      "apn": "304-78-386",
+      "status": "swept",
+      "parties": ["CHRISTOPHER POPHAM", "ASHLEY POPHAM", "BRIAN J MADISON", "TANYA R MADISON", "BRIAN J AND TANYA R MADISON LIVING TRUST"],
+      "indexes": ["mcr-name", "mcsc-civil"],
+      "hits": [{ "id": "sweep-dev-001", "party_name": "BRIAN MADISON", "recording_number": "PENDING", "recording_date": "PENDING", "doc_type_raw": "CIVIL JDG", "summary": "DEV SEED — Brian Madison civil judgment, different address. Overwritten during Playwright capture.", "ai_judgment": "probable_false_positive", "ai_rationale": "DEV SEED — different address, not the Brian J Madison named on the 2013 DOT in this parcel's chain.", "confidence": 0.9, "provenance": "county_internal_index", "action_required": "none" }],
+      "verified_through": "2026-04-18",
+      "swept_at": "2026-04-18T00:00:00Z",
+      "summary": {
+        "parties_scanned": 5,
+        "indexes_scanned": 2,
+        "raw_hits": 1,
+        "post_judgment_hits_requiring_action": 0,
+        "all_clear": false,
+        "all_clear_after_judgment": true,
+        "note": "1 raw hit, 1 dismissed by chain-context AI as a false positive."
+      }
+    },
+    "304-77-689": {
+      "apn": "304-77-689",
+      "status": "no_capture_available",
+      "parties": ["JASON HOGUE", "MICHELE HOGUE"],
+      "reason": "The HOGUE parcel sweep cannot be run from the public API. The public endpoint publicapi.recorder.maricopa.gov has no name-filtered search — a hunt log documenting the five API layers that block this is at docs/hunt-log-known-gap-2.md. The county's internal full-name index, which this portal would use in production, closes the gap. That is the moat argument: the custodian can answer the question the public API is structurally unable to answer.",
+      "what_production_would_do": "Run a name-filtered query against the recorder's internal name index and the MCSC civil-judgments index — the same indexes swept for POPHAM — and return hits or a verified zero with a timestamp."
+    }
+  }
+}
