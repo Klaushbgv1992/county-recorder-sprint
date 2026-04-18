@@ -280,6 +280,8 @@ function docTypeLabel(t: Instrument["document_type"]): string {
     ucc_termination: "UCC Termination",
     hoa_lien: "HOA Lien",
     affidavit_of_disclosure: "Affidavit of Disclosure",
+    death_certificate: "Death Certificate",
+    trustees_deed: "Trustee's Deed",
     other: "document",
   };
   return labels[t] ?? "document";

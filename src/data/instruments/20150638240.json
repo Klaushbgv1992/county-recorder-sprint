@@ -1,0 +1,121 @@
+{
+  "instrument_number": "20150638240",
+  "recording_date": "2015-09-02",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "ROBERT FRANCIS SILVA",
+      "role": "trustor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "LINDA LUCILLE SILVA",
+      "role": "trustor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO BANK NA",
+      "role": "lender",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO BANK NA",
+      "role": "beneficiary",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO FINANCIAL NATIONAL BANK",
+      "role": "trustee",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 224, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "manual_entry",
+    "confidence": 1,
+    "source_note": "Read from page 2 of the rendered PDF; Tesseract OCR not available in this environment per Decision #39."
+  },
+  "extracted_fields": {
+    "loan_type": {
+      "value": "Short Form Open-End Deed of Trust (HELOC)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "maximum_principal": {
+      "value": "$260,000.00",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "debt_instrument_date": {
+      "value": "2015-08-14",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2045-09-21",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_note": "Stated as 'seven (7) calendar days after September 14, 2045' per page 1."
+    },
+    "vesting": {
+      "value": "Community property with right of survivorship",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "master_form_dot_reference": {
+      "value": "2007-0856335 (recorded 2007-07-30)",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_note": "Master Form Deed of Trust referenced on page 2."
+    },
+    "property_address": {
+      "value": "2778 E Courtney St, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "loan_originator": {
+      "value": "Janessa Kathleen Garland (NMLSR ID: 1176193)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "1, 2 of 5",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": "/raw/R-008/pdfs/20150638240.pdf",
+  "page_count": 5,
+  "raw_api_response": {
+    "names": [
+      "SILVA LINDA LUCILLE",
+      "SILVA ROBERT FRANCIS",
+      "WELLS FARGO BANK NA",
+      "WELLS FARGO FINANCIAL NATIONAL BANK"
+    ],
+    "documentCodes": ["DEED TRST"],
+    "recordingDate": "9-02-2015",
+    "recordingNumber": "20150638240",
+    "pageAmount": 5,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 9
+  }
+}

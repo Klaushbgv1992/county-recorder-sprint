@@ -45,6 +45,7 @@ const ROLE_LABEL: Record<PartyRole, string> = {
   servicer: "servicer",
   claimant: "claimant",
   debtor: "debtor",
+  decedent: "decedent",
 };
 
 const PARTY_LIMIT = 5;

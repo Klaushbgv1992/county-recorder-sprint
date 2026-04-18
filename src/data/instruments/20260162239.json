@@ -1,0 +1,150 @@
+{
+  "instrument_number": "20260162239",
+  "recording_date": "2026-03-20",
+  "document_type": "trustees_deed",
+  "document_type_raw": "TRST DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "RICHARD D MOORE",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1,
+      "trustee_for": {
+        "trust_name": "THE SILVA FAMILY REVOCABLE TRUST",
+        "trust_established_date": "2007-07-26",
+        "capacity": "Successor Trustee"
+      }
+    },
+    {
+      "name": "THE SILVA FAMILY REVOCABLE TRUST",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1,
+      "trust_established_date": "2007-07-26"
+    },
+    {
+      "name": "RICHARD D MOORE",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trustee_for": {
+        "trust_name": "MOORE REVOCABLE TRUST",
+        "trust_established_date": "2021-08-16",
+        "capacity": "Co-Trustee"
+      }
+    },
+    {
+      "name": "SUSAN A MOORE",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trustee_for": {
+        "trust_name": "MOORE REVOCABLE TRUST",
+        "trust_established_date": "2021-08-16",
+        "capacity": "Co-Trustee"
+      }
+    },
+    {
+      "name": "MOORE REVOCABLE TRUST",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trust_established_date": "2021-08-16"
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 224, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "manual_entry",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2026-03-05",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$10.00 and other valuable consideration",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "exempt_recital": {
+      "value": "Affidavit of Value not required pursuant to A.R.S. § 11-1134(B)(8) (transfer to/from revocable trust)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "warranty_scope": {
+      "value": "Special warranty — only as against acts of Grantor, not against earlier defects",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "successor_trustee_capacity": {
+      "value": "RICHARD D. MOORE, as Successor Trustee of THE SILVA FAMILY REVOCABLE TRUST, Established July 26, 2007",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "grantee_trust_beneficiaries": {
+      "value": "Richard D. Moore and Susan A. Moore, both of 2889 E. Janelle Way, Gilbert, AZ 85298 (per A.R.S. § 33-404 disclosure)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "drafter": {
+      "value": "Michael J. McGreevy, Attorney at Law, 9745 West Bell Road Suite 125, Sun City AZ 85351",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_note": "Same drafter as 20170019586 (the 2017 deed putting Lot 224 INTO the Silva Family Revocable Trust). Drafter continuity over 9 years is evidence both deeds belong to the same trust-administration estate plan."
+    },
+    "notary_date": {
+      "value": "2026-03-05",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "notary_county": {
+      "value": "Pinal County, AZ (notary acted in Maricopa County)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2778 E Courtney St, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "1, 2 of 2",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20170019586"
+  ],
+  "source_image_path": "/raw/R-008/pdfs/20260162239.pdf",
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "MOORE RICHARD D",
+      "MOORE SUSAN",
+      "SILVA FAMILY REVOCABLE TRUST"
+    ],
+    "documentCodes": [
+      "TRST DEED"
+    ],
+    "recordingDate": "3-20-2026",
+    "recordingNumber": "20260162239",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "doc_code_ambiguity_note": "Maricopa County's 'TRST DEED' document code is taxonomically overloaded. The same code labels (a) trustee's deeds upon foreclosure sale (the Notice-of-Trustee-Sale â†’ Sub Trustee â†’ Trustee's Deed sequence under A.R.S. § 33-811) AND (b) trustee's deeds in trust-administration / successor-trustee transfers under A.R.S. § 33-404 (this instrument). A name-indexed title plant or examiner relying on doc-code alone cannot distinguish a foreclosure deed from a probate-equivalent succession transfer without reading the body. The county recorder, who knows the underlying instrument structure, can disambiguate. Decision #21 family.",
+  "name_index_contamination_note": "Two unrelated trusts both named 'THE SILVA FAMILY REVOCABLE TRUST' exist in Maricopa County: (1) Robert F. + Linda L. Silva, established 2007-07-26 (the trust grantor here, holding Lot 224 Shamrock 2A), and (2) David Michael + Diana Lynn Silva, established 2016-06-22 (holding Lot 157 Ashland Ranch APN 309-20-157). A businessNames=SILVA+FAMILY+REVOCABLE+TRUST search returns 12 instruments covering BOTH trusts intermingled. Disambiguation requires the trust 'established' date, which is recited in deed bodies but not in the public-API metadata. This is the same family of finding as Decision #25 (same-name instrument contamination).",
+  "provenance_summary": {
+    "public_api_count": 3,
+    "ocr_count": 0,
+    "manual_entry_count": 14
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "instrument_number": "20150453721",
+  "recording_date": "2015-06-25",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": ["affidavit_of_disclosure"],
+  "parties": [
+    {
+      "name": "KEITH L SIPES",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "JO SIPES",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERT FRANCIS SILVA",
+      "role": "grantee",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "LINDA LUCILLE SILVA",
+      "role": "grantee",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 224, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "manual_entry",
+    "confidence": 1,
+    "source_note": "Read from Exhibit A on page 3 of the rendered PDF; Tesseract OCR not available in this environment per Decision #39."
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2015-06-18",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "Community property with right of survivorship (Acceptance of Community Property with Right of Survivorship Deed bundled as page 4-5)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2778 E Courtney St, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "escrow_number": {
+      "value": "35003424-035-CB2",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "Fidelity National Title Agency",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "1, 3, 4, 5 of 5",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": "/raw/R-008/pdfs/20150453721.pdf",
+  "page_count": 5,
+  "raw_api_response": {
+    "names": [
+      "SILVA LINDA LUCILLE",
+      "SILVA ROBERT FRANCIS",
+      "SIPES JO",
+      "SIPES KEITH L"
+    ],
+    "documentCodes": ["WAR DEED"],
+    "recordingDate": "6-25-2015",
+    "recordingNumber": "20150453721",
+    "pageAmount": 5,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 7
+  }
+}

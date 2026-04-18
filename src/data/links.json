@@ -250,5 +250,75 @@
     "provenance": "demo_synthetic",
     "confidence": 1.0,
     "examiner_action": "accepted"
+  },
+  {
+    "source_instrument": "20230431552",
+    "target_instrument": "20150638240",
+    "link_type": "release_of",
+    "provenance": "manual_entry",
+    "confidence": 1.0,
+    "examiner_action": "accepted",
+    "rationale": "20230431552 (REL D/T) explicitly cites Original Instrument No. 20150638240 in its body.",
+    "id": "link-015"
+  },
+  {
+    "source_instrument": "20150638240",
+    "target_instrument": "20150453721",
+    "link_type": "back_reference",
+    "provenance": "manual_entry",
+    "confidence": 0.85,
+    "examiner_action": "pending",
+    "rationale": "20150638240 (Wells Fargo HELOC, $260,000 max) was recorded 69 days after the 20150453721 purchase deed, both on Lot 224 / 2778 E Courtney St. Likely an open-end HELOC opened shortly after purchase; not strictly purchase-money since the gap is non-trivial \u2014 flagged for examiner review.",
+    "id": "link-016"
+  },
+  {
+    "source_instrument": "20170019586",
+    "target_instrument": "20150453721",
+    "link_type": "back_reference",
+    "provenance": "manual_entry",
+    "confidence": 1.0,
+    "examiner_action": "accepted",
+    "rationale": "20170019586 (SPEC/W D from R+L Silva personally to R+L Silva as trustees of THE SILVA FAMILY REVOCABLE TRUST est. 2007-07-26) succeeds 20150453721 (the original purchase). Same legal description (Lot 224 Shamrock 2A), same property address (2778 E Courtney St). A.R.S. \u00a7 11-1134(B)(8) exempt transfer to revocable trust.",
+    "id": "link-017"
+  },
+  {
+    "source_instrument": "20260141249",
+    "target_instrument": "20260141250",
+    "link_type": "same_day_transaction",
+    "provenance": "public_api",
+    "confidence": 1.0,
+    "examiner_action": "accepted",
+    "rationale": "Consecutive recording numbers (\u2026249, \u2026250) on the same day (2026-03-11) for husband-and-wife co-trustees of the same revocable trust. Filed together as a single succession-triggering filing.",
+    "id": "link-018"
+  },
+  {
+    "source_instrument": "20260162239",
+    "target_instrument": "20170019586",
+    "link_type": "back_reference",
+    "provenance": "manual_entry",
+    "confidence": 1.0,
+    "examiner_action": "accepted",
+    "rationale": "20260162239 (TRST DEED) conveys Lot 224 OUT of THE SILVA FAMILY REVOCABLE TRUST (est. 2007-07-26) \u2014 the same trust that 20170019586 conveyed it INTO. Same legal description, same property address. The grantor on the 2026 deed is identified as 'RICHARD D. MOORE, as Successor Trustee of THE SILVA FAMILY REVOCABLE TRUST, Established July 26, 2007', confirming this is the same trust instance (NOT the unrelated David+Diana Silva 'Silva Family Revocable Trust' established 2016-06-22 that holds Lot 157 Ashland Ranch).",
+    "id": "link-019"
+  },
+  {
+    "source_instrument": "20260162239",
+    "target_instrument": "20260141249",
+    "link_type": "back_reference",
+    "provenance": "manual_entry",
+    "confidence": 0.95,
+    "examiner_action": "pending",
+    "rationale": "Robert F. Silva (decedent in 20260141249) was an original co-trustee of THE SILVA FAMILY REVOCABLE TRUST per 20170019586. His death recorded 9 days before the successor-trustee transfer 20260162239. Strong inference of cause-and-effect; flagged for examiner review.",
+    "id": "link-020"
+  },
+  {
+    "source_instrument": "20260162239",
+    "target_instrument": "20260141250",
+    "link_type": "back_reference",
+    "provenance": "manual_entry",
+    "confidence": 0.95,
+    "examiner_action": "pending",
+    "rationale": "Linda L. Silva (decedent in 20260141250) was an original co-trustee of THE SILVA FAMILY REVOCABLE TRUST per 20170019586. Her death recorded 9 days before the successor-trustee transfer 20260162239. Strong inference of cause-and-effect; flagged for examiner review.",
+    "id": "link-021"
   }
 ]

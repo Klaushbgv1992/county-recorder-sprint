@@ -1,0 +1,50 @@
+{
+  "instrument_number": "20260141249",
+  "recording_date": "2026-03-11",
+  "document_type": "death_certificate",
+  "document_type_raw": "DEATH CER",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "ROBERT FRANCIS SILVA",
+      "role": "decedent",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  ],
+  "extracted_fields": {
+    "restricted_access_note": {
+      "value": "PDF body is restricted from public viewing on legacy.recorder.maricopa.gov (HTTP returns an 'Information Blocked' page). Maricopa Recorder indexes death certificates by name but does not expose the body image to the public. The death certificate is therefore searchable but unverifiable through public channels. The county itself, holding the source image, can read it; a private title plant cannot. This asymmetry is itself a custodial-moat data point.",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "Body unavailable; metadata only",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20260141250"],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["SILVA ROBERT FRANCIS"],
+    "documentCodes": ["DEATH CER"],
+    "recordingDate": "3-11-2026",
+    "recordingNumber": "20260141249",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": true
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "moat_note": "Recorded the same day as instrument 20260141250 (death certificate of Linda Lucille Silva, his spouse and co-trustee of THE SILVA FAMILY REVOCABLE TRUST). Sequential recording numbers and identical recording date suggest both certificates were filed together as part of a single trust-administration filing — likely a shared incident or sequenced post-mortem filings. The simultaneous death of both trustees triggered the successor-trustee succession that culminated in the 2026-03-20 TRST DEED (20260162239) by Successor Trustee Richard D. Moore. None of the post-mortem decision-making (succession, distribution to a beneficiary trust) appears in any probate court docket because the asset was held in a revocable trust — a non-court-supervised mechanism that is invisible to a probate-docket search but visible to the county recorder.",
+  "provenance_summary": {
+    "public_api_count": 3,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

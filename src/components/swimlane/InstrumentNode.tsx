@@ -20,6 +20,8 @@ const SHORT_LABEL: Record<DocumentType, string> = {
   ucc_termination: "UCC-3",
   hoa_lien: "Lien",
   affidavit_of_disclosure: "Affid.",
+  death_certificate: "Death",
+  trustees_deed: "TR Deed",
   other: "Doc",
 };
 
@@ -38,6 +40,8 @@ const FULL_LABEL: Record<DocumentType, string> = {
   ucc_termination: "UCC Termination",
   hoa_lien: "HOA Lien",
   affidavit_of_disclosure: "Affidavit of Disclosure",
+  death_certificate: "Death Certificate",
+  trustees_deed: "Trustee's Deed",
   other: "Document",
 };
 

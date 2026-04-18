@@ -1,0 +1,50 @@
+{
+  "instrument_number": "20260141250",
+  "recording_date": "2026-03-11",
+  "document_type": "death_certificate",
+  "document_type_raw": "DEATH CER",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "LINDA LUCILLE SILVA",
+      "role": "decedent",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  ],
+  "extracted_fields": {
+    "restricted_access_note": {
+      "value": "PDF body is restricted from public viewing on legacy.recorder.maricopa.gov. Maricopa Recorder indexes death certificates by name but does not expose the body image to the public.",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "Body unavailable; metadata only",
+      "provenance": "public_api",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20260141249"],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["SILVA LINDA LUCILLE"],
+    "documentCodes": ["DEATH CER"],
+    "recordingDate": "3-11-2026",
+    "recordingNumber": "20260141250",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": true
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "moat_note": "Recorded the same day as 20260141249 (death certificate of Robert Francis Silva, her spouse and co-trustee of THE SILVA FAMILY REVOCABLE TRUST). Consecutive recording numbers (…249 then …250) suggest single-batch filing. Together with 20260141249, marks the simultaneous death of both trustees that triggered the successor-trustee succession on Lot 224 Shamrock Estates Phase 2A.",
+  "provenance_summary": {
+    "public_api_count": 3,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

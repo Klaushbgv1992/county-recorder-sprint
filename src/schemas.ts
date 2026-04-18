@@ -31,6 +31,7 @@ export const PartyRole = z.enum([
   "servicer",
   "claimant",
   "debtor",
+  "decedent",
 ]);
 
 export const Party = z.object({
@@ -61,6 +62,8 @@ export const DocumentType = z.enum([
   "ucc_termination",
   "hoa_lien",
   "affidavit_of_disclosure",
+  "death_certificate",
+  "trustees_deed",
   "other",
 ]);
 

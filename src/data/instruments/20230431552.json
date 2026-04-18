@@ -1,0 +1,122 @@
+{
+  "instrument_number": "20230431552",
+  "recording_date": "2023-08-17",
+  "document_type": "full_reconveyance",
+  "document_type_raw": "REL D/T",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "WELLS FARGO BANK NA",
+      "role": "releasing_party",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO BANK NA",
+      "role": "beneficiary",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERT FRANCIS SILVA",
+      "role": "trustor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "LINDA LUCILLE SILVA",
+      "role": "trustor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO FINANCIAL NATIONAL BANK",
+      "role": "trustee",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  ],
+  "extracted_fields": {
+    "released_instrument": {
+      "value": "20150638240",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "released_instrument_date": {
+      "value": "2015-09-02",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "released_note_amount": {
+      "value": "$260,000.00",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "released_note_date": {
+      "value": "2015-08-14",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "wells_loan_number": {
+      "value": "68229293921998",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "executed_by": {
+      "value": "Joshua John Lundholm, Vice President Loan Documentation, Wells Fargo Bank N.A.",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "execution_date": {
+      "value": "2023-08-17",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "notary_state": {
+      "value": "Minnesota",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "notary_county": {
+      "value": "Hennepin",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2778 E Courtney St, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "1 of 1",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20150638240"],
+  "source_image_path": "/raw/R-008/pdfs/20230431552.pdf",
+  "page_count": 1,
+  "raw_api_response": {
+    "names": [
+      "SILVA LUCILLE",
+      "SILVA ROBERT FRANCIS",
+      "WELLS FARGO BANK"
+    ],
+    "documentCodes": ["REL D/T"],
+    "recordingDate": "8-17-2023",
+    "recordingNumber": "20230431552",
+    "pageAmount": 1,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "name_index_note": "Public API indexed Linda Lucille's name as 'SILVA LUCILLE' (without first name 'LINDA') in the names array — a name-format inconsistency that a name-indexed plant searching 'LINDA SILVA' would miss. Confirmed by visual inspection of the PDF body where 'LINDA LUCILLE SILVA' is the original Grantor.",
+  "provenance_summary": {
+    "public_api_count": 4,
+    "ocr_count": 0,
+    "manual_entry_count": 11
+  }
+}

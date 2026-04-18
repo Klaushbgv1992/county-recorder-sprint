@@ -66,6 +66,15 @@ import inst20020100002 from "./data/instruments/20020100002.json";
 import inst20050100001 from "./data/instruments/20050100001.json";
 import inst20060100001 from "./data/instruments/20060100001.json";
 import inst20240100001 from "./data/instruments/20240100001.json";
+// R-008 — Silva → Moore Lot 224 Shamrock 2A trustee-succession chain.
+// Hero parcel APN 304-77-566. See data/raw/R-008/hunt-log.md.
+import inst20150453721 from "./data/instruments/20150453721.json";
+import inst20150638240 from "./data/instruments/20150638240.json";
+import inst20170019586 from "./data/instruments/20170019586.json";
+import inst20230431552 from "./data/instruments/20230431552.json";
+import inst20260141249 from "./data/instruments/20260141249.json";
+import inst20260141250 from "./data/instruments/20260141250.json";
+import inst20260162239 from "./data/instruments/20260162239.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -120,6 +129,14 @@ const instrumentsRaw = [
   inst20060100001,
   // POPHAM federal tax lien (demo_synthetic) — see lc-015 and R10.
   inst20240100001,
+  // R-008 — Silva → Moore Lot 224 Shamrock 2A trustee-succession chain.
+  inst20150453721,
+  inst20150638240,
+  inst20170019586,
+  inst20230431552,
+  inst20260141249,
+  inst20260141250,
+  inst20260162239,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.

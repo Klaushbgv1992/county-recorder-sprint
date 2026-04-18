@@ -1,0 +1,130 @@
+{
+  "instrument_number": "20170019586",
+  "recording_date": "2017-01-10",
+  "document_type": "special_warranty_deed",
+  "document_type_raw": "SPEC/W D",
+  "bundled_document_types": [
+    "affidavit_of_disclosure"
+  ],
+  "parties": [
+    {
+      "name": "ROBERT FRANCIS SILVA",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "LINDA LUCILLE SILVA",
+      "role": "grantor",
+      "provenance": "public_api",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERT F SILVA",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trustee_for": {
+        "trust_name": "THE SILVA FAMILY REVOCABLE TRUST",
+        "trust_established_date": "2007-07-26"
+      }
+    },
+    {
+      "name": "LINDA L SILVA",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trustee_for": {
+        "trust_name": "THE SILVA FAMILY REVOCABLE TRUST",
+        "trust_established_date": "2007-07-26"
+      }
+    },
+    {
+      "name": "THE SILVA FAMILY REVOCABLE TRUST",
+      "role": "grantee",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "trust_established_date": "2007-07-26"
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 224, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "manual_entry",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2017-01-03",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "exempt_recital": {
+      "value": "Exempt per A.R.S. § 11-1134 B.8 (transfer to revocable trust)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "trust_name": {
+      "value": "THE SILVA FAMILY REVOCABLE TRUST",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "trust_established_date": {
+      "value": "2007-07-26",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_note": "Critical for distinguishing this Silva Family Revocable Trust (R+L Silva, est. 2007) from a separate Silva Family Revocable Trust (David+Diana Silva, est. 2016-06-22) that holds Lot 157 Ashland Ranch, APN 309-20-157. Two different families with identically-named trusts both appear in publicapi.recorder.maricopa.gov businessNames=SILVA FAMILY REVOCABLE TRUST results."
+    },
+    "trust_beneficiaries": {
+      "value": "Robert F. Silva and Linda L. Silva, both at 2778 E. Courtney Street, Gilbert, AZ 85298 (per A.R.S. § 33-404 disclosure)",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "drafter": {
+      "value": "Michael J. McGreevy, Attorney at Law, 9745 West Bell Road Suite 125, Sun City AZ 85351",
+      "provenance": "manual_entry",
+      "confidence": 1,
+      "source_note": "Same drafter executed the 2026-03-20 Trustee's Deed (20260162239) — drafter continuity is evidence both deeds are part of the same trust-administration story."
+    },
+    "property_address": {
+      "value": "2778 E Courtney St, Gilbert, AZ 85298",
+      "provenance": "manual_entry",
+      "confidence": 1
+    },
+    "source_page": {
+      "value": "1, 2 of 2",
+      "provenance": "manual_entry",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": "/raw/R-008/pdfs/20170019586.pdf",
+  "page_count": 2,
+  "raw_api_response": {
+    "names": [
+      "SILVA FAMILY REVOCABLE TRUST",
+      "SILVA LINDA L",
+      "SILVA LINDA LUCILLE",
+      "SILVA ROBERT F",
+      "SILVA ROBERT FRANCIS"
+    ],
+    "documentCodes": [
+      "SPEC/W D",
+      "AF DISCLS"
+    ],
+    "recordingDate": "1-10-2017",
+    "recordingNumber": "20170019586",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-18",
+  "provenance_summary": {
+    "public_api_count": 5,
+    "ocr_count": 0,
+    "manual_entry_count": 11
+  }
+}

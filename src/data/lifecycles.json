@@ -8,7 +8,9 @@
     {
       "id": "lc-001",
       "root_instrument": "20130183450",
-      "child_instruments": ["20210075858"],
+      "child_instruments": [
+        "20210075858"
+      ],
       "status": "released",
       "status_rationale": "Release confirmed by examiner via 20210075858",
       "examiner_override": null
@@ -16,7 +18,9 @@
     {
       "id": "lc-002",
       "root_instrument": "20210057847",
-      "child_instruments": ["20210057846"],
+      "child_instruments": [
+        "20210057846"
+      ],
       "status": "open",
       "status_rationale": "No reconveyance found in corpus for DOT 20210057847",
       "examiner_override": null
@@ -32,9 +36,11 @@
     {
       "id": "lc-004",
       "root_instrument": "20010093192",
-      "child_instruments": ["20010849180"],
+      "child_instruments": [
+        "20010849180"
+      ],
       "status": "released",
-      "status_rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat — it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record.",
+      "status_rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat \u00e2\u20ac\u201d it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record.",
       "examiner_override": null
     },
     {
@@ -50,7 +56,7 @@
       "root_instrument": "20070834755",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "No reconveyance, substitution of trustee, or subsequent refinance DOT found in corpus for LOWRY 2007 Countrywide Interest-Only ARM (MIN 1000157-0008292767-0). Lot 61, Seville Parcel 3. Pre-crash subprime-era loan; Countrywide was acquired by Bank of America in July 2008. Any downstream assignment, release, or refinance would typically be executed by Bank of America Home Loans or a securitization trust successor servicer. Phase 2 recording-number probes for a 2020–2021 refinance were not productive (API name search broken — see R-007 hunt log).",
+      "status_rationale": "No reconveyance, substitution of trustee, or subsequent refinance DOT found in corpus for LOWRY 2007 Countrywide Interest-Only ARM (MIN 1000157-0008292767-0). Lot 61, Seville Parcel 3. Pre-crash subprime-era loan; Countrywide was acquired by Bank of America in July 2008. Any downstream assignment, release, or refinance would typically be executed by Bank of America Home Loans or a securitization trust successor servicer. Phase 2 recording-number probes for a 2020\u00e2\u20ac\u201c2021 refinance were not productive (API name search broken \u00e2\u20ac\u201d see R-007 hunt log).",
       "examiner_override": null
     },
     {
@@ -58,7 +64,7 @@
       "root_instrument": "20200620457",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "No release, substitution of trustee, or assignment of deed of trust located in the searched corpus for ANGUS 2020 United Wholesale Mortgage DOT. R-006 sub-hunt 2 ran against publicapi.recorder.maricopa.gov without a hit — the public API silently drops every search filter (name, documentCode, recordingDate) and returns the same 1947-seeded page regardless, so a release filed against PHOENIX VACATION HOUSES LLC outside this parcel's curated corpus cannot be located via the public API. See data/raw/R-006/hunt-log.md. The CandidateReleasesPanel renders its cross-parcel empty-state moat note on this lifecycle — a county-internal full-name scan would close this gap.",
+      "status_rationale": "No release, substitution of trustee, or assignment of deed of trust located in the searched corpus for ANGUS 2020 United Wholesale Mortgage DOT. R-006 sub-hunt 2 ran against publicapi.recorder.maricopa.gov without a hit \u00e2\u20ac\u201d the public API silently drops every search filter (name, documentCode, recordingDate) and returns the same 1947-seeded page regardless, so a release filed against PHOENIX VACATION HOUSES LLC outside this parcel's curated corpus cannot be located via the public API. See data/raw/R-006/hunt-log.md. The CandidateReleasesPanel renders its cross-parcel empty-state moat note on this lifecycle \u00e2\u20ac\u201d a county-internal full-name scan would close this gap.",
       "examiner_override": null
     },
     {
@@ -66,7 +72,7 @@
       "root_instrument": "20230100000",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "Active HOA lien recorded by Seville Homeowners Association against Lot 45 (Phoenix Vacation Houses LLC) for delinquent assessments covering 2022-04-01 through 2022-12-31. No release, withdrawal, or payoff recorded in corpus. Demo-only synthesized instance — see 20230100000 source_note and data/raw/R-006/hunt-log.md for the failed recorded-lien hunt that this synthesis stands in for.",
+      "status_rationale": "Active HOA lien recorded by Seville Homeowners Association against Lot 45 (Phoenix Vacation Houses LLC) for delinquent assessments covering 2022-04-01 through 2022-12-31. No release, withdrawal, or payoff recorded in corpus. Demo-only synthesized instance \u00e2\u20ac\u201d see 20230100000 source_note and data/raw/R-006/hunt-log.md for the failed recorded-lien hunt that this synthesis stands in for.",
       "examiner_override": null
     },
     {
@@ -74,23 +80,27 @@
       "root_instrument": "20190100001",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "Demo-only synthetic junior HELOC DOT (Desert Schools Federal Credit Union, $45,000) recorded 2019-02-14 on WARNER parcel 304-78-374 (Lot 52, Seville Parcel 3). No release or payoff recorded in corpus. Sits junior to the open 2013 FHA-insured senior DOT (20130087109, Academy Mortgage Corporation, $270,146) — two overlapping open lifecycles on one parcel. Both must be addressed at closing. See an-007 (Junior-lien priority interpretation).",
+      "status_rationale": "Demo-only synthetic junior HELOC DOT (Desert Schools Federal Credit Union, $45,000) recorded 2019-02-14 on WARNER parcel 304-78-374 (Lot 52, Seville Parcel 3). No release or payoff recorded in corpus. Sits junior to the open 2013 FHA-insured senior DOT (20130087109, Academy Mortgage Corporation, $270,146) \u00e2\u20ac\u201d two overlapping open lifecycles on one parcel. Both must be addressed at closing. See an-007 (Junior-lien priority interpretation).",
       "examiner_override": null
     },
     {
       "id": "lc-010",
       "root_instrument": "20080200002",
-      "child_instruments": ["20190200001"],
+      "child_instruments": [
+        "20190200001"
+      ],
       "status": "released",
-      "status_rationale": "Demo-only synthetic 2008 Wells Fargo purchase-money DOT on CHEN parcel 999-01-362 (probate scenario). Released 2019-03-22 by full reconveyance 20190200001 — mortgage paid in full before either spouse's death, so the probate chain (Lilian's AF DEATH 20230200001, Robert's PR DEED 20240200001) transfers unencumbered fee to the heir.",
+      "status_rationale": "Demo-only synthetic 2008 Wells Fargo purchase-money DOT on CHEN parcel 999-01-362 (probate scenario). Released 2019-03-22 by full reconveyance 20190200001 \u00e2\u20ac\u201d mortgage paid in full before either spouse's death, so the probate chain (Lilian's AF DEATH 20230200001, Robert's PR DEED 20240200001) transfers unencumbered fee to the heir.",
       "examiner_override": null
     },
     {
       "id": "lc-011",
       "root_instrument": "20160200002",
-      "child_instruments": ["20220200001"],
+      "child_instruments": [
+        "20220200001"
+      ],
       "status": "open",
-      "status_rationale": "Demo-only synthetic 2016 Chase purchase-money DOT on MARTINEZ parcel 999-02-555 (divorce quit-claim scenario). Borrowers are CARLOS A MARTINEZ and SOFIA ANDREA MARTINEZ jointly and severally per original DOT. The 2021 divorce decree (20210200001) and subsequent quit-claim (20210200002) transferred record title to Sofia only, but did NOT release Carlos from the note — he remains contingently liable on debt secured by property he no longer owns of record. The 2022 assignment to Mr. Cooper (20220200001) is a servicing transfer and does not alter the borrower names. Examiner must raise: confirm lender release of Carlos or refinance into Sofia-only loan before closing.",
+      "status_rationale": "Demo-only synthetic 2016 Chase purchase-money DOT on MARTINEZ parcel 999-02-555 (divorce quit-claim scenario). Borrowers are CARLOS A MARTINEZ and SOFIA ANDREA MARTINEZ jointly and severally per original DOT. The 2021 divorce decree (20210200001) and subsequent quit-claim (20210200002) transferred record title to Sofia only, but did NOT release Carlos from the note \u00e2\u20ac\u201d he remains contingently liable on debt secured by property he no longer owns of record. The 2022 assignment to Mr. Cooper (20220200001) is a servicing transfer and does not alter the borrower names. Examiner must raise: confirm lender release of Carlos or refinance into Sofia-only loan before closing.",
       "examiner_override": null
     },
     {
@@ -98,23 +108,27 @@
       "root_instrument": "20170200002",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "Demo-only synthetic 2017 Quicken Loans (now Rocket Mortgage) purchase-money DOT on DELGADO parcel 999-03-411 (LLC-conveyance scenario). DOT remains in MARIA ELENA DELGADO's individual name even after the 2022-11-08 individual-to-LLC conveyance (20220200003). Due-on-sale clause under 12 USC § 1701j-3 is technically available to the lender but rarely enforced for owner-occupied SFR transferred to a grantor-owned pass-through LLC. No assumption agreement has been recorded. Examiner must disclose: (a) due-on-sale exposure, (b) note remains in individual name despite LLC title, (c) Rocket Mortgage successor-in-interest to Quicken Loans but no assignment of DOT recorded.",
+      "status_rationale": "Demo-only synthetic 2017 Quicken Loans (now Rocket Mortgage) purchase-money DOT on DELGADO parcel 999-03-411 (LLC-conveyance scenario). DOT remains in MARIA ELENA DELGADO's individual name even after the 2022-11-08 individual-to-LLC conveyance (20220200003). Due-on-sale clause under 12 USC \u00c2\u00a7 1701j-3 is technically available to the lender but rarely enforced for owner-occupied SFR transferred to a grantor-owned pass-through LLC. No assumption agreement has been recorded. Examiner must disclose: (a) due-on-sale exposure, (b) note remains in individual name despite LLC title, (c) Rocket Mortgage successor-in-interest to Quicken Loans but no assignment of DOT recorded.",
       "examiner_override": null
     },
     {
       "id": "lc-013",
       "root_instrument": "20050200002",
-      "child_instruments": ["20220200005"],
+      "child_instruments": [
+        "20220200005"
+      ],
       "status": "unresolved",
-      "status_rationale": "Demo-only synthetic 2005 Countrywide Home Loans purchase-money DOT on BRYANT parcel 999-04-401 (tax-sale REO scenario). The DOT was EXTINGUISHED BY OPERATION OF LAW under A.R.S. § 42-18267 upon recording of the 2022-06-15 Treasurer's Deed (20220200005) — tax liens take priority over all junior encumbrances. However, no release was ever recorded, and no successor-in-interest quit-claim has been obtained from Bank of America (Countrywide's 2008 acquirer) or any securitization trust. The DOT therefore appears 'open' in a raw index query but is substantively cleared by operation of law. Examiner must flag this as a Schedule B exception with a specific quiet-title rationale, or obtain a corrective quit-claim to cure the record.",
+      "status_rationale": "Demo-only synthetic 2005 Countrywide Home Loans purchase-money DOT on BRYANT parcel 999-04-401 (tax-sale REO scenario). The DOT was EXTINGUISHED BY OPERATION OF LAW under A.R.S. \u00c2\u00a7 42-18267 upon recording of the 2022-06-15 Treasurer's Deed (20220200005) \u00e2\u20ac\u201d tax liens take priority over all junior encumbrances. However, no release was ever recorded, and no successor-in-interest quit-claim has been obtained from Bank of America (Countrywide's 2008 acquirer) or any securitization trust. The DOT therefore appears 'open' in a raw index query but is substantively cleared by operation of law. Examiner must flag this as a Schedule B exception with a specific quiet-title rationale, or obtain a corrective quit-claim to cure the record.",
       "examiner_override": null
     },
     {
       "id": "lc-014",
       "root_instrument": "20020100002",
-      "child_instruments": ["20050100001"],
+      "child_instruments": [
+        "20050100001"
+      ],
       "status": "released",
-      "status_rationale": "Demo-only synthetic lifecycle on POPHAM's reconstructed pre-2013 chain. The 2002 Roberts-family purchase-money DOT (20020100002, Wells Fargo Home Mortgage, MERS as nominee) was fully reconveyed by Wells Fargo Bank NA on 2005-07-22 (20050100001). Pattern echoes the real 2013 POPHAM DOT (20130183450) → 2021 release (20210075858) pair: originator differs from releasing party, note transferred inside MERS. Included to show continuity of the MERS-disintermediation pattern across two ownership eras.",
+      "status_rationale": "Demo-only synthetic lifecycle on POPHAM's reconstructed pre-2013 chain. The 2002 Roberts-family purchase-money DOT (20020100002, Wells Fargo Home Mortgage, MERS as nominee) was fully reconveyed by Wells Fargo Bank NA on 2005-07-22 (20050100001). Pattern echoes the real 2013 POPHAM DOT (20130183450) \u00e2\u2020\u2019 2021 release (20210075858) pair: originator differs from releasing party, note transferred inside MERS. Included to show continuity of the MERS-disintermediation pattern across two ownership eras.",
       "examiner_override": null
     },
     {
@@ -122,7 +136,27 @@
       "root_instrument": "20240100001",
       "child_instruments": [],
       "status": "open",
-      "status_rationale": "Demo-only synthetic Notice of Federal Tax Lien (IRS Form 668(Y), serial 768349201-24) against POPHAM CHRISTOPHER J for unpaid 2019 and 2020 Form 1040 liabilities totaling $47,312.48. Recorded 2024-03-12. No Certificate of Release (Form 668(Z)) located in corpus. Lien self-releases by operation of law on 2032-09-14 if not refiled (26 U.S.C. § 6325(f)(1)), so the cloud is time-limited — but examiner must resolve before closing. Currently the senior encumbrance of record against this parcel (the 2013 Wells Fargo DOT was released 2021-01-22). Demo-only because the Maricopa public API silently drops the documentCode filter, so federal tax liens are unreachable by code-scoped search in plant products (see docs/hunt-log-known-gap-2.md) — making this exactly the cloud the county product is uniquely positioned to surface.",
+      "status_rationale": "Demo-only synthetic Notice of Federal Tax Lien (IRS Form 668(Y), serial 768349201-24) against POPHAM CHRISTOPHER J for unpaid 2019 and 2020 Form 1040 liabilities totaling $47,312.48. Recorded 2024-03-12. No Certificate of Release (Form 668(Z)) located in corpus. Lien self-releases by operation of law on 2032-09-14 if not refiled (26 U.S.C. \u00c2\u00a7 6325(f)(1)), so the cloud is time-limited \u00e2\u20ac\u201d but examiner must resolve before closing. Currently the senior encumbrance of record against this parcel (the 2013 Wells Fargo DOT was released 2021-01-22). Demo-only because the Maricopa public API silently drops the documentCode filter, so federal tax liens are unreachable by code-scoped search in plant products (see docs/hunt-log-known-gap-2.md) \u00e2\u20ac\u201d making this exactly the cloud the county product is uniquely positioned to surface.",
+      "examiner_override": null
+    },
+    {
+      "id": "lc-016",
+      "root_instrument": "20150638240",
+      "child_instruments": [
+        "20230431552"
+      ],
+      "status": "released",
+      "status_rationale": "Wells Fargo HELOC ($260,000 maximum line, recorded 2015-09-02 against R+L Silva on Lot 224 Shamrock 2A) was paid in full and released by Wells Fargo Bank N.A. on 2023-08-17 via Deed of Release and Reconveyance 20230431552. Released-instrument citation in the release explicitly references Original Recording Date 09/02/2015 and Original Instrument No. 20150638240 \u2014 a clean back-reference. Property held under Silva Family Revocable Trust (est. 2007) at the time of release.",
+      "examiner_override": null
+    },
+    {
+      "id": "lc-017",
+      "root_instrument": "20170019586",
+      "child_instruments": [
+        "20260162239"
+      ],
+      "status": "released",
+      "status_rationale": "Trustee succession via revocable trust + simultaneous trustee deaths. Robert F. and Linda L. Silva put Lot 224 INTO 'THE SILVA FAMILY REVOCABLE TRUST, Established July 26, 2007' on 2017-01-10 (instrument 20170019586). Both trustees died on 2026-03-11, recorded as consecutive death certificates 20260141249 and 20260141250 (PDF bodies restricted from public view, but indexed by name). Nine days later, on 2026-03-20, Successor Trustee Richard D. Moore conveyed Lot 224 OUT of the Silva Trust into HIS OWN family trust (MOORE REVOCABLE TRUST, Established August 16, 2021) via instrument 20260162239 \u2014 labeled 'TRST DEED' in the recorder index, the same document code Maricopa uses for foreclosure trustee's deeds upon sale (A.R.S. \u00a7 33-811). The succession bypassed probate court entirely (no PB case filed). A name-indexed title plant searching by 'SILVA' will find the 2017 deed in but miss the 2026 succession out (which only names the trust); searching by 'MOORE' will find the 2026 succession but miss everything before it. The chain only resolves correctly when keyed by APN.",
       "examiner_override": null
     }
   ]

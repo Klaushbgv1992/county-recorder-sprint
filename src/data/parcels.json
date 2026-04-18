@@ -189,5 +189,28 @@
       "20230200002",
       "20230200003"
     ]
+  },
+  {
+    "apn": "304-77-566",
+    "address": "2778 E Courtney St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 224, of SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "current_owner": "MOORE REVOCABLE TRUST",
+    "type": "residential",
+    "subdivision": "Shamrock Estates Phase 2A",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30477566&mod=pd",
+    "instrument_numbers": [
+      "20150453721",
+      "20150638240",
+      "20170019586",
+      "20230431552",
+      "20260141249",
+      "20260141250",
+      "20260162239"
+    ],
+    "research_request": "R-008",
+    "messy_chain_summary": "Trustee succession via revocable trust + simultaneous trustee deaths. Lot 224 was purchased in 2015 by Robert F. and Linda L. Silva, financed by a Wells Fargo HELOC two months later, transferred into THE SILVA FAMILY REVOCABLE TRUST (established 2007-07-26) in 2017, the HELOC was released in 2023, BOTH trustees Robert and Linda Silva died on the same day with consecutive death-certificate recording numbers (20260141249 + 20260141250 on 2026-03-11), and 9 days later Successor Trustee Richard D. Moore conveyed the property out of the Silva Trust into HIS OWN family trust (MOORE REVOCABLE TRUST, established 2021-08-16) using the ambiguous 'TRST DEED' document code (the same code Maricopa uses for foreclosure trustee's deeds). A name-indexed title plant searching SILVA gets the 2015-2017 chain but misses the 2026 transfer (which only names the trust, not Robert or Linda); searching MOORE gets the new chain but misses the SILVA history; searching businessNames=SILVA+FAMILY+REVOCABLE+TRUST returns 12 mingled instruments because a SECOND, unrelated David+Diana Silva 'Silva Family Revocable Trust' (est. 2016) holds a different parcel. The chain only resolves correctly if you key by APN."
   }
 ]

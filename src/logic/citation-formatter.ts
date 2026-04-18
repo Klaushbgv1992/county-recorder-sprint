@@ -15,6 +15,8 @@ const TYPE_LABELS: Record<DocumentType, string> = {
   ucc_termination: "UCC Termination",
   hoa_lien: "HOA Lien",
   affidavit_of_disclosure: "Affidavit of Disclosure",
+  death_certificate: "Death Certificate",
+  trustees_deed: "Trustee's Deed",
   other: "Other",
 };
 

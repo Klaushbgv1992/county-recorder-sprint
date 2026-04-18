@@ -22,6 +22,7 @@ const ROLE_LABEL: Record<PartyRole, string> = {
   servicer: "servicer",
   claimant: "claimant",
   debtor: "debtor",
+  decedent: "decedent",
 };
 
 export function PartyPage() {
