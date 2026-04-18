@@ -5,6 +5,8 @@ import { MemoryRouter } from "react-router";
 import type { Parcel, Instrument, DocumentType } from "../types";
 import { ChainOfTitle } from "./ChainOfTitle";
 import { TerminologyProvider } from "../terminology/TerminologyContext";
+import { AuthProvider } from "../account/AuthContext";
+import { ToastProvider } from "./ui/Toast";
 
 function makeInstrument(partial: {
   instrument_number: string;
@@ -86,6 +88,8 @@ describe("ChainOfTitle layout order", () => {
     });
     const { container } = render(
       <MemoryRouter>
+        <AuthProvider>
+        <ToastProvider>
         <TerminologyProvider>
           <ChainOfTitle
             parcel={popham}
@@ -94,6 +98,8 @@ describe("ChainOfTitle layout order", () => {
             onOpenDocument={() => {}}
           />
         </TerminologyProvider>
+        </ToastProvider>
+        </AuthProvider>
       </MemoryRouter>,
     );
 
@@ -123,6 +129,8 @@ describe("ChainOfTitle layout order", () => {
     });
     render(
       <MemoryRouter>
+        <AuthProvider>
+        <ToastProvider>
         <TerminologyProvider>
           <ChainOfTitle
             parcel={popham}
@@ -131,6 +139,8 @@ describe("ChainOfTitle layout order", () => {
             onOpenDocument={() => {}}
           />
         </TerminologyProvider>
+        </ToastProvider>
+        </AuthProvider>
       </MemoryRouter>,
     );
     const aiButton = screen.getByRole("button", { name: /View AI summary/i });
