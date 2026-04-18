@@ -11,6 +11,7 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, within, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
+import { MemoryRouter } from "react-router";
 import { ProofDrawer } from "../src/components/ProofDrawer";
 import { loadParcelDataByApn } from "../src/data-loader";
 import { TerminologyProvider } from "../src/terminology/TerminologyContext";
@@ -47,19 +48,21 @@ function renderDrawerForInstrument(apn: string, recordingNumber: string) {
       l.target_instrument === recordingNumber,
   );
   return render(
-    <TerminologyProvider>
-      <ProofDrawer
-        instrument={instrument}
-        links={linksForDrawer}
-        corpusProvenance={{ public_api: 22, ocr: 35, manual_entry: 18 }}
-        onClose={() => {}}
-        parcel={data.parcel}
-        allInstruments={data.instruments}
-        allLinks={data.links}
-        lifecycles={data.lifecycles}
-        pipelineStatus={data.pipelineStatus}
-      />
-    </TerminologyProvider>,
+    <MemoryRouter>
+      <TerminologyProvider>
+        <ProofDrawer
+          instrument={instrument}
+          links={linksForDrawer}
+          corpusProvenance={{ public_api: 22, ocr: 35, manual_entry: 18 }}
+          onClose={() => {}}
+          parcel={data.parcel}
+          allInstruments={data.instruments}
+          allLinks={data.links}
+          lifecycles={data.lifecycles}
+          pipelineStatus={data.pipelineStatus}
+        />
+      </TerminologyProvider>
+    </MemoryRouter>,
   );
 }
 

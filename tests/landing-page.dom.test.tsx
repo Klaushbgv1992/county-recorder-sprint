@@ -51,14 +51,16 @@ describe("LandingPage", () => {
     expect(mapSectionIndex).toBeGreaterThan(heroIndex);
   });
 
-  it("renders a single 'Why this is different' entry point in place of the old marketing tiles", () => {
-    // The three marketing tiles (Spatial custody / Verified freshness /
-    // Chain intelligence) now live on /why. A single slim link between
-    // FeaturedParcels and the footer is the landing's sole signpost to
-    // that narrative — the map + search are the hero, not the pitch.
+  it("surfaces the examiner walkthrough as the dominant call to action", () => {
+    // Post-walkthrough refactor: the /why narrative is now a secondary
+    // footer link ("Why this matters"). The landing's primary CTA is the
+    // "Start examiner walkthrough" entry point — one obvious guided path
+    // replaces three co-equal marketing tiles.
     render(wrap(<LandingPage />));
-    const link = screen.getByRole("link", { name: /why this is different/i });
-    expect(link).toHaveAttribute("href", "/why");
+    const startLink = screen.getByRole("link", { name: /start walkthrough/i });
+    expect(startLink).toHaveAttribute("href", expect.stringContaining("tour=examiner"));
+    const whyLink = screen.getByRole("link", { name: /why this matters/i });
+    expect(whyLink).toHaveAttribute("href", "/why");
   });
 
   it("renders link to /county-activity", () => {

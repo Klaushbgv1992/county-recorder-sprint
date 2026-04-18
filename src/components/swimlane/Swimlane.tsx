@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import type {
   Parcel,
   Instrument,
@@ -8,6 +8,8 @@ import type {
   ExaminerAction,
   DocumentType,
 } from "../../types";
+import { useWalkthrough } from "../../walkthrough/useWalkthrough";
+import { WALKTHROUGH_HERO_LIFECYCLE_ID } from "../../walkthrough/steps";
 import type { AnomalyFinding } from "../../types/anomaly";
 import { StatusBadge } from "../StatusBadge";
 import { InstrumentNode } from "./InstrumentNode";
@@ -94,6 +96,19 @@ const Y_CENTER = 30;
 
 export function Swimlane(props: Props) {
   const { t } = useTerminology();
+  const { currentStep } = useWalkthrough();
+  const walkthroughFocused =
+    (currentStep?.step === 3 || currentStep?.step === 4) &&
+    props.lifecycle.id === WALKTHROUGH_HERO_LIFECYCLE_ID;
+  const focusRef = useRef<HTMLElement | null>(null);
+
+  useEffect(() => {
+    if (walkthroughFocused && focusRef.current) {
+      focusRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+    // scroll on entering step 3 or 4; re-scroll if step flips between them.
+  }, [walkthroughFocused, currentStep?.step]);
+
   const instrumentMap = useMemo(
     () => new Map(props.instruments.map((i) => [i.instrument_number, i])),
     [props.instruments],
@@ -189,12 +204,17 @@ export function Swimlane(props: Props) {
   const flashClass = props.flashing
     ? "ring-2 ring-amber-400 transition-[box-shadow] duration-700 motion-reduce:transition-none"
     : "";
+  const walkthroughClass = walkthroughFocused
+    ? "border-moat-500 ring-2 ring-moat-400 shadow-md"
+    : "border-slate-200";
 
   return (
     <section
+      ref={focusRef}
       id={props.lifecycle.id}
       aria-labelledby={`${props.lifecycle.id}-title`}
-      className={`bg-white border border-slate-200 rounded-lg mb-3 ${flashClass}`}
+      data-walkthrough-focus={walkthroughFocused ? "true" : undefined}
+      className={`bg-white border rounded-lg mb-3 ${walkthroughClass} ${flashClass}`}
     >
       <div className="px-3 py-2 bg-slate-50 border-b border-slate-200 flex items-center justify-between gap-3">
         <div className="flex items-center gap-3 min-w-0">

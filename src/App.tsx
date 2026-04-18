@@ -4,6 +4,7 @@ import { useParcelData } from "./hooks/useParcelData";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useTerminology } from "./terminology/TerminologyContext";
 import { Term, TermSection } from "./terminology/Term";
+import { WalkthroughBanner } from "./components/WalkthroughBanner";
 
 export function AppShell() {
   const params = useParams();
@@ -113,6 +114,8 @@ export function AppShell() {
           )}
         </div>
       </nav>
+
+      <WalkthroughBanner />
 
       <Outlet />
     </div>

@@ -1,12 +1,15 @@
 // src/components/LandingPage.tsx
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useSearchParams, Link } from "react-router";
+import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
 import { OverlayToggles } from "./OverlayToggles";
 import { ParcelDrawer } from "./ParcelDrawer";
 import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { SearchHero } from "./SearchHero";
+import { WalkthroughBanner } from "./WalkthroughBanner";
+import { WalkthroughCTA } from "./WalkthroughCTA";
+import { useWalkthrough } from "../walkthrough/useWalkthrough";
 import { useAllParcels } from "../hooks/useAllParcels";
 import { useLandingUrlState } from "../hooks/useLandingUrlState";
 import { buildSearchableIndex } from "../logic/searchable-index";
@@ -34,12 +37,10 @@ export function LandingPage() {
   const parcels = useAllParcels();
   const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
     useLandingUrlState();
-  // Examiner walkthrough sets ?tour=examiner on the URL. When it's on,
-  // suppress the map intro pulse so it doesn't compete with the tour's
-  // own CTA. The tour owns the on-screen guidance; this page just gets
-  // out of its way.
-  const [searchParams] = useSearchParams();
-  const isExaminerTour = searchParams.get("tour") === "examiner";
+  // Examiner walkthrough sets ?tour=examiner on the URL. When it's on, the
+  // WalkthroughBanner owns on-screen guidance and the map's intro pulse is
+  // suppressed so the two don't compete.
+  const walkthrough = useWalkthrough();
 
   // Mobile detection (768px breakpoint matches Tailwind md:)
   const [isMobile, setIsMobile] = useState(() =>
@@ -182,6 +183,7 @@ export function LandingPage() {
         onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
         onSelectDrawer={(apn) => setSelectedApn(apn)}
       />
+      {walkthrough.active ? <WalkthroughBanner /> : <WalkthroughCTA />}
 
       {/* Full-bleed map — flex-1 fills remaining viewport below the
           PipelineBanner + SearchHero. The verified-through strip in
@@ -197,7 +199,7 @@ export function LandingPage() {
           lifecycles={LIFECYCLES}
           anomalies={anomaliesRaw}
           instrumentToApn={instrumentToApn}
-          showIntro={!selectedApn && !query && overlays.size === 0 && !isExaminerTour}
+          showIntro={!selectedApn && !query && overlays.size === 0 && !walkthrough.active}
           onIntroClick={() => setSelectedApn("304-78-386")}
         />
         <OverlayToggles
@@ -231,42 +233,36 @@ export function LandingPage() {
         <FeaturedParcels parcels={parcels} />
       </div>
 
-      <section className="px-6 py-4 bg-white border-b border-slate-200">
-        <div className="max-w-2xl mx-auto text-center">
+      <footer className="border-t border-slate-200 bg-white px-6 py-4">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-slate-500">
+          <span className="font-medium uppercase tracking-wider text-slate-400">
+            Elsewhere
+          </span>
+          <Link
+            to="/county-activity"
+            className="hover:text-slate-800 hover:underline underline-offset-2"
+          >
+            County activity
+          </Link>
           <Link
             to="/why"
-            className="text-xs text-slate-600 hover:text-slate-900 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            className="hover:text-slate-800 hover:underline underline-offset-2"
           >
-            New here? Why this is different →
+            Why this matters
+          </Link>
+          <Link
+            to="/moat-compare"
+            className="hover:text-slate-800 hover:underline underline-offset-2"
+          >
+            Compare vs. title plant
+          </Link>
+          <Link
+            to="/staff"
+            className="ml-auto text-slate-400 hover:text-slate-700 hover:underline underline-offset-2"
+          >
+            County staff workbench
           </Link>
         </div>
-      </section>
-
-      <footer className="border-t border-slate-200 bg-white px-6 py-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-slate-700">
-        <Link
-          to="/county-activity"
-          className="hover:text-moat-700 hover:underline underline-offset-2"
-        >
-          → View county activity
-        </Link>
-        <Link
-          to="/why"
-          className="hover:text-moat-700 hover:underline underline-offset-2"
-        >
-          → Why this matters
-        </Link>
-        <Link
-          to="/moat-compare"
-          className="hover:text-moat-700 hover:underline underline-offset-2"
-        >
-          → Compare to a title-plant report
-        </Link>
-        <Link
-          to="/staff"
-          className="text-slate-500 hover:text-slate-800 hover:underline underline-offset-2"
-        >
-          County staff? Open workbench &rarr;
-        </Link>
       </footer>
     </main>
   );
