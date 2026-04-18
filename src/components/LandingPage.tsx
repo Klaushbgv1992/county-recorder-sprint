@@ -179,9 +179,12 @@ export function LandingPage() {
         value={query}
         onChange={setQuery}
         searchables={searchables}
+        instruments={allInstruments}
+        instrumentToApn={instrumentToApn}
         onSelectCurated={(apn) => navigate(`/parcel/${apn}`)}
         onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
         onSelectDrawer={(apn) => setSelectedApn(apn)}
+        onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
       />
       {walkthrough.active ? <WalkthroughBanner /> : <ScenarioPicker />}
 
