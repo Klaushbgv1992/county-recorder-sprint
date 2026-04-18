@@ -101,6 +101,20 @@
   to { stroke-dashoffset: 0; opacity: 1; }
 }
 
+/* fadeIn + slideUp are used by new UI primitives (Dialog, Toast) via
+   inline animate-[fadeIn_…] / animate-[slideUp_…] classes. Keep them
+   as lowercase-camelCase keyframes — the primitives reference them
+   by that exact name. (The existing fade-in keyframe is a separate,
+   kebab-case animation used elsewhere; both coexist intentionally.) */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
 /* Respect users who prefer reduced motion — disable all wow-factor
    animations rather than wrapping each consumer in a media query. */
 @media (prefers-reduced-motion: reduce) {
