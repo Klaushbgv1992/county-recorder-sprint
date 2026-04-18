@@ -34,11 +34,12 @@ export function PipelineBanner() {
   return (
     <div className="h-10 px-4 flex items-center gap-2.5 text-xs text-slate-700 bg-gradient-to-b from-white to-slate-50 border-b border-moat-200/70 shadow-[0_1px_0_rgba(15,23,42,0.02)] shrink-0">
       {/* Live-indicator dot — reads as "the custodian is feeding this
-          page" vs a static snapshot. 1.6s pulse-glow ring animation is
-          suppressed under prefers-reduced-motion (see index.css). */}
+          page" vs a static snapshot. A static moat-100 ring carries the
+          meaning without a motion loop; reduced-motion users get the
+          same visual, which is the point. */}
       <span
         aria-label="Live data feed"
-        className="inline-block w-2 h-2 rounded-full bg-moat-500 animate-pulse-glow shrink-0"
+        className="inline-block w-2 h-2 rounded-full bg-moat-500 ring-2 ring-moat-100 shrink-0"
       />
       <span className="text-slate-600">
         Verified through{" "}

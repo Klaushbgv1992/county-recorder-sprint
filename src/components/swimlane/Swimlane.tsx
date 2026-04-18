@@ -392,10 +392,12 @@ export function Swimlane(props: Props) {
           const dotX = nodesWithLayout[dotIdx].visualX;
           const releaseX = nodesWithLayout[releaseIdx].visualX;
           // The MERS callout is the swimlane's "missing link" indicator.
-          // A hover-triggered shake nudges the examiner to investigate it
-          // without hijacking attention while they scan elsewhere.
+          // A static dashed amber outline reads as "attention" without
+          // motion — visible even before the examiner hovers, which is
+          // strictly better for discoverability than a hover-triggered
+          // animation.
           return (
-            <div className="hover:animate-shake">
+            <div className="rounded border-2 border-dashed border-amber-400">
               <MersCallout gap={mersGap} xPx={(dotX + releaseX) / 2} yCenter={Y_CENTER} />
             </div>
           );

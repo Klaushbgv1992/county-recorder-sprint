@@ -104,13 +104,13 @@ function CuratedBody({ parcel }: { parcel: Parcel }) {
       <div className="flex flex-col gap-2 pt-2">
         <Link
           to={`/parcel/${parcel.apn}`}
-          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
         >
           Open chain of title &rarr;
         </Link>
         <Link
           to={`/parcel/${parcel.apn}/encumbrances`}
-          className="block w-full rounded-md border border-moat-300 bg-white px-4 py-2 text-center text-sm font-medium text-moat-700 hover:bg-moat-50 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md border border-moat-300 bg-white px-4 py-2 text-center text-sm font-medium text-moat-700 hover:bg-moat-50 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
         >
           Open encumbrances &rarr;
         </Link>
@@ -217,13 +217,13 @@ function RecorderCachedBody({
       <div className="flex flex-col gap-2">
         <Link
           to="/parcel/304-78-386"
-          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
         >
           &rarr; See a fully curated parcel: POPHAM (Seville Parcel 3)
         </Link>
         <a
           href="#featured-parcels"
-          className="block w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
           onClick={(e) => {
             e.preventDefault();
             document
@@ -291,13 +291,13 @@ function AssessorOnlyBody({ polygon }: { polygon: AssessorParcel }) {
       <div className="flex flex-col gap-2">
         <Link
           to="/parcel/304-78-386"
-          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md bg-moat-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-moat-700 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
         >
           &rarr; See a fully curated parcel: POPHAM (Seville Parcel 3)
         </Link>
         <a
           href="#featured-parcels"
-          className="block w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 hover:-translate-y-0.5 active:translate-y-0 transition-transform duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+          className="block w-full rounded-md border border-slate-300 bg-white px-4 py-2 text-center text-sm font-medium text-slate-700 hover:bg-slate-50 transition-colors duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
           onClick={(e) => {
             e.preventDefault();
             document

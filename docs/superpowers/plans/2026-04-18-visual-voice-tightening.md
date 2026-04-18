@@ -711,3 +711,15 @@ In a fresh browser (no browser is currently attached to the MCP profile, so a re
 - `npm run build` passes.
 - The six named greps in Task 9 Step 1 each return zero matches.
 - Task 10 spot-check passes for the reviewer.
+
+## Post-implementation notes
+
+Two deviations from this plan surfaced during execution and shipped intentionally:
+
+- **Task 4 extended to `src/components/DemoIntro.tsx`.** The CountyMap marker's `animate-ping` sibling (a Tailwind-built-in infinite scale+fade pulse) was not named in the original spec or plan. After removing it from `CountyMap.tsx` in commit `f0b628f`, the same pattern was found in `DemoIntro.tsx` and scrubbed to match in commit `af5992d`. The refactor's file count is therefore 13, not 12.
+- **Task 8 preserves `overflow-hidden` on `HomeownerHero.tsx`.** Step 1 instructed to drop `overflow-hidden` on the grounds that "no clipping target remains." That reading was based on the pre-polish source. The polish commit that landed immediately before this refactor added a decorative SVG positioned at `-right-8 -top-6 w-[420px]` that *does* require clipping at the section boundary. Commit `c95075d` drops only the gradient; `overflow-hidden` stays.
+
+Follow-ups noted by the branch-level reviewer but deferred to a separate pass:
+
+- `src/index.css` has a Lightning CSS `@import` ordering warning — pre-existing, unrelated to visual voice.
+- Remaining `animate-pulse` uses in `AiExtractLivePanel`, `LiveQueryCell`, `LivePushDemo:219`, and `Skeletons.tsx` were kept as loading/streaming indicators (fall under the spec's "motion that serves orientation" carve-out).

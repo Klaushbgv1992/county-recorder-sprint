@@ -124,8 +124,7 @@ export function DemoIntro({
           ×
         </button>
         <div className="relative h-4 w-4">
-          <div className="absolute inset-0 animate-ping rounded-full bg-moat-500 opacity-75" />
-          <div className="relative h-4 w-4 rounded-full border-2 border-white bg-moat-500 shadow-lg" />
+          <div className="relative h-4 w-4 rounded-full border-2 border-white bg-moat-500 shadow-lg ring-2 ring-moat-300 ring-offset-1" />
         </div>
       </div>
     </Marker>

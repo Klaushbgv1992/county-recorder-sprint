@@ -26,7 +26,7 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
   }
 
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-white to-slate-50 border-b border-slate-200 px-6 py-12">
+    <section className="relative overflow-hidden bg-white border-b border-slate-200 px-6 py-12">
       {/* Decorative backdrop — a faint line-drawn house + deed motif that
           distinguishes homeowner mode from the examiner search hero. The
           SVG is absolutely positioned and aria-hidden so it never blocks

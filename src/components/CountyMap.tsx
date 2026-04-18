@@ -466,10 +466,10 @@ export function CountyMap({
 //
 // Animations (all defined in src/index.css under the @theme block):
 //   - animate-fade-in-up  → mount entrance (no snap-in)
-//   - animate-bob         → label bubble drifts ±4px over 3s
-//   - animate-ring-pulse  → marker dot radiates an interactive "click me" ring
-// Pulse-ring and bob are on *separate* elements so their transforms don't
-// compose into a wobble. Cursor + hover:scale-105 signal "this is clickable".
+//   (bob + ring-pulse removed — intro bubble stays static; the marker
+//    uses a static ring-moat-300 ring-offset-1 cue instead of an
+//    infinite ring emission. Entrance fade-in remains.)
+// Cursor + ring-color hover signal "this is clickable".
 // ─────────────────────────────────────────────────────────────────────────────
 
 interface IntroCalloutProps {
@@ -543,14 +543,14 @@ function IntroCallout({
       <div className="relative flex flex-col items-center pointer-events-none animate-fade-in-up">
         {/* Bobbing label group — the text bubble + close button drift together
             so the tail stays aligned with the bubble base. */}
-        <div className="relative animate-bob">
+        <div className="relative">
           <button
             type="button"
             onClick={(e) => {
               e.stopPropagation();
               onClick();
             }}
-            className="pointer-events-auto group relative mb-3 w-72 cursor-pointer rounded-lg border border-moat-200 bg-white px-4 py-3 text-left shadow-xl ring-1 ring-moat-500/10 transition-transform duration-200 hover:scale-105 hover:ring-moat-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            className="pointer-events-auto group relative mb-3 w-72 cursor-pointer rounded-lg border border-moat-200 bg-white px-4 py-3 text-left shadow-xl ring-1 ring-moat-500/10 transition-colors duration-200 hover:ring-moat-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
             aria-label="Explore POPHAM parcel — click to open"
           >
             <p className="text-[13px] font-semibold leading-snug text-slate-900">
@@ -581,11 +581,10 @@ function IntroCallout({
             ×
           </button>
         </div>
-        {/* Marker dot — ring-pulse lives here (separate from bob) so the
-            radiating box-shadow stays radially symmetric and doesn't wobble. */}
+        {/* Marker dot — static emerald ring carries the "click me" cue
+            without motion. */}
         <div className="relative h-4 w-4">
-          <div className="absolute inset-0 animate-ping rounded-full bg-moat-500 opacity-75" />
-          <div className="relative h-4 w-4 animate-ring-pulse rounded-full border-2 border-white bg-moat-500 shadow-lg" />
+          <div className="relative h-4 w-4 rounded-full border-2 border-white bg-moat-500 shadow-lg ring-2 ring-moat-300 ring-offset-1" />
         </div>
       </div>
     </Marker>
