@@ -71,6 +71,24 @@
       "title_template": "Chain shows no activity for {years} years",
       "description_template": "Last recorded instrument for parcel {apn} was on {last_date}. Typical residential parcels see refinance or sale activity every 5–10 years.",
       "examiner_action_template": "Not a defect. Verify current ownership has not changed by confirming assessor record matches last deed grantee."
+    },
+    {
+      "rule_id": "R9",
+      "name": "AZ community-property joinder check",
+      "version": "1.0",
+      "severity": "info",
+      "title_template": "Community-property joinder: {outcome}",
+      "description_template": "Arizona is a community-property state (A.R.S. § 25-211). A conveyance of the community's real property requires the joinder of both spouses (A.R.S. § 25-214(C)). Checked deed {deed} against current owner-of-record pair ({owner_pair}) — {outcome}.",
+      "examiner_action_template": "{action}"
+    },
+    {
+      "rule_id": "R10",
+      "name": "Open statutory lien requires recorded release",
+      "version": "1.0",
+      "severity": "high",
+      "title_template": "Open {lien_kind} requires recorded release before closing",
+      "description_template": "{lien_kind} {a} against {debtor} is open of record. Cleared only by {release_mechanism} or by operation of law on {deadline}. Currently the senior encumbrance of record against this parcel.",
+      "examiner_action_template": "Request payoff or Certificate of Release ({release_mechanism}) from {creditor}. Record the release in Maricopa County before closing, or exclude from the title policy as a Schedule B-II exception."
     }
   ]
 }

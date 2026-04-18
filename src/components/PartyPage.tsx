@@ -117,6 +117,12 @@ export function PartyPage() {
           const sorted = [...refs].sort((a, b) =>
             a.recordingDate < b.recordingDate ? 1 : a.recordingDate > b.recordingDate ? -1 : 0,
           );
+          // "Why am I seeing this" summary — distinct roles the party
+          // plays on THIS parcel, with the verbatim variant that matched.
+          const distinctRoles = Array.from(new Set(refs.map((r) => r.role)));
+          const verbatimVariants = Array.from(
+            new Set(refs.map((r) => r.matchedNameVerbatim)),
+          );
           return (
             <div key={apn} className="rounded-lg border border-slate-200 bg-white">
               <div className="flex items-baseline justify-between border-b border-slate-100 px-4 py-3">
@@ -132,6 +138,27 @@ export function PartyPage() {
                   </span>
                 </div>
                 <div className="text-xs text-slate-600">{owner}</div>
+              </div>
+              <div
+                className="border-b border-slate-100 bg-slate-50 px-4 py-2 text-[11px] text-slate-600"
+                data-testid="party-match-hint"
+              >
+                <span className="font-semibold text-slate-700">
+                  Matched on
+                </span>
+                :{" "}
+                {verbatimVariants.map((v, i) => (
+                  <span key={v} className="font-mono">
+                    {i > 0 ? ", " : ""}&ldquo;{v}&rdquo;
+                  </span>
+                ))}
+                {" "}as{" "}
+                {distinctRoles
+                  .map((r) => ROLE_LABEL[r] ?? r)
+                  .join(" / ")}
+                . {refs.length} instrument{refs.length === 1 ? "" : "s"} on
+                this parcel. Role attribution is hand-curated — the public
+                API returns flat names without roles (Decision&nbsp;#19).
               </div>
               <table className="w-full text-sm">
                 <thead className="text-left text-[11px] uppercase tracking-wider text-slate-500">
@@ -167,6 +194,22 @@ export function PartyPage() {
                             (as nominee for {ref.nomineeFor.partyName})
                           </span>
                         )}
+                        <span
+                          className={`ml-2 inline-flex items-center rounded px-1.5 py-0.5 text-[10px] font-mono ${
+                            ref.roleProvenance === "ocr"
+                              ? "bg-indigo-50 text-indigo-800"
+                              : ref.roleProvenance === "manual_entry"
+                                ? "bg-amber-50 text-amber-800"
+                                : ref.roleProvenance === "demo_synthetic"
+                                  ? "bg-gray-100 text-gray-600"
+                                  : "bg-slate-100 text-slate-700"
+                          }`}
+                          title={`Role assignment provenance: ${ref.roleProvenance} (confidence ${Math.round(ref.roleConfidence * 100)}%)`}
+                        >
+                          {ref.roleProvenance}
+                          {" · "}
+                          {Math.round(ref.roleConfidence * 100)}%
+                        </span>
                       </td>
                     </tr>
                   ))}

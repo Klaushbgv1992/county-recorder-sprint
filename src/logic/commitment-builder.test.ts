@@ -44,12 +44,16 @@ describe("buildCommitment — POPHAM", () => {
     expect(doc.scheduleA.legalDescription.provenance).toBe("manual_entry");
   });
 
-  it("renders all 4 POPHAM lifecycles in lifecycles.json order", () => {
+  it("renders all 5 POPHAM lifecycles in lifecycles.json order", () => {
     expect(doc.scheduleB2.map((r) => r.lifecycleId)).toEqual([
       "lc-001",
       "lc-002",
       "lc-004",
       "lc-014",
+      // lc-015 is the demo-only NFTL added to exercise R10. Listed
+      // last because lifecycles.json appends and buildCommitment
+      // preserves source order.
+      "lc-015",
     ]);
   });
 

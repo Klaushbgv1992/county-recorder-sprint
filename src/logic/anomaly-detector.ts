@@ -8,6 +8,8 @@ import { detectR5 } from "./rules/r5-grantor-is-trust";
 import { detectR6 } from "./rules/r6-plat-unrecoverable";
 import { detectR7 } from "./rules/r7-same-name-suppressed";
 import { detectR8 } from "./rules/r8-chain-stale";
+import { detectR9 } from "./rules/r9-community-property-joinder";
+import { detectR10 } from "./rules/r10-open-statutory-lien";
 
 // Severity rank for deterministic ordering: high first, info last.
 const SEVERITY_ORDER: Record<AnomalyFinding["severity"], number> = {
@@ -18,7 +20,7 @@ const SEVERITY_ORDER: Record<AnomalyFinding["severity"], number> = {
 };
 
 /**
- * Compose all 8 anomaly rules for a parcel into a single deterministically
+ * Compose all 10 anomaly rules for a parcel into a single deterministically
  * ordered list of findings. Sort key is (severity desc, rule_id asc).
  *
  * Returns [] when the parcel is not in the corpus (the data loader throws
@@ -47,6 +49,8 @@ export function detectAnomalies(apn: string, now: Date = new Date()): AnomalyFin
     ...detectR6(parcel, instruments),
     ...detectR7(parcel),
     ...detectR8(parcel, instruments, now),
+    ...detectR9(parcel, instruments),
+    ...detectR10(parcel, instruments, lifecycles),
   ];
 
   // Array.prototype.sort is stable in V8 since 2019; use a composite

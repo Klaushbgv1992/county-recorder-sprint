@@ -98,7 +98,7 @@
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS is the beneficiary of record as nominee for Wells Fargo Home Mortgage, Inc. — the same disintermediation pattern the examiner sees again on the 2013 DOT (20130183450). If the note was ever sold or assigned, those transfers happened inside MERS and not on the public recorder — only the eventual release (20050100001) hit the record.",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

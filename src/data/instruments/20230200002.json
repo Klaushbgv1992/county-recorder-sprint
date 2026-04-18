@@ -60,13 +60,22 @@
       "confidence": 1
     }
   },
-  "back_references": ["20220200005"],
-  "same_day_group": ["20230200003"],
+  "back_references": [
+    "20220200005"
+  ],
+  "same_day_group": [
+    "20230200003"
+  ],
   "source_image_path": null,
   "page_count": 3,
   "raw_api_response": {
-    "names": ["TUCSON INVESTMENTS LLC", "BRYANT JAMES T"],
-    "documentCodes": ["SPEC WAR DEED"],
+    "names": [
+      "TUCSON INVESTMENTS LLC",
+      "BRYANT JAMES T"
+    ],
+    "documentCodes": [
+      "SPEC WAR DEED"
+    ],
     "recordingDate": "1-30-2023",
     "recordingNumber": "20230200002",
     "pageAmount": 3,
@@ -80,7 +89,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

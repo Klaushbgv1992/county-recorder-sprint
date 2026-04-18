@@ -73,12 +73,22 @@
     }
   },
   "back_references": [],
-  "same_day_group": ["20050200001"],
+  "same_day_group": [
+    "20050200001"
+  ],
   "source_image_path": null,
   "page_count": 22,
   "raw_api_response": {
-    "names": ["HENDERSON JAMES D", "HENDERSON TAMMY L", "COUNTRYWIDE HOME LOANS INC", "MERS", "RECONTRUST COMPANY"],
-    "documentCodes": ["DEED TRST"],
+    "names": [
+      "HENDERSON JAMES D",
+      "HENDERSON TAMMY L",
+      "COUNTRYWIDE HOME LOANS INC",
+      "MERS",
+      "RECONTRUST COMPANY"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
     "recordingDate": "3-21-2005",
     "recordingNumber": "20050200002",
     "pageAmount": 22,
@@ -93,7 +103,7 @@
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for Countrywide Home Loans, Inc. Countrywide was acquired by Bank of America in July 2008. No assignment of DOT to Bank of America or a securitization trust has been recorded in this parcel's corpus. Note: the underlying DOT is extinguished of record by the 2022 Treasurer's Deed (20220200005); a successor-in-interest release is the industry-standard cure but has not been obtained.",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

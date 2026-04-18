@@ -25,12 +25,19 @@
   },
   "extracted_fields": {},
   "back_references": [],
-  "same_day_group": ["20200620456"],
+  "same_day_group": [
+    "20200620456"
+  ],
   "source_image_path": null,
   "page_count": 19,
   "raw_api_response": {
-    "names": ["ANGUS SCOTT J", "UNITED WHOLESALE MORTGAGE"],
-    "documentCodes": ["DEED TRST"],
+    "names": [
+      "ANGUS SCOTT J",
+      "UNITED WHOLESALE MORTGAGE"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
     "recordingDate": "7-13-2020",
     "recordingNumber": "20200620457",
     "pageAmount": 19,
@@ -42,7 +49,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 6,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 3
   }

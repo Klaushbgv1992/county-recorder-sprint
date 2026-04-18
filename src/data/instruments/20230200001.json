@@ -55,13 +55,20 @@
       "confidence": 1
     }
   },
-  "back_references": ["20080200001"],
+  "back_references": [
+    "20080200001"
+  ],
   "same_day_group": [],
   "source_image_path": null,
   "page_count": 3,
   "raw_api_response": {
-    "names": ["CHEN ROBERT K", "CHEN LILIAN M"],
-    "documentCodes": ["AF DEATH JT"],
+    "names": [
+      "CHEN ROBERT K",
+      "CHEN LILIAN M"
+    ],
+    "documentCodes": [
+      "AF DEATH JT"
+    ],
     "recordingDate": "6-20-2023",
     "recordingNumber": "20230200001",
     "pageAmount": 3,
@@ -75,7 +82,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 5,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

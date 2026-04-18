@@ -48,6 +48,83 @@ function ViewportFallback() {
   );
 }
 
+function PricingCompare() {
+  return (
+    <div
+      className="mt-6 hidden lg:block border border-gray-200 bg-white rounded-lg px-6 py-4 text-sm text-gray-800"
+      aria-label="Indicative pricing comparison"
+      data-testid="moat-pricing-compare"
+    >
+      <div className="flex items-center gap-3 mb-3">
+        <h3 className="text-base font-semibold text-gray-900">
+          Indicative seat / API cost per abstractor
+        </h3>
+        <span className="rounded-full bg-gray-100 px-2 py-0.5 text-[10px] font-medium text-gray-600">
+          illustrative — verify with each vendor
+        </span>
+      </div>
+      <div className="grid grid-cols-3 gap-4 text-sm">
+        <div className="rounded border border-gray-200 bg-gray-50 p-3">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+            Aggregator · consumer
+          </div>
+          <div className="mt-1 text-base font-semibold text-gray-900">
+            $0 — ad-supported
+          </div>
+          <div className="mt-1 text-xs text-gray-600">
+            Name-and-address search, aged MLS. No chain, no encumbrance
+            lifecycle, no PDFs. Not built for a title workflow.
+          </div>
+        </div>
+        <div className="rounded border border-gray-200 bg-gray-50 p-3">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-gray-500">
+            Title plant · professional
+          </div>
+          <div className="mt-1 text-base font-semibold text-gray-900">
+            ~$300–$800 / seat / mo
+          </div>
+          <div className="mt-1 text-xs text-gray-600">
+            Parcel-keyed chain + per-search fees. Bulk-feed latency of
+            2–7 days behind the county. Pricing per public reports and
+            vendor quotes — confirm under current contract.
+          </div>
+        </div>
+        <div className="rounded border border-moat-200 bg-moat-50 p-3">
+          <div className="text-[10px] font-semibold uppercase tracking-wider text-moat-700">
+            County · authoritative
+          </div>
+          <div className="mt-1 text-base font-semibold text-moat-900">
+            Free public · metered API for volume
+          </div>
+          <div className="mt-1 text-xs text-moat-700">
+            Public read is free today (the recorder&apos;s statutory duty).
+            A metered API tier for commercial consumers — e.g. $0.02–$0.05
+            per call with an SLA and a live-push option — undercuts every
+            plant on seat cost while preserving the county&apos;s authority
+            advantage.
+          </div>
+          <div className="mt-2 text-[11px] font-mono text-moat-700">
+            <Link
+              to="/api"
+              className="underline hover:text-moat-900"
+            >
+              See API surface →
+            </Link>
+          </div>
+        </div>
+      </div>
+      <p className="mt-3 text-[11px] text-gray-500 italic">
+        Prices are illustrative. Plant seat ranges cited from published
+        industry coverage and practitioner interviews (DataTree,
+        TitleIQ, PropertyRadar, PropStream) — not from a current
+        vendor quote. The point isn&apos;t the exact number; it&apos;s
+        that the county is the <em>only</em> surface that can price on
+        marginal cost of bytes rather than on resold-data margin.
+      </p>
+    </div>
+  );
+}
+
 function ClosingFooter() {
   return (
     <div className="mt-6 hidden lg:block border border-gray-200 bg-white rounded-lg px-6 py-4 text-sm text-gray-800">
@@ -393,6 +470,7 @@ export function MoatCompareRoute() {
         />
       </div>
       <ViewportFallback />
+      <PricingCompare />
       <ClosingFooter />
     </div>
   );
