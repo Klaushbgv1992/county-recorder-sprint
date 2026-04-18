@@ -1,0 +1,1439 @@
+- generic [active]:
+  - generic:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - button "Redfin Homepage Link" [ref=e6] [cursor=pointer]:
+          - img [ref=e8]
+        - generic [ref=e17]:
+          - img [ref=e18]:
+            - img [ref=e19]
+          - paragraph [ref=e23]: "85298"
+          - searchbox "Search for properties" [ref=e26]
+      - generic [ref=e27]:
+        - button "Buy ▾" [ref=e28] [cursor=pointer]:
+          - button "Buy ▾" [ref=e29]
+        - button "Rent ▾" [ref=e30] [cursor=pointer]:
+          - button "Rent ▾" [ref=e31]
+        - button "Sell ▾" [ref=e32] [cursor=pointer]:
+          - button "Sell ▾" [ref=e33]
+        - button "Mortgage ▾" [ref=e34] [cursor=pointer]:
+          - button "Mortgage ▾" [ref=e35]
+        - button "Real Estate Agents ▾" [ref=e36] [cursor=pointer]:
+          - link "Real Estate Agents ▾" [ref=e37]:
+            - /url: /zipcode/85298/real-estate/agents
+        - button "Feed" [ref=e38] [cursor=pointer]
+        - button "Join / Sign in" [ref=e40] [cursor=pointer]
+    - generic:
+      - generic:
+        - generic [ref=e45]:
+          - button "AI Search" [ref=e47] [cursor=pointer]:
+            - generic [ref=e49]:
+              - img [ref=e50]:
+                - img [ref=e51]
+              - generic [ref=e54]: AI Search
+          - button "Filters" [ref=e56] [cursor=pointer]:
+            - img [ref=e58]:
+              - img [ref=e59]
+            - generic [ref=e61]: Filters
+          - generic "We will send you email updates for the searches you save." [ref=e65] [cursor=pointer]:
+            - button "Save your search" [ref=e66]:
+              - generic [ref=e68]: Save search
+          - button "Layout" [ref=e70] [cursor=pointer]:
+            - img [ref=e72]:
+              - img [ref=e73]
+            - generic [ref=e76]: Layout
+        - generic [ref=e77]:
+          - generic [ref=e78]:
+            - generic [ref=e82]:
+              - heading "85298, AZ homes for sale & real estate" [level=1] [ref=e84]
+              - generic [ref=e86]:
+                - generic [ref=e87]: 218 homes
+                - generic [ref=e90]:
+                  - generic [ref=e91]: "Sort:"
+                  - generic [ref=e92] [cursor=pointer]:
+                    - button "Recommended" [ref=e93]:
+                      - generic [ref=e94]: Recommended
+                      - img [ref=e95]:
+                        - img [ref=e96]
+                    - generic [ref=e100]:
+                      - generic [ref=e101]:
+                        - generic [ref=e102]: Recommended
+                        - img:
+                          - img
+                      - combobox "Recommended" [ref=e103]:
+                        - option "Recommended" [selected]
+                        - option "Newest"
+                        - option "Price (low to high)"
+                        - option "Price (high to low)"
+                        - option "Square feet"
+                        - option "Lot size"
+                        - option "Price/sq. ft."
+            - generic [ref=e105]:
+              - generic [ref=e107]:
+                - button "Property at 2082 E Sanoque Blvd, Gilbert, AZ 85298, 6 beds, 3.5 baths" [ref=e110] [cursor=pointer]:
+                  - generic [ref=e111]:
+                    - generic [ref=e114]: NEW 14 HRS AGO
+                    - generic [ref=e117]: 3D WALKTHROUGH
+                  - group "carousel" [ref=e119]:
+                    - generic [ref=e120]:
+                      - list [ref=e121]:
+                        - listitem [ref=e122]
+                        - listitem [ref=e124]
+                        - listitem [ref=e126]
+                        - listitem [ref=e127]
+                        - listitem [ref=e128]
+                        - listitem [ref=e129]
+                        - listitem [ref=e130]
+                        - listitem [ref=e131]
+                        - listitem [ref=e132]
+                        - listitem [ref=e133]
+                        - listitem [ref=e134]
+                        - listitem [ref=e135]
+                        - listitem [ref=e136]
+                        - listitem [ref=e137]
+                        - listitem [ref=e138]
+                        - listitem [ref=e139]
+                        - listitem [ref=e140]
+                        - listitem [ref=e141]
+                        - listitem [ref=e142]
+                        - listitem [ref=e143]
+                        - listitem [ref=e144]
+                        - listitem [ref=e145]
+                        - listitem [ref=e146]
+                        - listitem [ref=e147]
+                        - listitem [ref=e148]
+                        - listitem [ref=e149]
+                        - listitem [ref=e150]
+                        - listitem [ref=e151]
+                        - listitem [ref=e152]
+                        - listitem [ref=e153]
+                        - listitem [ref=e154]
+                        - listitem [ref=e155]
+                        - listitem [ref=e156]
+                        - listitem [ref=e157]
+                        - listitem [ref=e158]
+                        - listitem [ref=e159]
+                        - listitem [ref=e160]
+                        - listitem [ref=e161]
+                        - listitem [ref=e162]
+                        - listitem [ref=e163]
+                        - listitem [ref=e164]
+                        - listitem [ref=e165]
+                        - listitem [ref=e166]
+                        - listitem [ref=e167]
+                        - listitem [ref=e168]
+                        - listitem [ref=e169]
+                        - listitem [ref=e170]
+                        - listitem [ref=e171]
+                        - listitem [ref=e172]
+                        - listitem [ref=e173]
+                        - listitem [ref=e174]
+                        - listitem [ref=e175]
+                        - listitem [ref=e176]
+                        - listitem [ref=e177]
+                        - listitem [ref=e178]
+                        - listitem [ref=e179]
+                        - listitem [ref=e180]
+                        - listitem [ref=e181]
+                        - listitem [ref=e182]
+                        - listitem [ref=e183]
+                        - listitem [ref=e184]
+                        - listitem [ref=e185]
+                        - listitem [ref=e186]
+                        - listitem [ref=e187]
+                        - listitem [ref=e188]
+                        - listitem [ref=e189]
+                        - listitem [ref=e190]
+                        - listitem [ref=e191]
+                        - listitem [ref=e192]
+                        - listitem [ref=e193]
+                        - listitem [ref=e194]
+                        - listitem [ref=e195]
+                        - listitem [ref=e196]
+                        - listitem [ref=e197]
+                        - listitem [ref=e198]
+                        - listitem [ref=e199]
+                        - listitem [ref=e201]:
+                          - generic [ref=e203]:
+                            - generic [ref=e207]: ABOUT THIS HOME
+                            - paragraph [ref=e208]: 85298, AZ Homes for Sale
+                            - paragraph [ref=e209]: Recently remodeled custom home with a two-bedroom casita in Circle G at Ocotillo. Set on a corner lot just under an acre, this property showcases beautifully manicured grounds, a zero-entry heated pool, spa, and a rock waterfall slide. The main home features 3 bedrooms plus a den, flex space, formal dining room, and a spacious great room with a custom fireplace. The chef's kitchen is a standout, offering quartz countertops, top-of-the-line appliances, a 6-burner gas range, double wall ovens, a large island, and a walk-in pantry. Interior finishes include wood-plank style flooring and plush carpeting throughout. The split primary suite provides privacy and includes a fully remodeled bathroom
+                      - button "previous" [ref=e210]:
+                        - img [ref=e211]:
+                          - img [ref=e212]
+                      - button "next" [ref=e214]:
+                        - img [ref=e215]:
+                          - img [ref=e216]
+                  - generic [ref=e218]:
+                    - generic [ref=e219]:
+                      - generic [ref=e221]: $1,999,900
+                      - generic [ref=e222]:
+                        - button "Share home" [ref=e223]:
+                          - img [ref=e224]:
+                            - img [ref=e225]
+                        - checkbox "Add home to favorites" [ref=e227]:
+                          - img [ref=e228]:
+                            - img [ref=e229]
+                    - generic [ref=e231]:
+                      - generic [ref=e232]: 6 beds
+                      - generic [ref=e233]: 3.5 baths
+                      - generic [ref=e234]:
+                        - generic [ref=e235]: 4,061
+                        - text: sq ft
+                    - link "2082 E Sanoque Blvd, Gilbert, AZ 85298" [ref=e236]:
+                      - /url: /AZ/Gilbert/2082-E-Sanoque-Blvd-85298/home/28311710
+                    - generic [ref=e238]: 0.81 acre lot • 4 garage spots • Pool
+                - button "Property at 3011 E Janelle Way, Gilbert, AZ 85298, 4 beds, 2 baths" [ref=e241] [cursor=pointer]:
+                  - generic [ref=e245]: NEW 15 HRS AGO
+                  - group "carousel" [ref=e247]:
+                    - list [ref=e249]:
+                      - listitem [ref=e250]
+                      - listitem [ref=e252]
+                      - listitem [ref=e254]
+                      - listitem [ref=e255]
+                      - listitem [ref=e256]
+                      - listitem [ref=e257]
+                      - listitem [ref=e258]
+                      - listitem [ref=e259]
+                      - listitem [ref=e260]
+                      - listitem [ref=e261]
+                      - listitem [ref=e262]
+                      - listitem [ref=e263]
+                      - listitem [ref=e264]
+                      - listitem [ref=e265]
+                      - listitem [ref=e266]
+                      - listitem [ref=e267]
+                      - listitem [ref=e268]
+                      - listitem [ref=e269]
+                      - listitem [ref=e270]
+                      - listitem [ref=e271]
+                      - listitem [ref=e272]
+                      - listitem [ref=e273]
+                      - listitem [ref=e274]
+                      - listitem [ref=e275]
+                      - listitem [ref=e276]
+                      - listitem [ref=e277]
+                      - listitem [ref=e278]
+                      - listitem [ref=e279]
+                      - listitem [ref=e280]
+                      - listitem [ref=e281]
+                      - listitem [ref=e282]
+                      - listitem [ref=e283]
+                      - listitem [ref=e284]
+                      - listitem [ref=e285]
+                      - listitem [ref=e286]
+                      - listitem [ref=e287]
+                      - listitem [ref=e288]
+                      - listitem [ref=e289]
+                      - listitem [ref=e290]
+                      - listitem [ref=e291]
+                      - listitem [ref=e292]
+                      - listitem [ref=e294]:
+                        - generic [ref=e296]:
+                          - generic [ref=e300]: ABOUT THIS HOME
+                          - paragraph [ref=e301]: 85298, AZ Homes for Sale
+                          - paragraph [ref=e302]: Beautiful home in the great community of Shamrock Estates. Enjoy 4 bedrooms, 2 full baths, with a custom firplace in the great room, RV gates, and a large covered patio all on a 10,158 sq ft lot. You will love the open floor plan, a chef's dream kitchen with stainles steel appliances, lots of counter and cabinet space, a large island/breakfast bar, and a walk in pantry. You won't find a better price in Shamrock Estates. Come and see your next home.
+                  - generic [ref=e303]:
+                    - generic [ref=e304]:
+                      - generic [ref=e306]: $575,000
+                      - generic [ref=e307]:
+                        - button "Share home" [ref=e308]:
+                          - img [ref=e309]:
+                            - img [ref=e310]
+                        - checkbox "Add home to favorites" [ref=e312]:
+                          - img [ref=e313]:
+                            - img [ref=e314]
+                    - generic [ref=e316]:
+                      - generic [ref=e317]: 4 beds
+                      - generic [ref=e318]: 2 baths
+                      - generic [ref=e319]:
+                        - generic [ref=e320]: 2,348
+                        - text: sq ft
+                    - link "3011 E Janelle Way, Gilbert, AZ 85298" [ref=e321]:
+                      - /url: /AZ/Gilbert/3011-E-Janelle-Way-85298/home/28254951
+                    - generic [ref=e323]: Open floor plan • Custom fireplace • Chef's dream kitchen
+                - img "Advertisement" [ref=e324]:
+                  - link "Advertisement" [ref=e328] [cursor=pointer]:
+                    - iframe [ref=e330]:
+                      - link "New Construction Sponsored New Homes at Soleo Discover four new neighborhoods now selling in San Tan Valley. View Homes" [ref=f61e4] [cursor=pointer]:
+                        - /url: https://adclick.g.doubleclick.net/pcs/click?xai=AKAOjsvXHkFNq7gave2h9U7GDB9ogtUXGEOA_XUY7chzHS-NjFgLU6RZR37w76QJyt614JqQinQ48O3225DA1pHTRrPwhUYeR9qNkntL9TVYgM8mWYrW5wi7HSSvjkOUoMSJDsYKpN8o4HMiKjoPXTaCUtaIqeqazCmGl_bGxLWE7N4A2feR1tknbCrf5LFpBCeW_UXYcx4DDOvCnJaTRLE9VgH2ESRD94A5GBMuxfKbQMdPlf7u1RgFXOcajiaP9U6qensNvxk2LaqCay0t5HNNPp79WXD4iqlXOgvmWuDTtlsjvGAldAwk_FTllq46Jpe87WI18UOu-RLu_cadFgpjo4DR7t2yHgmuJBLwnRHaoEdGOxvk0SfVSFtsl4IaQlqWV8GmOC22VgOhKG319YVSFDpyL02tPVA91I9Ypo0olrUhSwpyp8HJ9A&sai=AMfl-YQ08Kp40ypYjW92mTtWU43Mp0FFLlrbajA7HCMkUz4ZRgd7h72joUTVYmAT6GCtHW-KWg5phrZ1H4LV2lQewoUkpaU_B9a7gSBgW6mX83dRrzpjPX_rrbnxjgaA0zhj3PxUOBY_ZV6te9ND8HcAiP9zsuMCVzjq2QDjPB4PSK3a74F8XkqxXjwc9f237L9c9nW_PL2eN1G8LZ7Su1zCpQ9-IQnhGZilvExErjBPQbdkkDf9evmtxsn-Q4vfBqu3xWZDBfWIUmtoAZ5jZTJfxGFUBEUi1uG6nt1TRBongfayw3QZ48FwyCUcC-dEAOkc2JdKWaFhXg&sig=Cg0ArKJSzNfxP6ORw_SREAE&fbs_aeid=%5Bgw_fbsaeid%5D&urlfix=1&adurl=https://www.tripointehomes.com/az/phoenix-metro/soleo/%3Futm_medium%3Dils%26utm_source%3Dzillow%26utm_campaign%3Darizona_soleo_boost
+                        - generic [ref=f61e5]:
+                          - generic [ref=f61e6]:
+                            - generic [ref=f61e7]:
+                              - generic [ref=f61e8]: New Construction
+                              - generic [ref=f61e9]: Sponsored
+                            - img [ref=f61e10]
+                          - generic [ref=f61e11]: New Homes at Soleo
+                          - generic [ref=f61e12]: Discover four new neighborhoods now selling in San Tan Valley.
+                          - generic [ref=f61e13]:
+                            - text: View Homes
+                            - img [ref=f61e14]:
+                              - img [ref=f61e15]
+                - button "Property at 2312 E Susan Dr, Gilbert, AZ 85298, 4 beds, 4 baths" [ref=e333] [cursor=pointer]:
+                  - generic [ref=e337]: NEW 19 HRS AGO
+                  - group "carousel" [ref=e339]:
+                    - list [ref=e341]:
+                      - listitem [ref=e342]
+                      - listitem [ref=e344]
+                      - listitem [ref=e346]
+                      - listitem [ref=e347]
+                      - listitem [ref=e348]
+                      - listitem [ref=e349]
+                      - listitem [ref=e350]
+                      - listitem [ref=e351]
+                      - listitem [ref=e352]
+                      - listitem [ref=e353]
+                      - listitem [ref=e354]
+                      - listitem [ref=e355]
+                      - listitem [ref=e356]
+                      - listitem [ref=e357]
+                      - listitem [ref=e358]
+                      - listitem [ref=e359]
+                      - listitem [ref=e360]
+                      - listitem [ref=e361]
+                      - listitem [ref=e362]
+                      - listitem [ref=e363]
+                      - listitem [ref=e364]
+                      - listitem [ref=e365]
+                      - listitem [ref=e366]
+                      - listitem [ref=e367]
+                      - listitem [ref=e368]
+                      - listitem [ref=e369]
+                      - listitem [ref=e370]
+                      - listitem [ref=e371]
+                      - listitem [ref=e372]
+                      - listitem [ref=e374]:
+                        - generic [ref=e376]:
+                          - generic [ref=e380]: ABOUT THIS HOME
+                          - paragraph [ref=e381]: 85298, AZ Homes for Sale
+                          - paragraph [ref=e382]: Welcome to 2312 E Susan Dr, a home with everyday comfort in Adora Trails with a great lot next to the greenbelt. The kitchen features an island, accent backsplash, and stainless steel appliances. A walk in closet in the primary bedroom, complemented by double sinks and a separate tub and shower in the primary bathroom. Exterior amenities include a covered patio, an in ground pool, a fenced in backyard. Three car tandem garage. With Adora Trails, a planned Gilbert community, enjoy 12+ miles of scenic trails, a resort-style pool, catch-and-release lake, fitness center, and a vibrant clubhouse. Top-rated Chandler Unified schools, an on-site elementary, and easy access to the 202 and San Tan Vi
+                  - generic [ref=e383]:
+                    - generic [ref=e384]:
+                      - generic [ref=e386]: $850,000
+                      - generic [ref=e387]:
+                        - button "Share home" [ref=e388]:
+                          - img [ref=e389]:
+                            - img [ref=e390]
+                        - checkbox "Add home to favorites" [ref=e392]:
+                          - img [ref=e393]:
+                            - img [ref=e394]
+                    - generic [ref=e396]:
+                      - generic [ref=e397]: 4 beds
+                      - generic [ref=e398]: 4 baths
+                      - generic [ref=e399]:
+                        - generic [ref=e400]: 3,078
+                        - text: sq ft
+                    - link "2312 E Susan Dr, Gilbert, AZ 85298" [ref=e401]:
+                      - /url: /AZ/Gilbert/2312-E-Susan-Dr-85298/home/144015545
+                    - generic [ref=e403]: Double sinks • Great lot • Greenbelt
+                - button "Property at 3915 E Meadowview Dr, Gilbert, AZ 85298, 3 beds, 3 baths" [ref=e406] [cursor=pointer]:
+                  - generic [ref=e410]: OPEN TODAY, 11:30AM TO 3PM
+                  - group "carousel" [ref=e412]:
+                    - list [ref=e414]:
+                      - listitem [ref=e415]
+                      - listitem [ref=e417]
+                      - listitem [ref=e419]
+                      - listitem [ref=e420]
+                      - listitem [ref=e421]
+                      - listitem [ref=e422]
+                      - listitem [ref=e423]
+                      - listitem [ref=e424]
+                      - listitem [ref=e425]
+                      - listitem [ref=e426]
+                      - listitem [ref=e427]
+                      - listitem [ref=e428]
+                      - listitem [ref=e429]
+                      - listitem [ref=e430]
+                      - listitem [ref=e431]
+                      - listitem [ref=e432]
+                      - listitem [ref=e433]
+                      - listitem [ref=e434]
+                      - listitem [ref=e435]
+                      - listitem [ref=e436]
+                      - listitem [ref=e437]
+                      - listitem [ref=e438]
+                      - listitem [ref=e439]
+                      - listitem [ref=e440]
+                      - listitem [ref=e441]
+                      - listitem [ref=e442]
+                      - listitem [ref=e443]
+                      - listitem [ref=e444]
+                      - listitem [ref=e445]
+                      - listitem [ref=e446]
+                      - listitem [ref=e447]
+                      - listitem [ref=e448]
+                      - listitem [ref=e449]
+                      - listitem [ref=e450]
+                      - listitem [ref=e451]
+                      - listitem [ref=e452]
+                      - listitem [ref=e453]
+                      - listitem [ref=e454]
+                      - listitem [ref=e455]
+                      - listitem [ref=e456]
+                      - listitem [ref=e457]
+                      - listitem [ref=e458]
+                      - listitem [ref=e459]
+                      - listitem [ref=e460]
+                      - listitem [ref=e461]
+                      - listitem [ref=e462]
+                      - listitem [ref=e463]
+                      - listitem [ref=e464]
+                      - listitem [ref=e465]
+                      - listitem [ref=e466]
+                      - listitem [ref=e467]
+                      - listitem [ref=e468]
+                      - listitem [ref=e469]
+                      - listitem [ref=e470]
+                      - listitem [ref=e471]
+                      - listitem [ref=e472]
+                      - listitem [ref=e473]
+                      - listitem [ref=e474]
+                      - listitem [ref=e475]
+                      - listitem [ref=e476]
+                      - listitem [ref=e477]
+                      - listitem [ref=e478]
+                      - listitem [ref=e479]
+                      - listitem [ref=e480]
+                      - listitem [ref=e481]
+                      - listitem [ref=e482]
+                      - listitem [ref=e483]
+                      - listitem [ref=e484]
+                      - listitem [ref=e485]
+                      - listitem [ref=e486]
+                      - listitem [ref=e487]
+                      - listitem [ref=e488]
+                      - listitem [ref=e489]
+                      - listitem [ref=e490]
+                      - listitem [ref=e491]
+                      - listitem [ref=e492]
+                      - listitem [ref=e493]
+                      - listitem [ref=e494]
+                      - listitem [ref=e495]
+                      - listitem [ref=e497]:
+                        - generic [ref=e499]:
+                          - generic [ref=e503]: ABOUT THIS HOME
+                          - paragraph [ref=e504]: 85298, AZ Homes for Sale
+                          - paragraph [ref=e505]: "Situated on a Prime Golf Course Course Lot with Stunning Views of the San Tan Mountains, Double Fairways & Tee Boxes on #3! You'll Fall in Love with the Spacious updated Home and Resort Style Entertaining Backyard. Featuring a Heated Pool & Hot Tub, Gas Fire Pit, Raised Patio Deck & BBQ! Features Include 3 Bedrooms + 3 Full Bathrooms w/ Den/Office or 4th Bedrm Option! Remodeled Great Room Floorplan, New LVP Floors in Main Areas & Primary, Remodeled Kitchen w/ Huge Center Island and Seating for 5 + New Quartz Counters w/ Full Back Splash. New Roof in 2022, New Baseboards, New Interior Paint, New LG A/C unit, 3 Sets of French Double Doors to Patio, Custom Roman Shades"
+                  - generic [ref=e506]:
+                    - generic [ref=e507]:
+                      - generic [ref=e509]: $879,900
+                      - generic [ref=e510]:
+                        - button "Share home" [ref=e511]:
+                          - img [ref=e512]:
+                            - img [ref=e513]
+                        - checkbox "Add home to favorites" [ref=e515]:
+                          - img [ref=e516]:
+                            - img [ref=e517]
+                    - generic [ref=e519]:
+                      - generic [ref=e520]: 3 beds
+                      - generic [ref=e521]: 3 baths
+                      - generic [ref=e522]:
+                        - generic [ref=e523]: 2,540
+                        - text: sq ft
+                    - link "3915 E Meadowview Dr, Gilbert, AZ 85298" [ref=e524]:
+                      - /url: /AZ/Gilbert/3915-E-Meadowview-Dr-85298/home/27921337
+                    - generic [ref=e526]: Bbq • Golf course lot • Hot tub
+                - button "Property at 5051 S Girard St, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e529] [cursor=pointer]:
+                  - generic [ref=e530]:
+                    - generic [ref=e533]: OPEN TODAY, 12PM TO 2PM
+                    - generic [ref=e536]: 3D WALKTHROUGH
+                  - group "carousel" [ref=e538]:
+                    - list [ref=e540]:
+                      - listitem [ref=e541]
+                      - listitem [ref=e543]
+                      - listitem [ref=e545]
+                      - listitem [ref=e546]
+                      - listitem [ref=e547]
+                      - listitem [ref=e548]
+                      - listitem [ref=e549]
+                      - listitem [ref=e550]
+                      - listitem [ref=e551]
+                      - listitem [ref=e552]
+                      - listitem [ref=e553]
+                      - listitem [ref=e554]
+                      - listitem [ref=e555]
+                      - listitem [ref=e556]
+                      - listitem [ref=e557]
+                      - listitem [ref=e558]
+                      - listitem [ref=e559]
+                      - listitem [ref=e560]
+                      - listitem [ref=e561]
+                      - listitem [ref=e562]
+                      - listitem [ref=e563]
+                      - listitem [ref=e564]
+                      - listitem [ref=e565]
+                      - listitem [ref=e566]
+                      - listitem [ref=e567]
+                      - listitem [ref=e568]
+                      - listitem [ref=e569]
+                      - listitem [ref=e570]
+                      - listitem [ref=e571]
+                      - listitem [ref=e572]
+                      - listitem [ref=e573]
+                      - listitem [ref=e574]
+                      - listitem [ref=e575]
+                      - listitem [ref=e576]
+                      - listitem [ref=e577]
+                      - listitem [ref=e578]
+                      - listitem [ref=e579]
+                      - listitem [ref=e580]
+                      - listitem [ref=e581]
+                      - listitem [ref=e582]
+                      - listitem [ref=e583]
+                      - listitem [ref=e584]
+                      - listitem [ref=e585]
+                      - listitem [ref=e587]:
+                        - generic [ref=e589]:
+                          - generic [ref=e593]: ABOUT THIS HOME
+                          - paragraph [ref=e594]: 85298, AZ Homes for Sale
+                          - paragraph [ref=e595]: This gorgeous home backs to one of the streams and lakes within the highly desirable Bridges community. Relax and enjoy the newer-build pool and spa in the large backyard with no neighbors behind, and great views of the fireworks at Gilbert Regional on the Fourth of July! The north/south facing home is across from a greenbelt with a lovely front porch welcoming you. Once inside, you'll find plenty of room for everyone from the open entryway, high celings and flex space, to the large kitchen and beautiful coffered ceiling in family room. Kitchen upgrades include a huge island with plenty of seating around and quartz counters. One bedroom and full bath downstairs, plus a 1/2 bath. Upstairs is
+                  - generic [ref=e596]:
+                    - generic [ref=e597]:
+                      - generic [ref=e599]: $875,000
+                      - generic [ref=e600]:
+                        - button "Share home" [ref=e601]:
+                          - img [ref=e602]:
+                            - img [ref=e603]
+                        - checkbox "Add home to favorites" [ref=e605]:
+                          - img [ref=e606]:
+                            - img [ref=e607]
+                    - generic [ref=e609]:
+                      - generic [ref=e610]: 5 beds
+                      - generic [ref=e611]: 3.5 baths
+                      - generic [ref=e612]:
+                        - generic [ref=e613]: 3,871
+                        - text: sq ft
+                    - link "5051 S Girard St, Gilbert, AZ 85298" [ref=e614]:
+                      - /url: /AZ/Gilbert/5051-S-Girard-St-85298/home/56305778
+                    - generic [ref=e616]: Open entryway • Lovely front porch • Large backyard
+                - button "Property at 2546 E Carob Dr, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e619] [cursor=pointer]:
+                  - img "Property at 2546 E Carob Dr, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e622]
+                  - generic [ref=e623]:
+                    - generic [ref=e625]: $849,999
+                    - generic [ref=e626]:
+                      - generic [ref=e627]: 4 beds
+                      - generic [ref=e628]: 2.5 baths
+                      - generic [ref=e629]:
+                        - generic [ref=e630]: 2,692
+                        - text: sq ft
+                    - link "2546 E Carob Dr, Gilbert, AZ 85298" [ref=e631]:
+                      - /url: /AZ/Gilbert/2546-E-Carob-Dr-85298/home/27242128
+                - button "Property at 3274 E Isaiah Ct, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e634] [cursor=pointer]:
+                  - img "Property at 3274 E Isaiah Ct, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e637]
+                  - generic [ref=e638]:
+                    - generic [ref=e640]: $700,000
+                    - generic [ref=e641]:
+                      - generic [ref=e642]: 4 beds
+                      - generic [ref=e643]: 3 baths
+                      - generic [ref=e644]:
+                        - generic [ref=e645]: 2,410
+                        - text: sq ft
+                    - link "3274 E Isaiah Ct, Gilbert, AZ 85298" [ref=e646]:
+                      - /url: /AZ/Gilbert/3274-E-Isaiah-Ct-85298/home/27781577
+                - button "Property at 6243 S Rochester Dr, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e649] [cursor=pointer]:
+                  - img "Property at 6243 S Rochester Dr, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e652]
+                  - generic [ref=e653]:
+                    - generic [ref=e655]: $950,000
+                    - generic [ref=e656]:
+                      - generic [ref=e657]: 4 beds
+                      - generic [ref=e658]: 3.5 baths
+                      - generic [ref=e659]:
+                        - generic [ref=e660]: 4,919
+                        - text: sq ft
+                    - link "6243 S Rochester Dr, Gilbert, AZ 85298" [ref=e661]:
+                      - /url: /AZ/Gilbert/6243-S-Rochester-Dr-85298/home/28274051
+                - button "Property at 1298 E Mead Dr, Gilbert, AZ 85298, 5 beds, 4.5 baths" [ref=e664] [cursor=pointer]:
+                  - img "Property at 1298 E Mead Dr, Gilbert, AZ 85298, 5 beds, 4.5 baths" [ref=e667]
+                  - generic [ref=e668]:
+                    - generic [ref=e670]: $1,949,990
+                    - generic [ref=e671]:
+                      - generic [ref=e672]: 5 beds
+                      - generic [ref=e673]: 4.5 baths
+                      - generic [ref=e674]:
+                        - generic [ref=e675]: 5,127
+                        - text: sq ft
+                    - link "1298 E Mead Dr, Gilbert, AZ 85298" [ref=e676]:
+                      - /url: /AZ/Gilbert/1298-E-Mead-Dr-85298/home/173035903
+                - button "Property at 2051 E Aris Dr, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e679] [cursor=pointer]:
+                  - img "Property at 2051 E Aris Dr, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e682]
+                  - generic [ref=e683]:
+                    - generic [ref=e685]: $1,549,000
+                    - generic [ref=e686]:
+                      - generic [ref=e687]: 5 beds
+                      - generic [ref=e688]: 3.5 baths
+                      - generic [ref=e689]:
+                        - generic [ref=e690]: 4,748
+                        - text: sq ft
+                    - link "2051 E Aris Dr, Gilbert, AZ 85298" [ref=e691]:
+                      - /url: /AZ/Gilbert/2051-E-Aris-Dr-85298/home/95457631
+                - button "Property at 21654 S 158th St, Gilbert, AZ 85298, 5 beds, 3 baths" [ref=e694] [cursor=pointer]:
+                  - img "Property at 21654 S 158th St, Gilbert, AZ 85298, 5 beds, 3 baths" [ref=e697]
+                  - generic [ref=e698]:
+                    - generic [ref=e700]: $1,200,000
+                    - generic [ref=e701]:
+                      - generic [ref=e702]: 5 beds
+                      - generic [ref=e703]: 3 baths
+                      - generic [ref=e704]:
+                        - generic [ref=e705]: 3,104
+                        - text: sq ft
+                    - link "21654 S 158th St, Gilbert, AZ 85298" [ref=e706]:
+                      - /url: /AZ/Gilbert/21654-S-158th-St-85298/home/27053447
+                - button "Property at 7962 S Parkcrest St, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e709] [cursor=pointer]:
+                  - img "Property at 7962 S Parkcrest St, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e712]
+                  - generic [ref=e713]:
+                    - generic [ref=e715]: $759,900
+                    - generic [ref=e716]:
+                      - generic [ref=e717]: 4 beds
+                      - generic [ref=e718]: 2.5 baths
+                      - generic [ref=e719]:
+                        - generic [ref=e720]: 2,604
+                        - text: sq ft
+                    - link "7962 S Parkcrest St, Gilbert, AZ 85298" [ref=e721]:
+                      - /url: /AZ/Gilbert/7962-S-Parkcrest-St-85298/home/109464427
+                - button "Property at 3691 E Alfalfa Dr, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e724] [cursor=pointer]:
+                  - img "Property at 3691 E Alfalfa Dr, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e727]
+                  - generic [ref=e728]:
+                    - generic [ref=e730]: $1,250,000
+                    - generic [ref=e731]:
+                      - generic [ref=e732]: 4 beds
+                      - generic [ref=e733]: 3 baths
+                      - generic [ref=e734]:
+                        - generic [ref=e735]: 3,465
+                        - text: sq ft
+                    - link "3691 E Alfalfa Dr, Gilbert, AZ 85298" [ref=e736]:
+                      - /url: /AZ/Gilbert/3691-E-Alfalfa-Dr-85298/home/56305597
+                - button "Property at 5285 S Loback Ln, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e739] [cursor=pointer]:
+                  - img "Property at 5285 S Loback Ln, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e742]
+                  - generic [ref=e743]:
+                    - generic [ref=e745]: $850,000
+                    - generic [ref=e746]:
+                      - generic [ref=e747]: 4 beds
+                      - generic [ref=e748]: 2.5 baths
+                      - generic [ref=e749]:
+                        - generic [ref=e750]: 2,912
+                        - text: sq ft
+                    - link "5285 S Loback Ln, Gilbert, AZ 85298" [ref=e751]:
+                      - /url: /AZ/Gilbert/5285-S-Loback-Ln-85298/home/56264816
+                - button "Property at 4060 E Mia Ln, Gilbert, AZ 85298, 2 beds, 2 baths" [ref=e754] [cursor=pointer]:
+                  - img "Property at 4060 E Mia Ln, Gilbert, AZ 85298, 2 beds, 2 baths" [ref=e757]
+                  - generic [ref=e758]:
+                    - generic [ref=e760]: $539,000
+                    - generic [ref=e761]:
+                      - generic [ref=e762]: 2 beds
+                      - generic [ref=e763]: 2 baths
+                      - generic [ref=e764]:
+                        - generic [ref=e765]: 1,703
+                        - text: sq ft
+                    - link "4060 E Mia Ln, Gilbert, AZ 85298" [ref=e766]:
+                      - /url: /AZ/Gilbert/4060-E-Mia-Ln-85298/home/27982908
+                - button "Property at 1497 E Orleans Dr, Gilbert, AZ 85298, 5 beds, 3 baths" [ref=e769] [cursor=pointer]:
+                  - img "Property at 1497 E Orleans Dr, Gilbert, AZ 85298, 5 beds, 3 baths" [ref=e772]
+                  - generic [ref=e773]:
+                    - generic [ref=e775]: $713,359
+                    - generic [ref=e776]:
+                      - generic [ref=e777]: 5 beds
+                      - generic [ref=e778]: 3 baths
+                      - generic [ref=e779]:
+                        - generic [ref=e780]: 2,378
+                        - text: sq ft
+                    - link "1497 E Orleans Dr, Gilbert, AZ 85298" [ref=e781]:
+                      - /url: /AZ/Gilbert/1497-E-Orleans-Dr-85298/home/185702145
+                - img "Advertisement" [ref=e782]:
+                  - generic [ref=e785] [cursor=pointer]:
+                    - link
+                - button "Property at 6171 S Banning St, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e788] [cursor=pointer]:
+                  - img "Property at 6171 S Banning St, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e791]
+                  - generic [ref=e792]:
+                    - generic [ref=e794]: $650,000
+                    - generic [ref=e795]:
+                      - generic [ref=e796]: 4 beds
+                      - generic [ref=e797]: 2.5 baths
+                      - generic [ref=e798]:
+                        - generic [ref=e799]: 2,165
+                        - text: sq ft
+                    - link "6171 S Banning St, Gilbert, AZ 85298" [ref=e800]:
+                      - /url: /AZ/Gilbert/6171-S-Banning-St-85298/home/28184733
+                - button "Property at 17718 E San Carlos Way, Gilbert, AZ 85298, 5 beds, 4 baths" [ref=e803] [cursor=pointer]:
+                  - img "Property at 17718 E San Carlos Way, Gilbert, AZ 85298, 5 beds, 4 baths" [ref=e806]
+                  - generic [ref=e807]:
+                    - generic [ref=e809]: $2,295,000
+                    - generic [ref=e810]:
+                      - generic [ref=e811]: 5 beds
+                      - generic [ref=e812]: 4 baths
+                      - generic [ref=e813]:
+                        - generic [ref=e814]: 4,655
+                        - text: sq ft
+                    - link "17718 E San Carlos Way, Gilbert, AZ 85298" [ref=e815]:
+                      - /url: /AZ/Gilbert/17718-E-San-Carlos-Way-85298/home/28293867
+                - button "Property at 2738 E Janelle Way, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e818] [cursor=pointer]:
+                  - img "Property at 2738 E Janelle Way, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e821]
+                  - generic [ref=e822]:
+                    - generic [ref=e824]: $880,000
+                    - generic [ref=e825]:
+                      - generic [ref=e826]: 6 beds
+                      - generic [ref=e827]: 4.5 baths
+                      - generic [ref=e828]:
+                        - generic [ref=e829]: 4,919
+                        - text: sq ft
+                    - link "2738 E Janelle Way, Gilbert, AZ 85298" [ref=e830]:
+                      - /url: /AZ/Gilbert/2738-E-Janelle-Way-85298/home/28376234
+                - button "Property at 3164 E Tonto Dr, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e833] [cursor=pointer]:
+                  - img "Property at 3164 E Tonto Dr, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e836]
+                  - generic [ref=e837]:
+                    - generic [ref=e839]: $849,900
+                    - generic [ref=e840]:
+                      - generic [ref=e841]: 6 beds
+                      - generic [ref=e842]: 4.5 baths
+                      - generic [ref=e843]:
+                        - generic [ref=e844]: 4,115
+                        - text: sq ft
+                    - link "3164 E Tonto Dr, Gilbert, AZ 85298" [ref=e845]:
+                      - /url: /AZ/Gilbert/3164-E-Tonto-Dr-85298/home/28231827
+                - button "Property at 3150 E Muirfield St, Gilbert, AZ 85298, 3 beds, 3.5 baths" [ref=e848] [cursor=pointer]:
+                  - img "Property at 3150 E Muirfield St, Gilbert, AZ 85298, 3 beds, 3.5 baths" [ref=e851]
+                  - generic [ref=e852]:
+                    - generic [ref=e854]: $720,000
+                    - generic [ref=e855]:
+                      - generic [ref=e856]: 3 beds
+                      - generic [ref=e857]: 3.5 baths
+                      - generic [ref=e858]:
+                        - generic [ref=e859]: 3,060
+                        - text: sq ft
+                    - link "3150 E Muirfield St, Gilbert, AZ 85298" [ref=e860]:
+                      - /url: /AZ/Gilbert/3150-E-Muirfield-St-85298/home/28086102
+                - button "Property at 3167 E Powell Way, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e863] [cursor=pointer]:
+                  - img "Property at 3167 E Powell Way, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e866]
+                  - generic [ref=e867]:
+                    - generic [ref=e869]: $725,000
+                    - generic [ref=e870]:
+                      - generic [ref=e871]: 5 beds
+                      - generic [ref=e872]: 3.5 baths
+                      - generic [ref=e873]:
+                        - generic [ref=e874]: 3,206
+                        - text: sq ft
+                    - link "3167 E Powell Way, Gilbert, AZ 85298" [ref=e875]:
+                      - /url: /AZ/Gilbert/3167-E-Powell-Way-85298/home/28205678
+                - button "Property at 3296 E Vallejo Ct, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e878] [cursor=pointer]:
+                  - img "Property at 3296 E Vallejo Ct, Gilbert, AZ 85298, 6 beds, 4.5 baths" [ref=e881]
+                  - generic [ref=e882]:
+                    - generic [ref=e884]: $2,395,000
+                    - generic [ref=e885]:
+                      - generic [ref=e886]: 6 beds
+                      - generic [ref=e887]: 4.5 baths
+                      - generic [ref=e888]:
+                        - generic [ref=e889]: 5,629
+                        - text: sq ft
+                    - link "3296 E Vallejo Ct, Gilbert, AZ 85298" [ref=e890]:
+                      - /url: /AZ/Gilbert/3296-E-Vallejo-Ct-85298/home/28262284
+                - button "Property at 2981 E Country Shadows St, Gilbert, AZ 85298, 4 beds, 2 baths" [ref=e893] [cursor=pointer]:
+                  - img "Property at 2981 E Country Shadows St, Gilbert, AZ 85298, 4 beds, 2 baths" [ref=e896]
+                  - generic [ref=e897]:
+                    - generic [ref=e899]: $524,000
+                    - generic [ref=e900]:
+                      - generic [ref=e901]: 4 beds
+                      - generic [ref=e902]: 2 baths
+                      - generic [ref=e903]:
+                        - generic [ref=e904]: 2,171
+                        - text: sq ft
+                    - link "2981 E Country Shadows St, Gilbert, AZ 85298" [ref=e905]:
+                      - /url: /AZ/Gilbert/2981-E-Country-Shadows-St-85298/home/28047446
+                - button "Property at 2537 E Turnberry Dr, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e908] [cursor=pointer]:
+                  - img "Property at 2537 E Turnberry Dr, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e911]
+                  - generic [ref=e912]:
+                    - generic [ref=e914]: $1,600,000
+                    - generic [ref=e915]:
+                      - generic [ref=e916]: 4 beds
+                      - generic [ref=e917]: 3.5 baths
+                      - generic [ref=e918]:
+                        - generic [ref=e919]: 3,847
+                        - text: sq ft
+                    - link "2537 E Turnberry Dr, Gilbert, AZ 85298" [ref=e920]:
+                      - /url: /AZ/Gilbert/2537-E-Turnberry-Dr-85298/home/110294869
+                - button "Property at 2309 E Plum St, Gilbert, AZ 85298, 5 beds, 6.5 baths" [ref=e923] [cursor=pointer]:
+                  - img "Property at 2309 E Plum St, Gilbert, AZ 85298, 5 beds, 6.5 baths" [ref=e926]
+                  - generic [ref=e927]:
+                    - generic [ref=e929]: $5,495,000
+                    - generic [ref=e930]:
+                      - generic [ref=e931]: 5 beds
+                      - generic [ref=e932]: 6.5 baths
+                      - generic [ref=e933]:
+                        - generic [ref=e934]: 7,566
+                        - text: sq ft
+                    - link "2309 E Plum St, Gilbert, AZ 85298" [ref=e935]:
+                      - /url: /AZ/Gilbert/2309-E-Plum-St-85298/home/28280215
+                - button "Property at 4891 S Arroyo Ln, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e938] [cursor=pointer]:
+                  - img "Property at 4891 S Arroyo Ln, Gilbert, AZ 85298, 4 beds, 2.5 baths" [ref=e941]
+                  - generic [ref=e942]:
+                    - generic [ref=e944]: $685,000
+                    - generic [ref=e945]:
+                      - generic [ref=e946]: 4 beds
+                      - generic [ref=e947]: 2.5 baths
+                      - generic [ref=e948]:
+                        - generic [ref=e949]: 2,257
+                        - text: sq ft
+                    - link "4891 S Arroyo Ln, Gilbert, AZ 85298" [ref=e950]:
+                      - /url: /AZ/Gilbert/4891-S-Arroyo-Ln-85298/home/27423230
+                - button "Property at 2087 E Aris Dr, Gilbert, AZ 85298, 5 beds, 6.5 baths" [ref=e953] [cursor=pointer]:
+                  - img "Property at 2087 E Aris Dr, Gilbert, AZ 85298, 5 beds, 6.5 baths" [ref=e956]
+                  - generic [ref=e957]:
+                    - generic [ref=e959]: $2,175,000
+                    - generic [ref=e960]:
+                      - generic [ref=e961]: 5 beds
+                      - generic [ref=e962]: 6.5 baths
+                      - generic [ref=e963]:
+                        - generic [ref=e964]: 5,032
+                        - text: sq ft
+                    - link "2087 E Aris Dr, Gilbert, AZ 85298" [ref=e965]:
+                      - /url: /AZ/Gilbert/2087-E-Aris-Dr-85298/home/103680401
+                - button "Property at 952 E Blue Spruce Ln, Gilbert, AZ 85298, 5 beds, 2.5 baths" [ref=e968] [cursor=pointer]:
+                  - img "Property at 952 E Blue Spruce Ln, Gilbert, AZ 85298, 5 beds, 2.5 baths" [ref=e971]
+                  - generic [ref=e972]:
+                    - generic [ref=e974]: $650,000
+                    - generic [ref=e975]:
+                      - generic [ref=e976]: 5 beds
+                      - generic [ref=e977]: 2.5 baths
+                      - generic [ref=e978]:
+                        - generic [ref=e979]: 3,036
+                        - text: sq ft
+                    - link "952 E Blue Spruce Ln, Gilbert, AZ 85298" [ref=e980]:
+                      - /url: /AZ/Gilbert/952-E-Blue-Spruce-Ln-85298/home/28245352
+                - button "Property at 2358 E Ridgewood Ln, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e983] [cursor=pointer]:
+                  - img "Property at 2358 E Ridgewood Ln, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e986]
+                  - generic [ref=e987]:
+                    - generic [ref=e989]: $799,900
+                    - generic [ref=e990]:
+                      - generic [ref=e991]: 4 beds
+                      - generic [ref=e992]: 3 baths
+                      - generic [ref=e993]:
+                        - generic [ref=e994]: 2,470
+                        - text: sq ft
+                    - link "2358 E Ridgewood Ln, Gilbert, AZ 85298" [ref=e995]:
+                      - /url: /AZ/Gilbert/2358-E-Ridgewood-Ln-85298/home/173740171
+                - button "Property at 2726 E Via Del Arboles St, Gilbert, AZ 85298, 4 beds, 5 baths" [ref=e998] [cursor=pointer]:
+                  - img "Property at 2726 E Via Del Arboles St, Gilbert, AZ 85298, 4 beds, 5 baths" [ref=e1001]
+                  - generic [ref=e1002]:
+                    - generic [ref=e1004]: $1,700,000
+                    - generic [ref=e1005]:
+                      - generic [ref=e1006]: 4 beds
+                      - generic [ref=e1007]: 5 baths
+                      - generic [ref=e1008]:
+                        - generic [ref=e1009]: 4,618
+                        - text: sq ft
+                    - link "2726 E Via Del Arboles St, Gilbert, AZ 85298" [ref=e1010]:
+                      - /url: /AZ/Gilbert/2726-E-Via-del-Arboles-85298/home/28346743
+                - button "Property at 1273 E Apricot Ln, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1013] [cursor=pointer]:
+                  - img "Property at 1273 E Apricot Ln, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1016]
+                  - generic [ref=e1017]:
+                    - generic [ref=e1019]: $694,999
+                    - generic [ref=e1020]:
+                      - generic [ref=e1021]: 4 beds
+                      - generic [ref=e1022]: 3 baths
+                      - generic [ref=e1023]:
+                        - generic [ref=e1024]: 2,418
+                        - text: sq ft
+                    - link "1273 E Apricot Ln, Gilbert, AZ 85298" [ref=e1025]:
+                      - /url: /AZ/Gilbert/1273-E-Apricot-Ln-85298/home/28163938
+                - button "Property at 3926 E Cassia Ln, Gilbert, AZ 85298, 3 beds, 2.5 baths" [ref=e1028] [cursor=pointer]:
+                  - img "Property at 3926 E Cassia Ln, Gilbert, AZ 85298, 3 beds, 2.5 baths" [ref=e1031]
+                  - generic [ref=e1032]:
+                    - generic [ref=e1034]: $799,000
+                    - generic [ref=e1035]:
+                      - generic [ref=e1036]: 3 beds
+                      - generic [ref=e1037]: 2.5 baths
+                      - generic [ref=e1038]:
+                        - generic [ref=e1039]: 2,323
+                        - text: sq ft
+                    - link "3926 E Cassia Ln, Gilbert, AZ 85298" [ref=e1040]:
+                      - /url: /AZ/Gilbert/3926-E-Cassia-Ln-85298/home/55729523
+                - button "Property at 5819 S Wilson Way, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e1043] [cursor=pointer]:
+                  - img "Property at 5819 S Wilson Way, Gilbert, AZ 85298, 4 beds, 3.5 baths" [ref=e1046]
+                  - generic [ref=e1047]:
+                    - generic [ref=e1049]: $899,000
+                    - generic [ref=e1050]:
+                      - generic [ref=e1051]: 4 beds
+                      - generic [ref=e1052]: 3.5 baths
+                      - generic [ref=e1053]:
+                        - generic [ref=e1054]: 3,347
+                        - text: sq ft
+                    - link "5819 S Wilson Way, Gilbert, AZ 85298" [ref=e1055]:
+                      - /url: /AZ/Gilbert/5819-S-Wilson-Way-85298/home/56305883
+                - button "Property at 3586 E Riopelle Ct, Gilbert, AZ 85298, 5 beds, 4 baths" [ref=e1058] [cursor=pointer]:
+                  - img "Property at 3586 E Riopelle Ct, Gilbert, AZ 85298, 5 beds, 4 baths" [ref=e1061]
+                  - generic [ref=e1062]:
+                    - generic [ref=e1064]: $815,000
+                    - generic [ref=e1065]:
+                      - generic [ref=e1066]: 5 beds
+                      - generic [ref=e1067]: 4 baths
+                      - generic [ref=e1068]:
+                        - generic [ref=e1069]: 3,530
+                        - text: sq ft
+                    - link "3586 E Riopelle Ct, Gilbert, AZ 85298" [ref=e1070]:
+                      - /url: /AZ/Gilbert/3586-E-Riopelle-Ct-85298/home/27428755
+                - button "Property at 7871 S Stuart Ave, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e1073] [cursor=pointer]:
+                  - img "Property at 7871 S Stuart Ave, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e1076]
+                  - generic [ref=e1077]:
+                    - generic [ref=e1079]: $969,900
+                    - generic [ref=e1080]:
+                      - generic [ref=e1081]: 5 beds
+                      - generic [ref=e1082]: 3.5 baths
+                      - generic [ref=e1083]:
+                        - generic [ref=e1084]: 3,957
+                        - text: sq ft
+                    - link "7871 S Stuart Ave, Gilbert, AZ 85298" [ref=e1085]:
+                      - /url: /AZ/Gilbert/7871-S-Stuart-Ave-85298/home/120101120
+                - button "Property at 2738 E Cherry Hill Dr, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e1088] [cursor=pointer]:
+                  - img "Property at 2738 E Cherry Hill Dr, Gilbert, AZ 85298, 5 beds, 3.5 baths" [ref=e1091]
+                  - generic [ref=e1092]:
+                    - generic [ref=e1094]: $699,999
+                    - generic [ref=e1095]:
+                      - generic [ref=e1096]: 5 beds
+                      - generic [ref=e1097]: 3.5 baths
+                      - generic [ref=e1098]:
+                        - generic [ref=e1099]: 3,541
+                        - text: sq ft
+                    - link "2738 E Cherry Hill Dr, Gilbert, AZ 85298" [ref=e1100]:
+                      - /url: /AZ/Gilbert/2738-E-Cherry-Hill-Dr-85298/home/146063044
+                - button "Property at 6738 S Rachael Way, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1103] [cursor=pointer]:
+                  - img "Property at 6738 S Rachael Way, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1106]
+                  - generic [ref=e1107]:
+                    - generic [ref=e1109]: $875,000
+                    - generic [ref=e1110]:
+                      - generic [ref=e1111]: 4 beds
+                      - generic [ref=e1112]: 3 baths
+                      - generic [ref=e1113]:
+                        - generic [ref=e1114]: 2,540
+                        - text: sq ft
+                    - link "6738 S Rachael Way, Gilbert, AZ 85298" [ref=e1115]:
+                      - /url: /AZ/Gilbert/6738-S-Rachael-Way-85298/home/27784139
+                - button "Property at 4691 E Appleby Ct, Gilbert, AZ 85298, 2 beds, 2 baths" [ref=e1118] [cursor=pointer]:
+                  - img "Property at 4691 E Appleby Ct, Gilbert, AZ 85298, 2 beds, 2 baths" [ref=e1121]
+                  - generic [ref=e1122]:
+                    - generic [ref=e1124]: $435,000
+                    - generic [ref=e1125]:
+                      - generic [ref=e1126]: 2 beds
+                      - generic [ref=e1127]: 2 baths
+                      - generic [ref=e1128]:
+                        - generic [ref=e1129]: 1,334
+                        - text: sq ft
+                    - link "4691 E Appleby Ct, Gilbert, AZ 85298" [ref=e1130]:
+                      - /url: /AZ/Gilbert/4691-E-Appleby-Ct-85298/home/27670403
+                - button "Property at 6092 S Bridal Vail Dr, Gilbert, AZ 85298, 3 beds, 2 baths" [ref=e1133] [cursor=pointer]:
+                  - img "Property at 6092 S Bridal Vail Dr, Gilbert, AZ 85298, 3 beds, 2 baths" [ref=e1136]
+                  - generic [ref=e1137]:
+                    - generic [ref=e1139]: $540,000
+                    - generic [ref=e1140]:
+                      - generic [ref=e1141]: 3 beds
+                      - generic [ref=e1142]: 2 baths
+                      - generic [ref=e1143]:
+                        - generic [ref=e1144]: 1,749
+                        - text: sq ft
+                    - link "6092 S Bridal Vail Dr, Gilbert, AZ 85298" [ref=e1145]:
+                      - /url: /AZ/Gilbert/6092-S-Bridal-Vail-Dr-85298/home/28266378
+                - button "Property at 3715 E Lafayette Ave, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1148] [cursor=pointer]:
+                  - img "Property at 3715 E Lafayette Ave, Gilbert, AZ 85298, 4 beds, 3 baths" [ref=e1151]
+                  - generic [ref=e1152]:
+                    - generic [ref=e1154]: $975,000
+                    - generic [ref=e1155]:
+                      - generic [ref=e1156]: 4 beds
+                      - generic [ref=e1157]: 3 baths
+                      - generic [ref=e1158]:
+                        - generic [ref=e1159]: 3,290
+                        - text: sq ft
+                    - link "3715 E Lafayette Ave, Gilbert, AZ 85298" [ref=e1160]:
+                      - /url: /AZ/Gilbert/3715-E-Lafayette-Ave-85298/home/28016334
+              - generic [ref=e1162]:
+                - generic [ref=e1163]: Viewing page 1 of 6
+                - link "(Download top 218)" [ref=e1164] [cursor=pointer]:
+                  - /url: "#"
+                  - generic [ref=e1165]: (Download top 218)
+              - generic [ref=e1167]:
+                - generic [ref=e1168]:
+                  - generic [ref=e1169]:
+                    - link "page 1" [ref=e1170]:
+                      - /url: /zipcode/85298
+                      - generic [ref=e1171]: "1"
+                    - link "page 2" [ref=e1172] [cursor=pointer]:
+                      - /url: /zipcode/85298/page-2
+                      - generic [ref=e1173]: "2"
+                    - link "page 3" [ref=e1174] [cursor=pointer]:
+                      - /url: /zipcode/85298/page-3
+                      - generic [ref=e1175]: "3"
+                    - link "page 4" [ref=e1176] [cursor=pointer]:
+                      - /url: /zipcode/85298/page-4
+                      - generic [ref=e1177]: "4"
+                    - link "page 5" [ref=e1178] [cursor=pointer]:
+                      - /url: /zipcode/85298/page-5
+                      - generic [ref=e1179]: "5"
+                  - link "page 6" [ref=e1180] [cursor=pointer]:
+                    - /url: /zipcode/85298/page-6
+                    - generic [ref=e1181]: "6"
+                - button "next" [ref=e1182] [cursor=pointer]:
+                  - img [ref=e1184]:
+                    - img [ref=e1185]
+          - navigation "Breadcrumbs" [ref=e1189]:
+            - list [ref=e1190]:
+              - listitem [ref=e1191]:
+                - link "Redfin" [ref=e1192] [cursor=pointer]:
+                  - /url: https://www.redfin.com
+                - img [ref=e1193]:
+                  - img [ref=e1194]
+              - listitem [ref=e1196]:
+                - link "Arizona" [ref=e1197] [cursor=pointer]:
+                  - /url: https://www.redfin.com/state/Arizona
+                - img [ref=e1198]:
+                  - img [ref=e1199]
+              - listitem [ref=e1201]:
+                - link "Maricopa County" [ref=e1202] [cursor=pointer]:
+                  - /url: https://www.redfin.com/county/220/AZ/Maricopa-County
+                - img [ref=e1203]:
+                  - img [ref=e1204]
+              - listitem [ref=e1206]:
+                - link "85298" [ref=e1207] [cursor=pointer]:
+                  - /url: https://www.redfin.com/zipcode/85298
+          - generic [ref=e1209]:
+            - generic [ref=e1210]:
+              - heading "Average home prices near 85298, AZ" [level=2] [ref=e1211]
+              - generic [ref=e1212]:
+                - generic [ref=e1213]:
+                  - heading "Cities" [level=3] [ref=e1214]
+                  - list [ref=e1215]:
+                    - listitem [ref=e1216]:
+                      - link "Queen Creek homes for sale" [ref=e1217] [cursor=pointer]:
+                        - /url: /city/30786/AZ/Queen-Creek
+                        - generic [ref=e1218]: Queen Creek homes for sale
+                      - generic [ref=e1219]: $675,000
+                    - listitem [ref=e1220]:
+                      - link "Apache Junction homes for sale" [ref=e1221] [cursor=pointer]:
+                        - /url: /city/30787/AZ/Apache-Junction
+                        - generic [ref=e1222]: Apache Junction homes for sale
+                      - generic [ref=e1223]: $418,290
+                    - listitem [ref=e1224]:
+                      - link "Gold Canyon homes for sale" [ref=e1225] [cursor=pointer]:
+                        - /url: /city/32777/AZ/Gold-Canyon
+                        - generic [ref=e1226]: Gold Canyon homes for sale
+                      - generic [ref=e1227]: $577,500
+                    - listitem [ref=e1228]:
+                      - link "Florence homes for sale" [ref=e1229] [cursor=pointer]:
+                        - /url: /city/6123/AZ/Florence
+                        - generic [ref=e1230]: Florence homes for sale
+                      - generic [ref=e1231]: $364,990
+                    - listitem [ref=e1232]:
+                      - link "Tempe homes for sale" [ref=e1233] [cursor=pointer]:
+                        - /url: /city/18607/AZ/Tempe
+                        - generic [ref=e1234]: Tempe homes for sale
+                      - generic [ref=e1235]: $499,900
+                    - listitem [ref=e1236]:
+                      - link "San Tan Valley homes for sale" [ref=e1237] [cursor=pointer]:
+                        - /url: /city/34610/AZ/San-Tan-Valley
+                        - generic [ref=e1238]: San Tan Valley homes for sale
+                      - generic [ref=e1239]: $450,000
+                    - button "Show all content" [ref=e1242] [cursor=pointer]:
+                      - text: Show more
+                      - img [ref=e1243]:
+                        - img [ref=e1244]
+                - generic [ref=e1246]:
+                  - heading "Zip Codes" [level=3] [ref=e1247]
+                  - list [ref=e1248]:
+                    - listitem [ref=e1249]:
+                      - link "85295 homes for sale" [ref=e1250] [cursor=pointer]:
+                        - /url: /zipcode/85295
+                        - generic [ref=e1251]: 85295 homes for sale
+                      - generic [ref=e1252]: $562,000
+                    - listitem [ref=e1253]:
+                      - link "85212 homes for sale" [ref=e1254] [cursor=pointer]:
+                        - /url: /zipcode/85212
+                        - generic [ref=e1255]: 85212 homes for sale
+                      - generic [ref=e1256]: $615,000
+                    - listitem [ref=e1257]:
+                      - link "85248 homes for sale" [ref=e1258] [cursor=pointer]:
+                        - /url: /zipcode/85248
+                        - generic [ref=e1259]: 85248 homes for sale
+                      - generic [ref=e1260]: $519,999
+                    - listitem [ref=e1261]:
+                      - link "85249 homes for sale" [ref=e1262] [cursor=pointer]:
+                        - /url: /zipcode/85249
+                        - generic [ref=e1263]: 85249 homes for sale
+                      - generic [ref=e1264]: $699,950
+                    - listitem [ref=e1265]:
+                      - link "85284 homes for sale" [ref=e1266] [cursor=pointer]:
+                        - /url: /zipcode/85284
+                        - generic [ref=e1267]: 85284 homes for sale
+                      - generic [ref=e1268]: $719,450
+                    - listitem [ref=e1269]:
+                      - link "85286 homes for sale" [ref=e1270] [cursor=pointer]:
+                        - /url: /zipcode/85286
+                        - generic [ref=e1271]: 85286 homes for sale
+                      - generic [ref=e1272]: $645,000
+                    - button "Show all content" [ref=e1275] [cursor=pointer]:
+                      - text: Show more
+                      - img [ref=e1276]:
+                        - img [ref=e1277]
+            - generic [ref=e1279]:
+              - heading "85298, AZ real estate trends" [level=2] [ref=e1280]
+              - generic [ref=e1281]:
+                - generic [ref=e1282]:
+                  - generic [ref=e1283]:
+                    - generic [ref=e1284]:
+                      - tablist [ref=e1285]:
+                        - tab "Median Sale Price" [ref=e1286] [cursor=pointer]:
+                          - generic [ref=e1287]: Median Sale Price
+                        - tab "# of Homes Sold" [ref=e1288] [cursor=pointer]:
+                          - generic [ref=e1289]: "# of Homes Sold"
+                        - tab "Median Days on Market" [ref=e1290] [cursor=pointer]:
+                          - generic [ref=e1291]: Median Days on Market
+                      - button "Navigate tab list next" [ref=e1293] [cursor=pointer]:
+                        - img [ref=e1294]:
+                          - img [ref=e1295]
+                    - generic [ref=e1299]:
+                      - generic [ref=e1300]:
+                        - generic [ref=e1301]: All Home Types
+                        - img:
+                          - img
+                      - combobox "All Home Types" [ref=e1302] [cursor=pointer]:
+                        - option "All Home Types" [selected]
+                        - option "Single Family Homes"
+                        - option "Townhouses"
+                        - option "Condos/Co-ops"
+                  - generic [ref=e1303]:
+                    - generic [ref=e1304]:
+                      - generic [ref=e1305]: Median Sale Price (All Home Types)
+                      - generic [ref=e1306]: $694,495
+                      - generic [ref=e1307]:
+                        - text: +3.4%
+                        - generic [ref=e1308]: YoY | Mar 2026
+                    - tablist [ref=e1310]:
+                      - tab "1 year" [ref=e1311] [cursor=pointer]:
+                        - generic [ref=e1312]: 1 year
+                      - tab "3 year" [ref=e1313] [cursor=pointer]:
+                        - generic [ref=e1314]: 3 year
+                      - tab "5 year" [ref=e1315] [cursor=pointer]:
+                        - generic [ref=e1316]: 5 year
+                - generic [ref=e1320]:
+                  - generic:
+                    - img [ref=e1321]:
+                      - generic [ref=e1322]: "2024"
+                      - generic [ref=e1323]: "2025"
+                      - generic [ref=e1324]: "2026"
+                      - generic [ref=e1325]: $500K
+                      - generic [ref=e1326]: $600K
+                      - generic [ref=e1327]: $700K
+                      - generic [ref=e1328]: $800K
+                    - generic:
+                      - img
+                - generic [ref=e1330]: Based on Redfin calculations of home data from MLS and/or public records.
+                - generic [ref=e1333]:
+                  - generic [ref=e1334]:
+                    - generic [ref=e1335]: Location
+                    - generic [ref=e1336]:
+                      - text: Data
+                      - generic [ref=e1337]: Mar 2026
+                    - generic [ref=e1338]:
+                      - text: Growth
+                      - generic [ref=e1339]: "% YoY"
+                  - generic [ref=e1341]:
+                    - generic [ref=e1344]: 85298, AZ
+                    - generic [ref=e1345]: $694,495
+                    - generic [ref=e1346]: +3.4%
+              - link "See more 85298, AZ market insights" [ref=e1347] [cursor=pointer]:
+                - /url: /zipcode/85298/housing-market
+            - generic [ref=e1348]:
+              - heading "More to explore in 85298, AZ" [level=2] [ref=e1349]
+              - list [ref=e1352]:
+                - listitem [ref=e1353]:
+                  - link "Houses for rent in 85298" [ref=e1354] [cursor=pointer]:
+                    - /url: /zipcode/85298/houses-for-rent
+                    - img [ref=e1355]:
+                      - img [ref=e1356]
+                    - generic [ref=e1358]: Houses for rent in 85298
+                - listitem [ref=e1359]:
+                  - link "Homes with pools in 85298" [ref=e1360] [cursor=pointer]:
+                    - /url: /zipcode/85298/pools
+                    - img [ref=e1361]:
+                      - img [ref=e1362]
+                    - generic [ref=e1364]: Homes with pools in 85298
+                - listitem [ref=e1365]:
+                  - link "Single story homes in 85298" [ref=e1366] [cursor=pointer]:
+                    - /url: /zipcode/85298/single-story
+                    - img [ref=e1367]:
+                      - img [ref=e1368]
+                    - generic [ref=e1370]: Single story homes in 85298
+                - listitem [ref=e1371]:
+                  - link "Luxury homes in 85298" [ref=e1372] [cursor=pointer]:
+                    - /url: /zipcode/85298/luxury-homes
+                    - img [ref=e1373]:
+                      - img [ref=e1374]
+                    - generic [ref=e1376]: Luxury homes in 85298
+                - listitem [ref=e1377]:
+                  - link "Open houses in 85298" [ref=e1378] [cursor=pointer]:
+                    - /url: /zipcode/85298/open-houses
+                    - img [ref=e1379]:
+                      - img [ref=e1380]
+                    - generic [ref=e1382]: Open houses in 85298
+                - listitem [ref=e1383]:
+                  - link "New listings in 85298" [ref=e1384] [cursor=pointer]:
+                    - /url: /zipcode/85298/new-listings
+                    - img [ref=e1385]:
+                      - img [ref=e1386]
+                    - generic [ref=e1388]: New listings in 85298
+                - button "Show all content" [ref=e1391] [cursor=pointer]:
+                  - text: Show more
+                  - img [ref=e1392]:
+                    - img [ref=e1393]
+            - generic [ref=e1395]:
+              - heading "How to buy a house in 85298, AZ" [level=3] [ref=e1396]
+              - generic [ref=e1397]:
+                - link "How much house can I afford?" [ref=e1398] [cursor=pointer]:
+                  - /url: https://www.redfin.com/how-much-house-can-i-afford
+                  - img [ref=e1399]:
+                    - img [ref=e1400]
+                  - generic [ref=e1411]: How much house can I afford?
+                - link "How to buy a house in 10 steps" [ref=e1412] [cursor=pointer]:
+                  - /url: https://www.redfin.com/guides/how-to-buy-a-home
+                  - img [ref=e1413]:
+                    - img [ref=e1414]
+                  - generic [ref=e1422]: How to buy a house in 10 steps
+                - link "First-time homebuyer's guide" [ref=e1423] [cursor=pointer]:
+                  - /url: https://www.redfin.com/guides/first-time-home-buyer-guide
+                  - img [ref=e1424]:
+                    - img [ref=e1425]
+                  - generic [ref=e1433]: First-time homebuyer's guide
+              - link "See more home buying guides" [ref=e1435] [cursor=pointer]:
+                - /url: https://www.redfin.com/guides/buy
+            - generic [ref=e1436]:
+              - heading "Popular Markets in Arizona" [level=2] [ref=e1437]
+              - list [ref=e1440]:
+                - listitem [ref=e1441]:
+                  - link "Phoenix homes for sale" [ref=e1442] [cursor=pointer]:
+                    - /url: /city/14240/AZ/Phoenix
+                    - generic [ref=e1443]: Phoenix homes for sale
+                  - generic [ref=e1444]: $499,000
+                - listitem [ref=e1445]:
+                  - link "Scottsdale homes for sale" [ref=e1446] [cursor=pointer]:
+                    - /url: /city/16660/AZ/Scottsdale
+                    - generic [ref=e1447]: Scottsdale homes for sale
+                  - generic [ref=e1448]: $1,000,000
+                - listitem [ref=e1449]:
+                  - link "Gilbert homes for sale" [ref=e1450] [cursor=pointer]:
+                    - /url: /city/6998/AZ/Gilbert
+                    - generic [ref=e1451]: Gilbert homes for sale
+                  - generic [ref=e1452]: $629,900
+                - listitem [ref=e1453]:
+                  - link "Chandler homes for sale" [ref=e1454] [cursor=pointer]:
+                    - /url: /city/3104/AZ/Chandler
+                    - generic [ref=e1455]: Chandler homes for sale
+                  - generic [ref=e1456]: $550,000
+                - listitem [ref=e1457]:
+                  - link "Mesa homes for sale" [ref=e1458] [cursor=pointer]:
+                    - /url: /city/11736/AZ/Mesa
+                    - generic [ref=e1459]: Mesa homes for sale
+                  - generic [ref=e1460]: $475,000
+                - listitem [ref=e1461]:
+                  - link "Tucson homes for sale" [ref=e1462] [cursor=pointer]:
+                    - /url: /city/19459/AZ/Tucson
+                    - generic [ref=e1463]: Tucson homes for sale
+                  - generic [ref=e1464]: $334,450
+                - button "Show all content" [ref=e1467] [cursor=pointer]:
+                  - text: Show more
+                  - img [ref=e1468]:
+                    - img [ref=e1469]
+            - generic [ref=e1472]:
+              - generic [ref=e1473]:
+                - paragraph [ref=e1474]: Join us
+                - link "Become an Agent" [ref=e1476] [cursor=pointer]:
+                  - /url: https://careers.redfin.com/real-estate
+                - link "Get referrals" [ref=e1478] [cursor=pointer]:
+                  - /url: https://www.redfin.com/partners
+                - link "Careers" [ref=e1480] [cursor=pointer]:
+                  - /url: https://careers.redfin.com/us/en
+                - generic [ref=e1481]:
+                  - paragraph [ref=e1482]: Find homes faster
+                  - link "Download the Redfin App on the Apple App Store" [ref=e1484] [cursor=pointer]:
+                    - /url: https://redfin.onelink.me/iy7h/wk66abnm
+                    - img "Download the Redfin App on the Apple App Store" [ref=e1485]
+                  - link "Download the Redfin App from the Google Play Store" [ref=e1487] [cursor=pointer]:
+                    - /url: https://redfin.onelink.me/iy7h/wk66abnm
+                    - img "Download the Redfin App from the Google Play Store" [ref=e1488]
+              - generic [ref=e1489]:
+                - paragraph [ref=e1490]: About us
+                - link "Why Redfin?" [ref=e1492] [cursor=pointer]:
+                  - /url: /why-redfin
+                - link "Community Impact" [ref=e1494] [cursor=pointer]:
+                  - /url: https://careers.redfin.com/community-impact
+                - link "Inclusion" [ref=e1496] [cursor=pointer]:
+                  - /url: https://careers.redfin.com/inclusion
+                - link "Life at Redfin" [ref=e1498] [cursor=pointer]:
+                  - /url: https://careers.redfin.com/redfin-life
+                - link "Press" [ref=e1500] [cursor=pointer]:
+                  - /url: https://www.redfin.com/news/press-center/
+                - link "Investors" [ref=e1502] [cursor=pointer]:
+                  - /url: https://ir.rocketcompanies.com/
+                - link "Blog" [ref=e1504] [cursor=pointer]:
+                  - /url: https://www.redfin.com/blog/
+                - link "Real Estate News" [ref=e1506] [cursor=pointer]:
+                  - /url: https://www.redfin.com/news/
+              - generic [ref=e1507]:
+                - paragraph [ref=e1508]: Find us
+                - generic [ref=e1509]:
+                  - link "Contact Us" [ref=e1511] [cursor=pointer]:
+                    - /url: /about/contact-us
+                  - link "Help Center" [ref=e1513] [cursor=pointer]:
+                    - /url: https://support.redfin.com/hc/en-us
+                  - button "Advertise" [ref=e1516] [cursor=pointer]
+                - list [ref=e1518]:
+                  - listitem [ref=e1519]:
+                    - link "Redfin Facebook" [ref=e1520] [cursor=pointer]:
+                      - /url: https://www.facebook.com/redfin
+                      - img [ref=e1521]:
+                        - img [ref=e1522]
+                  - listitem [ref=e1525]:
+                    - link "Redfin Twitter" [ref=e1526] [cursor=pointer]:
+                      - /url: https://twitter.com/Redfin
+                      - img [ref=e1527]:
+                        - img [ref=e1528]
+                  - listitem [ref=e1530]:
+                    - link "Redfin TikTok" [ref=e1531] [cursor=pointer]:
+                      - /url: https://www.tiktok.com/@redfinrealestate
+                      - img [ref=e1532]:
+                        - img [ref=e1533]
+                  - listitem [ref=e1535]:
+                    - link "Redfin Instagram" [ref=e1536] [cursor=pointer]:
+                      - /url: https://www.instagram.com/redfinrealestate/
+                      - img [ref=e1537]:
+                        - img [ref=e1538]
+                - paragraph [ref=e1540]: Subsidiaries
+                - generic [ref=e1541]:
+                  - link "Rent." [ref=e1543] [cursor=pointer]:
+                    - /url: https://www.rent.com/
+                  - link "ApartmentGuide" [ref=e1545] [cursor=pointer]:
+                    - /url: https://www.apartmentguide.com/
+                - paragraph [ref=e1546]: Affiliated Business
+                - generic [ref=e1547]:
+                  - link "Rocket Close" [ref=e1549] [cursor=pointer]:
+                    - /url: https://www.rocketclose.com/
+                  - link "Rocket Mortgage" [ref=e1551] [cursor=pointer]:
+                    - /url: https://www.rocketmortgage.com/
+                - generic [ref=e1552]:
+                  - paragraph [ref=e1553]: Countries
+                  - paragraph [ref=e1554]:
+                    - generic [ref=e1555]:
+                      - img "US flag" [ref=e1556]
+                      - text: United States
+                  - paragraph [ref=e1557]:
+                    - link "Canadian flagCanada" [ref=e1558] [cursor=pointer]:
+                      - /url: https://www.redfin.ca
+                      - img "Canadian flag" [ref=e1559]
+                      - text: Canada
+              - generic [ref=e1561]:
+                - paragraph [ref=e1562]: "Copyright: © 2026 Redfin. All rights reserved."
+                - paragraph [ref=e1563]:
+                  - text: "Updated September 2025: By searching, you agree to the"
+                  - link "Terms of Use" [ref=e1564] [cursor=pointer]:
+                    - /url: /about/terms-of-use
+                  - text: ", and"
+                  - link "Privacy Policy" [ref=e1565] [cursor=pointer]:
+                    - /url: /about/privacy-policy
+                  - text: .
+                - paragraph [ref=e1566]:
+                  - link "Do not sell or share my personal information" [ref=e1567] [cursor=pointer]:
+                    - /url: /about/privacy/cookie
+                  - text: .
+                - paragraph [ref=e1568]: REDFIN and all REDFIN variants, WALK SCORE, and the R logos, are trademarks of Redfin Corporation, registered or pending in the USPTO.
+                - paragraph [ref=e1569]: "California DRE #01521930"
+                - paragraph [ref=e1570]:
+                  - text: Redfin is licensed to do business in New York as Redfin Real Estate.
+                  - link "NY Standard Operating Procedures" [ref=e1571] [cursor=pointer]:
+                    - /url: https://redfin.widen.net/s/c2njc52hnk/redfin_new-york-standardized-operating-procedures
+                - paragraph [ref=e1572]:
+                  - text: New Mexico
+                  - link "New Mexico Real Estate Licenses" [ref=e1573] [cursor=pointer]:
+                    - /url: https://ssl.cdn-redfin.com/vLATEST/images/nm-licenses/redfin_new_mexico_licenses.pdf
+                    - text: Real Estate Licenses
+                - paragraph [ref=e1574]:
+                  - text: "TREC:"
+                  - link "Info About Brokerage Services" [ref=e1575] [cursor=pointer]:
+                    - /url: https://ssl.cdn-redfin.com/vLATEST/images/about/ibs-statement/texas.pdf
+                  - text: ","
+                  - link "Consumer Protection Notice" [ref=e1576] [cursor=pointer]:
+                    - /url: https://www.trec.texas.gov/forms/consumer-protection-notice
+                - paragraph [ref=e1577]:
+                  - text: "All mortgage lending products and information are provided by Rocket Mortgage, LLC | NMLS #3030;"
+                  - link "www.NMLSConsumerAccess.org" [ref=e1578] [cursor=pointer]:
+                    - /url: https://www.NMLSConsumerAccess.org
+                  - text: .
+                  - link "Licensed in 50 states" [ref=e1579] [cursor=pointer]:
+                    - /url: https://www.rocketmortgage.com/legal/disclosures-licenses
+                  - text: . This site is not authorized by the New York State Department of Financial Services for mortgage solicitation or loan applications activities related to properties located in the State of New York.
+                - paragraph [ref=e1580]: Redfin Corporation is an affiliated business of Rocket Limited Partnership. Each company, and their subsidiaries, are separate legal entities operated and managed through its own management and governance structures.
+                - paragraph [ref=e1581]:
+                  - text: If you are using a screen reader, or having trouble reading this website, please call Redfin Customer Support for help at
+                  - link "1-844-759-7732" [ref=e1582] [cursor=pointer]:
+                    - /url: tel:1-844-759-7732
+                  - text: .
+                - paragraph [ref=e1583]:
+                  - link "Equal Housing Opportunity" [ref=e1585] [cursor=pointer]:
+                    - /url: /about/terms-of-use#Equal_Housing_Opportunity
+                    - img "Equal Housing Opportunity" [ref=e1586]
+                  - generic [ref=e1587]:
+                    - text: REDFIN IS COMMITTED TO AND ABIDES BY THE FAIR HOUSING ACT AND EQUAL OPPORTUNITY ACT. READ REDFIN'S
+                    - link "FAIR HOUSING POLICY" [ref=e1588] [cursor=pointer]:
+                      - /url: /about/fair-housing-policy
+                    - text: AND THE
+                    - link "NEW YORK STATE FAIR HOUSING NOTICE" [ref=e1589] [cursor=pointer]:
+                      - /url: https://www.dos.ny.gov/licensing/docs/FairHousingNotice_new.pdf
+                    - text: .
+        - generic [ref=e1590]:
+          - generic [ref=e1592]:
+            - region [ref=e1593]
+            - generic [ref=e1594]:
+              - iframe [ref=e1633]:
+                
+              - link [ref=e1635] [cursor=pointer]:
+                - /url: https://maps.google.com/maps?ll=33.23558,-111.729215&z=12&t=m&hl=en-US&gl=US&mapclient=apiv3
+                - img [ref=e1637]
+              - generic [ref=e1638]:
+                - generic [ref=e1643]: Map data ©2026 Google
+                - link [ref=e1648] [cursor=pointer]:
+                  - /url: https://www.google.com/intl/en-US_US/help/terms_maps.html
+                  - text: Terms
+                - link [ref=e1653] [cursor=pointer]:
+                  - /url: https://www.google.com/maps/@33.2355805,-111.729215,12z/data=!10m1!1e1!12b1?source=apiv3&rapsrc=apiv3
+                  - text: Report a map error
+          - generic:
+            - generic:
+              - button [ref=e1656] [cursor=pointer]: Remove outline
+              - generic [ref=e1657]:
+                - generic [ref=e1659]:
+                  - button [ref=e1661] [cursor=pointer]:
+                    - img [ref=e1663]:
+                      - img [ref=e1664]
+                  - button [ref=e1667] [cursor=pointer]:
+                    - img [ref=e1669]:
+                      - img [ref=e1670]
+                - button [ref=e1674] [cursor=pointer]:
+                  - img [ref=e1676]:
+                    - img [ref=e1677]
+                  - generic [ref=e1680]: Draw
+                - button [ref=e1683] [cursor=pointer]:
+                  - img [ref=e1685]:
+                    - img [ref=e1686]
+                  - generic [ref=e1689]: Options
+                - button [ref=e1692] [cursor=pointer]:
+                  - img [ref=e1694]:
+                    - img [ref=e1695]
+                  - generic [ref=e1698]: Map
+  - img [ref=e1699]
+  - region "Cookies and your choices banner" [ref=e1700]:
+    - dialog "Cookies and your choices" [ref=e1701]:
+      - generic [ref=e1703]:
+        - generic [ref=e1705]:
+          - heading "Cookies and your choices" [level=2] [ref=e1706]
+          - generic [ref=e1707]:
+            - text: We use cookies and similar technologies (“Cookies”) to enhance your user experience, conduct analytics, advertise to you or others, and to share information about your use of our site with third-parties. By using our site, you agree to our use of Cookies to collect and share your information, and to our
+            - link "Terms of Use" [ref=e1708] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/terms-of-use
+            - text: and
+            - link "Privacy Policy" [ref=e1709] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/privacy-policy
+            - text: . Click Cookie Settings for more info or to opt-out of Cookies sharing your data for targeted advertising.
+        - button "Cookie settings, Opens the preference center dialog" [ref=e1712] [cursor=pointer]: Cookie settings
+      - button "Close" [ref=e1714] [cursor=pointer]

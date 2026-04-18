@@ -1,0 +1,204 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - button "Redfin Homepage Link" [ref=e9] [cursor=pointer]:
+          - img [ref=e11]
+        - generic [ref=e19]:
+          - searchbox "City, Address, School, Agent, ZIP" [ref=e21]
+          - button "submit search" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]:
+              - img [ref=e24]
+      - generic [ref=e27]:
+        - button "Buy â–¾" [ref=e28] [cursor=pointer]:
+          - button "Buy â–¾" [ref=e29]
+        - button "Rent â–¾" [ref=e30] [cursor=pointer]:
+          - button "Rent â–¾" [ref=e31]
+        - button "Sell â–¾" [ref=e32] [cursor=pointer]:
+          - button "Sell â–¾" [ref=e33]
+        - button "Redfin Premier" [ref=e34] [cursor=pointer]
+        - button "Mortgage â–¾" [ref=e35] [cursor=pointer]:
+          - button "Mortgage â–¾" [ref=e36]
+        - button "Real Estate Agents â–¾" [ref=e37] [cursor=pointer]:
+          - link "Real Estate Agents â–¾" [ref=e38]:
+            - /url: /real-estate-agents
+        - button "Feed" [ref=e39] [cursor=pointer]
+        - button "Join / Sign in" [ref=e41] [cursor=pointer]:
+          - generic [ref=e42]: Join / Sign in
+    - generic [ref=e46]:
+      - img "Neighborhood" [ref=e47]
+      - generic [ref=e49]:
+        - img "Peach Colored Balloon" [ref=e50]
+        - img "Lime Colored Balloon" [ref=e51]
+        - img "Teal Colored Balloon" [ref=e52]
+        - img "Floating House" [ref=e53]
+      - heading "Oopsâ€¦ lost that one." [level=2] [ref=e54]
+      - paragraph [ref=e55]:
+        - text: Let's get you
+        - link "home" [ref=e56] [cursor=pointer]:
+          - /url: /
+        - text: . Or,
+        - link "let us know" [ref=e57] [cursor=pointer]:
+          - /url: https://support.redfin.com/hc/en-us/requests/new
+        - text: what happened.
+    - generic [ref=e59]:
+      - generic:
+        - generic [ref=e60]:
+          - paragraph [ref=e61]: Join us
+          - link "Become an Agent" [ref=e63] [cursor=pointer]:
+            - /url: /careers/real-estate
+          - link "Get referrals" [ref=e65] [cursor=pointer]:
+            - /url: https://www.redfin.com/partners
+          - link "Careers" [ref=e67] [cursor=pointer]:
+            - /url: /careers
+          - generic [ref=e68]:
+            - paragraph [ref=e69]: Find homes faster
+            - link "Download the Redfin App on the Apple App Store" [ref=e71] [cursor=pointer]:
+              - /url: https://redfin.onelink.me/iy7h/wk66abnm
+              - img "Download the Redfin App on the Apple App Store" [ref=e72]
+            - link "Download the Redfin App from the Google Play Store" [ref=e74] [cursor=pointer]:
+              - /url: https://redfin.onelink.me/iy7h/wk66abnm
+              - img "Download the Redfin App from the Google Play Store" [ref=e75]
+        - generic [ref=e76]:
+          - paragraph [ref=e77]: About us
+          - link "Why Redfin?" [ref=e79] [cursor=pointer]:
+            - /url: /why-redfin
+          - link "Community Impact" [ref=e81] [cursor=pointer]:
+            - /url: https://www.redfin.com/rise
+          - link "Diversity & Inclusion" [ref=e83] [cursor=pointer]:
+            - /url: /careers/diversity
+          - link "Life at Redfin" [ref=e85] [cursor=pointer]:
+            - /url: /careers/redfin-life
+          - link "Press" [ref=e87] [cursor=pointer]:
+            - /url: https://www.redfin.com/news/press-center/
+          - link "Investors" [ref=e89] [cursor=pointer]:
+            - /url: https://ir.rocketcompanies.com/
+          - link "Blog" [ref=e91] [cursor=pointer]:
+            - /url: https://www.redfin.com/blog/
+          - link "Real Estate News" [ref=e93] [cursor=pointer]:
+            - /url: https://www.redfin.com/news/
+        - generic [ref=e94]:
+          - paragraph [ref=e95]: Find us
+          - generic [ref=e96]:
+            - link "Contact Us" [ref=e98] [cursor=pointer]:
+              - /url: /about/contact-us
+            - link "Help Center" [ref=e100] [cursor=pointer]:
+              - /url: https://support.redfin.com/hc
+            - button "Advertise" [ref=e103] [cursor=pointer]
+          - list [ref=e105]:
+            - listitem [ref=e106]:
+              - link "Redfin Facebook" [ref=e107] [cursor=pointer]:
+                - /url: https://www.facebook.com/redfin
+                - img [ref=e108]:
+                  - img [ref=e109]
+            - listitem [ref=e111]:
+              - link "Redfin Twitter" [ref=e112] [cursor=pointer]:
+                - /url: https://twitter.com/Redfin
+                - img [ref=e113]:
+                  - img [ref=e114]
+            - listitem [ref=e116]:
+              - link "Redfin TikTok" [ref=e117] [cursor=pointer]:
+                - /url: https://www.tiktok.com/@redfinrealestate
+                - img [ref=e118]:
+                  - img [ref=e119]
+            - listitem [ref=e121]:
+              - link "Redfin Instagram" [ref=e122] [cursor=pointer]:
+                - /url: https://www.instagram.com/redfinrealestate/
+                - img [ref=e123]:
+                  - img [ref=e124]
+          - paragraph [ref=e126]: Subsidiaries
+          - generic [ref=e127]:
+            - link "Rent." [ref=e129] [cursor=pointer]:
+              - /url: https://www.rent.com/
+            - link "ApartmentGuide" [ref=e131] [cursor=pointer]:
+              - /url: https://www.apartmentguide.com/
+            - paragraph [ref=e132]: Affiliated Business
+            - generic [ref=e133]:
+              - link "Rocket Close" [ref=e135] [cursor=pointer]:
+                - /url: https://www.rocketclose.com/
+              - link "Rocket Mortgage" [ref=e137] [cursor=pointer]:
+                - /url: https://www.rocketmortgage.com/
+          - generic [ref=e138]:
+            - paragraph [ref=e139]: Countries
+            - paragraph [ref=e140]:
+              - generic [ref=e141]:
+                - img "US flag" [ref=e142]
+                - text: United States
+            - paragraph [ref=e143]:
+              - link "Canadian flagCanada" [ref=e144] [cursor=pointer]:
+                - /url: https://www.redfin.ca
+                - img "Canadian flag" [ref=e145]
+                - text: Canada
+        - generic [ref=e147]:
+          - paragraph [ref=e148]: "Copyright: Â© 2026 Redfin. All rights reserved."
+          - paragraph [ref=e149]:
+            - text: "Updated January 2023: By searching, you agree to the"
+            - link "Terms of Use" [ref=e150] [cursor=pointer]:
+              - /url: /about/terms-of-use
+            - text: ", andÂ"
+            - link "Privacy Policy" [ref=e151] [cursor=pointer]:
+              - /url: /about/privacy-policy
+            - text: .
+          - paragraph [ref=e152]:
+            - link "Do not sell or share my personal information" [ref=e153] [cursor=pointer]:
+              - /url: /about/privacy/cookie
+            - text: .
+          - paragraph [ref=e154]: REDFIN and all REDFIN variants, WALK SCORE, and the R logos, are trademarks of Redfin Corporation, registered or pending in the USPTO.
+          - paragraph [ref=e155]: "California DRE #01521930"
+          - paragraph [ref=e156]:
+            - text: Redfin is licensed to do business in New York as Redfin Real Estate.Â
+            - link "NY Standard Operating Procedures" [ref=e157] [cursor=pointer]:
+              - /url: https://redfin.widen.net/s/c2njc52hnk/redfin_new-york-standardized-operating-procedures
+          - paragraph [ref=e158]:
+            - text: New MexicoÂ
+            - link "New Mexico Real Estate Licenses" [ref=e159] [cursor=pointer]:
+              - /url: https://ssl.cdn-redfin.com/v624.2.2/images/nm-licenses/redfin_new_mexico_licenses.pdf
+              - text: Real Estate Licenses
+          - paragraph [ref=e160]:
+            - text: TREC:Â
+            - link "Info About Brokerage Services" [ref=e161] [cursor=pointer]:
+              - /url: https://ssl.cdn-redfin.com/v624.2.2/images/about/ibs-statement/texas.pdf
+            - text: ",Â"
+            - link "Consumer Protection Notice" [ref=e162] [cursor=pointer]:
+              - /url: https://www.trec.texas.gov/forms/consumer-protection-notice
+          - paragraph [ref=e163]:
+            - text: "All mortgage lending products and information are provided by Rocket Mortgage, LLC | NMLS #3030;"
+            - link "www.NMLSConsumerAccess.org" [ref=e164] [cursor=pointer]:
+              - /url: https://www.NMLSConsumerAccess.org
+            - text: .
+            - link "Licensed in 50 states" [ref=e165] [cursor=pointer]:
+              - /url: https://www.rocketmortgage.com/legal/disclosures-licenses
+            - text: . This site is not authorized by the New York State Department of Financial Services for mortgage solicitation or loan applications activities related to properties located in the State of New York.
+          - paragraph [ref=e166]: Redfin Corporation is an affiliated business of Rocket Limited Partnership. Each company, and their subsidiaries, are separate legal entities operated and managed through its own management and governance structures.
+          - paragraph [ref=e167]:
+            - text: If you are using a screen reader, or having trouble reading this website, please call Redfin Customer Support for help at
+            - link "1-844-759-7732" [ref=e168] [cursor=pointer]:
+              - /url: tel:1-844-759-7732
+            - text: .
+          - paragraph [ref=e169]:
+            - link "Equal Housing Opportunity" [ref=e171] [cursor=pointer]:
+              - /url: /about/terms-of-use#Equal_Housing_Opportunity
+              - img "Equal Housing Opportunity" [ref=e172]
+            - generic [ref=e173]:
+              - text: REDFIN IS COMMITTED TO AND ABIDES BY THE FAIR HOUSING ACT AND EQUAL OPPORTUNITY ACT. READ REDFIN'S
+              - link "FAIR HOUSING POLICY" [ref=e174] [cursor=pointer]:
+                - /url: /about/fair-housing-policy
+              - text: AND THE
+              - link "NEW YORK STATE FAIR HOUSING NOTICE" [ref=e175] [cursor=pointer]:
+                - /url: https://www.dos.ny.gov/licensing/docs/FairHousingNotice_new.pdf
+              - text: .
+  - region "Cookies and your choices banner" [ref=e176]:
+    - dialog "Cookies and your choices" [ref=e177]:
+      - generic [ref=e179]:
+        - generic [ref=e181]:
+          - heading "Cookies and your choices" [level=2] [ref=e182]
+          - generic [ref=e183]:
+            - text: We use cookies and similar technologies (“Cookies”) to enhance your user experience, conduct analytics, advertise to you or others, and to share information about your use of our site with third-parties. By using our site, you agree to our use of Cookies to collect and share your information, and to our
+            - link "Terms of Use" [ref=e184] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/terms-of-use
+            - text: and
+            - link "Privacy Policy" [ref=e185] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/privacy-policy
+            - text: . Click Cookie Settings for more info or to opt-out of Cookies sharing your data for targeted advertising.
+        - button "Cookie settings, Opens the preference center dialog" [ref=e188] [cursor=pointer]: Cookie settings
+      - button "Close" [ref=e190] [cursor=pointer]

@@ -1,0 +1,501 @@
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - navigation [ref=e3]:
+      - link "Maricopa County - Recorder's Office" [ref=e4] [cursor=pointer]:
+        - /url: /
+        - img "Maricopa County - Recorder's Office" [ref=e5]
+      - text:     + + + + +
+      - generic [ref=e6]:
+        - generic [ref=e7]:
+          - link "English" [ref=e8] [cursor=pointer]:
+            - /url: /recording/document-search.html
+          - link "Español" [ref=e9] [cursor=pointer]:
+            - /url: /es/recording/document-search.html
+        - generic:   
+        - generic [ref=e11]: 
+  - main [ref=e12]:
+    - heading "Document Search" [level=1] [ref=e16]
+    - list [ref=e19]:
+      - listitem [ref=e20]:
+        - link "Document Return Log" [ref=e21] [cursor=pointer]:
+          - /url: /recording/document-return-log.html
+          - paragraph [ref=e22]:
+            - generic [ref=e23]: 
+          - paragraph [ref=e24]:
+            - text: Document Return Log
+            - generic [ref=e25]: 
+      - listitem [ref=e26]:
+        - link "Document Codes" [ref=e27] [cursor=pointer]:
+          - /url: /recording/document-codes.html
+          - paragraph [ref=e28]:
+            - generic [ref=e29]: 
+          - paragraph [ref=e30]:
+            - text: Document Codes
+            - generic [ref=e31]: 
+      - listitem [ref=e32]:
+        - link "New Document Codes" [ref=e33] [cursor=pointer]:
+          - /url: /recording/new-document-codes.html
+          - paragraph [ref=e34]:
+            - generic [ref=e35]: 
+          - paragraph [ref=e36]:
+            - text: New Document Codes
+            - generic [ref=e37]: 
+      - listitem [ref=e38]:
+        - link "Contact" [ref=e39] [cursor=pointer]:
+          - /url: https://recorder.maricopa.gov/information/contact-us.html#tab-recorder-info
+          - paragraph [ref=e40]:
+            - generic [ref=e41]: 
+          - paragraph [ref=e42]:
+            - text: Contact
+            - generic [ref=e43]: 
+    - generic [ref=e46]:
+      - tablist [ref=e49]:
+        - tab "Recorded Documents Search" [selected] [ref=e50] [cursor=pointer]
+        - tab "Recorded Maps Search" [selected] [ref=e51] [cursor=pointer]
+        - tab "Research" [selected] [ref=e52] [cursor=pointer]
+      - generic [ref=e53]:
+        - tabpanel "Recorded Documents Search" [ref=e54]:
+          - generic [ref=e56]:
+            - link "View document code description" [ref=e57] [cursor=pointer]:
+              - /url: /recording/new-document-codes.html
+              - paragraph [ref=e58]: View document code description
+            - generic [ref=e59]:
+              - heading "Search by Recorded Document Number:" [level=3] [ref=e60]
+              - separator [ref=e61]
+              - generic [ref=e62]:
+                - generic [ref=e63]:
+                  - generic [ref=e64]: RECORDED DOCUMENT NUMBER (EX 20030930317)
+                  - spinbutton "RECORDED DOCUMENT NUMBER (EX 20030930317)" [ref=e65]
+                - generic [ref=e66]:
+                  - generic [ref=e67]: SUFFIX
+                  - textbox "SUFFIX" [ref=e68]
+              - generic [ref=e69]:
+                - button "SEARCH" [ref=e71] [cursor=pointer]:
+                  - text: SEARCH
+                  - generic [ref=e72]: 
+                - button "CLEAR" [ref=e74] [cursor=pointer]
+            - generic [ref=e75]:
+              - heading "Search by document that was recorded using the Docket/Book and Page system." [level=3] [ref=e76]
+              - separator [ref=e77]
+              - generic [ref=e78]:
+                - generic [ref=e79]:
+                  - generic [ref=e80]: DOCKET/BOOK
+                  - spinbutton "DOCKET/BOOK" [ref=e81]
+                - generic [ref=e82]:
+                  - generic [ref=e83]: PAGE
+                  - spinbutton "PAGE" [ref=e84]
+              - generic [ref=e85]:
+                - button "SEARCH" [ref=e87] [cursor=pointer]:
+                  - text: SEARCH
+                  - generic [ref=e88]: 
+                - button "CLEAR" [ref=e90] [cursor=pointer]
+            - generic [ref=e91]:
+              - heading "Don’t know how a document was recorded? Use the fields below to search our database." [level=3] [ref=e92]
+              - separator [ref=e93]
+              - generic [ref=e94]:
+                - generic [ref=e95]:
+                  - generic [ref=e96]: BUSINESS NAME
+                  - combobox [ref=e97]
+                  - combobox "Type to search for business name" [ref=e100] [cursor=pointer]:
+                    - textbox [ref=e101]
+                - button "Add one more business name" [ref=e102] [cursor=pointer]:
+                  - generic [ref=e103]: +
+                  - text: Add one more business name
+              - generic [ref=e104]:
+                - generic [ref=e105]:
+                  - generic [ref=e106]: LAST NAME
+                  - textbox "LAST NAME" [ref=e107]
+                - generic [ref=e108]:
+                  - generic [ref=e109]: FIRST NAME
+                  - textbox "FIRST NAME" [ref=e110]
+                - generic [ref=e111]:
+                  - generic [ref=e112]: M.I.
+                  - textbox "M.I." [ref=e113]
+                - button "Add one more name" [ref=e114] [cursor=pointer]:
+                  - generic [ref=e115]: +
+                  - text: Add one more name
+              - generic [ref=e117]:
+                - group "DOCUMENT CODE" [ref=e118]:
+                  - generic [ref=e119]: DOCUMENT CODE
+                  - generic [ref=e120]:
+                    - generic [ref=e121]:
+                      - radio "Document Code" [checked] [ref=e122] [cursor=pointer]
+                      - generic [ref=e123] [cursor=pointer]: Document Code
+                    - generic [ref=e124]:
+                      - radio "Document Title" [ref=e125] [cursor=pointer]
+                      - generic [ref=e126] [cursor=pointer]: Document Title
+                - generic [ref=e127]:
+                  - listbox [ref=e128]:
+                    - option [ref=e129]: ABANDONMENT OF A MINE
+                    - option [ref=e130]: ABANDONMENT OF ANY TYPE
+                    - option [ref=e131]: ACCEPTANCE OF COMMUNITY PROPERTY DEED
+                    - option [ref=e132]: ACCEPTANCE OF JOINT TENANCY
+                    - option [ref=e133]: AERONATICS LIEN
+                    - option [ref=e134]: AFFIDAVIT OF AFFIXTURE
+                    - option [ref=e135]: AFFIDAVIT OF DISCLOSURE W/BENEFICIARIES
+                    - option [ref=e136]: AFFIDAVIT OF LABOR
+                    - option [ref=e137]: AFFIDAVIT/USE WITH ANY "GENERAL" TYPE AFFIDAVIT
+                    - option [ref=e138]: AGREEMENT/USE WITH ANY GENERAL AGREEMENT
+                    - option [ref=e139]: AHCCCS LIEN
+                    - option [ref=e140]: AMEND/CHANGE OF FIN STMNT
+                    - option [ref=e141]: AMENDMENT OF A FEDERAL TAX LIEN
+                    - option [ref=e142]: AMENDMENT OF A STATE TAX LIEN
+                    - option [ref=e143]: AMORTIZATION LOAN
+                    - option [ref=e144]: ANNEXATION - USE W/EVERY TYPE OF ANNEXATION
+                    - option [ref=e145]: ANNEXATION-SUBDIVISON
+                    - option [ref=e146]: APPOINTMENT OF TRUSTEE
+                    - option [ref=e147]: APPOINTMENT TO A GOVMNT POSITION OR AS A TRUSTEE
+                    - option [ref=e148]: ARTICLES OF INCORPORATION
+                    - option [ref=e149]: ASSESSMENT/VIOLATION INDICATOR
+                    - option [ref=e150]: ASSIGNMENT OF AGREEMENT OF SALE
+                    - option [ref=e151]: ASSIGNMENT OF DEED OF TRUST
+                    - option [ref=e152]: ASSIGNMENT OF FIN STATE OR SEC TRANSACTION
+                    - option [ref=e153]: ASSIGNMENT OF JUDGEMENT
+                    - option [ref=e154]: ASSIGNMENT OF LIS PENDENS
+                    - option [ref=e155]: ASSIGNMENT OF MINING CLAIM
+                    - option [ref=e156]: ASSIGNMENT OF MORTGAGE
+                    - option [ref=e157]: ASSIGNMNT OF MTG/DEED OF TRUST OR ASSIGNMNTS
+                    - option [ref=e158]: ASSUMPTION AGREEMENT
+                    - option [ref=e159]: ASSUMPTION/MODIFICATION OF GENERAL DOC TYPE
+                    - option [ref=e160]: ATTACHMENT
+                    - option [ref=e161]: BANKRPTCY/USE W/ANY BANKRPTCY INCL DISCHRG
+                    - option [ref=e162]: BARGAIN AND SALE DEED
+                    - option [ref=e163]: BENEFICIARY DEED
+                    - option [ref=e164]: BYLAWS
+                    - option [ref=e165]: CANCELLATION OF A REDEMPTION CERTIFICATE
+                    - option [ref=e166]: CANCELLATION OF ENVIRONMENTAL RESTRICTIONS
+                    - option [ref=e167]: CANCELLATION OF NOTICE OF TRUSTEES SALE
+                    - option [ref=e168]: CERTIFICATE /USE WITH ANY GENERAL CERTIFICATE DOC
+                    - option [ref=e169]: CERTIFICATE OF CORRECTION
+                    - option [ref=e170]: CERTIFICATE OF DISCHARGE OF PROP FROM FTL
+                    - option [ref=e171]: CERTIFICATE OF DISSOLUTION
+                    - option [ref=e172]: CERTIFICATE OF FICTITIOUS NAME/DBA
+                    - option [ref=e173]: CERTIFICATE OF SALE OF PROPERTY
+                    - option [ref=e174]: CERTIFICATE OF SALE OF SEIZED PROP
+                    - option [ref=e175]: CERTIFICATE OF WATER RIGHTS
+                    - option [ref=e176]: CERTIFICATION OF PURCHASE
+                    - option [ref=e177]: CHANGE OF A FINANCING STATEMENT
+                    - option [ref=e178]: CHILD SUPPORT JUDGEMENT/LIEN
+                    - option [ref=e179]: CIVIL JUDGMENT
+                    - option [ref=e180]: CODE USED WITH LARGE PLAT/SURVEY MAPS
+                    - option [ref=e181]: COMMUNITY PROPERTY DEED
+                    - option [ref=e182]: COMPLETION OF CONSTRUCTION = NOTICE OF COMPLETION
+                    - option [ref=e183]: CONSENT
+                    - option [ref=e184]: CONSENT OF ENCROACHMENT
+                    - option [ref=e185]: CONSERVATION EASEMENT
+                    - option [ref=e186]: CONSERVATORS DEED
+                    - option [ref=e187]: CONSOLIDATION AGR-FROM CORP COMM
+                    - option [ref=e188]: CONSOLIDATION AGREEMNT-MORTGAGE
+                    - option [ref=e189]: CONTINUATION OF A FINANCE STATEMENT
+                    - option [ref=e190]: CORNER SURVEY
+                    - option [ref=e191]: CORRECT ASG DEED OF TRUST
+                    - option [ref=e192]: CORRECTION OF A CONTINUATION OF FIN STATE
+                    - option [ref=e193]: CORRECTION OF A DEED
+                    - option [ref=e194]: CORRECTION OF A JUDGEMENT
+                    - option [ref=e195]: CORRECTION OF A RELEASE OF A FIN STATE
+                    - option [ref=e196]: CORRECTION OF A REQUEST FOR RECONVEYANCE
+                    - option [ref=e197]: CORRECTION OF AN AMENDMENT OF FIN STATE
+                    - option [ref=e198]: CORRECTION OF DEED OF TRUST
+                    - option [ref=e199]: CORRECTION OF MILITARY DISCHARGE
+                    - option [ref=e200]: CORRECTION OF MTG
+                    - option [ref=e201]: CORRECTION OF NOTICE OF PROPOSED DISP OF COLL
+                    - option [ref=e202]: CORRECTION OF PLAT
+                    - option [ref=e203]: CORRECTION OF ROAD MAP
+                    - option [ref=e204]: CORRECTION OF SURVEY
+                    - option [ref=e205]: CORRECTION OF SURVEY MAP
+                    - option [ref=e206]: CORRECTION OF SURVEY PLAT
+                    - option [ref=e207]: CORRECTION OF TERMINATION OF FIN STATE
+                    - option [ref=e208]: CORRECTION OF WAIVER/SUBORDINATION LIEN RIGHTS
+                    - option [ref=e209]: CORRECTION TO ANY TYPE OF UCC/FINANCE STMNT
+                    - option [ref=e210]: CORRECTION/MODIFICATION OF ANY MAP TYPE
+                    - option [ref=e211]: DEATH CERTIFICATE
+                    - option [ref=e212]: DEATH CERTIFICATE-OUT OF STATE
+                    - option [ref=e213]: DECLARATION OF ENVIRONMENTAL USE RESTRICTIONS
+                    - option [ref=e214]: DECLARATION OF FORFEITURE
+                    - option [ref=e215]: DECLARATION OF HOMESTEAD
+                    - option [ref=e216]: DECREE OF ANNULMENT/DIVORCE
+                    - option [ref=e217]: DECREE OF DISTRIBUTION WITH REAL PROPERTY
+                    - option [ref=e218]: DEED OF RELEASE & FULL RECONVEYANCE OF D/TR
+                    - option [ref=e219]: DEED OF TRUST
+                    - option [ref=e220]: DEED/USE WITH ANY GENERAL DEED TYPE
+                    - option [ref=e221]: DESIGNATED ROAD-MINUTES
+                    - option [ref=e222]: DISCHARGE OF BANKRUPTCY
+                    - option [ref=e223]: DISCHARGE OF BOND FOR RELEASE OF M/L
+                    - option [ref=e224]: DISCLAIMER OF DEED OF TRUST
+                    - option [ref=e225]: DISCLAIMER OF LEASE
+                    - option [ref=e226]: DISCLAIMER OF MTG
+                    - option [ref=e227]: DISCLAIMER TYPE DOCUMENTS
+                    - option [ref=e228]: DIVORCE DEED
+                    - option [ref=e229]: DRUG FREE ZONE MAP
+                    - option [ref=e230]: EASEMENT - DEDICATION OF RIGHT OF WAY
+                    - option [ref=e231]: ECONOMIC SECURITY COMMISSION LIEN
+                    - option [ref=e232]: ENVIRONMENTAL RESTRICTIONS DOCUMENT
+                    - option [ref=e233]: EQUIPMENT LEASE
+                    - option [ref=e234]: ESCROW INSTRUCTIONS
+                    - option [ref=e235]: ESTATE TAX WAIVER
+                    - option [ref=e236]: EXECUTION
+                    - option [ref=e237]: EXTENSION OF MORTGAGE
+                    - option [ref=e238]: FEDERAL TAX LIEN
+                    - option [ref=e239]: FINAL ORDER IN CONDEMNATION
+                    - option [ref=e240]: FINANCING STATEMENT
+                    - option [ref=e241]: FLOOD PLANE MAP
+                    - option [ref=e242]: GENERAL CANCELLATION
+                    - option [ref=e243]: GIFT DEED
+                    - option [ref=e244]: GOVERNMENTAL LIEN
+                    - option [ref=e245]: GOVERNMENTAL ORDINANCE OR ZONING
+                    - option [ref=e246]: GRANT DEED
+                    - option [ref=e247]: HOMEOWNERS ASSN CONTACT INFO
+                    - option [ref=e248]: INDEMNITY AGREEMENT
+                    - option [ref=e249]: INHERITANCE TAX LIEN
+                    - option [ref=e250]: INTENT TO HOLD
+                    - option [ref=e251]: INTERNAL USE ONLY - MICROGRAPHIC CORRECTIONS
+                    - option [ref=e252]: JOINT TENANCY DEED
+                    - option [ref=e253]: JUDGMENT-GENERAL TYPES INCLUDNG CIVIL
+                    - option [ref=e254]: LAST WILL & TESTAMENT
+                    - option [ref=e255]: LEASE TYPE DOCUMENTS
+                    - option [ref=e256]: LETTER
+                    - option [ref=e257]: LETTER OF INDEMNITY
+                    - option [ref=e258]: LETTER OF INTENT
+                    - option [ref=e259]: LICENSE AND EASEMENT
+                    - option [ref=e260]: LIENS-GOVT/NON-GOVT & GENERAL LIENS
+                    - option [ref=e261]: LIS PENDENS
+                    - option [ref=e262]: LIST OF CREDITORS
+                    - option [ref=e263]: LOT SPLIT
+                    - option [ref=e264]: MAINTENANCE FEE PAYMENTS/ASSOCD W/MINES
+                    - option [ref=e265]: MARGINAL RELEASE OF LIS PENDENS
+                    - option [ref=e266]: MARGINAL RELEASE OF WRIT OF EXECUTION
+                    - option [ref=e267]: MARGINAL VACATE OF WRIT OF ATTACHMENT
+                    - option [ref=e268]: MARICOPA COUNTY DOCUMENT
+                    - option [ref=e269]: MATERIAL MANS MECH LN
+                    - option [ref=e270]: MEDICAL LN-FOR MOSTMEDICAL/HOSP/CHIRO LIENTYPES
+                    - option [ref=e271]: MILITARY DISCHARGE
+                    - option [ref=e272]: MINERAL DEED
+                    - option [ref=e273]: MINING CLAIM AND/OR LOCATION
+                    - option [ref=e274]: MINING LOCATION CLAIMS
+                    - option [ref=e275]: MINUTE ENTRY
+                    - option [ref=e276]: MISCELLANEOUS RECORDING
+                    - option [ref=e277]: MODIFICATION OF ASSIGNMENT OF FIN ST
+                    - option [ref=e278]: MODIFICATION OF CONTINUATION OF FIN ST
+                    - option [ref=e279]: MODIFICATION OF SURVEY
+                    - option [ref=e280]: MODIFICATION OF WAIVER/SUB LI RGT
+                    - option [ref=e281]: MODIFIED AGREEMENT OF SALE
+                    - option [ref=e282]: MODIFIED ARTICLE
+                    - option [ref=e283]: MODIFIED BOND
+                    - option [ref=e284]: MODIFIED DECLARATION OF TRUST
+                    - option [ref=e285]: MODIFIED ESCROW INSTRUCTIONS
+                    - option [ref=e286]: MODIFIED JUDGEMENT
+                    - option [ref=e287]: MODIFIED LIS PENDENS
+                    - option [ref=e288]: MODIFIED MECHANICS LIEN
+                    - option [ref=e289]: MODIFIED MORTGAGE
+                    - option [ref=e290]: MODIFIED OR CORRECTED RESTRICTIONS
+                    - option [ref=e291]: MODIFIED PLAT
+                    - option [ref=e292]: MODIFIED ROAD MAP
+                    - option [ref=e293]: MODIFIED SURVEY MAP
+                    - option [ref=e294]: MODIFIED SURVEY PLAT
+                    - option [ref=e295]: MORTGAGE
+                    - option [ref=e296]: MORTGAGE DISCLAIMER DEED
+                    - option [ref=e297]: MUNICIPALITIES DOCUMENT
+                    - option [ref=e298]: NON ATTACHMENT OF FEDERAL TAX LIEN
+                    - option [ref=e299]: NON GOVERNMENTAL LIEN
+                    - option [ref=e300]: NOTARY BOOK
+                    - option [ref=e301]: NOTICE
+                    - option [ref=e302]: NOTICE OF PROPOSED DISPOSITION OF COLL
+                    - option [ref=e303]: NOTICE OF SUBSTITUTION AGREEMENT
+                    - option [ref=e304]: NOTICE OF TRUSTEES SALE
+                    - option [ref=e305]: NOTICE RECORDING
+                    - option [ref=e306]: NOVATION AGREEMENT
+                    - option [ref=e307]: OATH OF OFFICE
+                    - option [ref=e308]: OCR TEMPORARY GENERAL CODE
+                    - option [ref=e309]: OCR TEMPORARY SUSPENSE MAP CODE
+                    - option [ref=e310]: OFFICIAL BOND
+                    - option [ref=e311]: OPTION AGREE OR OPT TO PURCHASE AGREE
+                    - option [ref=e312]: ORDER - COURT OR COMMISSION
+                    - option [ref=e313]: ORDINANCE-INCREASING CITY LIMITS
+                    - option [ref=e314]: ORDINANCE-ZONING
+                    - option [ref=e315]: PARTIAL ASSIGNMENT OF NOTE AND MORTGAGE
+                    - option [ref=e316]: PARTIAL RELEASE TYPE DOCS
+                    - option [ref=e317]: PARTIAL RELEASE OF A LIS PENDENS
+                    - option [ref=e318]: PARTIAL RELEASE OF MECHANICS/MATERIAL LIEN
+                    - option [ref=e319]: PARTIAL RELEASE OF MORTGAGE
+                    - option [ref=e320]: PARTNERSHIP TYPE DOCUMENTS
+                    - option [ref=e321]: PERFORMANCE OR PAYMENT BOND
+                    - option [ref=e322]: PETITION
+                    - option [ref=e323]: PLAT MAP
+                    - option [ref=e324]: POWER OF ATTORNEY
+                    - option [ref=e325]: PROBATE DEED OF ANY TYPE/USED TO TRANSFER PROP
+                    - option [ref=e326]: PROBATE/USE WITH MOST PROBATE DOC TYPES
+                    - option [ref=e327]: PROMISSORY NOTE
+                    - option [ref=e328]: PROPERTY RESTRICTIONS FOR CONDO/SUBDIV
+                    - option [ref=e329]: QUIT CLAIM DEED
+                    - option [ref=e330]: RACKETEERING LIEN
+                    - option [ref=e331]: RATIFICATION
+                    - option [ref=e332]: RATIFICATION OF PLAT
+                    - option [ref=e333]: RATIFICATION OF PLAT & RESTRICTIONS
+                    - option [ref=e334]: REAL PROPERTY AGREEMENT
+                    - option [ref=e335]: REASSIGNMENT
+                    - option [ref=e336]: RECEIPT
+                    - option [ref=e337]: REDEMPTION CERTIFICATE
+                    - option [ref=e338]: RELEASE - GOVERNMENTAL
+                    - option [ref=e339]: RELEASE - GOVT/NON-GOVT & GEN TYPE DOCS
+                    - option [ref=e340]: RELEASE - NON-GOVERNMENTAL
+                    - option [ref=e341]: RELEASE OF A JUDGEMENT
+                    - option [ref=e342]: RELEASE OF A LEASE
+                    - option [ref=e343]: RELEASE OF A POWER OF ATTORNEY
+                    - option [ref=e344]: RELEASE OF A PROMISSORY NOTE
+                    - option [ref=e345]: RELEASE OF A WRIT OF ATTACHMENT
+                    - option [ref=e346]: RELEASE OF AN APPROVAL
+                    - option [ref=e347]: RELEASE OF AN ASSIGNMENT
+                    - option [ref=e348]: RELEASE OF AN ECONOMIC SECURITY LIEN
+                    - option [ref=e349]: RELEASE OF CS, REST, RECKE LIEN
+                    - option [ref=e350]: RELEASE OF EASEMENT
+                    - option [ref=e351]: RELEASE OF ESCROW INSTRUCTIONS
+                    - option [ref=e352]: RELEASE OF FEDERAL TAX LIEN
+                    - option [ref=e353]: RELEASE OF FINANCE STATEMENT
+                    - option [ref=e354]: RELEASE OF HOMESTEAD
+                    - option [ref=e355]: RELEASE OF HOSPITAL LIEN
+                    - option [ref=e356]: RELEASE OF MATERIAL MANS LIEN
+                    - option [ref=e357]: RELEASE OF MORTGAGE
+                    - option [ref=e358]: RELEASE OF OPTION
+                    - option [ref=e359]: RELEASE OF PLAT
+                    - option [ref=e360]: RELEASE OF STATE TAX LIEN
+                    - option [ref=e361]: RELEASE OF SUBORDINATION OF LIEN RIGHTS
+                    - option [ref=e362]: RELEASEE OF REAL PROPERTY AGREEMENT
+                    - option [ref=e363]: RENEWAL OF ANY JUDGMENT DOC TYPE
+                    - option [ref=e364]: REPORT
+                    - option [ref=e365]: REQUEST
+                    - option [ref=e366]: REQUEST FOR NOTICE OF SALE
+                    - option [ref=e367]: RESCISSION OF TRUSTEES DEED OR OTHER
+                    - option [ref=e368]: RESOLUTION OF ANY TYPE DOC - INCLUDING MUNI DOCS
+                    - option [ref=e369]: RESTITUTION OR RACKETEERING LIEN
+                    - option [ref=e370]: REVOCATION OF A DOCUMENT
+                    - option [ref=e371]: ROAD FILE AND RELATED DOCS
+                    - option [ref=e372]: ROYALTY DEED
+                    - option [ref=e373]: SALE AGREE HAS AOV OR EXEMPT#
+                    - option [ref=e374]: SCHEDULE OF PROPERTY
+                    - option [ref=e375]: SHERIFFS DEED
+                    - option [ref=e376]: SHERIFFS REDEMPTION-CERT OF RED OF REAL PROP
+                    - option [ref=e377]: SPECIAL WARRANTY DEED
+                    - option [ref=e378]: STATE TAX LIEN
+                    - option [ref=e379]: STATEMENT OF BREACH OR NON PERFORMANCE
+                    - option [ref=e380]: SUBORDINATION AGREEMENT
+                    - option [ref=e381]: SUBORDINATION OF LIEN RIGHTS
+                    - option [ref=e382]: SUBSEQUENT TAX
+                    - option [ref=e383]: SUBSTITUTION OF TRUSTEE ON DEED OF TRUST
+                    - option [ref=e384]: SUPPLEMENT TO DEED OF TRUST
+                    - option [ref=e385]: SURETY BOND
+                    - option [ref=e386]: SURVEY MAP/LOT SPLIT/RECORD OF SURVEY
+                    - option [ref=e387]: SURVEY PLAT
+                    - option [ref=e388]: SURVEY/LOT SPLIT
+                    - option [ref=e389]: SUSPENSION OF APPROVAL
+                    - option [ref=e390]: TAX DEED
+                    - option [ref=e391]: TERMINATION & MUTUAL CANCELLATION OF LIC AGR
+                    - option [ref=e392]: TERMINATION OF AN AGREEMENT
+                    - option [ref=e393]: TERMINATION OF FINANCING STATEMENT
+                    - option [ref=e394]: TRADE NAME
+                    - option [ref=e395]: TREASURERS DEED
+                    - option [ref=e396]: TRUSTEES DEED OF ANY KIND
+                    - option [ref=e397]: WAIVER
+                    - option [ref=e398]: WARRANTY DEED
+                    - option [ref=e399]: WITHDRAWAL OF NOTICE OF FEDERAL TAX LIEN
+                    - option [ref=e400]: WRIT OF ATTACHMENT
+                  - combobox [ref=e403]:
+                    - list [ref=e404]:
+                      - listitem [ref=e405]:
+                        - searchbox "Type to search for document codes" [ref=e406]
+                  - generic [ref=e407]:
+                    - generic [ref=e408]: 
+                    - text: If a document code is not selected, the search will default to using all available codes.
+              - generic [ref=e409]:
+                - generic [ref=e410]:
+                  - generic [ref=e411]: BEGINNING DATE (MM/DD/YYYY)
+                  - textbox "BEGINNING DATE (MM/DD/YYYY)" [ref=e412]: 1946-01-01
+                - generic [ref=e413]:
+                  - generic [ref=e414]: END DATE (MM/DD/YYYY)
+                  - textbox "END DATE (MM/DD/YYYY)" [ref=e415]: 2026-04-18
+                - paragraph [ref=e417]: "Name data available: 6/1/1871 thru 4/16/2026"
+              - generic [ref=e418]:
+                - button "SEARCH" [ref=e420] [cursor=pointer]:
+                  - text: SEARCH
+                  - generic [ref=e421]: 
+                - button "CLEAR" [ref=e423] [cursor=pointer]
+        - text:      
+  - contentinfo [ref=e424]:
+    - generic [ref=e426]:
+      - generic [ref=e427]:
+        - heading "Maricopa County Recorder's Office" [level=3] [ref=e428]
+        - generic [ref=e429]:
+          - paragraph
+          - paragraph [ref=e430]: The Maricopa County Recorder’s Office processes and preserves deeds, plats, and a variety of other important documents. We offer our customers the latest in innovation and convenience through our award-winning in-person and digital recording services.
+          - paragraph
+        - list [ref=e432]:
+          - listitem [ref=e433]:
+            - link "Facebook" [ref=e434] [cursor=pointer]:
+              - /url: https://www.facebook.com/MaricopaRecorder
+              - generic [ref=e435]: 
+              - text: Facebook
+          - listitem [ref=e436]:
+            - link "X Twitter" [ref=e437] [cursor=pointer]:
+              - /url: https://x.com/RecordersOffice
+              - generic [ref=e438]: 
+              - text: X Twitter
+          - listitem [ref=e439]:
+            - link "Instagram" [ref=e440] [cursor=pointer]:
+              - /url: https://www.instagram.com/maricoparecorder/
+              - generic [ref=e441]: 
+              - text: Instagram
+          - listitem [ref=e442]:
+            - link "YouTube" [ref=e443] [cursor=pointer]:
+              - /url: https://www.youtube.com/channel/UCAU_vPszKiHGBri-GjWJUJg
+              - generic [ref=e444]: 
+              - text: YouTube
+        - heading "Stay in touch" [level=4] [ref=e445]
+        - generic [ref=e446]:
+          - paragraph
+          - paragraph [ref=e447]: Stay in the loop! Subscribe to our newsletter.
+          - paragraph
+          - link "Subscribe" [ref=e448] [cursor=pointer]:
+            - /url: https://public.govdelivery.com/accounts/AZMARIC/subscriber/new?topic_id=AZMARIC_708
+            - button "Subscribe" [ref=e449]
+      - generic [ref=e450]:
+        - heading "Locations" [level=4] [ref=e451]
+        - list [ref=e452]:
+          - listitem [ref=e453]:
+            - text: 
+            - link "301 W Jefferson St. Second Floor, Suite 200 Phoenix, AZ 85003" [ref=e454] [cursor=pointer]:
+              - /url: https://maps.app.goo.gl/yFFV2KnkVxgh6ixH9
+            - paragraph [ref=e455]: Recorder's Office Main Downtown Office
+          - listitem [ref=e456]:
+            - text: 
+            - link "Recording Kiosk Locations" [ref=e457] [cursor=pointer]:
+              - /url: https://recorder.maricopa.gov/information/locations-and-hours.html
+            - paragraph
+        - link "Holiday Schedule" [ref=e458] [cursor=pointer]:
+          - /url: /information/locations-and-hours.html#holiday-schedule
+          - button "Holiday Schedule" [ref=e459]
+      - generic [ref=e460]:
+        - heading "Contact us" [level=4] [ref=e461]
+        - list [ref=e462]:
+          - listitem [ref=e463]:
+            - text: 
+            - link "602-506-3535" [ref=e464] [cursor=pointer]:
+              - /url: tel:+1602-506-3535
+          - listitem [ref=e465]:
+            - text:  8 a.m. - 5 p.m.
+            - text: Monday-Friday
+          - listitem [ref=e466]:
+            - text: 
+            - paragraph [ref=e467]:
+              - text: Please visit our
+              - link "contact page" [ref=e468] [cursor=pointer]:
+                - /url: https://recorder.maricopa.gov/information/contact-us.html
+              - text: to get in touch with us.
+          - listitem [ref=e469]:
+            - text: 
+            - link "Elections Website" [ref=e470] [cursor=pointer]:
+              - /url: https://elections.maricopa.gov
+    - paragraph [ref=e475]:
+      - text: Official site for Maricopa County Recorder information
+      - link "Privacy Policy" [ref=e476] [cursor=pointer]:
+        - /url: https://www.maricopa.gov/124/Site-Terms-Privacy-Policy
+      - link "Disclaimer" [ref=e477] [cursor=pointer]:
+        - /url: /information/contact-us.html#disclaimer

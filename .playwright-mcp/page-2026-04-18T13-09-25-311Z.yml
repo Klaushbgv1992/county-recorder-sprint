@@ -1,0 +1,126 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Court Forms" [ref=e9] [cursor=pointer]:
+              - /url: https://superiorcourt.maricopa.gov/llrc/#LLrcCourtForm
+          - listitem [ref=e10]:
+            - link "Court Calendar" [ref=e11] [cursor=pointer]:
+              - /url: https://www.superiorcourt.maricopa.gov/calendar/today/
+          - listitem [ref=e12]
+        - navigation [ref=e13]:
+          - link "company logo" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img "company logo" [ref=e16]
+          - search [ref=e17]:
+            - generic [ref=e18]:
+              - button "search case and more" [ref=e19] [cursor=pointer]
+              - textbox "Search" [ref=e20]
+          - img [ref=e22]
+    - generic [ref=e24] [cursor=pointer]: 
+    - heading "Probate Court Case History" [level=1] [ref=e29]
+    - generic [ref=e30]:
+      - generic [ref=e35]:
+        - generic [ref=e37]:
+          - link "<< return for new search" [ref=e38] [cursor=pointer]:
+            - /url: /docket/ProbateCourtCases/caseSearch.asp
+          - paragraph [ref=e40]: Sorry, no matches to your query. Please try again.
+        - list [ref=e44]:
+          - listitem [ref=e45]:
+            - link "Docket Home" [ref=e46] [cursor=pointer]:
+              - /url: /Docket/index.asp
+          - listitem [ref=e47]:
+            - link "Civil Cases" [ref=e48] [cursor=pointer]:
+              - /url: /docket/CivilCourtCases/
+          - listitem [ref=e49]:
+            - link "Criminal Cases" [ref=e50] [cursor=pointer]:
+              - /url: /docket/CriminalCourtCases/
+          - listitem [ref=e51]:
+            - link "Family Court Cases" [ref=e52] [cursor=pointer]:
+              - /url: /docket/FamilyCourtCases/
+          - listitem [ref=e53]:
+            - link "Probate Cases" [ref=e54] [cursor=pointer]:
+              - /url: /docket/ProbateCourtCases/
+          - listitem [ref=e55]:
+            - link "Retention Rules" [ref=e56] [cursor=pointer]:
+              - /url: /docket/docs/RetentionRules.pdf
+      - contentinfo [ref=e57]:
+        - generic [ref=e58]:
+          - generic [ref=e59]:
+            - generic [ref=e60]:
+              - img "company logo" [ref=e61]
+              - generic [ref=e62]:
+                - generic [ref=e63]: The Judicial Branch of Arizona
+                - text: Maricopa County
+            - list [ref=e64]:
+              - listitem [ref=e65]:
+                - link "Departments" [ref=e66] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/departments/
+              - listitem [ref=e67]:
+                - link "Court Information" [ref=e68] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/court-resources/
+              - listitem [ref=e69]:
+                - link "How Do I?" [ref=e70] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/how-do-i/
+              - listitem [ref=e71]:
+                - link "Law Library Resource Center" [ref=e72] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/law-library/llrc-online/
+              - listitem [ref=e73]:
+                - link "Resources" [ref=e74] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/resources-tools/
+              - listitem [ref=e75]:
+                - link "About" [ref=e76] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/about/
+              - listitem [ref=e77]:
+                - img [ref=e80] [cursor=pointer]
+          - list [ref=e83]:
+            - listitem [ref=e84]:
+              - img [ref=e85]
+              - generic [ref=e87]:
+                - generic [ref=e88]: Information Center
+                - link "602-506-3204" [ref=e89] [cursor=pointer]:
+                  - /url: tel:602-506-3204
+            - listitem [ref=e90]:
+              - img [ref=e91]
+              - generic [ref=e93]:
+                - generic [ref=e94]: Central Court Building
+                - text: 201 W. Jefferson Street
+          - generic [ref=e95]:
+            - generic [ref=e96]:
+              - link "Employment opportunities" [ref=e97] [cursor=pointer]:
+                - /url: https://maricopa.wd1.myworkdayjobs.com/en-US/JB_External
+                - generic [ref=e98]: Employment opportunities
+              - link "Justice Partners" [ref=e99] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/justice-partners/
+                - generic [ref=e100]: Justice Partners
+              - link "Terms and Conditions" [ref=e101] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/terms-and-conditions/
+                - generic [ref=e102]: Terms and Conditions
+              - link "ADA Statement" [ref=e103] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/ada-statement/
+                - generic [ref=e104]: ADA Statement
+              - link "Website Feedback" [ref=e105] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/feedback/
+                - generic [ref=e106]: Website Feedback
+            - list [ref=e107]:
+              - listitem [ref=e108]:
+                - link "Youtube" [ref=e109] [cursor=pointer]:
+                  - /url: https://www.youtube.com/user/SuperiorCourtAZ
+              - listitem [ref=e110]:
+                - link "twitter" [ref=e111] [cursor=pointer]:
+                  - /url: https://twitter.com/courtpio
+              - listitem [ref=e112]:
+                - link "linkedin" [ref=e113] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/jbazmc
+              - listitem [ref=e114]:
+                - link "facebook" [ref=e115] [cursor=pointer]:
+                  - /url: https://www.facebook.com/SuperiorCourtofArizona
+              - listitem [ref=e116]:
+                - link "instagram" [ref=e117] [cursor=pointer]:
+                  - /url: https://www.instagram.com/courtpio/
+              - listitem [ref=e118]:
+                - link "nextdoor" [ref=e119] [cursor=pointer]:
+                  - /url: https://nextdoor.com/
+  - img [ref=e122]

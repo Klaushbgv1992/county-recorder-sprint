@@ -1,0 +1,459 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Court Forms" [ref=e9] [cursor=pointer]:
+              - /url: https://superiorcourt.maricopa.gov/llrc/#LLrcCourtForm
+          - listitem [ref=e10]:
+            - link "Court Calendar" [ref=e11] [cursor=pointer]:
+              - /url: https://www.superiorcourt.maricopa.gov/calendar/today/
+          - listitem [ref=e12]
+        - navigation [ref=e13]:
+          - link "company logo" [ref=e15] [cursor=pointer]:
+            - /url: /
+            - img "company logo" [ref=e16]
+          - search [ref=e17]:
+            - generic [ref=e18]:
+              - button "search case and more" [ref=e19] [cursor=pointer]
+              - textbox "Search" [ref=e20]
+          - img [ref=e22]
+    - generic [ref=e24] [cursor=pointer]: 
+    - heading "Probate Court Case Information - Case History" [level=1] [ref=e29]
+    - generic [ref=e30]:
+      - generic [ref=e37]:
+        - link "« Return to search results" [ref=e39] [cursor=pointer]:
+          - /url: caseSearch.asp
+        - generic [ref=e40]:
+          - generic [ref=e41]: Case Information
+          - generic [ref=e42]:
+            - generic [ref=e43]: "Case Number:"
+            - generic [ref=e44]: PB2007-050444
+            - generic [ref=e45]: "Judge:"
+            - generic [ref=e46]: Smith, Vanessa
+          - generic [ref=e47]:
+            - generic [ref=e48]: Plaintiff
+            - generic [ref=e49]: Beulah Johnson
+            - generic [ref=e50]: "Location:"
+            - generic [ref=e51]: Northeast
+          - generic [ref=e52]:
+            - generic [ref=e53]: "Case Type:"
+            - generic [ref=e54]: Probate
+        - generic [ref=e55]:
+          - generic [ref=e56]: Party Information
+          - generic [ref=e57]:
+            - generic [ref=e58]: Party Name
+            - generic [ref=e59]: Beulah Johnson
+            - generic [ref=e60]: Relationship
+            - generic [ref=e61]: Decedent
+            - generic [ref=e62]: Sex
+            - generic [ref=e63]: Female
+            - generic [ref=e64]: Attorney
+            - generic [ref=e65]: Pro Per
+          - generic [ref=e66]:
+            - generic [ref=e67]: Party Name
+            - generic [ref=e68]: Charlie Johnson Foreman
+            - generic [ref=e69]: Relationship
+            - generic [ref=e70]: Petitioner
+            - generic [ref=e71]: Sex
+            - generic [ref=e72]: Female
+            - generic [ref=e73]: Attorney
+            - generic [ref=e74]: J Franz
+          - generic [ref=e75]:
+            - generic [ref=e76]: Party Name
+            - generic [ref=e77]: Alversia Johnson Carmouche
+            - generic [ref=e78]: Relationship
+            - generic [ref=e79]: Undesignated
+            - generic [ref=e80]: Sex
+            - generic [ref=e81]: Female
+            - generic [ref=e82]: Attorney
+            - generic [ref=e83]: Pro Per
+          - generic [ref=e84]:
+            - generic [ref=e85]: Party Name
+            - generic [ref=e86]: Eugene Johnson
+            - generic [ref=e87]: Relationship
+            - generic [ref=e88]: Undesignated
+            - generic [ref=e89]: Sex
+            - generic [ref=e90]: Male
+            - generic [ref=e91]: Attorney
+            - generic [ref=e92]: Pro Per
+          - generic [ref=e93]:
+            - generic [ref=e94]: Party Name
+            - generic [ref=e95]: Barbara Johnson Odom
+            - generic [ref=e96]: Relationship
+            - generic [ref=e97]: Undesignated
+            - generic [ref=e98]: Sex
+            - generic [ref=e99]: Female
+            - generic [ref=e100]: Attorney
+            - generic [ref=e101]: Pro Per
+          - generic [ref=e102]:
+            - generic [ref=e103]: Party Name
+            - generic [ref=e104]: Zabrina Wood
+            - generic [ref=e105]: Relationship
+            - generic [ref=e106]: Undesignated
+            - generic [ref=e107]: Sex
+            - generic [ref=e108]: Female
+            - generic [ref=e109]: Attorney
+            - generic [ref=e110]: Pro Per
+          - generic [ref=e111]:
+            - generic [ref=e112]: Party Name
+            - generic [ref=e113]: Kim Stagg
+            - generic [ref=e114]: Relationship
+            - generic [ref=e115]: Undesignated
+            - generic [ref=e116]: Sex
+            - generic [ref=e117]: Female
+            - generic [ref=e118]: Attorney
+            - generic [ref=e119]: Pro Per
+          - generic [ref=e120]:
+            - generic [ref=e121]: Party Name
+            - generic [ref=e122]: Otis Johnson Living Trust
+            - generic [ref=e123]: Relationship
+            - generic [ref=e124]: Undesignated
+            - generic [ref=e125]: Sex
+            - generic [ref=e127]: Attorney
+            - generic [ref=e128]: Pro Per
+          - generic [ref=e129]:
+            - generic [ref=e130]: Party Name
+            - generic [ref=e131]: Leah A Johnson
+            - generic [ref=e132]: Relationship
+            - generic [ref=e133]: Undesignated
+            - generic [ref=e134]: Sex
+            - generic [ref=e135]: Female
+            - generic [ref=e136]: Attorney
+            - generic [ref=e137]: Pro Per
+          - generic [ref=e138]:
+            - generic [ref=e139]: Party Name
+            - generic [ref=e140]: Jonathan C Johnson
+            - generic [ref=e141]: Relationship
+            - generic [ref=e142]: Undesignated
+            - generic [ref=e143]: Sex
+            - generic [ref=e144]: Male
+            - generic [ref=e145]: Attorney
+            - generic [ref=e146]: Pro Per
+          - generic [ref=e147]:
+            - generic [ref=e148]: Party Name
+            - generic [ref=e149]: Aaron Johnson
+            - generic [ref=e150]: Relationship
+            - generic [ref=e151]: Undesignated
+            - generic [ref=e152]: Sex
+            - generic [ref=e153]: Male
+            - generic [ref=e154]: Attorney
+            - generic [ref=e155]: Pro Per
+          - generic [ref=e156]:
+            - generic [ref=e157]: Party Name
+            - generic [ref=e158]: Tracy Johnson Hamilton
+            - generic [ref=e159]: Relationship
+            - generic [ref=e160]: Undesignated
+            - generic [ref=e161]: Sex
+            - generic [ref=e162]: Female
+            - generic [ref=e163]: Attorney
+            - generic [ref=e164]: Pro Per
+          - generic [ref=e165]:
+            - generic [ref=e166]: Party Name
+            - generic [ref=e167]: Troy Johnson
+            - generic [ref=e168]: Relationship
+            - generic [ref=e169]: Undesignated
+            - generic [ref=e170]: Sex
+            - generic [ref=e171]: Male
+            - generic [ref=e172]: Attorney
+            - generic [ref=e173]: Pro Per
+        - generic [ref=e174]:
+          - generic [ref=e176]: Case Documents
+          - generic [ref=e177]:
+            - generic [ref=e178]: Filing Date
+            - generic [ref=e179]: 3/4/2011
+            - generic [ref=e180]: Description
+            - generic [ref=e181]: RTM - Returned Mail or Returned/ReMailed Mail
+            - generic [ref=e182]: Docket Date
+            - generic [ref=e183]: 3/8/2011
+            - generic [ref=e184]: Filing Party
+          - generic [ref=e186]:
+            - generic [ref=e187]: Filing Date
+            - generic [ref=e188]: 1/26/2011
+            - generic [ref=e189]: Description
+            - generic [ref=e190]: "022 - ME: Order Signed"
+            - generic [ref=e191]: Docket Date
+            - generic [ref=e192]: 1/26/2011
+            - generic [ref=e193]: Filing Party
+          - generic [ref=e195]:
+            - generic [ref=e196]: Filing Date
+            - generic [ref=e197]: 1/25/2011
+            - generic [ref=e198]: Description
+            - generic [ref=e199]: JUD - Judgment
+            - generic [ref=e200]: Docket Date
+            - generic [ref=e201]: 2/4/2011
+            - generic [ref=e202]: Filing Party
+            - generic [ref=e204]: "NOTE:"
+            - generic [ref=e205]: "Judgment: Notice of filing and entry provided to the parties"
+          - generic [ref=e206]:
+            - generic [ref=e207]: Filing Date
+            - generic [ref=e208]: 12/19/2010
+            - generic [ref=e209]: Description
+            - generic [ref=e210]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e211]: Docket Date
+            - generic [ref=e212]: 12/23/2010
+            - generic [ref=e213]: Filing Party
+          - generic [ref=e215]:
+            - generic [ref=e216]: Filing Date
+            - generic [ref=e217]: 12/14/2010
+            - generic [ref=e218]: Description
+            - generic [ref=e219]: NOH - Notice Of Hearing
+            - generic [ref=e220]: Docket Date
+            - generic [ref=e221]: 12/17/2010
+            - generic [ref=e222]: Filing Party
+            - generic [ref=e224]: "NOTE:"
+            - generic [ref=e225]: NON-APPEARANCE/ON PETITION FOR ORDER AUTHORIZING CONVEYANCE OF DECEDENTS ARIZONA PROPERTY INTEREST TO DECEDENTS HEIRS SUBJECT TO PROMISSORY NOTE AND DEED OF TRUST TO CHARLIE JOHNSON FOREMAN AND ORDER OF COMPLETE SETTLEMENT OF ESTATE AND FINAL DISCHARGE
+          - generic [ref=e226]:
+            - generic [ref=e227]: Filing Date
+            - generic [ref=e228]: 12/14/2010
+            - generic [ref=e229]: Description
+            - generic [ref=e230]: PTT - Petition
+            - generic [ref=e231]: Docket Date
+            - generic [ref=e232]: 12/17/2010
+            - generic [ref=e233]: Filing Party
+            - generic [ref=e235]: "NOTE:"
+            - generic [ref=e236]: FOR ORDER AUTHORIZING CONVEYANCE OF DECEDENTS ARIZONA PROPERTY INTEREST TO DECEDENTS HEIRS SUBJECT TO PROMISSORY NOTE AND DEED OF TRUST TO CHARGLE JOHNSON FOREMAN AND ORDER OF COMPLETE SETTLEMENT OF ESTATE AND FINAL DISCHARGE OF PERSONAL REPRESENTATIVE
+          - generic [ref=e237]:
+            - generic [ref=e238]: Filing Date
+            - generic [ref=e239]: 8/6/2010
+            - generic [ref=e240]: Description
+            - generic [ref=e241]: CST - Closing Statement
+            - generic [ref=e242]: Docket Date
+            - generic [ref=e243]: 8/9/2010
+            - generic [ref=e244]: Filing Party
+            - generic [ref=e245]: Petitioner(2)
+            - generic [ref=e246]: "NOTE:"
+            - generic [ref=e247]: AND PROOF OF MAILING/DELIVERY CLOSING STATEMENT
+          - generic [ref=e248]:
+            - generic [ref=e249]: Filing Date
+            - generic [ref=e250]: 6/15/2010
+            - generic [ref=e251]: Description
+            - generic [ref=e252]: 431- Review For Compliance
+            - generic [ref=e253]: Docket Date
+            - generic [ref=e254]: 6/15/2010
+            - generic [ref=e255]: Filing Party
+          - generic [ref=e257]:
+            - generic [ref=e258]: Filing Date
+            - generic [ref=e259]: 7/2/2007
+            - generic [ref=e260]: Description
+            - generic [ref=e261]: "420 - Hrg: Formal Intest/Appoint Pr"
+            - generic [ref=e262]: Docket Date
+            - generic [ref=e263]: 7/2/2007
+            - generic [ref=e264]: Filing Party
+          - generic [ref=e266]:
+            - generic [ref=e267]: Filing Date
+            - generic [ref=e268]: 7/2/2007
+            - generic [ref=e269]: Description
+            - generic [ref=e270]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e271]: Docket Date
+            - generic [ref=e272]: 7/5/2007
+            - generic [ref=e273]: Filing Party
+            - generic [ref=e275]: "NOTE:"
+            - generic [ref=e276]: OF ORDER TO PERSONAL REPRESENTATIVE
+          - generic [ref=e277]:
+            - generic [ref=e278]: Filing Date
+            - generic [ref=e279]: 6/27/2007
+            - generic [ref=e280]: Description
+            - generic [ref=e281]: LTA - Letter Of Appointment
+            - generic [ref=e282]: Docket Date
+            - generic [ref=e283]: 6/28/2007
+            - generic [ref=e284]: Filing Party
+            - generic [ref=e286]: "NOTE:"
+            - generic [ref=e287]: CHARLIE JOHNSON FOREMAN WITH RESTRICTIONS
+          - generic [ref=e288]:
+            - generic [ref=e289]: Filing Date
+            - generic [ref=e290]: 6/27/2007
+            - generic [ref=e291]: Description
+            - generic [ref=e292]: AAR - Accept Appoint Personal Rep/Guard/Conservator
+            - generic [ref=e293]: Docket Date
+            - generic [ref=e294]: 6/28/2007
+            - generic [ref=e295]: Filing Party
+            - generic [ref=e297]: "NOTE:"
+            - generic [ref=e298]: BY CHARLIE JOHNSON FOREMAN
+          - generic [ref=e299]:
+            - generic [ref=e300]: Filing Date
+            - generic [ref=e301]: 6/27/2007
+            - generic [ref=e302]: Description
+            - generic [ref=e303]: ORD - Order
+            - generic [ref=e304]: Docket Date
+            - generic [ref=e305]: 6/29/2007
+            - generic [ref=e306]: Filing Party
+            - generic [ref=e308]: "NOTE:"
+            - generic [ref=e309]: OF INTESTACY, DETERMINATION OF HEIRS AND APPOINTMENT OF PERSONAL REPRESENTATIVE - CHARLIE JOHNSON FOREMAN WITHOUT BOND
+          - generic [ref=e310]:
+            - generic [ref=e311]: Filing Date
+            - generic [ref=e312]: 6/27/2007
+            - generic [ref=e313]: Description
+            - generic [ref=e314]: OPA - Order To Personal Representative & Acknowledgement
+            - generic [ref=e315]: Docket Date
+            - generic [ref=e316]: 6/29/2007
+            - generic [ref=e317]: Filing Party
+          - generic [ref=e319]:
+            - generic [ref=e320]: Filing Date
+            - generic [ref=e321]: 6/12/2007
+            - generic [ref=e322]: Description
+            - generic [ref=e323]: STA - Statement
+            - generic [ref=e324]: Docket Date
+            - generic [ref=e325]: 6/19/2007
+            - generic [ref=e326]: Filing Party
+            - generic [ref=e328]: "NOTE:"
+            - generic [ref=e329]: RULE 5.7 ATTORNEY'S/ OF SERVICES RENDERED AND FEES AND COSTS INCURRED
+          - generic [ref=e330]:
+            - generic [ref=e331]: Filing Date
+            - generic [ref=e332]: 6/12/2007
+            - generic [ref=e333]: Description
+            - generic [ref=e334]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e335]: Docket Date
+            - generic [ref=e336]: 6/19/2007
+            - generic [ref=e337]: Filing Party
+            - generic [ref=e339]: "NOTE:"
+            - generic [ref=e340]: PETITIONER'S RULE 5.7 ATTORNEYS STATEMENT OF SERVICES RENDERED AND COSTS INCURRED
+          - generic [ref=e341]:
+            - generic [ref=e342]: Filing Date
+            - generic [ref=e343]: 6/11/2007
+            - generic [ref=e344]: Description
+            - generic [ref=e345]: ORD - Order
+            - generic [ref=e346]: Docket Date
+            - generic [ref=e347]: 6/13/2007
+            - generic [ref=e348]: Filing Party
+            - generic [ref=e350]: "NOTE:"
+            - generic [ref=e351]: ALLOWING APPEARANCE BY TELEPHONE
+          - generic [ref=e352]:
+            - generic [ref=e353]: Filing Date
+            - generic [ref=e354]: 6/4/2007
+            - generic [ref=e355]: Description
+            - generic [ref=e356]: APU - Affidavit Of Publication
+            - generic [ref=e357]: Docket Date
+            - generic [ref=e358]: 6/7/2007
+            - generic [ref=e359]: Filing Party
+          - generic [ref=e361]:
+            - generic [ref=e362]: Filing Date
+            - generic [ref=e363]: 6/1/2007
+            - generic [ref=e364]: Description
+            - generic [ref=e365]: NOH - Notice Of Hearing
+            - generic [ref=e366]: Docket Date
+            - generic [ref=e367]: 6/7/2007
+            - generic [ref=e368]: Filing Party
+            - generic [ref=e370]: "NOTE:"
+            - generic [ref=e371]: ON PETITION FOR ADJUDICATION OF INTESTACY/DETERMINATION OF HEIRS AND APPOINTMENT OF PERSONAL REPRESENTATIVE/APPROVAL OF ATTORNEYS FEES
+          - generic [ref=e372]:
+            - generic [ref=e373]: Filing Date
+            - generic [ref=e374]: 6/1/2007
+            - generic [ref=e375]: Description
+            - generic [ref=e376]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e377]: Docket Date
+            - generic [ref=e378]: 6/7/2007
+            - generic [ref=e379]: Filing Party
+          - generic [ref=e381]:
+            - generic [ref=e382]: Filing Date
+            - generic [ref=e383]: 5/24/2007
+            - generic [ref=e384]: Description
+            - generic [ref=e385]: MOT - Motion
+            - generic [ref=e386]: Docket Date
+            - generic [ref=e387]: 5/30/2007
+            - generic [ref=e388]: Filing Party
+            - generic [ref=e390]: "NOTE:"
+            - generic [ref=e391]: TO APPEAR BY TELEPHONE ON PETITION FOR ADJUDICATION OF INTESTACY DETERMINATION OF HEIRS AND APPOINTMENT OF PERSONAL REPRESENTATIVE AND APPROVAL OF ATTORNEYS FEES
+          - generic [ref=e392]:
+            - generic [ref=e393]: Filing Date
+            - generic [ref=e394]: 5/23/2007
+            - generic [ref=e395]: Description
+            - generic [ref=e396]: APE - Application/Petition
+            - generic [ref=e397]: Docket Date
+            - generic [ref=e398]: 5/24/2007
+            - generic [ref=e399]: Filing Party
+        - generic [ref=e401]:
+          - generic [ref=e403]: Case Calendar
+          - generic [ref=e404]:
+            - generic [ref=e405]: Date
+            - generic [ref=e406]: 6/27/2007
+            - generic [ref=e407]: Time
+            - generic [ref=e408]: 9:00
+            - generic [ref=e409]: Event
+            - generic [ref=e410]: Miscellaneous - (Appearance)
+          - generic [ref=e411]:
+            - generic [ref=e412]: Date
+            - generic [ref=e413]: 1/13/2011
+            - generic [ref=e414]: Time
+            - generic [ref=e415]: 11:00
+            - generic [ref=e416]: Event
+            - generic [ref=e417]: Miscellaneous - (Non-Appearance)
+      - contentinfo [ref=e418]:
+        - generic [ref=e419]:
+          - generic [ref=e420]:
+            - generic [ref=e421]:
+              - img "company logo" [ref=e422]
+              - generic [ref=e423]:
+                - generic [ref=e424]: The Judicial Branch of Arizona
+                - text: Maricopa County
+            - list [ref=e425]:
+              - listitem [ref=e426]:
+                - link "Departments" [ref=e427] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/departments/
+              - listitem [ref=e428]:
+                - link "Court Information" [ref=e429] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/court-resources/
+              - listitem [ref=e430]:
+                - link "How Do I?" [ref=e431] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/how-do-i/
+              - listitem [ref=e432]:
+                - link "Law Library Resource Center" [ref=e433] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/law-library/llrc-online/
+              - listitem [ref=e434]:
+                - link "Resources" [ref=e435] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/resources-tools/
+              - listitem [ref=e436]:
+                - link "About" [ref=e437] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/about/
+              - listitem [ref=e438]:
+                - img [ref=e441] [cursor=pointer]
+          - list [ref=e444]:
+            - listitem [ref=e445]:
+              - img [ref=e446]
+              - generic [ref=e448]:
+                - generic [ref=e449]: Information Center
+                - link "602-506-3204" [ref=e450] [cursor=pointer]:
+                  - /url: tel:602-506-3204
+            - listitem [ref=e451]:
+              - img [ref=e452]
+              - generic [ref=e454]:
+                - generic [ref=e455]: Central Court Building
+                - text: 201 W. Jefferson Street
+          - generic [ref=e456]:
+            - generic [ref=e457]:
+              - link "Employment opportunities" [ref=e458] [cursor=pointer]:
+                - /url: https://maricopa.wd1.myworkdayjobs.com/en-US/JB_External
+                - generic [ref=e459]: Employment opportunities
+              - link "Justice Partners" [ref=e460] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/justice-partners/
+                - generic [ref=e461]: Justice Partners
+              - link "Terms and Conditions" [ref=e462] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/terms-and-conditions/
+                - generic [ref=e463]: Terms and Conditions
+              - link "ADA Statement" [ref=e464] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/ada-statement/
+                - generic [ref=e465]: ADA Statement
+              - link "Website Feedback" [ref=e466] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/feedback/
+                - generic [ref=e467]: Website Feedback
+            - list [ref=e468]:
+              - listitem [ref=e469]:
+                - link "Youtube" [ref=e470] [cursor=pointer]:
+                  - /url: https://www.youtube.com/user/SuperiorCourtAZ
+              - listitem [ref=e471]:
+                - link "twitter" [ref=e472] [cursor=pointer]:
+                  - /url: https://twitter.com/courtpio
+              - listitem [ref=e473]:
+                - link "linkedin" [ref=e474] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/jbazmc
+              - listitem [ref=e475]:
+                - link "facebook" [ref=e476] [cursor=pointer]:
+                  - /url: https://www.facebook.com/SuperiorCourtofArizona
+              - listitem [ref=e477]:
+                - link "instagram" [ref=e478] [cursor=pointer]:
+                  - /url: https://www.instagram.com/courtpio/
+              - listitem [ref=e479]:
+                - link "nextdoor" [ref=e480] [cursor=pointer]:
+                  - /url: https://nextdoor.com/
+  - img [ref=e483]

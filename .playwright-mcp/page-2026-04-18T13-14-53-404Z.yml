@@ -1,0 +1,1530 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e6]:
+      - generic [ref=e7]:
+        - button "Redfin Homepage Link" [ref=e9] [cursor=pointer]:
+          - img [ref=e11]
+        - generic [ref=e19]:
+          - searchbox "Search for properties" [ref=e21]
+          - button "submit search" [ref=e22] [cursor=pointer]:
+            - img [ref=e23]:
+              - img [ref=e24]
+      - generic [ref=e26]:
+        - button "Buy ▾" [ref=e27] [cursor=pointer]:
+          - button "Buy ▾" [ref=e28]
+        - button "Rent ▾" [ref=e29] [cursor=pointer]:
+          - button "Rent ▾" [ref=e30]
+        - button "Sell ▾" [ref=e31] [cursor=pointer]:
+          - button "Sell ▾" [ref=e32]
+        - button "Mortgage ▾" [ref=e33] [cursor=pointer]:
+          - button "Mortgage ▾" [ref=e34]
+        - button "Real Estate Agents ▾" [ref=e35] [cursor=pointer]:
+          - link "Real Estate Agents ▾" [ref=e36]:
+            - /url: /real-estate-agents
+        - button "Feed" [ref=e37] [cursor=pointer]
+        - button "Join / Sign in" [ref=e39] [cursor=pointer]
+    - generic [ref=e42]:
+      - tablist [ref=e44]:
+        - tab "Search" [ref=e45] [cursor=pointer]:
+          - link "Search" [ref=e47]:
+            - /url: /houses-near-me
+            - img [ref=e48]:
+              - img [ref=e49]
+            - generic [ref=e51]: Search
+        - tab "Overview" [ref=e52] [cursor=pointer]:
+          - generic [ref=e53]: Overview
+        - tab "Sale & tax history" [ref=e54] [cursor=pointer]:
+          - generic [ref=e55]: Sale & tax history
+        - tab "Property details" [ref=e56] [cursor=pointer]:
+          - generic [ref=e57]: Property details
+        - tab "Neighborhood" [ref=e58] [cursor=pointer]:
+          - generic [ref=e59]: Neighborhood
+        - tab "Climate" [ref=e60] [cursor=pointer]:
+          - generic [ref=e61]: Climate
+      - generic [ref=e64]:
+        - button "Favorite this home" [ref=e67] [cursor=pointer]:
+          - img [ref=e69]:
+            - img [ref=e70]
+          - text: Favorite
+        - button "Edit Facts" [ref=e74] [cursor=pointer]:
+          - img [ref=e76]:
+            - img [ref=e77]
+          - text: Edit Facts
+        - button "Share" [ref=e81] [cursor=pointer]:
+          - img [ref=e83]:
+            - img [ref=e84]
+          - text: Share
+    - generic [ref=e86]:
+      - generic [ref=e90]:
+        - generic [ref=e93]:
+          - generic [ref=e97]: OFF MARKET
+          - img "Google street view image for 4924 Creek Haven Rd, Cottage Grove, WI 53527" [ref=e99] [cursor=pointer]
+        - button "Street View" [ref=e102] [cursor=pointer]:
+          - img [ref=e104]:
+            - img [ref=e105]
+          - text: Street View
+      - generic [ref=e107]:
+        - generic [ref=e108]:
+          - generic [ref=e113]:
+            - generic [ref=e114]:
+              - generic [ref=e115]: OFF MARKET
+              - generic [ref=e120]:
+                - generic [ref=e121]:
+                  - generic [ref=e123]: $800,683
+                  - generic [ref=e124]:
+                    - generic [ref=e125]:
+                      - generic [ref=e126]: —
+                      - generic [ref=e127]: bd
+                    - generic [ref=e128]: •
+                    - generic [ref=e130]: — ba
+                    - generic [ref=e131]: •
+                    - generic [ref=e132]:
+                      - generic [ref=e133]: —
+                      - generic [ref=e134]: sq ft
+                - heading "4924 Creek Haven Rd, Cottage Grove, WI 53527" [level=1] [ref=e137]
+            - button "map-entry" [ref=e138] [cursor=pointer]:
+              - img "map-entry" [ref=e139]
+              - img [ref=e141]:
+                - img [ref=e142]
+          - generic [ref=e147]:
+            - button "Claim home Claim home to manage this property" [ref=e149] [cursor=pointer]:
+              - generic [ref=e150]:
+                - text: Claim home
+                - generic [ref=e151]: Claim home to manage this property
+            - generic [ref=e153]:
+              - button "View dashboard" [ref=e154] [cursor=pointer]:
+                - generic [ref=e155]:
+                  - img [ref=e156]:
+                    - img [ref=e157]
+                  - generic [ref=e159]: View dashboard
+              - button "Edit facts" [ref=e160] [cursor=pointer]:
+                - generic [ref=e161]:
+                  - img [ref=e162]:
+                    - img [ref=e163]
+                  - generic [ref=e165]: Edit facts
+              - button "Manage photos" [ref=e166] [cursor=pointer]:
+                - generic [ref=e167]:
+                  - img [ref=e168]:
+                    - img [ref=e169]
+                  - generic [ref=e171]: Manage photos
+          - generic [ref=e174]:
+            - heading "About this home" [level=2] [ref=e175]
+            - generic [ref=e177]:
+              - generic [ref=e178]: 4924 Creek Haven Rd is a house on a 0.92 acre lot. Based on Redfin's Cottage Grove data, we estimate the home's value is $800,683.
+              - generic [ref=e183]:
+                - generic [ref=e184]:
+                  - img [ref=e186]:
+                    - img [ref=e187]
+                  - generic [ref=e189]:
+                    - generic [ref=e190]: Single-family
+                    - generic [ref=e191]: Property Type
+                - generic [ref=e192]:
+                  - img [ref=e194]:
+                    - img [ref=e195]
+                  - generic [ref=e197]:
+                    - generic [ref=e198]: 0.92 acres
+                    - generic [ref=e199]: Lot Size
+              - generic [ref=e204]:
+                - text: "Source:"
+                - generic [ref=e205]: Public Records
+          - generic [ref=e208]:
+            - heading "Redfin Estimate" [level=2] [ref=e209]
+            - generic [ref=e211]:
+              - generic [ref=e212]:
+                - generic [ref=e213]: $800,683
+                - generic [ref=e217]:
+                  - generic [ref=e218]:
+                    - img [ref=e219]:
+                      - img [ref=e220]
+                    - text: $15K
+                  - text: since March
+              - generic [ref=e222]:
+                - tablist [ref=e224]:
+                  - tab "Recently sold homes" [ref=e225] [cursor=pointer]:
+                    - generic [ref=e227]:
+                      - img [ref=e228]:
+                        - img [ref=e229]
+                      - text: Recently sold homes
+                  - tab "Estimate history" [ref=e232] [cursor=pointer]:
+                    - generic [ref=e234]:
+                      - img [ref=e235]:
+                        - img [ref=e236]
+                      - text: Estimate history
+                  - tab "Homes for sale" [ref=e238] [cursor=pointer]:
+                    - generic [ref=e240]:
+                      - img [ref=e241]:
+                        - img [ref=e242]
+                      - text: Homes for sale
+                - generic [ref=e250]:
+                  - group "carousel" [ref=e252]:
+                    - generic [ref=e253]:
+                      - list [ref=e254]:
+                        - listitem [ref=e255]:
+                          - button [ref=e257] [cursor=pointer]:
+                            - generic [ref=e261]: SOLD MAR 27, 2026
+                            - group [ref=e263]:
+                              - list [ref=e265]:
+                                - listitem [ref=e266]
+                                - listitem [ref=e268]
+                                - listitem [ref=e270]
+                                - listitem [ref=e271]
+                                - listitem [ref=e272]
+                                - listitem [ref=e273]
+                                - listitem [ref=e274]
+                                - listitem [ref=e275]
+                                - listitem [ref=e276]
+                                - listitem [ref=e277]
+                            - generic [ref=e279]:
+                              - generic [ref=e280]:
+                                - generic [ref=e282]: $525,000
+                                - generic [ref=e284]: A
+                              - generic [ref=e285]:
+                                - generic [ref=e286]: 3 beds
+                                - generic [ref=e287]: 1.5 baths
+                                - generic [ref=e288]:
+                                  - generic [ref=e289]: 2,462
+                                  - text: sq ft
+                              - link [ref=e290]:
+                                - /url: /WI/Cottage-Grove/2595-King-Dr-53527/home/89882131
+                                - text: 2595 King Dr, Cottage Grove, WI 53527
+                        - listitem [ref=e291]:
+                          - button [ref=e293] [cursor=pointer]:
+                            - generic [ref=e297]: SOLD OCT 24, 2025
+                            - group [ref=e299]:
+                              - list [ref=e301]:
+                                - listitem [ref=e302]
+                                - listitem [ref=e304]
+                                - listitem [ref=e306]
+                                - listitem [ref=e307]
+                                - listitem [ref=e308]
+                                - listitem [ref=e309]
+                                - listitem [ref=e310]
+                                - listitem [ref=e311]
+                                - listitem [ref=e312]
+                                - listitem [ref=e313]
+                                - listitem [ref=e314]
+                                - listitem [ref=e315]
+                                - listitem [ref=e316]
+                                - listitem [ref=e317]
+                                - listitem [ref=e318]
+                                - listitem [ref=e319]
+                                - listitem [ref=e320]
+                                - listitem [ref=e321]
+                                - listitem [ref=e322]
+                                - listitem [ref=e323]
+                                - listitem [ref=e324]
+                                - listitem [ref=e325]
+                                - listitem [ref=e326]
+                                - listitem [ref=e327]
+                                - listitem [ref=e328]
+                                - listitem [ref=e329]
+                                - listitem [ref=e330]
+                                - listitem [ref=e331]
+                                - listitem [ref=e332]
+                                - listitem [ref=e333]
+                                - listitem [ref=e334]
+                                - listitem [ref=e335]
+                                - listitem [ref=e336]
+                                - listitem [ref=e337]
+                                - listitem [ref=e338]
+                                - listitem [ref=e339]
+                                - listitem [ref=e340]
+                                - listitem [ref=e341]
+                                - listitem [ref=e342]
+                                - listitem [ref=e343]
+                                - listitem [ref=e344]
+                                - listitem [ref=e345]
+                                - listitem [ref=e346]
+                                - listitem [ref=e347]
+                                - listitem [ref=e348]
+                                - listitem [ref=e349]
+                                - listitem [ref=e350]
+                                - listitem [ref=e351]
+                                - listitem [ref=e352]
+                                - listitem [ref=e353]
+                                - listitem [ref=e354]
+                                - listitem [ref=e355]
+                                - listitem [ref=e356]
+                                - listitem [ref=e357]
+                                - listitem [ref=e358]
+                                - listitem [ref=e359]
+                                - listitem [ref=e360]
+                                - listitem [ref=e361]
+                                - listitem [ref=e362]
+                                - listitem [ref=e363]
+                                - listitem [ref=e364]
+                            - generic [ref=e366]:
+                              - generic [ref=e367]:
+                                - generic [ref=e369]: $735,000
+                                - generic [ref=e371]: B
+                              - generic [ref=e372]:
+                                - generic [ref=e373]: 4 beds
+                                - generic [ref=e374]: 2.5 baths
+                                - generic [ref=e375]:
+                                  - generic [ref=e376]: 2,301
+                                  - text: sq ft
+                              - link [ref=e377]:
+                                - /url: /WI/Cottage-Grove/4948-Creek-Haven-Rd-53527/home/144543600
+                                - text: 4948 Creek Haven Rd, Cottage Grove, WI 53527
+                        - listitem [ref=e378]:
+                          - button [ref=e380] [cursor=pointer]:
+                            - generic [ref=e384]: SOLD MAR 27, 2026
+                            - group [ref=e386]:
+                              - list [ref=e388]:
+                                - listitem [ref=e389]
+                                - listitem [ref=e391]
+                                - listitem [ref=e393]
+                                - listitem [ref=e394]
+                                - listitem [ref=e395]
+                                - listitem [ref=e396]
+                                - listitem [ref=e397]
+                                - listitem [ref=e398]
+                                - listitem [ref=e399]
+                                - listitem [ref=e400]
+                                - listitem [ref=e401]
+                                - listitem [ref=e402]
+                                - listitem [ref=e403]
+                                - listitem [ref=e404]
+                                - listitem [ref=e405]
+                                - listitem [ref=e406]
+                                - listitem [ref=e407]
+                                - listitem [ref=e408]
+                                - listitem [ref=e409]
+                                - listitem [ref=e410]
+                                - listitem [ref=e411]
+                                - listitem [ref=e412]
+                                - listitem [ref=e413]
+                                - listitem [ref=e414]
+                                - listitem [ref=e415]
+                                - listitem [ref=e416]
+                                - listitem [ref=e417]
+                                - listitem [ref=e418]
+                                - listitem [ref=e419]
+                                - listitem [ref=e420]
+                                - listitem [ref=e421]
+                                - listitem [ref=e422]
+                                - listitem [ref=e423]
+                                - listitem [ref=e424]
+                                - listitem [ref=e425]
+                            - generic [ref=e427]:
+                              - generic [ref=e428]:
+                                - generic [ref=e430]: $625,000
+                                - generic [ref=e432]: C
+                              - generic [ref=e433]:
+                                - generic [ref=e434]: 4 beds
+                                - generic [ref=e435]: 2.5 baths
+                                - generic [ref=e436]:
+                                  - generic [ref=e437]: 2,584
+                                  - text: sq ft
+                              - link [ref=e438]:
+                                - /url: /WI/Cottage-Grove/401-Michelle-Ln-53527/unit-66/home/197780700
+                                - text: "401 Michelle Ln #066, Cottage Grove, WI 53527"
+                        - listitem [ref=e439]:
+                          - button [ref=e441] [cursor=pointer]:
+                            - generic [ref=e445]: SOLD JAN 30, 2026
+                            - group [ref=e447]:
+                              - list [ref=e449]:
+                                - listitem [ref=e450]
+                                - listitem [ref=e452]
+                                - listitem [ref=e454]
+                                - listitem [ref=e455]
+                                - listitem [ref=e456]
+                                - listitem [ref=e457]
+                                - listitem [ref=e458]
+                                - listitem [ref=e459]
+                                - listitem [ref=e460]
+                                - listitem [ref=e461]
+                                - listitem [ref=e462]
+                                - listitem [ref=e463]
+                                - listitem [ref=e464]
+                                - listitem [ref=e465]
+                                - listitem [ref=e466]
+                                - listitem [ref=e467]
+                                - listitem [ref=e468]
+                                - listitem [ref=e469]
+                                - listitem [ref=e470]
+                                - listitem [ref=e471]
+                                - listitem [ref=e472]
+                                - listitem [ref=e473]
+                                - listitem [ref=e474]
+                                - listitem [ref=e475]
+                                - listitem [ref=e476]
+                                - listitem [ref=e477]
+                                - listitem [ref=e478]
+                                - listitem [ref=e479]
+                                - listitem [ref=e480]
+                                - listitem [ref=e481]
+                                - listitem [ref=e482]
+                                - listitem [ref=e483]
+                                - listitem [ref=e484]
+                                - listitem [ref=e485]
+                                - listitem [ref=e486]
+                                - listitem [ref=e487]
+                                - listitem [ref=e488]
+                                - listitem [ref=e489]
+                                - listitem [ref=e490]
+                                - listitem [ref=e491]
+                                - listitem [ref=e492]
+                                - listitem [ref=e493]
+                                - listitem [ref=e494]
+                            - generic [ref=e496]:
+                              - generic [ref=e497]:
+                                - generic [ref=e499]: $435,000
+                                - generic [ref=e501]: D
+                              - generic [ref=e502]:
+                                - generic [ref=e503]: 3 beds
+                                - generic [ref=e504]: 2.5 baths
+                                - generic [ref=e505]:
+                                  - generic [ref=e506]: 2,036
+                                  - text: sq ft
+                              - link [ref=e507]:
+                                - /url: /WI/Cottage-Grove/737-Willow-Run-St-53527/home/89882492
+                                - text: 737 Willow Run St, Cottage Grove, WI 53527
+                        - listitem [ref=e508]:
+                          - button [ref=e510] [cursor=pointer]:
+                            - generic [ref=e514]: SOLD NOV 14, 2025
+                            - group [ref=e516]:
+                              - list [ref=e518]:
+                                - listitem [ref=e519]
+                                - listitem [ref=e521]
+                                - listitem [ref=e523]
+                                - listitem [ref=e524]
+                                - listitem [ref=e525]
+                                - listitem [ref=e526]
+                                - listitem [ref=e527]
+                                - listitem [ref=e528]
+                                - listitem [ref=e529]
+                                - listitem [ref=e530]
+                                - listitem [ref=e531]
+                                - listitem [ref=e532]
+                                - listitem [ref=e533]
+                                - listitem [ref=e534]
+                                - listitem [ref=e535]
+                                - listitem [ref=e536]
+                                - listitem [ref=e537]
+                                - listitem [ref=e538]
+                                - listitem [ref=e539]
+                                - listitem [ref=e540]
+                                - listitem [ref=e541]
+                                - listitem [ref=e542]
+                                - listitem [ref=e543]
+                                - listitem [ref=e544]
+                                - listitem [ref=e545]
+                                - listitem [ref=e546]
+                                - listitem [ref=e547]
+                                - listitem [ref=e548]
+                                - listitem [ref=e549]
+                                - listitem [ref=e550]
+                                - listitem [ref=e551]
+                                - listitem [ref=e552]
+                                - listitem [ref=e553]
+                                - listitem [ref=e554]
+                                - listitem [ref=e555]
+                                - listitem [ref=e556]
+                                - listitem [ref=e557]
+                                - listitem [ref=e558]
+                            - generic [ref=e560]:
+                              - generic [ref=e561]:
+                                - generic [ref=e563]: $625,380
+                                - generic [ref=e565]: E
+                              - generic [ref=e566]:
+                                - generic [ref=e567]: 3 beds
+                                - generic [ref=e568]: 2 baths
+                                - generic [ref=e569]:
+                                  - generic [ref=e570]: 1,817
+                                  - text: sq ft
+                              - link [ref=e571]:
+                                - /url: /WI/Cottage-Grove/1301-Michelle-Ln-53527/unit-53/home/196336051
+                                - text: "1301 Michelle Ln #053, Cottage Grove, WI 53527"
+                        - listitem [ref=e572]:
+                          - button [ref=e574] [cursor=pointer]:
+                            - generic [ref=e578]: SOLD OCT 30, 2025
+                            - group [ref=e580]:
+                              - list [ref=e582]:
+                                - listitem [ref=e583]
+                                - listitem [ref=e585]
+                                - listitem [ref=e587]
+                                - listitem [ref=e588]
+                                - listitem [ref=e589]
+                                - listitem [ref=e590]
+                                - listitem [ref=e591]
+                                - listitem [ref=e592]
+                                - listitem [ref=e593]
+                                - listitem [ref=e594]
+                                - listitem [ref=e595]
+                                - listitem [ref=e596]
+                                - listitem [ref=e597]
+                                - listitem [ref=e598]
+                                - listitem [ref=e599]
+                                - listitem [ref=e600]
+                                - listitem [ref=e601]
+                                - listitem [ref=e602]
+                                - listitem [ref=e603]
+                                - listitem [ref=e604]
+                                - listitem [ref=e605]
+                                - listitem [ref=e606]
+                                - listitem [ref=e607]
+                                - listitem [ref=e608]
+                                - listitem [ref=e609]
+                                - listitem [ref=e610]
+                                - listitem [ref=e611]
+                                - listitem [ref=e612]
+                                - listitem [ref=e613]
+                                - listitem [ref=e614]
+                                - listitem [ref=e615]
+                                - listitem [ref=e616]
+                                - listitem [ref=e617]
+                                - listitem [ref=e618]
+                                - listitem [ref=e619]
+                                - listitem [ref=e620]
+                                - listitem [ref=e621]
+                                - listitem [ref=e622]
+                                - listitem [ref=e623]
+                                - listitem [ref=e624]
+                                - listitem [ref=e625]
+                                - listitem [ref=e626]
+                                - listitem [ref=e627]
+                                - listitem [ref=e628]
+                                - listitem [ref=e629]
+                                - listitem [ref=e630]
+                                - listitem [ref=e631]
+                                - listitem [ref=e632]
+                                - listitem [ref=e633]
+                                - listitem [ref=e634]
+                                - listitem [ref=e635]
+                                - listitem [ref=e636]
+                                - listitem [ref=e637]
+                                - listitem [ref=e638]
+                                - listitem [ref=e639]
+                            - generic [ref=e641]:
+                              - generic [ref=e642]:
+                                - generic [ref=e644]: $314,500
+                                - generic [ref=e646]: F
+                              - generic [ref=e647]:
+                                - generic [ref=e648]: 3 beds
+                                - generic [ref=e649]: 2 baths
+                                - generic [ref=e650]:
+                                  - generic [ref=e651]: 1,456
+                                  - text: sq ft
+                              - link [ref=e652]:
+                                - /url: /WI/Cottage-Grove/4437-Baxter-Rd-53527/home/185090411
+                                - text: 4437 Baxter Rd, Cottage Grove, WI 53527
+                      - button "next" [ref=e653] [cursor=pointer]:
+                        - img [ref=e654]:
+                          - img [ref=e655]
+                  - button [ref=e658]:
+                    - generic [ref=e659]:
+                      - region [ref=e660]
+                      - generic [ref=e661]:
+                        - generic [ref=e682]:
+                          - generic [ref=e684] [cursor=pointer]: A
+                          - generic [ref=e685] [cursor=pointer]: B
+                          - generic [ref=e686] [cursor=pointer]: C
+                          - generic [ref=e687] [cursor=pointer]: D
+                          - generic [ref=e688] [cursor=pointer]: E
+                          - generic [ref=e689] [cursor=pointer]: F
+                          - img [ref=e691]:
+                            - img [ref=e692]
+                        - iframe [ref=e694]:
+                          
+              - generic [ref=e695]:
+                - generic [ref=e696]: Claim this home to receive a free report every month with insights on the changing estimate.
+                - button "I own 4924 Creek Haven Rd" [ref=e698] [cursor=pointer]
+          - generic [ref=e701]:
+            - heading "Estimated sale earnings" [level=2] [ref=e702]
+            - generic [ref=e704]:
+              - generic [ref=e708]:
+                - generic [ref=e709]:
+                  - text: Desired selling price
+                  - link [ref=e710] [cursor=pointer]:
+                    - img [ref=e711]:
+                      - img [ref=e712]
+                - textbox "Desired selling price" [ref=e715]: $800,683
+              - generic [ref=e719]:
+                - generic [ref=e720]:
+                  - text: Remaining mortgage
+                  - link [ref=e721] [cursor=pointer]:
+                    - img [ref=e722]:
+                      - img [ref=e723]
+                - generic [ref=e725]:
+                  - text: "-"
+                  - textbox "Remaining mortgage -" [ref=e726]: $0
+              - 'button "Est. closing costs: -$56,051" [ref=e729] [cursor=pointer]':
+                - generic [ref=e730]: "Est. closing costs:"
+                - generic [ref=e731]: "-$56,051"
+                - button [ref=e732]:
+                  - img [ref=e733]:
+                    - img [ref=e734]
+              - button "Sell with a Redfin agent +$8,007" [ref=e738] [cursor=pointer]:
+                - generic [ref=e739]: Sell with a Redfin agent
+                - generic [ref=e740]: +$8,007
+                - button [ref=e741]:
+                  - img [ref=e742]:
+                    - img [ref=e743]
+              - generic [ref=e745]:
+                - generic [ref=e746]: Estimated profit
+                - generic [ref=e747]: $752,639
+          - generic [ref=e750]:
+            - heading "Market trends in 53527, WI" [level=2] [ref=e751]
+            - generic [ref=e752]:
+              - generic [ref=e753]:
+                - paragraph [ref=e754]: Last updated March 2026
+                - generic [ref=e755]:
+                  - generic [ref=e757]:
+                    - generic [ref=e758]:
+                      - paragraph [ref=e759]: Buyer's Market
+                      - img [ref=e760]
+                      - paragraph [ref=e767]: Seller's Market
+                    - paragraph [ref=e768]:
+                      - link "Balanced market" [ref=e769] [cursor=pointer]
+                  - generic [ref=e770]:
+                    - generic [ref=e771]:
+                      - generic [ref=e772]: Sale-to-List Price
+                      - generic [ref=e773]:
+                        - generic [ref=e774]: 99.1%
+                        - paragraph [ref=e775]:
+                          - img [ref=e776]:
+                            - img [ref=e777]
+                          - generic [ref=e779]: 1.0%
+                          - generic [ref=e780]: MoM
+                    - generic [ref=e781]:
+                      - generic [ref=e782]: Median sale price
+                      - generic [ref=e783]:
+                        - generic [ref=e784]: $470K
+                        - paragraph [ref=e785]:
+                          - img [ref=e786]:
+                            - img [ref=e787]
+                          - generic [ref=e789]: $33K
+                          - generic [ref=e790]: MoM
+                    - generic [ref=e791]:
+                      - generic [ref=e792]: Avg. days on market
+                      - generic [ref=e793]:
+                        - generic [ref=e794]: 63d
+                        - paragraph [ref=e795]:
+                          - img [ref=e796]:
+                            - img [ref=e797]
+                          - generic [ref=e799]: 27 days
+                          - generic [ref=e800]: MoM
+                    - generic [ref=e801]:
+                      - generic [ref=e802]: Recently sold homes
+                      - generic [ref=e803]:
+                        - generic [ref=e804]: "29"
+                        - paragraph [ref=e805]:
+                          - img [ref=e806]:
+                            - img [ref=e807]
+                          - generic [ref=e809]: "5"
+                          - generic [ref=e810]: MoM
+              - generic [ref=e812]:
+                - text: New listings for sale
+                - group "carousel" [ref=e813]:
+                  - list [ref=e815]:
+                    - listitem [ref=e816]:
+                      - button [ref=e818] [cursor=pointer]:
+                        - group [ref=e820]:
+                          - list [ref=e822]:
+                            - listitem [ref=e823]
+                            - listitem [ref=e824]
+                            - listitem [ref=e825]
+                            - listitem [ref=e826]
+                            - listitem [ref=e827]
+                            - listitem [ref=e828]
+                            - listitem [ref=e829]
+                            - listitem [ref=e830]
+                            - listitem [ref=e831]
+                            - listitem [ref=e832]
+                            - listitem [ref=e833]
+                            - listitem [ref=e834]
+                            - listitem [ref=e835]
+                            - listitem [ref=e836]
+                            - listitem [ref=e837]
+                            - listitem [ref=e838]
+                            - listitem [ref=e839]
+                            - listitem [ref=e840]
+                            - listitem [ref=e841]
+                            - listitem [ref=e842]
+                            - listitem [ref=e843]
+                            - listitem [ref=e844]
+                            - listitem [ref=e845]
+                            - listitem [ref=e846]
+                            - listitem [ref=e847]
+                            - listitem [ref=e848]
+                            - listitem [ref=e849]
+                            - listitem [ref=e850]
+                            - listitem [ref=e851]
+                            - listitem [ref=e852]
+                            - listitem [ref=e853]
+                        - generic [ref=e854]:
+                          - generic [ref=e856]: $1,195,000
+                          - generic [ref=e857]:
+                            - generic [ref=e858]: 5 beds
+                            - generic [ref=e859]: 3.5 baths
+                            - generic [ref=e860]:
+                              - generic [ref=e861]: 5,273
+                              - text: sq ft
+                          - link [ref=e862]:
+                            - /url: /WI/Cottage-Grove/5003-Creek-Haven-Rd-53527/home/57574752
+                            - text: 5003 Creek Haven Rd, Cottage Grove, WI 53527
+                          - generic [ref=e863]: Laura Lahti • Y Realty Wisconsin
+                    - listitem [ref=e864]:
+                      - generic [ref=e865]:
+                        - paragraph [ref=e866]: See all
+                        - button [ref=e867] [cursor=pointer]:
+                          - generic [ref=e868]:
+                            - text: More homes
+                            - img [ref=e869]:
+                              - img [ref=e870]
+          - generic [ref=e875]:
+            - heading "Sale history for 4924 Creek Haven Rd" [level=2] [ref=e880]
+            - generic [ref=e884]:
+              - tabpanel [ref=e885]:
+                - paragraph [ref=e891]: As the MLS and public records start to fill up, we'll list the details here.
+              - text: =
+          - generic [ref=e895]:
+            - heading "Tax history for 4924 Creek Haven Rd" [level=2] [ref=e900]
+            - generic [ref=e904]:
+              - generic [ref=e905]:
+                - generic [ref=e908]:
+                  - generic [ref=e909]:
+                    - generic [ref=e910]: Year
+                    - generic [ref=e911]: Property tax
+                    - generic [ref=e912]: Land + Additions
+                    - generic [ref=e913]: = Assessment*
+                  - generic [ref=e914]:
+                    - generic [ref=e915]: "2024"
+                    - generic [ref=e916]:
+                      - text: $13,172
+                      - generic [ref=e917]: (+33.2%)
+                    - generic [ref=e918]: $106,500 + $843,600
+                    - generic [ref=e919]: $950,100
+                  - generic [ref=e920]:
+                    - generic [ref=e921]: "2023"
+                    - generic [ref=e922]:
+                      - text: $9,892
+                      - generic [ref=e923]: (+4.8%)
+                    - generic [ref=e924]: $62,600 + $432,400
+                    - generic [ref=e925]: $495,000
+                  - generic [ref=e926]:
+                    - generic [ref=e927]: "2022"
+                    - generic [ref=e928]:
+                      - text: $9,436
+                      - generic [ref=e929]: (+3.1%)
+                    - generic [ref=e930]: $62,600 + $428,300
+                    - generic [ref=e931]: $490,900
+                  - generic [ref=e932]:
+                    - generic [ref=e933]: "2021"
+                    - generic [ref=e934]:
+                      - text: $9,150
+                      - generic [ref=e935]: (−5.6%)
+                    - generic [ref=e936]: $62,600 + $428,300
+                    - generic [ref=e937]: $490,900
+                  - generic [ref=e938]:
+                    - generic [ref=e939]: "2020"
+                    - generic [ref=e940]:
+                      - text: $9,690
+                      - generic [ref=e941]: (+3.4%)
+                    - generic [ref=e942]: $62,600 + $428,300
+                    - generic [ref=e943]: $490,900
+                  - generic [ref=e944]:
+                    - generic [ref=e945]: "2019"
+                    - generic [ref=e946]:
+                      - text: $9,376
+                      - generic [ref=e947]: (+9.0%)
+                    - generic [ref=e948]: $62,600 + $428,300
+                    - generic [ref=e949]: $490,900
+                  - generic [ref=e950]:
+                    - generic [ref=e951]: "2018"
+                    - generic [ref=e952]:
+                      - text: $8,599
+                      - generic [ref=e953]: (+0.3%)
+                    - generic [ref=e954]: $62,600 + $428,300
+                    - generic [ref=e955]: $490,900
+                  - generic [ref=e956]:
+                    - generic [ref=e957]: "2017"
+                    - generic [ref=e958]:
+                      - text: $8,576
+                      - generic [ref=e959]: (+23.1%)
+                    - generic [ref=e960]: $62,600 + $428,300
+                    - generic [ref=e961]: $490,900
+                  - generic [ref=e962]:
+                    - generic [ref=e963]: "2016"
+                    - generic [ref=e964]:
+                      - text: $6,968
+                      - generic [ref=e965]: (+5.8%)
+                    - generic [ref=e966]: $62,600 + $336,000
+                    - generic [ref=e967]: $398,600
+                  - generic [ref=e968]:
+                    - generic [ref=e969]: "2014"
+                    - generic [ref=e970]:
+                      - text: $6,587
+                      - generic [ref=e971]: (−6.6%)
+                    - generic [ref=e972]: $62,600 + $336,000
+                    - generic [ref=e973]: $398,600
+                  - generic [ref=e974]:
+                    - generic [ref=e975]: "2013"
+                    - generic [ref=e976]: $7,055
+                    - generic [ref=e977]: $62,600 + $336,000
+                    - generic [ref=e978]: $398,600
+                - button "Show all content" [ref=e981] [cursor=pointer]:
+                  - text: Show more
+                  - img [ref=e982]:
+                    - img [ref=e983]
+              - paragraph [ref=e985]: "*Taxable value of land and structures on it (\"additions\") is determined regularly by local assessors and does not affect market price."
+          - generic [ref=e990]:
+            - heading "Public record" [level=2] [ref=e995]
+            - tabpanel [ref=e1000]:
+              - generic [ref=e1002]:
+                - generic [ref=e1004]:
+                  - generic [ref=e1005]:
+                    - generic [ref=e1006]: Beds
+                    - generic [ref=e1007]: —
+                  - generic [ref=e1008]:
+                    - generic [ref=e1009]: Baths
+                    - generic [ref=e1010]: —
+                  - generic [ref=e1011]:
+                    - generic [ref=e1012]: Stories
+                    - generic [ref=e1013]: —
+                  - generic [ref=e1014]:
+                    - generic [ref=e1015]: Lot width
+                    - generic [ref=e1016]: —
+                  - generic [ref=e1017]:
+                    - generic [ref=e1018]: Lot depth
+                    - generic [ref=e1019]: —
+                  - generic [ref=e1020]:
+                    - generic [ref=e1021]: Lot size
+                    - generic [ref=e1022]: 0.92 Acres
+                  - generic [ref=e1023]:
+                    - generic [ref=e1024]: Year renovated
+                    - generic [ref=e1025]: —
+                  - generic [ref=e1026]:
+                    - generic [ref=e1027]: Sq. Ft.
+                    - generic [ref=e1028]: —
+                  - generic [ref=e1029]:
+                    - generic [ref=e1030]: Year built
+                    - generic [ref=e1031]: —
+                  - generic [ref=e1032]:
+                    - generic [ref=e1033]: Style
+                    - generic [ref=e1034]: Single Family Residential
+                  - generic [ref=e1035]:
+                    - generic [ref=e1036]: County
+                    - generic [ref=e1037]: Dane County
+                  - generic [ref=e1038]:
+                    - generic [ref=e1039]: APN
+                    - generic [ref=e1040]: "081134142563"
+                  - generic [ref=e1041]:
+                    - generic [ref=e1042]: Parking Spaces
+                    - generic [ref=e1043]: —
+                  - generic [ref=e1044]:
+                    - generic [ref=e1045]: Basement
+                    - generic [ref=e1046]: —
+                  - generic [ref=e1047]:
+                    - generic [ref=e1048]: Accessible
+                    - generic [ref=e1049]: —
+                  - generic [ref=e1050]:
+                    - generic [ref=e1051]: HOA Dues
+                    - generic [ref=e1052]: —
+                  - generic [ref=e1053]:
+                    - generic [ref=e1054]: Garage
+                    - generic [ref=e1055]: —
+                  - generic [ref=e1056]:
+                    - generic [ref=e1057]: Features
+                    - generic [ref=e1058]: —
+                - generic [ref=e1059]: Last updated by owner on Feb 5, 2026.
+          - generic [ref=e1063]:
+            - heading "Property details" [level=2] [ref=e1064]
+            - heading "Exterior" [level=3] [ref=e1065]
+            - generic [ref=e1066]:
+              - list [ref=e1067]:
+                - listitem [ref=e1068]: Property Information
+                - listitem [ref=e1069]: "Subdivision Name: CREEK HAVEN"
+                - listitem [ref=e1070]: "Legal Description: CREEK HAVEN LOT 6"
+              - list [ref=e1071]:
+                - listitem [ref=e1072]: Lot Information
+                - listitem [ref=e1073]: "Land Sq. Ft: 40,075"
+                - listitem [ref=e1074]: "Legal Lot Number: 6"
+                - listitem [ref=e1075]: "Municipality Name: TOWN OF SUN PRAIRIE"
+                - listitem [ref=e1076]: "Acres: 0.92"
+                - listitem [ref=e1077]: "Zoning Code: R-1"
+                - listitem [ref=e1078]: "County Use Description: RESIDENTIAL"
+            - heading "Financial" [level=3] [ref=e1079]
+            - list [ref=e1081]:
+              - listitem [ref=e1082]: Assessor Information
+              - listitem [ref=e1083]: "Assessment Year: 2024"
+            - heading "Public facts" [level=3] [ref=e1084]
+            - generic [ref=e1085]:
+              - list [ref=e1086]:
+                - listitem [ref=e1087]: "Beds: —"
+                - listitem [ref=e1088]: "Baths: —"
+                - listitem [ref=e1089]: "Sq. Ft.: —"
+                - listitem [ref=e1090]: "Stories: —"
+                - listitem [ref=e1091]: "Lot Size: 0.92 acres"
+                - listitem [ref=e1092]: "Style: Single Family Residential"
+                - listitem [ref=e1093]: "Year Built: —"
+                - listitem [ref=e1094]: "Year Renovated: —"
+                - listitem [ref=e1095]: "County: Dane County"
+                - listitem [ref=e1096]: "APN: 081134142563"
+              - generic [ref=e1097]: Home facts updated by county records on Feb 5, 2026
+          - heading "Refinance" [level=2] [ref=e1106]
+          - generic [ref=e1109]:
+            - heading "Around this home" [level=2] [ref=e1110]
+            - generic [ref=e1111]:
+              - tablist [ref=e1113]:
+                - tab "Schools" [ref=e1114] [cursor=pointer]:
+                  - generic [ref=e1116]:
+                    - img [ref=e1117]:
+                      - img [ref=e1118]
+                    - text: Schools
+                - tab "Places" [ref=e1120] [cursor=pointer]:
+                  - generic [ref=e1122]:
+                    - img [ref=e1123]:
+                      - img [ref=e1124]
+                    - text: Places
+                - tab "Transit" [ref=e1126] [cursor=pointer]:
+                  - generic [ref=e1128]:
+                    - img [ref=e1129]:
+                      - img [ref=e1130]
+                    - text: Transit
+              - generic [ref=e1135]:
+                - generic [ref=e1136]:
+                  - generic [ref=e1137]:
+                    - button "Eastside Elementary School Public PreK-5 • Assigned • 5.1mi 9/10" [ref=e1140] [cursor=pointer]:
+                      - generic [ref=e1141]:
+                        - generic [ref=e1142]:
+                          - generic [ref=e1143]: Eastside Elementary School
+                          - paragraph [ref=e1144]: Public PreK-5 • Assigned • 5.1mi
+                        - generic [ref=e1145]:
+                          - generic [ref=e1146]: 9/10
+                          - img [ref=e1147]:
+                            - img [ref=e1148]
+                    - button "Patrick Marsh Middle School Public 6-8 • Assigned • 5.7mi 4/10" [ref=e1152] [cursor=pointer]:
+                      - generic [ref=e1153]:
+                        - generic [ref=e1154]:
+                          - generic [ref=e1155]: Patrick Marsh Middle School
+                          - paragraph [ref=e1156]: Public 6-8 • Assigned • 5.7mi
+                        - generic [ref=e1157]:
+                          - generic [ref=e1158]: 4/10
+                          - img [ref=e1159]:
+                            - img [ref=e1160]
+                    - button "Sun Prairie East High School Public 9-12 • Assigned • 4.1mi 9/10" [ref=e1164] [cursor=pointer]:
+                      - generic [ref=e1165]:
+                        - generic [ref=e1166]:
+                          - generic [ref=e1167]: Sun Prairie East High School
+                          - paragraph [ref=e1168]: Public 9-12 • Assigned • 4.1mi
+                        - generic [ref=e1169]:
+                          - generic [ref=e1170]: 9/10
+                          - img [ref=e1171]:
+                            - img [ref=e1172]
+                  - button "Show all content" [ref=e1175] [cursor=pointer]:
+                    - text: Show nearby schools
+                    - img [ref=e1176]:
+                      - img [ref=e1177]
+                - generic [ref=e1179]:
+                  - text: Provided by GreatSchools
+                  - link [ref=e1180] [cursor=pointer]:
+                    - img [ref=e1181]:
+                      - img [ref=e1182]
+          - generic [ref=e1186]:
+            - heading "Lifestyle" [level=2] [ref=e1187]
+            - generic [ref=e1188]:
+              - button "0.1 /10 Car required Almost all errands need a car" [ref=e1189] [cursor=pointer]:
+                - generic [ref=e1190]:
+                  - img [ref=e1192]:
+                    - img [ref=e1193]
+                  - generic [ref=e1197]:
+                    - generic [ref=e1198]: "0.1"
+                    - generic [ref=e1199]: /10
+                - paragraph [ref=e1200]: Car required
+                - paragraph [ref=e1201]: Almost all errands need a car
+              - button "1.8 /10 Some bikeability Minimal bike infrastructure" [ref=e1202] [cursor=pointer]:
+                - generic [ref=e1203]:
+                  - img [ref=e1205]:
+                    - img [ref=e1206]
+                  - generic [ref=e1209]:
+                    - generic [ref=e1210]: "1.8"
+                    - generic [ref=e1211]: /10
+                - paragraph [ref=e1212]: Some bikeability
+                - paragraph [ref=e1213]: Minimal bike infrastructure
+              - button "9.2 /10 Silent Zone Virtually no nearby noise" [ref=e1214] [cursor=pointer]:
+                - generic [ref=e1215]:
+                  - img [ref=e1217]:
+                    - img [ref=e1218]
+                  - generic [ref=e1222]:
+                    - generic [ref=e1223]: "9.2"
+                    - generic [ref=e1224]: /10
+                - paragraph [ref=e1225]: Silent Zone
+                - paragraph [ref=e1226]: Virtually no nearby noise
+              - button "0.4 /10 Always calm Calm at all hours" [ref=e1227] [cursor=pointer]:
+                - generic [ref=e1228]:
+                  - img [ref=e1230]:
+                    - img [ref=e1231]
+                  - generic [ref=e1234]:
+                    - generic [ref=e1235]: "0.4"
+                    - generic [ref=e1236]: /10
+                - paragraph [ref=e1237]: Always calm
+                - paragraph [ref=e1238]: Calm at all hours
+            - paragraph [ref=e1239]: Provided by Walk Score and Local Logic
+          - generic [ref=e1241]:
+            - generic [ref=e1244]:
+              - heading "Climate risks" [level=2] [ref=e1249]
+              - generic [ref=e1252]:
+                - button "1/10 Flood Factor Minimal risk of a flood reaching the building in the next 30 years" [ref=e1254] [cursor=pointer]:
+                  - generic [ref=e1255]:
+                    - img [ref=e1257]:
+                      - img [ref=e1258]
+                    - generic [ref=e1260]:
+                      - generic [ref=e1261]: 1/10 Flood Factor
+                      - paragraph [ref=e1262]: Minimal risk of a flood reaching the building in the next 30 years
+                    - img [ref=e1264]:
+                      - img [ref=e1265]
+                - button "1/10 Fire Factor Unlikely to be in a wildfire in next 30 years" [ref=e1268] [cursor=pointer]:
+                  - generic [ref=e1269]:
+                    - img [ref=e1271]:
+                      - img [ref=e1272]
+                    - generic [ref=e1274]:
+                      - generic [ref=e1275]: 1/10 Fire Factor
+                      - paragraph [ref=e1276]: Unlikely to be in a wildfire in next 30 years
+                    - img [ref=e1278]:
+                      - img [ref=e1279]
+                - button "2/10 Heat Factor 7 days above 100° expected this year, 13 days in 30 years" [ref=e1282] [cursor=pointer]:
+                  - generic [ref=e1283]:
+                    - img [ref=e1285]:
+                      - img [ref=e1286]
+                    - generic [ref=e1288]:
+                      - generic [ref=e1289]: 2/10 Heat Factor
+                      - paragraph [ref=e1290]: 7 days above 100° expected this year, 13 days in 30 years
+                    - img [ref=e1292]:
+                      - img [ref=e1293]
+                - button "2/10 Wind Factor Minor risk of severe winds over next 30 years" [ref=e1296] [cursor=pointer]:
+                  - generic [ref=e1297]:
+                    - img [ref=e1299]:
+                      - img [ref=e1300]
+                    - generic [ref=e1303]:
+                      - generic [ref=e1304]: 2/10 Wind Factor
+                      - paragraph [ref=e1305]: Minor risk of severe winds over next 30 years
+                    - img [ref=e1307]:
+                      - img [ref=e1308]
+                - button "2/10 Air Factor 1 unhealthy days expected this year, 3 days in 30 years" [ref=e1311] [cursor=pointer]:
+                  - generic [ref=e1312]:
+                    - img [ref=e1314]:
+                      - img [ref=e1315]
+                    - generic [ref=e1318]:
+                      - generic [ref=e1319]: 2/10 Air Factor
+                      - paragraph [ref=e1320]: 1 unhealthy days expected this year, 3 days in 30 years
+                    - img [ref=e1322]:
+                      - img [ref=e1323]
+                - button "View full report" [ref=e1326] [cursor=pointer]
+                - generic [ref=e1327]:
+                  - text: Provided by First Street
+                  - link [ref=e1328] [cursor=pointer]:
+                    - img [ref=e1329]:
+                      - img [ref=e1330]
+            - generic [ref=e1334]:
+              - heading "Historical weather The Weather Channel" [level=2] [ref=e1339]:
+                - generic [ref=e1340]:
+                  - text: Historical weather
+                  - link "The Weather Channel" [ref=e1341] [cursor=pointer]:
+                    - /url: https://www.redfin.com/stingray/api/home/details/twcRedirect?lat=43.1180945&lng=-89.17802
+                    - img [ref=e1343]
+              - generic [ref=e1362]:
+                - listbox [ref=e1364]:
+                  - option "Temperature" [selected] [ref=e1365] [cursor=pointer]:
+                    - generic [ref=e1368]: Temperature
+                  - option "Precipitation" [ref=e1369] [cursor=pointer]:
+                    - generic [ref=e1372]: Precipitation
+                  - option "Snowfall" [ref=e1373] [cursor=pointer]:
+                    - generic [ref=e1376]: Snowfall
+                  - option "UV index" [ref=e1377] [cursor=pointer]:
+                    - generic [ref=e1380]: UV index
+                  - option "Humidity" [ref=e1381] [cursor=pointer]:
+                    - generic [ref=e1384]: Humidity
+                - generic [ref=e1386]:
+                  - generic [ref=e1387]:
+                    - generic [ref=e1388]:
+                      - generic [ref=e1390]: Jan
+                      - generic [ref=e1392]: Feb
+                      - generic [ref=e1394]: Mar
+                      - generic [ref=e1396]: Apr
+                      - generic [ref=e1398]: May
+                      - generic [ref=e1400]: Jun
+                      - generic [ref=e1402]: Jul
+                      - generic [ref=e1404]: Aug
+                      - generic [ref=e1406]: Sep
+                      - generic [ref=e1408]: Oct
+                      - generic [ref=e1410]: Nov
+                      - generic [ref=e1412]: Dec
+                    - generic [ref=e1413]:
+                      - generic [ref=e1415]:
+                        - generic [ref=e1416]: 25°
+                        - generic [ref=e1420]: 11°
+                      - generic [ref=e1422]:
+                        - generic [ref=e1423]: 34°
+                        - generic [ref=e1427]: 17°
+                      - generic [ref=e1429]:
+                        - generic [ref=e1430]: 50°
+                        - generic [ref=e1434]: 30°
+                      - generic [ref=e1436]:
+                        - generic [ref=e1437]: 57°
+                        - generic [ref=e1441]: 40°
+                      - generic [ref=e1443]:
+                        - generic [ref=e1444]: 69°
+                        - generic [ref=e1448]: 50°
+                      - generic [ref=e1450]:
+                        - generic [ref=e1451]: 79°
+                        - generic [ref=e1455]: 62°
+                      - generic [ref=e1457]:
+                        - generic [ref=e1458]: 81°
+                        - generic [ref=e1462]: 64°
+                      - generic [ref=e1464]:
+                        - generic [ref=e1465]: 78°
+                        - generic [ref=e1469]: 62°
+                      - generic [ref=e1471]:
+                        - generic [ref=e1472]: 77°
+                        - generic [ref=e1476]: 55°
+                      - generic [ref=e1478]:
+                        - generic [ref=e1479]: 65°
+                        - generic [ref=e1483]: 46°
+                      - generic [ref=e1485]:
+                        - generic [ref=e1486]: 46°
+                        - generic [ref=e1490]: 34°
+                      - generic [ref=e1492]:
+                        - generic [ref=e1493]: 31°
+                        - generic [ref=e1497]: 18°
+                  - generic [ref=e1498]: Avg. low and high temperature (°F)
+          - generic [ref=e1501]:
+            - heading "Sun exposure" [level=2] [ref=e1502]
+            - generic [ref=e1503]:
+              - paragraph [ref=e1505]: In this area, properties receive around 9.8 hours in June and 3.5 hours in December, placing it below the U.S. average for solar exposure.
+              - generic [ref=e1506]:
+                - generic [ref=e1507]:
+                  - generic [ref=e1509]: 9.8 hrs
+                  - generic [ref=e1512]: 3.5 hrs
+                - generic [ref=e1514]:
+                  - generic [ref=e1515]: June
+                  - generic [ref=e1516]: December
+              - button "View sun simulation" [ref=e1517] [cursor=pointer]
+            - generic [ref=e1518]: Provided by Shadowmap
+        - generic [ref=e1524]:
+          - generic [ref=e1525]:
+            - generic [ref=e1526]:
+              - generic [ref=e1527]: Estimated sale price
+              - generic [ref=e1528]: $761,000 – $921,000
+            - paragraph [ref=e1529]:
+              - text: Reach more buyers when you sell with Redfin. Plus, you'll save $8,007 in
+              - generic [ref=e1530]:
+                - text: fees.
+                - link "disclaimer" [ref=e1532]:
+                  - /url: /disclaimer
+                  - link [ref=e1533] [cursor=pointer]:
+                    - img [ref=e1534]:
+                      - img [ref=e1535]
+            - button "Schedule a selling consultation" [ref=e1537] [cursor=pointer]:
+              - generic [ref=e1538]: Schedule a selling consultation
+            - generic [ref=e1540]: Takes about 3 minutes—no commitment.
+          - generic [ref=e1542]:
+            - generic [ref=e1543]: Get an in-depth report about your home value and the Cottage Grove market.
+            - button "Request a free analysis" [ref=e1544] [cursor=pointer]:
+              - generic [ref=e1545]: Request a free analysis
+      - generic [ref=e1546]:
+        - generic [ref=e1550]:
+          - generic [ref=e1552]:
+            - heading "Nearby similar homes" [level=2] [ref=e1553]
+            - generic [ref=e1557]:
+              - generic [ref=e1559]:
+                - button "Property at 3468 Cottontail Trl, Madison, WI 53718, 3 beds, 3 baths" [ref=e1561] [cursor=pointer]:
+                  - generic [ref=e1562]:
+                    - generic [ref=e1565]: OPEN TODAY, 1PM TO 3PM
+                    - generic [ref=e1568]: 3D WALKTHROUGH
+                  - group "carousel" [ref=e1570]:
+                    - list [ref=e1572]:
+                      - listitem [ref=e1573]
+                  - generic [ref=e1575]:
+                    - generic [ref=e1577]: $495,000
+                    - generic [ref=e1578]:
+                      - generic [ref=e1579]: 3 beds
+                      - generic [ref=e1580]: 3 baths
+                      - generic [ref=e1581]:
+                        - generic [ref=e1582]: 2,734
+                        - text: sq ft
+                    - link "3468 Cottontail Trl, Madison, WI 53718" [ref=e1583]:
+                      - /url: /WI/Madison/3468-Cottontail-Trl-53718/home/89880045
+                    - generic [ref=e1584]: Matt Kornstedt • Stark Company, REALTORS
+                - button "Property at 4591 County Road TT, Sun Prairie, WI 53590, 3 beds, 2 baths" [ref=e1586] [cursor=pointer]:
+                  - group "carousel" [ref=e1588]:
+                    - list [ref=e1590]:
+                      - listitem [ref=e1591]
+                  - generic [ref=e1593]:
+                    - generic [ref=e1595]: $890,000
+                    - generic [ref=e1596]:
+                      - generic [ref=e1597]: 3 beds
+                      - generic [ref=e1598]: 2 baths
+                      - generic [ref=e1599]:
+                        - generic [ref=e1600]: 1,708
+                        - text: sq ft
+                    - link "4591 County Road TT, Sun Prairie, WI 53590" [ref=e1601]:
+                      - /url: /WI/Sun-Prairie/4591-County-Road-TT-53590/home/57581011
+                    - generic [ref=e1602]: Maurice Taylor • First Weber Inc
+                - button "Property at 574 Buss Rd, Cottage Grove, WI 53527, 3 beds, 2.5 baths" [ref=e1604] [cursor=pointer]:
+                  - generic [ref=e1608]: NEW CONSTRUCTION
+                  - group "carousel" [ref=e1610]:
+                    - list [ref=e1612]:
+                      - listitem [ref=e1613]
+                  - generic [ref=e1615]:
+                    - generic [ref=e1617]: $424,900
+                    - generic [ref=e1618]:
+                      - generic [ref=e1619]: 3 beds
+                      - generic [ref=e1620]: 2.5 baths
+                      - generic [ref=e1621]:
+                        - generic [ref=e1622]: 1,694
+                        - text: sq ft
+                    - link "574 Buss Rd, Cottage Grove, WI 53527" [ref=e1623]:
+                      - /url: /WI/Cottage-Grove/574-Buss-Rd-53527/home/200547201
+                    - generic [ref=e1624]: Aeryn Barry • Tim O'Brien Homes LLC
+                - button "Property at 572 Buss Rd, Cottage Grove, WI 53527, 3 beds, 2.5 baths" [ref=e1626] [cursor=pointer]:
+                  - generic [ref=e1630]: NEW CONSTRUCTION
+                  - group "carousel" [ref=e1632]:
+                    - list [ref=e1634]:
+                      - listitem [ref=e1635]
+                  - generic [ref=e1637]:
+                    - generic [ref=e1639]: $436,900
+                    - generic [ref=e1640]:
+                      - generic [ref=e1641]: 3 beds
+                      - generic [ref=e1642]: 2.5 baths
+                      - generic [ref=e1643]:
+                        - generic [ref=e1644]: 1,882
+                        - text: sq ft
+                    - link "572 Buss Rd, Cottage Grove, WI 53527" [ref=e1645]:
+                      - /url: /WI/Cottage-Grove/572-Buss-Rd-53527/home/200547286
+                    - generic [ref=e1646]: Aeryn Barry • Tim O'Brien Homes LLC
+                - button "Property at 1314 Manassas Trl, Madison, WI 53718, 4 beds, 2.5 baths" [ref=e1648] [cursor=pointer]:
+                  - group "carousel" [ref=e1650]:
+                    - list [ref=e1652]:
+                      - listitem [ref=e1653]
+                  - generic [ref=e1655]:
+                    - generic [ref=e1657]: $825,000
+                    - generic [ref=e1658]:
+                      - generic [ref=e1659]: 4 beds
+                      - generic [ref=e1660]: 2.5 baths
+                      - generic [ref=e1661]:
+                        - generic [ref=e1662]: 3,785
+                        - text: sq ft
+                    - link "1314 Manassas Trl, Madison, WI 53718" [ref=e1663]:
+                      - /url: /WI/Madison/1314-Manassas-Trl-53718/home/57696557
+                    - generic [ref=e1664]: Denise Holmes • Collective Real Estate Group
+                - button "Property at 24 Oak Ridge Trl, Deerfield, WI 53531, 4 beds, 3 baths" [ref=e1666] [cursor=pointer]:
+                  - group "carousel" [ref=e1668]:
+                    - list [ref=e1670]:
+                      - listitem [ref=e1671]
+                  - generic [ref=e1673]:
+                    - generic [ref=e1675]: $634,000
+                    - generic [ref=e1676]:
+                      - generic [ref=e1677]: 4 beds
+                      - generic [ref=e1678]: 3 baths
+                      - generic [ref=e1679]:
+                        - generic [ref=e1680]: 2,900
+                        - text: sq ft
+                    - link "24 Oak Ridge Trl, Deerfield, WI 53531" [ref=e1681]:
+                      - /url: /WI/Deerfield/24-Oak-Ridge-Trl-53531/home/57737877
+                    - generic [ref=e1682]: Liz Leonard • Bunbury & Assoc, REALTORS
+              - button "View more homes" [ref=e1684] [cursor=pointer]
+          - generic [ref=e1686]:
+            - heading "New listings for sale in 53527" [level=2] [ref=e1687]
+            - button "Property at 5003 Creek Haven Rd, Cottage Grove, WI 53527, 5 beds, 3.5 baths" [ref=e1695] [cursor=pointer]:
+              - group "carousel" [ref=e1697]:
+                - list [ref=e1699]:
+                  - listitem [ref=e1700]
+              - generic [ref=e1702]:
+                - generic [ref=e1704]: $1,195,000
+                - generic [ref=e1705]:
+                  - generic [ref=e1706]: 5 beds
+                  - generic [ref=e1707]: 3.5 baths
+                  - generic [ref=e1708]:
+                    - generic [ref=e1709]: 5,273
+                    - text: sq ft
+                - link "5003 Creek Haven Rd, Cottage Grove, WI 53527" [ref=e1710]:
+                  - /url: /WI/Cottage-Grove/5003-Creek-Haven-Rd-53527/home/57574752
+                - generic [ref=e1711]: Laura Lahti • Y Realty Wisconsin
+          - generic [ref=e1714]:
+            - heading "Home values near 4924 Creek Haven Rd" [level=2] [ref=e1715]
+            - generic [ref=e1716]: Data from public records.
+            - generic [ref=e1717]:
+              - generic [ref=e1720]:
+                - table [ref=e1721]:
+                  - rowgroup [ref=e1722]:
+                    - row [ref=e1723]:
+                      - columnheader [ref=e1724]: Address
+                      - columnheader [ref=e1725]: Redfin Estimate
+                  - rowgroup [ref=e1726]:
+                    - row [ref=e1727]:
+                      - cell [ref=e1728]:
+                        - link [ref=e1730] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/5003-Creek-Haven-Rd-53527/home/57574752
+                          - text: 5003 Creek Haven Road
+                          - generic [ref=e1731]: Cottage Grove, WI
+                        - generic [ref=e1732]: 5 Beds | 3.5 Baths | 5273 Sq. Ft.
+                      - cell [ref=e1733]: $1,190,240
+                    - row [ref=e1734]:
+                      - cell [ref=e1735]:
+                        - link [ref=e1737] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/4915-Creek-Haven-Rd-53527/home/57777318
+                          - text: 4915 Creek Haven Road
+                          - generic [ref=e1738]: Cottage Grove, WI
+                        - generic [ref=e1739]: 3 Beds | 2 Baths | 2262 Sq. Ft.
+                      - cell [ref=e1740]: $549,142
+                - table [ref=e1741]:
+                  - rowgroup [ref=e1742]:
+                    - row [ref=e1743]:
+                      - columnheader [ref=e1744]: Address
+                      - columnheader [ref=e1745]: Redfin Estimate
+                  - rowgroup [ref=e1746]:
+                    - row [ref=e1747]:
+                      - cell [ref=e1748]:
+                        - link [ref=e1750] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/4901-Creek-Haven-Rd-53527/home/57695269
+                          - text: 4901 Creek Haven Road
+                          - generic [ref=e1751]: Cottage Grove, WI
+                        - generic [ref=e1752]: 3 Beds | 1.5 Baths | 2476 Sq. Ft.
+                      - cell [ref=e1753]: $515,982
+                    - row [ref=e1754]:
+                      - cell [ref=e1755]:
+                        - link [ref=e1757] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/4905-Creek-Haven-Rd-53527/home/57783209
+                          - text: 4905 Creek Haven Road
+                          - generic [ref=e1758]: Cottage Grove, WI
+                        - generic [ref=e1759]: 3 Beds | 2 Baths | 1997 Sq. Ft.
+                      - cell [ref=e1760]: $486,965
+                - table [ref=e1761]:
+                  - rowgroup [ref=e1762]:
+                    - row [ref=e1763]:
+                      - columnheader [ref=e1764]: Address
+                      - columnheader [ref=e1765]: Redfin Estimate
+                  - rowgroup [ref=e1766]:
+                    - row [ref=e1767]:
+                      - cell [ref=e1768]:
+                        - link [ref=e1770] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/4916-Creek-Haven-Rd-53527/home/57709885
+                          - text: 4916 Creek Haven Road
+                          - generic [ref=e1771]: Cottage Grove, WI
+                        - generic [ref=e1772]: 4 Beds | 3 Baths | 4116 Sq. Ft.
+                      - cell [ref=e1773]: $760,791
+                    - row [ref=e1774]:
+                      - cell [ref=e1775]:
+                        - link [ref=e1777] [cursor=pointer]:
+                          - /url: /WI/Cottage-Grove/4932-Creek-Haven-Rd-53527/home/89890631
+                          - text: 4932 Creek Haven Road
+                          - generic [ref=e1778]: Cottage Grove, WI
+                        - generic [ref=e1779]: 4 Beds | 3 Baths | 2947 Sq. Ft.
+                      - cell [ref=e1780]: $665,715
+              - button "Show all content" [ref=e1783] [cursor=pointer]:
+                - text: Show more
+                - img [ref=e1784]:
+                  - img [ref=e1785]
+        - generic [ref=e1793]:
+          - heading "More real estate resources" [level=2] [ref=e1794]
+          - navigation "Breadcrumbs" [ref=e1795]:
+            - list [ref=e1796]:
+              - listitem [ref=e1797]:
+                - link "Redfin" [ref=e1798] [cursor=pointer]:
+                  - /url: https://www.redfin.com
+                - img [ref=e1799]:
+                  - img [ref=e1800]
+              - listitem [ref=e1802]:
+                - link "Wisconsin" [ref=e1803] [cursor=pointer]:
+                  - /url: https://www.redfin.com/state/Wisconsin
+                - img [ref=e1804]:
+                  - img [ref=e1805]
+              - listitem [ref=e1807]:
+                - link "Cottage Grove" [ref=e1808] [cursor=pointer]:
+                  - /url: https://www.redfin.com/city/4468/WI/Cottage-Grove
+                - img [ref=e1809]:
+                  - img [ref=e1810]
+              - listitem [ref=e1812]: 4924 Creek Haven Rd, Cottage Grove, WI 53527
+          - tablist [ref=e1814]:
+            - tab "Zip Codes" [ref=e1815] [cursor=pointer]:
+              - generic [ref=e1816]: Zip Codes
+            - tab "Cities" [ref=e1817] [cursor=pointer]:
+              - generic [ref=e1818]: Cities
+            - tab "Neighborhoods" [ref=e1819] [cursor=pointer]:
+              - generic [ref=e1820]: Neighborhoods
+            - tab "Popular Searches" [ref=e1821] [cursor=pointer]:
+              - generic [ref=e1822]: Popular Searches
+          - table [ref=e1824]:
+            - rowgroup [ref=e1825]:
+              - row "53718 homes for sale" [ref=e1826]:
+                - cell "53718 homes for sale" [ref=e1827]:
+                  - link "53718 homes for sale" [ref=e1828] [cursor=pointer]:
+                    - /url: /zipcode/53718
+                - cell [ref=e1829]
+                - cell [ref=e1830]
+                - cell [ref=e1831]
+            - rowgroup [ref=e1832]:
+              - row "53527 homes for sale" [ref=e1833]:
+                - cell "53527 homes for sale" [ref=e1834]:
+                  - link "53527 homes for sale" [ref=e1835] [cursor=pointer]:
+                    - /url: /zipcode/53527
+                - cell [ref=e1836]
+                - cell [ref=e1837]
+                - cell [ref=e1838]
+    - generic [ref=e1841]:
+      - generic [ref=e1842]:
+        - paragraph [ref=e1843]: Join us
+        - link "Become an Agent" [ref=e1845] [cursor=pointer]:
+          - /url: https://careers.redfin.com/real-estate
+        - link "Get referrals" [ref=e1847] [cursor=pointer]:
+          - /url: https://www.redfin.com/partners
+        - link "Careers" [ref=e1849] [cursor=pointer]:
+          - /url: https://careers.redfin.com/us/en
+        - generic [ref=e1850]:
+          - paragraph [ref=e1851]: Find homes faster
+          - link "Download the Redfin App on the Apple App Store" [ref=e1853] [cursor=pointer]:
+            - /url: https://redfin.onelink.me/iy7h/wk66abnm
+            - img "Download the Redfin App on the Apple App Store" [ref=e1854]
+          - link "Download the Redfin App from the Google Play Store" [ref=e1856] [cursor=pointer]:
+            - /url: https://redfin.onelink.me/iy7h/wk66abnm
+            - img "Download the Redfin App from the Google Play Store" [ref=e1857]
+      - generic [ref=e1858]:
+        - paragraph [ref=e1859]: About us
+        - link "Why Redfin?" [ref=e1861] [cursor=pointer]:
+          - /url: /why-redfin
+        - link "Community Impact" [ref=e1863] [cursor=pointer]:
+          - /url: https://careers.redfin.com/community-impact
+        - link "Inclusion" [ref=e1865] [cursor=pointer]:
+          - /url: https://careers.redfin.com/inclusion
+        - link "Life at Redfin" [ref=e1867] [cursor=pointer]:
+          - /url: https://careers.redfin.com/redfin-life
+        - link "Press" [ref=e1869] [cursor=pointer]:
+          - /url: https://www.redfin.com/news/press-center/
+        - link "Investors" [ref=e1871] [cursor=pointer]:
+          - /url: https://ir.rocketcompanies.com/
+        - link "Blog" [ref=e1873] [cursor=pointer]:
+          - /url: https://www.redfin.com/blog/
+        - link "Real Estate News" [ref=e1875] [cursor=pointer]:
+          - /url: https://www.redfin.com/news/
+      - generic [ref=e1876]:
+        - paragraph [ref=e1877]: Find us
+        - generic [ref=e1878]:
+          - link "Contact Us" [ref=e1880] [cursor=pointer]:
+            - /url: /about/contact-us
+          - link "Help Center" [ref=e1882] [cursor=pointer]:
+            - /url: https://support.redfin.com/hc/en-us
+          - button "Advertise" [ref=e1885] [cursor=pointer]
+        - list [ref=e1887]:
+          - listitem [ref=e1888]:
+            - link "Redfin Facebook" [ref=e1889] [cursor=pointer]:
+              - /url: https://www.facebook.com/redfin
+              - img [ref=e1890]:
+                - img [ref=e1891]
+          - listitem [ref=e1894]:
+            - link "Redfin Twitter" [ref=e1895] [cursor=pointer]:
+              - /url: https://twitter.com/Redfin
+              - img [ref=e1896]:
+                - img [ref=e1897]
+          - listitem [ref=e1899]:
+            - link "Redfin TikTok" [ref=e1900] [cursor=pointer]:
+              - /url: https://www.tiktok.com/@redfinrealestate
+              - img [ref=e1901]:
+                - img [ref=e1902]
+          - listitem [ref=e1904]:
+            - link "Redfin Instagram" [ref=e1905] [cursor=pointer]:
+              - /url: https://www.instagram.com/redfinrealestate/
+              - img [ref=e1906]:
+                - img [ref=e1907]
+        - paragraph [ref=e1909]: Subsidiaries
+        - generic [ref=e1910]:
+          - link "Rent." [ref=e1912] [cursor=pointer]:
+            - /url: https://www.rent.com/
+          - link "ApartmentGuide" [ref=e1914] [cursor=pointer]:
+            - /url: https://www.apartmentguide.com/
+        - paragraph [ref=e1915]: Affiliated Business
+        - generic [ref=e1916]:
+          - link "Rocket Close" [ref=e1918] [cursor=pointer]:
+            - /url: https://www.rocketclose.com/
+          - link "Rocket Mortgage" [ref=e1920] [cursor=pointer]:
+            - /url: https://www.rocketmortgage.com/
+        - generic [ref=e1921]:
+          - paragraph [ref=e1922]: Countries
+          - paragraph [ref=e1923]:
+            - generic [ref=e1924]:
+              - img "US flag" [ref=e1925]
+              - text: United States
+          - paragraph [ref=e1926]:
+            - link "Canadian flagCanada" [ref=e1927] [cursor=pointer]:
+              - /url: https://www.redfin.ca
+              - img "Canadian flag" [ref=e1928]
+              - text: Canada
+      - generic [ref=e1930]:
+        - paragraph [ref=e1931]: "Copyright: © 2026 Redfin. All rights reserved."
+        - paragraph [ref=e1932]:
+          - text: "Updated September 2025: By searching, you agree to the"
+          - link "Terms of Use" [ref=e1933] [cursor=pointer]:
+            - /url: /about/terms-of-use
+          - text: ", and"
+          - link "Privacy Policy" [ref=e1934] [cursor=pointer]:
+            - /url: /about/privacy-policy
+          - text: .
+        - paragraph [ref=e1935]:
+          - link "Do not sell or share my personal information" [ref=e1936] [cursor=pointer]:
+            - /url: /about/privacy/cookie
+          - text: .
+        - paragraph [ref=e1937]: REDFIN and all REDFIN variants, WALK SCORE, and the R logos, are trademarks of Redfin Corporation, registered or pending in the USPTO.
+        - paragraph [ref=e1938]: "California DRE #01521930"
+        - paragraph [ref=e1939]:
+          - text: Redfin is licensed to do business in New York as Redfin Real Estate.
+          - link "NY Standard Operating Procedures" [ref=e1940] [cursor=pointer]:
+            - /url: https://redfin.widen.net/s/c2njc52hnk/redfin_new-york-standardized-operating-procedures
+        - paragraph [ref=e1941]:
+          - text: New Mexico
+          - link "New Mexico Real Estate Licenses" [ref=e1942] [cursor=pointer]:
+            - /url: https://ssl.cdn-redfin.com/vLATEST/images/nm-licenses/redfin_new_mexico_licenses.pdf
+            - text: Real Estate Licenses
+        - paragraph [ref=e1943]:
+          - text: "TREC:"
+          - link "Info About Brokerage Services" [ref=e1944] [cursor=pointer]:
+            - /url: https://ssl.cdn-redfin.com/vLATEST/images/about/ibs-statement/texas.pdf
+          - text: ","
+          - link "Consumer Protection Notice" [ref=e1945] [cursor=pointer]:
+            - /url: https://www.trec.texas.gov/forms/consumer-protection-notice
+        - paragraph [ref=e1946]:
+          - text: "All mortgage lending products and information are provided by Rocket Mortgage, LLC | NMLS #3030;"
+          - link "www.NMLSConsumerAccess.org" [ref=e1947] [cursor=pointer]:
+            - /url: https://www.NMLSConsumerAccess.org
+          - text: .
+          - link "Licensed in 50 states" [ref=e1948] [cursor=pointer]:
+            - /url: https://www.rocketmortgage.com/legal/disclosures-licenses
+          - text: . This site is not authorized by the New York State Department of Financial Services for mortgage solicitation or loan applications activities related to properties located in the State of New York.
+        - paragraph [ref=e1949]: Redfin Corporation is an affiliated business of Rocket Limited Partnership. Each company, and their subsidiaries, are separate legal entities operated and managed through its own management and governance structures.
+        - paragraph [ref=e1950]:
+          - text: If you are using a screen reader, or having trouble reading this website, please call Redfin Customer Support for help at
+          - link "1-844-759-7732" [ref=e1951] [cursor=pointer]:
+            - /url: tel:1-844-759-7732
+          - text: .
+        - paragraph [ref=e1952]:
+          - link "Equal Housing Opportunity" [ref=e1954] [cursor=pointer]:
+            - /url: /about/terms-of-use#Equal_Housing_Opportunity
+            - img "Equal Housing Opportunity" [ref=e1955]
+          - generic [ref=e1956]:
+            - text: REDFIN IS COMMITTED TO AND ABIDES BY THE FAIR HOUSING ACT AND EQUAL OPPORTUNITY ACT. READ REDFIN'S
+            - link "FAIR HOUSING POLICY" [ref=e1957] [cursor=pointer]:
+              - /url: /about/fair-housing-policy
+            - text: AND THE
+            - link "NEW YORK STATE FAIR HOUSING NOTICE" [ref=e1958] [cursor=pointer]:
+              - /url: https://www.dos.ny.gov/licensing/docs/FairHousingNotice_new.pdf
+            - text: .
+      - generic [ref=e1960]:
+        - text: GreatSchools Ratings provided by
+        - link "GreatSchools.org" [ref=e1961] [cursor=pointer]:
+          - /url: http://www.greatschools.org/
+        - text: .
+  - region "Cookies and your choices banner" [ref=e1962]:
+    - dialog "Cookies and your choices" [ref=e1963]:
+      - generic [ref=e1965]:
+        - generic [ref=e1967]:
+          - heading "Cookies and your choices" [level=2] [ref=e1968]
+          - generic [ref=e1969]:
+            - text: We use cookies and similar technologies (“Cookies”) to enhance your user experience, conduct analytics, advertise to you or others, and to share information about your use of our site with third-parties. By using our site, you agree to our use of Cookies to collect and share your information, and to our
+            - link "Terms of Use" [ref=e1970] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/terms-of-use
+            - text: and
+            - link "Privacy Policy" [ref=e1971] [cursor=pointer]:
+              - /url: https://www.redfin.com/about/privacy-policy
+            - text: . Click Cookie Settings for more info or to opt-out of Cookies sharing your data for targeted advertising.
+        - button "Cookie settings, Opens the preference center dialog" [ref=e1974] [cursor=pointer]: Cookie settings
+      - button "Close" [ref=e1976] [cursor=pointer]

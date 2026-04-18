@@ -1,0 +1,48 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: Verified through 2026-04-16
+    - generic [ref=e6]: ·
+    - generic [ref=e7]: 14 days ahead of typical title-plant cycle
+    - generic [ref=e8]: ·
+    - link "See pipeline →" [ref=e9] [cursor=pointer]:
+      - /url: /pipeline
+  - generic [ref=e11]:
+    - navigation [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Land Custodian Portal" [level=1] [ref=e14]
+        - generic [ref=e15]: Maricopa County, AZ
+      - link "Search" [ref=e16] [cursor=pointer]:
+        - /url: /
+      - link "Chain of Title" [ref=e17] [cursor=pointer]:
+        - /url: /parcel/304-77-566
+      - link "Encumbrances" [ref=e18] [cursor=pointer]:
+        - /url: /parcel/304-77-566/encumbrances
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: "Terminology:"
+          - button "Professional" [pressed] [ref=e22]
+          - button "Plain English" [ref=e23] [cursor=pointer]
+        - generic [ref=e24]:
+          - generic [ref=e25]: 2778 E Courtney St · APN 304-77-566
+          - link "← Search another parcel" [ref=e26] [cursor=pointer]:
+            - /url: /
+    - main [ref=e28]:
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - heading "2778 E Courtney St, Gilbert AZ" [level=1] [ref=e34]
+            - generic [ref=e35]:
+              - heading "Chain of Title" [level=2] [ref=e36]
+              - link "Read as a story →" [ref=e37] [cursor=pointer]:
+                - /url: /parcel/304-77-566/story
+            - paragraph [ref=e38]: "APN: 304-77-566"
+          - generic [ref=e39]:
+            - paragraph [ref=e40]: No anomalies detected
+            - paragraph [ref=e41]: The automated rules found no flagged conditions in the current chain.
+          - generic [ref=e42]:
+            - strong [ref=e43]: No conveyance instruments in corpus
+            - generic [ref=e44]: for APN 304-77-566. A production chain would probe the county index for docket/book references predating the 1974 image depth.
+          - button "View AI summary" [ref=e46]:
+            - generic [ref=e47]: ▸
+            - generic [ref=e48]: View AI summary
+        - complementary [ref=e49]: No spatial data for APN 304-77-566.

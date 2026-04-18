@@ -1,4 +1,6 @@
 {
+  "enableAllProjectMcpServers": true,
+  "enabledMcpjsonServers": ["playwright"],
   "permissions": {
     "allow": [
       "Bash(curl:*)",
@@ -10,7 +12,10 @@
       "Bash(node:*)",
       "Bash(pip install:*)",
       "Skill(update-config)",
-      "Bash(powershell:*)"
+      "Bash(powershell:*)",
+      "mcp__playwright__*",
+      "WebFetch",
+      "WebSearch"
     ]
   }
 }

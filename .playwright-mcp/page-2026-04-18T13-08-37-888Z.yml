@@ -1,0 +1,740 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e2]:
+    - banner [ref=e3]:
+      - generic [ref=e4]:
+        - list [ref=e7]:
+          - listitem [ref=e8]:
+            - link "Court Forms" [ref=e9] [cursor=pointer]:
+              - /url: https://superiorcourt.maricopa.gov/llrc/#LLrcCourtForm
+          - listitem [ref=e10]:
+            - link "Court Calendar" [ref=e11] [cursor=pointer]:
+              - /url: https://www.superiorcourt.maricopa.gov/calendar/today/
+          - listitem [ref=e12]:
+            - generic [ref=e14]:
+              - combobox "Language Translate Widget" [ref=e16] [cursor=pointer]:
+                - option "Select Language" [selected]
+                - option "Abkhaz"
+                - option "Acehnese"
+                - option "Acholi"
+                - option "Afar"
+                - option "Afrikaans"
+                - option "Albanian"
+                - option "Alur"
+                - option "Amharic"
+                - option "Arabic"
+                - option "Armenian"
+                - option "Assamese"
+                - option "Avar"
+                - option "Awadhi"
+                - option "Aymara"
+                - option "Azerbaijani"
+                - option "Balinese"
+                - option "Baluchi"
+                - option "Bambara"
+                - option "Baoulé"
+                - option "Bashkir"
+                - option "Basque"
+                - option "Batak Karo"
+                - option "Batak Simalungun"
+                - option "Batak Toba"
+                - option "Belarusian"
+                - option "Bemba"
+                - option "Bengali"
+                - option "Betawi"
+                - option "Bhojpuri"
+                - option "Bikol"
+                - option "Bosnian"
+                - option "Breton"
+                - option "Bulgarian"
+                - option "Buryat"
+                - option "Cantonese"
+                - option "Catalan"
+                - option "Cebuano"
+                - option "Chamorro"
+                - option "Chechen"
+                - option "Chichewa"
+                - option "Chinese (Simplified)"
+                - option "Chinese (Traditional)"
+                - option "Chuukese"
+                - option "Chuvash"
+                - option "Corsican"
+                - option "Crimean Tatar (Cyrillic)"
+                - option "Crimean Tatar (Latin)"
+                - option "Croatian"
+                - option "Czech"
+                - option "Danish"
+                - option "Dari"
+                - option "Dhivehi"
+                - option "Dinka"
+                - option "Dogri"
+                - option "Dombe"
+                - option "Dutch"
+                - option "Dyula"
+                - option "Dzongkha"
+                - option "Esperanto"
+                - option "Estonian"
+                - option "Ewe"
+                - option "Faroese"
+                - option "Fijian"
+                - option "Filipino"
+                - option "Finnish"
+                - option "Fon"
+                - option "French"
+                - option "French (Canada)"
+                - option "Frisian"
+                - option "Friulian"
+                - option "Fulani"
+                - option "Ga"
+                - option "Galician"
+                - option "Georgian"
+                - option "German"
+                - option "Greek"
+                - option "Guarani"
+                - option "Gujarati"
+                - option "Haitian Creole"
+                - option "Hakha Chin"
+                - option "Hausa"
+                - option "Hawaiian"
+                - option "Hebrew"
+                - option "Hiligaynon"
+                - option "Hindi"
+                - option "Hmong"
+                - option "Hungarian"
+                - option "Hunsrik"
+                - option "Iban"
+                - option "Icelandic"
+                - option "Igbo"
+                - option "Ilocano"
+                - option "Indonesian"
+                - option "Inuktut (Latin)"
+                - option "Inuktut (Syllabics)"
+                - option "Irish"
+                - option "Italian"
+                - option "Jamaican Patois"
+                - option "Japanese"
+                - option "Javanese"
+                - option "Jingpo"
+                - option "Kalaallisut"
+                - option "Kannada"
+                - option "Kanuri"
+                - option "Kapampangan"
+                - option "Kazakh"
+                - option "Khasi"
+                - option "Khmer"
+                - option "Kiga"
+                - option "Kikongo"
+                - option "Kinyarwanda"
+                - option "Kituba"
+                - option "Kokborok"
+                - option "Komi"
+                - option "Konkani"
+                - option "Korean"
+                - option "Krio"
+                - option "Kurdish (Kurmanji)"
+                - option "Kurdish (Sorani)"
+                - option "Kyrgyz"
+                - option "Lao"
+                - option "Latgalian"
+                - option "Latin"
+                - option "Latvian"
+                - option "Ligurian"
+                - option "Limburgish"
+                - option "Lingala"
+                - option "Lithuanian"
+                - option "Lombard"
+                - option "Luganda"
+                - option "Luo"
+                - option "Luxembourgish"
+                - option "Macedonian"
+                - option "Madurese"
+                - option "Maithili"
+                - option "Makassar"
+                - option "Malagasy"
+                - option "Malay"
+                - option "Malay (Jawi)"
+                - option "Malayalam"
+                - option "Maltese"
+                - option "Mam"
+                - option "Manx"
+                - option "Maori"
+                - option "Marathi"
+                - option "Marshallese"
+                - option "Marwadi"
+                - option "Mauritian Creole"
+                - option "Meadow Mari"
+                - option "Meiteilon (Manipuri)"
+                - option "Minang"
+                - option "Mizo"
+                - option "Mongolian"
+                - option "Myanmar (Burmese)"
+                - option "Nahuatl (Eastern Huasteca)"
+                - option "Ndau"
+                - option "Ndebele (South)"
+                - option "Nepalbhasa (Newari)"
+                - option "Nepali"
+                - option "NKo"
+                - option "Norwegian"
+                - option "Nuer"
+                - option "Occitan"
+                - option "Odia (Oriya)"
+                - option "Oromo"
+                - option "Ossetian"
+                - option "Pangasinan"
+                - option "Papiamento"
+                - option "Pashto"
+                - option "Persian"
+                - option "Polish"
+                - option "Portuguese (Brazil)"
+                - option "Portuguese (Portugal)"
+                - option "Punjabi (Gurmukhi)"
+                - option "Punjabi (Shahmukhi)"
+                - option "Quechua"
+                - option "Qʼeqchiʼ"
+                - option "Romani"
+                - option "Romanian"
+                - option "Rundi"
+                - option "Russian"
+                - option "Sami (North)"
+                - option "Samoan"
+                - option "Sango"
+                - option "Sanskrit"
+                - option "Santali (Latin)"
+                - option "Santali (Ol Chiki)"
+                - option "Scots Gaelic"
+                - option "Sepedi"
+                - option "Serbian"
+                - option "Sesotho"
+                - option "Seychellois Creole"
+                - option "Shan"
+                - option "Shona"
+                - option "Sicilian"
+                - option "Silesian"
+                - option "Sindhi"
+                - option "Sinhala"
+                - option "Slovak"
+                - option "Slovenian"
+                - option "Somali"
+                - option "Spanish"
+                - option "Sundanese"
+                - option "Susu"
+                - option "Swahili"
+                - option "Swati"
+                - option "Swedish"
+                - option "Tahitian"
+                - option "Tajik"
+                - option "Tamazight"
+                - option "Tamazight (Tifinagh)"
+                - option "Tamil"
+                - option "Tatar"
+                - option "Telugu"
+                - option "Tetum"
+                - option "Thai"
+                - option "Tibetan"
+                - option "Tigrinya"
+                - option "Tiv"
+                - option "Tok Pisin"
+                - option "Tongan"
+                - option "Tshiluba"
+                - option "Tsonga"
+                - option "Tswana"
+                - option "Tulu"
+                - option "Tumbuka"
+                - option "Turkish"
+                - option "Turkmen"
+                - option "Tuvan"
+                - option "Twi"
+                - option "Udmurt"
+                - option "Ukrainian"
+                - option "Urdu"
+                - option "Uyghur"
+                - option "Uzbek"
+                - option "Venda"
+                - option "Venetian"
+                - option "Vietnamese"
+                - option "Waray"
+                - option "Welsh"
+                - option "Wolof"
+                - option "Xhosa"
+                - option "Yakut"
+                - option "Yiddish"
+                - option "Yoruba"
+                - option "Yucatec Maya"
+                - option "Zapotec"
+                - option "Zulu"
+              - text: Powered by
+        - navigation [ref=e17]:
+          - link "company logo" [ref=e19] [cursor=pointer]:
+            - /url: /
+            - img "company logo" [ref=e20]
+          - search [ref=e21]:
+            - generic [ref=e22]:
+              - button "search case and more" [ref=e23] [cursor=pointer]
+              - textbox "Search" [ref=e24]
+          - img [ref=e26]
+    - generic [ref=e28] [cursor=pointer]: 
+    - heading "Probate Court Case Information - Case History" [level=1] [ref=e33]
+    - generic [ref=e34]:
+      - generic [ref=e41]:
+        - link "« Return to search results" [ref=e43] [cursor=pointer]:
+          - /url: https://www.superiorcourt.maricopa.gov/docket/ProbateCourtCases/caseSearchResults.asp?lastName=JOHNSON&FirstName=TROY
+        - generic [ref=e44]:
+          - generic [ref=e45]: Case Information
+          - generic [ref=e46]:
+            - generic [ref=e47]: "Case Number:"
+            - generic [ref=e48]: PB2025-001381
+            - generic [ref=e49]: "Judge:"
+            - generic [ref=e50]: Williams, Paula
+          - generic [ref=e51]:
+            - generic [ref=e52]: Plaintiff
+            - generic [ref=e53]: John Darc Lorenz
+            - generic [ref=e54]: "Location:"
+            - generic [ref=e55]: Downtown
+          - generic [ref=e56]:
+            - generic [ref=e57]: "Case Type:"
+            - generic [ref=e58]: Probate
+        - generic [ref=e59]:
+          - generic [ref=e60]: Party Information
+          - generic [ref=e61]:
+            - generic [ref=e62]: Party Name
+            - generic [ref=e63]: John Darc Lorenz
+            - generic [ref=e64]: Relationship
+            - generic [ref=e65]: Decedent
+            - generic [ref=e66]: Sex
+            - generic [ref=e67]: Male
+            - generic [ref=e68]: Attorney
+            - generic [ref=e69]: Pro Per
+          - generic [ref=e70]:
+            - generic [ref=e71]: Party Name
+            - generic [ref=e72]: Troy Thomas Carroll Johnson
+            - generic [ref=e73]: Relationship
+            - generic [ref=e74]: Petitioner
+            - generic [ref=e75]: Sex
+            - generic [ref=e76]: Male
+            - generic [ref=e77]: Attorney
+            - generic [ref=e78]: Benjamin Hunsaker
+          - generic [ref=e79]:
+            - generic [ref=e80]: Party Name
+            - generic [ref=e81]: Janet Lynn Carnell
+            - generic [ref=e82]: Relationship
+            - generic [ref=e83]: Undesignated
+            - generic [ref=e84]: Sex
+            - generic [ref=e85]: Female
+            - generic [ref=e86]: Attorney
+            - generic [ref=e87]: Jessica Dorvinen
+        - generic [ref=e88]:
+          - generic [ref=e90]: Case Documents
+          - generic [ref=e91]:
+            - generic [ref=e92]: Filing Date
+            - generic [ref=e93]: 2/6/2026
+            - generic [ref=e94]: Description
+            - generic [ref=e95]: ORD - Order
+            - generic [ref=e96]: Docket Date
+            - generic [ref=e97]: 2/6/2026
+            - generic [ref=e98]: Filing Party
+            - generic [ref=e100]: "NOTE:"
+            - generic [ref=e101]: ORDER GRANTING STIPULATED MOTION TO CONTINUE DEADLINES TO CONDUCT SETTLEMENT CONFERENCE AND FILE STATUS REPORT
+          - generic [ref=e102]:
+            - generic [ref=e103]: Filing Date
+            - generic [ref=e104]: 1/30/2026
+            - generic [ref=e105]: Description
+            - generic [ref=e106]: MCO - Motion To Continue
+            - generic [ref=e107]: Docket Date
+            - generic [ref=e108]: 2/2/2026
+            - generic [ref=e109]: Filing Party
+            - generic [ref=e111]: "NOTE:"
+            - generic [ref=e112]: STIPULATED MOTION TO CONTINUE DEADLINES TO CONDUCT SETTLEMENT CONFERENCE AND FILE STATUS REPORT
+          - generic [ref=e113]:
+            - generic [ref=e114]: Filing Date
+            - generic [ref=e115]: 10/30/2025
+            - generic [ref=e116]: Description
+            - generic [ref=e117]: ORD - Order
+            - generic [ref=e118]: Docket Date
+            - generic [ref=e119]: 10/30/2025
+            - generic [ref=e120]: Filing Party
+            - generic [ref=e122]: "NOTE:"
+            - generic [ref=e123]: SCHEDULING ORDER
+          - generic [ref=e124]:
+            - generic [ref=e125]: Filing Date
+            - generic [ref=e126]: 10/27/2025
+            - generic [ref=e127]: Description
+            - generic [ref=e128]: REP - Report
+            - generic [ref=e129]: Docket Date
+            - generic [ref=e130]: 10/28/2025
+            - generic [ref=e131]: Filing Party
+            - generic [ref=e133]: "NOTE:"
+            - generic [ref=e134]: Joint Report and PROPOSED Scheduling Order
+          - generic [ref=e135]:
+            - generic [ref=e136]: Filing Date
+            - generic [ref=e137]: 10/13/2025
+            - generic [ref=e138]: Description
+            - generic [ref=e139]: NOT - Notice
+            - generic [ref=e140]: Docket Date
+            - generic [ref=e141]: 10/14/2025
+            - generic [ref=e142]: Filing Party
+            - generic [ref=e144]: "NOTE:"
+            - generic [ref=e145]: Notice of Errata
+          - generic [ref=e146]:
+            - generic [ref=e147]: Filing Date
+            - generic [ref=e148]: 10/9/2025
+            - generic [ref=e149]: Description
+            - generic [ref=e150]: OBJ - Objection/Opposition
+            - generic [ref=e151]: Docket Date
+            - generic [ref=e152]: 10/10/2025
+            - generic [ref=e153]: Filing Party
+            - generic [ref=e155]: "NOTE:"
+            - generic [ref=e156]: "OBJECTION TO VERIFIED PETITION FOR: (1) BREACH OF FIDUCIARY DUTIES; (2) REMOVAL OF PERSONAL REPRESENTATIVE; AND (3) JUDICIAL SUPERVISION OF ESTATE ADMINISTRATION AND NOTICE OF JOINDER"
+          - generic [ref=e157]:
+            - generic [ref=e158]: Filing Date
+            - generic [ref=e159]: 9/30/2025
+            - generic [ref=e160]: Description
+            - generic [ref=e161]: "005 - ME: Hearing"
+            - generic [ref=e162]: Docket Date
+            - generic [ref=e163]: 9/30/2025
+            - generic [ref=e164]: Filing Party
+          - generic [ref=e166]:
+            - generic [ref=e167]: Filing Date
+            - generic [ref=e168]: 9/23/2025
+            - generic [ref=e169]: Description
+            - generic [ref=e170]: ACS - Acceptance Of Service
+            - generic [ref=e171]: Docket Date
+            - generic [ref=e172]: 9/23/2025
+            - generic [ref=e173]: Filing Party
+            - generic [ref=e175]: "NOTE:"
+            - generic [ref=e176]: Acceptance of Service
+          - generic [ref=e177]:
+            - generic [ref=e178]: Filing Date
+            - generic [ref=e179]: 9/11/2025
+            - generic [ref=e180]: Description
+            - generic [ref=e181]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e182]: Docket Date
+            - generic [ref=e183]: 9/16/2025
+            - generic [ref=e184]: Filing Party
+          - generic [ref=e186]:
+            - generic [ref=e187]: Filing Date
+            - generic [ref=e188]: 8/19/2025
+            - generic [ref=e189]: Description
+            - generic [ref=e190]: NOT - Notice
+            - generic [ref=e191]: Docket Date
+            - generic [ref=e192]: 8/26/2025
+            - generic [ref=e193]: Filing Party
+            - generic [ref=e195]: "NOTE:"
+            - generic [ref=e196]: OF WITHDRAWAL OF CLAIM
+          - generic [ref=e197]:
+            - generic [ref=e198]: Filing Date
+            - generic [ref=e199]: 7/30/2025
+            - generic [ref=e200]: Description
+            - generic [ref=e201]: NOH - Notice Of Hearing
+            - generic [ref=e202]: Docket Date
+            - generic [ref=e203]: 8/6/2025
+            - generic [ref=e204]: Filing Party
+            - generic [ref=e206]: "NOTE:"
+            - generic [ref=e207]: INITIAL / REGARDING PETITION FOR (1) BREACH OF FIDUCIARY DUTIES (2) REMOVAL OF PERSONAL REPRESENTATIVE AND (3) JUDICIAL SUPERVISION OF ESTATE ADMINISTRATION
+          - generic [ref=e208]:
+            - generic [ref=e209]: Filing Date
+            - generic [ref=e210]: 7/25/2025
+            - generic [ref=e211]: Description
+            - generic [ref=e212]: NOH - Notice Of Hearing
+            - generic [ref=e213]: Docket Date
+            - generic [ref=e214]: 7/31/2025
+            - generic [ref=e215]: Filing Party
+            - generic [ref=e217]: "NOTE:"
+            - generic [ref=e218]: INITIAL / REGARDING VERIFIED PETITION FOR 1) BREACH OF FIDUCIARY DUTIES 2) REMOVAL OF PERSONAL REPRESENTATIVE AND 3) JUDICIAL SUPERVISION OF ESTATE ADMINSTRATION
+          - generic [ref=e219]:
+            - generic [ref=e220]: Filing Date
+            - generic [ref=e221]: 7/25/2025
+            - generic [ref=e222]: Description
+            - generic [ref=e223]: "066 - ME: Case Reassigned"
+            - generic [ref=e224]: Docket Date
+            - generic [ref=e225]: 7/25/2025
+            - generic [ref=e226]: Filing Party
+          - generic [ref=e228]:
+            - generic [ref=e229]: Filing Date
+            - generic [ref=e230]: 7/24/2025
+            - generic [ref=e231]: Description
+            - generic [ref=e232]: NOH - Notice Of Hearing
+            - generic [ref=e233]: Docket Date
+            - generic [ref=e234]: 7/30/2025
+            - generic [ref=e235]: Filing Party
+            - generic [ref=e237]: "NOTE:"
+            - generic [ref=e238]: INITIAL / REGARDING VERIFIED PETITION FOR BREACH OF FIDUCIARY DUTIES / REMOVAL OF PERSONAL REPRESENTATIVE AND / JUDICIAL SUPERVISION OF ESTATE ADMINISTRATION
+          - generic [ref=e239]:
+            - generic [ref=e240]: Filing Date
+            - generic [ref=e241]: 7/23/2025
+            - generic [ref=e242]: Description
+            - generic [ref=e243]: NOH - Notice Of Hearing
+            - generic [ref=e244]: Docket Date
+            - generic [ref=e245]: 7/29/2025
+            - generic [ref=e246]: Filing Party
+            - generic [ref=e248]: "NOTE:"
+            - generic [ref=e249]: INITIAL / REGARDING VERIFIED PETITION FOR (1) BREACH OF FIDUCIARY DUTIES (2) REMOVAL OF PERSONAL REPRESENTATIVE AND (3) JUDICIAL SUPERVISION OF ESTATE ADMINISTRATION
+          - generic [ref=e250]:
+            - generic [ref=e251]: Filing Date
+            - generic [ref=e252]: 7/18/2025
+            - generic [ref=e253]: Description
+            - generic [ref=e254]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e255]: Docket Date
+            - generic [ref=e256]: 7/24/2025
+            - generic [ref=e257]: Filing Party
+          - generic [ref=e259]:
+            - generic [ref=e260]: Filing Date
+            - generic [ref=e261]: 7/14/2025
+            - generic [ref=e262]: Description
+            - generic [ref=e263]: PTT - Petition
+            - generic [ref=e264]: Docket Date
+            - generic [ref=e265]: 7/16/2025
+            - generic [ref=e266]: Filing Party
+            - generic [ref=e268]: "NOTE:"
+            - generic [ref=e269]: VERIFIED / BREACH OF FIDUCIARY DUTIES / REMOVAL OF PERSONAL REPRESENTATIVE / AND JUDICIAL SUPERVISION OF ESTATE ADMINISTRATION
+          - generic [ref=e270]:
+            - generic [ref=e271]: Filing Date
+            - generic [ref=e272]: 5/22/2025
+            - generic [ref=e273]: Description
+            - generic [ref=e274]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e275]: Docket Date
+            - generic [ref=e276]: 5/29/2025
+            - generic [ref=e277]: Filing Party
+          - generic [ref=e279]:
+            - generic [ref=e280]: Filing Date
+            - generic [ref=e281]: 4/14/2025
+            - generic [ref=e282]: Description
+            - generic [ref=e283]: NAR - Notice Of Appearance
+            - generic [ref=e284]: Docket Date
+            - generic [ref=e285]: 4/17/2025
+            - generic [ref=e286]: Filing Party
+          - generic [ref=e288]:
+            - generic [ref=e289]: Filing Date
+            - generic [ref=e290]: 4/3/2025
+            - generic [ref=e291]: Description
+            - generic [ref=e292]: NAR - Notice Of Appearance
+            - generic [ref=e293]: Docket Date
+            - generic [ref=e294]: 4/9/2025
+            - generic [ref=e295]: Filing Party
+          - generic [ref=e297]:
+            - generic [ref=e298]: Filing Date
+            - generic [ref=e299]: 3/24/2025
+            - generic [ref=e300]: Description
+            - generic [ref=e301]: CAE - Claims Against Estate
+            - generic [ref=e302]: Docket Date
+            - generic [ref=e303]: 4/11/2025
+            - generic [ref=e304]: Filing Party
+            - generic [ref=e306]: "NOTE:"
+            - generic [ref=e307]: PNC BANK NA
+          - generic [ref=e308]:
+            - generic [ref=e309]: Filing Date
+            - generic [ref=e310]: 3/21/2025
+            - generic [ref=e311]: Description
+            - generic [ref=e312]: APU - Affidavit Of Publication
+            - generic [ref=e313]: Docket Date
+            - generic [ref=e314]: 3/26/2025
+            - generic [ref=e315]: Filing Party
+          - generic [ref=e317]:
+            - generic [ref=e318]: Filing Date
+            - generic [ref=e319]: 3/6/2025
+            - generic [ref=e320]: Description
+            - generic [ref=e321]: PNM - Proof and/ or/ Notice of Mailing
+            - generic [ref=e322]: Docket Date
+            - generic [ref=e323]: 3/9/2025
+            - generic [ref=e324]: Filing Party
+            - generic [ref=e326]: "NOTE:"
+            - generic [ref=e327]: INFORMAL PROBATE OF WILL AND APPOINTMENT OF PERSONAL REPRESENTATIVE
+          - generic [ref=e328]:
+            - generic [ref=e329]: Filing Date
+            - generic [ref=e330]: 3/4/2025
+            - generic [ref=e331]: Description
+            - generic [ref=e332]: NIP - Notice Of Informal Probate
+            - generic [ref=e333]: Docket Date
+            - generic [ref=e334]: 3/7/2025
+            - generic [ref=e335]: Filing Party
+          - generic [ref=e337]:
+            - generic [ref=e338]: Filing Date
+            - generic [ref=e339]: 3/4/2025
+            - generic [ref=e340]: Description
+            - generic [ref=e341]: NTC - Notice to Creditors
+            - generic [ref=e342]: Docket Date
+            - generic [ref=e343]: 3/7/2025
+            - generic [ref=e344]: Filing Party
+          - generic [ref=e346]:
+            - generic [ref=e347]: Filing Date
+            - generic [ref=e348]: 2/21/2025
+            - generic [ref=e349]: Description
+            - generic [ref=e350]: OPA - Order To Personal Representative & Acknowledgement
+            - generic [ref=e351]: Docket Date
+            - generic [ref=e352]: 2/25/2025
+            - generic [ref=e353]: Filing Party
+          - generic [ref=e355]:
+            - generic [ref=e356]: Filing Date
+            - generic [ref=e357]: 2/21/2025
+            - generic [ref=e358]: Description
+            - generic [ref=e359]: PAC - PROBATE REGISTRAR ACCEPTANCE
+            - generic [ref=e360]: Docket Date
+            - generic [ref=e361]: 2/26/2025
+            - generic [ref=e362]: Filing Party
+          - generic [ref=e364]:
+            - generic [ref=e365]: Filing Date
+            - generic [ref=e366]: 2/21/2025
+            - generic [ref=e367]: Description
+            - generic [ref=e368]: SIP - Statement Of Informal Probate
+            - generic [ref=e369]: Docket Date
+            - generic [ref=e370]: 2/26/2025
+            - generic [ref=e371]: Filing Party
+          - generic [ref=e373]:
+            - generic [ref=e374]: Filing Date
+            - generic [ref=e375]: 2/21/2025
+            - generic [ref=e376]: Description
+            - generic [ref=e377]: LTA - Letter Of Appointment
+            - generic [ref=e378]: Docket Date
+            - generic [ref=e379]: 2/28/2025
+            - generic [ref=e380]: Filing Party
+            - generic [ref=e382]: "NOTE:"
+            - generic [ref=e383]: TROY THOMAS CARROLL JOHNSON / WITHOUT RESTRICTION
+          - generic [ref=e384]:
+            - generic [ref=e385]: Filing Date
+            - generic [ref=e386]: 2/20/2025
+            - generic [ref=e387]: Description
+            - generic [ref=e388]: APE - Application/Petition
+            - generic [ref=e389]: Docket Date
+            - generic [ref=e390]: 2/24/2025
+            - generic [ref=e391]: Filing Party
+          - generic [ref=e393]:
+            - generic [ref=e394]: Filing Date
+            - generic [ref=e395]: 2/20/2025
+            - generic [ref=e396]: Description
+            - generic [ref=e397]: CSH - Coversheet
+            - generic [ref=e398]: Docket Date
+            - generic [ref=e399]: 2/24/2025
+            - generic [ref=e400]: Filing Party
+          - generic [ref=e402]:
+            - generic [ref=e403]: Filing Date
+            - generic [ref=e404]: 2/20/2025
+            - generic [ref=e405]: Description
+            - generic [ref=e406]: PIF - Probate Information Sheet/Form - Restricted Access
+            - generic [ref=e407]: Docket Date
+            - generic [ref=e408]: 2/24/2025
+            - generic [ref=e409]: Filing Party
+          - generic [ref=e411]:
+            - generic [ref=e412]: Filing Date
+            - generic [ref=e413]: 2/20/2025
+            - generic [ref=e414]: Description
+            - generic [ref=e415]: AAR - Accept Appoint Personal Rep/Guard/Conservator
+            - generic [ref=e416]: Docket Date
+            - generic [ref=e417]: 2/24/2025
+            - generic [ref=e418]: Filing Party
+          - generic [ref=e420]:
+            - generic [ref=e421]: Filing Date
+            - generic [ref=e422]: 2/20/2025
+            - generic [ref=e423]: Description
+            - generic [ref=e424]: DCC - Declaration/Certificate of Completion
+            - generic [ref=e425]: Docket Date
+            - generic [ref=e426]: 2/24/2025
+            - generic [ref=e427]: Filing Party
+            - generic [ref=e429]: "NOTE:"
+            - generic [ref=e430]: TROY THOMAS CARROLL JOHNSON UNLICENSED FIDUCIARY OVERVIEW PERSONAL REPRESENTATIVE
+          - generic [ref=e431]:
+            - generic [ref=e432]: Filing Date
+            - generic [ref=e433]: 2/20/2025
+            - generic [ref=e434]: Description
+            - generic [ref=e435]: WIL - Will
+            - generic [ref=e436]: Docket Date
+            - generic [ref=e437]: 2/25/2025
+            - generic [ref=e438]: Filing Party
+        - generic [ref=e440]:
+          - generic [ref=e442]: Case Calendar
+          - generic [ref=e443]:
+            - generic [ref=e444]: Date
+            - generic [ref=e445]: 9/19/2025
+            - generic [ref=e446]: Time
+            - generic [ref=e447]: 9:45
+            - generic [ref=e448]: Event
+            - generic [ref=e449]: Miscellaneous - (Appearance)
+          - generic [ref=e450]:
+            - generic [ref=e451]: Date
+            - generic [ref=e452]: 9/25/2025
+            - generic [ref=e453]: Time
+            - generic [ref=e454]: 9:15
+            - generic [ref=e455]: Event
+            - generic [ref=e456]: Miscellaneous - (Appearance)
+          - generic [ref=e457]:
+            - generic [ref=e458]: Date
+            - generic [ref=e459]: 6/23/2026
+            - generic [ref=e460]: Time
+            - generic [ref=e461]: 13:30
+            - generic [ref=e462]: Event
+            - generic [ref=e463]: Pre-Trial Conference
+      - contentinfo [ref=e464]:
+        - generic [ref=e465]:
+          - generic [ref=e466]:
+            - generic [ref=e467]:
+              - img "company logo" [ref=e468]
+              - generic [ref=e469]:
+                - generic [ref=e470]: The Judicial Branch of Arizona
+                - text: Maricopa County
+            - list [ref=e471]:
+              - listitem [ref=e472]:
+                - link "Departments" [ref=e473] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/departments/
+              - listitem [ref=e474]:
+                - link "Court Information" [ref=e475] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/court-resources/
+              - listitem [ref=e476]:
+                - link "How Do I?" [ref=e477] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/how-do-i/
+              - listitem [ref=e478]:
+                - link "Law Library Resource Center" [ref=e479] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/law-library/llrc-online/
+              - listitem [ref=e480]:
+                - link "Resources" [ref=e481] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/resources-tools/
+              - listitem [ref=e482]:
+                - link "About" [ref=e483] [cursor=pointer]:
+                  - /url: https://superiorcourt.maricopa.gov/about/
+              - listitem [ref=e484]:
+                - img [ref=e487] [cursor=pointer]
+          - list [ref=e490]:
+            - listitem [ref=e491]:
+              - img [ref=e492]
+              - generic [ref=e494]:
+                - generic [ref=e495]: Information Center
+                - link "602-506-3204" [ref=e496] [cursor=pointer]:
+                  - /url: tel:602-506-3204
+            - listitem [ref=e497]:
+              - img [ref=e498]
+              - generic [ref=e500]:
+                - generic [ref=e501]: Central Court Building
+                - text: 201 W. Jefferson Street
+          - generic [ref=e502]:
+            - generic [ref=e503]:
+              - link "Employment opportunities" [ref=e504] [cursor=pointer]:
+                - /url: https://maricopa.wd1.myworkdayjobs.com/en-US/JB_External
+                - generic [ref=e505]: Employment opportunities
+              - link "Justice Partners" [ref=e506] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/justice-partners/
+                - generic [ref=e507]: Justice Partners
+              - link "Terms and Conditions" [ref=e508] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/terms-and-conditions/
+                - generic [ref=e509]: Terms and Conditions
+              - link "ADA Statement" [ref=e510] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/ada-statement/
+                - generic [ref=e511]: ADA Statement
+              - link "Website Feedback" [ref=e512] [cursor=pointer]:
+                - /url: https://superiorcourt.maricopa.gov/feedback/
+                - generic [ref=e513]: Website Feedback
+            - list [ref=e514]:
+              - listitem [ref=e515]:
+                - link "Youtube" [ref=e516] [cursor=pointer]:
+                  - /url: https://www.youtube.com/user/SuperiorCourtAZ
+              - listitem [ref=e517]:
+                - link "twitter" [ref=e518] [cursor=pointer]:
+                  - /url: https://twitter.com/courtpio
+              - listitem [ref=e519]:
+                - link "linkedin" [ref=e520] [cursor=pointer]:
+                  - /url: https://www.linkedin.com/company/jbazmc
+              - listitem [ref=e521]:
+                - link "facebook" [ref=e522] [cursor=pointer]:
+                  - /url: https://www.facebook.com/SuperiorCourtofArizona
+              - listitem [ref=e523]:
+                - link "instagram" [ref=e524] [cursor=pointer]:
+                  - /url: https://www.instagram.com/courtpio/
+              - listitem [ref=e525]:
+                - link "nextdoor" [ref=e526] [cursor=pointer]:
+                  - /url: https://nextdoor.com/
+  - img [ref=e529]

@@ -1,0 +1,120 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: Verified through 2026-04-16
+    - generic [ref=e6]: ·
+    - generic [ref=e7]: 14 days ahead of typical title-plant cycle
+    - generic [ref=e8]: ·
+    - link "See pipeline →" [ref=e9] [cursor=pointer]:
+      - /url: /pipeline
+  - generic [ref=e11]:
+    - navigation [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Land Custodian Portal" [level=1] [ref=e14]
+        - generic [ref=e15]: Maricopa County, AZ
+      - link "Search" [ref=e16] [cursor=pointer]:
+        - /url: /
+      - link "Chain of Title" [ref=e17] [cursor=pointer]:
+        - /url: /parcel/304-77-566
+      - link "Encumbrances" [ref=e18] [cursor=pointer]:
+        - /url: /parcel/304-77-566/encumbrances
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: "Terminology:"
+          - button "Professional" [pressed] [ref=e22]
+          - button "Plain English" [ref=e23] [cursor=pointer]
+        - generic [ref=e24]:
+          - generic [ref=e25]: 2778 E Courtney St · APN 304-77-566
+          - link "← Search another parcel" [ref=e26] [cursor=pointer]:
+            - /url: /
+    - main [ref=e28]:
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - generic [ref=e34]:
+              - heading "2778 E Courtney St, Gilbert AZ" [level=1] [ref=e35]
+              - heading "Encumbrance Lifecycles" [level=2] [ref=e36]
+              - paragraph [ref=e37]: "APN: 304-77-566"
+            - button "Export Commitment for Parcel" [ref=e39]
+          - generic [ref=e40]:
+            - generic [ref=e41]:
+              - generic [ref=e42]: County Recording Pipeline Status
+              - generic [ref=e43]: Records verified through 2026-04-09
+            - generic [ref=e44]:
+              - generic [ref=e45]:
+                - generic [ref=e46]: received
+                - generic [ref=e47]: →
+              - generic [ref=e48]:
+                - generic [ref=e49]: recorded
+                - generic [ref=e50]: →
+              - generic [ref=e51]:
+                - generic [ref=e52]: indexed
+                - generic [ref=e53]: →
+              - generic [ref=e54]:
+                - generic [ref=e55]: verified
+                - generic [ref=e56]: →
+              - generic [ref=e58]: published
+            - paragraph [ref=e59]: "Source: Maricopa County Recorder — authoritative county data, not a third-party aggregation"
+          - region "Title opinion" [ref=e60]:
+            - generic [ref=e61]:
+              - generic [ref=e62]:
+                - generic [ref=e63]: Title Opinion · APN 304-77-566
+                - generic [ref=e64]: Marketable
+              - generic [ref=e65]: as of 2026-04-09
+            - list [ref=e66]:
+              - listitem [ref=e67]:
+                - 'generic "conclusion: marketable" [ref=e68]': summary
+                - generic [ref=e69]: Title to APN 304-77-566 in MOORE REVOCABLE TRUST is marketable as of 2026-04-09, with no open encumbrances and no high-severity defects detected in the curated chain.
+              - listitem [ref=e70]:
+                - 'generic "provenance: corpus" [ref=e71]': sources
+                - generic [ref=e72]: Synthesized from 7 curated instruments (26 county-API + 0 OCR'd + 52 hand-curated fields) and 0 applied anomaly-rule findings, as of 2026-04-09. Every claim above traces to a specific lifecycle ID or rule ID.
+            - generic [ref=e74]: "Note: deterministic synthesis from curated facts. Every claim badges its source — no prose from an LLM in this panel."
+          - generic [ref=e75]:
+            - generic "Time axis from 2015 to 2027" [ref=e77]:
+              - generic [ref=e80]: "2015"
+              - generic [ref=e83]: "2020"
+              - generic [ref=e86]: "2025"
+              - note "Verified through 2026-04-09" [ref=e88]:
+                - generic [ref=e89]: now
+            - 'region "Deed of Trust: 20150638240" [ref=e91]':
+              - generic [ref=e92]:
+                - generic [ref=e93]:
+                  - generic [ref=e94]: Released
+                  - generic [ref=e95]: "Deed of Trust: 20150638240"
+                  - generic [ref=e96]: lc-016
+                - button "Examiner overrides" [ref=e98]:
+                  - generic [ref=e99]: Override
+                  - generic [ref=e100]: ▾
+              - generic [ref=e101]:
+                - img [ref=e102]
+                - generic [ref=e103]:
+                  - button "Deed of Trust 20150638240 recorded 2015-09-02" [ref=e104]: DOT
+                  - generic [ref=e105]: 2015-09-02
+                - generic [ref=e106]:
+                  - button "Release 20230431552 recorded 2023-08-17" [ref=e107]: Rel
+                  - generic [ref=e108]: 2023-08-17
+              - generic [ref=e110]: Release confirmed by examiner via 20230431552
+            - 'region "Spec/w D: 20170019586" [ref=e111]':
+              - generic [ref=e112]:
+                - generic [ref=e113]:
+                  - generic [ref=e114]: Open
+                  - generic [ref=e115]: "Spec/w D: 20170019586"
+                  - generic [ref=e116]: lc-017
+                - button "Examiner overrides" [ref=e118]:
+                  - generic [ref=e119]: Override
+                  - generic [ref=e120]: ▾
+              - generic [ref=e121]:
+                - img [ref=e122]
+                - generic [ref=e123]:
+                  - button "Special Warranty Deed 20170019586 recorded 2017-01-10" [ref=e124]: Dee
+                  - generic [ref=e125]: 2017-01-10
+                - generic [ref=e126]:
+                  - button "Trustee's Deed 20260162239 recorded 2026-03-20" [ref=e127]: TR
+                  - generic [ref=e128]: 2026-03-20
+                  - button "↗ cites lc-017" [ref=e130]
+              - generic [ref=e131]:
+                - generic [ref=e132]: No reconveyance found in corpus for DOT 20170019586
+                - generic [ref=e133]:
+                  - generic [ref=e134]: "cited by:"
+                  - button "20260162239 in lc-017" [ref=e135]
+          - paragraph [ref=e136]: County online records searched through 2026-04-18
+        - complementary [ref=e137]: No spatial data for APN 304-77-566.
