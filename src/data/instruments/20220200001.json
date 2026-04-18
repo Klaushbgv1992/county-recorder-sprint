@@ -1,0 +1,89 @@
+{
+  "instrument_number": "20220200001",
+  "recording_date": "2022-08-15",
+  "document_type": "assignment_of_dot",
+  "document_type_raw": "ASSIGN DT",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "JPMORGAN CHASE BANK, N.A.",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "NATIONSTAR MORTGAGE LLC d/b/a MR. COOPER",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MARTINEZ CARLOS A",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MARTINEZ SOFIA ANDREA",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 322, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "assigned_instrument": {
+      "value": "20160200002",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "assignment_date": {
+      "value": "2022-08-01",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "assignment_effective_date": {
+      "value": "2022-09-01 (servicing transfer date)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "original_borrowers_note": {
+      "value": "Both Carlos A Martinez and Sofia Andrea Martinez remain on the note; assignment of DOT does not alter borrower names",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized assignment of the 2016 DOT (20160200002) from Chase to Mr. Cooper on Martinez parcel 304-77-555. Servicing transfer — does not release Carlos from the note despite his 2021 quit-claim of title. Examiner must flag: Carlos remains contingently liable on debt secured by property he no longer owns of record. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20160200002"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 3,
+  "raw_api_response": {
+    "names": ["JPMORGAN CHASE BANK NA", "NATIONSTAR MORTGAGE LLC", "MR COOPER", "MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA"],
+    "documentCodes": ["ASSIGN DT"],
+    "recordingDate": "8-15-2022",
+    "recordingNumber": "20220200001",
+    "pageAmount": 3,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only assignment of DOT for Martinez parcel 304-77-555; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

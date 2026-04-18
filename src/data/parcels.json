@@ -105,5 +105,81 @@
       "20230100000",
       "20220100001"
     ]
+  },
+  {
+    "apn": "304-78-362",
+    "address": "3650 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 44, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "current_owner": "CHEN DAVID JAMES",
+    "type": "residential",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478362&mod=pd",
+    "instrument_numbers": [
+      "20080200001",
+      "20080200002",
+      "20190200001",
+      "20230200001",
+      "20240200001"
+    ]
+  },
+  {
+    "apn": "304-77-555",
+    "address": "2741 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 322, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "current_owner": "MARTINEZ SOFIA ANDREA",
+    "type": "residential",
+    "subdivision": "Shamrock Estates Phase 2A",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30477555&mod=pd",
+    "instrument_numbers": [
+      "20160200001",
+      "20160200002",
+      "20210200001",
+      "20210200002",
+      "20220200001"
+    ]
+  },
+  {
+    "apn": "304-78-411",
+    "address": "3594 E Palmer St",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "current_owner": "DELGADO PROPERTY HOLDINGS LLC",
+    "type": "residential",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478411&mod=pd",
+    "instrument_numbers": [
+      "20170200001",
+      "20170200002",
+      "20220200002",
+      "20220200003",
+      "20220200004"
+    ]
+  },
+  {
+    "apn": "304-78-401",
+    "address": "3722 E Parkview Ave",
+    "city": "Gilbert",
+    "state": "AZ",
+    "zip": "85298",
+    "legal_description": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "current_owner": "BRYANT JAMES T",
+    "type": "residential",
+    "subdivision": "Seville Parcel 3",
+    "assessor_url": "https://mcassessor.maricopa.gov/mcs/?q=30478401&mod=pd",
+    "instrument_numbers": [
+      "20050200001",
+      "20050200002",
+      "20220200005",
+      "20230200002",
+      "20230200003"
+    ]
   }
 ]

@@ -8,7 +8,7 @@ import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
 import { SearchHero } from "./SearchHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
-import { WalkthroughCTA } from "./WalkthroughCTA";
+import { ScenarioPicker } from "./ScenarioPicker";
 import { useWalkthrough } from "../walkthrough/useWalkthrough";
 import { useAllParcels } from "../hooks/useAllParcels";
 import { useLandingUrlState } from "../hooks/useLandingUrlState";
@@ -183,7 +183,7 @@ export function LandingPage() {
         onSelectInstrument={(apn, n) => navigate(`/parcel/${apn}/instrument/${n}`)}
         onSelectDrawer={(apn) => setSelectedApn(apn)}
       />
-      {walkthrough.active ? <WalkthroughBanner /> : <WalkthroughCTA />}
+      {walkthrough.active ? <WalkthroughBanner /> : <ScenarioPicker />}
 
       {/* Full-bleed map — flex-1 fills remaining viewport below the
           PipelineBanner + SearchHero. The verified-through strip in

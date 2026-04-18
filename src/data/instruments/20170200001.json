@@ -1,0 +1,77 @@
+{
+  "instrument_number": "20170200001",
+  "recording_date": "2017-09-14",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "RIVERA FAMILY TRUST, DATED JUNE 1, 2005",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "DELGADO MARIA ELENA",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2017-09-08",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "purchase_price": {
+      "value": "$355,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "an unmarried woman",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "3594 E Palmer St, Gilbert, AZ 85298",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase deed for Delgado parcel 304-78-411 (LLC conveyance scenario). Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["RIVERA FAMILY TRUST", "DELGADO MARIA ELENA"],
+    "documentCodes": ["WAR DEED"],
+    "recordingDate": "9-14-2017",
+    "recordingNumber": "20170200001",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase deed for Delgado parcel 304-78-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

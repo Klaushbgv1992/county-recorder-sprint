@@ -1,0 +1,87 @@
+{
+  "instrument_number": "20210200001",
+  "recording_date": "2021-03-30",
+  "document_type": "other",
+  "document_type_raw": "DECREE",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "MARTINEZ CARLOS A (Respondent)",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MARTINEZ SOFIA ANDREA (Petitioner)",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 322, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38 (as described in attached Exhibit A)",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "court": {
+      "value": "Superior Court of the State of Arizona in and for the County of Maricopa",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "case_number": {
+      "value": "FN2020-XXXXXX",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "decree_type": {
+      "value": "Decree of Dissolution of Marriage (contested)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "decree_date": {
+      "value": "2021-03-15",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_award_language": {
+      "value": "ORDERED that all right, title and interest in the real property located at 2741 E Palmer St, Gilbert AZ 85298 (Lot 322, Shamrock Estates Phase 2A) is awarded to Petitioner SOFIA ANDREA MARTINEZ as her sole and separate property. FURTHER ORDERED that Respondent CARLOS A MARTINEZ shall execute and deliver a Quit Claim Deed conveying his interest within 30 days of entry of this Decree.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "debt_assignment_language": {
+      "value": "The promissory note secured by the Deed of Trust recorded 2016-05-10 as Instrument No. 20160200002 remains a community obligation. Petitioner assumes responsibility for the monthly payment but the lender has not been ordered to release Respondent from the note. Respondent remains contingently liable until lender refinance or release.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Notice of Filing of Decree of Dissolution for Martinez parcel 304-77-555. Courts do not record decrees directly; parties or attorneys record a Notice of Filing with the relevant portion of the decree as Exhibit A to clear title. The debt-assignment language is the specific examiner-relevant clause — it illustrates why the 2016 DOT's open lifecycle cannot be closed merely by the Q/CL deed (20210200002). Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20160200001", "20160200002"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 8,
+  "raw_api_response": {
+    "names": ["MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA", "SUPERIOR COURT MARICOPA"],
+    "documentCodes": ["DECREE"],
+    "recordingDate": "3-30-2021",
+    "recordingNumber": "20210200001",
+    "pageAmount": 8,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only divorce-decree recording for Martinez parcel 304-77-555; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

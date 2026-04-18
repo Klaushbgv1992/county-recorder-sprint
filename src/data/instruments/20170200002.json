@@ -1,0 +1,99 @@
+{
+  "instrument_number": "20170200002",
+  "recording_date": "2017-09-14",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "DELGADO MARIA ELENA",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "QUICKEN LOANS INC",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS, INC.",
+      "role": "beneficiary",
+      "provenance": "demo_synthetic",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "QUICKEN LOANS INC",
+        "party_role": "lender"
+      }
+    },
+    {
+      "name": "STEWART TITLE AND TRUST OF PHOENIX INC",
+      "role": "trustee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2017-09-08",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$284,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1000256-0003456789-0",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2047-10-01",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "borrower_note": {
+      "value": "Maria Elena Delgado is the sole borrower. DOT is a standard SFR owner-occupied purchase-money loan with a garden-variety due-on-sale clause (12 USC § 1701j-3).",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase-money DOT on Delgado parcel 304-78-411 (LLC scenario). This DOT remains open and in Maria Elena Delgado's individual name even after the 2022 LLC conveyance — a live examiner concern explored in lc-012. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20170200001"],
+  "source_image_path": null,
+  "page_count": 19,
+  "raw_api_response": {
+    "names": ["DELGADO MARIA ELENA", "QUICKEN LOANS INC", "MERS", "STEWART TITLE"],
+    "documentCodes": ["DEED TRST"],
+    "recordingDate": "9-14-2017",
+    "recordingNumber": "20170200002",
+    "pageAmount": 19,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase-money DOT for Delgado parcel 304-78-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS beneficiary as nominee for Quicken Loans Inc. Note was subsequently sold to Rocket Mortgage LLC (successor-in-interest), but no assignment of DOT has been recorded in the parcel corpus.",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}
