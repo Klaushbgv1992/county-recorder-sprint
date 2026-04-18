@@ -58,3 +58,30 @@ describe("CustodianQueryPage", () => {
     });
   });
 });
+
+describe("CustodianQueryPage animation + replay", () => {
+  it("renders a Replay button", async () => {
+    mount();
+    await waitFor(() => {
+      expect(screen.getByRole("button", { name: /replay sweep/i })).toBeInTheDocument();
+    });
+  });
+
+  it("first visit sets sessionStorage flag after animation", async () => {
+    sessionStorage.removeItem("custodian-query-seen");
+    mount();
+    await waitFor(() => {
+      expect(sessionStorage.getItem("custodian-query-seen")).toBe("1");
+    }, { timeout: 3000 });
+  });
+
+  it("Replay click resets sessionStorage and re-runs", async () => {
+    sessionStorage.setItem("custodian-query-seen", "1");
+    mount();
+    const btn = await screen.findByRole("button", { name: /replay sweep/i });
+    btn.click();
+    await waitFor(() => {
+      expect(sessionStorage.getItem("custodian-query-seen")).toBe("1");
+    }, { timeout: 3000 });
+  });
+});

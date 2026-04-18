@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "react-router";
+import { Link, useLocation } from "react-router";
 import {
   getShowpieceShape,
   getCaptureMetadata,
@@ -9,7 +9,7 @@ import {
   type QueryResult,
   type LiveIndexMeta,
 } from "../lib/custodian-query-engine";
-import { LiveQueryCell } from "../components/LiveQueryCell";
+import { LiveQueryCell, type CellState } from "../components/LiveQueryCell";
 
 type CellKey = `${string}__${IndexId}__${Approach}`;
 
@@ -17,33 +17,98 @@ function cellKey(party: string, indexId: IndexId, approach: Approach): CellKey {
   return `${party}__${indexId}__${approach}` as CellKey;
 }
 
+const SESSION_KEY = "custodian-query-seen";
+const STAGGER_MS = 50;
+
 export function CustodianQueryPage() {
   const shape = useMemo(() => getShowpieceShape(), []);
   const meta = useMemo(() => getCaptureMetadata(), []);
+  const location = useLocation();
+  const [animationKey, setAnimationKey] = useState(0);
+  const [cellStates, setCellStates] = useState<Record<CellKey, CellState>>({});
   const [cells, setCells] = useState<Record<CellKey, QueryResult>>({});
+
+  const replayParam = new URLSearchParams(location.search).has("replay");
 
   useEffect(() => {
     let cancelled = false;
-    const tasks: Promise<void>[] = [];
+    const seen = sessionStorage.getItem(SESSION_KEY) === "1";
+    const allKeys: { party: string; idx: IndexId; a: Approach; k: CellKey }[] = [];
     for (const party of shape.parties) {
       for (const idx of shape.liveIndexes) {
         for (const a of ["public-api", "county-internal"] as const) {
-          tasks.push(
-            queryIndex(party, idx.id, a).then((r) => {
-              if (cancelled) return;
-              setCells((prev) => ({ ...prev, [cellKey(party, idx.id, a)]: r }));
-            })
-          );
+          allKeys.push({ party, idx: idx.id, a, k: cellKey(party, idx.id, a) });
         }
       }
     }
-    Promise.all(tasks);
+
+    if (seen && !replayParam) {
+      // Skip animation: resolve everything immediately.
+      const initialStates: Record<CellKey, CellState> = {};
+      for (const { k } of allKeys) initialStates[k] = "loading";
+      setCellStates(initialStates);
+      Promise.all(
+        allKeys.map(({ party, idx, a, k }) =>
+          queryIndex(party, idx, a).then((r) => {
+            if (cancelled) return;
+            setCells((prev) => ({ ...prev, [k]: r }));
+            setCellStates((prev) => ({ ...prev, [k]: "resolved" }));
+          })
+        )
+      ).then(() => {
+        if (cancelled) return;
+        sessionStorage.setItem(SESSION_KEY, "1");
+      });
+      return () => {
+        cancelled = true;
+      };
+    }
+
+    // First visit / replay: staggered animation.
+    const idleStates: Record<CellKey, CellState> = {};
+    for (const { k } of allKeys) idleStates[k] = "idle";
+    setCellStates(idleStates);
+    setCells({});
+
+    const tasks = allKeys.map(({ party, idx, a, k }, i) => {
+      return new Promise<void>((resolve) => {
+        setTimeout(() => {
+          if (cancelled) return resolve();
+          setCellStates((prev) => ({ ...prev, [k]: "loading" }));
+          queryIndex(party, idx, a).then((r) => {
+            if (cancelled) return resolve();
+            setCells((prev) => ({ ...prev, [k]: r }));
+            setCellStates((prev) => ({ ...prev, [k]: "resolved" }));
+            resolve();
+          });
+        }, i * STAGGER_MS);
+      });
+    });
+
+    Promise.all(tasks).then(() => {
+      if (cancelled) return;
+      sessionStorage.setItem(SESSION_KEY, "1");
+    });
+
     return () => {
       cancelled = true;
     };
-  }, [shape]);
+  }, [shape, animationKey, replayParam]);
+
+  useEffect(() => {
+    // Scroll to anchor if present.
+    if (location.hash.startsWith("#party-")) {
+      const el = document.getElementById(location.hash.slice(1));
+      if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [location.hash]);
 
   const outcome = useMemo(() => countOutcomes(cells), [cells]);
+
+  function handleReplay() {
+    sessionStorage.removeItem(SESSION_KEY);
+    setAnimationKey((k) => k + 1);
+  }
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-8">
@@ -52,7 +117,7 @@ export function CustodianQueryPage() {
           Custodian Query Engine — Maricopa County
         </h1>
         <p className="mt-2 max-w-3xl text-sm text-slate-700">
-          The recorder's open API cannot search by name. The custodian can. This page runs both side-by-side.
+          The public API cannot answer by name. The custodian can. This page runs both side-by-side.
         </p>
         <div className="mt-2 text-[11px] text-slate-500 space-x-3 font-mono">
           <span>captured {meta.captured_at}</span>
@@ -63,16 +128,23 @@ export function CustodianQueryPage() {
         </div>
       </header>
 
-      <section className="mt-6 rounded-md border border-slate-200 bg-slate-50 p-4">
+      <section className="mt-6 flex flex-wrap items-center justify-between gap-3 rounded-md border border-slate-200 bg-slate-50 p-4">
         <p className="text-sm text-slate-800">
           <span className="font-semibold">
             {shape.parties.length * shape.liveIndexes.length * 2} queries attempted
           </span>
-          {" · "}API answered: <span className="font-semibold text-slate-700">{outcome.publicAnswered}</span>
-          {" · "}Custodian answered: <span className="font-semibold text-emerald-800">{outcome.countyAnswered}</span>
-          {" · "}<span className="text-amber-900">{outcome.aiDismissed}</span> AI-dismissed hit{outcome.aiDismissed === 1 ? "" : "s"}
+          {" · "}Public API: <span className="font-semibold text-slate-700">{outcome.publicAnswered}</span> answered
+          {" · "}County internal: <span className="font-semibold text-emerald-800">{outcome.countyAnswered}</span> answered
+          {" · "}<span className="text-amber-900">{outcome.aiDismissed}</span> AI-dismissed
           {" · "}<span className="text-emerald-800">{outcome.zeros}</span> verified zero
         </p>
+        <button
+          type="button"
+          onClick={handleReplay}
+          className="rounded border border-slate-300 bg-white px-3 py-1 text-xs font-medium text-slate-700 hover:border-slate-400 hover:bg-slate-50"
+        >
+          ▶ Replay sweep
+        </button>
       </section>
 
       <section className="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2">
@@ -83,6 +155,7 @@ export function CustodianQueryPage() {
           liveIndexes={shape.liveIndexes}
           approach="public-api"
           cells={cells}
+          states={cellStates}
         />
         <MatrixColumn
           title="County internal index"
@@ -91,6 +164,7 @@ export function CustodianQueryPage() {
           liveIndexes={shape.liveIndexes}
           approach="county-internal"
           cells={cells}
+          states={cellStates}
         />
       </section>
 
@@ -126,6 +200,7 @@ function MatrixColumn({
   liveIndexes,
   approach,
   cells,
+  states,
 }: {
   title: string;
   subtitle: string;
@@ -133,6 +208,7 @@ function MatrixColumn({
   liveIndexes: LiveIndexMeta[];
   approach: Approach;
   cells: Record<CellKey, QueryResult>;
+  states: Record<CellKey, CellState>;
 }) {
   return (
     <div>
@@ -149,14 +225,13 @@ function MatrixColumn({
               <div className="mt-2 grid grid-cols-1 gap-2">
                 {liveIndexes.map((idx) => {
                   const k = cellKey(party, idx.id, approach);
-                  const r = cells[k];
                   return (
                     <LiveQueryCell
                       key={idx.id}
-                      state={r ? "resolved" : "loading"}
+                      state={states[k] ?? "idle"}
                       party={party}
                       indexShort={idx.short}
-                      result={r}
+                      result={cells[k]}
                       coverage={idx.coverage}
                     />
                   );
