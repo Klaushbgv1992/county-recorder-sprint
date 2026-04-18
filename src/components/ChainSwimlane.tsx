@@ -257,10 +257,11 @@ export function ChainSwimlane({
           <PriorTrack
             owner={priorPeriod.owner}
             endDate={priorPeriod.end_date}
+            trackIndex={0}
           />
         )}
 
-        {ownerPeriods.map((period) => (
+        {ownerPeriods.map((period, idx) => (
           <ChainTrack
             key={period.start_instrument}
             period={period}
@@ -273,6 +274,7 @@ export function ChainSwimlane({
             onOpenDocument={onOpenDocument}
             backRefsByInstrument={backRefsByInstrument}
             onJumpLifecycle={defaultJumpLifecycle}
+            trackIndex={priorPeriod ? idx + 1 : idx}
           />
         ))}
 
@@ -296,9 +298,11 @@ export function ChainSwimlane({
 function PriorTrack({
   owner,
   endDate,
+  trackIndex,
 }: {
   owner: string;
   endDate: string;
+  trackIndex: number;
 }) {
   return (
     <section className="border border-dashed border-gray-300 rounded-lg mb-3 bg-gray-50">
@@ -313,10 +317,11 @@ function PriorTrack({
       </div>
       <div className="relative px-3" style={{ height: TRACK_HEIGHT }}>
         <svg
-          className="absolute inset-0"
+          className="absolute inset-0 animate-track-grow origin-left"
           width="100%"
           height={TRACK_HEIGHT}
           aria-hidden
+          style={{ animationDelay: `${trackIndex * 100}ms` }}
         >
           <line
             x1={0}
@@ -342,6 +347,7 @@ interface ChainTrackProps {
   onOpenDocument: (instrumentNumber: string) => void;
   backRefsByInstrument: Map<string, string[]>;
   onJumpLifecycle: (lifecycleId: string) => void;
+  trackIndex: number;
 }
 
 function ChainTrack({
@@ -353,7 +359,12 @@ function ChainTrack({
   onOpenDocument,
   backRefsByInstrument,
   onJumpLifecycle,
+  trackIndex,
 }: ChainTrackProps) {
+  // Hovered node index drives the connector-line glow. Hovering a node
+  // brightens its adjoining line segments (stroke-width 2→4, opacity 0.5→1)
+  // so the examiner can trace how same-day instruments chain within a track.
+  const [hoveredNodeIndex, setHoveredNodeIndex] = useState<number | null>(null);
   const { t } = useTerminology();
   const trackInstruments = [deed, ...sameDayAttachments];
   const nodes = groupSameDayInstruments(trackInstruments);
@@ -408,10 +419,11 @@ function ChainTrack({
 
       <div className="relative px-3" style={{ height: TRACK_HEIGHT }}>
         <svg
-          className="absolute inset-0"
+          className="absolute inset-0 animate-track-grow origin-left"
           width="100%"
           height={TRACK_HEIGHT}
           aria-hidden
+          style={{ animationDelay: `${trackIndex * 100}ms` }}
         >
           <line
             x1={0}
@@ -423,6 +435,10 @@ function ChainTrack({
           />
           {nodes.map((_n, i) => {
             if (i === 0) return null;
+            // A connector between node i-1 and i glows if either endpoint
+            // is the currently hovered node.
+            const isGlow =
+              hoveredNodeIndex === i - 1 || hoveredNodeIndex === i;
             return (
               <line
                 key={i}
@@ -431,7 +447,9 @@ function ChainTrack({
                 y1={Y_CENTER}
                 y2={Y_CENTER}
                 stroke="#64748b"
-                strokeWidth={2}
+                strokeWidth={isGlow ? 4 : 2}
+                opacity={isGlow ? 1 : 0.5}
+                className="transition-all duration-200"
               />
             );
           })}
@@ -470,17 +488,28 @@ function ChainTrack({
                 onJump: () => onJumpLifecycle(lcId),
               }))
             : [];
+          // Node pop-in: +300ms offset lets the track line finish growing
+          // before its instruments appear; +80ms per node staggers them
+          // left-to-right along the track.
+          const nodeDelayMs = trackIndex * 100 + 300 + i * 80;
           return (
-            <InstrumentNode
+            <div
               key={n.kind === "single" ? n.instrument.instrument_number : date}
-              xPx={x}
-              kind={n.kind}
-              instrument={n.kind === "single" ? n.instrument : undefined}
-              instruments={n.kind === "composite" ? n.instruments : undefined}
-              date={date}
-              onOpenDocument={onOpenDocument}
-              backRefsOut={backRefs}
-            />
+              className="animate-fade-in-up"
+              style={{ animationDelay: `${nodeDelayMs}ms` }}
+              onMouseEnter={() => setHoveredNodeIndex(i)}
+              onMouseLeave={() => setHoveredNodeIndex(null)}
+            >
+              <InstrumentNode
+                xPx={x}
+                kind={n.kind}
+                instrument={n.kind === "single" ? n.instrument : undefined}
+                instruments={n.kind === "composite" ? n.instruments : undefined}
+                date={date}
+                onOpenDocument={onOpenDocument}
+                backRefsOut={backRefs}
+              />
+            </div>
           );
         })}
       </div>

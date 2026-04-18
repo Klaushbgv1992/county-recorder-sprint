@@ -1,10 +1,10 @@
 // src/components/CountyMap.tsx
-import { useMemo, useCallback, useState, useEffect } from "react";
-import MapGL, { Source, Layer, useMap } from "react-map-gl/maplibre";
+import { useMemo, useCallback, useState, useEffect, useRef } from "react";
+import MapGL, { Source, Layer, Marker, useMap } from "react-map-gl/maplibre";
 import type { MapLayerMouseEvent } from "react-map-gl/maplibre";
 import countyBoundary from "../data/maricopa-county-boundary.json";
 import parcelsGeo from "../data/parcels-geo.json";
-import { computeLandingMapCenter } from "../logic/compute-map-center";
+import { computeLandingMapCenter, type MapCoord } from "../logic/compute-map-center";
 import { resolvePopupData } from "../logic/popup-data";
 import { loadAllParcels, loadAllInstruments } from "../data-loader";
 import { LifecyclesFile } from "../schemas";
@@ -16,7 +16,6 @@ import type { OverlayName } from "../logic/overlay-state";
 import { EncumbranceOverlayLayer } from "./map/EncumbranceOverlayLayer";
 import { AnomalyOverlayLayer } from "./map/AnomalyOverlayLayer";
 import { LastDeedOverlayLayer } from "./map/LastDeedOverlayLayer";
-import { DemoIntro } from "./DemoIntro";
 
 export interface HighlightedParcel {
   apn: string;
@@ -416,7 +415,7 @@ export function CountyMap({
           />
         )}
 
-        <DemoIntro
+        <IntroCallout
           active={showIntro}
           target={POPHAM_COORD}
           targetZoom={LANDING_MAP_ZOOM}
@@ -441,5 +440,139 @@ export function CountyMap({
         </p>
       </div>
     </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// IntroCallout — inlined (was DemoIntro) so the "wow-factor" animations live
+// alongside the map choreography they serve. Renders nothing unless `active`
+// is true and the fly-in has completed — matching the upstream DemoIntro
+// contract so parent props are unchanged.
+//
+// Animations (all defined in src/index.css under the @theme block):
+//   - animate-fade-in-up  → mount entrance (no snap-in)
+//   - animate-bob         → label bubble drifts ±4px over 3s
+//   - animate-ring-pulse  → marker dot radiates an interactive "click me" ring
+// Pulse-ring and bob are on *separate* elements so their transforms don't
+// compose into a wobble. Cursor + hover:scale-105 signal "this is clickable".
+// ─────────────────────────────────────────────────────────────────────────────
+
+interface IntroCalloutProps {
+  active: boolean;
+  target: MapCoord;
+  targetZoom: number;
+  onClick: () => void;
+  flyDurationMs?: number;
+}
+
+type IntroPhase = "flying" | "callout" | "dismissed";
+
+function IntroCallout({
+  active,
+  target,
+  targetZoom,
+  onClick,
+  flyDurationMs = 1800,
+}: IntroCalloutProps) {
+  const { current: map } = useMap();
+  const [phase, setPhase] = useState<IntroPhase>("flying");
+  const introDoneRef = useRef(false);
+
+  // Fly to POPHAM on mount. Advance phase on moveend (once, scoped to the
+  // programmatic animation) — setTimeout-based completion drifts on slow clients.
+  useEffect(() => {
+    if (!active || !map) return;
+    const m = map.getMap();
+    introDoneRef.current = false;
+
+    const onMoveEnd = () => {
+      if (introDoneRef.current) return;
+      introDoneRef.current = true;
+      setPhase("callout");
+    };
+
+    m.once("moveend", onMoveEnd);
+    m.flyTo({
+      center: [target.longitude, target.latitude],
+      zoom: targetZoom,
+      duration: flyDurationMs,
+      essential: true,
+    });
+
+    return () => {
+      m.off("moveend", onMoveEnd);
+    };
+  }, [active, map, target.longitude, target.latitude, targetZoom, flyDurationMs]);
+
+  // Once the callout is visible, any *user-initiated* map movement dismisses
+  // it. originalEvent is truthy only for user input (drag, wheel, touch);
+  // programmatic flyTo/jumpTo leaves it undefined, so we avoid self-dismissing.
+  useEffect(() => {
+    if (!active || !map || phase !== "callout") return;
+    const m = map.getMap();
+    const onUserMove = (e: { originalEvent?: unknown }) => {
+      if (e.originalEvent) setPhase("dismissed");
+    };
+    m.on("movestart", onUserMove);
+    return () => {
+      m.off("movestart", onUserMove);
+    };
+  }, [active, map, phase]);
+
+  if (!active || phase !== "callout") return null;
+
+  return (
+    <Marker longitude={target.longitude} latitude={target.latitude} anchor="bottom">
+      {/* Outer wrapper: fade-in entrance only. Keeping bob/ring-pulse on
+          child nodes avoids nested transform composition. */}
+      <div className="relative flex flex-col items-center pointer-events-none animate-fade-in-up">
+        {/* Bobbing label group — the text bubble + close button drift together
+            so the tail stays aligned with the bubble base. */}
+        <div className="relative animate-bob">
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClick();
+            }}
+            className="pointer-events-auto group relative mb-3 w-72 cursor-pointer rounded-lg border border-moat-200 bg-white px-4 py-3 text-left shadow-xl ring-1 ring-moat-500/10 transition-transform duration-200 hover:scale-105 hover:ring-moat-500/30 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            aria-label="Explore POPHAM parcel — click to open"
+          >
+            <p className="text-[13px] font-semibold leading-snug text-slate-900">
+              This property has three things title plants miss.
+            </p>
+            <p className="mt-1 text-[12px] leading-snug text-slate-600">
+              Click to explore &rarr;
+            </p>
+            <div className="mt-2 flex items-center gap-2 text-[11px] font-medium uppercase tracking-wide text-moat-700">
+              <span className="inline-block h-1.5 w-1.5 rounded-full bg-moat-500" />
+              POPHAM · 304-78-386 · Gilbert
+            </div>
+            {/* Tail pointing down toward the pulsing dot */}
+            <div
+              aria-hidden
+              className="absolute left-1/2 top-full h-3 w-3 -translate-x-1/2 -translate-y-1.5 rotate-45 border-b border-r border-moat-200 bg-white"
+            />
+          </button>
+          <button
+            type="button"
+            onClick={(e) => {
+              e.stopPropagation();
+              setPhase("dismissed");
+            }}
+            className="pointer-events-auto absolute -right-1 -top-1 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[11px] font-semibold text-slate-400 shadow ring-1 ring-slate-200 hover:text-slate-700"
+            aria-label="Dismiss intro callout"
+          >
+            ×
+          </button>
+        </div>
+        {/* Marker dot — ring-pulse lives here (separate from bob) so the
+            radiating box-shadow stays radially symmetric and doesn't wobble. */}
+        <div className="relative h-4 w-4">
+          <div className="absolute inset-0 animate-ping rounded-full bg-moat-500 opacity-75" />
+          <div className="relative h-4 w-4 animate-ring-pulse rounded-full border-2 border-white bg-moat-500 shadow-lg" />
+        </div>
+      </div>
+    </Marker>
   );
 }

@@ -1,10 +1,11 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   Instrument,
   DocumentLink,
   Parcel,
   EncumbranceLifecycle,
   PipelineStatus,
+  ProvenanceKind,
 } from "../types";
 import { formatCitation } from "../logic/citation-formatter";
 import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
@@ -63,12 +64,46 @@ export function ProofDrawer({
 }: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
+  const [highlightedFieldId, setHighlightedFieldId] = useState<string | null>(
+    null,
+  );
+  const highlightTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const citation = formatCitation(instrument, COUNTY_NAME);
   const extractionTrace = getExtractionTrace(instrument.instrument_number);
 
   const handleCopyCitation = useCallback(() => {
     navigator.clipboard.writeText(citation);
   }, [citation]);
+
+  const handleFieldClick = useCallback((fieldId: string) => {
+    if (highlightTimerRef.current) {
+      clearTimeout(highlightTimerRef.current);
+    }
+    setHighlightedFieldId(fieldId);
+    highlightTimerRef.current = setTimeout(() => {
+      setHighlightedFieldId(null);
+      highlightTimerRef.current = null;
+    }, 700);
+  }, []);
+
+  // Reset highlight when the instrument changes so stale pulses don't leak
+  // across drawers.
+  useEffect(() => {
+    if (highlightTimerRef.current) {
+      clearTimeout(highlightTimerRef.current);
+      highlightTimerRef.current = null;
+    }
+    setHighlightedFieldId(null);
+    return () => {
+      if (highlightTimerRef.current) {
+        clearTimeout(highlightTimerRef.current);
+        highlightTimerRef.current = null;
+      }
+    };
+  }, [instrument.instrument_number]);
+
+  // Image pulses whenever *any* field is highlighted.
+  const imagePulsing = highlightedFieldId !== null;
 
   const grantors = getGrantors(instrument);
   const grantees = getGrantees(instrument);
@@ -77,6 +112,78 @@ export function ProofDrawer({
   const releasingParties = getReleasingParties(instrument);
 
   const ps = instrument.provenance_summary;
+
+  // Build an ordered list of primary fields so we can stagger their reveal
+  // *and* assign each a click handler with a stable ID. Tagged fields (legal
+  // description, extracted_fields entries) carry provenance rendered inline.
+  type PrimaryField = {
+    id: string;
+    label: React.ReactNode;
+    value: string;
+    provenance?: ProvenanceKind;
+    confidence?: number;
+    mono?: boolean;
+  };
+  const primaryFields: PrimaryField[] = [];
+  if (grantors.length > 0) {
+    primaryFields.push({
+      id: "grantor",
+      label: <Term professional="Grantor" />,
+      value: grantors.join("; "),
+    });
+  }
+  if (grantees.length > 0) {
+    primaryFields.push({
+      id: "grantee",
+      label: <Term professional="Grantee" />,
+      value: grantees.join("; "),
+    });
+  }
+  if (trustors.length > 0) {
+    primaryFields.push({
+      id: "trustor",
+      label: <Term professional="Trustor/Borrower" />,
+      value: trustors.join("; "),
+    });
+  }
+  if (lenders.length > 0) {
+    primaryFields.push({
+      id: "lender",
+      label: "Lender",
+      value: lenders.join("; "),
+    });
+  }
+  if (releasingParties.length > 0) {
+    primaryFields.push({
+      id: "releasing-party",
+      label: "Releasing Party",
+      value: releasingParties.join("; "),
+    });
+  }
+  primaryFields.push({
+    id: "recording-date",
+    label: "Recording Date",
+    value: instrument.recording_date,
+  });
+  if (instrument.legal_description) {
+    primaryFields.push({
+      id: "legal-description",
+      label: "Legal Description",
+      value: instrument.legal_description.value,
+      provenance: instrument.legal_description.provenance,
+      confidence: instrument.legal_description.confidence,
+      mono: true,
+    });
+  }
+  if (instrument.back_references.length > 0) {
+    primaryFields.push({
+      id: "back-references",
+      label: "Back References",
+      value: instrument.back_references.join(", "),
+    });
+  }
+
+  const extractedEntries = Object.entries(instrument.extracted_fields);
 
   return (
     <div className="h-full flex flex-col">
@@ -164,7 +271,12 @@ export function ProofDrawer({
       {/* Content: two-column */}
       <div className="flex-1 overflow-hidden flex">
           {/* Left: Document Image */}
-          <div className="w-1/2 border-r border-gray-200 overflow-auto bg-gray-100 p-4">
+          <div
+            key={`img-${instrument.instrument_number}`}
+            className={`w-1/2 border-r border-gray-200 overflow-auto bg-gray-100 p-4 animate-fade-in${
+              imagePulsing ? " animate-pulse-once rounded" : ""
+            }`}
+          >
             {instrument.source_image_path ? (
               instrument.source_image_path.endsWith(".pdf") ? (
                 <iframe
@@ -212,77 +324,54 @@ export function ProofDrawer({
               Extracted Fields
             </h4>
 
-            <div className="space-y-3 mb-6">
-              {grantors.length > 0 && (
-                <FieldDisplay label={<Term professional="Grantor" />} value={grantors.join("; ")} />
-              )}
-              {grantees.length > 0 && (
-                <FieldDisplay label={<Term professional="Grantee" />} value={grantees.join("; ")} />
-              )}
-              {trustors.length > 0 && (
-                <FieldDisplay label={<Term professional="Trustor/Borrower" />} value={trustors.join("; ")} />
-              )}
-              {lenders.length > 0 && (
-                <FieldDisplay label="Lender" value={lenders.join("; ")} />
-              )}
-              {releasingParties.length > 0 && (
-                <FieldDisplay label="Releasing Party" value={releasingParties.join("; ")} />
-              )}
-              <FieldDisplay
-                label="Recording Date"
-                value={instrument.recording_date}
-              />
-              {instrument.legal_description && (
-                <div>
-                  <div className="flex items-center gap-2 mb-0.5">
-                    <span className="text-xs font-medium text-gray-500">
-                      Legal Description
-                    </span>
-                    <ProvenanceTag
-                      provenance={instrument.legal_description.provenance}
-                      confidence={instrument.legal_description.confidence}
-                    />
-                  </div>
-                  <span className="text-sm text-gray-800 font-mono">
-                    {instrument.legal_description.value}
-                  </span>
-                </div>
-              )}
-              {instrument.back_references.length > 0 && (
-                <FieldDisplay
-                  label="Back References"
-                  value={instrument.back_references.join(", ")}
+            <div
+              key={`primary-${instrument.instrument_number}`}
+              className="space-y-3 mb-6"
+            >
+              {primaryFields.map((field, i) => (
+                <FieldCard
+                  key={field.id}
+                  fieldId={field.id}
+                  index={i}
+                  label={field.label}
+                  value={field.value}
+                  provenance={field.provenance}
+                  confidence={field.confidence}
+                  mono={field.mono}
+                  highlighted={highlightedFieldId === field.id}
+                  onClick={handleFieldClick}
                 />
-              )}
+              ))}
             </div>
 
             {/* Dynamic extracted fields */}
-            {Object.keys(instrument.extracted_fields).length > 0 && (
+            {extractedEntries.length > 0 && (
               <>
                 <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
                   Additional Fields
                 </h4>
-                <div className="space-y-3 mb-6">
-                  {Object.entries(instrument.extracted_fields).map(
-                    ([key, field]) => (
-                      <div key={key}>
-                        <div className="flex items-center gap-2 mb-0.5">
-                          <span className="text-xs font-medium text-gray-500">
-                            {key
-                              .replace(/_/g, " ")
-                              .replace(/\b\w/g, (c) => c.toUpperCase())}
-                          </span>
-                          <ProvenanceTag
-                            provenance={field.provenance}
-                            confidence={field.confidence}
-                          />
-                        </div>
-                        <span className="text-sm text-gray-800">
-                          {field.value}
-                        </span>
-                      </div>
-                    ),
-                  )}
+                <div
+                  key={`extra-${instrument.instrument_number}`}
+                  className="space-y-3 mb-6"
+                >
+                  {extractedEntries.map(([key, field], i) => {
+                    const fieldId = `extracted-${key}`;
+                    return (
+                      <FieldCard
+                        key={fieldId}
+                        fieldId={fieldId}
+                        index={primaryFields.length + i}
+                        label={key
+                          .replace(/_/g, " ")
+                          .replace(/\b\w/g, (c) => c.toUpperCase())}
+                        value={field.value}
+                        provenance={field.provenance}
+                        confidence={field.confidence}
+                        highlighted={highlightedFieldId === fieldId}
+                        onClick={handleFieldClick}
+                      />
+                    );
+                  })}
                 </div>
               </>
             )}
@@ -377,11 +466,62 @@ function trackSummary(trace: {
   return `${recovered}/${total} fields \u00b7 ${ver}`;
 }
 
-function FieldDisplay({ label, value }: { label: React.ReactNode; value: string }) {
+interface FieldCardProps {
+  fieldId: string;
+  index: number;
+  label: React.ReactNode;
+  value: string;
+  provenance?: ProvenanceKind;
+  confidence?: number;
+  mono?: boolean;
+  highlighted: boolean;
+  onClick: (fieldId: string) => void;
+}
+
+function FieldCard({
+  fieldId,
+  index,
+  label,
+  value,
+  provenance,
+  confidence,
+  mono,
+  highlighted,
+  onClick,
+}: FieldCardProps) {
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLDivElement>) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      onClick(fieldId);
+    }
+  };
   return (
-    <div>
-      <span className="text-xs font-medium text-gray-500">{label}</span>
-      <div className="text-sm text-gray-800">{value}</div>
+    <div
+      role="button"
+      tabIndex={0}
+      onClick={() => onClick(fieldId)}
+      onKeyDown={handleKeyDown}
+      style={{ animationDelay: `${index * 60}ms` }}
+      className={`animate-fade-in-up rounded -mx-1 px-1 py-0.5 cursor-pointer transition-colors duration-150 hover:bg-gray-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500${
+        highlighted ? " animate-pulse-once" : ""
+      }`}
+    >
+      {provenance !== undefined ? (
+        <div className="flex items-center gap-2 mb-0.5">
+          <span className="text-xs font-medium text-gray-500">{label}</span>
+          <ProvenanceTag
+            provenance={provenance}
+            confidence={confidence ?? 1}
+          />
+        </div>
+      ) : (
+        <span className="text-xs font-medium text-gray-500">{label}</span>
+      )}
+      <div
+        className={`text-sm text-gray-800${mono ? " font-mono" : ""}`}
+      >
+        {value}
+      </div>
     </div>
   );
 }
