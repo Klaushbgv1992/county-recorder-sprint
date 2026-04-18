@@ -62,9 +62,9 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
   const [collapsed, setCollapsed] = useState<boolean>(() => {
     const persisted = localStorage.getItem(COLLAPSE_KEY);
     if (persisted !== null) return persisted === "true";
-    // Default collapsed on mobile-width viewports when the user has no
-    // expressed preference yet.
-    return typeof window !== "undefined" && window.innerWidth < 768;
+    // Detail pages default to collapsed so the chain/encumbrance content
+    // stays the focus. Examiners opt in to the spatial view explicitly.
+    return true;
   });
 
   const subject = useMemo(
@@ -112,31 +112,46 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
   const subdivisionProps =
     (subdivision?.properties as SubdivisionProperties | null) ?? null;
 
-  return (
-    <aside
-      className={`border-l border-recorder-50/60 bg-white flex flex-col shrink-0 shadow-sm ${
-        collapsed ? "w-10" : "w-full md:w-[40%]"
-      }`}
-    >
-      <header className="flex items-center justify-between px-3 py-2 border-b border-slate-200">
-        <h3
-          className={`text-sm font-semibold text-slate-900 ${collapsed ? "sr-only" : ""}`}
+  if (collapsed) {
+    return (
+      <aside className="border-l border-recorder-50/60 bg-white flex flex-col shrink-0 shadow-sm w-10">
+        <button
+          type="button"
+          onClick={toggle}
+          aria-label="Show spatial context"
+          title="Show spatial context"
+          className="flex-1 flex flex-col items-center justify-start gap-2 py-3 text-slate-600 hover:bg-slate-50 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
         >
+          <span aria-hidden="true" className="text-lg leading-none">»</span>
+          <span
+            className="text-xs font-medium whitespace-nowrap"
+            style={{ writingMode: "vertical-rl" }}
+          >
+            Show spatial context
+          </span>
+        </button>
+      </aside>
+    );
+  }
+
+  return (
+    <aside className="border-l border-recorder-50/60 bg-white flex flex-col shrink-0 shadow-sm w-full md:w-[40%]">
+      <header className="flex items-center justify-between px-3 py-2 border-b border-slate-200">
+        <h3 className="text-sm font-semibold text-slate-900">
           Spatial context
         </h3>
         <button
           type="button"
           onClick={toggle}
-          aria-label={collapsed ? "Expand panel" : "Collapse panel"}
+          aria-label="Collapse panel"
+          title="Hide spatial context"
           className="text-slate-500 hover:text-slate-900 text-lg leading-none transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
         >
-          {collapsed ? "»" : "«"}
+          «
         </button>
       </header>
 
-      {!collapsed && (
-        <>
-          <div className="flex-1 min-h-[320px] relative">
+      <div className="flex-1 min-h-[320px] relative">
             <Map
               initialViewState={{
                 longitude: -111.7225,
@@ -252,8 +267,6 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
               Open in MC Assessor →
             </a>
           </section>
-        </>
-      )}
     </aside>
   );
 }

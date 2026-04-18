@@ -66,11 +66,14 @@ export function EncumbranceLifecycle({
       <TermSection id="encumbrance-heading">
         <div className="mb-6 flex items-start justify-between gap-4">
           <div>
-            <h2 className="text-2xl font-bold text-gray-800">
+            <h1 className="text-2xl font-bold text-gray-900">
+              {parcel.address}, {parcel.city} {parcel.state}
+            </h1>
+            <h2 className="text-base font-semibold text-gray-700 mt-1">
               <Term professional="Encumbrance Lifecycles" />
             </h2>
-            <p className="text-sm text-gray-500 mt-1">
-              {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
+            <p className="text-xs text-gray-500 mt-0.5">
+              APN: <span className="font-mono">{parcel.apn}</span>
             </p>
           </div>
           <div className="flex items-center gap-2 shrink-0 mt-1">

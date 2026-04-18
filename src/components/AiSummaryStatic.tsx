@@ -1,6 +1,9 @@
+import { useLayoutEffect, useRef, useState } from "react";
 import type { Parcel } from "../types";
 import { renderWithCitations } from "../narrative/render-citations";
 import { parcelHasSyntheticInstrument } from "../lib/synthetic-instruments";
+
+const SUMMARY_CAP_PX = 600;
 
 import popham_md from "../data/ai-summaries/304-78-386/summary.md?raw";
 import popham_prompt from "../data/ai-summaries/304-78-386/prompt.txt?raw";
@@ -48,9 +51,21 @@ interface Props {
 
 export function AiSummaryStatic({ parcel, knownInstruments, onOpenDocument }: Props) {
   const a = BY_APN[parcel.apn];
+  const proseRef = useRef<HTMLDivElement>(null);
+  const [overflowing, setOverflowing] = useState(false);
+  const [expanded, setExpanded] = useState(false);
+
+  useLayoutEffect(() => {
+    if (!a || expanded) return;
+    const el = proseRef.current;
+    if (!el) return;
+    setOverflowing(el.scrollHeight > SUMMARY_CAP_PX + 4);
+  }, [a, expanded, parcel.apn]);
+
   if (!a) return null;
   const dateShort = a.meta.generated_at.slice(0, 10);
   const hasSynthetic = parcelHasSyntheticInstrument(parcel.apn);
+  const capped = overflowing && !expanded;
 
   return (
     <section className="mb-6 border border-moat-200 rounded-lg bg-white overflow-hidden">
@@ -77,9 +92,33 @@ export function AiSummaryStatic({ parcel, knownInstruments, onOpenDocument }: Pr
             the full per-instrument disclosure.
           </div>
         )}
-        <div className="prose prose-sm max-w-none text-gray-800 whitespace-pre-wrap leading-relaxed">
-          {renderWithCitations(a.md, knownInstruments, onOpenDocument)}
+        <div className="relative">
+          <div
+            ref={proseRef}
+            className="prose prose-sm max-w-none text-gray-800 whitespace-pre-wrap leading-relaxed overflow-hidden"
+            style={capped ? { maxHeight: SUMMARY_CAP_PX } : undefined}
+          >
+            {renderWithCitations(a.md, knownInstruments, onOpenDocument)}
+          </div>
+          {capped && (
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-x-0 bottom-0 h-16 bg-gradient-to-b from-transparent to-white"
+            />
+          )}
         </div>
+        {overflowing && (
+          <div className="mt-2">
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="text-xs font-medium text-moat-700 hover:text-moat-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded px-1"
+            >
+              {expanded ? "Show less ↑" : "Read full brief ↓"}
+            </button>
+          </div>
+        )}
         <footer className="mt-3 text-[11px] text-slate-500 border-t border-slate-100 pt-2">
           Generated {dateShort} by {a.meta.model_id}
           <span className="mx-1">·</span>

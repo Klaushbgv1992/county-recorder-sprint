@@ -37,13 +37,14 @@ export function OverrideMenu({
     <div className="relative" ref={ref}>
       <button
         onClick={() => setOpen((o) => !o)}
-        className="w-6 h-6 grid place-items-center rounded text-slate-300 hover:text-slate-700 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+        className="inline-flex items-center gap-1 px-2 py-0.5 rounded border border-slate-200 bg-white text-[11px] font-medium text-slate-600 hover:text-slate-900 hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
         aria-haspopup="menu"
         aria-expanded={open}
         aria-label="Examiner overrides"
         title="Examiner overrides"
       >
-        <span className="text-lg leading-none">⋯</span>
+        <span>Override</span>
+        <span aria-hidden="true" className="text-slate-400">{open ? "▴" : "▾"}</span>
       </button>
       {open && (
         <div
