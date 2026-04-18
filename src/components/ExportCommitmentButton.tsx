@@ -152,7 +152,7 @@ export function ExportCommitmentButton(props: ButtonProps) {
   const baseCls =
     "px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded hover:bg-emerald-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500";
   const highlightCls = walkthroughHighlight
-    ? " ring-2 ring-moat-500 ring-offset-2 animate-pulse"
+    ? " ring-2 ring-moat-500 ring-offset-2"
     : "";
   return (
     <>
