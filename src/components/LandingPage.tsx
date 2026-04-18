@@ -205,6 +205,11 @@ export function LandingPage() {
             />
             {/* party-search hero card — Agent 3 */}
             <PartySearchHeroCard />
+            <p className="mt-2 text-[11px] text-slate-500 text-center pb-2">
+              <Link to="/custodian-query" className="text-moat-700 hover:underline">
+                See the custodian query engine →
+              </Link>
+            </p>
           </>
         )}
       </div>

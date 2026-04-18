@@ -18,6 +18,7 @@ import { MoatCompareRoute } from "./components/MoatCompareRoute";
 import { ActivityHeatMap } from "./components/ActivityHeatMap";
 import { WhyPage } from "./components/WhyPage";
 import { EnterprisePage } from "./components/EnterprisePage";
+import { CustodianQueryPage } from "./pages/CustodianQueryPage";
 import { SpatialContextPanel } from "./components/SpatialContextPanel";
 import { TransactionWizard } from "./components/TransactionWizard";
 import { PipelineDashboard } from "./components/PipelineDashboard";
@@ -437,6 +438,7 @@ export const routes: RouteObject[] = [
       { path: "/county-activity", element: <ActivityHeatMap /> },
       { path: "/why", id: "why-page", element: <WhyPage /> },
       { path: "/enterprise", id: "enterprise-page", element: <EnterprisePage /> },
+      { path: "/custodian-query", id: "custodian-query-page", element: <CustodianQueryPage /> },
       {
         element: <AppShell />,
         children: [
