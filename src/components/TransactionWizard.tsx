@@ -89,7 +89,7 @@ function StepPills({ step }: { step: Step }) {
                   done
                     ? "bg-blue-600 text-white"
                     : active
-                      ? "border-2 border-blue-600 text-blue-700 bg-white ring-2 ring-blue-100 animate-pulse-glow"
+                      ? "border-2 border-blue-600 text-blue-700 bg-white ring-2 ring-blue-400"
                       : "border border-gray-300 text-gray-400 bg-white"
                 } ${pulseOnce ? "animate-pulse-once" : ""}`}
               >
