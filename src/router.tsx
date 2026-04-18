@@ -297,6 +297,7 @@ function EncumbranceRouteInner({ apn }: { apn: string }) {
         allLinks={data.links}
         lifecycles={data.lifecycles}
         pipelineStatus={data.pipelineStatus}
+        hideExportButton
       />
     ) : drawerOpen ? (
       <NotInCorpusParcel
