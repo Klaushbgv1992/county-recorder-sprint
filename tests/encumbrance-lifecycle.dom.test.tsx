@@ -141,7 +141,10 @@ describe("EncumbranceLifecycle UI wiring", () => {
       screen.getByText(/Shamrock Estates Phase 2A parcel corpus/i),
     ).toBeInTheDocument();
     expect(
-      screen.getByText(/county-internal full-name scan closes this gap/i),
+      screen.getByText(/county-internal full-name scan/i),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText(/closes this gap/i),
     ).toBeInTheDocument();
   });
 

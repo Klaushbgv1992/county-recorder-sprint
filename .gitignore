@@ -6,5 +6,8 @@ dist/
 .claude/scheduled_tasks.lock
 .claude/launch.json
 .worktrees/
+.env
+.env.*
 .env.local
 .env*.local
+.env*.txt

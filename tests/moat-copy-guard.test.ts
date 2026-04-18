@@ -31,7 +31,7 @@ const EXPECTED_HOGUE_EMPTY_RATIONALE =
   "0 reconveyance candidates above threshold. " +
   "The public API cannot search for releases filed against " +
   "HOGUE JASON / MICHELE outside this parcel — a county-internal " +
-  "full-name scan closes this gap (out of prototype scope).";
+  "full-name scan across the entire recorded index closes this gap.";
 
 describe("HOGUE lc-003 moat-rationale regression guard", () => {
   it("lc-003.status_rationale in lifecycles.json matches the demo-script copy verbatim", () => {

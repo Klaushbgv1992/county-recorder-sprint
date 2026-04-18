@@ -289,6 +289,6 @@ export function buildEmptyStateRationale(parcel: Parcel): string {
     `0 reconveyance candidates above threshold. ` +
     `The public API cannot search for releases filed against ` +
     `${parcel.current_owner} outside this parcel — a county-internal ` +
-    `full-name scan closes this gap (out of prototype scope).`
+    `full-name scan across the entire recorded index closes this gap.`
   );
 }

@@ -219,7 +219,7 @@ describe("HOGUE empty-state (no reconveyances in parcel corpus)", () => {
     expect(rationale).toContain("Shamrock Estates Phase 2A");
     expect(rationale).toContain("HOGUE JASON / MICHELE");
     expect(rationale).toContain("county-internal full-name scan");
-    expect(rationale).toContain("out of prototype scope");
+    expect(rationale).toContain("closes this gap");
   });
 
   it("buildCandidateRows on an empty pool returns total=0, no rows", () => {
