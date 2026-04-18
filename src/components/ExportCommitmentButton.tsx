@@ -1,4 +1,4 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -15,6 +15,7 @@ import {
 import { renderCommitmentPdf } from "../logic/commitment-pdf";
 import closingImpactTemplates from "../data/closing-impact-templates.json";
 import { Toast, type ToastVariant } from "./Toast";
+import { useWalkthrough } from "../walkthrough/useWalkthrough";
 
 export interface TriggerInput {
   parcel: Parcel;
@@ -96,6 +97,18 @@ function deferToNextFrame(cb: () => void): void {
 export function ExportCommitmentButton(props: ButtonProps) {
   const [toast, setToast] = useState<ToastState | null>(null);
   const dismissToast = useCallback(() => setToast(null), []);
+  const { currentStep } = useWalkthrough();
+  const walkthroughHighlight = currentStep?.step === 5;
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // Step 5 of the examiner walkthrough — scroll the button into view so it
+  // is the first thing the reviewer sees after accepting the candidate
+  // release. The button itself is the payoff; the banner tells them why.
+  useEffect(() => {
+    if (walkthroughHighlight && buttonRef.current) {
+      buttonRef.current.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+  }, [walkthroughHighlight]);
 
   const handleClick = useCallback(() => {
     setToast({
@@ -136,14 +149,18 @@ export function ExportCommitmentButton(props: ButtonProps) {
     props.transactionInputs,
   ]);
 
-  const cls =
-    "px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded hover:bg-emerald-100 transition-colors";
+  const baseCls =
+    "px-3 py-1.5 text-xs font-medium bg-emerald-50 text-emerald-700 rounded hover:bg-emerald-100 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500";
+  const highlightCls = walkthroughHighlight
+    ? " ring-2 ring-moat-500 ring-offset-2 animate-pulse"
+    : "";
   return (
     <>
       <button
+        ref={buttonRef}
         type="button"
         onClick={handleClick}
-        className={cls}
+        className={baseCls + highlightCls}
         title="Download a PDF chain-and-encumbrance abstract for this parcel"
       >
         {props.label ?? "Export Commitment for Parcel"}

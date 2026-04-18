@@ -2,6 +2,7 @@ import { describe, expect, it, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import userEvent from "@testing-library/user-event";
+import { MemoryRouter } from "react-router";
 import {
   ExportCommitmentButton,
   triggerCommitmentDownload,
@@ -103,13 +104,15 @@ describe("ExportCommitmentButton — toast UX", () => {
   it("shows a 'Downloaded:' toast with the filename after click resolves", async () => {
     const user = userEvent.setup();
     render(
-      <ExportCommitmentButton
-        parcel={data.parcel}
-        instruments={data.instruments}
-        links={data.links}
-        lifecycles={data.lifecycles}
-        pipelineStatus={data.pipelineStatus}
-      />,
+      <MemoryRouter>
+        <ExportCommitmentButton
+          parcel={data.parcel}
+          instruments={data.instruments}
+          links={data.links}
+          lifecycles={data.lifecycles}
+          pipelineStatus={data.pipelineStatus}
+        />
+      </MemoryRouter>,
     );
     await user.click(screen.getByRole("button", { name: /Export Commitment/i }));
     await screen.findByText(/Downloaded: commitment-30478386-/i, undefined, {

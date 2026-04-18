@@ -2,6 +2,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { render, screen, within, cleanup } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
+import { MemoryRouter } from "react-router";
 import { EncumbranceLifecycle } from "../src/components/EncumbranceLifecycle";
 import { loadParcelDataByApn } from "../src/data-loader";
 import { detectAnomalies } from "../src/logic/anomaly-detector";
@@ -25,23 +26,25 @@ function renderEncumbrance(
   const onSetLifecycleOverride = vi.fn();
   const onOpenDocument = vi.fn();
   const utils = render(
-    <TerminologyProvider>
-      <EncumbranceLifecycle
-        parcel={data.parcel}
-        instruments={data.instruments}
-        links={links}
-        lifecycles={data.lifecycles}
-        pipelineStatus={data.pipelineStatus}
-        findings={findings}
-        linkActions={Object.fromEntries(
-          links.map((l) => [l.id, l.examiner_action]),
-        )}
-        lifecycleOverrides={{}}
-        onSetLinkAction={onSetLinkAction}
-        onSetLifecycleOverride={onSetLifecycleOverride}
-        onOpenDocument={onOpenDocument}
-      />
-    </TerminologyProvider>,
+    <MemoryRouter>
+      <TerminologyProvider>
+        <EncumbranceLifecycle
+          parcel={data.parcel}
+          instruments={data.instruments}
+          links={links}
+          lifecycles={data.lifecycles}
+          pipelineStatus={data.pipelineStatus}
+          findings={findings}
+          linkActions={Object.fromEntries(
+            links.map((l) => [l.id, l.examiner_action]),
+          )}
+          lifecycleOverrides={{}}
+          onSetLinkAction={onSetLinkAction}
+          onSetLifecycleOverride={onSetLifecycleOverride}
+          onOpenDocument={onOpenDocument}
+        />
+      </TerminologyProvider>
+    </MemoryRouter>,
   );
   return { ...utils, data, onOpenDocument };
 }
