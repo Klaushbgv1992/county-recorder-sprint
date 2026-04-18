@@ -6,6 +6,7 @@ import { OverlayToggles } from "./OverlayToggles";
 import { ParcelDrawer } from "./ParcelDrawer";
 import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
 import { FeaturedParcels } from "./FeaturedParcels";
+import { PlantVsCountyProof } from "./PlantVsCountyProof";
 import { SearchHero } from "./SearchHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
 import { ScenarioPicker } from "./ScenarioPicker";
@@ -187,6 +188,11 @@ export function LandingPage() {
         onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
       />
       {walkthrough.active ? <WalkthroughBanner /> : <ScenarioPicker />}
+
+      {/* Moat-as-evidence band — stages the plant-vs-county comparison
+          with real POPHAM data so a reviewer sees the plant lose within
+          15 seconds of arriving. Detail page remains at /moat-compare. */}
+      <PlantVsCountyProof />
 
       {/* Full-bleed map — flex-1 fills remaining viewport below the
           PipelineBanner + SearchHero. The verified-through strip in

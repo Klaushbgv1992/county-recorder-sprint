@@ -27,6 +27,7 @@ import { StaffParcelView } from "./components/StaffParcelView";
 import { StoryPage } from "./components/story/StoryPage";
 import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { PartyPage } from "./components/PartyPage";
+import { ReceiptsPage } from "./components/ReceiptsPage";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { loadAllLifecycles, loadAllInstruments } from "./data-loader";
@@ -478,6 +479,11 @@ export const routes: RouteObject[] = [
             id: "subscribe",
             path: "subscribe",
             element: <SubscribePlaceholder />,
+          },
+          {
+            id: "receipts",
+            path: "receipts/:slug",
+            element: <ReceiptsPage />,
           },
           {
             id: "commitment-new",
