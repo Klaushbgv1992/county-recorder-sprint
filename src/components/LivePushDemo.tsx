@@ -182,7 +182,7 @@ export function LivePushDemo({
 
       {phase.kind === "done" && (
         <div
-          className="border-t border-indigo-200 bg-gradient-to-r from-indigo-50 to-white px-5 py-3 text-xs text-indigo-900 flex items-center gap-3"
+          className="border-t border-indigo-200 bg-indigo-50 px-5 py-3 text-xs text-indigo-900 flex items-center gap-3"
           role="status"
         >
           <span className="inline-flex h-2 w-2 rounded-full bg-indigo-500" />
