@@ -66,17 +66,22 @@ export function EncumbranceLifecycle({
   return (
     <div>
       <TermSection id="encumbrance-heading">
-        <div className="mb-6 flex items-start justify-between gap-4">
-          <div>
-            <h1 className="text-2xl font-bold text-gray-900">
+        <div className="mb-6 flex flex-wrap items-start justify-between gap-4">
+          <div className="min-w-0">
+            <h1 className="text-3xl font-semibold text-recorder-900 tracking-tight">
               {parcel.address}, {parcel.city} {parcel.state}
             </h1>
-            <h2 className="text-base font-semibold text-gray-700 mt-1">
-              <Term professional="Encumbrance Lifecycles" />
-            </h2>
-            <p className="text-xs text-gray-500 mt-0.5">
-              APN: <span className="font-mono">{parcel.apn}</span>
-            </p>
+            <div className="flex items-center gap-3 flex-wrap mt-2">
+              <h2 className="text-sm font-semibold text-slate-600 uppercase tracking-[0.12em]">
+                <Term professional="Encumbrance Lifecycles" />
+              </h2>
+              <span
+                aria-label={`APN ${parcel.apn}`}
+                className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-700"
+              >
+                APN {parcel.apn}
+              </span>
+            </div>
           </div>
           <div className="flex items-center gap-2 shrink-0 mt-1">
             <ExportCommitmentButton

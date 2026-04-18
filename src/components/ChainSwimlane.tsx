@@ -266,9 +266,12 @@ export function ChainSwimlane({
   const safeDomain: [string, string] = [domain[0], domain[1]];
 
   return (
-    <div ref={containerRef}>
+    <div
+      ref={containerRef}
+      className="rounded-xl border border-slate-200 bg-white shadow-sm ring-1 ring-black/[0.02] p-5 md:p-6"
+    >
       <TermSection id="chain-swimlane">
-        <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
+        <h3 className="text-xs font-semibold text-slate-500 uppercase tracking-[0.14em] mb-4">
           <Term professional="Chain of Title" /> Timeline
         </h3>
 

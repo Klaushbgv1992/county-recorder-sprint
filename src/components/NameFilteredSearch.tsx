@@ -126,7 +126,7 @@ export function NameFilteredSearch() {
           value={q}
           onChange={(e) => setQ(e.target.value)}
           placeholder="e.g. POPHAM or HOGUE"
-          className="w-full max-w-md px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full max-w-md px-3 py-2 border border-gray-300 rounded-md text-sm focus:outline-none focus:ring-2 focus:ring-moat-500"
           autoFocus
         />
       </form>

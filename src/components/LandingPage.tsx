@@ -10,7 +10,6 @@ import { PlantVsCountyProof } from "./PlantVsCountyProof";
 import { PartySearchHeroCard } from "./PartySearchHeroCard";
 import { SearchHero } from "./SearchHero";
 import { usePortalMode } from "../hooks/usePortalMode";
-import { PortalModeToggle } from "./PortalModeToggle";
 import { HomeownerHero } from "./HomeownerHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
 import { ScenarioPicker } from "./ScenarioPicker";
@@ -42,7 +41,7 @@ export function LandingPage() {
   const parcels = useAllParcels();
   const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
     useLandingUrlState();
-  const { mode, setMode } = usePortalMode();
+  const { mode } = usePortalMode();
   // Examiner walkthrough sets ?tour=examiner on the URL. When it's on, the
   // WalkthroughBanner owns on-screen guidance and the map's intro pulse is
   // suppressed so the two don't compete.
@@ -182,9 +181,6 @@ export function LandingPage() {
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
       <div className="border-b border-slate-200 bg-white">
-        <div className="max-w-6xl mx-auto flex items-center justify-end px-6 pt-3">
-          <PortalModeToggle mode={mode} onChange={setMode} />
-        </div>
         {mode === "homeowner" ? (
           <HomeownerHero
             searchables={searchables}
@@ -205,11 +201,6 @@ export function LandingPage() {
             />
             {/* party-search hero card — Agent 3 */}
             <PartySearchHeroCard />
-            <p className="mt-2 text-[11px] text-slate-500 text-center pb-2">
-              <Link to="/custodian-query" className="text-moat-700 hover:underline">
-                See the custodian query engine →
-              </Link>
-            </p>
           </>
         )}
       </div>
@@ -226,17 +217,34 @@ export function LandingPage() {
       <section className="relative flex-1 min-h-[70vh] border-b border-slate-200">
         {!assessor && (
           <div
-            className="absolute inset-0 z-10 flex flex-col items-center justify-center gap-3 bg-slate-100/80 backdrop-blur-sm"
+            className="absolute inset-0 z-10 overflow-hidden bg-slate-100"
             role="status"
             aria-live="polite"
+            aria-label="Loading map"
           >
-            <div className="h-7 w-7 animate-spin rounded-full border-2 border-slate-300 border-t-slate-600" />
-            <p className="text-xs font-medium text-slate-600">
-              Loading Gilbert assessor parcels ({SEED_COUNT.toLocaleString()} polygons)…
-            </p>
-            <p className="text-[10px] text-slate-400">
-              Source: Maricopa County Assessor public GIS · A.R.S. § 11-495 public record
-            </p>
+            {/* Shimmer skeleton that hints at the upcoming map layout —
+                grid of parcel-ish tiles + floating caption. Uses the
+                shared shimmer-slide token (reduced-motion safe). */}
+            <div className="absolute inset-0 grid grid-cols-8 grid-rows-5 gap-1.5 p-3 opacity-70">
+              {Array.from({ length: 40 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="rounded-sm bg-gradient-to-r from-slate-200 via-slate-100 to-slate-200 bg-[length:200%_100%] animate-shimmer-slide"
+                  style={{ animationDelay: `${(i % 8) * 60}ms` }}
+                />
+              ))}
+            </div>
+            <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 bg-gradient-to-b from-transparent via-white/40 to-transparent">
+              <div className="rounded-full bg-white/90 px-4 py-2 shadow-sm ring-1 ring-slate-200 flex items-center gap-2">
+                <span className="inline-block w-2 h-2 rounded-full bg-moat-500 animate-pulse-glow" />
+                <p className="text-xs font-medium text-slate-700">
+                  Loading {SEED_COUNT.toLocaleString()} Gilbert parcels…
+                </p>
+              </div>
+              <p className="text-[10px] text-slate-500">
+                Source: Maricopa County Assessor public GIS · A.R.S. § 11-495 public record
+              </p>
+            </div>
           </div>
         )}
         <CountyMap
@@ -284,40 +292,43 @@ export function LandingPage() {
         <FeaturedParcels parcels={parcels} />
       </div>
 
-      <footer className="border-t border-slate-200 bg-white px-6 py-4">
-        <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-x-5 gap-y-2 text-[11px] text-slate-500">
-          <span className="font-medium uppercase tracking-wider text-slate-400">
-            Elsewhere
+      <footer className="border-t border-slate-200 bg-white px-6 pt-6 pb-8">
+        <div className="max-w-6xl mx-auto flex flex-wrap items-center gap-x-4 gap-y-2 text-xs text-slate-500">
+          <span className="font-semibold uppercase tracking-[0.14em] text-slate-400">
+            Explore
           </span>
           <Link
             to="/county-activity"
-            className="hover:text-slate-800 hover:underline underline-offset-2"
+            className="hover:text-recorder-900 hover:underline underline-offset-2"
           >
             County activity
           </Link>
+          <span aria-hidden="true" className="text-slate-300">·</span>
           <Link
             to="/why"
-            className="hover:text-slate-800 hover:underline underline-offset-2"
+            className="hover:text-recorder-900 hover:underline underline-offset-2"
           >
             Why this matters
           </Link>
+          <span aria-hidden="true" className="text-slate-300">·</span>
           <Link
             to="/moat-compare"
-            className="hover:text-slate-800 hover:underline underline-offset-2"
+            className="hover:text-recorder-900 hover:underline underline-offset-2"
           >
             Compare vs. title plant
           </Link>
+          <span aria-hidden="true" className="text-slate-300">·</span>
           <Link
             to="/enterprise"
-            className="hover:text-slate-800 hover:underline underline-offset-2"
+            className="hover:text-recorder-900 hover:underline underline-offset-2"
           >
             Enterprise feed
           </Link>
           <Link
-            to="/staff"
-            className="ml-auto text-slate-400 hover:text-slate-700 hover:underline underline-offset-2"
+            to="/custodian-query"
+            className="ml-auto text-moat-700 hover:text-moat-900 hover:underline underline-offset-2"
           >
-            County staff workbench
+            Custodian query engine →
           </Link>
         </div>
       </footer>

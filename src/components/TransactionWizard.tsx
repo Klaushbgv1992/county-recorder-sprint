@@ -226,7 +226,7 @@ function Step2({ inputs, setInputs, onBack, onNext }: Step2Props) {
             type="date"
             value={effective}
             onChange={(e) => setInputs({ effective_date: e.target.value })}
-            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-moat-500"
           />
         </div>
         <div>
@@ -241,7 +241,7 @@ function Step2({ inputs, setInputs, onBack, onNext }: Step2Props) {
             type="text"
             value={buyer}
             onChange={(e) => setInputs({ buyer_or_borrower: e.target.value })}
-            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-moat-500"
           />
         </div>
         <div>
@@ -257,7 +257,7 @@ function Step2({ inputs, setInputs, onBack, onNext }: Step2Props) {
             type="text"
             value={lender}
             onChange={(e) => setInputs({ new_lender: e.target.value })}
-            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="block w-full px-3 py-2 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-moat-500"
           />
         </div>
       </div>

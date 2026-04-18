@@ -42,25 +42,28 @@ export function ChainOfTitle({
     <div>
       <TermSection id="chain-heading">
         <div className="mb-6">
-          <h1 className="text-2xl font-bold text-gray-900">
+          <h1 className="text-3xl font-semibold text-recorder-900 tracking-tight">
             {parcel.address}, {parcel.city} {parcel.state}
           </h1>
-          <div className="flex items-baseline gap-3 flex-wrap mt-1">
-            <h2 className="text-base font-semibold text-gray-700">
+          <div className="flex items-center gap-3 flex-wrap mt-2">
+            <h2 className="text-sm font-semibold text-slate-600 uppercase tracking-[0.12em]">
               <Term professional="Chain of Title" />
             </h2>
+            <span
+              aria-label={`APN ${parcel.apn}`}
+              className="inline-flex items-center rounded-md bg-slate-100 px-2 py-0.5 font-mono text-xs text-slate-700"
+            >
+              APN {parcel.apn}
+            </span>
             {storyPageExists(parcel.apn) && (
               <Link
                 to={`/parcel/${parcel.apn}/story`}
-                className="text-xs text-moat-700 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+                className="text-xs font-medium text-moat-700 hover:text-moat-900 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded"
               >
                 Read as a story →
               </Link>
             )}
           </div>
-          <p className="text-xs text-gray-500 mt-0.5">
-            APN: <span className="font-mono">{parcel.apn}</span>
-          </p>
         </div>
       </TermSection>
 
@@ -83,9 +86,20 @@ export function ChainOfTitle({
           onClick={() => setAiOpen((v) => !v)}
           aria-expanded={aiOpen}
           aria-controls="chain-ai-summary"
-          className="text-xs font-medium text-slate-600 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded flex items-center gap-1"
+          className="text-xs font-medium text-slate-600 hover:text-slate-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded flex items-center gap-1.5"
         >
-          <span aria-hidden="true">{aiOpen ? "▾" : "▸"}</span>
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 16 16"
+            className={`w-3.5 h-3.5 transition-transform duration-150 ${aiOpen ? "rotate-90" : ""}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <path d="m6 4 4 4-4 4" />
+          </svg>
           <span>
             {aiOpen ? "Hide AI summary" : "View AI summary"}
           </span>

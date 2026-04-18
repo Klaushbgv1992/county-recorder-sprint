@@ -69,11 +69,16 @@ export function ProofDrawer({
     null,
   );
   const highlightTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const [copied, setCopied] = useState(false);
+  const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const citation = formatCitation(instrument, COUNTY_NAME);
   const extractionTrace = getExtractionTrace(instrument.instrument_number);
 
   const handleCopyCitation = useCallback(() => {
     navigator.clipboard.writeText(citation);
+    if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
+    setCopied(true);
+    copiedTimerRef.current = setTimeout(() => setCopied(false), 1600);
   }, [citation]);
 
   const handleFieldClick = useCallback((fieldId: string) => {
@@ -195,9 +200,14 @@ export function ProofDrawer({
   const extractedEntries = Object.entries(instrument.extracted_fields);
 
   return (
-    <div className="h-full flex flex-col">
+    <div className="h-full flex flex-col bg-white rounded-xl ring-1 ring-slate-200 shadow-lg overflow-hidden relative">
+      {/* Leading moat accent stripe — reinforces "county-authoritative panel". */}
+      <span
+        aria-hidden="true"
+        className="absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b from-moat-400 to-moat-600"
+      />
       {/* Header */}
-      <div className="px-6 py-4 border-b border-gray-200 bg-gray-50 shrink-0">
+      <div className="px-6 py-4 border-b border-slate-200 bg-gradient-to-b from-slate-50 to-white shrink-0">
         <div className="flex items-center justify-between">
           <div>
             <div className="flex items-center gap-2">
@@ -230,14 +240,52 @@ export function ProofDrawer({
             )}
             <button
               onClick={handleCopyCitation}
-              className="px-3 py-1.5 text-xs font-medium bg-blue-50 text-blue-700 rounded hover:bg-blue-100 transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+              className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-full transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${
+                copied
+                  ? "bg-moat-100 text-moat-900 ring-1 ring-moat-300"
+                  : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+              }`}
               title="Copy formatted citation to clipboard"
+              aria-live="polite"
             >
-              Copy Citation
+              {copied ? (
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path
+                    d="M5 13l4 4L19 7"
+                    className="animate-checkmark-draw"
+                    strokeDasharray="24"
+                  />
+                </svg>
+              ) : (
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="w-3.5 h-3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <rect x="9" y="9" width="11" height="11" rx="2" />
+                  <path d="M5 15V5a2 2 0 0 1 2-2h10" />
+                </svg>
+              )}
+              {copied ? "Copied" : "Copy Citation"}
             </button>
             <button
               onClick={onClose}
-              className="px-2 py-1.5 text-gray-400 hover:text-gray-600 text-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+              aria-label="Close"
+              className="px-2 py-1.5 text-slate-400 hover:text-slate-700 text-lg transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded"
             >
               &times;
             </button>

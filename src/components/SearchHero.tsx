@@ -66,7 +66,7 @@ function highlight(text: string, query: string): ReactNode {
     parts.push(
       <mark
         key={`m${keyN++}`}
-        className="bg-amber-100 text-amber-900 rounded-sm px-0.5"
+        className="bg-moat-100 text-moat-900 rounded-sm px-0.5"
       >
         {text.slice(idx, idx + q.length)}
       </mark>,
@@ -142,21 +142,43 @@ export function SearchHero({
     open && value.length > 0 && (hits.length > 0 || partyHits.length > 0);
 
   return (
-    <section aria-label="Parcel search" className="bg-white border-b border-slate-200 px-6 py-8">
-      <div className="max-w-3xl mx-auto">
-        <p className="text-xs font-semibold uppercase tracking-wider text-moat-700">
+    <section
+      aria-label="Parcel search"
+      className="relative bg-gradient-to-br from-white via-white to-slate-50 border-b border-slate-200 px-6 py-10 overflow-hidden"
+    >
+      {/* Soft moat glow — pure decoration, placed behind content so it
+          doesn't block hits. Tailored to not tint type contrast. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] rounded-full bg-moat-200/30 blur-3xl -z-0"
+      />
+      <div className="relative max-w-3xl mx-auto">
+        <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-moat-700">
           Maricopa County Recorder
         </p>
-        <h1 className="mt-1 text-2xl md:text-3xl font-semibold text-recorder-900 tracking-tight">
-          Land Custodian Portal
+        <h1 className="mt-1 text-3xl md:text-4xl font-semibold text-recorder-900 tracking-tight">
+          Search the source of record
         </h1>
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          Structured title research for abstractors and examiners — chain of title,
-          encumbrance lifecycle, and release matching, served directly from the
-          custodian of the record.
+          Chain of title, encumbrance lifecycle, and release matching — served
+          directly from the custodian of the record, not a title-plant mirror.
         </p>
       </div>
-      <div className="max-w-3xl mx-auto relative mt-6">
+      <div className="relative max-w-3xl mx-auto mt-6">
+        {/* Leading search glyph, positioned inside the input by padding. */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 20 20"
+          className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <circle cx="9" cy="9" r="6" />
+          <path d="m14 14 4 4" />
+        </svg>
         <input
           type="search"
           role="combobox"
@@ -169,8 +191,8 @@ export function SearchHero({
             if (e.target.value) setOpen(true);
             setActiveIdx(0);
           }}
-          placeholder="Search APN, address, owner, party (grantor/lender/releasing party), subdivision, or 11-digit instrument"
-          className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-recorder-500 focus:border-transparent"
+          placeholder="APN, address, owner, party, subdivision, or 11-digit instrument"
+          className="w-full rounded-xl border border-slate-300 bg-white pl-11 pr-20 py-3.5 text-base shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-moat-500 focus:border-transparent transition-shadow hover:shadow-md"
           onKeyDown={(e) => {
             if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, hits.length - 1)); }
             else if (e.key === "ArrowUp") { e.preventDefault(); setActiveIdx((i) => Math.max(i - 1, 0)); }
@@ -178,6 +200,16 @@ export function SearchHero({
             else if (e.key === "Escape") setOpen(false);
           }}
         />
+        {/* Keyboard hint — hidden once the user has begun typing so it
+            doesn't compete with the clear-icon affordance. */}
+        {!value && (
+          <kbd
+            aria-hidden="true"
+            className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 hidden sm:inline-flex items-center gap-1 rounded-md border border-slate-200 bg-slate-50 px-1.5 py-0.5 font-mono text-[11px] text-slate-500 shadow-sm"
+          >
+            <span className="text-slate-400">⌘</span>K
+          </kbd>
+        )}
         {showDropdown && (
           <div
             id="search-hero-results"
@@ -192,16 +224,26 @@ export function SearchHero({
                   const active = i === activeIdx;
                   const rowKey = `${value}:hit:${s.apn}:${h.matchType}:${i}`;
                   const isSelected = selectedKey === rowKey;
+                  const curated = s.tier === "curated";
                   return (
                     <li
                       key={rowKey}
                       role="option"
                       aria-selected={active}
-                      className={`animate-fade-in-up flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"} ${isSelected ? "animate-bounce-soft" : ""}`}
+                      className={`animate-fade-in-up relative flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"} ${isSelected ? "animate-bounce-soft" : ""}`}
                       style={{ animationDelay: `${i * 20}ms` }}
                       onMouseEnter={() => setActiveIdx(i)}
                       onClick={() => { setSelectedKey(rowKey); onPick(h, value); }}
                     >
+                      {/* Curated tier gets a left-border accent instead of a
+                          chip, so the single category that matters is felt
+                          pre-attentively without adding chip noise. */}
+                      {curated && (
+                        <span
+                          aria-hidden="true"
+                          className="absolute left-0 top-2 bottom-2 w-1 rounded-r-sm bg-moat-500"
+                        />
+                      )}
                       <div className="min-w-0 flex-1">
                         <div className="font-semibold text-recorder-900 truncate">
                           {highlight(addressOf(s) || s.apn, value)}
@@ -212,11 +254,15 @@ export function SearchHero({
                           {subdivisionOf(s) ? ` · ${subdivisionOf(s)}` : ""}
                         </div>
                       </div>
-                      <div className="shrink-0 flex flex-col items-end gap-1">
-                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${entity.className}`}>
+                      <div className="shrink-0 flex items-center gap-1.5">
+                        <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${entity.className}`}>
                           {entity.label}
                         </span>
-                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${tier.className}`}>
+                        <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${tier.className}`}>
+                          <span
+                            aria-hidden="true"
+                            className={`inline-block w-1.5 h-1.5 rounded-full ${curated ? "bg-moat-500" : "bg-slate-400"}`}
+                          />
                           {tier.label}
                         </span>
                       </div>

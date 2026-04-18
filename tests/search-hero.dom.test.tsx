@@ -48,7 +48,7 @@ describe("SearchHero", () => {
       </MemoryRouter>,
     );
     expect(
-      screen.getByPlaceholderText(/Search APN, address, owner, party/),
+      screen.getByPlaceholderText(/APN, address, owner, party/),
     ).toBeInTheDocument();
   });
 
