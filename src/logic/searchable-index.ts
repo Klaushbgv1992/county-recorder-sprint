@@ -51,6 +51,16 @@ function ownerMatches(query: string, owner: string | null | undefined): boolean 
   return q.every((qt) => o.some((ot) => ot.includes(qt)));
 }
 
+// Token-based address matching: every query token must appear (as a
+// substring) in at least one address token. This lets "3674 palmer"
+// match "3674 E Palmer St" without requiring the tokens to be adjacent.
+function addressMatches(query: string, address: string): boolean {
+  const q = tokenize(query);
+  if (q.length === 0) return false;
+  const a = tokenize(address);
+  return q.every((qt) => a.some((at) => at.includes(qt)));
+}
+
 export function buildSearchableIndex(
   curated: Parcel[],
   cached: Map<string, RecorderCache>,
@@ -130,7 +140,7 @@ export function searchAll(
     };
 
     if (normalizeApn(s.apn) === qApn) consider("apn");
-    if (addressOf(s).toLowerCase().includes(q)) consider("address");
+    if (addressMatches(trimmed, addressOf(s))) consider("address");
     if (s.tier !== "assessor_only" && ownerMatches(trimmed, ownerOf(s))) consider("owner");
     if (subdivisionOf(s).toLowerCase().includes(q)) consider("subdivision");
 
