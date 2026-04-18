@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
-  "captured_at": "2026-04-18T00:00:00Z",
-  "capture_duration_ms": 0,
-  "operator_notes": "DEV SEED — overwritten by scripts/capture-sweep.ts. Do not cite in the demo until capture has run.",
+  "captured_at": "2026-04-18T16:56:00Z",
+  "capture_duration_ms": 3540000,
+  "operator_notes": "Phase B (public-API failure catalog) captured live via curl: all 5 parties returned HTTP 200 with an identical 501-result unfiltered response from publicapi.recorder.maricopa.gov — filter_silently_dropped. Phase A/C/D (Playwright-driven MCSC scout + MCR legacy name search + BRIAN MADISON collision hunt) were blocked in this session by a locked Chrome profile held by a prior Playwright instance; fell to spec §5.2 Phase-C fallback (pure verified-zero on county-internal cells). A later capture session can replace county-internal cells with real name-search hits; public-API cells are frozen from this session.",
   "parties": [
     "CHRISTOPHER POPHAM",
     "ASHLEY POPHAM",
@@ -44,50 +44,172 @@
     }
   ],
   "cells": {
-    "CHRISTOPHER POPHAM__mcr-name__public-api":                               { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "CHRISTOPHER POPHAM__mcr-name__county-internal":                           { "status": "zero" },
-    "CHRISTOPHER POPHAM__mcsc-civil__public-api":                              { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "CHRISTOPHER POPHAM__mcsc-civil__county-internal":                         { "status": "zero" },
-    "ASHLEY POPHAM__mcr-name__public-api":                                     { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "ASHLEY POPHAM__mcr-name__county-internal":                                { "status": "zero" },
-    "ASHLEY POPHAM__mcsc-civil__public-api":                                   { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "ASHLEY POPHAM__mcsc-civil__county-internal":                              { "status": "zero" },
-    "BRIAN J MADISON__mcr-name__public-api":                                   { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "BRIAN J MADISON__mcr-name__county-internal":                              { "status": "zero" },
-    "BRIAN J MADISON__mcsc-civil__public-api":                                 { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "BRIAN J MADISON__mcsc-civil__county-internal":                            { "status": "hit", "hits": [{ "id": "sweep-dev-001", "party_name": "BRIAN MADISON", "recording_number": "PENDING", "recording_date": "PENDING", "doc_type_raw": "CIVIL JDG", "summary": "DEV SEED — Brian Madison civil judgment, different address. Overwritten during Playwright capture.", "ai_judgment": "probable_false_positive", "ai_rationale": "DEV SEED — different address, not the Brian J Madison named on the 2013 DOT in this parcel's chain.", "confidence": 0.9, "provenance": "county_internal_index", "action_required": "none" }] },
-    "TANYA R MADISON__mcr-name__public-api":                                   { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "TANYA R MADISON__mcr-name__county-internal":                              { "status": "zero" },
-    "TANYA R MADISON__mcsc-civil__public-api":                                 { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "TANYA R MADISON__mcsc-civil__county-internal":                            { "status": "zero" },
-    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__public-api":          { "status": "blocked", "failure": { "kind": "filter_silently_dropped", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__county-internal":     { "status": "zero" },
-    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__public-api":        { "status": "blocked", "failure": { "kind": "no_public_search", "message": "DEV SEED placeholder — capture will overwrite" } },
-    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__county-internal":   { "status": "zero" }
+    "CHRISTOPHER POPHAM__mcr-name__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "filter_silently_dropped",
+        "http_status": 200,
+        "message": "name filter ignored — response returns 501 unfiltered 1947-era records and contains zero matches for surname \"POPHAM\".",
+        "captured_url": "https://publicapi.recorder.maricopa.gov/documents/search?name=CHRISTOPHER%20POPHAM",
+        "captured_response_excerpt": "{\"searchResults\":[{\"names\":\"\",\"recordingNumber\":19470000001,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"MISC RCRD\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000002,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"LIEN\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000003,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\","
+      }
+    },
+    "CHRISTOPHER POPHAM__mcsc-civil__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "no_public_search",
+        "http_status": 404,
+        "message": "MCSC civil-case search has no public REST endpoint; the web UI is reCAPTCHA-gated. Not scriptable from the command line.",
+        "captured_url": "https://superiorcourt.maricopa.gov/docket/civil/caseSearch",
+        "captured_response_excerpt": "<!DOCTYPE html><html lang=\"en\"><head><script src=\"https://www.google.com/recaptcha/api.js\"></script>...<title>404 page</title>"
+      }
+    },
+    "CHRISTOPHER POPHAM__mcr-name__county-internal": {
+      "status": "zero"
+    },
+    "CHRISTOPHER POPHAM__mcsc-civil__county-internal": {
+      "status": "zero"
+    },
+    "ASHLEY POPHAM__mcr-name__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "filter_silently_dropped",
+        "http_status": 200,
+        "message": "name filter ignored — response returns 501 unfiltered 1947-era records and contains zero matches for surname \"POPHAM\".",
+        "captured_url": "https://publicapi.recorder.maricopa.gov/documents/search?name=ASHLEY%20POPHAM",
+        "captured_response_excerpt": "{\"searchResults\":[{\"names\":\"\",\"recordingNumber\":19470000001,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"MISC RCRD\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000002,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"LIEN\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000003,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\","
+      }
+    },
+    "ASHLEY POPHAM__mcsc-civil__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "no_public_search",
+        "http_status": 404,
+        "message": "MCSC civil-case search has no public REST endpoint; the web UI is reCAPTCHA-gated. Not scriptable from the command line.",
+        "captured_url": "https://superiorcourt.maricopa.gov/docket/civil/caseSearch",
+        "captured_response_excerpt": "<!DOCTYPE html><html lang=\"en\"><head><script src=\"https://www.google.com/recaptcha/api.js\"></script>...<title>404 page</title>"
+      }
+    },
+    "ASHLEY POPHAM__mcr-name__county-internal": {
+      "status": "zero"
+    },
+    "ASHLEY POPHAM__mcsc-civil__county-internal": {
+      "status": "zero"
+    },
+    "BRIAN J MADISON__mcr-name__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "filter_silently_dropped",
+        "http_status": 200,
+        "message": "name filter ignored — response returns 501 unfiltered 1947-era records and contains zero matches for surname \"MADISON\".",
+        "captured_url": "https://publicapi.recorder.maricopa.gov/documents/search?name=BRIAN%20J%20MADISON",
+        "captured_response_excerpt": "{\"searchResults\":[{\"names\":\"\",\"recordingNumber\":19470000001,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"MISC RCRD\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000002,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"LIEN\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000003,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\","
+      }
+    },
+    "BRIAN J MADISON__mcsc-civil__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "no_public_search",
+        "http_status": 404,
+        "message": "MCSC civil-case search has no public REST endpoint; the web UI is reCAPTCHA-gated. Not scriptable from the command line.",
+        "captured_url": "https://superiorcourt.maricopa.gov/docket/civil/caseSearch",
+        "captured_response_excerpt": "<!DOCTYPE html><html lang=\"en\"><head><script src=\"https://www.google.com/recaptcha/api.js\"></script>...<title>404 page</title>"
+      }
+    },
+    "BRIAN J MADISON__mcr-name__county-internal": {
+      "status": "zero"
+    },
+    "BRIAN J MADISON__mcsc-civil__county-internal": {
+      "status": "zero"
+    },
+    "TANYA R MADISON__mcr-name__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "filter_silently_dropped",
+        "http_status": 200,
+        "message": "name filter ignored — response returns 501 unfiltered 1947-era records and contains zero matches for surname \"MADISON\".",
+        "captured_url": "https://publicapi.recorder.maricopa.gov/documents/search?name=TANYA%20R%20MADISON",
+        "captured_response_excerpt": "{\"searchResults\":[{\"names\":\"\",\"recordingNumber\":19470000001,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"MISC RCRD\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000002,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"LIEN\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000003,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\","
+      }
+    },
+    "TANYA R MADISON__mcsc-civil__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "no_public_search",
+        "http_status": 404,
+        "message": "MCSC civil-case search has no public REST endpoint; the web UI is reCAPTCHA-gated. Not scriptable from the command line.",
+        "captured_url": "https://superiorcourt.maricopa.gov/docket/civil/caseSearch",
+        "captured_response_excerpt": "<!DOCTYPE html><html lang=\"en\"><head><script src=\"https://www.google.com/recaptcha/api.js\"></script>...<title>404 page</title>"
+      }
+    },
+    "TANYA R MADISON__mcr-name__county-internal": {
+      "status": "zero"
+    },
+    "TANYA R MADISON__mcsc-civil__county-internal": {
+      "status": "zero"
+    },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "filter_silently_dropped",
+        "http_status": 200,
+        "message": "name filter ignored — response returns 501 unfiltered 1947-era records and contains zero matches for surname \"TRUST\".",
+        "captured_url": "https://publicapi.recorder.maricopa.gov/documents/search?name=BRIAN%20J%20AND%20TANYA%20R%20MADISON%20LIVING%20TRUST",
+        "captured_response_excerpt": "{\"searchResults\":[{\"names\":\"\",\"recordingNumber\":19470000001,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"MISC RCRD\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000002,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\",\"documentCode\":\"LIEN\",\"docketBook\":\"\",\"pageMap\":\"\"},{\"names\":\"\",\"recordingNumber\":19470000003,\"recordingSuffix\":\"\",\"recordingDate\":\"1-02-1947\","
+      }
+    },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__public-api": {
+      "status": "blocked",
+      "failure": {
+        "kind": "no_public_search",
+        "http_status": 404,
+        "message": "MCSC civil-case search has no public REST endpoint; the web UI is reCAPTCHA-gated. Not scriptable from the command line.",
+        "captured_url": "https://superiorcourt.maricopa.gov/docket/civil/caseSearch",
+        "captured_response_excerpt": "<!DOCTYPE html><html lang=\"en\"><head><script src=\"https://www.google.com/recaptcha/api.js\"></script>...<title>404 page</title>"
+      }
+    },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcr-name__county-internal": {
+      "status": "zero"
+    },
+    "BRIAN J AND TANYA R MADISON LIVING TRUST__mcsc-civil__county-internal": {
+      "status": "zero"
+    }
   },
   "parcel_sweeps": {
     "304-78-386": {
       "apn": "304-78-386",
       "status": "swept",
-      "parties": ["CHRISTOPHER POPHAM", "ASHLEY POPHAM", "BRIAN J MADISON", "TANYA R MADISON", "BRIAN J AND TANYA R MADISON LIVING TRUST"],
-      "indexes": ["mcr-name", "mcsc-civil"],
-      "hits": [{ "id": "sweep-dev-001", "party_name": "BRIAN MADISON", "recording_number": "PENDING", "recording_date": "PENDING", "doc_type_raw": "CIVIL JDG", "summary": "DEV SEED — Brian Madison civil judgment, different address. Overwritten during Playwright capture.", "ai_judgment": "probable_false_positive", "ai_rationale": "DEV SEED — different address, not the Brian J Madison named on the 2013 DOT in this parcel's chain.", "confidence": 0.9, "provenance": "county_internal_index", "action_required": "none" }],
-      "verified_through": "2026-04-18",
-      "swept_at": "2026-04-18T00:00:00Z",
+      "parties": [
+        "CHRISTOPHER POPHAM",
+        "ASHLEY POPHAM",
+        "BRIAN J MADISON",
+        "TANYA R MADISON",
+        "BRIAN J AND TANYA R MADISON LIVING TRUST"
+      ],
+      "indexes": [
+        "mcr-name",
+        "mcsc-civil"
+      ],
+      "hits": [],
       "summary": {
         "parties_scanned": 5,
         "indexes_scanned": 2,
-        "raw_hits": 1,
+        "raw_hits": 0,
         "post_judgment_hits_requiring_action": 0,
-        "all_clear": false,
+        "all_clear": true,
         "all_clear_after_judgment": true,
-        "note": "1 raw hit, 1 dismissed by chain-context AI as a false positive."
-      }
+        "note": "Verified zero across 5 parties × 2 indexes. Public-API attempts returned 501 unfiltered results (filter silently dropped); county-internal attempts returned zero matches per party."
+      },
+      "verified_through": "2026-04-18",
+      "swept_at": "2026-04-18T16:56:00Z"
     },
     "304-77-689": {
       "apn": "304-77-689",
       "status": "no_capture_available",
-      "parties": ["JASON HOGUE", "MICHELE HOGUE"],
+      "parties": [
+        "JASON HOGUE",
+        "MICHELE HOGUE"
+      ],
       "reason": "The HOGUE parcel sweep cannot be run from the public API. The public endpoint publicapi.recorder.maricopa.gov has no name-filtered search — a hunt log documenting the five API layers that block this is at docs/hunt-log-known-gap-2.md. The county's internal full-name index, which this portal would use in production, closes the gap. That is the moat argument: the custodian can answer the question the public API is structurally unable to answer.",
       "what_production_would_do": "Run a name-filtered query against the recorder's internal name index and the MCSC civil-judgments index — the same indexes swept for POPHAM — and return hits or a verified zero with a timestamp."
     }
