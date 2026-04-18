@@ -1,12 +1,17 @@
 import { Link, NavLink, useLocation } from "react-router";
 import { usePortalMode } from "../hooks/usePortalMode";
 import { PortalModeToggle } from "./PortalModeToggle";
+import { useAuth } from "../account/AuthContext";
+import { SignInButton } from "./account/SignInButton";
+import { NotificationBell } from "./account/NotificationBell";
+import { AccountMenu } from "./account/AccountMenu";
 
 // Persistent brand/chrome rail. Mounted by RootLayout on public routes
 // above PipelineBanner so every public page shares the same anchor.
 // Staff routes mount their own StaffPageFrame and opt out in RootLayout.
 export function AppHeader() {
   const { mode, setMode } = usePortalMode();
+  const { user } = useAuth();
   const location = useLocation();
   const onLanding = location.pathname === "/";
 
@@ -65,7 +70,7 @@ export function AppHeader() {
           <HeaderLink to="/enterprise">Enterprise</HeaderLink>
         </nav>
 
-        <div className="ml-auto flex items-center gap-4">
+        <div className="ml-auto flex items-center gap-3">
           {onLanding && <PortalModeToggle mode={mode} onChange={setMode} />}
           <Link
             to="/staff"
@@ -73,6 +78,17 @@ export function AppHeader() {
           >
             Staff workbench
           </Link>
+          {/* Account affordances: signed-out → Google sign-in button;
+              signed-in → notification bell + account menu. The
+              AuthProvider in RootLayout guarantees useAuth works here. */}
+          {user ? (
+            <>
+              <NotificationBell />
+              <AccountMenu />
+            </>
+          ) : (
+            <SignInButton />
+          )}
         </div>
       </div>
     </header>
