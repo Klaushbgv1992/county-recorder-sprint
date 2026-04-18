@@ -1,0 +1,50 @@
+{
+  "note": "Pre-seeded demo notifications. Filtered at render time by the user's watchlist.",
+  "items": [
+    {
+      "id": "n-001",
+      "kind": "new_instrument",
+      "parcel_apn": "304-78-386",
+      "recording_number": "20230100000",
+      "title": "New instrument recorded on 3674 E Palmer St",
+      "body": "ASSIGNMENT OF DEED OF TRUST filed today, naming Wells Fargo as assignee.",
+      "recorded_at": "2026-04-17T10:14:00-07:00",
+      "unread_by_default": true
+    },
+    {
+      "id": "n-002",
+      "kind": "watched_party",
+      "party_normalized": "wells-fargo",
+      "title": "Wells Fargo recorded 3 new filings this week",
+      "body": "2 assignments of deed of trust and 1 reconveyance across Maricopa County.",
+      "recorded_at": "2026-04-16T08:02:00-07:00",
+      "unread_by_default": true
+    },
+    {
+      "id": "n-003",
+      "kind": "flag_response",
+      "ref": "MCR-REPORT-2026-00714",
+      "title": "Your issue report was reviewed by a curator",
+      "body": "Your flag on instrument 20210075858 was triaged. Status: accepted for follow-up.",
+      "recorded_at": "2026-04-15T14:40:00-07:00",
+      "unread_by_default": false
+    },
+    {
+      "id": "n-004",
+      "kind": "statutory_notice",
+      "parcel_apn": "304-78-386",
+      "title": "Statutory notice near your watched parcel",
+      "body": "A tax-sale notice was published for a neighboring parcel in Seville Parcel 3.",
+      "recorded_at": "2026-04-12T09:00:00-07:00",
+      "unread_by_default": true
+    },
+    {
+      "id": "n-005",
+      "kind": "digest",
+      "title": "Weekly digest — 4 events on your watchlist",
+      "body": "1 new deed, 2 watched-party filings, 1 statutory notice. See inbox for details.",
+      "recorded_at": "2026-04-11T06:00:00-07:00",
+      "unread_by_default": false
+    }
+  ]
+}
