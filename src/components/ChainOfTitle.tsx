@@ -190,6 +190,25 @@ export function ChainOfTitle({
         <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
           Conveyance Instruments
         </h3>
+        {deeds.some((d) => d.raw_api_response?.synthesized) && (
+          // One-time notice above the table: the deed list mixes real and
+          // reconstructed rows. Individual synthetic rows also carry a
+          // pill, but the block header sets context before the examiner
+          // scans the table. Matches the "synthetic · demo-only" pill
+          // used elsewhere.
+          <div className="mb-3 rounded-md border border-amber-300 bg-amber-50 px-3 py-2 text-xs text-amber-900 leading-relaxed">
+            <strong className="font-semibold">
+              Historical chain extended by demo reconstruction.
+            </strong>{" "}
+            Rows marked <span className="inline-block rounded-full bg-amber-100 px-1.5 py-0.5 font-medium">synthetic</span>{" "}
+            (1978&ndash;2006) model the pre-subdivision parent tract and the
+            first post-plat ownership period &mdash; they do not resolve
+            against <code className="font-mono">publicapi.recorder.maricopa.gov</code>.
+            The real, OCR-curated chain starts with the 2013 purchase. In
+            production, this segment would be reconstructed from the
+            1974-forward image depth plus pre-1974 docket/book references.
+          </div>
+        )}
         <DeedTable deeds={deeds} onOpenDocument={onOpenDocument} />
         {parcel.apn === "304-77-689" && (
           // HOGUE is the counter-example parcel. The 2015 purchase is the
@@ -286,6 +305,14 @@ function DeedRow({ deed, typeLabel, onOpenDocument }: DeedRowProps) {
         <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700">
           {typeLabel}
         </span>
+        {deed.raw_api_response?.synthesized && (
+          <span
+            className="ml-1.5 text-[10px] px-1.5 py-0.5 bg-amber-100 text-amber-900 rounded font-medium"
+            title={deed.raw_api_response.synthesized_note ?? "Demo-only synthetic instrument"}
+          >
+            synthetic
+          </span>
+        )}
       </td>
       <td className="px-3 py-2 text-gray-800">
         <span className={grantors.length === 0 ? "text-gray-400" : ""}>
