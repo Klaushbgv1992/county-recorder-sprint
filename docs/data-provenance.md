@@ -180,3 +180,43 @@ Current reservations:
 - `20190100001` — WARNER junior-lien (an-007, lc-009)
 - `20090100001` — LOWRY recorded AOM (an-008)
 - `20220100001` — PHOENIX LLC-to-member Q/CL (an-009)
+
+---
+
+## §4 Custodian Sweep Fixture
+
+**Purpose.** `src/data/custodian-sweep-fixture.json` backs the Custodian
+Query Engine (`src/lib/custodian-query-engine.ts`) that powers the
+`/custodian-query` showpiece page and the parcel-page `PartyJudgmentSweep`
+panel. Every field is either captured (via Playwright + `curl`) or authored
+during curation with explicit provenance.
+
+**Sources.**
+
+- **Public-API failure cells** (left column of showpiece): `curl` against
+  `publicapi.recorder.maricopa.gov` and, if reachable, the MCSC civil-search
+  endpoint. HTTP status + response body excerpt are captured verbatim. The
+  failure classifier lives at `scripts/lib/sweep-capture-helpers.ts`.
+- **County-internal cells** (right column): Playwright MCP driving the
+  Maricopa Recorder legacy name-search UI plus, if reachable, the MCSC civil
+  public search. Result rows recorded with recording number, date, doc type,
+  and the indexed-name string.
+- **AI judgments on hits:** authored during curation with rationale grounded
+  in chain context. Confidence hand-assigned, consistent with Decision #17.
+- **HOGUE no-capture narrative:** authored, carried forward verbatim from
+  the prior static JSON; it is not a captured-from-external-system field.
+
+**Serialization protocol.** Captures run in a single linear Playwright
+session, serialized against any other Playwright-using agent. The session
+writes a checkpoint at `scripts/.work/custodian-sweep-working.json` after
+each phase so interruptions are resumable.
+
+**Fallbacks.** (a) If MCSC civil search is unreachable during capture, it
+drops to a fourth dead-end and the live-index list shrinks to one. (b) If
+the BRIAN MADISON collision pre-hunt returns no real hit, the demo leans on
+pure verified-zero; the fallback is recorded in `operator_notes`.
+
+**Validation.** `scripts/validate-sweep-fixture.ts` runs the Zod schema
+(`src/lib/custodian-query-engine.schema.ts`) plus invariants (every
+`(party, liveIndex, approach)` cell present, no orphans, POPHAM parties ⊆
+top-level parties, `captured_at` not in the future).
