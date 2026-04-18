@@ -1,15 +1,17 @@
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 import { Link } from "react-router";
 import type { Parcel, Instrument, DocumentLink, DocumentType } from "../types";
 import { buildOwnerPeriods } from "../logic/chain-builder";
 import { detectAnomalies } from "../logic/anomaly-detector";
 import { getGrantors, getGrantees } from "../logic/party-roles";
+import { formatCitation } from "../logic/citation-formatter";
 import { AnomalyPanel } from "./AnomalyPanel";
 import { AiSummaryStatic } from "./AiSummaryStatic";
-import { ProvenanceTag } from "./ProvenanceTag";
 import { useTerminology } from "../terminology/TerminologyContext";
 import { Term, TermSection } from "../terminology/Term";
 import { storyPageExists } from "../narrative/availability";
+
+const COUNTY_NAME = "Maricopa County, AZ";
 
 const DEED_TYPES = new Set([
   "warranty_deed",
@@ -41,14 +43,6 @@ interface Props {
   instruments: Instrument[];
   links: DocumentLink[];
   onOpenDocument: (instrumentNumber: string) => void;
-}
-
-// Truncate a legal description to its most identifying prefix (lot + subdivision).
-function legalDescriptionSnippet(legal: string): string {
-  // Grab everything up to the first comma after "PARCEL" or first semicolon/150 chars
-  const semiIdx = legal.indexOf(";");
-  const cutoff = semiIdx > 0 ? semiIdx : Math.min(legal.length, 150);
-  return legal.slice(0, cutoff).trim();
 }
 
 export function ChainOfTitle({
@@ -94,8 +88,13 @@ export function ChainOfTitle({
     <div>
       <TermSection id="chain-heading">
         <div className="mb-6">
-          <div className="flex items-baseline gap-3 flex-wrap">
-            <h2 className="text-2xl font-bold text-gray-800"><Term professional="Chain of Title" /></h2>
+          <h1 className="text-2xl font-bold text-gray-900">
+            {parcel.address}, {parcel.city} {parcel.state}
+          </h1>
+          <div className="flex items-baseline gap-3 flex-wrap mt-1">
+            <h2 className="text-base font-semibold text-gray-700">
+              <Term professional="Chain of Title" />
+            </h2>
             {storyPageExists(parcel.apn) && (
               <Link
                 to={`/parcel/${parcel.apn}/story`}
@@ -105,8 +104,8 @@ export function ChainOfTitle({
               </Link>
             )}
           </div>
-          <p className="text-sm text-gray-500 mt-1">
-            {parcel.address} &mdash; APN: <span className="font-mono">{parcel.apn}</span>
+          <p className="text-xs text-gray-500 mt-0.5">
+            APN: <span className="font-mono">{parcel.apn}</span>
           </p>
         </div>
       </TermSection>
@@ -185,21 +184,13 @@ export function ChainOfTitle({
 
       </TermSection>
 
-      {/* Deed List — labeled rows */}
+      {/* Deed List — dense table */}
       <TermSection id="conveyance-instruments">
       <div>
         <h3 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
           Conveyance Instruments
         </h3>
-        <div className="space-y-3">
-          {deeds.map((deed) => (
-            <DeedCard
-              key={deed.instrument_number}
-              deed={deed}
-              onOpenDocument={onOpenDocument}
-            />
-          ))}
-        </div>
+        <DeedTable deeds={deeds} onOpenDocument={onOpenDocument} />
         {parcel.apn === "304-77-689" && (
           // HOGUE is the counter-example parcel. The 2015 purchase is the
           // only curated deed; without an inline explainer the chain reads
@@ -228,70 +219,163 @@ export function ChainOfTitle({
   );
 }
 
-interface DeedCardProps {
-  deed: Instrument;
+interface DeedTableProps {
+  deeds: Instrument[];
   onOpenDocument: (instrumentNumber: string) => void;
 }
 
-function DeedCard({ deed, onOpenDocument }: DeedCardProps) {
+function DeedTable({ deeds, onOpenDocument }: DeedTableProps) {
   const { t } = useTerminology();
+  return (
+    <div className="overflow-x-auto border border-gray-200 rounded-lg bg-white">
+      <table className="w-full text-sm">
+        <thead className="bg-gray-50 text-xs uppercase tracking-wide text-gray-500">
+          <tr>
+            <th scope="col" className="text-left font-medium px-3 py-2">Date</th>
+            <th scope="col" className="text-left font-medium px-3 py-2">Type</th>
+            <th scope="col" className="text-left font-medium px-3 py-2">
+              <Term professional="Grantor" /> → <Term professional="Grantee" />
+            </th>
+            <th scope="col" className="text-left font-medium px-3 py-2">Recording #</th>
+            <th scope="col" className="text-right font-medium px-3 py-2">
+              <span className="sr-only">Actions</span>
+            </th>
+          </tr>
+        </thead>
+        <tbody className="divide-y divide-gray-100">
+          {deeds.map((deed) => (
+            <DeedRow
+              key={deed.instrument_number}
+              deed={deed}
+              typeLabel={t(TYPE_LABELS[deed.document_type])}
+              onOpenDocument={onOpenDocument}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+interface DeedRowProps {
+  deed: Instrument;
+  typeLabel: string;
+  onOpenDocument: (instrumentNumber: string) => void;
+}
+
+function DeedRow({ deed, typeLabel, onOpenDocument }: DeedRowProps) {
   const grantors = getGrantors(deed);
   const grantees = getGrantees(deed);
+  const grantorText = grantors.length > 0 ? grantors.join("; ") : "—";
+  const granteeText = grantees.length > 0 ? grantees.join("; ") : "—";
+  const citation = useMemo(
+    () => formatCitation(deed, COUNTY_NAME),
+    [deed],
+  );
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(citation);
+  }, [citation]);
+  const pdfHref = deed.source_image_path ?? null;
 
   return (
-    <div className="bg-white border border-gray-200 rounded-lg p-4">
-      <div className="flex items-center justify-between mb-3 pb-2 border-b border-gray-100">
-        <div className="flex items-center gap-3">
-          <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700">
-            {t(TYPE_LABELS[deed.document_type])}
-          </span>
-          <button
-            onClick={() => onOpenDocument(deed.instrument_number)}
-            className="text-sm font-mono text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
-            title="Open source document"
-          >
-            {deed.instrument_number}
-          </button>
-        </div>
-        <span className="text-xs text-gray-500">
-          Recorded {deed.recording_date}
+    <tr className="hover:bg-gray-50">
+      <td className="px-3 py-2 whitespace-nowrap text-xs text-gray-600">
+        {deed.recording_date}
+      </td>
+      <td className="px-3 py-2 whitespace-nowrap">
+        <span className="text-xs px-2 py-0.5 bg-gray-100 rounded font-medium text-gray-700">
+          {typeLabel}
         </span>
-      </div>
+      </td>
+      <td className="px-3 py-2 text-gray-800">
+        <span className={grantors.length === 0 ? "text-gray-400" : ""}>
+          {grantorText}
+        </span>
+        <span className="mx-1 text-gray-400" aria-hidden="true">→</span>
+        <span className={grantees.length === 0 ? "text-gray-400" : ""}>
+          {granteeText}
+        </span>
+      </td>
+      <td className="px-3 py-2 whitespace-nowrap">
+        <button
+          onClick={() => onOpenDocument(deed.instrument_number)}
+          className="font-mono text-xs text-blue-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 rounded"
+          title="Open source document"
+        >
+          {deed.instrument_number}
+        </button>
+      </td>
+      <td className="px-3 py-2 whitespace-nowrap text-right">
+        <div className="inline-flex items-center gap-1">
+          <button
+            type="button"
+            onClick={handleCopy}
+            aria-label={`Copy citation for ${deed.instrument_number}`}
+            title="Copy citation"
+            className="p-1 rounded text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+          >
+            <CopyIcon />
+          </button>
+          {pdfHref ? (
+            <a
+              href={pdfHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={`Open PDF for ${deed.instrument_number} in new tab`}
+              title="Open PDF"
+              className="p-1 rounded text-gray-500 hover:text-gray-800 hover:bg-gray-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
+            >
+              <PdfIcon />
+            </a>
+          ) : (
+            <span
+              aria-label="No local PDF available"
+              title="No local PDF"
+              className="p-1 rounded text-gray-300"
+            >
+              <PdfIcon />
+            </span>
+          )}
+        </div>
+      </td>
+    </tr>
+  );
+}
 
-      <dl className="grid grid-cols-[120px_1fr] gap-y-2 gap-x-3 text-sm">
-        <dt className="text-xs font-medium text-gray-500 self-start pt-0.5">
-          <Term professional="Grantor" />
-        </dt>
-        <dd className="text-gray-800 break-words">
-          {grantors.length > 0 ? grantors.join("; ") : <span className="text-gray-400">—</span>}
-        </dd>
+function CopyIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <rect x="5" y="5" width="9" height="9" rx="1.5" />
+      <path d="M11 5V3.5A1.5 1.5 0 0 0 9.5 2h-6A1.5 1.5 0 0 0 2 3.5v6A1.5 1.5 0 0 0 3.5 11H5" />
+    </svg>
+  );
+}
 
-        <dt className="text-xs font-medium text-gray-500 self-start pt-0.5">
-          <Term professional="Grantee" />
-        </dt>
-        <dd className="text-gray-800 break-words">
-          {grantees.length > 0 ? grantees.join("; ") : <span className="text-gray-400">—</span>}
-        </dd>
-
-        {deed.legal_description && (
-          <>
-            <dt className="text-xs font-medium text-gray-500 self-start pt-0.5 flex items-center gap-1">
-              Legal Desc.
-            </dt>
-            <dd className="text-gray-800 break-words">
-              <div className="flex items-start gap-2 flex-wrap">
-                <span className="font-mono text-xs">
-                  {legalDescriptionSnippet(deed.legal_description.value)}
-                </span>
-                <ProvenanceTag
-                  provenance={deed.legal_description.provenance}
-                  confidence={deed.legal_description.confidence}
-                />
-              </div>
-            </dd>
-          </>
-        )}
-      </dl>
-    </div>
+function PdfIcon() {
+  return (
+    <svg
+      width="14"
+      height="14"
+      viewBox="0 0 16 16"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+    >
+      <path d="M4 2h5l3 3v9a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z" />
+      <path d="M9 2v3h3" />
+    </svg>
   );
 }

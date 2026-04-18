@@ -2,6 +2,9 @@ import { useState } from "react";
 import type { Instrument, DocumentType } from "../../types";
 import { useTerminology } from "../../terminology/TerminologyContext";
 
+// 3-char codes live inside the ~24px timeline pin; expanded forms feed
+// tooltip, aria-label, and the composite same-day dropdown so examiners
+// never see "DOT"/"Doc"/"Rel" as the only label for an instrument.
 const SHORT_LABEL: Record<DocumentType, string> = {
   warranty_deed: "Deed",
   special_warranty_deed: "Deed",
@@ -18,6 +21,24 @@ const SHORT_LABEL: Record<DocumentType, string> = {
   hoa_lien: "Lien",
   affidavit_of_disclosure: "Affid.",
   other: "Doc",
+};
+
+const FULL_LABEL: Record<DocumentType, string> = {
+  warranty_deed: "Warranty Deed",
+  special_warranty_deed: "Special Warranty Deed",
+  quit_claim_deed: "Quit Claim Deed",
+  grant_deed: "Grant Deed",
+  deed_of_trust: "Deed of Trust",
+  heloc_dot: "HELOC Deed of Trust",
+  assignment_of_dot: "Assignment of Deed of Trust",
+  substitution_of_trustee: "Substitution of Trustee",
+  full_reconveyance: "Release",
+  partial_reconveyance: "Partial Release",
+  modification: "Modification",
+  ucc_termination: "UCC Termination",
+  hoa_lien: "HOA Lien",
+  affidavit_of_disclosure: "Affidavit of Disclosure",
+  other: "Document",
 };
 
 interface BackRefChip {
@@ -78,7 +99,7 @@ export function InstrumentNode({
               >
                 <div className="font-mono text-xs text-blue-700">{i.instrument_number}</div>
                 <div className="text-[11px] text-slate-600">
-                  {t(SHORT_LABEL[i.document_type])}
+                  {t(FULL_LABEL[i.document_type])}
                 </div>
               </button>
             ))}
@@ -89,7 +110,8 @@ export function InstrumentNode({
   }
 
   if (kind === "single" && instrument) {
-    const label = t(SHORT_LABEL[instrument.document_type]);
+    const shortLabel = t(SHORT_LABEL[instrument.document_type]);
+    const fullLabel = t(FULL_LABEL[instrument.document_type]);
     const ringClass =
       isMersGapEnd === "dot"
         ? "ring-2 ring-amber-400"
@@ -104,10 +126,10 @@ export function InstrumentNode({
         <button
           onClick={() => onOpenDocument(instrument.instrument_number)}
           className={`w-6 h-6 rounded-full bg-indigo-600 text-white text-[10px] font-semibold grid place-items-center shadow-sm hover:bg-indigo-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${ringClass}`}
-          aria-label={`${label} ${instrument.instrument_number} recorded ${instrument.recording_date}`}
-          title={`${label} · ${instrument.instrument_number}`}
+          aria-label={`${fullLabel} ${instrument.instrument_number} recorded ${instrument.recording_date}`}
+          title={`${fullLabel} · ${instrument.instrument_number}`}
         >
-          {label.slice(0, 3)}
+          {shortLabel.slice(0, 3)}
         </button>
         <div className="text-[10px] text-slate-500 mt-0.5 whitespace-nowrap">
           {instrument.recording_date}

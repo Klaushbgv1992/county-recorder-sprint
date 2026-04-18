@@ -136,17 +136,28 @@ describe("EncumbranceLifecycle UI wiring", () => {
   it("renders label derived from document_type for lc-004 (subdivision plat)", () => {
     // lc-004 root is instrument 20010093192, document_type: "other",
     // document_type_raw: "PLAT MAP"
-    // Should NOT render "DOT:" for this lifecycle.
+    // Should NOT render a Deed of Trust header for this lifecycle.
     // The swimlane uses rootLabel() which humanizes document_type_raw for "other".
     renderEncumbrance(POPHAM_APN);
-    // "DOT: 20010093192" must not appear
     expect(
-      screen.queryByText((_c, el) => !!el && /DOT:\s*20010093192$/.test(el.textContent ?? "")),
+      screen.queryByText(
+        (_c, el) => !!el && /Deed of Trust:\s*20010093192$/.test(el.textContent ?? ""),
+      ),
     ).not.toBeInTheDocument();
     // The swimlane renders "Plat Map: <instrumentNumber>" for document_type "other"
     // with document_type_raw "PLAT MAP" (instrument number is in a child <span>)
     expect(
       screen.getByText((_c, el) => !!el && /Plat Map:\s*20010093192$/.test(el.textContent ?? "")),
+    ).toBeInTheDocument();
+  });
+
+  it("lc-002 header uses the full 'Deed of Trust' label (not the DOT shorthand)", () => {
+    renderEncumbrance(POPHAM_APN);
+    expect(
+      screen.getByText(
+        (_c, el) =>
+          !!el && /Deed of Trust:\s*20210057847$/.test(el.textContent ?? ""),
+      ),
     ).toBeInTheDocument();
   });
 });

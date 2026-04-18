@@ -42,13 +42,14 @@ function humanizeRaw(raw: string): string {
 function rootLabel(docType: DocumentType, rawType: string): string {
   switch (docType) {
     case "deed_of_trust":
+      return "Deed of Trust";
     case "heloc_dot":
-      return "DOT";
+      return "HELOC Deed of Trust";
     case "full_reconveyance":
     case "partial_reconveyance":
       return "Release";
     case "assignment_of_dot":
-      return "Assignment";
+      return "Assignment of Deed of Trust";
     case "modification":
       return "Modification";
     case "other":
