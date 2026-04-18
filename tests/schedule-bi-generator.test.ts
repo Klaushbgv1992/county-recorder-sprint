@@ -155,7 +155,7 @@ describe("generateScheduleBI", () => {
     });
     const assignItems = items.filter((i) => i.template_id === "BI-ASSIGNMENT-VERIFY");
     // R4 fires twice on POPHAM now: real 2013 lc-001 and synthetic 2002
-    // lc-010, both showing originator/releaser divergence.
+    // lc-014, both showing originator/releaser divergence.
     expect(assignItems.length).toBe(2);
     for (const item of assignItems) {
       expect(item.why).toContain("R4");

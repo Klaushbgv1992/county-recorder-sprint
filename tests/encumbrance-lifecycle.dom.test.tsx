@@ -103,7 +103,7 @@ describe("EncumbranceLifecycle UI wiring", () => {
     //   20210075858 (real 2021 release, unlinked here since link-002 was
     //     dropped) — canAccept=true, renders an enabled Accept button.
     //   20050100001 (synthetic 2005 release from the historical-chain
-    //     extension) — already linked via link-009 to lc-010, so
+    //     extension) — already linked via link-014-002 to lc-014, so
     //     canAccept=false and the Accept button renders disabled.
     // Filter to the enabled button to isolate the happy-path candidate.
     const acceptButtons = within(initialCard).getAllByRole("button", {

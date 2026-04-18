@@ -3,14 +3,14 @@ import { loadParcelDataByApn } from "../../src/data-loader";
 import { detectR4 } from "../../src/logic/rules/r4-assignment-chain-break";
 
 describe("R4 assignment chain break", () => {
-  it("fires on POPHAM lc-001 and the synthetic lc-010 — originator/releaser divergence in both chains", () => {
+  it("fires on POPHAM lc-001 and the synthetic lc-014 — originator/releaser divergence in both chains", () => {
     const { parcel, instruments, lifecycles, links } = loadParcelDataByApn("304-78-386");
     const findings = detectR4(parcel, instruments, lifecycles, links);
     // Two assignment-chain-break patterns in POPHAM:
     //   lc-001 (real): VIP Mortgage originated 2013 DOT (20130183450), Wells
     //     Fargo executed 2021 release (20210075858) with no recorded
     //     assignment of the note between them.
-    //   lc-010 (synthetic): Wells Fargo Home Mortgage originated the 2002
+    //   lc-014 (synthetic): Wells Fargo Home Mortgage originated the 2002
     //     DOT (20020100002), Wells Fargo Bank NA executed the 2005 release
     //     (20050100001) — same Wells Fargo parent but different recorded
     //     entity name, modeling the servicer-vs-originator divergence that
