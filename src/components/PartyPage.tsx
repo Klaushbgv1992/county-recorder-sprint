@@ -8,6 +8,7 @@ import {
   type PartyInstrumentRef,
 } from "../logic/party-search";
 import { NotInCorpusParcel } from "./EmptyStates";
+import { StarButton } from "./account/StarButton";
 
 const ROLE_LABEL: Record<PartyRole, string> = {
   grantor: "grantor",
@@ -81,9 +82,12 @@ export function PartyPage() {
         <p className="text-xs font-semibold uppercase tracking-wider text-moat-700">
           Party
         </p>
-        <h1 className="mt-1 text-2xl font-semibold text-recorder-900">
-          {hit.displayName}
-        </h1>
+        <div className="mt-1 flex items-center gap-3 flex-wrap">
+          <h1 className="text-2xl font-semibold text-recorder-900">
+            {hit.displayName}
+          </h1>
+          <StarButton kind="party" id={normalizedName!} label={hit.displayName ?? normalizedName!} />
+        </div>
         <div className="mt-2 flex flex-wrap items-center gap-2 text-xs text-slate-700">
           <span>
             {hit.totalInstruments} instrument{hit.totalInstruments === 1 ? "" : "s"}
