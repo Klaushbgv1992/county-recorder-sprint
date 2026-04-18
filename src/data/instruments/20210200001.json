@@ -60,13 +60,22 @@
       "confidence": 1
     }
   },
-  "back_references": ["20160200001", "20160200002"],
+  "back_references": [
+    "20160200001",
+    "20160200002"
+  ],
   "same_day_group": [],
   "source_image_path": null,
   "page_count": 8,
   "raw_api_response": {
-    "names": ["MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA", "SUPERIOR COURT MARICOPA"],
-    "documentCodes": ["DECREE"],
+    "names": [
+      "MARTINEZ CARLOS A",
+      "MARTINEZ SOFIA ANDREA",
+      "SUPERIOR COURT MARICOPA"
+    ],
+    "documentCodes": [
+      "DECREE"
+    ],
     "recordingDate": "3-30-2021",
     "recordingNumber": "20210200001",
     "pageAmount": 8,
@@ -80,7 +89,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

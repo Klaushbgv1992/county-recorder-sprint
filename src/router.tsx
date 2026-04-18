@@ -29,6 +29,7 @@ import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
 import { PartyPage } from "./components/PartyPage";
 import { ReceiptsPage } from "./components/ReceiptsPage";
 import { AiExtractLivePanel } from "./components/AiExtractLivePanel";
+import { ApiDocsPage } from "./components/ApiDocsPage";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
 import { loadAllLifecycles, loadAllInstruments } from "./data-loader";
@@ -490,6 +491,11 @@ export const routes: RouteObject[] = [
             id: "ai-demo",
             path: "ai-demo",
             element: <AiExtractLivePanel />,
+          },
+          {
+            id: "api-docs",
+            path: "api",
+            element: <ApiDocsPage />,
           },
           {
             id: "commitment-new",

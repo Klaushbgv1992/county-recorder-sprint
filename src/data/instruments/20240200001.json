@@ -65,13 +65,22 @@
       "confidence": 1
     }
   },
-  "back_references": ["20080200001", "20230200001"],
+  "back_references": [
+    "20080200001",
+    "20230200001"
+  ],
   "same_day_group": [],
   "source_image_path": null,
   "page_count": 4,
   "raw_api_response": {
-    "names": ["ESTATE OF CHEN ROBERT K", "CHEN DAVID JAMES", "CHEN DAVID J"],
-    "documentCodes": ["PR DEED"],
+    "names": [
+      "ESTATE OF CHEN ROBERT K",
+      "CHEN DAVID JAMES",
+      "CHEN DAVID J"
+    ],
+    "documentCodes": [
+      "PR DEED"
+    ],
     "recordingDate": "8-5-2024",
     "recordingNumber": "20240200001",
     "pageAmount": 4,
@@ -85,7 +94,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

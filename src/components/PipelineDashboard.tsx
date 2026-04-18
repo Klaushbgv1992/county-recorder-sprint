@@ -5,6 +5,7 @@ import {
   type PipelineStage,
   type PipelineState,
 } from "../logic/pipeline-selectors";
+import { LivePushDemo } from "./LivePushDemo";
 
 const pipelineState = state as unknown as PipelineState;
 
@@ -216,6 +217,13 @@ export function PipelineDashboard() {
               />
             ))}
           </div>
+        </section>
+
+        <section>
+          <LivePushDemo
+            lagDaysMin={plantRef.lag_days_min}
+            lagDaysMax={plantRef.lag_days_max}
+          />
         </section>
 
         <section>

@@ -18,6 +18,16 @@ export type PartyInstrumentRef = {
   role: PartyRole;
   recordingDate: string;
   documentType: string;
+  /** Verbatim matched-name variant from the instrument — shown to the
+   *  user so "matched on POPHAM CHRISTOPHER" is literally the string
+   *  that was in the record, not a normalized one. */
+  matchedNameVerbatim: string;
+  /** Where this party assignment came from: public_api / ocr /
+   *  manual_entry / demo_synthetic. Drives the "Why am I seeing
+   *  this" badge in the UI. */
+  roleProvenance: "public_api" | "ocr" | "manual_entry" | "algorithmic" | "demo_synthetic";
+  /** Curator-assigned confidence in the role attribution (0..1). */
+  roleConfidence: number;
   /** When role === "nominee", the party this entity acts on behalf of. */
   nomineeFor?: { partyName: string; partyRole: PartyRole };
 };
@@ -165,6 +175,9 @@ function buildAllBuckets(
         role: party.role,
         recordingDate: inst.recording_date,
         documentType: inst.document_type,
+        matchedNameVerbatim: party.name,
+        roleProvenance: party.provenance,
+        roleConfidence: party.confidence,
       };
       if (party.nominee_for) {
         ref.nomineeFor = {

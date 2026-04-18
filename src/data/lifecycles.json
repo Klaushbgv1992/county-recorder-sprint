@@ -116,6 +116,14 @@
       "status": "released",
       "status_rationale": "Demo-only synthetic lifecycle on POPHAM's reconstructed pre-2013 chain. The 2002 Roberts-family purchase-money DOT (20020100002, Wells Fargo Home Mortgage, MERS as nominee) was fully reconveyed by Wells Fargo Bank NA on 2005-07-22 (20050100001). Pattern echoes the real 2013 POPHAM DOT (20130183450) → 2021 release (20210075858) pair: originator differs from releasing party, note transferred inside MERS. Included to show continuity of the MERS-disintermediation pattern across two ownership eras.",
       "examiner_override": null
+    },
+    {
+      "id": "lc-015",
+      "root_instrument": "20240100001",
+      "child_instruments": [],
+      "status": "open",
+      "status_rationale": "Demo-only synthetic Notice of Federal Tax Lien (IRS Form 668(Y), serial 768349201-24) against POPHAM CHRISTOPHER J for unpaid 2019 and 2020 Form 1040 liabilities totaling $47,312.48. Recorded 2024-03-12. No Certificate of Release (Form 668(Z)) located in corpus. Lien self-releases by operation of law on 2032-09-14 if not refiled (26 U.S.C. § 6325(f)(1)), so the cloud is time-limited — but examiner must resolve before closing. Currently the senior encumbrance of record against this parcel (the 2013 Wells Fargo DOT was released 2021-01-22). Demo-only because the Maricopa public API silently drops the documentCode filter, so federal tax liens are unreachable by code-scoped search in plant products (see docs/hunt-log-known-gap-2.md) — making this exactly the cloud the county product is uniquely positioned to surface.",
+      "examiner_override": null
     }
   ]
 }

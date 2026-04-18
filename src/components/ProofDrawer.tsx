@@ -13,6 +13,7 @@ import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { LegalDescription } from "./LegalDescription";
 import { Term, TermSection } from "../terminology/Term";
 
 const COUNTY_NAME = "Maricopa County, AZ";
@@ -120,6 +121,8 @@ export function ProofDrawer({
     id: string;
     label: React.ReactNode;
     value: string;
+    /** Optional rich renderer; falls back to plain text(value) when absent. */
+    valueNode?: React.ReactNode;
     provenance?: ProvenanceKind;
     confidence?: number;
     mono?: boolean;
@@ -170,6 +173,12 @@ export function ProofDrawer({
       id: "legal-description",
       label: "Legal Description",
       value: instrument.legal_description.value,
+      valueNode: (
+        <LegalDescription
+          value={instrument.legal_description.value}
+          parcelApn={parcel.apn}
+        />
+      ),
       provenance: instrument.legal_description.provenance,
       confidence: instrument.legal_description.confidence,
       mono: true,
@@ -335,6 +344,7 @@ export function ProofDrawer({
                   index={i}
                   label={field.label}
                   value={field.value}
+                  valueNode={field.valueNode}
                   provenance={field.provenance}
                   confidence={field.confidence}
                   mono={field.mono}
@@ -471,6 +481,8 @@ interface FieldCardProps {
   index: number;
   label: React.ReactNode;
   value: string;
+  /** Optional rich renderer; falls back to plain `value` text when absent. */
+  valueNode?: React.ReactNode;
   provenance?: ProvenanceKind;
   confidence?: number;
   mono?: boolean;
@@ -483,6 +495,7 @@ function FieldCard({
   index,
   label,
   value,
+  valueNode,
   provenance,
   confidence,
   mono,
@@ -520,7 +533,7 @@ function FieldCard({
       <div
         className={`text-sm text-gray-800${mono ? " font-mono" : ""}`}
       >
-        {value}
+        {valueNode ?? value}
       </div>
     </div>
   );

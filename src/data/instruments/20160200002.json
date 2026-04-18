@@ -78,12 +78,21 @@
     }
   },
   "back_references": [],
-  "same_day_group": ["20160200001"],
+  "same_day_group": [
+    "20160200001"
+  ],
   "source_image_path": null,
   "page_count": 20,
   "raw_api_response": {
-    "names": ["MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA", "JPMORGAN CHASE BANK NA", "MERS"],
-    "documentCodes": ["DEED TRST"],
+    "names": [
+      "MARTINEZ CARLOS A",
+      "MARTINEZ SOFIA ANDREA",
+      "JPMORGAN CHASE BANK NA",
+      "MERS"
+    ],
+    "documentCodes": [
+      "DEED TRST"
+    ],
     "recordingDate": "5-10-2016",
     "recordingNumber": "20160200002",
     "pageAmount": 20,
@@ -98,7 +107,7 @@
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "mers_note": "MERS beneficiary as nominee for JPMorgan Chase Bank, N.A.",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }

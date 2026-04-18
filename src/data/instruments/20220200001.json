@@ -62,13 +62,23 @@
       "confidence": 1
     }
   },
-  "back_references": ["20160200002"],
+  "back_references": [
+    "20160200002"
+  ],
   "same_day_group": [],
   "source_image_path": null,
   "page_count": 3,
   "raw_api_response": {
-    "names": ["JPMORGAN CHASE BANK NA", "NATIONSTAR MORTGAGE LLC", "MR COOPER", "MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA"],
-    "documentCodes": ["ASSIGN DT"],
+    "names": [
+      "JPMORGAN CHASE BANK NA",
+      "NATIONSTAR MORTGAGE LLC",
+      "MR COOPER",
+      "MARTINEZ CARLOS A",
+      "MARTINEZ SOFIA ANDREA"
+    ],
+    "documentCodes": [
+      "ASSIGN DT"
+    ],
     "recordingDate": "8-15-2022",
     "recordingNumber": "20220200001",
     "pageAmount": 3,
@@ -82,7 +92,7 @@
   },
   "corpus_boundary_note": "County online records searched through 2026-04-09",
   "provenance_summary": {
-    "public_api_count": 0,
+    "public_api_count": 4,
     "ocr_count": 0,
     "manual_entry_count": 0
   }
