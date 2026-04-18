@@ -54,6 +54,17 @@ import inst20050200002 from "./data/instruments/20050200002.json";
 import inst20220200005 from "./data/instruments/20220200005.json";
 import inst20230200002 from "./data/instruments/20230200002.json";
 import inst20230200003 from "./data/instruments/20230200003.json";
+// POPHAM historical-chain reconstruction (1978–2006). All synthetic —
+// extends the chain-of-title back beyond the real 2013 curated start so
+// the demo shows a full examiner lookback. See each file's source_note
+// and raw_api_response.synthesized_note for provenance.
+import inst19780100001 from "./data/instruments/19780100001.json";
+import inst19950100001 from "./data/instruments/19950100001.json";
+import inst19990100001 from "./data/instruments/19990100001.json";
+import inst20020100001 from "./data/instruments/20020100001.json";
+import inst20020100002 from "./data/instruments/20020100002.json";
+import inst20050100001 from "./data/instruments/20050100001.json";
+import inst20060100001 from "./data/instruments/20060100001.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -98,6 +109,14 @@ const instrumentsRaw = [
   inst20220200005,
   inst20230200002,
   inst20230200003,
+  // POPHAM historical-chain extension
+  inst19780100001,
+  inst19950100001,
+  inst19990100001,
+  inst20020100001,
+  inst20020100002,
+  inst20050100001,
+  inst20060100001,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.

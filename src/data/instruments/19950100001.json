@@ -1,0 +1,90 @@
+{
+  "instrument_number": "19950100001",
+  "recording_date": "1995-11-02",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "WILLIAMS BARBARA J",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS LLOYD R JR",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS MARK E",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WILLIAMS SUSAN ANN",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "SEVILLE VENTURES LLC",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "A portion of the Southwest Quarter of Section 23, Township 2 South, Range 6 East, Gila and Salt River Base and Meridian, Maricopa County, Arizona; containing 40.00 acres more or less. Same parent tract as described in recording 19780100001.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Models the consolidation-to-developer step that preceded the 2001 Seville Parcel 3 plat. Gilbert's farmland was aggregated by land-banking LLCs throughout the mid-1990s in advance of the Phoenix-metro residential build-out; Williams-family sale to a small holding LLC matches that pattern. Seville Ventures LLC is a fabricated intermediary; no real entity of that name appears in the Maricopa recorder public API for this period.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$485,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "19780100001"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "SEVILLE VENTURES LLC",
+      "WILLIAMS BARBARA J",
+      "WILLIAMS LLOYD R JR",
+      "WILLIAMS MARK E",
+      "WILLIAMS SUSAN ANN"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "11-2-1995",
+    "recordingNumber": "19950100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only instrument reconstructing the Williams-heirs to developer-intermediary sale. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

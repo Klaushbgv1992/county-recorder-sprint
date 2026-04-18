@@ -142,7 +142,7 @@ describe("generateScheduleBI", () => {
     expect(payoffs.map((p) => p.origin_lifecycle_id).sort()).toEqual(["lc-a", "lc-b"]);
   });
 
-  it("emits BI-ASSIGNMENT-VERIFY when R4 fires (POPHAM)", () => {
+  it("emits BI-ASSIGNMENT-VERIFY when R4 fires (POPHAM — real 2013 chain + synthetic 2002 chain)", () => {
     const { parcel, instruments, lifecycles } = loadParcelDataByApn("304-78-386");
     const anomalies = detectAnomalies("304-78-386", NOW);
     const items = generateScheduleBI({
@@ -154,9 +154,13 @@ describe("generateScheduleBI", () => {
       inputs: INPUTS,
     });
     const assignItems = items.filter((i) => i.template_id === "BI-ASSIGNMENT-VERIFY");
-    expect(assignItems.length).toBe(1);
-    expect(assignItems[0].why).toContain("R4");
-    expect(assignItems[0].origin_anomaly_id).toMatch(/^R4-304-78-386-/);
+    // R4 fires twice on POPHAM now: real 2013 lc-001 and synthetic 2002
+    // lc-014, both showing originator/releaser divergence.
+    expect(assignItems.length).toBe(2);
+    for (const item of assignItems) {
+      expect(item.why).toContain("R4");
+      expect(item.origin_anomaly_id).toMatch(/^R4-304-78-386-/);
+    }
   });
 
   it("emits BI-TRUST-CERT when R5 fires (POPHAM grantor MADISON LIVING TRUST)", () => {
@@ -176,7 +180,7 @@ describe("generateScheduleBI", () => {
     expect(trustItems[0].origin_anomaly_id).toMatch(/^R5-304-78-386-/);
   });
 
-  it("emits BI-CURATIVE-AFFIDAVIT when R3 fires (POPHAM MERS nominee)", () => {
+  it("emits BI-CURATIVE-AFFIDAVIT when R3 fires (POPHAM MERS nominee — real + synthetic)", () => {
     const { parcel, instruments, lifecycles } = loadParcelDataByApn("304-78-386");
     const anomalies = detectAnomalies("304-78-386", NOW);
     const items = generateScheduleBI({
@@ -188,9 +192,13 @@ describe("generateScheduleBI", () => {
       inputs: INPUTS,
     });
     const curative = items.filter((i) => i.template_id === "BI-CURATIVE-AFFIDAVIT");
-    expect(curative.length).toBe(1);
-    expect(curative[0].text).toContain("POPHAM CHRISTOPHER / ASHLEY");
-    expect(curative[0].origin_anomaly_id).toMatch(/^R3-304-78-386-/);
+    // R3 fires twice on POPHAM: real 2013 MERS-as-nominee-for-VIP and
+    // synthetic 2002 MERS-as-nominee-for-Wells-Fargo.
+    expect(curative.length).toBe(2);
+    for (const item of curative) {
+      expect(item.text).toContain("POPHAM CHRISTOPHER / ASHLEY");
+      expect(item.origin_anomaly_id).toMatch(/^R3-304-78-386-/);
+    }
   });
 
   it("emits BI-HOA-ESTOPPEL when parcel.subdivision is non-empty", () => {

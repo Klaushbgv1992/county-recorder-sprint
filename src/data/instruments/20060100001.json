@@ -1,0 +1,89 @@
+{
+  "instrument_number": "20060100001",
+  "recording_date": "2006-03-14",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "ROBERTS MATTHEW A",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "ROBERTS JENNIFER L",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "THE BRIAN J. AND TANYA R. MADISON LIVING TRUST, dated February 23, 2006",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 46, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180.",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "source_note": {
+      "value": "Demo-only instrument. Roberts family conveyance to the Madison Living Trust. This is the instrument that vests title into the trust that later appears as grantor on the real 2013-02-27 POPHAM purchase (20130183449). Trust execution date (2006-02-23) matches the trust_execution_date extracted-field on 20130183449 by design — the synthetic record is calibrated to that real OCR value. Cash purchase from Roberts to the newly-formed Madison trust (no concurrent DOT); the Madisons did not record a purchase-money DOT in the demo corpus, which is why no 2006-era DOT appears in this chain. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$412,500.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "trust_execution_date": {
+      "value": "2006-02-23",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "title_company": {
+      "value": "First American Title Insurance Company",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [
+    "20020100001",
+    "20050100001"
+  ],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": null,
+  "raw_api_response": {
+    "names": [
+      "BRIAN J AND TANYA R MADISON LIVING TRUST DATED FEBRUAR",
+      "MADISON BRIAN J",
+      "MADISON TANYA R",
+      "ROBERTS JENNIFER L",
+      "ROBERTS MATTHEW A"
+    ],
+    "documentCodes": [
+      "WAR DEED"
+    ],
+    "recordingDate": "3-14-2006",
+    "recordingNumber": "20060100001",
+    "pageAmount": 0,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only Roberts-to-Madison-Trust conveyance. Trust execution date deliberately matches the 2006-02-23 value OCR'd from the real 2013 POPHAM purchase deed (20130183449), so the synthetic chain aligns with real downstream data. No real instrument by this recording number exists in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

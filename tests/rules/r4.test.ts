@@ -3,10 +3,19 @@ import { loadParcelDataByApn } from "../../src/data-loader";
 import { detectR4 } from "../../src/logic/rules/r4-assignment-chain-break";
 
 describe("R4 assignment chain break", () => {
-  it("fires on POPHAM lc-001 — VIP originated, Wells Fargo released, no assignment", () => {
+  it("fires on POPHAM lc-001 and the synthetic lc-014 — originator/releaser divergence in both chains", () => {
     const { parcel, instruments, lifecycles, links } = loadParcelDataByApn("304-78-386");
     const findings = detectR4(parcel, instruments, lifecycles, links);
-    expect(findings).toHaveLength(1);
+    // Two assignment-chain-break patterns in POPHAM:
+    //   lc-001 (real): VIP Mortgage originated 2013 DOT (20130183450), Wells
+    //     Fargo executed 2021 release (20210075858) with no recorded
+    //     assignment of the note between them.
+    //   lc-014 (synthetic): Wells Fargo Home Mortgage originated the 2002
+    //     DOT (20020100002), Wells Fargo Bank NA executed the 2005 release
+    //     (20050100001) — same Wells Fargo parent but different recorded
+    //     entity name, modeling the servicer-vs-originator divergence that
+    //     triggers R4 on real servicing transfers.
+    expect(findings).toHaveLength(2);
     const f = findings.find((x) => x.evidence_instruments.includes("20130183450"))!;
     expect(f).toBeDefined();
     expect(f.rule_id).toBe("R4");
@@ -15,6 +24,12 @@ describe("R4 assignment chain break", () => {
     expect(f.description).toContain("WELLS FARGO");
     expect(f.evidence_instruments).toContain("20210075858");
     expect(f.detection_provenance.confidence).toBe(0.85);
+
+    const synthetic = findings.find((x) =>
+      x.evidence_instruments.includes("20020100002"),
+    );
+    expect(synthetic).toBeDefined();
+    expect(synthetic!.evidence_instruments).toContain("20050100001");
   });
 
   it("does NOT fire on lc-004 (plat-based, not a DOT lifecycle)", () => {

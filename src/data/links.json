@@ -214,5 +214,41 @@
     "provenance": "demo_synthetic",
     "confidence": 1.0,
     "examiner_action": "accepted"
+  },
+  {
+    "id": "link-014-001",
+    "source_instrument": "20020100002",
+    "target_instrument": "20020100001",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-014-002",
+    "source_instrument": "20050100001",
+    "target_instrument": "20020100002",
+    "link_type": "release_of",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-014-003",
+    "source_instrument": "20060100001",
+    "target_instrument": "20020100001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-014-004",
+    "source_instrument": "20130183449",
+    "target_instrument": "20060100001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
   }
 ]
