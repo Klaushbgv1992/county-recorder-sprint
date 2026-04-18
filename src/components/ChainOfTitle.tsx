@@ -12,6 +12,8 @@ import { AiSummaryStatic } from "./AiSummaryStatic";
 import { ChainSwimlane } from "./ChainSwimlane";
 import { Term, TermSection } from "../terminology/Term";
 import { storyPageExists } from "../narrative/availability";
+import { StarButton } from "./account/StarButton";
+import { CorrectionRequestButton } from "./account/CorrectionRequestButton";
 
 interface Props {
   parcel: Parcel;
@@ -63,6 +65,10 @@ export function ChainOfTitle({
                 Read as a story →
               </Link>
             )}
+          </div>
+          <div className="mt-3 flex items-center gap-2 flex-wrap">
+            <StarButton kind="parcel" id={parcel.apn} label={parcel.apn} />
+            <CorrectionRequestButton parcelApn={parcel.apn} />
           </div>
         </div>
       </TermSection>

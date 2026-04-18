@@ -8,6 +8,7 @@ import {
   buildInstrumentToApnMap,
   searchParties,
 } from "../logic/party-search";
+import { AuthProvider } from "../account/AuthContext";
 
 describe("PartyPage", () => {
   afterEach(() => cleanup());
@@ -23,9 +24,11 @@ describe("PartyPage", () => {
 
     render(
       <MemoryRouter initialEntries={[`/party/${wf!.normalizedName}`]}>
-        <Routes>
-          <Route path="/party/:normalizedName" element={<PartyPage />} />
-        </Routes>
+        <AuthProvider>
+          <Routes>
+            <Route path="/party/:normalizedName" element={<PartyPage />} />
+          </Routes>
+        </AuthProvider>
       </MemoryRouter>,
     );
 

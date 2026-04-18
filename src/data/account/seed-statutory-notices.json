@@ -1,0 +1,32 @@
+{
+  "note": "Pre-seeded statutory notices. In production these come from the recorder's legally-mandated notice-publication stream.",
+  "items": [
+    {
+      "id": "sn-001",
+      "kind": "tax_sale",
+      "parcel_apn": "304-78-406",
+      "neighbor_of": ["304-78-386"],
+      "published_at": "2026-04-10",
+      "deadline_at": "2026-05-15",
+      "title": "Notice of tax sale — 3690 E Palmer St",
+      "body": "Maricopa County Treasurer has issued a notice of tax sale for parcel 304-78-406 in Seville Parcel 3. Redemption deadline: May 15, 2026."
+    },
+    {
+      "id": "sn-002",
+      "kind": "probate",
+      "parcel_apn": "304-77-689",
+      "published_at": "2026-03-22",
+      "title": "Probate notice — Hogue estate",
+      "body": "Publication of probate notice for estate affecting parcel 304-77-689. Creditors must file within 4 months."
+    },
+    {
+      "id": "sn-003",
+      "kind": "lis_pendens",
+      "parcel_apn": "304-78-408",
+      "neighbor_of": ["304-78-386"],
+      "published_at": "2026-02-14",
+      "title": "Lis pendens — 2720 E Palmer St",
+      "body": "Civil action affecting title filed in Maricopa Superior Court. Case number CV2026-001420."
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "id": "demo-user-001",
+  "display_name": "Jordan Rivera",
+  "email": "jordan.rivera@example.com",
+  "phone_masked": "(***) ***-4417",
+  "joined_date": "2025-11-02",
+  "note": "Demo user. Faked for prototype. Production uses real OAuth."
+}
