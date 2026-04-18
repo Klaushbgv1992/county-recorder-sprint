@@ -22,6 +22,12 @@ const curated: Searchable = {
   },
 } as unknown as Searchable;
 
+// Empty corpus for party search keeps these unit tests focused on the
+// parcel-hit code path. Party-search behavior is covered by
+// src/logic/party-search.test.ts and src/components/SearchHero.test.tsx.
+const noInstruments: never[] = [];
+const noInstrumentToApn = new Map<string, string>();
+
 afterEach(cleanup);
 
 describe("SearchHero", () => {
@@ -32,14 +38,17 @@ describe("SearchHero", () => {
           value=""
           onChange={() => {}}
           searchables={[]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={() => {}}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
     expect(
-      screen.getByPlaceholderText(/Search APN, address, owner, subdivision/),
+      screen.getByPlaceholderText(/Search APN, address, owner, party/),
     ).toBeInTheDocument();
   });
 
@@ -50,9 +59,12 @@ describe("SearchHero", () => {
           value=""
           onChange={() => {}}
           searchables={[]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={() => {}}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
@@ -66,9 +78,12 @@ describe("SearchHero", () => {
           value="POPHAM"
           onChange={() => {}}
           searchables={[curated]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={() => {}}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
@@ -83,9 +98,12 @@ describe("SearchHero", () => {
           value="20210075858"
           onChange={() => {}}
           searchables={[curated]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={() => {}}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
@@ -100,9 +118,12 @@ describe("SearchHero", () => {
           value="POPHAM"
           onChange={() => {}}
           searchables={[curated]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={(apn) => picks.push(apn)}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
@@ -118,9 +139,12 @@ describe("SearchHero", () => {
           value="20210075858"
           onChange={() => {}}
           searchables={[curated]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={() => {}}
           onSelectDrawer={() => {}}
           onSelectInstrument={(apn, n) => picks.push([apn, n])}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );
@@ -137,9 +161,12 @@ describe("SearchHero", () => {
           value="POPHAM"
           onChange={() => {}}
           searchables={[curated]}
+          instruments={noInstruments}
+          instrumentToApn={noInstrumentToApn}
           onSelectCurated={(apn) => picks.push(apn)}
           onSelectDrawer={() => {}}
           onSelectInstrument={() => {}}
+          onSelectParty={() => {}}
         />
       </MemoryRouter>,
     );

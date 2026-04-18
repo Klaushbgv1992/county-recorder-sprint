@@ -1,5 +1,15 @@
 import { useMemo, useState } from "react";
-import { searchAll, addressOf, ownerOf, subdivisionOf, type Searchable, type SearchHit, type MatchType } from "../logic/searchable-index";
+import type { Instrument, PartyRole } from "../types";
+import {
+  searchAll,
+  addressOf,
+  ownerOf,
+  subdivisionOf,
+  type Searchable,
+  type SearchHit,
+  type MatchType,
+} from "../logic/searchable-index";
+import { searchParties, type PartyHit } from "../logic/party-search";
 
 // Palette note: entity chips and non-curated tier chips are uniformly
 // neutral slate. Only the "Curated" tier keeps an accent (emerald) so it
@@ -21,16 +31,47 @@ const ENTITY_CHIP: Record<MatchType, { label: string; className: string }> = {
   subdivision: { label: "Subdivision", className: NEUTRAL_CHIP },
 };
 
+// Short labels for the role-breakdown chips on a party row.
+const ROLE_LABEL: Record<PartyRole, string> = {
+  grantor: "grantor",
+  grantee: "grantee",
+  trustor: "trustor",
+  trustee: "trustee",
+  beneficiary: "beneficiary",
+  borrower: "borrower",
+  lender: "lender",
+  nominee: "nominee",
+  releasing_party: "releasing party",
+  servicer: "servicer",
+  claimant: "claimant",
+  debtor: "debtor",
+};
+
+const PARTY_LIMIT = 5;
+
 interface Props {
   value: string;
   onChange: (v: string) => void;
   searchables: Searchable[];
+  instruments: Instrument[];
+  instrumentToApn: Map<string, string>;
   onSelectCurated: (apn: string, instrumentNumber?: string) => void;
   onSelectDrawer: (apn: string) => void;
   onSelectInstrument: (apn: string, instrumentNumber: string) => void;
+  onSelectParty: (normalizedName: string) => void;
 }
 
-export function SearchHero({ value, onChange, searchables, onSelectCurated, onSelectDrawer, onSelectInstrument }: Props) {
+export function SearchHero({
+  value,
+  onChange,
+  searchables,
+  instruments,
+  instrumentToApn,
+  onSelectCurated,
+  onSelectDrawer,
+  onSelectInstrument,
+  onSelectParty,
+}: Props) {
   const [open, setOpen] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
 
@@ -41,6 +82,17 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
   const total = useMemo(
     () => (value ? searchAll(value, searchables).length : 0),
     [value, searchables],
+  );
+  const partyHits = useMemo<PartyHit[]>(
+    () =>
+      value
+        ? searchParties(value, instruments, instrumentToApn).slice(0, PARTY_LIMIT)
+        : [],
+    [value, instruments, instrumentToApn],
+  );
+  const partyTotal = useMemo(
+    () => (value ? searchParties(value, instruments, instrumentToApn).length : 0),
+    [value, instruments, instrumentToApn],
   );
 
   const onPick = (hit: SearchHit, rawQuery: string) => {
@@ -56,7 +108,8 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
     onSelectDrawer(s.apn);
   };
 
-  const showDropdown = open && value.length > 0 && hits.length > 0;
+  const showDropdown =
+    open && value.length > 0 && (hits.length > 0 || partyHits.length > 0);
 
   return (
     <section aria-label="Parcel search" className="bg-white border-b border-slate-200 px-6 py-8">
@@ -86,7 +139,7 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
             if (e.target.value) setOpen(true);
             setActiveIdx(0);
           }}
-          placeholder="Search APN, address, owner, subdivision, or 11-digit instrument"
+          placeholder="Search APN, address, owner, party (grantor/lender/releasing party), subdivision, or 11-digit instrument"
           className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3 text-base shadow-sm focus:outline-none focus:ring-2 focus:ring-recorder-500 focus:border-transparent"
           onKeyDown={(e) => {
             if (e.key === "ArrowDown") { e.preventDefault(); setActiveIdx((i) => Math.min(i + 1, hits.length - 1)); }
@@ -96,52 +149,102 @@ export function SearchHero({ value, onChange, searchables, onSelectCurated, onSe
           }}
         />
         {showDropdown && (
-          <ul
+          <div
             id="search-hero-results"
-            role="listbox"
             className="absolute left-0 right-0 mt-1 max-h-[60vh] overflow-auto rounded-lg border border-slate-200 bg-white shadow-xl z-30"
           >
-            {hits.map((h, i) => {
-              const s = h.searchable;
-              const entity = ENTITY_CHIP[h.matchType];
-              const tier = TIER_CHIP[s.tier];
-              const active = i === activeIdx;
-              return (
-                <li
-                  key={s.apn + ":" + h.matchType}
-                  role="option"
-                  aria-selected={active}
-                  className={`flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"}`}
-                  onMouseEnter={() => setActiveIdx(i)}
-                  onClick={() => onPick(h, value)}
-                >
-                  <div className="min-w-0 flex-1">
-                    <div className="font-semibold text-recorder-900 truncate">
-                      {addressOf(s) || s.apn}
-                    </div>
-                    <div className="text-xs text-slate-600 truncate">
-                      {ownerOf(s) || "—"}{" · "}
-                      <span className="font-mono">{s.apn}</span>
-                      {subdivisionOf(s) ? ` · ${subdivisionOf(s)}` : ""}
-                    </div>
-                  </div>
-                  <div className="shrink-0 flex flex-col items-end gap-1">
-                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${entity.className}`}>
-                      {entity.label}
-                    </span>
-                    <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${tier.className}`}>
-                      {tier.label}
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-            {total > hits.length && (
-              <li className="px-4 py-2 text-xs text-slate-500">
-                +{total - hits.length} more — narrow your search
-              </li>
+            {hits.length > 0 && (
+              <ul role="listbox" aria-label="Matching parcels">
+                {hits.map((h, i) => {
+                  const s = h.searchable;
+                  const entity = ENTITY_CHIP[h.matchType];
+                  const tier = TIER_CHIP[s.tier];
+                  const active = i === activeIdx;
+                  return (
+                    <li
+                      key={s.apn + ":" + h.matchType}
+                      role="option"
+                      aria-selected={active}
+                      className={`flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"}`}
+                      onMouseEnter={() => setActiveIdx(i)}
+                      onClick={() => onPick(h, value)}
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="font-semibold text-recorder-900 truncate">
+                          {addressOf(s) || s.apn}
+                        </div>
+                        <div className="text-xs text-slate-600 truncate">
+                          {ownerOf(s) || "—"}{" · "}
+                          <span className="font-mono">{s.apn}</span>
+                          {subdivisionOf(s) ? ` · ${subdivisionOf(s)}` : ""}
+                        </div>
+                      </div>
+                      <div className="shrink-0 flex flex-col items-end gap-1">
+                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${entity.className}`}>
+                          {entity.label}
+                        </span>
+                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${tier.className}`}>
+                          {tier.label}
+                        </span>
+                      </div>
+                    </li>
+                  );
+                })}
+                {total > hits.length && (
+                  <li className="px-4 py-2 text-xs text-slate-500">
+                    +{total - hits.length} more — narrow your search
+                  </li>
+                )}
+              </ul>
             )}
-          </ul>
+            {partyHits.length > 0 && (
+              <div className="border-t border-slate-200 bg-slate-50">
+                <div className="px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                  Parties · {partyTotal} match{partyTotal === 1 ? "" : "es"}
+                </div>
+                <ul role="listbox" aria-label="Matching parties" className="bg-white">
+                  {partyHits.map((p) => (
+                    <li
+                      key={p.normalizedName}
+                      role="option"
+                      aria-selected={false}
+                      className="flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50"
+                      onClick={() => onSelectParty(p.normalizedName)}
+                    >
+                      <div className="min-w-0 flex-1">
+                        <div className="font-semibold text-recorder-900 truncate">
+                          {p.displayName}
+                        </div>
+                        <div className="mt-1 flex flex-wrap gap-1">
+                          {Object.entries(p.byRole).map(([role, count]) => (
+                            <span
+                              key={role}
+                              className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${NEUTRAL_CHIP}`}
+                            >
+                              {count}× {ROLE_LABEL[role as PartyRole] ?? role}
+                            </span>
+                          ))}
+                        </div>
+                        <div className="mt-1 text-xs text-slate-600">
+                          → {p.totalInstruments} instrument{p.totalInstruments === 1 ? "" : "s"} across {p.parcels} parcel{p.parcels === 1 ? "" : "s"}
+                        </div>
+                      </div>
+                      <div className="shrink-0">
+                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${NEUTRAL_CHIP}`}>
+                          Party
+                        </span>
+                      </div>
+                    </li>
+                  ))}
+                  {partyTotal > partyHits.length && (
+                    <li className="px-4 py-2 text-xs text-slate-500">
+                      +{partyTotal - partyHits.length} more parties — narrow your search
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
         )}
       </div>
     </section>

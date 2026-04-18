@@ -26,6 +26,7 @@ import { CuratorQueue } from "./components/CuratorQueue";
 import { StaffParcelView } from "./components/StaffParcelView";
 import { StoryPage } from "./components/story/StoryPage";
 import { SubscribePlaceholder } from "./components/SubscribePlaceholder";
+import { PartyPage } from "./components/PartyPage";
 import { ReceiptsPage } from "./components/ReceiptsPage";
 import { useAllParcels } from "./hooks/useAllParcels";
 import { useParcelData } from "./hooks/useParcelData";
@@ -463,6 +464,11 @@ export const routes: RouteObject[] = [
             id: "instrument-resolver",
             path: "instrument/:instrumentNumber",
             element: <InstrumentResolver />,
+          },
+          {
+            id: "party",
+            path: "party/:normalizedName",
+            element: <PartyPage />,
           },
           {
             id: "moat-compare",
