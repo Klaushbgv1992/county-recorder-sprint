@@ -116,7 +116,20 @@ export function PartyJudgmentSweep({ parcel, onOpenDocument }: Props) {
   }
 
   // status === 'swept'
-  const anchor = sweep.hits.length > 0 ? `#party-${slugify(sweep.hits[0].party_name)}` : "";
+  // Map the hit's indexed party name to one of the swept query parties.
+  // The indexed name may differ from the query ("BRIAN MADISON" vs "BRIAN J MADISON")
+  // so we find the query party whose tokens all appear in the indexed name, or the
+  // indexed name whose tokens all appear in the query party — whichever matches
+  // first. Falls back to the plain showpiece root if no safe mapping exists.
+  const anchor = (() => {
+    if (sweep.hits.length === 0) return "";
+    const indexed = sweep.hits[0].party_name.toUpperCase();
+    const match = sweep.parties.find((p) => {
+      const query = p.toUpperCase();
+      return query.includes(indexed) || indexed.includes(query);
+    });
+    return match ? `#party-${slugify(match)}` : "";
+  })();
   const bannerVariant: "clear" | "review" =
     sweep.summary.post_judgment_hits_requiring_action > 0 ? "review" : "clear";
   const bannerCls = {

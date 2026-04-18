@@ -75,11 +75,14 @@ describe("CustodianQueryPage animation + replay", () => {
     }, { timeout: 3000 });
   });
 
-  it("Replay click resets sessionStorage and re-runs", async () => {
+  it("Replay click clears sessionStorage then re-sets it after re-animation", async () => {
     sessionStorage.setItem("custodian-query-seen", "1");
     mount();
     const btn = await screen.findByRole("button", { name: /replay sweep/i });
     btn.click();
+    // Immediately after click, the flag is cleared.
+    expect(sessionStorage.getItem("custodian-query-seen")).toBeNull();
+    // After re-animation completes, it's set again.
     await waitFor(() => {
       expect(sessionStorage.getItem("custodian-query-seen")).toBe("1");
     }, { timeout: 3000 });
