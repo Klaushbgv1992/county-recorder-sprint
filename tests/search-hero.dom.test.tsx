@@ -71,8 +71,8 @@ describe("SearchHero", () => {
     expect(screen.getByRole("region", { name: "Parcel search" })).toBeInTheDocument();
   });
 
-  it("shows entity-type pill and tier pill on each result", () => {
-    render(
+  it("shows entity-type pill on each result (tier communicated by accent bar, not chip)", () => {
+    const { container } = render(
       <MemoryRouter>
         <SearchHero
           value="POPHAM"
@@ -88,7 +88,10 @@ describe("SearchHero", () => {
       </MemoryRouter>,
     );
     expect(screen.getByText(/Owner$/i)).toBeInTheDocument();
-    expect(screen.getByText(/Curated/i)).toBeInTheDocument();
+    // Tier is no longer rendered as text — no "Curated" pill in the result row.
+    expect(screen.queryByText(/^Curated$/)).not.toBeInTheDocument();
+    // Curated tier is instead indicated by an emerald left-accent bar on the row.
+    expect(container.querySelector(".bg-moat-500")).toBeTruthy();
   });
 
   it("shows the Instrument entity pill for 11-digit query", () => {

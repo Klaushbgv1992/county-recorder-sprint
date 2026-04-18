@@ -17,12 +17,6 @@ import { searchParties, type PartyHit } from "../logic/party-search";
 // are structural labels, not priority signals. See Tier-B landing-polish.
 const NEUTRAL_CHIP = "bg-slate-100 text-slate-700";
 
-const TIER_CHIP: Record<Searchable["tier"], { label: string; className: string }> = {
-  curated: { label: "Curated", className: "bg-emerald-100 text-emerald-900" },
-  recorder_cached: { label: "Recorder", className: NEUTRAL_CHIP },
-  assessor_only: { label: "Assessor", className: NEUTRAL_CHIP },
-};
-
 const ENTITY_CHIP: Record<MatchType, { label: string; className: string }> = {
   instrument: { label: "Instrument", className: NEUTRAL_CHIP },
   apn: { label: "APN", className: NEUTRAL_CHIP },
@@ -103,7 +97,6 @@ export function SearchHero({
 }: Props) {
   const [open, setOpen] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
-  const [selectedKey, setSelectedKey] = useState<string | null>(null);
 
   const hits = useMemo(
     () => (value ? searchAll(value, searchables, { limit: 8 }) : []),
@@ -144,14 +137,8 @@ export function SearchHero({
   return (
     <section
       aria-label="Parcel search"
-      className="relative bg-gradient-to-br from-white via-white to-slate-50 border-b border-slate-200 px-6 py-10 overflow-hidden"
+      className="relative bg-white border-b border-slate-200 px-6 py-10"
     >
-      {/* Soft moat glow — pure decoration, placed behind content so it
-          doesn't block hits. Tailored to not tint type contrast. */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute -top-24 left-1/2 -translate-x-1/2 w-[640px] h-[320px] rounded-full bg-moat-200/30 blur-3xl -z-0"
-      />
       <div className="relative max-w-3xl mx-auto">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-moat-700">
           Maricopa County Recorder
@@ -220,20 +207,17 @@ export function SearchHero({
                 {hits.map((h, i) => {
                   const s = h.searchable;
                   const entity = ENTITY_CHIP[h.matchType];
-                  const tier = TIER_CHIP[s.tier];
                   const active = i === activeIdx;
                   const rowKey = `${value}:hit:${s.apn}:${h.matchType}:${i}`;
-                  const isSelected = selectedKey === rowKey;
                   const curated = s.tier === "curated";
                   return (
                     <li
                       key={rowKey}
                       role="option"
                       aria-selected={active}
-                      className={`animate-fade-in-up relative flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"} ${isSelected ? "animate-bounce-soft" : ""}`}
-                      style={{ animationDelay: `${i * 20}ms` }}
+                      className={`relative flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-recorder-50" : "hover:bg-slate-50"}`}
                       onMouseEnter={() => setActiveIdx(i)}
-                      onClick={() => { setSelectedKey(rowKey); onPick(h, value); }}
+                      onClick={() => { onPick(h, value); }}
                     >
                       {/* Curated tier gets a left-border accent instead of a
                           chip, so the single category that matters is felt
@@ -258,13 +242,6 @@ export function SearchHero({
                         <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${entity.className}`}>
                           {entity.label}
                         </span>
-                        <span className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium ${tier.className}`}>
-                          <span
-                            aria-hidden="true"
-                            className={`inline-block w-1.5 h-1.5 rounded-full ${curated ? "bg-moat-500" : "bg-slate-400"}`}
-                          />
-                          {tier.label}
-                        </span>
                       </div>
                     </li>
                   );
@@ -284,15 +261,13 @@ export function SearchHero({
                 <ul role="listbox" aria-label="Matching parties" className="bg-white">
                   {partyHits.map((p, i) => {
                     const partyKey = `${value}:party:${p.normalizedName}:${i}`;
-                    const partySelected = selectedKey === partyKey;
                     return (
                     <li
                       key={partyKey}
                       role="option"
                       aria-selected={false}
-                      className={`animate-fade-in-up flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50 ${partySelected ? "animate-bounce-soft" : ""}`}
-                      style={{ animationDelay: `${i * 20}ms` }}
-                      onClick={() => { setSelectedKey(partyKey); onSelectParty(p.normalizedName); }}
+                      className="flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50"
+                      onClick={() => { onSelectParty(p.normalizedName); }}
                     >
                       <div className="min-w-0 flex-1">
                         <div className="font-semibold text-recorder-900 truncate">
@@ -311,11 +286,6 @@ export function SearchHero({
                         <div className="mt-1 text-xs text-slate-600">
                           → {p.totalInstruments} instrument{p.totalInstruments === 1 ? "" : "s"} across {p.parcels} parcel{p.parcels === 1 ? "" : "s"}
                         </div>
-                      </div>
-                      <div className="shrink-0">
-                        <span className={`rounded-full px-2 py-0.5 text-[11px] font-medium ${NEUTRAL_CHIP}`}>
-                          Party
-                        </span>
                       </div>
                     </li>
                     );
