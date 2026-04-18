@@ -1,5 +1,6 @@
 import { describe, it, expect, afterEach } from "vitest";
 import { render, screen, cleanup, fireEvent } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import { LiveQueryCell } from "./LiveQueryCell";
 import type { QueryResult } from "../lib/custodian-query-engine.schema";
 
@@ -24,6 +25,14 @@ const BLOCKED: QueryResult = {
   },
 };
 
+function renderHitCell(party = "BRIAN J MADISON") {
+  return render(
+    <MemoryRouter>
+      <LiveQueryCell state="resolved" party={party} indexShort="MCSC" result={HIT} coverage="1990-2026" />
+    </MemoryRouter>
+  );
+}
+
 describe("LiveQueryCell", () => {
   it("idle state shows 'awaiting sweep'", () => {
     render(<LiveQueryCell state="idle" party="CHRISTOPHER POPHAM" indexShort="MCR" />);
@@ -41,7 +50,7 @@ describe("LiveQueryCell", () => {
   });
 
   it("hit (false-positive) state shows AI dismissal badge", () => {
-    render(<LiveQueryCell state="resolved" party="BRIAN J MADISON" indexShort="MCSC" result={HIT} coverage="1990-2026" />);
+    renderHitCell();
     expect(screen.getByText(/AI: false positive/i)).toBeInTheDocument();
   });
 
@@ -57,11 +66,18 @@ describe("LiveQueryCell", () => {
   });
 
   it("hit cell click toggles the detail card", () => {
-    render(<LiveQueryCell state="resolved" party="BRIAN J MADISON" indexShort="MCSC" result={HIT} coverage="1990-2026" />);
+    renderHitCell();
     const btn = screen.getByRole("button", { name: /hit details/i });
     fireEvent.click(btn);
     expect(screen.getByText(/Different address/)).toBeInTheDocument();
     fireEvent.click(btn);
     expect(screen.queryByText(/Different address/)).not.toBeInTheDocument();
+  });
+
+  it("hit detail card shows deep-link to 2013 DOT for BRIAN J MADISON collision", () => {
+    renderHitCell("BRIAN J MADISON");
+    fireEvent.click(screen.getByRole("button", { name: /hit details/i }));
+    const link = screen.getByRole("link", { name: /2013 DOT/i });
+    expect(link).toHaveAttribute("href", "/parcel/304-78-386/instrument/20130183450");
   });
 });

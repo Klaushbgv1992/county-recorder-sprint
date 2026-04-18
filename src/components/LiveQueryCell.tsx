@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router";
 import type { QueryResult, Hit, FailureMode } from "../lib/custodian-query-engine.schema";
 
 export type CellState = "idle" | "loading" | "resolved";
@@ -17,8 +18,10 @@ function JudgmentLabel({ j }: { j: Hit["ai_judgment"] }) {
   return <>AI: confirmed exposure</>;
 }
 
-function HitBody({ hits }: { hits: Hit[] }) {
+function HitBody({ hits, party }: { hits: Hit[]; party: string }) {
   const primary = hits[0];
+  const isMadisonCollision =
+    party === "BRIAN J MADISON" && primary.ai_judgment === "probable_false_positive";
   return (
     <div className="mt-2 rounded border border-amber-200 bg-amber-50/50 p-2 text-[11px] leading-relaxed text-slate-700">
       <div className="flex items-baseline justify-between gap-2">
@@ -30,11 +33,22 @@ function HitBody({ hits }: { hits: Hit[] }) {
       <p className="mt-1">{primary.summary}</p>
       <p className="mt-1 italic text-slate-600">
         <span className="font-semibold not-italic text-slate-700">AI rationale:</span>{" "}
-        {primary.ai_rationale} <span className="text-slate-500">({Math.round(primary.confidence * 100)}%)</span>
+        {primary.ai_rationale}{" "}
+        <span className="text-slate-500">({Math.round(primary.confidence * 100)}%)</span>
       </p>
       {primary.recording_number && primary.recording_date && (
         <p className="mt-1 font-mono text-slate-600">
           {primary.recording_number} · {primary.recording_date} · {primary.doc_type_raw}
+        </p>
+      )}
+      {isMadisonCollision && (
+        <p className="mt-2">
+          <Link
+            to="/parcel/304-78-386/instrument/20130183450"
+            className="text-moat-700 hover:underline"
+          >
+            Verify against the real 2013 DOT on this parcel →
+          </Link>
         </p>
       )}
     </div>
@@ -126,7 +140,7 @@ export function LiveQueryCell({ state, party, indexShort, result, coverage }: Pr
           <span>{result.hits.length} hit{result.hits.length === 1 ? "" : "s"} · </span>
           <span className="font-semibold"><JudgmentLabel j={primary.ai_judgment} /></span>
         </button>
-        {expanded && <HitBody hits={result.hits} />}
+        {expanded && <HitBody hits={result.hits} party={party} />}
       </div>
     );
   }
