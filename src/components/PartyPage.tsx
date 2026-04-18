@@ -50,11 +50,12 @@ export function PartyPage() {
 
   if (!hit) {
     return (
-      <div className="max-w-4xl mx-auto px-6 py-10">
+      <div className="max-w-4xl mx-auto px-6 py-10 space-y-6">
         <NotInCorpusParcel
           title="No matching party in this corpus"
           message={`No curated party matches "${normalizedName ?? ""}".`}
         />
+        <PartyMoatExplainer />
       </div>
     );
   }
@@ -106,6 +107,8 @@ export function PartyPage() {
           party assignments.
         </p>
       </header>
+
+      <PartyMoatExplainer />
 
       <section className="space-y-6">
         {parcelEntries.map(([apn, refs]) => {
@@ -174,5 +177,48 @@ export function PartyPage() {
         })}
       </section>
     </div>
+  );
+}
+
+/**
+ * Plain-English moat paragraph — rendered both on the populated party page
+ * (under the header) and on the empty-state page (under "No matching
+ * party"). Kept tight (~80 words) and citation-anchored to the hunt log.
+ */
+function PartyMoatExplainer() {
+  return (
+    <aside
+      aria-label="Why cross-parcel party search needs the custodian"
+      data-testid="party-moat-explainer"
+      className="rounded-md border border-slate-200 bg-slate-50 px-4 py-3 text-[12px] leading-snug text-slate-700"
+    >
+      <p className="font-semibold text-slate-800">
+        Why this view needs the custodian
+      </p>
+      <p className="mt-1">
+        The Maricopa public API
+        {" "}
+        <code className="font-mono text-[11px] bg-white px-1 py-0.5 rounded border border-slate-200">
+          publicapi.recorder.maricopa.gov
+        </code>
+        {" "}
+        has no name-filtered or role-filtered search endpoint. We logged a
+        45-minute live attempt against it — see the
+        {" "}
+        <a
+          href="https://github.com/Klaushbgv1992/county-recorder-sprint/blob/main/docs/hunt-log-known-gap-2.md"
+          className="text-moat-700 underline hover:text-moat-900"
+          target="_blank"
+          rel="noreferrer"
+        >
+          hunt log
+        </a>
+        {" "}
+        — and five separate API layers blocked it. Title plants index by
+        name but lag the record by days. Resolving a party to its roles
+        (grantor, lender, releasing party) across every parcel only happens
+        inside the custodian.
+      </p>
+    </aside>
   );
 }
