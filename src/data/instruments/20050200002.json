@@ -1,0 +1,100 @@
+{
+  "instrument_number": "20050200002",
+  "recording_date": "2005-03-21",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "HENDERSON JAMES D",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "HENDERSON TAMMY L",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "COUNTRYWIDE HOME LOANS, INC.",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS, INC.",
+      "role": "beneficiary",
+      "provenance": "demo_synthetic",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "COUNTRYWIDE HOME LOANS, INC.",
+        "party_role": "lender"
+      }
+    },
+    {
+      "name": "RECONTRUST COMPANY, N.A.",
+      "role": "trustee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2005-03-15",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$287,955.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1000157-0002876543-2",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2035-04-01",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase-money DOT on Henderson parcel 999-04-401 (tax-sale REO scenario). This DOT is the critical examiner concern: it was EXTINGUISHED BY OPERATION OF LAW upon recording of the Treasurer's Deed (20220200005) under A.R.S. § 42-18267, but no release was ever recorded. Appears 'open' in a raw index query — an examiner must reconcile this. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20050200001"],
+  "source_image_path": null,
+  "page_count": 22,
+  "raw_api_response": {
+    "names": ["HENDERSON JAMES D", "HENDERSON TAMMY L", "COUNTRYWIDE HOME LOANS INC", "MERS", "RECONTRUST COMPANY"],
+    "documentCodes": ["DEED TRST"],
+    "recordingDate": "3-21-2005",
+    "recordingNumber": "20050200002",
+    "pageAmount": 22,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only pre-crash Countrywide DOT on Henderson parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS beneficiary as nominee for Countrywide Home Loans, Inc. Countrywide was acquired by Bank of America in July 2008. No assignment of DOT to Bank of America or a securitization trust has been recorded in this parcel's corpus. Note: the underlying DOT is extinguished of record by the 2022 Treasurer's Deed (20220200005); a successor-in-interest release is the industry-standard cure but has not been obtained.",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

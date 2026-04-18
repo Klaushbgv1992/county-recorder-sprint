@@ -23,6 +23,20 @@ import lowry_meta from "../data/ai-summaries/304-78-383/metadata.json";
 import phoenix_md from "../data/ai-summaries/304-78-367/summary.md?raw";
 import phoenix_prompt from "../data/ai-summaries/304-78-367/prompt.txt?raw";
 import phoenix_meta from "../data/ai-summaries/304-78-367/metadata.json";
+// Scenario corpus summaries (hand-curated to accompany the demo-only
+// synthesized parcels — model_id: hand-curated-demo-scenario-summary)
+import chen_md from "../data/ai-summaries/999-01-362/summary.md?raw";
+import chen_prompt from "../data/ai-summaries/999-01-362/prompt.txt?raw";
+import chen_meta from "../data/ai-summaries/999-01-362/metadata.json";
+import martinez_md from "../data/ai-summaries/999-02-555/summary.md?raw";
+import martinez_prompt from "../data/ai-summaries/999-02-555/prompt.txt?raw";
+import martinez_meta from "../data/ai-summaries/999-02-555/metadata.json";
+import delgado_md from "../data/ai-summaries/999-03-411/summary.md?raw";
+import delgado_prompt from "../data/ai-summaries/999-03-411/prompt.txt?raw";
+import delgado_meta from "../data/ai-summaries/999-03-411/metadata.json";
+import bryant_md from "../data/ai-summaries/999-04-401/summary.md?raw";
+import bryant_prompt from "../data/ai-summaries/999-04-401/prompt.txt?raw";
+import bryant_meta from "../data/ai-summaries/999-04-401/metadata.json";
 
 type Metadata = {
   generated_at: string;
@@ -41,6 +55,10 @@ const BY_APN: Record<string, Artifacts> = {
   "304-78-374": { md: warner_md, prompt: warner_prompt, meta: warner_meta as Metadata },
   "304-78-383": { md: lowry_md, prompt: lowry_prompt, meta: lowry_meta as Metadata },
   "304-78-367": { md: phoenix_md, prompt: phoenix_prompt, meta: phoenix_meta as Metadata },
+  "999-01-362": { md: chen_md, prompt: chen_prompt, meta: chen_meta as Metadata },
+  "999-02-555": { md: martinez_md, prompt: martinez_prompt, meta: martinez_meta as Metadata },
+  "999-03-411": { md: delgado_md, prompt: delgado_prompt, meta: delgado_meta as Metadata },
+  "999-04-401": { md: bryant_md, prompt: bryant_prompt, meta: bryant_meta as Metadata },
 };
 
 interface Props {

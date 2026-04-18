@@ -1,0 +1,77 @@
+{
+  "instrument_number": "20210200002",
+  "recording_date": "2021-04-22",
+  "document_type": "quit_claim_deed",
+  "document_type_raw": "Q/CL DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "MARTINEZ CARLOS A",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MARTINEZ SOFIA ANDREA",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 322, SHAMROCK ESTATES PHASE 2A, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 799 of Maps, Page 38",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2021-04-15",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "Pursuant to Decree of Dissolution of Marriage recorded as Instrument No. 20210200001; no other consideration",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "SOFIA ANDREA MARTINEZ, as her sole and separate property",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "2741 E Palmer St, Gilbert, AZ 85298",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized quit claim deed for Martinez parcel 999-02-555 — conveys Carlos's community-property interest to Sofia pursuant to the divorce decree (20210200001). NOTE: a Q/CL conveys only whatever interest the grantor has, with no warranty. The underlying 2016 DOT (20160200002) is not released by this deed; Carlos remains on the note. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20210200001", "20160200001"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["MARTINEZ CARLOS A", "MARTINEZ SOFIA ANDREA"],
+    "documentCodes": ["Q/CL DEED"],
+    "recordingDate": "4-22-2021",
+    "recordingNumber": "20210200002",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only post-divorce quit claim deed for Martinez parcel 999-02-555; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "instrument_number": "20230200002",
+  "recording_date": "2023-01-30",
+  "document_type": "special_warranty_deed",
+  "document_type_raw": "SPEC WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "TUCSON INVESTMENTS LLC, an Arizona limited liability company",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "BRYANT JAMES T",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2023-01-27",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "purchase_price": {
+      "value": "$425,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "BRYANT JAMES T, an unmarried man, as his sole and separate property",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "3722 E Parkview Ave, Gilbert, AZ 85298",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "warranty_scope": {
+      "value": "Special warranty — grantor warrants only against claims arising by, through, or under grantor; does not warrant against claims arising prior to grantor's acquisition via Treasurer's Deed (20220200005)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_chain_note": {
+      "value": "Grantor (Tucson Investments LLC) acquired title via Treasurer's Deed recorded 2022-06-15 as Instrument No. 20220200005. Chain back to original fee owners Henderson James D and Tammy L (instrument 20050200001, 2005-03-21) is established through the tax-sale chain. The underlying 2005 Countrywide DOT (20050200002) was extinguished by operation of law under A.R.S. § 42-18267; no release of record.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized investor-resale deed on parcel 999-04-401 (tax-sale REO scenario) — Tucson Investments flips the tax-acquired property to Bryant approximately 7 months after the Treasurer's Deed. Special warranty is standard on investor flips. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20220200005"],
+  "same_day_group": ["20230200003"],
+  "source_image_path": null,
+  "page_count": 3,
+  "raw_api_response": {
+    "names": ["TUCSON INVESTMENTS LLC", "BRYANT JAMES T"],
+    "documentCodes": ["SPEC WAR DEED"],
+    "recordingDate": "1-30-2023",
+    "recordingNumber": "20230200002",
+    "pageAmount": 3,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only investor flip deed for parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

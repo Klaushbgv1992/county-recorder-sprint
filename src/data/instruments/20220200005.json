@@ -1,0 +1,94 @@
+{
+  "instrument_number": "20220200005",
+  "recording_date": "2022-06-15",
+  "document_type": "other",
+  "document_type_raw": "TREAS DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "MARICOPA COUNTY TREASURER",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "TUCSON INVESTMENTS LLC, an Arizona limited liability company",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "HENDERSON JAMES D",
+      "role": "debtor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "HENDERSON TAMMY L",
+      "role": "debtor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "statute": {
+      "value": "A.R.S. § 42-18204, § 42-18267 (Treasurer's Deed following tax lien foreclosure)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "certificate_of_purchase": {
+      "value": "CP# 2019-XXXXXX (Maricopa County Treasurer, delinquent tax year 2018, purchased at auction 2019-02-12 by Tucson Investments LLC for $3,847 plus penalties and interest)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "redemption_period_expired": {
+      "value": "2022-02-12 (three years after certificate purchase per A.R.S. § 42-18152); Hendersons did not redeem",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "judicial_foreclosure_case": {
+      "value": "CV2022-XXXXXX (Maricopa County Superior Court, judgment entered 2022-05-20 quieting title in favor of Tucson Investments LLC)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "priority_note": {
+      "value": "A Treasurer's Deed issued under A.R.S. § 42-18267 conveys an estate in fee simple free and clear of all claims, liens and encumbrances EXCEPT (a) other tax liens, (b) restrictions, easements, and covenants running with the land, and (c) claims of the United States (e.g., IRS liens) subject to federal law. The DOT recorded at 20050200002 (Countrywide) is therefore extinguished by operation of law.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Treasurer's Deed for Henderson parcel 999-04-401 (tax-sale REO scenario). This is the pivotal instrument — it breaks the chain from Henderson to Tucson Investments via tax foreclosure, and by operation of A.R.S. § 42-18267 extinguishes the 2005 Countrywide DOT without a recorded release. An examiner MUST flag this as a Schedule B exception or obtain a quit-claim from Countrywide's successor. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20050200001", "20050200002"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 6,
+  "raw_api_response": {
+    "names": ["MARICOPA COUNTY TREASURER", "TUCSON INVESTMENTS LLC", "HENDERSON JAMES D", "HENDERSON TAMMY L"],
+    "documentCodes": ["TREAS DEED"],
+    "recordingDate": "6-15-2022",
+    "recordingNumber": "20220200005",
+    "pageAmount": 6,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only Treasurer's Deed for parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

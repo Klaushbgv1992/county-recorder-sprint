@@ -61,5 +61,158 @@
     "provenance": "ocr",
     "confidence": 1.0,
     "examiner_action": "accepted"
+  },
+  {
+    "id": "link-010-001",
+    "source_instrument": "20080200002",
+    "target_instrument": "20080200001",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-010-002",
+    "source_instrument": "20190200001",
+    "target_instrument": "20080200002",
+    "link_type": "release_of",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-010-003",
+    "source_instrument": "20240200001",
+    "target_instrument": "20230200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-010-004",
+    "source_instrument": "20240200001",
+    "target_instrument": "20080200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-011-001",
+    "source_instrument": "20160200002",
+    "target_instrument": "20160200001",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-011-002",
+    "source_instrument": "20210200002",
+    "target_instrument": "20210200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-011-003",
+    "source_instrument": "20210200002",
+    "target_instrument": "20160200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-011-004",
+    "source_instrument": "20220200001",
+    "target_instrument": "20160200002",
+    "link_type": "modification_of",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-012-001",
+    "source_instrument": "20170200002",
+    "target_instrument": "20170200001",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-012-002",
+    "source_instrument": "20220200003",
+    "target_instrument": "20220200002",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-012-003",
+    "source_instrument": "20220200003",
+    "target_instrument": "20170200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-012-004",
+    "source_instrument": "20220200004",
+    "target_instrument": "20220200003",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-013-001",
+    "source_instrument": "20050200002",
+    "target_instrument": "20050200001",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-013-002",
+    "source_instrument": "20220200005",
+    "target_instrument": "20050200001",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-013-003",
+    "source_instrument": "20220200005",
+    "target_instrument": "20050200002",
+    "link_type": "release_of",
+    "provenance": "demo_synthetic",
+    "confidence": 0.6,
+    "examiner_action": "unresolved"
+  },
+  {
+    "id": "link-013-004",
+    "source_instrument": "20230200002",
+    "target_instrument": "20220200005",
+    "link_type": "back_reference",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
+  },
+  {
+    "id": "link-013-005",
+    "source_instrument": "20230200003",
+    "target_instrument": "20230200002",
+    "link_type": "same_day_transaction",
+    "provenance": "demo_synthetic",
+    "confidence": 1.0,
+    "examiner_action": "accepted"
   }
 ]

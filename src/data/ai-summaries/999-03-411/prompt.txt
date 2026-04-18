@@ -1,0 +1,16 @@
+Scenario: individual-to-LLC conveyance for asset protection / estate planning (demo-only synthesized corpus for parcel 999-03-411, DELGADO). Every instrument on this parcel carries raw_api_response.synthesized: true and is disclosed per-document.
+
+Corpus (synthesized):
+
+Parcel: 999-03-411, 3594 E Palmer St, Gilbert AZ 85298, Seville Parcel 3 Lot 38.
+
+Instruments:
+- 20170200001 (WAR DEED, 2017-09-14): Rivera Family Trust dated 2005-06-01 → Delgado Maria Elena (unmarried). $355,000.
+- 20170200002 (DEED TRST, 2017-09-14): Delgado → Quicken Loans Inc, MERS nominee; $284,000. Note later sold to Rocket Mortgage LLC; no assignment of DOT recorded.
+- 20220200002 (STMT AUTH, 2022-11-08): A.R.S. § 33-432 Statement of Authority for Delgado Property Holdings LLC designating Maria Elena Delgado as sole member/manager.
+- 20220200003 (WAR DEED, 2022-11-08): Delgado individually → Delgado Property Holdings LLC. Consideration "$10 and OVC."
+- 20220200004 (AF VALUE, 2022-11-08): Affidavit of Property Value under A.R.S. § 11-1133. Full cash value $485,000, nominal consideration $10, exemption B3.
+
+Lifecycles: lc-012 (root 20170200002, open — DOT still in individual name).
+
+Produce a chain-of-title brief for this parcel. Reader is a title examiner preparing a commitment. Core examiner concerns: (a) LLC existence and authority at closing, (b) due-on-sale exposure under 12 USC § 1701j-3 when the DOT stays in the individual's name, (c) the note appears sold to Rocket but no assignment of DOT is recorded. Generate closing-stage follow-ups that reflect how an underwriter would handle these.

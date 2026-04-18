@@ -33,6 +33,27 @@ import inst20230100000 from "./data/instruments/20230100000.json";
 import inst20190100001 from "./data/instruments/20190100001.json";
 import inst20090100001 from "./data/instruments/20090100001.json";
 import inst20220100001 from "./data/instruments/20220100001.json";
+// Scenario corpus — 4 demo-only parcels (probate / divorce Q/CL / LLC / tax-sale REO)
+import inst20080200001 from "./data/instruments/20080200001.json";
+import inst20080200002 from "./data/instruments/20080200002.json";
+import inst20190200001 from "./data/instruments/20190200001.json";
+import inst20230200001 from "./data/instruments/20230200001.json";
+import inst20240200001 from "./data/instruments/20240200001.json";
+import inst20160200001 from "./data/instruments/20160200001.json";
+import inst20160200002 from "./data/instruments/20160200002.json";
+import inst20210200001 from "./data/instruments/20210200001.json";
+import inst20210200002 from "./data/instruments/20210200002.json";
+import inst20220200001 from "./data/instruments/20220200001.json";
+import inst20170200001 from "./data/instruments/20170200001.json";
+import inst20170200002 from "./data/instruments/20170200002.json";
+import inst20220200002 from "./data/instruments/20220200002.json";
+import inst20220200003 from "./data/instruments/20220200003.json";
+import inst20220200004 from "./data/instruments/20220200004.json";
+import inst20050200001 from "./data/instruments/20050200001.json";
+import inst20050200002 from "./data/instruments/20050200002.json";
+import inst20220200005 from "./data/instruments/20220200005.json";
+import inst20230200002 from "./data/instruments/20230200002.json";
+import inst20230200003 from "./data/instruments/20230200003.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
 
@@ -56,6 +77,27 @@ const instrumentsRaw = [
   inst20190100001,
   inst20090100001,
   inst20220100001,
+  // Scenario corpus
+  inst20080200001,
+  inst20080200002,
+  inst20190200001,
+  inst20230200001,
+  inst20240200001,
+  inst20160200001,
+  inst20160200002,
+  inst20210200001,
+  inst20210200002,
+  inst20220200001,
+  inst20170200001,
+  inst20170200002,
+  inst20220200002,
+  inst20220200003,
+  inst20220200004,
+  inst20050200001,
+  inst20050200002,
+  inst20220200005,
+  inst20230200002,
+  inst20230200003,
 ];
 
 // Default parcel for the single-parcel UI contract — POPHAM primary.

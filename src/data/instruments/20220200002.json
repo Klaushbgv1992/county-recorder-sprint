@@ -1,0 +1,82 @@
+{
+  "instrument_number": "20220200002",
+  "recording_date": "2022-11-08",
+  "document_type": "other",
+  "document_type_raw": "STMT AUTH",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "DELGADO PROPERTY HOLDINGS LLC, an Arizona limited liability company",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "DELGADO MARIA ELENA",
+      "role": "claimant",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "entity_name": {
+      "value": "DELGADO PROPERTY HOLDINGS LLC",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "entity_form": {
+      "value": "Arizona limited liability company",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "ac_entity_number": {
+      "value": "AZ-L22XXXXX (Arizona Corporation Commission)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "statute": {
+      "value": "A.R.S. § 33-432 (Statement of Authority — transfer of real property)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "authorized_signer": {
+      "value": "MARIA ELENA DELGADO, Sole Member and Manager",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Statement of Authority for Delgado parcel 999-03-411 — A.R.S. § 33-432 filing recorded the same day as the LLC conveyance (20220200003) to establish of record that Maria Elena Delgado is the authorized signer for the LLC. An examiner takes this instrument plus the ACC filing (not recorded) as evidence of (a) LLC existence and (b) authorized signer. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["DELGADO PROPERTY HOLDINGS LLC", "DELGADO MARIA ELENA"],
+    "documentCodes": ["STMT AUTH"],
+    "recordingDate": "11-8-2022",
+    "recordingNumber": "20220200002",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only Statement of Authority (A.R.S. § 33-432) for Delgado parcel 999-03-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

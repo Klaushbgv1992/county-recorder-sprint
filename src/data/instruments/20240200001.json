@@ -1,0 +1,92 @@
+{
+  "instrument_number": "20240200001",
+  "recording_date": "2024-08-05",
+  "document_type": "other",
+  "document_type_raw": "PR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "THE ESTATE OF ROBERT K. CHEN, DECEASED, by DAVID JAMES CHEN, Personal Representative",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "CHEN DAVID JAMES",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 44, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2024-07-28",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "decedent_name": {
+      "value": "CHEN ROBERT K",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "date_of_death": {
+      "value": "2024-01-08",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "probate_case_number": {
+      "value": "PB2024-XXXXXX (Maricopa County Superior Court, Probate Division)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "letters_reference": {
+      "value": "Letters of Personal Representative issued 2024-03-15, attached as Exhibit A; not separately recorded",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "Distribution pursuant to Last Will and Testament dated 2022-09-10; no monetary consideration",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "warranty_type": {
+      "value": "Personal Representative's Deed conveys only such title as the decedent held; no warranty of title beyond the covenants of a Special Warranty Deed as against the acts of the decedent or personal representative",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Personal Representative's Deed for Chen family parcel 999-01-362 — transfers the estate's fee title to the adult son and sole heir following Robert K. Chen's death (recorded 2023 AF Death cured Lilian's prior death; see 20230200001). Examiner concerns typically include: (a) validity of the Letters of Personal Representative as of the deed date, (b) whether the estate was properly closed or remains open, (c) any creditor claims against the estate that could encumber the conveyed property. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20080200001", "20230200001"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 4,
+  "raw_api_response": {
+    "names": ["ESTATE OF CHEN ROBERT K", "CHEN DAVID JAMES", "CHEN DAVID J"],
+    "documentCodes": ["PR DEED"],
+    "recordingDate": "8-5-2024",
+    "recordingNumber": "20240200001",
+    "pageAmount": 4,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only Personal Representative's Deed for Chen family parcel 999-01-362 (probate conveyance scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

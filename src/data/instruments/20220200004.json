@@ -1,0 +1,82 @@
+{
+  "instrument_number": "20220200004",
+  "recording_date": "2022-11-08",
+  "document_type": "other",
+  "document_type_raw": "AF VALUE",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "DELGADO MARIA ELENA",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "DELGADO PROPERTY HOLDINGS LLC, an Arizona limited liability company",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "statute": {
+      "value": "A.R.S. § 11-1133 (Affidavit of Property Value)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "full_cash_value": {
+      "value": "$485,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration_paid": {
+      "value": "$10.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "exemption_code": {
+      "value": "B3 — Transfer between individual and wholly-owned entity; not exempt from recordation but subject to reduced disclosure per department guidance",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "corresponding_deed": {
+      "value": "20220200003",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Affidavit of Property Value (A.R.S. § 11-1133) accompanying the LLC conveyance (20220200003) on Delgado parcel 999-03-411. Required in Arizona on every deed unless an exemption applies; the nominal $10 consideration triggers scrutiny but is accepted for individual-to-wholly-owned-LLC transfers. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20220200003"],
+  "same_day_group": ["20220200002", "20220200003"],
+  "source_image_path": null,
+  "page_count": 1,
+  "raw_api_response": {
+    "names": ["DELGADO MARIA ELENA", "DELGADO PROPERTY HOLDINGS LLC"],
+    "documentCodes": ["AF VALUE"],
+    "recordingDate": "11-8-2022",
+    "recordingNumber": "20220200004",
+    "pageAmount": 1,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 1,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only Affidavit of Property Value for Delgado parcel 999-03-411 (LLC scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

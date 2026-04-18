@@ -1,0 +1,82 @@
+{
+  "instrument_number": "20230200001",
+  "recording_date": "2023-06-20",
+  "document_type": "other",
+  "document_type_raw": "AF DEATH JT",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "CHEN ROBERT K",
+      "role": "claimant",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "CHEN LILIAN M",
+      "role": "debtor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 44, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "decedent_name": {
+      "value": "CHEN LILIAN M",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "date_of_death": {
+      "value": "2023-04-10",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "affiant_name": {
+      "value": "CHEN ROBERT K (surviving joint tenant, spouse of decedent)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "death_certificate_reference": {
+      "value": "State of Arizona Certificate of Death (attached as Exhibit A); AZ File No. 2023-XXXXXXX",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "original_vesting_instrument": {
+      "value": "20080200001",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized Affidavit of Death of Joint Tenant for Chen family parcel 999-01-362. In Arizona, community-property-with-right-of-survivorship title (as established in 20080200001) passes to the surviving spouse by operation of law on death; the affidavit simply cures the record and is recorded with an attached death certificate. No probate required for this first death. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20080200001"],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 3,
+  "raw_api_response": {
+    "names": ["CHEN ROBERT K", "CHEN LILIAN M"],
+    "documentCodes": ["AF DEATH JT"],
+    "recordingDate": "6-20-2023",
+    "recordingNumber": "20230200001",
+    "pageAmount": 3,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": true,
+    "affidavitPageAmount": 2,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only affidavit of death of joint tenant for Chen family parcel 999-01-362; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

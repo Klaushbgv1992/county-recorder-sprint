@@ -1,0 +1,83 @@
+{
+  "instrument_number": "20050200001",
+  "recording_date": "2005-03-21",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "SHEA HOMES ARIZONA LP, a California limited partnership",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "HENDERSON JAMES D",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "HENDERSON TAMMY L",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2005-03-15",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "purchase_price": {
+      "value": "$319,950.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "husband and wife as joint tenants with right of survivorship",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "3722 E Parkview Ave, Gilbert, AZ 85298",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase deed for Henderson family, Seville Parcel 3 Lot 56 (parcel 999-04-401, tax-sale REO scenario). Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": [],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["SHEA HOMES ARIZONA LP", "HENDERSON JAMES D", "HENDERSON TAMMY L"],
+    "documentCodes": ["WAR DEED"],
+    "recordingDate": "3-21-2005",
+    "recordingNumber": "20050200001",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase deed for Henderson family on parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

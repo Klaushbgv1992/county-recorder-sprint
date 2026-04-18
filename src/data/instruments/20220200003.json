@@ -1,0 +1,87 @@
+{
+  "instrument_number": "20220200003",
+  "recording_date": "2022-11-08",
+  "document_type": "warranty_deed",
+  "document_type_raw": "WAR DEED",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "DELGADO MARIA ELENA",
+      "role": "grantor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "DELGADO PROPERTY HOLDINGS LLC, an Arizona limited liability company",
+      "role": "grantee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 38, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2022-10-31",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "consideration": {
+      "value": "$10.00 and other good and valuable consideration, the receipt whereof is acknowledged (estate-planning transfer to grantor's wholly-owned LLC)",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "vesting": {
+      "value": "DELGADO PROPERTY HOLDINGS LLC, an Arizona limited liability company",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "property_address": {
+      "value": "3594 E Palmer St, Gilbert, AZ 85298",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "referenced_authority": {
+      "value": "Statement of Authority recorded concurrently as Instrument No. 20220200002",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "due_on_sale_note": {
+      "value": "The DOT recorded at 20170200002 contains a standard due-on-sale clause. Transfer to a grantor-owned LLC may trigger the clause at the lender's option (12 USC § 1701j-3 has no SFR-to-LLC exception), but enforcement is at lender discretion and is rarely exercised for owner-occupied pass-through LLCs. No assumption agreement has been recorded.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized LLC conveyance for Delgado parcel 999-03-411 — transfers title from Maria Elena Delgado (individual) to her wholly-owned AZ LLC for estate-planning / asset-protection purposes. The 2017 DOT (20170200002) is NOT released by this conveyance; it remains open in Maria's individual name (lc-012), creating a live examiner disclosure. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": ["20170200001", "20220200002"],
+  "same_day_group": ["20220200002", "20220200004"],
+  "source_image_path": null,
+  "page_count": 2,
+  "raw_api_response": {
+    "names": ["DELGADO MARIA ELENA", "DELGADO PROPERTY HOLDINGS LLC"],
+    "documentCodes": ["WAR DEED"],
+    "recordingDate": "11-8-2022",
+    "recordingNumber": "20220200003",
+    "pageAmount": 2,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only individual-to-LLC conveyance for Delgado parcel 999-03-411; not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

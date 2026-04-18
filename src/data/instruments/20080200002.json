@@ -1,0 +1,100 @@
+{
+  "instrument_number": "20080200002",
+  "recording_date": "2008-04-15",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "CHEN ROBERT K",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "CHEN LILIAN M",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "WELLS FARGO BANK, N.A.",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS, INC.",
+      "role": "beneficiary",
+      "provenance": "demo_synthetic",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "WELLS FARGO BANK, N.A.",
+        "party_role": "lender"
+      }
+    },
+    {
+      "name": "FIRST AMERICAN TITLE INSURANCE COMPANY",
+      "role": "trustee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 44, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2008-04-11",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$305,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1000199-0001234567-8",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2038-05-01",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase-money deed of trust accompanying 20080200001 on Chen family parcel 999-01-362. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20080200001"],
+  "source_image_path": null,
+  "page_count": 18,
+  "raw_api_response": {
+    "names": ["CHEN ROBERT K", "CHEN LILIAN M", "WELLS FARGO BANK NA", "MERS"],
+    "documentCodes": ["DEED TRST"],
+    "recordingDate": "4-15-2008",
+    "recordingNumber": "20080200002",
+    "pageAmount": 18,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase-money DOT for Chen family parcel 999-01-362 (probate scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS beneficiary as nominee for Wells Fargo Bank, N.A.",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}

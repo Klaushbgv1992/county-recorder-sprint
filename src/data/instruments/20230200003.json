@@ -1,0 +1,94 @@
+{
+  "instrument_number": "20230200003",
+  "recording_date": "2023-01-30",
+  "document_type": "deed_of_trust",
+  "document_type_raw": "DEED TRST",
+  "bundled_document_types": [],
+  "parties": [
+    {
+      "name": "BRYANT JAMES T",
+      "role": "trustor",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "AMERISAVE MORTGAGE CORPORATION",
+      "role": "lender",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    {
+      "name": "MORTGAGE ELECTRONIC REGISTRATION SYSTEMS, INC.",
+      "role": "beneficiary",
+      "provenance": "demo_synthetic",
+      "confidence": 1,
+      "nominee_for": {
+        "party_name": "AMERISAVE MORTGAGE CORPORATION",
+        "party_role": "lender"
+      }
+    },
+    {
+      "name": "OLD REPUBLIC TITLE INSURANCE AGENCY INC",
+      "role": "trustee",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  ],
+  "legal_description": {
+    "value": "Lot 56, SEVILLE PARCEL 3, according to the plat of record in the office of the County Recorder of Maricopa County, Arizona, recorded in Book 554 of Maps, Page 19; Affidavit of Correction recorded in Document No. 2001-0849180",
+    "provenance": "demo_synthetic",
+    "confidence": 1
+  },
+  "extracted_fields": {
+    "deed_date": {
+      "value": "2023-01-27",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "loan_amount": {
+      "value": "$340,000.00",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "min_number": {
+      "value": "1000267-0004567890-1",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "maturity_date": {
+      "value": "2053-02-01",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    },
+    "source_note": {
+      "value": "Demo-only synthesized purchase-money DOT for Bryant on parcel 999-04-401 (tax-sale REO scenario). The title insurer underwrote over the extinguished 2005 Countrywide DOT by treating it as a Schedule B exception; the AmeriSave policy relies on the tax-sale chain established by 20220200005. Not present in publicapi.recorder.maricopa.gov.",
+      "provenance": "demo_synthetic",
+      "confidence": 1
+    }
+  },
+  "back_references": [],
+  "same_day_group": ["20230200002"],
+  "source_image_path": null,
+  "page_count": 20,
+  "raw_api_response": {
+    "names": ["BRYANT JAMES T", "AMERISAVE MORTGAGE CORPORATION", "MERS", "OLD REPUBLIC TITLE"],
+    "documentCodes": ["DEED TRST"],
+    "recordingDate": "1-30-2023",
+    "recordingNumber": "20230200003",
+    "pageAmount": 20,
+    "docketBook": 0,
+    "pageMap": 0,
+    "affidavitPresent": false,
+    "affidavitPageAmount": 0,
+    "restricted": false,
+    "synthesized": true,
+    "synthesized_note": "Demo-only purchase-money DOT for Bryant on parcel 999-04-401 (tax-sale REO scenario); not present in publicapi.recorder.maricopa.gov."
+  },
+  "corpus_boundary_note": "County online records searched through 2026-04-09",
+  "mers_note": "MERS beneficiary as nominee for AmeriSave Mortgage Corporation.",
+  "provenance_summary": {
+    "public_api_count": 0,
+    "ocr_count": 0,
+    "manual_entry_count": 0
+  }
+}
