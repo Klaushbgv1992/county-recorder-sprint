@@ -131,4 +131,35 @@ describe("buildOwnerPeriods", () => {
     const periods = buildOwnerPeriods([deed]);
     expect(periods[0].owner).toBe("SOLO BUYER");
   });
+
+  it("treats trustees_deed (successor-trustee transfer or trustee's deed upon sale) as a vesting conveyance", () => {
+    // R-008 hero scenario: successor trustee Moore conveys Lot 224 from
+    // the Silva Family Revocable Trust to his own Moore Revocable Trust.
+    const intoTrust = makeDeed({
+      instrument_number: "20170019586",
+      recording_date: "2017-01-10",
+      document_type: "special_warranty_deed",
+      parties: [
+        { name: "ROBERT FRANCIS SILVA", role: "grantor", provenance: "public_api", confidence: 1 },
+        { name: "LINDA LUCILLE SILVA", role: "grantor", provenance: "public_api", confidence: 1 },
+        { name: "THE SILVA FAMILY REVOCABLE TRUST", role: "grantee", provenance: "manual_entry", confidence: 1 },
+      ],
+    });
+    const trusteesDeed = makeDeed({
+      instrument_number: "20260162239",
+      recording_date: "2026-03-20",
+      document_type: "trustees_deed",
+      parties: [
+        { name: "THE SILVA FAMILY REVOCABLE TRUST", role: "grantor", provenance: "public_api", confidence: 1 },
+        { name: "MOORE REVOCABLE TRUST", role: "grantee", provenance: "manual_entry", confidence: 1 },
+      ],
+    });
+    const periods = buildOwnerPeriods([intoTrust, trusteesDeed]);
+    expect(periods).toHaveLength(2);
+    expect(periods[0].owner).toBe("THE SILVA FAMILY REVOCABLE TRUST");
+    expect(periods[0].end_instrument).toBe("20260162239");
+    expect(periods[0].is_current).toBe(false);
+    expect(periods[1].owner).toBe("MOORE REVOCABLE TRUST");
+    expect(periods[1].is_current).toBe(true);
+  });
 });

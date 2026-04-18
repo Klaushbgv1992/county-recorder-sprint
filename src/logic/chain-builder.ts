@@ -1,11 +1,17 @@
 import type { Instrument, OwnerPeriod } from "../types";
 import { getGrantees } from "./party-roles";
 
+// Conveyance instruments that establish a new ownership period in the chain
+// of title. `trustees_deed` covers both A.R.S. § 33-404 trust-administration
+// transfers (e.g. successor-trustee distribution after a trustor's death)
+// AND A.R.S. § 33-811 trustee's deeds upon foreclosure sale — both vest
+// title in the grantee. The doc-code ambiguity is preserved in document_type_raw.
 const DEED_TYPES = new Set([
   "warranty_deed",
   "special_warranty_deed",
   "quit_claim_deed",
   "grant_deed",
+  "trustees_deed",
 ]);
 
 export function buildOwnerPeriods(instruments: Instrument[]): OwnerPeriod[] {
