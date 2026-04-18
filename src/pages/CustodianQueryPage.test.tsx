@@ -21,8 +21,8 @@ describe("CustodianQueryPage", () => {
 
   it("renders two column headers — public API and county internal", async () => {
     mount();
-    expect(await screen.findByText(/public api/i)).toBeInTheDocument();
-    expect(await screen.findByText(/county internal/i)).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /public api/i, level: 3 })).toBeInTheDocument();
+    expect(await screen.findByRole("heading", { name: /county internal/i, level: 3 })).toBeInTheDocument();
   });
 
   it("renders all 5 party names", async () => {

@@ -30,12 +30,12 @@
     {
       "id": "az-dor-liens",
       "name": "Arizona Department of Revenue — state tax liens",
-      "reason": "No free name search. Filed at the recorder under state-lien document codes, but the recorder's open endpoint silently drops documentCode filters — same Known Gap #2 surface."
+      "reason": "No free name search. Filed at the recorder under state-lien document codes, but the public API's documentCode filter is silently dropped — same Known Gap #2 surface."
     },
     {
       "id": "irs-nftl",
       "name": "IRS Notices of Federal Tax Lien",
-      "reason": "Filed at the recorder as FED TAX L. The recorder's open endpoint silently drops documentCode filters. No free IRS-side name search."
+      "reason": "Filed at the recorder as FED TAX L. Public API silently drops documentCode filters. No free IRS-side name search."
     },
     {
       "id": "usbc-az",
