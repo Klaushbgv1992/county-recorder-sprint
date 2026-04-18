@@ -13,6 +13,7 @@ import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
 import { ExportCommitmentButton } from "./ExportCommitmentButton";
+import { FlagInstrumentButton } from "./account/FlagInstrumentButton";
 import { LegalDescription } from "./LegalDescription";
 import { Term, TermSection } from "../terminology/Term";
 
@@ -289,6 +290,10 @@ export function ProofDrawer({
             >
               &times;
             </button>
+            <FlagInstrumentButton
+              instrumentNumber={instrument.instrument_number}
+              parcelApn={parcel.apn}
+            />
           </div>
         </div>
         {/* Provenance summary line */}

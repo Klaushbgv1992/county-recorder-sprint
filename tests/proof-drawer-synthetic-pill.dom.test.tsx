@@ -15,6 +15,8 @@ import { MemoryRouter } from "react-router";
 import { ProofDrawer } from "../src/components/ProofDrawer";
 import { loadParcelDataByApn } from "../src/data-loader";
 import { TerminologyProvider } from "../src/terminology/TerminologyContext";
+import { AuthProvider } from "../src/account/AuthContext";
+import { ToastProvider } from "../src/components/ui/Toast";
 import type { Instrument } from "../src/types";
 
 type SyntheticCase = { recordingNumber: string; apn: string; label: string };
@@ -49,19 +51,23 @@ function renderDrawerForInstrument(apn: string, recordingNumber: string) {
   );
   return render(
     <MemoryRouter>
-      <TerminologyProvider>
-        <ProofDrawer
-          instrument={instrument}
-          links={linksForDrawer}
-          corpusProvenance={{ public_api: 22, ocr: 35, manual_entry: 18 }}
-          onClose={() => {}}
-          parcel={data.parcel}
-          allInstruments={data.instruments}
-          allLinks={data.links}
-          lifecycles={data.lifecycles}
-          pipelineStatus={data.pipelineStatus}
-        />
-      </TerminologyProvider>
+      <AuthProvider>
+        <ToastProvider>
+        <TerminologyProvider>
+          <ProofDrawer
+            instrument={instrument}
+            links={linksForDrawer}
+            corpusProvenance={{ public_api: 22, ocr: 35, manual_entry: 18 }}
+            onClose={() => {}}
+            parcel={data.parcel}
+            allInstruments={data.instruments}
+            allLinks={data.links}
+            lifecycles={data.lifecycles}
+            pipelineStatus={data.pipelineStatus}
+          />
+        </TerminologyProvider>
+        </ToastProvider>
+      </AuthProvider>
     </MemoryRouter>,
   );
 }
