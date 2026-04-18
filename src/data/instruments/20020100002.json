@@ -6,13 +6,13 @@
   "bundled_document_types": [],
   "parties": [
     {
-      "name": "ROBERTS MATTHEW A",
+      "name": "MATTHEW A ROBERTS",
       "role": "trustor",
       "provenance": "demo_synthetic",
       "confidence": 1
     },
     {
-      "name": "ROBERTS JENNIFER L",
+      "name": "JENNIFER L ROBERTS",
       "role": "trustor",
       "provenance": "demo_synthetic",
       "confidence": 1

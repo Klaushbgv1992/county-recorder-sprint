@@ -3,21 +3,20 @@ import { loadParcelDataByApn } from "../../src/data-loader";
 import { detectR1 } from "../../src/logic/rules/r1-same-day-cluster";
 
 describe("R1 same-day transaction cluster", () => {
-  it("fires on POPHAM — same-day 2013 deed + DOT pair and the 2002 synthetic pair", () => {
+  it("fires on POPHAM — same-day 2013 deed+DOT, 2021 UCC-term+DOT, and 2002 synthetic pair", () => {
     const { parcel, instruments } = loadParcelDataByApn("304-78-386");
     const findings = detectR1(parcel, instruments);
 
-    // POPHAM has three same-day date clusters in the curated+reconstructed data:
+    // POPHAM has three same-day clusters in the curated+reconstructed data:
     //   2013-02-27: 20130183449 (warranty deed) + 20130183450 (DOT) — shares CHRISTOPHER POPHAM
-    //   2021-01-19: 20210057846 (UCC term) + 20210057847 (DOT) — name strings differ
-    //     ("POPHAM CHRISTOPHER" on 46 vs "CHRISTOPHER POPHAM" on 47), so R1 does not
-    //     match on its case-insensitive exact-string compare. Name-order variants
-    //     are the entity-resolution gap tracked in Decision #15.
+    //   2021-01-19: 20210057846 (UCC term) + 20210057847 (DOT) — both now use
+    //     CHRISTOPHER POPHAM (FIRSTNAME-LAST) after the party-name curation
+    //     sweep that normalized all individuals to one format. Previously these
+    //     differed in ordering and R1's exact-string compare missed the match;
+    //     that was the Decision #15 entity-resolution gap for person names.
     //   2002-04-12: 20020100001 (synthetic SWD) + 20020100002 (synthetic DOT) —
-    //     shares ROBERTS MATTHEW A and ROBERTS JENNIFER L. Part of the pre-2013
-    //     historical-chain reconstruction (feat/popham-historical-chain).
-    // Only the 2013 and 2002 pairs fire.
-    expect(findings).toHaveLength(2);
+    //     shares MATTHEW A ROBERTS and JENNIFER L ROBERTS.
+    expect(findings).toHaveLength(3);
     const popham2013 = findings.find(
       (f) =>
         f.evidence_instruments.includes("20130183449") &&
@@ -29,6 +28,14 @@ describe("R1 same-day transaction cluster", () => {
     expect(popham2013!.parcel_apn).toBe("304-78-386");
     expect(popham2013!.description).toContain("2013-02-27");
     expect(popham2013!.detection_provenance.confidence).toBe(0.95);
+
+    const popham2021 = findings.find(
+      (f) =>
+        f.evidence_instruments.includes("20210057846") &&
+        f.evidence_instruments.includes("20210057847"),
+    );
+    expect(popham2021).toBeDefined();
+    expect(popham2021!.description).toContain("2021-01-19");
 
     const popham2002 = findings.find(
       (f) =>

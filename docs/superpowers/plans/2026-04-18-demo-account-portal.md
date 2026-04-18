@@ -140,7 +140,7 @@ Modern, cohesive UI starts with a shared primitives layer so every page feels th
 - Create: `src/components/ui/EmptyState.tsx`
 - Test: `tests/ui/primitives.dom.test.tsx`
 
-- [ ] **Step 1: Write Icon component**
+- [x] **Step 1: Write Icon component**
 
 ```tsx
 // src/components/ui/Icon.tsx
@@ -194,7 +194,7 @@ export function Icon({ name, size = 20, filled = false, ...rest }: IconProps) {
 }
 ```
 
-- [ ] **Step 2: Write Card component**
+- [x] **Step 2: Write Card component**
 
 ```tsx
 // src/components/ui/Card.tsx
@@ -239,7 +239,7 @@ export function CardFooter({ children, className = "" }: { children: ReactNode; 
 }
 ```
 
-- [ ] **Step 3: Write Chip component**
+- [x] **Step 3: Write Chip component**
 
 ```tsx
 // src/components/ui/Chip.tsx
@@ -275,7 +275,7 @@ export function Chip({
 }
 ```
 
-- [ ] **Step 4: Write Switch component**
+- [x] **Step 4: Write Switch component**
 
 ```tsx
 // src/components/ui/Switch.tsx
@@ -329,7 +329,7 @@ export function Switch({ id, checked, onChange, label, sub, disabled }: Props) {
 }
 ```
 
-- [ ] **Step 5: Write Avatar component**
+- [x] **Step 5: Write Avatar component**
 
 ```tsx
 // src/components/ui/Avatar.tsx
@@ -368,7 +368,7 @@ export function Avatar({
 }
 ```
 
-- [ ] **Step 6: Write Dialog component**
+- [x] **Step 6: Write Dialog component**
 
 ```tsx
 // src/components/ui/Dialog.tsx
@@ -451,7 +451,7 @@ Add these keyframes to `src/index.css` (find the existing `@theme` / `@layer` re
 }
 ```
 
-- [ ] **Step 7: Write Toast component**
+- [x] **Step 7: Write Toast component**
 
 ```tsx
 // src/components/ui/Toast.tsx
@@ -511,7 +511,7 @@ export function useToast(): ToastValue {
 }
 ```
 
-- [ ] **Step 8: Write EmptyState component**
+- [x] **Step 8: Write EmptyState component**
 
 ```tsx
 // src/components/ui/EmptyState.tsx
@@ -542,7 +542,7 @@ export function EmptyState({
 }
 ```
 
-- [ ] **Step 9: Write the primitives smoke test**
+- [x] **Step 9: Write the primitives smoke test**
 
 ```tsx
 // tests/ui/primitives.dom.test.tsx
@@ -618,14 +618,14 @@ describe("UI primitives", () => {
 });
 ```
 
-- [ ] **Step 10: Run tests, verify pass**
+- [x] **Step 10: Run tests, verify pass**
 
 Run: `npx vitest run tests/ui/primitives.dom.test.tsx`
 Expected: PASS, 7 tests.
 
 If any tone/color classes fail to compile under Tailwind v4 (e.g. `moat-50`), check `src/index.css` for the active `@theme` block and use only colors defined there. The codebase already uses `moat-*` and `recorder-*` tokens, so they should be live — confirm with a grep if a specific shade is missing.
 
-- [ ] **Step 11: Commit**
+- [x] **Step 11: Commit**
 
 ```bash
 git add src/components/ui/*.tsx src/index.css tests/ui/primitives.dom.test.tsx
@@ -641,7 +641,7 @@ git commit -m "feat(ui): shared primitives — Card/Chip/Switch/Avatar/Dialog/To
 - Create: `src/account/AuthContext.tsx`
 - Test: `tests/account/auth-context.test.tsx`
 
-- [ ] **Step 1: Create the demo-user fixture**
+- [x] **Step 1: Create the demo-user fixture**
 
 ```json
 {
@@ -656,7 +656,7 @@ git commit -m "feat(ui): shared primitives — Card/Chip/Switch/Avatar/Dialog/To
 
 File: `src/data/account/demo-user.json`.
 
-- [ ] **Step 2: Write the failing test**
+- [x] **Step 2: Write the failing test**
 
 ```tsx
 // tests/account/auth-context.test.tsx
@@ -704,12 +704,12 @@ describe("AuthContext", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
+- [x] **Step 3: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/auth-context.test.tsx`
 Expected: FAIL — module `src/account/AuthContext` not found.
 
-- [ ] **Step 4: Implement AuthContext**
+- [x] **Step 4: Implement AuthContext**
 
 ```tsx
 // src/account/AuthContext.tsx
@@ -765,12 +765,12 @@ export function useAuth(): AuthValue {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/auth-context.test.tsx`
 Expected: PASS, 3 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/data/account/demo-user.json src/account/AuthContext.tsx tests/account/auth-context.test.tsx
@@ -785,7 +785,7 @@ git commit -m "feat(account): AuthContext with demo user persistence"
 - Create: `src/account/useWatchlist.ts`
 - Test: `tests/account/use-watchlist.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/use-watchlist.test.tsx
@@ -822,12 +822,12 @@ describe("useWatchlist", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/use-watchlist.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement useWatchlist**
+- [x] **Step 3: Implement useWatchlist**
 
 ```ts
 // src/account/useWatchlist.ts
@@ -887,12 +887,12 @@ export function useWatchlist() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/use-watchlist.test.tsx`
 Expected: PASS, 3 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/account/useWatchlist.ts tests/account/use-watchlist.test.tsx
@@ -907,7 +907,7 @@ git commit -m "feat(account): useWatchlist hook"
 - Create: `src/account/useRecentlyViewed.ts`
 - Test: `tests/account/use-recently-viewed.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/use-recently-viewed.test.tsx
@@ -937,12 +937,12 @@ describe("useRecentlyViewed", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/use-recently-viewed.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement useRecentlyViewed**
+- [x] **Step 3: Implement useRecentlyViewed**
 
 ```ts
 // src/account/useRecentlyViewed.ts
@@ -986,12 +986,12 @@ export function useRecentlyViewed() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/use-recently-viewed.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/account/useRecentlyViewed.ts tests/account/use-recently-viewed.test.tsx
@@ -1007,7 +1007,7 @@ git commit -m "feat(account): useRecentlyViewed with 8-entry rolling dedup"
 - Create: `src/account/useNotifications.ts`
 - Test: `tests/account/use-notifications.test.tsx`
 
-- [ ] **Step 1: Create the seed fixture**
+- [x] **Step 1: Create the seed fixture**
 
 File: `src/data/account/seed-notifications.json`.
 
@@ -1064,7 +1064,7 @@ File: `src/data/account/seed-notifications.json`.
 }
 ```
 
-- [ ] **Step 2: Write the failing test**
+- [x] **Step 2: Write the failing test**
 
 ```tsx
 // tests/account/use-notifications.test.tsx
@@ -1109,12 +1109,12 @@ describe("useNotifications", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
+- [x] **Step 3: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/use-notifications.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 4: Implement useNotifications**
+- [x] **Step 4: Implement useNotifications**
 
 ```ts
 // src/account/useNotifications.ts
@@ -1190,12 +1190,12 @@ export function useNotifications(filter: Filter) {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/use-notifications.test.tsx`
 Expected: PASS, 3 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/data/account/seed-notifications.json src/account/useNotifications.ts tests/account/use-notifications.test.tsx
@@ -1210,7 +1210,7 @@ git commit -m "feat(account): seeded notifications hook with watchlist filter"
 - Create: `src/account/useFlaggedItems.ts`
 - Test: `tests/account/use-flagged-items.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/use-flagged-items.test.tsx
@@ -1245,12 +1245,12 @@ describe("useFlaggedItems", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/use-flagged-items.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement useFlaggedItems**
+- [x] **Step 3: Implement useFlaggedItems**
 
 ```ts
 // src/account/useFlaggedItems.ts
@@ -1317,12 +1317,12 @@ export function useFlaggedItems() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/use-flagged-items.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/account/useFlaggedItems.ts tests/account/use-flagged-items.test.tsx
@@ -1340,7 +1340,7 @@ These are structurally identical to `useFlaggedItems` — two small hooks, one t
 - Create: `src/account/useRecordsRequests.ts`
 - Test: `tests/account/request-hooks.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/request-hooks.test.tsx
@@ -1376,12 +1376,12 @@ describe("request hooks", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/request-hooks.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement useCorrectionRequests**
+- [x] **Step 3: Implement useCorrectionRequests**
 
 ```ts
 // src/account/useCorrectionRequests.ts
@@ -1436,7 +1436,7 @@ export function useCorrectionRequests() {
 }
 ```
 
-- [ ] **Step 4: Implement useRecordsRequests**
+- [x] **Step 4: Implement useRecordsRequests**
 
 ```ts
 // src/account/useRecordsRequests.ts
@@ -1490,12 +1490,12 @@ export function useRecordsRequests() {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/request-hooks.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/account/useCorrectionRequests.ts src/account/useRecordsRequests.ts tests/account/request-hooks.test.tsx
@@ -1510,7 +1510,7 @@ git commit -m "feat(account): correction + records-request hooks"
 - Create: `src/account/useCommitmentHistory.ts`
 - Test: `tests/account/use-commitment-history.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/use-commitment-history.test.tsx
@@ -1532,12 +1532,12 @@ describe("useCommitmentHistory", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/use-commitment-history.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement useCommitmentHistory**
+- [x] **Step 3: Implement useCommitmentHistory**
 
 ```ts
 // src/account/useCommitmentHistory.ts
@@ -1581,12 +1581,12 @@ export function useCommitmentHistory() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/use-commitment-history.test.tsx`
 Expected: PASS, 1 test.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/account/useCommitmentHistory.ts tests/account/use-commitment-history.test.tsx
@@ -1602,7 +1602,7 @@ git commit -m "feat(account): useCommitmentHistory"
 - Create: `src/components/account/StarButton.tsx`
 - Test: `tests/account/star-button.dom.test.tsx`
 
-- [ ] **Step 1: Implement PreviewPill**
+- [x] **Step 1: Implement PreviewPill**
 
 ```tsx
 // src/components/account/PreviewPill.tsx
@@ -1628,7 +1628,7 @@ export function PreviewPill({
 }
 ```
 
-- [ ] **Step 2: Write the failing StarButton test**
+- [x] **Step 2: Write the failing StarButton test**
 
 ```tsx
 // tests/account/star-button.dom.test.tsx
@@ -1666,12 +1666,12 @@ describe("StarButton", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
+- [x] **Step 3: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/star-button.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 4: Implement StarButton**
+- [x] **Step 4: Implement StarButton**
 
 ```tsx
 // src/components/account/StarButton.tsx
@@ -1730,12 +1730,12 @@ export function StarButton({ kind, id, label }: Props) {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/star-button.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/components/account/PreviewPill.tsx src/components/account/StarButton.tsx tests/account/star-button.dom.test.tsx
@@ -1752,7 +1752,7 @@ git commit -m "feat(account): PreviewPill + StarButton with filled-icon state"
 - Create: `src/components/account/AccountMenu.tsx`
 - Test: `tests/account/header-chrome.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/header-chrome.dom.test.tsx
@@ -1810,12 +1810,12 @@ describe("header chrome", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/header-chrome.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement SignInButton**
+- [x] **Step 3: Implement SignInButton**
 
 ```tsx
 // src/components/account/SignInButton.tsx
@@ -1851,7 +1851,7 @@ export function SignInButton() {
 }
 ```
 
-- [ ] **Step 4: Implement NotificationBell**
+- [x] **Step 4: Implement NotificationBell**
 
 ```tsx
 // src/components/account/NotificationBell.tsx
@@ -1891,7 +1891,7 @@ export function NotificationBell() {
 }
 ```
 
-- [ ] **Step 5: Implement AccountMenu**
+- [x] **Step 5: Implement AccountMenu**
 
 ```tsx
 // src/components/account/AccountMenu.tsx
@@ -1981,12 +1981,12 @@ export function AccountMenu() {
 }
 ```
 
-- [ ] **Step 6: Run tests, verify pass**
+- [x] **Step 6: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/header-chrome.dom.test.tsx`
 Expected: PASS, 3 tests.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/components/account/SignInButton.tsx src/components/account/NotificationBell.tsx src/components/account/AccountMenu.tsx tests/account/header-chrome.dom.test.tsx
@@ -2002,7 +2002,7 @@ git commit -m "feat(account): sign-in button (Google style), notification bell, 
 - Modify: `src/components/RootLayout.tsx`
 - Test: `tests/account/header-bar.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/header-bar.dom.test.tsx
@@ -2053,12 +2053,12 @@ describe("HeaderBar in RootLayout", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/header-bar.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement HeaderBar**
+- [x] **Step 3: Implement HeaderBar**
 
 ```tsx
 // src/components/HeaderBar.tsx
@@ -2108,7 +2108,7 @@ export function HeaderBar() {
 }
 ```
 
-- [ ] **Step 4: Modify RootLayout**
+- [x] **Step 4: Modify RootLayout**
 
 Open `src/components/RootLayout.tsx`. Replace the file with:
 
@@ -2138,12 +2138,12 @@ export function RootLayout() {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/header-bar.dom.test.tsx tests/root-layout.dom.test.tsx`
 Expected: new tests PASS; pre-existing root-layout tests PASS.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/components/HeaderBar.tsx src/components/RootLayout.tsx tests/account/header-bar.dom.test.tsx
@@ -2158,7 +2158,7 @@ git commit -m "feat(account): sticky HeaderBar with monogram + AuthProvider/Toas
 - Create: `src/components/account/AccountLayout.tsx`
 - Test: `tests/account/account-layout.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-layout.dom.test.tsx
@@ -2199,12 +2199,12 @@ describe("AccountLayout", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-layout.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountLayout**
+- [x] **Step 3: Implement AccountLayout**
 
 ```tsx
 // src/components/account/AccountLayout.tsx
@@ -2286,12 +2286,12 @@ export function AccountLayout() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-layout.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountLayout.tsx tests/account/account-layout.dom.test.tsx
@@ -2306,7 +2306,7 @@ git commit -m "feat(account): AccountLayout with sticky left-rail + active edge 
 - Create: `src/components/account/AccountDashboard.tsx`
 - Test: `tests/account/account-dashboard.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-dashboard.dom.test.tsx
@@ -2345,12 +2345,12 @@ describe("AccountDashboard", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-dashboard.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountDashboard**
+- [x] **Step 3: Implement AccountDashboard**
 
 ```tsx
 // src/components/account/AccountDashboard.tsx
@@ -2504,12 +2504,12 @@ export function AccountDashboard() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-dashboard.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountDashboard.tsx tests/account/account-dashboard.dom.test.tsx
@@ -2524,7 +2524,7 @@ git commit -m "feat(account): polished dashboard with metric cards + activity + 
 - Create: `src/components/account/AccountWatchlist.tsx`
 - Test: `tests/account/account-watchlist.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-watchlist.dom.test.tsx
@@ -2558,12 +2558,12 @@ describe("AccountWatchlist", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-watchlist.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountWatchlist**
+- [x] **Step 3: Implement AccountWatchlist**
 
 ```tsx
 // src/components/account/AccountWatchlist.tsx
@@ -2668,12 +2668,12 @@ export function AccountWatchlist() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-watchlist.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountWatchlist.tsx tests/account/account-watchlist.dom.test.tsx
@@ -2688,7 +2688,7 @@ git commit -m "feat(account): watchlist page with card-grouped parcels + parties
 - Create: `src/components/account/AccountInbox.tsx`
 - Test: `tests/account/account-inbox.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-inbox.dom.test.tsx
@@ -2727,12 +2727,12 @@ describe("AccountInbox", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-inbox.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountInbox**
+- [x] **Step 3: Implement AccountInbox**
 
 ```tsx
 // src/components/account/AccountInbox.tsx
@@ -2847,12 +2847,12 @@ export function AccountInbox() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-inbox.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountInbox.tsx tests/account/account-inbox.dom.test.tsx
@@ -2867,7 +2867,7 @@ git commit -m "feat(account): inbox with chip-labeled kinds + unread dot + mark-
 - Create: `src/components/account/AccountPreferences.tsx`
 - Test: `tests/account/account-preferences.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-preferences.dom.test.tsx
@@ -2905,12 +2905,12 @@ describe("AccountPreferences", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-preferences.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountPreferences**
+- [x] **Step 3: Implement AccountPreferences**
 
 ```tsx
 // src/components/account/AccountPreferences.tsx
@@ -3014,12 +3014,12 @@ export function AccountPreferences() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-preferences.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountPreferences.tsx tests/account/account-preferences.dom.test.tsx
@@ -3035,7 +3035,7 @@ git commit -m "feat(account): preferences with custom Switch primitive + cards"
 - Create: `src/components/account/AccountStatutoryNotices.tsx`
 - Test: `tests/account/account-statutory-notices.dom.test.tsx`
 
-- [ ] **Step 1: Create the fixture**
+- [x] **Step 1: Create the fixture**
 
 File: `src/data/account/seed-statutory-notices.json`.
 
@@ -3074,7 +3074,7 @@ File: `src/data/account/seed-statutory-notices.json`.
 }
 ```
 
-- [ ] **Step 2: Write the failing test**
+- [x] **Step 2: Write the failing test**
 
 ```tsx
 // tests/account/account-statutory-notices.dom.test.tsx
@@ -3109,12 +3109,12 @@ describe("AccountStatutoryNotices", () => {
 });
 ```
 
-- [ ] **Step 3: Run test to verify it fails**
+- [x] **Step 3: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-statutory-notices.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 4: Implement AccountStatutoryNotices**
+- [x] **Step 4: Implement AccountStatutoryNotices**
 
 ```tsx
 // src/components/account/AccountStatutoryNotices.tsx
@@ -3225,12 +3225,12 @@ export function AccountStatutoryNotices() {
 }
 ```
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-statutory-notices.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/data/account/seed-statutory-notices.json src/components/account/AccountStatutoryNotices.tsx tests/account/account-statutory-notices.dom.test.tsx
@@ -3245,7 +3245,7 @@ git commit -m "feat(account): statutory notices with moat explainer + neighbor f
 - Create: `src/components/account/AccountRecordsRequest.tsx`
 - Test: `tests/account/account-records-request.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-records-request.dom.test.tsx
@@ -3291,12 +3291,12 @@ describe("AccountRecordsRequest", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-records-request.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountRecordsRequest**
+- [x] **Step 3: Implement AccountRecordsRequest**
 
 ```tsx
 // src/components/account/AccountRecordsRequest.tsx
@@ -3421,12 +3421,12 @@ export function AccountRecordsRequest() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-records-request.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountRecordsRequest.tsx tests/account/account-records-request.dom.test.tsx
@@ -3441,7 +3441,7 @@ git commit -m "feat(account): records-request form with toast confirmation + his
 - Create: `src/components/account/AccountCommitments.tsx`
 - Test: `tests/account/account-commitments.dom.test.tsx`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/account-commitments.dom.test.tsx
@@ -3481,12 +3481,12 @@ describe("AccountCommitments", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-commitments.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement AccountCommitments**
+- [x] **Step 3: Implement AccountCommitments**
 
 ```tsx
 // src/components/account/AccountCommitments.tsx
@@ -3549,12 +3549,12 @@ export function AccountCommitments() {
 }
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-commitments.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/components/account/AccountCommitments.tsx tests/account/account-commitments.dom.test.tsx
@@ -3572,7 +3572,7 @@ git commit -m "feat(account): commitments history with chips + re-export links"
 
 > **Parallel-agent safety note:** The Live AI Extract agent may also be editing `ProofDrawer.tsx`. To avoid a conflict, add the `<FlagInstrumentButton/>` exactly at the *end* of the existing drawer header action row (after any "Copy citation" / close affordances). A single additive node. Do not restructure surrounding markup.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/flag-instrument-button.dom.test.tsx
@@ -3620,12 +3620,12 @@ describe("FlagInstrumentButton", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/flag-instrument-button.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement FlagInstrumentButton**
+- [x] **Step 3: Implement FlagInstrumentButton**
 
 ```tsx
 // src/components/account/FlagInstrumentButton.tsx
@@ -3767,7 +3767,7 @@ export function FlagInstrumentButton({
 }
 ```
 
-- [ ] **Step 4: Modify ProofDrawer**
+- [x] **Step 4: Modify ProofDrawer**
 
 Open `src/components/ProofDrawer.tsx`. Find the drawer's *top action row* (the header area that contains the close button and any citation-copy affordance). Add one import at the top:
 
@@ -3786,12 +3786,12 @@ Inside the header action row, as the *last* item, insert:
 
 Do not move, rename, or restructure any other elements. If the row uses dot separators between items, leave that style in place.
 
-- [ ] **Step 5: Run tests, verify pass**
+- [x] **Step 5: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/flag-instrument-button.dom.test.tsx tests/proof-drawer-synthetic-pill.dom.test.tsx`
 Expected: new test PASS; pre-existing drawer test unchanged.
 
-- [ ] **Step 6: Commit**
+- [x] **Step 6: Commit**
 
 ```bash
 git add src/components/account/FlagInstrumentButton.tsx src/components/ProofDrawer.tsx tests/account/flag-instrument-button.dom.test.tsx
@@ -3810,7 +3810,7 @@ git commit -m "feat(account): FlagInstrumentButton on ProofDrawer with ref-numbe
 
 > **Parallel-agent safety note:** The Party Search Hero agent may also be editing `PartyPage.tsx`. To avoid a conflict, add only a single `<StarButton/>` as a sibling of the party name heading. Do not restructure surrounding markup.
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```tsx
 // tests/account/correction-request-button.dom.test.tsx
@@ -3851,12 +3851,12 @@ describe("CorrectionRequestButton", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/correction-request-button.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Implement CorrectionRequestButton**
+- [x] **Step 3: Implement CorrectionRequestButton**
 
 ```tsx
 // src/components/account/CorrectionRequestButton.tsx
@@ -3981,7 +3981,7 @@ export function CorrectionRequestButton({ parcelApn }: { parcelApn: string }) {
 }
 ```
 
-- [ ] **Step 4: Wire StarButton + CorrectionRequestButton into ChainOfTitle header**
+- [x] **Step 4: Wire StarButton + CorrectionRequestButton into ChainOfTitle header**
 
 Open `src/components/ChainOfTitle.tsx`. At the top of the component's rendered markup, find the *parcel header* area (the element displaying address / APN / owner). Add two imports:
 
@@ -4001,7 +4001,7 @@ Inside the header's rightmost column — or at the end of the header if it is a 
 
 Additive only. Do not reorder existing header content.
 
-- [ ] **Step 5: Wire StarButton into PartyPage header**
+- [x] **Step 5: Wire StarButton into PartyPage header**
 
 Open `src/components/PartyPage.tsx`. Locate the heading that displays the party's display name and normalized name (near the top of the rendered output; `normalizedName` is available from the route params, `hit.display_name` from `findPartyByNormalizedName`). Add one import:
 
@@ -4017,12 +4017,12 @@ Next to the party name heading, add:
 
 Single additive node. Do not restructure.
 
-- [ ] **Step 6: Run tests, verify all pass**
+- [x] **Step 6: Run tests, verify all pass**
 
 Run: `npx vitest run tests/account/correction-request-button.dom.test.tsx tests/ChainOfTitle.test.tsx tests/PartyPage.test.tsx`
 Expected: new test PASS; pre-existing ChainOfTitle + PartyPage tests unchanged.
 
-- [ ] **Step 7: Commit**
+- [x] **Step 7: Commit**
 
 ```bash
 git add src/components/account/CorrectionRequestButton.tsx src/components/ChainOfTitle.tsx src/components/PartyPage.tsx tests/account/correction-request-button.dom.test.tsx
@@ -4037,7 +4037,7 @@ git commit -m "feat(account): CorrectionRequestButton + Star affordances on parc
 - Modify: `src/router.tsx`
 - Test: `tests/account/account-routes.test.ts`
 
-- [ ] **Step 1: Write the failing test**
+- [x] **Step 1: Write the failing test**
 
 ```ts
 // tests/account/account-routes.test.ts
@@ -4072,12 +4072,12 @@ describe("account routes", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/account-routes.test.ts`
 Expected: FAIL.
 
-- [ ] **Step 3: Modify src/router.tsx**
+- [x] **Step 3: Modify src/router.tsx**
 
 Open `src/router.tsx`. Near the existing component imports (around line 17-38), add:
 
@@ -4111,12 +4111,12 @@ Inside the `<AppShell/>` children array in the `routes` export, insert this entr
 },
 ```
 
-- [ ] **Step 4: Run tests, verify pass**
+- [x] **Step 4: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/account-routes.test.ts tests/routing.test.ts`
 Expected: new test PASS; pre-existing routing tests unchanged.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add src/router.tsx tests/account/account-routes.test.ts
@@ -4133,7 +4133,7 @@ git commit -m "feat(account): wire /account/* route subtree"
 - Test: `tests/account/curator-queue-bridge.dom.test.tsx`
 - Test: `tests/account/subscribe-placeholder.dom.test.tsx`
 
-- [ ] **Step 1: Write the curator-queue bridge test**
+- [x] **Step 1: Write the curator-queue bridge test**
 
 ```tsx
 // tests/account/curator-queue-bridge.dom.test.tsx
@@ -4168,12 +4168,12 @@ describe("CuratorQueue — user-filed flag bridge", () => {
 });
 ```
 
-- [ ] **Step 2: Run test to verify it fails**
+- [x] **Step 2: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/curator-queue-bridge.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 3: Modify CuratorQueue**
+- [x] **Step 3: Modify CuratorQueue**
 
 Open `src/components/CuratorQueue.tsx`. Add import at top:
 
@@ -4224,12 +4224,12 @@ Inside the `<StaffPageFrame>` JSX, as the *first* child (BEFORE the existing `vi
 )}
 ```
 
-- [ ] **Step 4: Run the bridge test, verify pass**
+- [x] **Step 4: Run the bridge test, verify pass**
 
 Run: `npx vitest run tests/account/curator-queue-bridge.dom.test.tsx tests/curator-queue.dom.test.tsx`
 Expected: both PASS.
 
-- [ ] **Step 5: Write the subscribe-gateway test**
+- [x] **Step 5: Write the subscribe-gateway test**
 
 ```tsx
 // tests/account/subscribe-placeholder.dom.test.tsx
@@ -4266,12 +4266,12 @@ describe("SubscribePlaceholder", () => {
 });
 ```
 
-- [ ] **Step 6: Run test to verify it fails**
+- [x] **Step 6: Run test to verify it fails**
 
 Run: `npx vitest run tests/account/subscribe-placeholder.dom.test.tsx`
 Expected: FAIL.
 
-- [ ] **Step 7: Replace SubscribePlaceholder**
+- [x] **Step 7: Replace SubscribePlaceholder**
 
 Open `src/components/SubscribePlaceholder.tsx`. Replace entire file:
 
@@ -4337,12 +4337,12 @@ export function SubscribePlaceholder() {
 }
 ```
 
-- [ ] **Step 8: Run tests, verify pass**
+- [x] **Step 8: Run tests, verify pass**
 
 Run: `npx vitest run tests/account/subscribe-placeholder.dom.test.tsx`
 Expected: PASS, 2 tests.
 
-- [ ] **Step 9: Commit**
+- [x] **Step 9: Commit**
 
 ```bash
 git add src/components/CuratorQueue.tsx src/components/SubscribePlaceholder.tsx tests/account/curator-queue-bridge.dom.test.tsx tests/account/subscribe-placeholder.dom.test.tsx
@@ -4356,7 +4356,7 @@ git commit -m "feat(account): curator-queue bridge + /subscribe gateway into /ac
 **Files:**
 - Create: `docs/account-portal-demo.md`
 
-- [ ] **Step 1: Write the provenance doc**
+- [x] **Step 1: Write the provenance doc**
 
 ```markdown
 # Demo Account Portal — Provenance & Scope
@@ -4408,7 +4408,7 @@ Each surface frames this custodian-only role inline so a reviewer understands
 why the feature cannot exist on a title plant.
 ```
 
-- [ ] **Step 2: Commit**
+- [x] **Step 2: Commit**
 
 ```bash
 git add docs/account-portal-demo.md
@@ -4422,7 +4422,7 @@ git commit -m "docs(account): demo-vs-real provenance and moat mapping"
 **Files:**
 - Test: `tests/account/portal-smoke.dom.test.tsx`
 
-- [ ] **Step 1: Write the smoke test**
+- [x] **Step 1: Write the smoke test**
 
 ```tsx
 // tests/account/portal-smoke.dom.test.tsx
@@ -4467,14 +4467,14 @@ describe("portal smoke", () => {
 });
 ```
 
-- [ ] **Step 2: Run the smoke test**
+- [x] **Step 2: Run the smoke test**
 
 Run: `npx vitest run tests/account/portal-smoke.dom.test.tsx`
 Expected: PASS.
 
 If it fails, the failure pinpoints a real bug in an earlier task — fix the root cause, don't weaken the test.
 
-- [ ] **Step 3: Run the full test suite**
+- [x] **Step 3: Run the full test suite**
 
 Run: `npm run test`
 Expected: all tests pass. Pre-existing suites should not regress — AuthProvider and HeaderBar are additive.
@@ -4483,19 +4483,19 @@ If any pre-existing test breaks, diagnose and fix the root cause. Common issues:
 - A pre-existing test mounts `<RootLayout/>` without `<MemoryRouter/>` — the test must now include a router since `HeaderBar` uses `<Link/>`. Wrap in `<MemoryRouter/>` if needed.
 - A snapshot test relied on a specific DOM shape — regenerate the snapshot only after visually confirming the new output is correct.
 
-- [ ] **Step 4: Run the production build**
+- [x] **Step 4: Run the production build**
 
 Run: `npm run build`
 Expected: build succeeds with no TypeScript errors. If a type error surfaces, fix it — do not `any`-cast around it.
 
-- [ ] **Step 5: Commit**
+- [x] **Step 5: Commit**
 
 ```bash
 git add tests/account/portal-smoke.dom.test.tsx
 git commit -m "test(account): end-to-end smoke for the full portal flow"
 ```
 
-- [ ] **Step 6: Post-work summary**
+- [x] **Step 6: Post-work summary**
 
 Post a short summary to the user, then stop. Do not open a PR or merge. Suggested summary:
 

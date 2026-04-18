@@ -6,13 +6,13 @@
   "bundled_document_types": [],
   "parties": [
     {
-      "name": "CHEN ROBERT K",
+      "name": "ROBERT K CHEN",
       "role": "claimant",
       "provenance": "demo_synthetic",
       "confidence": 1
     },
     {
-      "name": "CHEN LILIAN M",
+      "name": "LILIAN M CHEN",
       "role": "debtor",
       "provenance": "demo_synthetic",
       "confidence": 1

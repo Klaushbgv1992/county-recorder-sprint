@@ -65,6 +65,21 @@ describe("subjectPhraseFromParties (grantees)", () => {
       .toBe("the Pophams");
   });
 
+  it("familial plural of surname ending in 's' → adds '-es' (Roberts → Robertses)", () => {
+    expect(subjectPhraseFromParties(grantees("MATTHEW A ROBERTS", "JENNIFER L ROBERTS"), "grantee"))
+      .toBe("the Robertses");
+  });
+
+  it("familial plural of surname ending in 'x' → adds '-es' (Cox → Coxes)", () => {
+    expect(subjectPhraseFromParties(grantees("JOHN COX", "JANE COX"), "grantee"))
+      .toBe("the Coxes");
+  });
+
+  it("familial plural of surname ending in 'sh' → adds '-es' (Walsh → Walshes)", () => {
+    expect(subjectPhraseFromParties(grantees("PAT WALSH", "SAM WALSH"), "grantee"))
+      .toBe("the Walshes");
+  });
+
   it("one individual → 'Christopher Popham'", () => {
     expect(subjectPhraseFromParties(grantees("CHRISTOPHER POPHAM"), "grantee"))
       .toBe("Christopher Popham");

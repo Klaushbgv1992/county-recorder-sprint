@@ -34,7 +34,7 @@ export function isEntityName(name: string): boolean {
 
 // Acronyms that stay ALL-CAPS in display (opaque legal/financial abbreviations).
 const PRESERVE_ACRONYMS = new Set([
-  "LLC", "L.L.C.", "LP", "L.P.", "LLP", "N.A.", "USA", "LTD", "LTD.",
+  "LLC", "L.L.C.", "LP", "L.P.", "LLP", "N.A.", "NA", "USA", "LTD", "LTD.",
   "MERS",
 ]);
 
@@ -97,6 +97,17 @@ function titleCaseWord(word: string): string {
   return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
+// English-plural a family surname for the "the ___s" familial phrase.
+// Surnames ending in s/x/z/ch/sh take "-es" (Roberts → Robertses, Cox → Coxes,
+// Jenkins → Jenkinses). Others take "-s" (Popham → Pophams). Surnames ending
+// in "y" after a consonant would technically take "-ies" (Kennedy → Kennedys
+// is conventional for families, so we leave those alone).
+function pluralizeFamilyName(surname: string): string {
+  const lower = surname.toLowerCase();
+  if (/(?:s|x|z|ch|sh)$/.test(lower)) return `${surname}es`;
+  return `${surname}s`;
+}
+
 function renderIndividual(fullName: string): string {
   // "FIRSTNAME [MIDDLE] LASTNAME" → title-case each token in order.
   const parts = fullName.trim().split(/\s+/);
@@ -121,7 +132,7 @@ export function subjectPhraseFromParties(parties: Party[], role: Role): string {
     if (names.length === 1) return renderOne(names[0]);
     // Multiple individuals: check if they all share the same surname.
     const lastNames = Array.from(new Set(names.map(lastNameOfIndividual)));
-    if (lastNames.length === 1) return `the ${lastNames[0]}s`;
+    if (lastNames.length === 1) return `the ${pluralizeFamilyName(lastNames[0])}`;
     // Different surnames: list them.
     if (names.length === 2) return `${renderOne(names[0])} and ${renderOne(names[1])}`;
     return names.slice(0, -1).map(renderOne).join(", ") + ", and " + renderOne(names[names.length - 1]);
