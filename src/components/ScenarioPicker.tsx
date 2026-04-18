@@ -58,12 +58,13 @@ export function ScenarioPicker() {
       className="border-b border-slate-200 bg-slate-50 px-6 py-6"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-4">
-          {/* Primary — guided walkthrough. Spans 2 columns on desktop. */}
-          <Link
-            to={firstStep.path}
-            className="group lg:col-span-2 rounded-lg bg-gradient-to-br from-moat-700 to-recorder-800 text-white p-5 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
-          >
+        {/* Primary — guided walkthrough. Full-width hero on mobile, spans
+            2 columns on desktop so it visually dominates the scenario row. */}
+        <Link
+          to={firstStep.path}
+          className="group block rounded-lg bg-gradient-to-br from-moat-700 to-recorder-800 text-white p-5 shadow-sm hover:shadow-md transition-shadow focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 mb-4"
+        >
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
               <p className="text-[11px] font-semibold uppercase tracking-wider text-moat-100/90">
                 Examiner walkthrough · {TOTAL_STEPS} steps · ~60 seconds
@@ -71,16 +72,21 @@ export function ScenarioPicker() {
               <h2 className="mt-1 text-lg md:text-xl font-semibold tracking-tight leading-snug">
                 See how a title examiner closes a chain
               </h2>
-              <p className="mt-2 text-sm text-moat-100/90 leading-snug">
+              <p className="mt-2 text-sm text-moat-100/90 leading-snug max-w-2xl">
                 POPHAM refi: search → chain → open DOT → candidate release review → commitment export with Schedule B-I.
               </p>
             </div>
-            <div className="mt-4 inline-flex items-center text-sm font-semibold">
+            <div className="shrink-0 inline-flex items-center gap-2 rounded-md bg-white text-moat-800 text-sm font-semibold px-4 py-2 self-start sm:self-auto">
               Start walkthrough →
             </div>
-          </Link>
+          </div>
+        </Link>
 
-          {/* Four scenario tiles */}
+        {/* Four scenario tiles — visually subordinate to the primary tile above. */}
+        <p className="text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-2">
+          Or jump to a specific residential title scenario:
+        </p>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {SCENARIOS.map((s) => (
             <Link
               key={s.key}

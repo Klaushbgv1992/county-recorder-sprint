@@ -374,7 +374,14 @@ export function Swimlane(props: Props) {
       </div>
 
       <div className="px-3 pt-1 pb-2">
-        <div className="text-xs italic text-slate-500">{rationale}</div>
+        {resolved.status === "unresolved" ? (
+          <div className="text-xs text-amber-900 bg-amber-50 border border-amber-200 rounded px-2 py-1.5 leading-snug">
+            <span className="font-semibold">Examiner review required. </span>
+            <span>{rationale}</span>
+          </div>
+        ) : (
+          <div className="text-xs italic text-slate-500">{rationale}</div>
+        )}
         {rootInst.document_type === "deed_of_trust" && (
           <div className="mt-2">
             <CandidateMatcherSlot
