@@ -4,6 +4,7 @@ import { computeHomeownerAnswers } from "./homeowner-answers";
 import { loadAllInstruments, loadAllParcels } from "../data-loader";
 import lifecyclesRaw from "../data/lifecycles.json";
 import { LifecyclesFile } from "../schemas";
+import type { Parcel } from "../types";
 
 const POPHAM_APN = "304-78-386";
 const LIFECYCLES = LifecyclesFile.parse(lifecyclesRaw).lifecycles;
@@ -45,7 +46,7 @@ describe("computeHomeownerAnswers — POPHAM", () => {
 
 describe("computeHomeownerAnswers — empty parcel safety", () => {
   it("returns sensible defaults when no instruments", () => {
-    const parcel = {
+    const parcel: Parcel = {
       apn: "000-00-000",
       address: "Nowhere",
       city: "Gilbert",
@@ -55,7 +56,7 @@ describe("computeHomeownerAnswers — empty parcel safety", () => {
       current_owner: "",
       subdivision: "",
       instrument_numbers: [],
-    } as const;
+    };
     const a = computeHomeownerAnswers(parcel, [], []);
     expect(a.titleClean.clean).toBe(true);
     expect(a.lastSale.found).toBe(false);
