@@ -52,9 +52,6 @@ function smartTitle(word: string): string {
   if (PRESERVE_ACRONYMS.has(word)) return word;
   if (ALWAYS_TITLE_CASE.has(word)) return word[0] + word.slice(1).toLowerCase();
   if (/^[A-Z]{2,}$/.test(word)) {
-    // Short ALL-CAPS sequences that aren't connectors are treated as opaque
-    // acronyms/initialisms (e.g. "ABC" in a company name).
-    if (!CONNECTORS.has(word) && word.length <= 4) return word; // Preserves short ALL-CAPS as acronyms (e.g., "ABC Properties LLC" keeps "ABC" uppercase)
     // Special-case "JPMORGAN" style compound capitalizations.
     if (word === "JPMORGAN") return "JPMorgan";
     return word[0] + word.slice(1).toLowerCase();

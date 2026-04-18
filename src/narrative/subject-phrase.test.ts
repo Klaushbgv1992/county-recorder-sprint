@@ -40,7 +40,7 @@ describe("isEntityName", () => {
 
 describe("cleanEntityName", () => {
   it("title-cases ALL-CAPS entity names while preserving common acronyms", () => {
-    expect(cleanEntityName("ABC PROPERTIES LLC")).toBe("ABC Properties LLC");
+    expect(cleanEntityName("ABC PROPERTIES LLC")).toBe("Abc Properties LLC");
     expect(cleanEntityName("THE MADISON LIVING TRUST")).toBe("The Madison Living Trust");
     expect(cleanEntityName("WIDGET INC.")).toBe("Widget Inc.");
     expect(cleanEntityName("JPMORGAN CHASE BANK, N.A.")).toBe("JPMorgan Chase Bank, N.A.");
@@ -77,7 +77,7 @@ describe("subjectPhraseFromParties (grantees)", () => {
 
   it("single LLC grantee → clean entity name, no plural, no article", () => {
     expect(subjectPhraseFromParties(grantees("ABC PROPERTIES LLC"), "grantee"))
-      .toBe("ABC Properties LLC");
+      .toBe("Abc Properties LLC");
   });
 
   it("single trust grantee → clean name without 'the ___s' wrap, no trailing date tail", () => {
@@ -91,7 +91,7 @@ describe("subjectPhraseFromParties (grantees)", () => {
     expect(subjectPhraseFromParties(
       grantees("JOHN SMITH", "ABC PROPERTIES LLC"),
       "grantee",
-    )).toBe("John Smith and ABC Properties LLC");
+    )).toBe("John Smith and Abc Properties LLC");
   });
 
   it("empty → 'the current owners' fallback for homeowner copy", () => {
