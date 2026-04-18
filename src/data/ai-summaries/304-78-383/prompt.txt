@@ -98,4 +98,4 @@ Parcel corpus (JSON):
   ]
 }
 
-Summarize this parcel's chain of title for the homeowner. Follow every rule in your instructions.
+Produce a chain-of-title brief for this parcel. The reader is a title examiner or abstractor preparing a commitment or abstract. Follow every rule in your instructions.
