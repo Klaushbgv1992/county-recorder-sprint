@@ -29,6 +29,11 @@ export interface CountyMapProps {
   // New optional props (defaults ensure backward compat with existing call sites)
   assessorPolygons?: GeoJSON.FeatureCollection;
   cachedApns?: Set<string>;
+  // Full set of APNs with hand-curated instrument chains. Used only to
+  // surface the accurate "Curated N" count in the tier legend —
+  // highlightedParcels is a smaller map-highlight subset and would
+  // understate the moat if used for the legend.
+  curatedApns?: Set<string>;
   overlays?: Set<OverlayName>;
   onAssessorParcelClick?: (apn: string) => void;
   lifecycles?: Array<{ id: string; root_instrument: string; status: string; examiner_override?: string | null }>;
@@ -155,6 +160,7 @@ export function CountyMap({
   onParcelClick,
   assessorPolygons = { type: "FeatureCollection", features: [] } as GeoJSON.FeatureCollection,
   cachedApns = new Set<string>(),
+  curatedApns,
   overlays = new Set<OverlayName>(),
   onAssessorParcelClick = () => {},
   lifecycles,
@@ -428,7 +434,16 @@ export function CountyMap({
           counterExampleCoord={COUNTER_EXAMPLE_COORD}
         />
       </MapGL>
-      <MapLegend />
+      <MapLegend
+        tierCounts={{
+          // Prefer the full curated APN set when the parent supplies it
+          // (landing page). Falls back to the highlighted subset for older
+          // call sites that don't yet know about the full corpus.
+          curated: curatedApns?.size ?? highlightedParcels.length,
+          cached: cachedApns.size,
+          assessor: assessorPolygons.features.length,
+        }}
+      />
       <div
         aria-hidden={mapReady}
         className={`pointer-events-none absolute inset-0 flex items-center justify-center bg-slate-100/85 transition-opacity duration-500 ${

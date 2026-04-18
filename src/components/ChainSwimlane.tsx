@@ -45,8 +45,49 @@ interface Props {
   onJumpLifecycle?: (lifecycleId: string) => void;
 }
 
-const TRACK_HEIGHT = 60;
+// Minimum track height — short periods (same-year refinances, immediate
+// trust-into-self transfers) clamp to this so their nodes don't collapse.
+const MIN_TRACK_HEIGHT = 60;
+// Maximum track height — long holds (20+ years, prior-to-corpus periods)
+// clamp to this so a single period can't push the next owner off-screen.
+const MAX_TRACK_HEIGHT = 220;
+// px per year. At 16 px/yr, a 9-year Silva-trust hold renders ~204 px tall
+// vs a 1.5-year pre-trust period at ~84 px — the ~2.4x ratio is what
+// makes the succession story readable without labels.
+const PX_PER_YEAR = 16;
+// Pins and the horizontal connector line live in the top 60 px of every
+// track (unchanged from the flat-block layout). Anything below that is
+// "time-held" empty space — the vertical visualization of how long this
+// owner held title. Keeps pin/line alignment identical across heights.
+const HEADER_HEIGHT = 60;
 const Y_CENTER = 30;
+
+function yearsBetween(startIso: string, endIso: string): number {
+  const start = new Date(startIso).getTime();
+  const end = new Date(endIso).getTime();
+  if (!isFinite(start) || !isFinite(end) || end < start) return 0;
+  return (end - start) / (365.25 * 24 * 60 * 60 * 1000);
+}
+
+function computeTrackHeight(years: number): number {
+  return Math.min(
+    MAX_TRACK_HEIGHT,
+    Math.max(MIN_TRACK_HEIGHT, MIN_TRACK_HEIGHT + years * PX_PER_YEAR),
+  );
+}
+
+function formatDuration(years: number): string {
+  if (years < 1 / 12) return "< 1 mo";
+  if (years < 1) {
+    const months = Math.max(1, Math.round(years * 12));
+    return `${months} mo`;
+  }
+  const whole = Math.floor(years);
+  const months = Math.round((years - whole) * 12);
+  if (months === 0) return `${whole} yr`;
+  if (months === 12) return `${whole + 1} yr`;
+  return `${whole} yr ${months} mo`;
+}
 
 export function ChainSwimlane({
   parcel,
@@ -304,6 +345,9 @@ function PriorTrack({
   endDate: string;
   trackIndex: number;
 }) {
+  // Prior-to-corpus period uses MIN_TRACK_HEIGHT — its real duration is
+  // unknown (reaches before the 1974 image depth), so the track's visual
+  // weight is intentionally neutral.
   return (
     <section className="border border-dashed border-gray-300 rounded-lg mb-3 bg-gray-50">
       <div className="px-3 py-2 border-b border-dashed border-gray-300 flex items-center justify-between gap-3">
@@ -315,11 +359,11 @@ function PriorTrack({
           Prior to corpus scope
         </span>
       </div>
-      <div className="relative px-3" style={{ height: TRACK_HEIGHT }}>
+      <div className="relative px-3" style={{ height: MIN_TRACK_HEIGHT }}>
         <svg
           className="absolute inset-0 animate-track-grow origin-left"
           width="100%"
-          height={TRACK_HEIGHT}
+          height={MIN_TRACK_HEIGHT}
           aria-hidden
           style={{ animationDelay: `${trackIndex * 100}ms` }}
         >
@@ -387,6 +431,23 @@ function ChainTrack({
     ? "border-blue-300 bg-blue-50"
     : "border-gray-200 bg-white";
 
+  // Scale the track's vertical size to how long the owner held title. A
+  // one-month Moore-trust hold and a nine-year Silva-trust hold should
+  // NOT render as the same-sized block. Current (is_current) periods use
+  // today's date as the implicit end date.
+  const yearsHeld = yearsBetween(
+    period.start_date,
+    period.end_date ?? new Date().toISOString().slice(0, 10),
+  );
+  const trackHeight = computeTrackHeight(yearsHeld);
+  const durationLabel = formatDuration(yearsHeld);
+  // Any track height above HEADER_HEIGHT is the "time-held rail" — a
+  // vertical band below the line that grows with the owner's hold period.
+  const railHeight = Math.max(0, trackHeight - HEADER_HEIGHT);
+  // Periods held 5+ years get a "long hold" visual accent on the duration
+  // pill — the Silva-trust 9-year hold reads as the clear outlier.
+  const isLongHold = yearsHeld >= 5;
+
   return (
     <section
       aria-label={`Ownership period: ${period.owner}`}
@@ -400,6 +461,16 @@ function ChainTrack({
           <span className="text-[11px] text-slate-500 whitespace-nowrap">
             {period.start_date}
             {period.end_date ? ` → ${period.end_date}` : " → present"}
+          </span>
+          <span
+            className={`text-[10px] px-1.5 py-0.5 rounded font-medium whitespace-nowrap ${
+              isLongHold
+                ? "bg-amber-100 text-amber-900 ring-1 ring-amber-200"
+                : "bg-slate-100 text-slate-700"
+            }`}
+            title={`Owner held title for ${durationLabel} (${yearsHeld.toFixed(1)} years)`}
+          >
+            held {durationLabel}
           </span>
           {hasSynthetic && (
             <span
@@ -417,11 +488,11 @@ function ChainTrack({
         )}
       </div>
 
-      <div className="relative px-3" style={{ height: TRACK_HEIGHT }}>
+      <div className="relative px-3" style={{ height: trackHeight }}>
         <svg
           className="absolute inset-0 animate-track-grow origin-left"
           width="100%"
-          height={TRACK_HEIGHT}
+          height={trackHeight}
           aria-hidden
           style={{ animationDelay: `${trackIndex * 100}ms` }}
         >
@@ -475,7 +546,75 @@ function ChainTrack({
               </g>
             ) : null,
           )}
+          {/*
+            Time-held rail: a vertical band below the axis line whose
+            height is proportional to how long the owner held title.
+            Same visual idiom as a D3 vertical time axis — longer hold
+            = taller rail = more visual weight. Only rendered when the
+            track has extra height beyond the base pin+line zone.
+          */}
+          {railHeight > 0 && (
+            <g aria-hidden>
+              <rect
+                x={20}
+                y={HEADER_HEIGHT}
+                width={3}
+                height={railHeight}
+                rx={1.5}
+                fill={
+                  period.is_current
+                    ? "#3b82f6" /* moat-blue current */
+                    : isLongHold
+                      ? "#d97706" /* amber-600 long hold */
+                      : "#94a3b8" /* slate-400 normal */
+                }
+                opacity={period.is_current ? 0.7 : 0.55}
+              />
+              {/* Subtle horizontal tick at the bottom of the rail */}
+              <line
+                x1={15}
+                x2={28}
+                y1={trackHeight - 1}
+                y2={trackHeight - 1}
+                stroke={
+                  period.is_current
+                    ? "#3b82f6"
+                    : isLongHold
+                      ? "#d97706"
+                      : "#94a3b8"
+                }
+                strokeWidth={1.5}
+                opacity={0.7}
+              />
+            </g>
+          )}
         </svg>
+
+        {/*
+          Duration annotation floats to the right of the rail on any
+          period tall enough to host it (≥ 90 px). Keeps the "held N yr"
+          visible INSIDE the card's visual scan path, not just as a pill
+          in the header.
+        */}
+        {railHeight >= 30 && (
+          <div
+            className="absolute text-[11px] font-medium pointer-events-none select-none"
+            style={{
+              left: 36,
+              top: HEADER_HEIGHT + 4,
+              color: period.is_current
+                ? "#1d4ed8"
+                : isLongHold
+                  ? "#92400e"
+                  : "#64748b",
+            }}
+          >
+            {durationLabel}
+            <span className="block text-[10px] text-slate-400 font-normal">
+              {period.is_current ? "still held" : "held"}
+            </span>
+          </div>
+        )}
 
         {nodes.map((n, i) => {
           const date = n.kind === "single" ? n.instrument.recording_date : n.date;

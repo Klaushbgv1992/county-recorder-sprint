@@ -244,6 +244,7 @@ export function LandingPage() {
           onParcelClick={(apn) => setSelectedApn(apn)}
           assessorPolygons={assessor ?? { type: "FeatureCollection", features: [] }}
           cachedApns={cachedApns}
+          curatedApns={curatedApns}
           overlays={overlays}
           onAssessorParcelClick={(apn) => setSelectedApn(apn)}
           lifecycles={LIFECYCLES}

@@ -1,0 +1,85 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: Verified through 2026-04-16
+    - generic [ref=e6]: ·
+    - generic [ref=e7]: 14 days ahead of typical title-plant cycle
+    - generic [ref=e8]: ·
+    - link "See pipeline →" [ref=e9] [cursor=pointer]:
+      - /url: /pipeline
+  - generic [ref=e11]:
+    - navigation [ref=e12]:
+      - generic [ref=e13]:
+        - heading "Land Custodian Portal" [level=1] [ref=e14]
+        - generic [ref=e15]: Maricopa County, AZ
+      - link "Search" [ref=e16] [cursor=pointer]:
+        - /url: /
+      - link "Chain of Title" [ref=e17] [cursor=pointer]:
+        - /url: /parcel/304-77-566
+      - link "Encumbrances" [ref=e18] [cursor=pointer]:
+        - /url: /parcel/304-77-566/encumbrances
+      - generic [ref=e19]:
+        - generic [ref=e20]:
+          - generic [ref=e21]: "Terminology:"
+          - button "Professional" [pressed] [ref=e22]
+          - button "Plain English" [ref=e23] [cursor=pointer]
+        - generic [ref=e24]:
+          - generic [ref=e25]: 2778 E Courtney St · APN 304-77-566
+          - link "← Search another parcel" [ref=e26] [cursor=pointer]:
+            - /url: /
+    - main [ref=e28]:
+      - generic [ref=e30]:
+        - generic [ref=e32]:
+          - generic [ref=e33]:
+            - heading "2778 E Courtney St, Gilbert AZ" [level=1] [ref=e34]
+            - generic [ref=e35]:
+              - heading "Chain of Title" [level=2] [ref=e36]
+              - link "Read as a story →" [ref=e37] [cursor=pointer]:
+                - /url: /parcel/304-77-566/story
+            - paragraph [ref=e38]: "APN: 304-77-566"
+          - generic [ref=e39]:
+            - paragraph [ref=e40]: No anomalies detected
+            - paragraph [ref=e41]: The automated rules found no flagged conditions in the current chain.
+          - generic [ref=e42]:
+            - heading "Chain of Title Timeline" [level=3] [ref=e43]
+            - generic "Time axis from 2015 to 2018" [ref=e45]:
+              - generic [ref=e48]: "2015"
+            - generic [ref=e51]:
+              - generic [ref=e52]:
+                - generic [ref=e53]: KEITH L SIPES & JO SIPES
+                - generic [ref=e54]: Prior to 2015-06-25
+              - generic [ref=e55]: Prior to corpus scope
+            - 'region "Ownership period: ROBERT FRANCIS SILVA & LINDA LUCILLE SILVA" [ref=e57]':
+              - generic [ref=e59]:
+                - generic [ref=e60]: ROBERT FRANCIS SILVA & LINDA LUCILLE SILVA
+                - generic [ref=e61]: 2015-06-25 → 2017-01-10
+                - generic "Owner held title for 1 yr 7 mo (1.5 years)" [ref=e62]: held 1 yr 7 mo
+              - generic [ref=e64]:
+                - button "Warranty Deed 20150453721 recorded 2015-06-25" [ref=e65]: Dee
+                - generic [ref=e66]: 2015-06-25
+            - 'region "Ownership period: ROBERT F SILVA & LINDA L SILVA & THE SILVA FAMILY REVOCABLE TRUST" [ref=e67]':
+              - generic [ref=e69]:
+                - generic [ref=e70]: ROBERT F SILVA & LINDA L SILVA & THE SILVA FAMILY REVOCABLE TRUST
+                - generic [ref=e71]: 2017-01-10 → 2026-03-20
+                - generic "Owner held title for 9 yr 2 mo (9.2 years)" [ref=e72]: held 9 yr 2 mo
+              - generic [ref=e73]:
+                - generic:
+                  - text: 9 yr 2 mo
+                  - generic: held
+                - generic [ref=e74]:
+                  - button "Special Warranty Deed 20170019586 recorded 2017-01-10" [ref=e75]: Dee
+                  - generic [ref=e76]: 2017-01-10
+            - 'region "Ownership period: RICHARD D MOORE & SUSAN A MOORE & MOORE REVOCABLE TRUST" [ref=e77]':
+              - generic [ref=e78]:
+                - generic [ref=e79]:
+                  - generic [ref=e80]: RICHARD D MOORE & SUSAN A MOORE & MOORE REVOCABLE TRUST
+                  - generic [ref=e81]: 2026-03-20 → present
+                  - generic "Owner held title for < 1 mo (0.1 years)" [ref=e82]: held < 1 mo
+                - generic [ref=e83]: Current Owner
+              - generic [ref=e85]:
+                - button "Trustee's Deed 20260162239 recorded 2026-03-20" [ref=e86]: TR
+                - generic [ref=e87]: 2026-03-20
+                - button "↗ cites lc-017" [ref=e89]
+          - button "View AI summary" [ref=e91]:
+            - generic [ref=e92]: ▸
+            - generic [ref=e93]: View AI summary
+        - complementary [ref=e94]: No spatial data for APN 304-77-566.

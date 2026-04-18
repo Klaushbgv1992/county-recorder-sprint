@@ -23,26 +23,42 @@ export function MoatBanner({ pipelineStatus }: Props) {
         </span>
       </div>
       <div className="flex items-center gap-1">
-        {STAGE_ORDER.map((stage, idx) => (
-          <div key={stage} className="flex items-center gap-1">
-            <div
-              className={`px-2 py-0.5 rounded text-[11px] font-medium ${
-                idx <= currentIdx
-                  ? "bg-moat-500 text-white"
-                  : "bg-moat-800 text-moat-400"
-              }`}
-            >
-              {stage}
-            </div>
-            {idx < STAGE_ORDER.length - 1 && (
-              <span
-                className={`text-xs ${idx < currentIdx ? "text-moat-400" : "text-moat-700"}`}
+        {STAGE_ORDER.map((stage, idx) => {
+          // The "active" stage is the last lit-up chip. Giving it a
+          // pulse-glow ring + a small blinking dot reads as "live
+          // custodian feed" rather than a static snapshot. Prior stages
+          // stay solid; upcoming stages stay dim. The global
+          // prefers-reduced-motion media query in index.css collapses
+          // the animation to nothing for users who opt out.
+          const isActive = idx === currentIdx;
+          const isLit = idx <= currentIdx;
+          return (
+            <div key={stage} className="flex items-center gap-1">
+              <div
+                className={`px-2 py-0.5 rounded text-[11px] font-medium inline-flex items-center gap-1 ${
+                  isLit
+                    ? "bg-moat-500 text-white"
+                    : "bg-moat-800 text-moat-400"
+                } ${isActive ? "animate-pulse-glow ring-1 ring-moat-300" : ""}`}
               >
-                &rarr;
-              </span>
-            )}
-          </div>
-        ))}
+                {isActive && (
+                  <span
+                    aria-hidden="true"
+                    className="inline-block w-1.5 h-1.5 rounded-full bg-white animate-pulse-glow"
+                  />
+                )}
+                {stage}
+              </div>
+              {idx < STAGE_ORDER.length - 1 && (
+                <span
+                  className={`text-xs ${idx < currentIdx ? "text-moat-400" : "text-moat-700"}`}
+                >
+                  &rarr;
+                </span>
+              )}
+            </div>
+          );
+        })}
       </div>
       <p className="text-[11px] text-moat-300 mt-2">
         Source: Maricopa County Recorder — authoritative county data, not a

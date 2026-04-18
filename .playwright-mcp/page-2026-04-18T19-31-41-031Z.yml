@@ -1,0 +1,345 @@
+- generic [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]: Verified through 2026-04-16
+    - generic [ref=e6]: ·
+    - generic [ref=e7]: 14 days ahead of typical title-plant cycle
+    - generic [ref=e8]: ·
+    - link "See pipeline →" [ref=e9] [cursor=pointer]:
+      - /url: /pipeline
+  - main [ref=e11]:
+    - generic [ref=e12]:
+      - button "Homeowner view →" [active] [ref=e290]
+      - region "Parcel search" [ref=e291]:
+        - generic [ref=e292]:
+          - paragraph [ref=e293]: Maricopa County Recorder
+          - heading "Land Custodian Portal" [level=1] [ref=e294]
+          - paragraph [ref=e295]: Structured title research for abstractors and examiners — chain of title, encumbrance lifecycle, and release matching, served directly from the custodian of the record.
+        - combobox "Search APN, address, owner, party (grantor/lender/releasing party), subdivision, or 11-digit instrument" [ref=e297]
+      - region "Cross-parcel party search" [ref=e298]:
+        - generic [ref=e300]:
+          - generic [ref=e301]:
+            - paragraph [ref=e302]: Custodian-only · Cross-parcel party index
+            - heading "Search any party across every parcel" [level=2] [ref=e303]
+            - paragraph [ref=e304]: Find every loan a lender originated, every release a servicer executed, every deed a trust ever signed — across the entire curated corpus, with grantor / grantee / lender / releasing-party roles attached.
+            - generic [ref=e305]:
+              - link "MERS 11 instruments · 8 parcels" [ref=e306] [cursor=pointer]:
+                - /url: /party/mortgage-electronic-registration-systems-inc
+                - generic [ref=e307]: MERS
+                - generic [ref=e308]: 11 instruments · 8 parcels
+              - link "Wells Fargo Servicer + releasing party" [ref=e309] [cursor=pointer]:
+                - /url: /party/wells-fargo-bank-n-a
+                - generic [ref=e310]: Wells Fargo
+                - generic [ref=e311]: Servicer + releasing party
+              - link "VIP Mortgage Originating lender" [ref=e312] [cursor=pointer]:
+                - /url: /party/v-i-p-mortgage-inc
+                - generic [ref=e313]: VIP Mortgage
+                - generic [ref=e314]: Originating lender
+              - link "Madison Living Trust Grantor on POPHAM purchase" [ref=e315] [cursor=pointer]:
+                - /url: /party/the-brian-j-and-tanya-r-madison-living-trust-dated-february-23-2006
+                - generic [ref=e316]: Madison Living Trust
+                - generic [ref=e317]: Grantor on POPHAM purchase
+          - complementary "Why this is a custodian-only feature" [ref=e318]:
+            - paragraph [ref=e319]: Why this is impossible without us
+            - paragraph [ref=e320]:
+              - text: The Maricopa public API
+              - code [ref=e321]: publicapi.recorder.maricopa.gov
+              - text: has no name-filtered search endpoint. We tried — see the
+              - link "hunt log" [ref=e322] [cursor=pointer]:
+                - /url: https://github.com/Klaushbgv1992/county-recorder-sprint/blob/main/docs/hunt-log-known-gap-2.md
+              - text: (45-minute live attempt; five separate API layers blocked it). Title plants index by name but lag the record by days. Only the custodian can resolve a name to roles in real time.
+      - paragraph [ref=e323]:
+        - link "See the custodian query engine →" [ref=e324] [cursor=pointer]:
+          - /url: /custodian-query
+    - region "Examiner walkthrough and title scenarios" [ref=e22]:
+      - generic [ref=e23]:
+        - 'link "Examiner walkthrough · 6 steps · ~60 seconds See how a title examiner closes a chain POPHAM refi: search → chain → open DOT → candidate release review → commitment export with Schedule B-I. Start walkthrough →" [ref=e24] [cursor=pointer]':
+          - /url: /?tour=examiner&step=1
+          - generic [ref=e25]:
+            - generic [ref=e26]:
+              - paragraph [ref=e27]: Examiner walkthrough · 6 steps · ~60 seconds
+              - heading "See how a title examiner closes a chain" [level=2] [ref=e28]
+              - paragraph [ref=e29]: "POPHAM refi: search → chain → open DOT → candidate release review → commitment export with Schedule B-I."
+            - generic [ref=e30]: Start walkthrough →
+        - paragraph [ref=e31]: "Or jump to a specific residential title scenario:"
+        - generic [ref=e32]:
+          - link "Probate 5 docs Heir takes title after death of owner AF Death clears first-spouse record by survivorship — second death needs probate and a Personal Representative's Deed. Two instruments, two very different chains. Open parcel →" [ref=e33] [cursor=pointer]:
+            - /url: /parcel/999-01-362
+            - generic [ref=e34]:
+              - generic [ref=e35]: Probate
+              - generic [ref=e36]: 5 docs
+            - heading "Heir takes title after death of owner" [level=3] [ref=e37]
+            - paragraph [ref=e38]: AF Death clears first-spouse record by survivorship — second death needs probate and a Personal Representative's Deed. Two instruments, two very different chains.
+            - generic [ref=e39]: Open parcel →
+          - link "Divorce Q/CL 5 docs Quit-claim after divorce — loan stays joint Decree awards title to one spouse, quit-claim conveys record title, but the DOT still names both borrowers jointly. Ex-spouse remains contingently liable until lender releases. Open parcel →" [ref=e40] [cursor=pointer]:
+            - /url: /parcel/999-02-555
+            - generic [ref=e41]:
+              - generic [ref=e42]: Divorce Q/CL
+              - generic [ref=e43]: 5 docs
+            - heading "Quit-claim after divorce — loan stays joint" [level=3] [ref=e44]
+            - paragraph [ref=e45]: Decree awards title to one spouse, quit-claim conveys record title, but the DOT still names both borrowers jointly. Ex-spouse remains contingently liable until lender releases.
+            - generic [ref=e46]: Open parcel →
+          - link "LLC transfer 5 docs Individual conveys to wholly-owned LLC Statement of Authority + deed + Affidavit of Property Value recorded same day. DOT stays in individual's name — due-on-sale exposure must be disclosed as a Schedule B exception. Open parcel →" [ref=e47] [cursor=pointer]:
+            - /url: /parcel/999-03-411
+            - generic [ref=e48]:
+              - generic [ref=e49]: LLC transfer
+              - generic [ref=e50]: 5 docs
+            - heading "Individual conveys to wholly-owned LLC" [level=3] [ref=e51]
+            - paragraph [ref=e52]: Statement of Authority + deed + Affidavit of Property Value recorded same day. DOT stays in individual's name — due-on-sale exposure must be disclosed as a Schedule B exception.
+            - generic [ref=e53]: Open parcel →
+          - link "Tax-sale REO 5 docs Treasurer's Deed extinguishes prior DOT A.R.S. § 42-18267 wipes junior liens by operation of law — but the 2005 Countrywide DOT has no release of record. Appears open; substantively cleared. Classic underwriter discussion. Open parcel →" [ref=e54] [cursor=pointer]:
+            - /url: /parcel/999-04-401
+            - generic [ref=e55]:
+              - generic [ref=e56]: Tax-sale REO
+              - generic [ref=e57]: 5 docs
+            - heading "Treasurer's Deed extinguishes prior DOT" [level=3] [ref=e58]
+            - paragraph [ref=e59]: A.R.S. § 42-18267 wipes junior liens by operation of law — but the 2005 Countrywide DOT has no release of record. Appears open; substantively cleared. Classic underwriter discussion.
+            - generic [ref=e60]: Open parcel →
+        - paragraph [ref=e61]: Scenario parcels are demo-only synthesized instruments, disclosed per document — see the synthetic · demo-only pill in the Proof Drawer.
+    - region "Plant vs. county proof" [ref=e62]:
+      - generic [ref=e63]:
+        - generic [ref=e64]:
+          - heading "Plant vs. county — what an examiner sees right now" [level=2] [ref=e65]
+          - generic [ref=e66]:
+            - generic [ref=e67]:
+              - paragraph [ref=e68]: Public title plant (typical refresh)
+              - paragraph [ref=e69]: cached through ~2026-04-02
+              - paragraph [ref=e70]: Plants typically refresh 14–28 days behind the county; the 2026-03-19–2026-04-02 window is unverified on the plant side.
+            - generic [ref=e71]:
+              - paragraph [ref=e72]: Maricopa County custodian
+              - paragraph [ref=e73]: verified through 2026-04-16
+              - paragraph [ref=e74]: Authoritative — the county owns the recording day.
+          - paragraph [ref=e75]:
+            - strong [ref=e76]: 14 days of documents the plant hasn't seen yet
+            - text: — recorded between 2026-04-02 and 2026-04-16.
+        - generic [ref=e77]:
+          - paragraph [ref=e78]: The instrument the plant would miss
+          - paragraph [ref=e79]:
+            - text: POPHAM's 2021 refinance recorded the Deed of Trust on 2021-01-19 (
+            - link "20210057847" [ref=e80] [cursor=pointer]:
+              - /url: https://publicapi.recorder.maricopa.gov/preview/pdf?recordingNumber=20210057847
+            - text: ) and the Full Reconveyance 3 days later on 2021-01-22 (
+            - link "20210075858" [ref=e81] [cursor=pointer]:
+              - /url: https://publicapi.recorder.maricopa.gov/preview/pdf?recordingNumber=20210075858
+            - text: ). A plant refreshing every 14–28 days would have shown this DOT as
+            - emphasis [ref=e82]: open
+            - text: for the rest of January — the county had it released same-week.
+          - link "→ Verify in corpus (open in parcel)" [ref=e84] [cursor=pointer]:
+            - /url: /parcel/304-78-386/instrument/20210075858
+        - generic [ref=e85]:
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: "Receipt: federal-tax-lien hunt (Known Gap #2)"
+            - paragraph [ref=e88]: A 45-minute API hunt confirmed the moat shape — search and index disagree on what's findable.
+            - generic [ref=e90]:
+              - code [ref=e91]: documentCode=FED TAX L
+              - text: returns
+              - code [ref=e92]: "totalResults: 0"
+              - text: — the same code is right there inside
+              - code [ref=e93]: documentCodes
+              - text: "on"
+              - code [ref=e94]: GET /documents/20010092700
+              - text: .
+            - link "Read the hunt →" [ref=e95] [cursor=pointer]:
+              - /url: /receipts/federal-tax-lien
+          - generic [ref=e96]:
+            - paragraph [ref=e97]: "Receipt: Seville master-plat hunt (R-005)"
+            - paragraph [ref=e98]: A second hunt at the plat tier hit five separate API layers blocking a well-formed question.
+            - generic [ref=e100]:
+              - text: ~141 of 200 API calls used.
+              - code [ref=e101]: documentCode
+              - text: ","
+              - code [ref=e102]: docketBook
+              - text: /
+              - code [ref=e103]: pageMap
+              - text: ","
+              - code [ref=e104]: byBook/page
+              - text: ","
+              - code [ref=e105]: "book/{n}/{p}"
+              - text: ", and the legacy book/page bridge — all silently dropped, 404, or Cloudflare-gated."
+            - link "Read the hunt →" [ref=e106] [cursor=pointer]:
+              - /url: /receipts/seville-master-plat
+    - generic [ref=e107]:
+      - generic [ref=e112]:
+        - generic [ref=e113]:
+          - generic:
+            - region "Map" [ref=e271]
+            - button "Map marker" [ref=e272]:
+              - generic:
+                - generic:
+                  - button "Explore POPHAM parcel — click to open" [ref=e273] [cursor=pointer]:
+                    - paragraph [ref=e274]: This property has three things title plants miss.
+                    - paragraph [ref=e275]: Click to explore →
+                    - generic [ref=e276]: POPHAM · 304-78-386 · Gilbert
+                  - button "Dismiss intro callout" [ref=e279]: ×
+          - group [ref=e280]:
+            - generic "Toggle attribution" [ref=e281] [cursor=pointer]
+            - generic [ref=e282]:
+              - link "MapLibre" [ref=e283] [cursor=pointer]:
+                - /url: https://maplibre.org/
+              - text: "| ©"
+              - link "CARTO" [ref=e284] [cursor=pointer]:
+                - /url: https://carto.com/about-carto/
+              - text: ", ©"
+              - link "OpenStreetMap" [ref=e285] [cursor=pointer]:
+                - /url: http://www.openstreetmap.org/about/
+              - text: contributors
+          - generic [ref=e287]:
+            - button "Show full county" [ref=e288]
+            - button "Show counter-example" [ref=e289]
+        - generic [ref=e115]:
+          - generic [ref=e116]:
+            - generic [ref=e117]: County data moat
+            - generic [ref=e118]: Three tiers of coverage
+          - list [ref=e119]:
+            - listitem [ref=e120]:
+              - generic [ref=e122]:
+                - generic [ref=e123]:
+                  - generic [ref=e124]: Curated
+                  - generic [ref=e125]: "3"
+                - generic [ref=e126]: Full chain + provenance
+            - listitem [ref=e127]:
+              - generic [ref=e129]:
+                - generic [ref=e130]:
+                  - generic [ref=e131]: Recorder
+                  - generic [ref=e132]: "8"
+                - generic [ref=e133]: Cached API · live in prod
+            - listitem [ref=e134]:
+              - generic [ref=e136]:
+                - generic [ref=e137]:
+                  - generic [ref=e138]: Assessor
+                  - generic [ref=e139]: ~8.6K
+                - generic [ref=e140]: Public GIS polygons
+          - paragraph [ref=e141]: Click any parcel — the tier determines how much the custodian knows about it.
+        - generic:
+          - paragraph: Loading county map…
+      - generic [ref=e142]:
+        - button "Open encumbrances" [ref=e143]
+        - button "Curator anomalies" [ref=e144]
+        - button "Last deed recorded" [ref=e145]
+    - generic [ref=e148]:
+      - heading "Featured demo parcels" [level=2] [ref=e149]
+      - paragraph [ref=e150]: These parcels demonstrate the chain-of-title, encumbrance lifecycle, and anomaly detection features. Click POPHAM to start the recommended demo path.
+      - list [ref=e151]:
+        - listitem [ref=e152]:
+          - generic [ref=e153]:
+            - link "Open chain of title for POPHAM CHRISTOPHER / ASHLEY, 3674 E Palmer St" [ref=e154] [cursor=pointer]:
+              - /url: /parcel/304-78-386
+              - generic [ref=e155]:
+                - generic [ref=e156]:
+                  - generic [ref=e157]: POPHAM CHRISTOPHER / ASHLEY
+                  - generic [ref=e158]: 3674 E Palmer St, Gilbert
+                  - generic [ref=e159]: APN 304-78-386
+                - generic [ref=e160]: Start here
+            - link "Read the story →" [ref=e162] [cursor=pointer]:
+              - /url: /parcel/304-78-386/story
+        - listitem [ref=e163]:
+          - generic [ref=e164]:
+            - link "Open chain of title for HOGUE JASON / MICHELE, 2715 E Palmer St" [ref=e165] [cursor=pointer]:
+              - /url: /parcel/304-77-689
+              - generic [ref=e167]:
+                - generic [ref=e168]: HOGUE JASON / MICHELE
+                - generic [ref=e169]: 2715 E Palmer St, Gilbert
+                - generic [ref=e170]: APN 304-77-689
+            - link "Read the story →" [ref=e172] [cursor=pointer]:
+              - /url: /parcel/304-77-689/story
+        - listitem [ref=e173]:
+          - generic [ref=e174]:
+            - link "Open chain of title for SEVILLE HOMEOWNERS ASSOCIATION, TRACT A, SEVILLE PARCEL 3" [ref=e175] [cursor=pointer]:
+              - /url: /parcel/304-78-409
+              - generic [ref=e177]:
+                - generic [ref=e178]: SEVILLE HOMEOWNERS ASSOCIATION
+                - generic [ref=e179]: TRACT A, SEVILLE PARCEL 3, Gilbert
+                - generic [ref=e180]: APN 304-78-409
+            - link "Read the story →" [ref=e182] [cursor=pointer]:
+              - /url: /parcel/304-78-409/story
+        - listitem [ref=e183]:
+          - generic [ref=e184]:
+            - link "Open chain of title for WARNER KAMA, 6265 S Twilight Ct" [ref=e185] [cursor=pointer]:
+              - /url: /parcel/304-78-374
+              - generic [ref=e187]:
+                - generic [ref=e188]: WARNER KAMA
+                - generic [ref=e189]: 6265 S Twilight Ct, Gilbert
+                - generic [ref=e190]: APN 304-78-374
+            - link "Read the story →" [ref=e192] [cursor=pointer]:
+              - /url: /parcel/304-78-374/story
+        - listitem [ref=e193]:
+          - generic [ref=e194]:
+            - link "Open chain of title for LOWRY AMY E, 3702 E Palmer St" [ref=e195] [cursor=pointer]:
+              - /url: /parcel/304-78-383
+              - generic [ref=e197]:
+                - generic [ref=e198]: LOWRY AMY E
+                - generic [ref=e199]: 3702 E Palmer St, Gilbert
+                - generic [ref=e200]: APN 304-78-383
+            - link "Read the story →" [ref=e202] [cursor=pointer]:
+              - /url: /parcel/304-78-383/story
+        - listitem [ref=e203]:
+          - generic [ref=e204]:
+            - link "Open chain of title for PHOENIX VACATION HOUSES LLC, 3671 E Palmer St" [ref=e205] [cursor=pointer]:
+              - /url: /parcel/304-78-367
+              - generic [ref=e207]:
+                - generic [ref=e208]: PHOENIX VACATION HOUSES LLC
+                - generic [ref=e209]: 3671 E Palmer St, Gilbert
+                - generic [ref=e210]: APN 304-78-367
+            - link "Read the story →" [ref=e212] [cursor=pointer]:
+              - /url: /parcel/304-78-367/story
+        - listitem [ref=e213]:
+          - generic [ref=e214]:
+            - link "Open chain of title for CHEN DAVID JAMES, 3650 E Palmer St" [ref=e215] [cursor=pointer]:
+              - /url: /parcel/999-01-362
+              - generic [ref=e217]:
+                - generic [ref=e218]: CHEN DAVID JAMES
+                - generic [ref=e219]: 3650 E Palmer St, Gilbert
+                - generic [ref=e220]: APN 999-01-362
+            - link "Read the story →" [ref=e222] [cursor=pointer]:
+              - /url: /parcel/999-01-362/story
+        - listitem [ref=e223]:
+          - generic [ref=e224]:
+            - link "Open chain of title for MARTINEZ SOFIA ANDREA, 2741 E Palmer St" [ref=e225] [cursor=pointer]:
+              - /url: /parcel/999-02-555
+              - generic [ref=e227]:
+                - generic [ref=e228]: MARTINEZ SOFIA ANDREA
+                - generic [ref=e229]: 2741 E Palmer St, Gilbert
+                - generic [ref=e230]: APN 999-02-555
+            - link "Read the story →" [ref=e232] [cursor=pointer]:
+              - /url: /parcel/999-02-555/story
+        - listitem [ref=e233]:
+          - generic [ref=e234]:
+            - link "Open chain of title for DELGADO PROPERTY HOLDINGS LLC, 3594 E Palmer St" [ref=e235] [cursor=pointer]:
+              - /url: /parcel/999-03-411
+              - generic [ref=e237]:
+                - generic [ref=e238]: DELGADO PROPERTY HOLDINGS LLC
+                - generic [ref=e239]: 3594 E Palmer St, Gilbert
+                - generic [ref=e240]: APN 999-03-411
+            - link "Read the story →" [ref=e242] [cursor=pointer]:
+              - /url: /parcel/999-03-411/story
+        - listitem [ref=e243]:
+          - generic [ref=e244]:
+            - link "Open chain of title for BRYANT JAMES T, 3722 E Parkview Ave" [ref=e245] [cursor=pointer]:
+              - /url: /parcel/999-04-401
+              - generic [ref=e247]:
+                - generic [ref=e248]: BRYANT JAMES T
+                - generic [ref=e249]: 3722 E Parkview Ave, Gilbert
+                - generic [ref=e250]: APN 999-04-401
+            - link "Read the story →" [ref=e252] [cursor=pointer]:
+              - /url: /parcel/999-04-401/story
+        - listitem [ref=e253]:
+          - generic [ref=e254]:
+            - link "Open chain of title for MOORE REVOCABLE TRUST, 2778 E Courtney St" [ref=e255] [cursor=pointer]:
+              - /url: /parcel/304-77-566
+              - generic [ref=e257]:
+                - generic [ref=e258]: MOORE REVOCABLE TRUST
+                - generic [ref=e259]: 2778 E Courtney St, Gilbert
+                - generic [ref=e260]: APN 304-77-566
+            - link "Read the story →" [ref=e262] [cursor=pointer]:
+              - /url: /parcel/304-77-566/story
+    - generic [ref=e264]:
+      - generic [ref=e265]: Elsewhere
+      - link "County activity" [ref=e266] [cursor=pointer]:
+        - /url: /county-activity
+      - link "Why this matters" [ref=e267] [cursor=pointer]:
+        - /url: /why
+      - link "Compare vs. title plant" [ref=e268] [cursor=pointer]:
+        - /url: /moat-compare
+      - link "Enterprise feed" [ref=e269] [cursor=pointer]:
+        - /url: /enterprise
+      - link "County staff workbench" [ref=e270] [cursor=pointer]:
+        - /url: /staff

@@ -33,6 +33,13 @@ export function PipelineBanner() {
 
   return (
     <div className="h-8 px-4 flex items-center gap-2 text-xs text-slate-700 bg-slate-100 border-b border-slate-200 shrink-0">
+      {/* Live-indicator dot — reads as "the custodian is feeding this
+          page" vs a static snapshot. 1.6s pulse-glow ring animation is
+          suppressed under prefers-reduced-motion (see index.css). */}
+      <span
+        aria-label="Live data feed"
+        className="inline-block w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse-glow"
+      />
       <span>
         Verified through{" "}
         <span className="font-mono text-slate-900">{verifiedThrough}</span>
