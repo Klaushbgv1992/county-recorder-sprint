@@ -49,6 +49,7 @@ describe("buildCommitment — POPHAM", () => {
       "lc-001",
       "lc-002",
       "lc-004",
+      "lc-010",
     ]);
   });
 

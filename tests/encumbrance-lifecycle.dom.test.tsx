@@ -99,10 +99,19 @@ describe("EncumbranceLifecycle UI wiring", () => {
     const initialCard = lifecycleCardFor(POPHAM_DOT_OPEN);
     expect(within(initialCard).getByText("Open")).toBeInTheDocument();
 
-    const acceptBtn = within(initialCard).getByRole("button", {
+    // lc-002 now sees multiple candidate reconveyances in its pool:
+    //   20210075858 (real 2021 release, unlinked here since link-002 was
+    //     dropped) — canAccept=true, renders an enabled Accept button.
+    //   20050100001 (synthetic 2005 release from the historical-chain
+    //     extension) — already linked via link-009 to lc-010, so
+    //     canAccept=false and the Accept button renders disabled.
+    // Filter to the enabled button to isolate the happy-path candidate.
+    const acceptButtons = within(initialCard).getAllByRole("button", {
       name: "Accept",
     });
-    await user.click(acceptBtn);
+    const acceptBtn = acceptButtons.find((b) => !(b as HTMLButtonElement).disabled);
+    expect(acceptBtn).toBeDefined();
+    await user.click(acceptBtn!);
 
     // Re-locate the card after re-render, then assert the status badge and
     // matcher-rationale text. This proves the synthetic algorithmic
