@@ -1,6 +1,6 @@
 // src/components/LandingPage.tsx
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, Link } from "react-router";
+import { useNavigate, useSearchParams, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
 import { OverlayToggles } from "./OverlayToggles";
 import { ParcelDrawer } from "./ParcelDrawer";
@@ -34,6 +34,12 @@ export function LandingPage() {
   const parcels = useAllParcels();
   const { query, selectedApn, overlays, setQuery, setSelectedApn, toggleOverlay } =
     useLandingUrlState();
+  // Examiner walkthrough sets ?tour=examiner on the URL. When it's on,
+  // suppress the map intro pulse so it doesn't compete with the tour's
+  // own CTA. The tour owns the on-screen guidance; this page just gets
+  // out of its way.
+  const [searchParams] = useSearchParams();
+  const isExaminerTour = searchParams.get("tour") === "examiner";
 
   // Mobile detection (768px breakpoint matches Tailwind md:)
   const [isMobile, setIsMobile] = useState(() =>
@@ -191,7 +197,7 @@ export function LandingPage() {
           lifecycles={LIFECYCLES}
           anomalies={anomaliesRaw}
           instrumentToApn={instrumentToApn}
-          showIntro={!selectedApn && !query && overlays.size === 0}
+          showIntro={!selectedApn && !query && overlays.size === 0 && !isExaminerTour}
           onIntroClick={() => setSelectedApn("304-78-386")}
         />
         <OverlayToggles
