@@ -96,6 +96,26 @@ describe("LandingPage", () => {
   });
 });
 
+describe("LandingPage — PlantVsCountyProof band", () => {
+  afterEach(() => cleanup());
+
+  it("renders PlantVsCountyProof between SearchHero and FeaturedParcels", () => {
+    render(wrap(<LandingPage />));
+    const main = document.querySelector("main")!;
+    const combobox = screen.getByRole("combobox");
+    const proof = screen.getByRole("region", { name: /plant.*county|county.*plant/i });
+    const featured = document.getElementById("featured-parcels")!;
+    const childIndex = (el: Element | null) =>
+      el ? Array.from(main.children).findIndex((c) => c.contains(el)) : -1;
+    const heroIdx = childIndex(combobox);
+    const proofIdx = childIndex(proof);
+    const featuredIdx = childIndex(featured);
+    expect(heroIdx).toBeGreaterThanOrEqual(0);
+    expect(proofIdx).toBeGreaterThan(heroIdx);
+    expect(featuredIdx).toBeGreaterThan(proofIdx);
+  });
+});
+
 describe("LandingPage — /why links", () => {
   afterEach(() => cleanup());
 
