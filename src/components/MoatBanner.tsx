@@ -24,12 +24,10 @@ export function MoatBanner({ pipelineStatus }: Props) {
       </div>
       <div className="flex items-center gap-1">
         {STAGE_ORDER.map((stage, idx) => {
-          // The "active" stage is the last lit-up chip. Giving it a
-          // pulse-glow ring + a small blinking dot reads as "live
-          // custodian feed" rather than a static snapshot. Prior stages
-          // stay solid; upcoming stages stay dim. The global
-          // prefers-reduced-motion media query in index.css collapses
-          // the animation to nothing for users who opt out.
+          // The "active" stage is the last lit-up chip. A static moat-300
+          // ring plus a small inner white dot marks it — meaning cue
+          // without a motion loop. Prior stages stay solid; upcoming
+          // stages stay dim.
           const isActive = idx === currentIdx;
           const isLit = idx <= currentIdx;
           return (
@@ -39,7 +37,7 @@ export function MoatBanner({ pipelineStatus }: Props) {
                   isLit
                     ? "bg-moat-500 text-white"
                     : "bg-moat-800 text-moat-400"
-                } ${isActive ? "ring-1 ring-moat-300 bg-moat-50" : ""}`}
+                } ${isActive ? "ring-1 ring-moat-300" : ""}`}
               >
                 {isActive && (
                   <span
