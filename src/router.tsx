@@ -219,6 +219,7 @@ function ChainRouteInner({ apn }: { apn: string }) {
               parcel={data.parcel}
               instruments={data.instruments}
               links={data.links}
+              lifecycles={data.lifecycles}
               onOpenDocument={openDrawer}
             />
           </div>
