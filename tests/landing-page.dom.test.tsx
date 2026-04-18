@@ -51,11 +51,14 @@ describe("LandingPage", () => {
     expect(mapSectionIndex).toBeGreaterThan(heroIndex);
   });
 
-  it("renders the moat WHY copy for the map", () => {
+  it("renders a single 'Why this is different' entry point in place of the old marketing tiles", () => {
+    // The three marketing tiles (Spatial custody / Verified freshness /
+    // Chain intelligence) now live on /why. A single slim link between
+    // FeaturedParcels and the footer is the landing's sole signpost to
+    // that narrative — the map + search are the hero, not the pitch.
     render(wrap(<LandingPage />));
-    expect(
-      screen.getByText(/assessor's file/i),
-    ).toBeInTheDocument();
+    const link = screen.getByRole("link", { name: /why this is different/i });
+    expect(link).toHaveAttribute("href", "/why");
   });
 
   it("renders link to /county-activity", () => {

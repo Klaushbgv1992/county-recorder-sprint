@@ -37,8 +37,11 @@ function computeBboxFromFeatureCollection(
   return [minLon, minLat, maxLon, maxLat];
 }
 
+// Ghost/outline: the zoom affordances are secondary to the map content
+// they sit on top of. Transparent-ish fill + moat-700 text reads as a
+// subtle link rather than a competing action.
 const BUTTON_CLASS =
-  "px-2 py-1 text-xs font-medium bg-white border border-slate-300 rounded shadow hover:bg-slate-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500";
+  "px-2 py-1 text-xs font-medium bg-white/70 backdrop-blur-sm border border-slate-300 rounded text-moat-700 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500";
 
 export function MapZoomControls({
   defaultCenter,

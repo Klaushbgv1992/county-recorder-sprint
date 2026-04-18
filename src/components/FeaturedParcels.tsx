@@ -44,8 +44,8 @@ export function FeaturedParcels({ parcels }: Props) {
                         </div>
                       </div>
                       {isRecommended && (
-                        <span className="shrink-0 text-[10px] uppercase tracking-wide bg-moat-50 text-moat-700 border border-moat-200 rounded-full px-2 py-0.5">
-                          Recommended demo
+                        <span className="shrink-0 text-[10px] font-medium tracking-wide bg-slate-100 text-slate-600 border border-slate-200 rounded-full px-2 py-0.5">
+                          Start here
                         </span>
                       )}
                     </div>

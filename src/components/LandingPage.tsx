@@ -225,69 +225,39 @@ export function LandingPage() {
         <FeaturedParcels parcels={parcels} />
       </div>
 
-      <section className="px-6 py-6 bg-recorder-50 border-b border-recorder-100">
-        <div className="max-w-2xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <section className="px-6 py-4 bg-white border-b border-slate-200">
+        <div className="max-w-2xl mx-auto text-center">
           <Link
-            to="/"
-            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
+            to="/why"
+            className="text-xs text-slate-600 hover:text-slate-900 underline underline-offset-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
           >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
-              Spatial custody
-            </p>
-            <p className="text-xs text-recorder-500 mt-1">
-              County-authoritative parcel polygons from the assessor's file. No
-              licensing layer.
-            </p>
-          </Link>
-          <Link
-            to="/pipeline"
-            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
-          >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
-              Verified freshness
-            </p>
-            <p className="text-xs text-recorder-500 mt-1">
-              Per-stage pipeline verification with SLA tracking. Know exactly
-              how current your data is.
-            </p>
-          </Link>
-          <Link
-            to={`/parcel/304-78-386/encumbrances`}
-            className="group block rounded-lg border border-recorder-100 bg-white p-4 shadow-sm hover:shadow-md hover:border-moat-200 transition-all duration-150 focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:outline-none"
-          >
-            <p className="text-sm font-semibold text-recorder-900 group-hover:text-moat-700">
-              Chain intelligence
-            </p>
-            <p className="text-xs text-recorder-500 mt-1">
-              Same-day transaction grouping, MERS annotations, and release
-              matching. Structured title work, not a document list.
-            </p>
+            New here? Why this is different →
           </Link>
         </div>
       </section>
 
-      <footer className="px-6 py-4 flex justify-between items-center text-xs text-slate-500 flex-wrap gap-2">
+      <footer className="border-t border-slate-200 bg-white px-6 py-5 flex flex-wrap items-center justify-between gap-x-6 gap-y-2 text-xs text-slate-700">
         <Link
           to="/county-activity"
-          className="underline underline-offset-2 hover:text-slate-700"
+          className="hover:text-moat-700 hover:underline underline-offset-2"
         >
           → View county activity
         </Link>
         <Link
           to="/why"
-          className="underline underline-offset-2 hover:text-slate-700"
+          className="hover:text-moat-700 hover:underline underline-offset-2"
         >
           → Why this matters
         </Link>
         <Link
           to="/moat-compare"
-          className="underline underline-offset-2 hover:text-slate-700"
+          className="hover:text-moat-700 hover:underline underline-offset-2"
         >
           → Compare to a title-plant report
         </Link>
         <Link
           to="/staff"
-          className="underline underline-offset-2 text-slate-400 hover:text-slate-600"
+          className="text-slate-500 hover:text-slate-800 hover:underline underline-offset-2"
         >
           County staff? Open workbench &rarr;
         </Link>
