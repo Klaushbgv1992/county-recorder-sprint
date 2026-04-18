@@ -1,18 +1,24 @@
 import { useMemo, useState } from "react";
 import { searchAll, addressOf, ownerOf, subdivisionOf, type Searchable, type SearchHit, type MatchType } from "../logic/searchable-index";
 
+// Palette note: entity chips and non-curated tier chips are uniformly
+// neutral slate. Only the "Curated" tier keeps an accent (emerald) so it
+// reads as the one category that matters at a glance — the other pills
+// are structural labels, not priority signals. See Tier-B landing-polish.
+const NEUTRAL_CHIP = "bg-slate-100 text-slate-700";
+
 const TIER_CHIP: Record<Searchable["tier"], { label: string; className: string }> = {
   curated: { label: "Curated", className: "bg-emerald-100 text-emerald-900" },
-  recorder_cached: { label: "Recorder", className: "bg-moat-100 text-moat-900" },
-  assessor_only: { label: "Assessor", className: "bg-slate-100 text-slate-700" },
+  recorder_cached: { label: "Recorder", className: NEUTRAL_CHIP },
+  assessor_only: { label: "Assessor", className: NEUTRAL_CHIP },
 };
 
 const ENTITY_CHIP: Record<MatchType, { label: string; className: string }> = {
-  instrument: { label: "Instrument", className: "bg-indigo-100 text-indigo-900" },
-  apn: { label: "APN", className: "bg-blue-100 text-blue-900" },
-  address: { label: "Address", className: "bg-teal-100 text-teal-900" },
-  owner: { label: "Owner", className: "bg-purple-100 text-purple-900" },
-  subdivision: { label: "Subdivision", className: "bg-amber-100 text-amber-900" },
+  instrument: { label: "Instrument", className: NEUTRAL_CHIP },
+  apn: { label: "APN", className: NEUTRAL_CHIP },
+  address: { label: "Address", className: NEUTRAL_CHIP },
+  owner: { label: "Owner", className: NEUTRAL_CHIP },
+  subdivision: { label: "Subdivision", className: NEUTRAL_CHIP },
 };
 
 interface Props {
