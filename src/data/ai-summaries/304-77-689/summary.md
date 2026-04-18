@@ -1,13 +1,16 @@
-# Chain of Title: 2715 E Palmer St, Gilbert AZ
+# Chain of title: 2715 E Palmer St, Gilbert AZ
 
-**Your lot.** The property is Lot 348 of Shamrock Estates Phase 2A, a subdivision platted in Book 799 of Maps, Page 38. Because it sits within a recorded subdivision, the plat itself controls lot lines, easements, and any setbacks — worth pulling a copy if you haven't seen it.
+The subject parcel is Lot 348, Shamrock Estates Phase 2A, per plat in Book 799 of Maps, Page 38, Maricopa County. The plat itself has not been pulled into the corpus and should be reviewed for subdivision-level easements, setbacks, and CC&R references.
 
-**How you took title.** On July 17, 2015, Robert S. Lorance conveyed the property to Jason Hogue and Michele Hogue by warranty deed [20150516729]. That is the earliest deed in the record provided here — anything about ownership before Mr. Lorance is not in this data, so that portion of the chain is a gap I cannot fill in.
+The record chain in the supplied corpus begins with a warranty deed recorded 2015-07-17 from Robert S. Lorance, a single grantor, to Jason Hogue and Michele Hogue [20150516729]. Vesting as between the Hogues is not specified on the face of the deed and should be confirmed. Title prior to Lorance's ownership is not represented in the corpus and constitutes a gap for purposes of the full chain; earlier instruments will need to be run independently.
 
-**Your loan.** The same day you took title, you signed a deed of trust in favor of Pinnacle Capital Mortgage LLC [20150516730].
+Contemporaneous with the Hogue acquisition, the Hogues executed a purchase-money deed of trust to Pinnacle Capital Mortgage LLC, also recorded 2015-07-17 [20150516730]. No release, reconveyance, assignment, or subordination of this deed of trust appears in the corpus, and the lifecycle is carried as open.
 
-## Things to ask about
+## Follow-ups for the abstract / Schedule B
 
-- **The 2015 deed of trust still shows as open.** No release or reconveyance for [20150516730] appears in this record. If you have paid this loan off or refinanced, you should confirm that a release was recorded — an unreleased deed of trust is a cloud on title even if the debt is gone. This is flagged as a high-severity issue.
-- **Same-name matches.** Three other instruments tied to the "Hogue" name surfaced but were not confirmed as belonging to this parcel. Worth verifying none of them affect Lot 348.
-- **Subdivision obligations.** Check for HOA covenants tied to Shamrock Estates Phase 2A.
+- Show the Pinnacle Capital Mortgage LLC deed of trust [20150516730] as an open monetary encumbrance pending a located release or payoff.
+- Run a broader Maricopa County search for any release, reconveyance, or assignment of [20150516730] outside the curated chain; API name-search limitations flagged.
+- Resolve the "HOGUE same-name candidates (3 instruments)" anomaly to confirm none encumber Lot 348.
+- Obtain and review the Shamrock Estates Phase 2A plat (Book 799, Page 38) and any recorded CC&Rs / HOA declaration for Schedule B-2 exceptions.
+- Confirm manner of vesting between Jason Hogue and Michele Hogue under deed [20150516729]; check for any interim deeds (e.g., disclaimer, community property agreement) between the Hogues.
+- Extend search backward of Lorance [20150516729] to close the pre-2015 chain gap.
