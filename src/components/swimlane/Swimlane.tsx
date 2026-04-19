@@ -208,7 +208,9 @@ export function Swimlane(props: Props) {
         widthPx,
       ),
     })),
-    36,
+    // Min center-to-center spacing for the ~55-60px-wide YYYY-MM-DD date
+    // label rendered below each pin. Smaller values let the labels overlap.
+    60,
   );
 
   const hasAcceptedRelease = Boolean(
