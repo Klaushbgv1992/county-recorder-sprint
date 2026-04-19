@@ -41,7 +41,7 @@ export function titleForIcon(icon: MarkerPosition["icon"]): string {
 // TODO: switch to shoelace-weighted centroid if irregular polygons ship.
 // Current arithmetic-mean-of-vertices is exact for rectangles and near-exact
 // for the hand-traced subdivision boundary; fine for the demo corpus.
-function polygonCentroid(poly: GeoJSON.Polygon): [number, number] {
+export function polygonCentroid(poly: GeoJSON.Polygon): [number, number] {
   const ring = poly.coordinates[0];
   const n = ring.length - 1;
   let x = 0;
