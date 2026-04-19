@@ -5,6 +5,7 @@ import {
   groupSameDayInstruments,
   resolveMatcherSlotState,
   detectMersGap,
+  extractMersVia,
   layoutNodesWithCollisionAvoidance,
 } from "./swimlane-layout";
 import type { Instrument } from "../types";
@@ -127,6 +128,7 @@ describe("detectMersGap", () => {
       release_instrument: "20210075858",
       originator: "V I P MORTGAGE INC",
       releaser: "WELLS FARGO HOME MORTGAGE",
+      via: null,
       rule_finding: finding,
     });
   });
@@ -138,6 +140,29 @@ describe("detectMersGap", () => {
 
   it("returns null when there are no findings at all", () => {
     expect(detectMersGap("20130183450", [])).toBeNull();
+  });
+
+  it("extracts the 'via' servicing-agent from a release's mers_note when instruments are supplied", () => {
+    const finding = baseFinding();
+    const releaseWithVia: Instrument = inst("20210075858", "2021-01-20", {
+      document_type: "full_reconveyance",
+      mers_note:
+        "MERS is the beneficiary of record as nominee for V.I.P. Mortgage, Inc. This release was executed by Wells Fargo Home Mortgage via CAS Nationwide Title Clearing, Inc., indicating the loan was transferred from VIP Mortgage to Wells Fargo outside the county recording system via MERS.",
+    });
+    const gap = detectMersGap("20130183450", [finding], [releaseWithVia]);
+    expect(gap).not.toBeNull();
+    expect(gap!.via).toBe("CAS Nationwide Title Clearing");
+  });
+
+  it("returns via: null when instruments are omitted or the release has no mers_note", () => {
+    const finding = baseFinding();
+    const releaseNoNote = inst("20210075858", "2021-01-20", {
+      document_type: "full_reconveyance",
+    });
+    expect(detectMersGap("20130183450", [finding])!.via).toBeNull();
+    expect(
+      detectMersGap("20130183450", [finding], [releaseNoNote])!.via,
+    ).toBeNull();
   });
 
   it("parses a finding produced from the live R3 description_template", async () => {
@@ -164,6 +189,29 @@ describe("detectMersGap", () => {
     expect(gap).not.toBeNull();
     expect(gap!.originator).toBe("V I P MORTGAGE INC");
     expect(gap!.releaser).toBe("WELLS FARGO HOME MORTGAGE");
+  });
+});
+
+describe("extractMersVia", () => {
+  it("returns null for undefined or empty notes", () => {
+    expect(extractMersVia(undefined)).toBeNull();
+    expect(extractMersVia("")).toBeNull();
+  });
+
+  it("parses the servicing-agent clause from the POPHAM release text", () => {
+    expect(
+      extractMersVia(
+        "This release was executed by Wells Fargo Home Mortgage via CAS Nationwide Title Clearing, Inc., indicating the loan was transferred.",
+      ),
+    ).toBe("CAS Nationwide Title Clearing");
+  });
+
+  it("returns null when the note never mentions 'via'", () => {
+    expect(
+      extractMersVia(
+        "MERS is the beneficiary of record as nominee for Acme Bank. Release executed by Acme Bank directly.",
+      ),
+    ).toBeNull();
   });
 });
 

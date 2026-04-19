@@ -79,7 +79,33 @@ export interface MersGap {
   release_instrument: string;
   originator: string;
   releaser: string;
+  /**
+   * Optional servicing-agent string extracted from the release instrument's
+   * `mers_note` field (e.g. "CAS Nationwide Title Clearing"). Only present
+   * when the note explicitly names the executing agent. Rendered as a
+   * subtitle on the MersCallout so the ribbon surfaces the disintermediation
+   * chain the way the instrument body describes it.
+   */
+  via: string | null;
   rule_finding: AnomalyFinding;
+}
+
+/**
+ * Parse the optional "via X" clause out of a release instrument's
+ * `mers_note` field. We match "executed by Y via Z," or similar
+ * servicing-agent phrasing and return the trimmed agent name. Returns
+ * null when the note is missing, empty, or doesn't contain the pattern.
+ *
+ * Exported for unit testing of the mers_note → ribbon wiring.
+ */
+export function extractMersVia(mersNote: string | undefined): string | null {
+  if (!mersNote) return null;
+  // "executed by <releaser> via <agent>," / ". " / " and " / EOS
+  const match = /executed by [^.]+?\bvia\b\s+([^,.]+?)(?=[,.]|\s+and\s|$)/i.exec(
+    mersNote,
+  );
+  if (!match) return null;
+  return match[1].trim().replace(/,$/, "");
 }
 
 /**
@@ -97,10 +123,19 @@ export interface MersGap {
 const R3_DESC_RE =
   /names MERS as beneficiary as nominee for (.+?)\. Release was executed by (.+?), not/;
 
-/** Extracts MERS-gap metadata from the R3 finding for `dotInstrumentNumber`. See `R3_DESC_RE` for the coupling contract. */
+/**
+ * Extracts MERS-gap metadata from the R3 finding for `dotInstrumentNumber`.
+ * See `R3_DESC_RE` for the coupling contract.
+ *
+ * When `instruments` is supplied, the release instrument's `mers_note` is
+ * parsed for a "via <agent>" clause (see `extractMersVia`) and returned as
+ * `MersGap.via`. Omitting `instruments` is still valid — `via` is just null,
+ * and the ribbon renders originator → MERS → releaser without a subtitle.
+ */
 export function detectMersGap(
   dotInstrumentNumber: string,
   findings: AnomalyFinding[],
+  instruments?: Instrument[],
 ): MersGap | null {
   const finding = findings.find(
     (f) =>
@@ -110,11 +145,16 @@ export function detectMersGap(
   if (!finding) return null;
   const match = R3_DESC_RE.exec(finding.description);
   if (!match) return null;
+  const releaseInstrumentNumber = finding.evidence_instruments[1];
+  const releaseInstrument = instruments?.find(
+    (i) => i.instrument_number === releaseInstrumentNumber,
+  );
   return {
     dot_instrument: dotInstrumentNumber,
-    release_instrument: finding.evidence_instruments[1],
+    release_instrument: releaseInstrumentNumber,
     originator: match[1],
     releaser: match[2],
+    via: extractMersVia(releaseInstrument?.mers_note),
     rule_finding: finding,
   };
 }

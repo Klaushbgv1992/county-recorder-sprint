@@ -303,7 +303,7 @@ beat (see `docs/demo-script.md`).
       the schema. Standalone follow-up task; not blocked on
       Terminal 4.
 
-21. **Per-link popover deferred on encumbrance swimlanes.**
+20. **Per-link popover deferred on encumbrance swimlanes.**
 
 ## Per-link popover deferred on encumbrance swimlanes
 
@@ -317,12 +317,12 @@ Re-introducing per-link popovers is a 30-min wiring task if a future demo run sh
 
 ---
 
-20. **Stale `eslint-disable` directives (cosmetic).**
+21. **Stale `eslint-disable` directives (cosmetic).**
     - *What's missing:* The `eslint.config.js` sets `react-refresh/only-export-components` to `"warn"`. If disable comments accumulate and are never removed, `--report-unused-disable-directives` will flag them. Investigated at S5 close — zero directives present in `src/` at the time of writing.
     - *Why that's OK for this pitch:* zero runtime impact, zero test impact. Purely cosmetic lint hygiene.
     - *What production would do:* promote the rule to `"error"` severity and run `eslint --report-unused-disable-directives` in CI so stale suppression comments are caught automatically.
 
-21. **Landing-only UI in the shared entry chunk (~303 KB overhead for non-landing routes).**
+22. **Landing-only UI in the shared entry chunk (~303 KB overhead for non-landing routes).**
     - *What's missing:* Per-route code splitting via `React.lazy`.
       All route components are statically imported via `router.tsx` →
       one Vite entry chunk. New landing-map components (MapSearchBar,
@@ -346,7 +346,7 @@ Re-introducing per-link popovers is a 30-min wiring task if a future demo run sh
       size limits with a hard +2 KB gate (currently informational —
       see the comment in that test file).
 
-22. **Encumbrance swimlane — deferred review polish.**
+23. **Encumbrance swimlane — deferred review polish.**
 
 ## Encumbrance swimlane — deferred review polish
 

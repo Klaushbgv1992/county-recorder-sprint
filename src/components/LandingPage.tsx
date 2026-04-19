@@ -2,6 +2,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate, Link } from "react-router";
 import { CountyMap, type HighlightedParcel } from "./CountyMap";
+import { CountyHeartbeat } from "./CountyHeartbeat";
 import { OverlayToggles } from "./OverlayToggles";
 import { ParcelDrawer } from "./ParcelDrawer";
 import { AnomalySummaryPanel } from "./map/AnomalySummaryPanel";
@@ -14,6 +15,7 @@ import { HomeownerHero } from "./HomeownerHero";
 import { WalkthroughBanner } from "./WalkthroughBanner";
 import { ScenarioPicker } from "./ScenarioPicker";
 import { useWalkthrough } from "../walkthrough/useWalkthrough";
+import { useNowOverrideFromSearchParams } from "../hooks/useNowOverrideFromSearchParams";
 import { useAllParcels } from "../hooks/useAllParcels";
 import { useLandingUrlState } from "../hooks/useLandingUrlState";
 import { buildSearchableIndex } from "../logic/searchable-index";
@@ -46,6 +48,9 @@ export function LandingPage() {
   // WalkthroughBanner owns on-screen guidance and the map's intro pulse is
   // suppressed so the two don't compete.
   const walkthrough = useWalkthrough();
+
+  // ?now=<ISO> test/screenshot hatch for the CountyHeartbeat pacing clock.
+  const heartbeatNow = useNowOverrideFromSearchParams();
 
   // Mobile detection (768px breakpoint matches Tailwind md:)
   const [isMobile, setIsMobile] = useState(() =>
@@ -180,6 +185,7 @@ export function LandingPage() {
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">
+      <CountyHeartbeat now={heartbeatNow} />
       <div className="border-b border-slate-200 bg-white">
         {mode === "homeowner" ? (
           <HomeownerHero

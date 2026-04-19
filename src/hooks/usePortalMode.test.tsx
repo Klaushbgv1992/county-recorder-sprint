@@ -1,7 +1,7 @@
 // src/hooks/usePortalMode.test.ts
 import { describe, it, expect, beforeEach, afterEach } from "vitest";
 import { renderHook, act } from "@testing-library/react";
-import { MemoryRouter } from "react-router";
+import { MemoryRouter, useSearchParams } from "react-router";
 import { usePortalMode } from "./usePortalMode";
 import type { ReactNode } from "react";
 
@@ -9,6 +9,12 @@ function wrapper(initialEntries: string[]) {
   return function W({ children }: { children: ReactNode }) {
     return <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>;
   };
+}
+
+function useModeAndSearchParams() {
+  const [params] = useSearchParams();
+  const hook = usePortalMode();
+  return { ...hook, urlMode: params.get("mode") };
 }
 
 describe("usePortalMode", () => {
@@ -49,8 +55,8 @@ describe("usePortalMode", () => {
     expect(result.current.mode).toBe("examiner");
   });
 
-  it("setMode persists to localStorage", () => {
-    const { result } = renderHook(() => usePortalMode(), {
+  it("setMode persists to localStorage and mirrors into ?mode= on the URL", () => {
+    const { result } = renderHook(() => useModeAndSearchParams(), {
       wrapper: wrapper(["/"]),
     });
     act(() => {
@@ -58,6 +64,8 @@ describe("usePortalMode", () => {
     });
     expect(localStorage.getItem("portalMode")).toBe("examiner");
     expect(result.current.mode).toBe("examiner");
+    // URL mirroring — the shareable-link story requires ?mode=<> on the URL.
+    expect(result.current.urlMode).toBe("examiner");
   });
 
   it("ignores invalid localStorage values", () => {

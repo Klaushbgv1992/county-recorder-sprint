@@ -35,9 +35,9 @@ describe("LandingPage", () => {
   afterEach(() => cleanup());
 
   it("renders SearchHero above the map section", () => {
-    // SearchHero is now the first child of <main> (CountyHeartbeat was
-    // removed — the slim verified-through strip in RootLayout carries the
-    // moat claim on its own). Verify SearchHero precedes the map section.
+    // <main> order: CountyHeartbeat (live-pacing band) → SearchHero → map.
+    // This test only checks SearchHero precedes the map; the heartbeat-first
+    // invariant is covered separately in "LandingPage — CountyHeartbeat mounted".
     // Must use ?mode=examiner because the default portal mode is homeowner.
     render(wrap(<LandingPage />, ["/?mode=examiner"]));
     const combobox = screen.getByRole("combobox");
@@ -135,10 +135,10 @@ describe("LandingPage — /why links", () => {
   });
 });
 
-describe("LandingPage — CountyHeartbeat removed", () => {
+describe("LandingPage — CountyHeartbeat mounted", () => {
   afterEach(() => cleanup());
 
-  it("does not render the heartbeat band on the landing page", () => {
+  it("renders the heartbeat band as the first child of <main>", () => {
     render(
       <MemoryRouter>
         <TerminologyProvider>
@@ -146,14 +146,17 @@ describe("LandingPage — CountyHeartbeat removed", () => {
         </TerminologyProvider>
       </MemoryRouter>,
     );
-    // The heartbeat band was removed from the landing page because its
-    // big counter + "recording day" paragraph competed with the primary
-    // search task. The one-line verified-through strip (PipelineBanner in
-    // RootLayout) carries the moat claim without the dashboard framing.
+    // The heartbeat band was restored as the first child of <main> per
+    // Decision #43. Its big counter + "recording day" paragraph carry the
+    // live-feeling pacing claim; the one-line verified-through strip in
+    // RootLayout carries the SLA separately. See docs/demo-script.md
+    // Beat 1a for the narration contract.
     const section = document.querySelector(
       'section[aria-label="Maricopa Recorder live-pacing band"]',
     );
-    expect(section).toBeNull();
+    expect(section).not.toBeNull();
+    const main = document.querySelector("main")!;
+    expect(main.firstElementChild).toBe(section);
   });
 });
 

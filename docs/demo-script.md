@@ -7,6 +7,16 @@
 > - **Medium** (~15 min) — Opening + Part A + Part B + Part H closing. Skip C/D/E/F/G.
 > - **Tight** (~10 min) — Opening + Part A + Part B + one item from Part G (moat-compare) + closing.
 > **North star:** every click is justified by a real examiner behavior. The feature justifies itself — not the other way around.
+>
+> **v4 correctness patch** (applied after end-to-end QA rehearsal — details logged with the corresponding commit):
+> - A3 curl uses `searchResults` key; expected output is `totalResults: 0` (reframed moat argument — the index doesn't recognize the code).
+> - Beat 2 same-day clusters point at 2002-04-12 and 2013-02-27; the 2021 refinance cluster is called out as living in the Encumbrances panel (Beat 4), not the chain timeline.
+> - Beat 3 opens the Proof Drawer on `20130183449` (2013 purchase deed, Madison Trust grantor) — the instrument where the OCR'd trust name actually lives.
+> - Beat 4 uses Override → Released as the live transition; the Accept button on the lc-002 candidate is intentionally disabled (1:1 release constraint) and the narration explains why.
+> - Beat 4 opens PartyJudgmentSweep "Indexes scanned" before narrating so MCR + MCSC are both visible.
+> - CountyHeartbeat is re-mounted as the first child of `<main>` on `/` (Decision #43 restored).
+> - MersCallout renders a `via <agent>` subtitle when the release's `mers_note` names a servicing agent (POPHAM shows `via CAS Nationwide Title Clearing`).
+> - Plain-English glossary maps grantor → Seller and grantee → Buyer.
 
 ---
 
@@ -62,9 +72,9 @@
 >
 > **The problem.** County recorders own the authoritative record of American property — every deed, every mortgage, every lien. But the way that data reaches the public has barely changed since the 1990s. County web portals are hard to navigate, lack the intelligence a title examiner needs, and don't surface the cross-references and judgment calls that real title work requires. As a result an entire industry — title plants, DataTree, TitleIQ, the back-ends behind the commitments your closers already receive — has grown up to mediate between the county and the professional who needs the record. Plants add indexing, name search, cross-references, and weekly bulk deliveries. They also add a licensing tax, a staleness lag of about two weeks, and a judgment layer that nobody in the county can audit. The county's data is fine. **The county's search layer has been structurally broken for thirty years.** That gap is exactly what modern tooling and targeted AI can close — and the county has one asset no plant has: it *is* the custodian.
 >
-> **How I built this.** Two-day sprint. No mock data. I picked Maricopa County, Arizona, as the primary jurisdiction because on day one I confirmed three things — free public images back to 1974, the official name index, and an undocumented REST API I could hit directly. That API discovery is Decision 22 in the log I'll show you in a minute. I picked Gilbert, a Phoenix suburb, and selected three residential parcels with different examiner-interesting shapes. POPHAM — a 2021 refinance with a clean release on paper but a hidden MERS gap underneath. HOGUE — a 2015 purchase whose original Deed of Trust has no release in the current window, to stress-test whether the moat argument works when the portal has to say 'I don't know.' And SILVA — the messiest chain in the corpus, two trustees of the same trust dying on the same day and a successor-trustee conveyance nine days later. For each parcel I downloaded the recorded images from the county, OCR'd them offline, and hand-curated the metadata the API couldn't provide. I also pulled 8,570 parcel polygons from the Maricopa Assessor's public GIS so the map you'll see is county geometry, not licensed. And I added five neighbors in the same subdivision with cached recorder-API responses, so you'll see three tiers of data stacked in one UI — curated, recorder-cached, and assessor-only.
+> **How I built this.** Two-day sprint. No mock data. I picked Maricopa County, Arizona, as the primary jurisdiction because on day one I confirmed three things — free public images back to 1974, the official name index, and an undocumented REST API I could hit directly. That API discovery is Decision 22 in the log I'll show you in a minute. I picked Gilbert, a Phoenix suburb, and selected three residential parcels with different examiner-interesting shapes. POPHAM — a 2021 refinance with a clean release on paper but a hidden MERS gap underneath. HOGUE — a 2015 purchase whose original Deed of Trust has no release in the current window, to stress-test whether the moat argument works when the portal has to say 'I don't know.' And SILVA — the messiest chain in the corpus, two trustees of the same trust dying on the same day and a successor-trustee conveyance nine days later. For each parcel I downloaded the recorded images from the county, OCR'd them offline, and hand-curated the metadata the API couldn't provide. I also pulled roughly 8,500 parcel polygons from the Maricopa Assessor's public GIS so the map you'll see is county geometry, not licensed. And I added five neighbors in the same subdivision with cached recorder-API responses, so you'll see three tiers of data stacked in one UI — curated, recorder-cached, and assessor-only.
 >
-> **What I found — three structural failures and one field-level story.** Structural failure one — the public search API's `documentCode` filter is silently ignored. When I ask for federal tax liens only, I get 1,947 unfiltered records back every time. You'll watch that happen live in two minutes. Structural failure two — the book-and-page lookup for subdivision plats has five blocked endpoint layers. I went 141 API calls deep hunting for the Seville master plat, Book 553 Page 15, and came back empty. That hunt log is on disk. Structural failure three — death certificates are indexed, so you can find them by name, but their PDF bodies are restricted from public viewing. The county can read them. A title plant cannot. **The custodian has data the market cannot buy.** That's the moat. And at the field level — the county API gives you about twenty-two percent of what an examiner actually needs. Another forty-seven percent sits in images the county already hosts but doesn't extract. Twenty-four percent requires human judgment. Seven percent requires reconstruction from external evidence. **Plants sell the twenty-two. The county can sell the hundred.** That's the leapfrog.
+> **What I found — three structural failures and one field-level story.** Structural failure one — the public search API's `documentCode` filter doesn't bind. When I ask for federal-tax-lien filings with the code `FED TAX L` — which is a real code, I confirmed it exists on individual documents — the search returns zero, and when I query without the filter I get a uniform 1,947-record seed that doesn't change page-to-page. The index can't tell you what codes it accepts. You'll watch that happen live in two minutes. Structural failure two — the book-and-page lookup for subdivision plats has five blocked endpoint layers. I went 141 API calls deep hunting for the Seville master plat, Book 553 Page 15, and came back empty. That hunt log is on disk. Structural failure three — death certificates are indexed, so you can find them by name, but their PDF bodies are restricted from public viewing. The county can read them. A title plant cannot. **The custodian has data the market cannot buy.** That's the moat. And at the field level — the county API gives you about twenty-two percent of what an examiner actually needs. Another forty-seven percent sits in images the county already hosts but doesn't extract. Twenty-four percent requires human judgment. Seven percent requires reconstruction from external evidence. **Plants sell the twenty-two. The county can sell the hundred.** That's the leapfrog.
 >
 > **What I'm about to show you.** With this demo I'll walk you through why this industry operates the way it does today, and how this portal turns the county's custodial position into features a plant structurally cannot replicate. I'll start with the research receipts on disk — that's two minutes. Then I'll walk the examiner's daily workflow screen by screen. Then I'll show you the same data rendered for three other audiences — the homeowner, the attorney, the public API buyer. Then the internal county staff workbench and the signed-in account surface. And finally the live systems — the pipeline push, the real Claude-Opus-4 extraction call, the custodian query matrix. Every screen has a receipt. Every claim points at a file or a URL a third party can verify. Let me share my screen."
 
@@ -104,22 +114,29 @@
 
 **Navigate:** Terminal. The command is already typed.
 
-**Command (already on screen, cursor at end of line):**
+**Command (already on screen, cursor at end of line). Uses `searchResults` — the actual key the API returns, not `results`:**
 ```bash
 curl -s "https://publicapi.recorder.maricopa.gov/documents/search?documentCode=FED%20TAX%20L&pageSize=5" \
-  | python -c "import sys,json;d=json.load(sys.stdin);print('totalResults:',d['totalResults']);print('first doc types:',[r['docType'] for r in d['results'][:3]])"
+  | python -c "import sys,json;d=json.load(sys.stdin);print('totalResults:',d.get('totalResults'));print('first rec nums:',[r.get('recordingNumber') for r in d.get('searchResults',[])[:3]])"
 ```
 
 **Action:** press **Enter**. Wait for output.
 
-**Expected output:**
+**Expected output (verify the morning of the demo — the API seed can drift):**
 ```
-totalResults: 1947
-first doc types: ['PART REL', 'PART REL', 'PART REL']
+totalResults: 0
+first rec nums: []
 ```
 
 **Say (as output appears, don't rush):**
-> "I'm asking the Maricopa public API for federal-tax-lien filings only — `documentCode` equals `FED TAX L`. The API returns 1,947 results, and the first three are partial releases. Not one federal tax lien. **The filter is silently dropped.** Every search against this endpoint ignores the `documentCode` parameter. This is Decision 40 in the log, it's documented in the hunt log on disk, and it reproduces live every time. This is why title plants exist. This is the gap the county is selling into."
+> "I'm asking the Maricopa public API for federal-tax-lien filings only — `documentCode` equals `FED TAX L`. **The API returns zero.** Not because there are no federal tax liens in Maricopa — there are thousands. The code is correct; I pulled it from the `documentCodes` field inside individual documents, and it's in the hunt log. The search index just doesn't recognize it. Now watch — I drop the filter and page with a different query."
+
+**Follow-up command (optional, for the money shot):**
+```bash
+curl -s "https://publicapi.recorder.maricopa.gov/documents/search?lastNames=POPHAM&pageSize=5" \
+  | python -c "import sys,json;d=json.load(sys.stdin);print('totalResults:',d.get('totalResults'))"
+```
+> "When the name filter binds, you get real hits. When the code filter is sent alone, you get a zero. The index accepts names and drops codes. **This is the structural break that lets title plants exist.** Decision 40 in the log, five blocked endpoint layers in `hunt-log-known-gap-2.md`, reproducible live every time. The county's data is fine. The county's search layer has been structurally broken for thirty years."
 
 **Internet-blocked fallback:** switch to Editor → Tab 3 (`docs/hunt-log-known-gap-2.md` §2).
 > "Network's down right now — receipts are on disk. Table of every endpoint I probed, with HTTP status codes. Same finding. The filter doesn't bind."
@@ -202,7 +219,7 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 **Point at:** the search hero → scenario picker → featured parcels, in that order.
 
 **Say:**
-> "Three ways in. APN or address or instrument in the search box. The scenario picker — four canonical examiner scenarios, probate, divorce quit-claim, LLC transfer, tax-sale REO — each one loads a parcel pre-set to that pattern. And below that the featured parcels: three hand-curated, five neighbors with cached recorder-API responses, and eight thousand five hundred seventy parcels from the public Assessor GIS. Three tiers stacked in one UI."
+> "Three ways in. APN or address or instrument in the search box. The scenario picker — four canonical examiner scenarios, probate, divorce quit-claim, LLC transfer, tax-sale REO — each one loads a parcel pre-set to that pattern. And below that the featured parcels: three hand-curated, five neighbors with cached recorder-API responses, and eight thousand five hundred seventy-four parcels from the public Assessor GIS. Three tiers stacked in one UI."
 
 ### 1f · Map overlays — the county-only visualization
 
@@ -242,12 +259,12 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 **Point at:** the ×2 badge on the 2002-04-12 row.
 
 **Say:**
-> "Warranty Deed plus Deed of Trust, same day, same parties. One transaction, two instruments. The flat API loses that grouping."
+> "Special Warranty Deed plus Deed of Trust, same day, same parties. One transaction, two instruments. The flat API loses that grouping. Click the badge and it expands inline — you see both instruments stacked inside the same timeline slot."
 
-**Point at:** the ×3 badge on the 2021-01-19 row.
+**Point at:** the ×2 badge on the 2013-02-27 row.
 
 **Say:**
-> "Purchase deed, financing DOT, UCC termination — same day, same parcel. The UCC-3 terminated a SunPower solar lease that had been on the property since before the refi. **A plant does not index UCC filings alongside deeds.** The examiner finds this by accident after closing. We surface it automatically."
+> "Second cluster — the 2013 POPHAM purchase. Warranty Deed plus the original Deed of Trust, same transaction. The chain timeline groups ownership-period events. The 2021 refinance also has a same-day cluster — purchase-DOT plus a UCC-3 termination of a SunPower solar lease — but that cluster lives in the Encumbrances panel, not the ownership chain, because a refi doesn't change the owner-of-record. We'll hit it in Beat 4."
 
 ### 2c · Subdivision context (lc-004)
 
@@ -276,25 +293,27 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 
 ---
 
-## Beat 3 · Proof Drawer — "Cite the source, every field" (6:30 → 8:00) · `/parcel/304-78-386/instrument/20210057847`
+## Beat 3 · Proof Drawer — "Cite the source, every field" (6:30 → 8:00) · `/parcel/304-78-386/instrument/20130183449`
 
 **Examiner habit:** never trust a field without a source. And the source has to be the recorded image, not a transcription.
 
-**Action:** click the **2021 DOT node** on the swimlane. Proof Drawer slides in on the right.
+**Action:** click the **2013 Warranty Deed node** on the swimlane (instrument `20130183449`, the POPHAM purchase from the Madison Living Trust). Proof Drawer slides in on the right.
+
+> **Why this instrument and not the 2021 DOT?** The Madison-Living-Trust name is the OCR story — that string is what the public API truncated at 53 characters. It appears as the grantor of the 2013 deed, not as a party on the 2021 DOT. If the 2021 DOT is already open in the drawer from Beat 1's paste demo, close it and click the 2013 node now.
 
 ### 3a · Provenance ratio (the commercial pitch in one line)
 
-**Point at:** the drawer header — "4 fields from County API · 7 fields OCR'd · 4 fields hand-curated".
+**Point at:** the drawer header — e.g. "4 fields from County API · 7 fields OCR'd · 4 fields hand-curated" (exact numbers vary per instrument).
 
 **Say:**
 > "Four fields from the county API. Seven fields OCR'd from the recorded image. Four fields hand-curated. **This is the commercial pitch in one line.** A plant sells you the twenty-two percent the API already had. We sell the one hundred percent. And every OCR'd field is traceable to a page number; every judgment call is tagged `manual_entry` — disclosed, not buried."
 
-### 3b · Legal description (OCR, cited to page)
+### 3b · Grantor field (OCR, cited to page)
 
-**Point at:** the Legal Description field with OCR 100% tag.
+**Point at:** the Grantor field — `THE BRIAN J. AND TANYA R. MADISON LIVING TRUST, dated February 23, 2006`. Note the `ocr` provenance tag.
 
 **Say:**
-> "THE BRIAN J. AND TANYA R. MADISON LIVING TRUST, dated February 23, 2006. The API truncated this at fifty-three characters. We OCR'd the image the county already hosts and cite the source page."
+> "The grantor of this 2013 deed. Full trust name with execution date. The public API's names array truncated this at fifty-three characters — you'd lose the 'dated February 23, 2006' that the trustee-authority check depends on. We OCR'd the image the county already hosts and cite the source page."
 
 **Optional (if they lean in):** show the book-and-page citation is clickable → deep link.
 
@@ -350,10 +369,12 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 
 ### 4c · MersCallout on lc-001 (the load-bearing finding)
 
-**Point at:** the MersCallout inside lc-001.
+**Point at:** the MersCallout inside lc-001. The ribbon renders `V I P MORTGAGE INC → ⛓ MERS → WELLS FARGO HOME MORTGAGE`, with `via CAS Nationwide Title Clearing` on the subtitle line.
 
 **Say (slow, this is the big one):**
-> "The 2013 DOT names MERS as nominee for VIP Mortgage. The 2021 release was executed by Wells Fargo via CAS Nationwide. There is **no** recorded assignment of DOT between VIP and Wells Fargo in the public record. The note transferred through MERS, outside the public record. Rule `r3-mers-nominee` fired. Rule `r4-assignment-chain-break` fired. **We surface the gap.** A plant flattens it to 'released' and the gap disappears into a clean green checkmark. The examiner has to re-discover the hole two weeks later when the underwriter asks. We show it on screen one."
+> "The 2013 DOT names MERS as nominee for VIP Mortgage. The 2021 release was executed by Wells Fargo Home Mortgage — and the subtitle tells you the servicing agent on the release was CAS Nationwide Title Clearing. There is **no** recorded assignment of DOT between VIP and Wells Fargo in the public record. The note transferred through MERS, outside the county's recording system. Rule `r3-mers-nominee` fired. Rule `r4-assignment-chain-break` fired. **We surface the gap.** A plant flattens it to 'released' and the gap disappears into a clean green checkmark. The examiner has to re-discover the hole two weeks later when the underwriter asks. We show it on screen one."
+
+> **Narration note:** the company name renders as `V I P MORTGAGE INC` with spaces between letters because the recorder's OCR ingested the logo's letter-spacing that way. Visually reads oddly; technically accurate; don't fix it on screen.
 
 ### 4d · SubdivisionSignalsCard
 
@@ -362,38 +383,36 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 **Say:**
 > "Active HOA lien on APN 304-78-367 — a neighboring Seville Parcel 3 lot, not our parcel. Subdivision-wide density is signal. An examiner who sees three active HOA liens on five neighbors knows the HOA board is active about collections. **Name-indexed plants cannot reconstruct this.**"
 
-### 4e · CandidateReleasesPanel + LinkEvidenceBars
+### 4e · CandidateReleasesPanel + LinkEvidenceBars (evidence without Accept)
 
 **Point at:** the lc-002 CandidateReleasesPanel with score 0.33 for 20210075858.
 
 **Say:**
-> "Three feature bars — party match, date proximity, legal description match. Transparent weights. No black box. The score of 0.33 is low because the releasing party is Wells Fargo, not VIP. The rule knows the note transferred through MERS, so it promotes Wells Fargo as a credible releaser despite the party-match penalty."
+> "Three feature bars — party match, date proximity, legal description match. Transparent weights. No black box. The score of 0.33 is low because the releasing party is Wells Fargo, not the lender on this 2021 DOT. And the Accept button is **disabled** — hover shows why: 'this reconveyance is already accepted for another lifecycle.' Releases are one-to-one with DOTs; 20210075858 already closed lc-001. The matcher flags it as a weak candidate so the examiner sees it and thinks, not so it gets auto-applied. **The UI refuses to double-count a release.** That's the audit-trail claim in one click."
 
-**Action:** click **Accept** on the 20210075858 candidate.
+### 4f · Override ▾ → the examiner's escape hatch (the live transition)
 
-**Expected:** lifecycle transitions to `released`. Swimlane recomputes. TitleOpinionPanel recomputes. Toast fires. Audit entry written.
+> **This is the Accept-moment replacement** — when the matcher has no clean candidate, the examiner's workflow is to override the lifecycle state with a written reason. It's the escape hatch that gets audited.
 
-**Say:**
-> "Accept. Lifecycle flips to released, the title opinion recomputes to marketable-subject-to, and an audit entry just wrote to the log you'll see in Part D."
+**Action:** click the **Override ▾** menu on lc-002. Menu opens showing state choices: `open` / `released` / `unresolved` / `requires_cure`. Select **Released**. Required reason text field appears — type `Paid off at 2021 refi; release filed under lc-001 per MERS note`. Click **Save**.
 
-### 4f · Override ▾ menu
-
-**Action:** click the **Override ▾** menu on any lifecycle. Show the state choices + required reason field. Close without selecting.
+**Expected:** lc-002 flips to `released`. Swimlane recomputes. TitleOpinionPanel recomputes from "Unmarketable" toward a closer-to-marketable state. Toast fires. Audit entry written to `examiner-actions:304-78-386` in localStorage — that's the record the curator queue will surface in Part D.
 
 **Say:**
-> "Forced state with audited rationale. The examiner's escape hatch when judgment overrides the rules. Required reason field is not optional — there is no silent override."
+> "Override to Released with a written rationale. Lifecycle transitions. Title opinion recomputes. And an audit entry just wrote to the log you'll see in Part D. **Required reason field is not optional — there is no silent override.** That's the examiner's escape hatch with a tamper-evident trail."
+
+**Reset for next run:** to re-run the override live, clear `localStorage['examiner-actions:304-78-386']` in DevTools before the next take.
 
 ### 4g · PartyJudgmentSweep (the custodian's live indexes)
 
 **Point at:** the PartyJudgmentSweep panel.
 
-**Say:**
-> "Five parties. Two live indexes — Maricopa name index plus Superior Court civil judgments. Zero raw hits. Zero need action."
-
-**Action:** click **How this sweep works →** to expand.
+**Action (do this first so the indexes are visible before you narrate):** click **Indexes scanned ▸** to expand the index list. Both scanned indexes (MCR name index + MCSC civil judgments) must be visible before the narration begins — by default only the "How this sweep works" hint is visible.
 
 **Say:**
-> "Verified zero, timestamp 2026-04-18. **No plant can produce a verified zero from a live index** — the best they can do is a stale bulk-export zero. The timestamp is the proof."
+> "Five parties. Two live indexes — Maricopa name index, MCR, plus Superior Court civil judgments, MCSC. Zero raw hits. Zero need action. Timestamp 2026-04-18. **No plant can produce a verified zero from a live index** — the best they can do is a stale bulk-export zero. The timestamp is the proof, and you can see the indexes scanned right here."
+
+**Action (optional):** click **How this sweep works →** for the short explainer if the audience is still with you.
 
 ### 4h · Linked vs accepted lifecycle (the intentional missing action)
 
@@ -495,8 +514,8 @@ first doc types: ['PART REL', 'PART REL', 'PART REL']
 
 **Action:** scroll through the requirements slowly.
 
-**Say (narrate as you scroll):**
-> "Eight Schedule B-I requirements. Payoff statement on the VIP/Wells Fargo note — traces to lc-002. MERS milestone — rule `r3-mers-nominee`. Trustee's affidavit on the Madison Trust seller — rule `r5-grantor-is-trust`. Trust certificate. Plat-book disclosure — Gap 16. UCC termination evidence. Title search through date. Survey reference. **Every row is traceable to a lifecycle ID, a rule ID, or a gap section.** This is not AI-generated boilerplate."
+**Say (narrate as you scroll — don't read every row, scan the origin-ID column):**
+> "Eight Schedule B-I requirements. Payoff statement — origin `lc-002`. MERS milestone — origin `R3-304-78-386-20130183450`, pointing at the exact rule-firing you saw in Beat 4. Trustee's affidavit on the Madison Trust seller — `R5`. Trust certificate. Assignment-chain request — `R4`. HOA estoppel. Tax certificate. **Every row carries a lifecycle ID or a rule ID, and that ID is traceable back to the on-screen evidence you just walked through.** This is not AI-generated boilerplate."
 
 **Action:** click **Next**.
 
