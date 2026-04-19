@@ -18,7 +18,7 @@ function readParam(params: URLSearchParams): PortalMode | null {
 }
 
 export function usePortalMode(): { mode: PortalMode; setMode: (m: PortalMode) => void } {
-  const [params] = useSearchParams();
+  const [params, setParams] = useSearchParams();
   const fromUrl = readParam(params);
   const [stored, setStored] = useState<PortalMode | null>(() => readStorage());
 
@@ -37,7 +37,18 @@ export function usePortalMode(): { mode: PortalMode; setMode: (m: PortalMode) =>
       window.localStorage.setItem(STORAGE_KEY, m);
     }
     setStored(m);
-  }, []);
+    // Mirror the selection into the URL so the page is a sharable
+    // link — the shareable-URL story depends on the query-param
+    // reflecting the current persona, not just localStorage.
+    setParams(
+      (prev) => {
+        const next = new URLSearchParams(prev);
+        next.set("mode", m);
+        return next;
+      },
+      { replace: true },
+    );
+  }, [setParams]);
 
   return { mode, setMode };
 }

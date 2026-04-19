@@ -76,7 +76,11 @@ export function ProofDrawer({
   const extractionTrace = getExtractionTrace(instrument.instrument_number);
 
   const handleCopyCitation = useCallback(() => {
-    navigator.clipboard.writeText(citation);
+    // Swallow rejections: non-HTTPS contexts, iframe permission denials, and
+    // programmatic clicks without a user gesture all surface as
+    // NotAllowedError. Those are user-environment issues, not bugs — a silent
+    // no-op keeps the DevTools console clean during a live demo.
+    navigator.clipboard.writeText(citation).catch(() => {});
     if (copiedTimerRef.current) clearTimeout(copiedTimerRef.current);
     setCopied(true);
     copiedTimerRef.current = setTimeout(() => setCopied(false), 1600);

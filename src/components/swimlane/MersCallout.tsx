@@ -9,10 +9,16 @@ interface Props {
 }
 
 export function MersCallout({ gap, xPx, yCenter }: Props) {
+  // When a servicing-agent is named in the release's mers_note (e.g.
+  // "executed by Wells Fargo via CAS Nationwide Title Clearing"), the
+  // subtitle line surfaces the agent below the ribbon so the on-screen
+  // story matches the instrument body verbatim.
+  const hasVia = Boolean(gap.via);
+  const topOffset = hasVia ? 42 : 30;
   return (
     <div
       className="absolute -translate-x-1/2 bg-white border border-amber-300 rounded shadow-sm px-2 py-1.5 z-10"
-      style={{ left: xPx, top: yCenter - 30, width: MERS_CALLOUT_WIDTH }}
+      style={{ left: xPx, top: yCenter - topOffset, width: MERS_CALLOUT_WIDTH }}
       role="note"
       aria-label={gap.rule_finding.title}
     >
@@ -32,6 +38,14 @@ export function MersCallout({ gap, xPx, yCenter }: Props) {
           {gap.releaser}
         </span>
       </div>
+      {hasVia && (
+        <div
+          className="mt-1 text-[9px] text-slate-500 italic truncate"
+          title={`Release servicing-agent: ${gap.via}`}
+        >
+          via {gap.via}
+        </div>
+      )}
     </div>
   );
 }

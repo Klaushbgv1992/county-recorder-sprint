@@ -191,7 +191,11 @@ export function Swimlane(props: Props) {
   const nodes = groupSameDayInstruments([rootInst, ...trackChildren]);
 
   const findings = props.findings;
-  const mersGap = detectMersGap(rootInst.instrument_number, findings);
+  const mersGap = detectMersGap(
+    rootInst.instrument_number,
+    findings,
+    trackChildren,
+  );
 
   const domain = props.domain;
   const widthPx = props.trackWidthPx;
