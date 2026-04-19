@@ -31,7 +31,7 @@ export function AccountLayout() {
   }
 
   return (
-    <div className="max-w-6xl mx-auto flex gap-8 px-6 py-8">
+    <div className="flex gap-8 px-6 py-8">
       <nav className="w-56 shrink-0">
         <div className="sticky top-4">
           <p className="mb-2 px-3 text-[10px] font-semibold uppercase tracking-widest text-slate-400">
@@ -68,7 +68,7 @@ export function AccountLayout() {
           </ul>
         </div>
       </nav>
-      <main className="flex-1 min-w-0">
+      <main className="flex-1 min-w-0 max-w-5xl">
         <Outlet />
       </main>
     </div>
