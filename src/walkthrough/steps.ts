@@ -37,7 +37,7 @@ export const STEPS: WalkthroughStep[] = [
     heading: "Find the parcel",
     why: "Title work starts at the record. Search by APN, address, owner, or 11-digit instrument.",
     ctaLabel: "See cross-parcel party search →",
-    path: `/?tour=${TOUR_PARAM_VALUE}&step=1`,
+    path: `/search?tour=${TOUR_PARAM_VALUE}&step=1`,
   },
   {
     step: 2,

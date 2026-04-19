@@ -61,7 +61,7 @@ export function AppHeader() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-4 ml-4 text-xs font-medium text-slate-500">
-          <HeaderLink to="/" end>
+          <HeaderLink to="/search">
             Search
           </HeaderLink>
           <HeaderLink to="/county-activity">Bring-down</HeaderLink>

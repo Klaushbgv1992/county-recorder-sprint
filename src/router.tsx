@@ -19,6 +19,7 @@ import { AccountStatutoryNotices } from "./components/account/AccountStatutoryNo
 import { AccountRecordsRequest } from "./components/account/AccountRecordsRequest";
 import { AccountCommitments } from "./components/account/AccountCommitments";
 import { LandingPage } from "./components/LandingPage";
+import { SearchPage } from "./components/SearchPage";
 import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
@@ -450,6 +451,11 @@ export const routes: RouteObject[] = [
       {
         element: <AppShell />,
         children: [
+          {
+            id: "search",
+            path: "search",
+            element: <SearchPage />,
+          },
           {
             id: "chain",
             path: "parcel/:apn",

@@ -11,7 +11,7 @@ export function AppShell() {
   const selectedApn = params.apn ?? null;
   const { mode, toggle } = useTerminology();
 
-  const matchSearch = useMatch("/");
+  const matchSearch = useMatch("/search");
   const matchChain = useMatch("/parcel/:apn");
   const matchChainInstrument = useMatch(
     "/parcel/:apn/instrument/:instrumentNumber",
@@ -49,7 +49,7 @@ export function AppShell() {
         </div>
         <TermSection id="nav">
           <Link
-            to="/"
+            to="/search"
             className={`px-3 py-1 rounded text-sm transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 ${onSearch ? "bg-recorder-100 text-recorder-700 font-medium" : "text-gray-600 hover:text-gray-900"}`}
           >
             Search
@@ -105,7 +105,7 @@ export function AppShell() {
                 {parcelData.parcel.address} &middot; APN <span className="font-mono">{parcelData.parcel.apn}</span>
               </span>
               <Link
-                to="/"
+                to="/search"
                 className="text-recorder-500 hover:text-recorder-700 hover:underline transition-colors duration-150 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-moat-500"
               >
                 &larr; Search another parcel
