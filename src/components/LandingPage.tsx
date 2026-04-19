@@ -301,7 +301,7 @@ export function LandingPage() {
             to="/county-activity"
             className="hover:text-recorder-900 hover:underline underline-offset-2"
           >
-            County activity
+            Bring-down watch
           </Link>
           <span aria-hidden="true" className="text-slate-300">·</span>
           <Link

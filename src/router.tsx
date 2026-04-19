@@ -23,7 +23,7 @@ import { ChainOfTitle } from "./components/ChainOfTitle";
 import { EncumbranceLifecycle } from "./components/EncumbranceLifecycle";
 import { ProofDrawer } from "./components/ProofDrawer";
 import { MoatCompareRoute } from "./components/MoatCompareRoute";
-import { ActivityHeatMap } from "./components/ActivityHeatMap";
+import { BringDownPage } from "./components/BringDownPage";
 import { WhyPage } from "./components/WhyPage";
 import { EnterprisePage } from "./components/EnterprisePage";
 import { CustodianQueryPage } from "./pages/CustodianQueryPage";
@@ -443,7 +443,7 @@ export const routes: RouteObject[] = [
     element: <RootLayout />,
     children: [
       { path: "/", element: <LandingPage /> },
-      { path: "/county-activity", element: <ActivityHeatMap /> },
+      { path: "/county-activity", element: <BringDownPage /> },
       { path: "/why", id: "why-page", element: <WhyPage /> },
       { path: "/enterprise", id: "enterprise-page", element: <EnterprisePage /> },
       { path: "/custodian-query", id: "custodian-query-page", element: <CustodianQueryPage /> },

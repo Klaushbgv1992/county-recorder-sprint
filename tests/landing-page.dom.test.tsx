@@ -66,7 +66,7 @@ describe("LandingPage", () => {
 
   it("renders link to /county-activity", () => {
     render(wrap(<LandingPage />));
-    const activityLink = screen.getByRole("link", { name: /county activity/i });
+    const activityLink = screen.getByRole("link", { name: /bring-down watch/i });
     expect(activityLink).toHaveAttribute("href", "/county-activity");
   });
 
