@@ -6,6 +6,7 @@ import subdivisionPlats from "../data/subdivision-plats.json";
 import adjacentParcels from "../data/adjacent-parcels.json";
 import {
   markerForInstrument,
+  polygonCentroid,
   titleForIcon,
   type MarkerInput,
   type MarkerPosition,
@@ -94,6 +95,12 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
       .filter((m): m is MarkerPosition => m !== null);
   }, [subdivisionId, subdivision]);
 
+  const subjectCenter = useMemo((): [number, number] | null => {
+    const geom = subject?.geometry;
+    if (geom?.type !== "Polygon") return null;
+    return polygonCentroid(geom as GeoJSON.Polygon);
+  }, [subject]);
+
   function toggle() {
     const next = !collapsed;
     setCollapsed(next);
@@ -153,9 +160,10 @@ export function SpatialContextPanel({ apn }: SpatialContextPanelProps) {
 
       <div className="flex-1 min-h-[320px] relative">
             <Map
+              key={apn}
               initialViewState={{
-                longitude: -111.7225,
-                latitude: 33.2471,
+                longitude: subjectCenter?.[0] ?? -111.7225,
+                latitude: subjectCenter?.[1] ?? 33.2471,
                 zoom: 16,
               }}
               mapStyle="https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
