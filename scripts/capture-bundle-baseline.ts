@@ -24,7 +24,7 @@ const ROUTES_TO_TRACK = [
   "src/components/EncumbranceLifecycle.tsx",
   "src/components/ProofDrawer.tsx",
   "src/components/MoatCompareRoute.tsx",
-  "src/components/ActivityHeatMap.tsx",
+  "src/components/BringDownPage.tsx",
   "src/components/StaffWorkbench.tsx",
 ];
 

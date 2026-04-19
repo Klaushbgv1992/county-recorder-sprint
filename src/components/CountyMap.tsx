@@ -265,7 +265,7 @@ export function CountyMap({
 
   // Activity overlay intentionally omitted (spec 2026-04-15-landing-map §10):
   // - municipality-grained, not parcel-grained (unit mismatch on parcel-zoom)
-  // - already rendered at /county-activity (ActivityHeatMap)
+  // - the /county-activity route now serves Bring-Down Watch (per-parcel workflow), not aggregate activity
   // - freshness signal already covered by Terminal 3's verified-through banner
   // Future: parcel-grained activity belongs in the popup, not as global overlay.
 

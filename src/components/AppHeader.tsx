@@ -64,7 +64,7 @@ export function AppHeader() {
           <HeaderLink to="/" end>
             Search
           </HeaderLink>
-          <HeaderLink to="/county-activity">Activity</HeaderLink>
+          <HeaderLink to="/county-activity">Bring-down</HeaderLink>
           <HeaderLink to="/moat-compare">Compare vs. plant</HeaderLink>
           <HeaderLink to="/why">Why this matters</HeaderLink>
           <HeaderLink to="/enterprise">Enterprise</HeaderLink>
