@@ -22,14 +22,14 @@ describe("buildCommitment — POPHAM", () => {
   it("sets header fields from parcel + pipelineStatus", () => {
     expect(doc.header.parcelApn).toBe("304-78-386");
     expect(doc.header.parcelAddress).toContain("3674 E Palmer St");
-    expect(doc.header.verifiedThroughDate).toBe("2026-04-09");
+    expect(doc.header.verifiedThroughDate).toBe("2026-04-12");
     expect(doc.header.generatedAt).toBe(FIXED_GENERATED_AT);
     expect(doc.header.countyName).toBe("Maricopa County, AZ");
   });
 
   it("interpolates verified_through_date into header note", () => {
     expect(doc.header.headerNote).toContain("transaction-scoped");
-    expect(doc.header.headerNote).toContain("2026-04-09");
+    expect(doc.header.headerNote).toContain("2026-04-12");
   });
 
   it("populates Schedule A current owner and legal description", () => {

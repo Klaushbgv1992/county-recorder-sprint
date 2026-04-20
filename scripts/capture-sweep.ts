@@ -19,7 +19,6 @@
 import { mkdirSync, writeFileSync, readFileSync, existsSync } from "node:fs";
 import { resolve } from "node:path";
 import {
-  classifyPublicApiFailure,
   mcrRawToQueryResult,
   PARTIES,
   type McrRawResult,

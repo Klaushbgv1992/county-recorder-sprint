@@ -77,6 +77,7 @@ import inst20260141250 from "./data/instruments/20260141250.json";
 import inst20260162239 from "./data/instruments/20260162239.json";
 import linksRaw from "./data/links.json";
 import lifecyclesRaw from "./data/lifecycles.json";
+import pipelineStateRaw from "./data/pipeline-state.json";
 
 const instrumentsRaw = [
   inst20130183449,
@@ -173,6 +174,27 @@ export function loadAllInstruments(): Instrument[] {
   }));
 }
 
+// Derive the flat PipelineStatus shape (consumed across the app as a
+// parcel-scoped moat header) from the richer pipeline-state.json — single
+// source of truth. The curator-sign-off verified_through is the most
+// conservative guarantee, matches what CountyHeartbeat, PipelineBanner, and
+// every Schedule A/B-II header in the commitment export quote.
+function derivePipelineStatus(): PipelineStatus {
+  const stages = pipelineStateRaw.current.stages as Array<{
+    stage_id: string;
+    verified_through: string;
+  }>;
+  const curator = stages.find((s) => s.stage_id === "curator");
+  if (!curator) {
+    throw new Error("pipeline-state.json missing curator stage");
+  }
+  return {
+    verified_through_date: curator.verified_through,
+    current_stage: "published",
+    last_updated: pipelineStateRaw.current.as_of.slice(0, 10),
+  };
+}
+
 export function loadParcelDataByApn(apn: string): ParcelData {
   const parcels = loadAllParcels();
   const parcel = parcels.find((p) => p.apn === apn);
@@ -209,7 +231,7 @@ export function loadParcelDataByApn(apn: string): ParcelData {
     instruments,
     links,
     lifecycles,
-    pipelineStatus: lifecyclesFile.pipeline_status,
+    pipelineStatus: derivePipelineStatus(),
   };
 }
 

@@ -1,5 +1,14 @@
-// This module exports only routes + components + pure helpers so it can
-// be imported from vitest (no DOM). DOM-bound instantiation — i.e. the
+/* eslint-disable react-refresh/only-export-components --
+   Intentional: this is the routes file. It exports the `routes` array
+   alongside the route-level components that `routes` references. Splitting
+   them would force the components into a third file with a circular edge
+   between route table and component tree, with no runtime benefit. Fast
+   Refresh loses component-state preservation on edits to this file; in
+   practice the route file is edited rarely and HMR for route components
+   still works when editing the *leaf* components those routes render. */
+
+// This module exports only routes + components so it can be imported from
+// vitest (no DOM). DOM-bound instantiation — i.e. the
 // createBrowserRouter(routes) call — lives in main.tsx. Do not move it
 // back here without breaking the routing test suite.
 
@@ -7,8 +16,6 @@ import type { ReactNode } from "react";
 import { useEffect, useMemo } from "react";
 import { Link, useLocation, useNavigate, useParams } from "react-router";
 import type { RouteObject } from "react-router";
-import type { Parcel } from "./types";
-import { searchParcels } from "./logic/search";
 import { AppShell } from "./App";
 import { AccountLayout } from "./components/account/AccountLayout";
 import { AccountDashboard } from "./components/account/AccountDashboard";
@@ -50,35 +57,7 @@ import { useDocumentMeta } from "./hooks/useDocumentMeta";
 import { NotInCorpusParcel } from "./components/EmptyStates";
 import { RootLayout } from "./components/RootLayout";
 import { detectAnomalies } from "./logic/anomaly-detector";
-
-/**
- * Resolve a bare 11-digit instrument number to the APN of the single
- * parcel that owns it. Returns null when the input isn't an 11-digit
- * number, or when no parcel in the corpus owns the instrument.
- */
-export function resolveInstrumentToApn(
-  instrumentNumber: string,
-  parcels: Parcel[],
-): string | null {
-  const results = searchParcels(instrumentNumber, parcels);
-  if (results.length !== 1) return null;
-  const only = results[0];
-  if (only.matchType !== "instrument") return null;
-  return only.parcel.apn;
-}
-
-/**
- * Target URL for the /instrument/:n redirect, or null when the
- * instrument can't be attributed to a single parcel. Pure function so
- * the resolver component is a trivial wrapper around it + navigate().
- */
-export function redirectTargetForInstrument(
-  instrumentNumber: string,
-  parcels: Parcel[],
-): string | null {
-  const apn = resolveInstrumentToApn(instrumentNumber, parcels);
-  return apn ? `/parcel/${apn}/instrument/${instrumentNumber}` : null;
-}
+import { redirectTargetForInstrument } from "./router-helpers";
 
 
 function SplitPane({
@@ -250,7 +229,7 @@ function ChainRouteInner({ apn }: { apn: string }) {
 function EncumbranceRoute() {
   return (
     <ParcelGuard>
-      {(apn) => <EncumbranceRouteInner apn={apn} />}
+      {(apn) => <EncumbranceRouteInner key={apn} apn={apn} />}
     </ParcelGuard>
   );
 }

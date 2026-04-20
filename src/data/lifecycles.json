@@ -1,8 +1,9 @@
 {
+  "_pipeline_status_note": "Historical — runtime pipelineStatus is now derived from pipeline-state.json so the landing heartbeat and per-parcel headers quote the same verified-through date. Field retained only to satisfy the LifecyclesFile schema; data-loader.ts ignores it.",
   "pipeline_status": {
-    "verified_through_date": "2026-04-09",
+    "verified_through_date": "2026-04-12",
     "current_stage": "published",
-    "last_updated": "2026-04-09"
+    "last_updated": "2026-04-16"
   },
   "lifecycles": [
     {
@@ -41,7 +42,8 @@
       ],
       "status": "released",
       "status_rationale": "Seville Parcel 3 subdivision encumbrances. Root plat (20010093192, Book 554 Maps Page 19) dedicates public utility easements, HOA-maintained tracts, and building setbacks that run with the land and bind every lot in the subdivision including POPHAM's Lot 46. The 2001-09-17 Affidavit of Correction (20010849180) by the subdivision's registered land surveyor is a modification_of the plat — it cures the erroneous HOA-signature-block requirement and is cross-referenced in every downstream deed's legal description. Marked 'released' in the sense that the plat's one open loose-end (the HOA signature gap) was itself cured of record.",
-      "examiner_override": null
+      "examiner_override": null,
+      "scope": "subdivision"
     },
     {
       "id": "lc-005",

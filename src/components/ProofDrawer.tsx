@@ -8,7 +8,15 @@ import type {
   ProvenanceKind,
 } from "../types";
 import { formatCitation } from "../logic/citation-formatter";
-import { getGrantors, getGrantees, getTrustors, getLenders, getReleasingParties } from "../logic/party-roles";
+import {
+  getGrantors,
+  getGrantees,
+  getTrustors,
+  getLenders,
+  getReleasingParties,
+  getPartiesByRole,
+  aggregatePartyProvenance,
+} from "../logic/party-roles";
 import { ProvenanceTag } from "./ProvenanceTag";
 import { getExtractionTrace } from "../logic/extraction-trace";
 import { AiExtractionPanel } from "./AiExtractionPanel";
@@ -66,6 +74,7 @@ export function ProofDrawer({
 }: Props) {
   const [showCorpusTotals, setShowCorpusTotals] = useState(false);
   const [showAiExtraction, setShowAiExtraction] = useState(false);
+  const [imageBroken, setImageBroken] = useState(false);
   const [highlightedFieldId, setHighlightedFieldId] = useState<string | null>(
     null,
   );
@@ -98,13 +107,18 @@ export function ProofDrawer({
   }, []);
 
   // Reset highlight when the instrument changes so stale pulses don't leak
-  // across drawers.
-  useEffect(() => {
-    if (highlightTimerRef.current) {
-      clearTimeout(highlightTimerRef.current);
-      highlightTimerRef.current = null;
-    }
+  // across drawers. State reset uses the "adjust state during rendering"
+  // pattern; the ref-timer clear lives in the cleanup of an effect (refs
+  // must not be read or mutated during render).
+  const [lastInstrumentNumber, setLastInstrumentNumber] = useState(
+    instrument.instrument_number,
+  );
+  if (lastInstrumentNumber !== instrument.instrument_number) {
+    setLastInstrumentNumber(instrument.instrument_number);
     setHighlightedFieldId(null);
+    setImageBroken(false);
+  }
+  useEffect(() => {
     return () => {
       if (highlightTimerRef.current) {
         clearTimeout(highlightTimerRef.current);
@@ -138,11 +152,20 @@ export function ProofDrawer({
     mono?: boolean;
   };
   const primaryFields: PrimaryField[] = [];
+  const grantorProv = aggregatePartyProvenance(getPartiesByRole(instrument, "grantor"));
+  const granteeProv = aggregatePartyProvenance(getPartiesByRole(instrument, "grantee"));
+  const trustorProv = aggregatePartyProvenance(getPartiesByRole(instrument, "trustor"));
+  const lenderProv = aggregatePartyProvenance(getPartiesByRole(instrument, "lender"));
+  const releasingProv = aggregatePartyProvenance(
+    getPartiesByRole(instrument, "releasing_party"),
+  );
   if (grantors.length > 0) {
     primaryFields.push({
       id: "grantor",
       label: <Term professional="Grantor" />,
       value: grantors.join("; "),
+      provenance: grantorProv?.provenance,
+      confidence: grantorProv?.confidence,
     });
   }
   if (grantees.length > 0) {
@@ -150,6 +173,8 @@ export function ProofDrawer({
       id: "grantee",
       label: <Term professional="Grantee" />,
       value: grantees.join("; "),
+      provenance: granteeProv?.provenance,
+      confidence: granteeProv?.confidence,
     });
   }
   if (trustors.length > 0) {
@@ -157,6 +182,8 @@ export function ProofDrawer({
       id: "trustor",
       label: <Term professional="Trustor/Borrower" />,
       value: trustors.join("; "),
+      provenance: trustorProv?.provenance,
+      confidence: trustorProv?.confidence,
     });
   }
   if (lenders.length > 0) {
@@ -164,6 +191,8 @@ export function ProofDrawer({
       id: "lender",
       label: "Lender",
       value: lenders.join("; "),
+      provenance: lenderProv?.provenance,
+      confidence: lenderProv?.confidence,
     });
   }
   if (releasingParties.length > 0) {
@@ -171,12 +200,20 @@ export function ProofDrawer({
       id: "releasing-party",
       label: "Releasing Party",
       value: releasingParties.join("; "),
+      provenance: releasingProv?.provenance,
+      confidence: releasingProv?.confidence,
     });
   }
+  // Recording date is always public_api — it comes from the county index
+  // metadata, not the document body.
   primaryFields.push({
     id: "recording-date",
     label: "Recording Date",
     value: instrument.recording_date,
+    provenance: instrument.raw_api_response.synthesized
+      ? "demo_synthetic"
+      : "public_api",
+    confidence: 1,
   });
   if (instrument.legal_description) {
     primaryFields.push({
@@ -350,21 +387,18 @@ export function ProofDrawer({
                   className="w-full h-full min-h-[600px] bg-white"
                   title={`Document ${instrument.instrument_number}`}
                 />
+              ) : imageBroken ? (
+                <div className="text-center text-gray-400 py-12">
+                  Image not available
+                </div>
               ) : (
                 <img
                   src={instrument.source_image_path}
                   alt={`Document ${instrument.instrument_number}`}
                   className="w-full shadow-md bg-white"
-                  onError={(e) => {
-                    const img = e.target as HTMLImageElement;
-                    img.style.display = "none";
-                    img.insertAdjacentHTML(
-                    "afterend",
-                    '<div class="text-center text-gray-400 py-12">Image not available</div>',
-                  );
-                }}
-              />
-            )
+                  onError={() => setImageBroken(true)}
+                />
+              )
             ) : (
               <div className="flex items-center justify-center h-full text-gray-400">
                 <div className="text-center">

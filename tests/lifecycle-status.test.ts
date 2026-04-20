@@ -113,6 +113,69 @@ describe("computeLifecycleStatus", () => {
     ];
     const result = computeLifecycleStatus(rootDot, [], links);
     expect(result.status).toBe("unresolved");
+    expect(result.status_rationale).toContain("rejected by examiner");
+  });
+
+  it("returns 'unresolved' when ALL of multiple release candidates are rejected", () => {
+    // Exercises the rejectedAll branch (every(...) === true) specifically with
+    // multiple candidates to distinguish it from the single-rejected case.
+    const links: DocumentLink[] = [
+      {
+        id: "link-001",
+        source_instrument: "20230002000",
+        target_instrument: "20210001000",
+        link_type: "release_of",
+        provenance: "ocr",
+        confidence: 0.4,
+        examiner_action: "rejected",
+      },
+      {
+        id: "link-002",
+        source_instrument: "20230002001",
+        target_instrument: "20210001000",
+        link_type: "release_of",
+        provenance: "algorithmic",
+        confidence: 0.35,
+        examiner_action: "rejected",
+      },
+      {
+        id: "link-003",
+        source_instrument: "20230002002",
+        target_instrument: "20210001000",
+        link_type: "release_of",
+        provenance: "ocr",
+        confidence: 0.3,
+        examiner_action: "rejected",
+      },
+    ];
+    const result = computeLifecycleStatus(rootDot, [], links);
+    expect(result.status).toBe("unresolved");
+  });
+
+  it("returns 'possible_match' (NOT unresolved) when one rejected + one pending — rejectedAll must be strict", () => {
+    const links: DocumentLink[] = [
+      {
+        id: "link-001",
+        source_instrument: "20230002000",
+        target_instrument: "20210001000",
+        link_type: "release_of",
+        provenance: "ocr",
+        confidence: 0.4,
+        examiner_action: "rejected",
+      },
+      {
+        id: "link-002",
+        source_instrument: "20230002001",
+        target_instrument: "20210001000",
+        link_type: "release_of",
+        provenance: "ocr",
+        confidence: 0.75,
+        examiner_action: "pending",
+      },
+    ];
+    const result = computeLifecycleStatus(rootDot, [], links);
+    expect(result.status).toBe("possible_match");
+    expect(result.status_rationale).toContain("20230002001");
   });
 
   it("returns 'open' when only assignments exist, no release", () => {

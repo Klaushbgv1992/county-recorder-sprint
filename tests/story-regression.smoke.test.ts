@@ -22,7 +22,6 @@ describe("story-view regression: no naive-pluralization artifacts", () => {
       const hero = renderHero(parcel, instruments, null);
       const timeline = renderTimeline(instruments, ctx, null);
       const allProse = [hero.oneLiner, ...timeline.map((b) => b.prose)].join("\n");
-      // eslint-disable-next-line no-console
       console.log(`\n=== ${apn} ===\nHERO: ${hero.oneLiner}`);
       for (const b of timeline) console.log(`  - ${b.prose}`);
       for (const re of FORBIDDEN) {

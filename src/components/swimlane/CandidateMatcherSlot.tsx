@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import type {
   Parcel,
   Instrument,
@@ -34,21 +34,23 @@ interface Props {
 }
 
 export function CandidateMatcherSlot(props: Props) {
-  const [forceExpanded, setForceExpanded] = useState(false);
+  const [userExpanded, setUserExpanded] = useState(false);
+  const [walkthroughLatched, setWalkthroughLatched] = useState(false);
   const { currentStep } = useWalkthrough();
 
   // When the examiner walkthrough is on step 4 and we're the hero lifecycle's
   // matcher, auto-expand so a scanning reviewer cannot miss the evidence —
   // the collapsed-pill default is fine during normal use but buries the
-  // money moment of the tour.
-  useEffect(() => {
-    if (
-      currentStep?.step === 4 &&
-      props.lifecycleId === WALKTHROUGH_HERO_LIFECYCLE_ID
-    ) {
-      setForceExpanded(true);
-    }
-  }, [currentStep?.step, props.lifecycleId]);
+  // money moment of the tour. Latched in state so the panel stays open even
+  // after the walkthrough advances past step 4.
+  const shouldLatch =
+    currentStep?.step === 4 &&
+    props.lifecycleId === WALKTHROUGH_HERO_LIFECYCLE_ID;
+  if (shouldLatch && !walkthroughLatched) {
+    setWalkthroughLatched(true);
+  }
+  const forceExpanded = userExpanded || walkthroughLatched;
+  const setForceExpanded = setUserExpanded;
 
   const { rows, total, aboveThresholdCount } = useMemo(
     () =>

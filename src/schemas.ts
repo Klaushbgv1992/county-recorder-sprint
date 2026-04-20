@@ -192,6 +192,8 @@ export const LifecycleStatus = z.enum([
   "possible_match",
 ]);
 
+export const LifecycleScope = z.enum(["parcel", "subdivision"]);
+
 export const EncumbranceLifecycle = z.object({
   id: z.string(),
   root_instrument: z.string(),
@@ -199,6 +201,12 @@ export const EncumbranceLifecycle = z.object({
   status: LifecycleStatus,
   status_rationale: z.string(),
   examiner_override: LifecycleStatus.nullable(),
+  // Scope of the encumbrance. "parcel" is the default implicit behavior —
+  // the lifecycle affects this parcel only. "subdivision" means the
+  // encumbrance binds every lot in the subdivision (plat dedications,
+  // subdivision-wide HOA covenants). UI distinguishes them so examiners
+  // don't read a shared plat defect as a parcel-specific finding.
+  scope: LifecycleScope.optional(),
 });
 
 // -- Pipeline Status (county moat) --

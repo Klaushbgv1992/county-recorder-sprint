@@ -83,7 +83,7 @@ describe("triggerCommitmentDownload", () => {
       download,
     });
     const [, filename] = download.mock.calls[0];
-    expect(filename).toBe("commitment-30478386-2026-04-09.pdf");
+    expect(filename).toBe("commitment-30478386-2026-04-12.pdf");
   });
 });
 

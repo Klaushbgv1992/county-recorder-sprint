@@ -104,7 +104,7 @@ describe("MoatCompareRoute row content", () => {
     const row5 = document.querySelector('[data-row-id="row-5"]') as HTMLElement;
     expect(row5).not.toBeNull();
     expect(row5.textContent).toMatch(/Records verified through/);
-    expect(row5.textContent).toMatch(/2026-04-09/);
+    expect(row5.textContent).toMatch(/2026-04-12/);
   });
 
   it("renders the 4 new moat claim rows", () => {

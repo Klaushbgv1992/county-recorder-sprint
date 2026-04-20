@@ -110,7 +110,7 @@ Residential title examiner / abstractor
 
 ## Schema Notes (pre-Phase 3)
 - Grantor/grantee provenance is ALWAYS `manual_entry` for Maricopa data (flat names[] in API)
-- Legal description provenance is ALWAYS `manual_entry` or `ai_extraction` (not in structured data)
+- Legal description provenance is ALWAYS `manual_entry` or `ocr` (not in structured data). The schema enum `ProvenanceKind` is `public_api` | `ocr` | `manual_entry` | `algorithmic` | `demo_synthetic` — `algorithmic` for engine-derived values, `demo_synthetic` for chain-extension fixtures without a real recorded source.
 - No APN cross-reference in recorder — assessor bridge is manual curation
 - Schema update deferred to Phase 3 Task 3.2
 

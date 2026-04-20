@@ -1,4 +1,4 @@
-import type { Instrument, Party } from "../types";
+import type { Instrument, Party, ProvenanceKind } from "../types";
 
 /**
  * Role-based party accessors for Instrument.parties[].
@@ -74,4 +74,42 @@ export function getClaimants(instrument: Instrument): string[] {
 
 export function getDebtors(instrument: Instrument): string[] {
   return namesByRole(instrument.parties, "debtor");
+}
+
+// Trust ordering for aggregating mixed-provenance rows — lowest-trust wins so
+// a single hand-curated party downgrades a row's displayed tag. Keeps the
+// "every displayed field shows the weakest source that contributed to it"
+// invariant examiners rely on during review.
+const PROVENANCE_TRUST_ORDER: ProvenanceKind[] = [
+  "demo_synthetic",
+  "manual_entry",
+  "algorithmic",
+  "ocr",
+  "public_api",
+];
+
+export interface AggregatedProvenance {
+  provenance: ProvenanceKind;
+  confidence: number;
+}
+
+/**
+ * Returns the weakest provenance and minimum confidence across the given
+ * parties. Returns null for an empty list so callers can skip rendering.
+ */
+export function aggregatePartyProvenance(
+  parties: Party[],
+): AggregatedProvenance | null {
+  if (parties.length === 0) return null;
+  let weakestIdx = PROVENANCE_TRUST_ORDER.length - 1;
+  let minConfidence = 1;
+  for (const p of parties) {
+    const idx = PROVENANCE_TRUST_ORDER.indexOf(p.provenance);
+    if (idx !== -1 && idx < weakestIdx) weakestIdx = idx;
+    if (p.confidence < minConfidence) minConfidence = p.confidence;
+  }
+  return {
+    provenance: PROVENANCE_TRUST_ORDER[weakestIdx],
+    confidence: minConfidence,
+  };
 }

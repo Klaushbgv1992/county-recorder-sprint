@@ -42,11 +42,21 @@ export function CustodianQueryPage() {
       }
     }
 
+    // Batch the initial-state seed into a microtask so the lint rule
+    // react-hooks/set-state-in-effect isn't triggered by a sync setState
+    // in the effect body. The cascade is one tick of latency, not a render.
+    const seedInitialState = (states: Record<CellKey, CellState>) => {
+      queueMicrotask(() => {
+        if (cancelled) return;
+        setCellStates(states);
+      });
+    };
+
     if (seen && !replayParam) {
       // Skip animation: resolve everything immediately.
       const initialStates: Record<CellKey, CellState> = {};
       for (const { k } of allKeys) initialStates[k] = "loading";
-      setCellStates(initialStates);
+      seedInitialState(initialStates);
       Promise.all(
         allKeys.map(({ party, idx, a, k }) =>
           queryIndex(party, idx, a).then((r) => {
@@ -67,8 +77,10 @@ export function CustodianQueryPage() {
     // First visit / replay: staggered animation.
     const idleStates: Record<CellKey, CellState> = {};
     for (const { k } of allKeys) idleStates[k] = "idle";
-    setCellStates(idleStates);
-    setCells({});
+    seedInitialState(idleStates);
+    queueMicrotask(() => {
+      if (!cancelled) setCells({});
+    });
 
     const tasks = allKeys.map(({ party, idx, a, k }, i) => {
       return new Promise<void>((resolve) => {

@@ -6,8 +6,8 @@ import { loadAllParcels } from "../src/data-loader";
 import {
   redirectTargetForInstrument,
   resolveInstrumentToApn,
-  routes,
-} from "../src/router";
+} from "../src/router-helpers";
+import { routes } from "../src/router";
 import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 // LandingPage (now at /) renders CountyMap which uses react-map-gl/maplibre.

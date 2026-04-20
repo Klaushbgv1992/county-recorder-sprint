@@ -115,12 +115,18 @@ export function Swimlane(props: Props) {
   // (+100ms slack) so a fast second acceptance still re-fires cleanly.
   const acceptedNumber = props.acceptedCandidate?.instrumentNumber ?? null;
   const [justAcceptedId, setJustAcceptedId] = useState<string | null>(null);
+  const [lastAcceptedNumber, setLastAcceptedNumber] = useState<string | null>(
+    null,
+  );
+  if (acceptedNumber !== lastAcceptedNumber) {
+    setLastAcceptedNumber(acceptedNumber);
+    if (acceptedNumber) setJustAcceptedId(acceptedNumber);
+  }
   useEffect(() => {
-    if (!acceptedNumber) return;
-    setJustAcceptedId(acceptedNumber);
+    if (!justAcceptedId) return;
     const handle = window.setTimeout(() => setJustAcceptedId(null), 700);
     return () => window.clearTimeout(handle);
-  }, [acceptedNumber]);
+  }, [justAcceptedId]);
 
   const instrumentMap = useMemo(
     () => new Map(props.instruments.map((i) => [i.instrument_number, i])),
@@ -241,6 +247,14 @@ export function Swimlane(props: Props) {
           <span id={`${props.lifecycle.id}-title`} className="font-semibold text-slate-800">
             {t(rootLabel(rootInst.document_type, rootInst.document_type_raw))}: <span className="font-mono">{rootInst.instrument_number}</span>
           </span>
+          {props.lifecycle.scope === "subdivision" && (
+            <span
+              className="inline-flex items-center rounded-full bg-indigo-50 px-2 py-0.5 text-[11px] font-medium text-indigo-800 ring-1 ring-indigo-200"
+              title="Binds every lot in the subdivision (plat dedications, HOA covenants). Not a parcel-specific finding."
+            >
+              Subdivision-wide
+            </span>
+          )}
           <span className="text-[11px] text-slate-500 truncate">
             {props.lifecycle.id}
           </span>

@@ -173,15 +173,8 @@ export function LandingPage() {
         m.set(num, p.apn);
       }
     }
-    // Also pick up any instruments loaded directly (belt-and-suspenders)
-    for (const inst of allInstruments) {
-      if (!m.has(inst.instrument_number)) {
-        // Use the first parcel that owns this instrument (already mapped above)
-        // If not found via parcels, skip — no parcel_apn on Instrument type.
-      }
-    }
     return m;
-  }, [allInstruments]);
+  }, []);
 
   return (
     <main className="flex min-h-screen flex-col bg-slate-50">

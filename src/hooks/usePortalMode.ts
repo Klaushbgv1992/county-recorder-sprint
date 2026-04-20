@@ -1,5 +1,5 @@
 // src/hooks/usePortalMode.ts
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { useSearchParams } from "react-router";
 
 export type PortalMode = "homeowner" | "examiner";
@@ -22,13 +22,15 @@ export function usePortalMode(): { mode: PortalMode; setMode: (m: PortalMode) =>
   const fromUrl = readParam(params);
   const [stored, setStored] = useState<PortalMode | null>(() => readStorage());
 
-  // Keep stored in sync with localStorage when the URL changes persistence intent.
-  useEffect(() => {
-    if (fromUrl && fromUrl !== stored) {
+  // Keep stored in sync with localStorage when the URL changes persistence
+  // intent. Uses React's "adjust state during rendering" pattern — setState
+  // inside render is cheaper than an effect and avoids cascading renders.
+  if (fromUrl && fromUrl !== stored) {
+    if (typeof window !== "undefined") {
       window.localStorage.setItem(STORAGE_KEY, fromUrl);
-      setStored(fromUrl);
     }
-  }, [fromUrl, stored]);
+    setStored(fromUrl);
+  }
 
   const mode: PortalMode = fromUrl ?? stored ?? "homeowner";
 
@@ -48,7 +50,7 @@ export function usePortalMode(): { mode: PortalMode; setMode: (m: PortalMode) =>
       },
       { replace: true },
     );
-  }, [setParams]);
+  }, [setParams, setStored]);
 
   return { mode, setMode };
 }
