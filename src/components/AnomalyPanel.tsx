@@ -2,6 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router";
 import type { AnomalyFinding, Severity } from "../types/anomaly";
 import { NoAnomaliesFound } from "./EmptyStates";
+import { useTerminology } from "../terminology/TerminologyContext";
 
 // Severity color mapping. No shared severity→class file exists in the project
 // (StatusBadge.tsx uses per-status inline mappings, lifecycle-status.ts only
@@ -34,6 +35,7 @@ function SeverityPill({ severity }: { severity: Severity }) {
 }
 
 export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
+  const { t } = useTerminology();
   const [expanded, setExpanded] = useState(false);
 
   if (findings.length === 0) {
@@ -48,8 +50,8 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
   };
   for (const f of findings) counts[f.severity]++;
 
-  const totalLabel =
-    findings.length === 1 ? "1 anomaly" : `${findings.length} anomalies`;
+  const anomalyWord = findings.length === 1 ? t("anomaly") : t("anomalies");
+  const totalLabel = `${findings.length} ${anomalyWord}`;
 
   return (
     <div className="bg-white border border-gray-200 rounded-lg mb-4 overflow-hidden">
@@ -96,7 +98,7 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
               <p className="text-sm text-gray-700 mb-2">{f.description}</p>
               {f.evidence_instruments.length > 0 && (
                 <p className="text-xs text-gray-600 mb-1">
-                  <span className="font-medium">Evidence:</span>{" "}
+                  <span className="font-medium">{t("Evidence")}:</span>{" "}
                   {f.evidence_instruments.map((num, i) => (
                     <span key={num}>
                       {i > 0 && ", "}
@@ -111,7 +113,7 @@ export function AnomalyPanel({ findings, apn }: AnomalyPanelProps) {
                 </p>
               )}
               <p className="text-xs text-gray-700 mb-1">
-                <span className="font-medium">Examiner action:</span>{" "}
+                <span className="font-medium">{t("Examiner action")}:</span>{" "}
                 {f.examiner_action}
               </p>
               <p className="text-[11px] text-gray-400">

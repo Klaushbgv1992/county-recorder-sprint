@@ -24,6 +24,7 @@ import { ExportCommitmentButton } from "./ExportCommitmentButton";
 import { FlagInstrumentButton } from "./account/FlagInstrumentButton";
 import { LegalDescription } from "./LegalDescription";
 import { Term, TermSection } from "../terminology/Term";
+import { useTerminology } from "../terminology/TerminologyContext";
 
 const COUNTY_NAME = "Maricopa County, AZ";
 
@@ -81,6 +82,7 @@ export function ProofDrawer({
   const highlightTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const [copied, setCopied] = useState(false);
   const copiedTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const { t } = useTerminology();
   const citation = formatCitation(instrument, COUNTY_NAME);
   const extractionTrace = getExtractionTrace(instrument.instrument_number);
 
@@ -189,7 +191,7 @@ export function ProofDrawer({
   if (lenders.length > 0) {
     primaryFields.push({
       id: "lender",
-      label: "Lender",
+      label: <Term professional="Lender" />,
       value: lenders.join("; "),
       provenance: lenderProv?.provenance,
       confidence: lenderProv?.confidence,
@@ -198,7 +200,7 @@ export function ProofDrawer({
   if (releasingParties.length > 0) {
     primaryFields.push({
       id: "releasing-party",
-      label: "Releasing Party",
+      label: <Term professional="Releasing Party" />,
       value: releasingParties.join("; "),
       provenance: releasingProv?.provenance,
       confidence: releasingProv?.confidence,
@@ -208,7 +210,7 @@ export function ProofDrawer({
   // metadata, not the document body.
   primaryFields.push({
     id: "recording-date",
-    label: "Recording Date",
+    label: <Term professional="Recording Date" />,
     value: instrument.recording_date,
     provenance: instrument.raw_api_response.synthesized
       ? "demo_synthetic"
@@ -218,7 +220,7 @@ export function ProofDrawer({
   if (instrument.legal_description) {
     primaryFields.push({
       id: "legal-description",
-      label: "Legal Description",
+      label: <Term professional="Legal Description" />,
       value: instrument.legal_description.value,
       valueNode: (
         <LegalDescription
@@ -234,7 +236,7 @@ export function ProofDrawer({
   if (instrument.back_references.length > 0) {
     primaryFields.push({
       id: "back-references",
-      label: "Back References",
+      label: <Term professional="Back References" />,
       value: instrument.back_references.join(", "),
     });
   }
@@ -322,7 +324,7 @@ export function ProofDrawer({
                   <path d="M5 15V5a2 2 0 0 1 2-2h10" />
                 </svg>
               )}
-              {copied ? "Copied" : "Copy Citation"}
+              {copied ? "Copied" : t("Copy Citation")}
             </button>
             <button
               onClick={onClose}
@@ -421,7 +423,7 @@ export function ProofDrawer({
             )}
             <TermSection id="proof-extracted-fields">
             <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
-              Extracted Fields
+              {t("Extracted Fields")}
             </h4>
 
             <div
@@ -449,7 +451,7 @@ export function ProofDrawer({
             {extractedEntries.length > 0 && (
               <>
                 <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
-                  Additional Fields
+                  {t("Additional Fields")}
                 </h4>
                 <div
                   key={`extra-${instrument.instrument_number}`}
@@ -507,7 +509,7 @@ export function ProofDrawer({
             {instrument.mers_note && (
               <div className="bg-amber-50 border border-amber-200 rounded p-3 mb-6">
                 <span className="text-xs font-medium text-amber-800">
-                  MERS Note:
+                  {t("MERS Note")}:
                 </span>
                 <p className="text-xs text-amber-700 mt-1">
                   {instrument.mers_note}
@@ -519,7 +521,7 @@ export function ProofDrawer({
             {links.length > 0 && (
               <>
                 <h4 className="text-sm font-semibold text-gray-600 uppercase tracking-wide mb-3">
-                  Related Instruments
+                  {t("Related Instruments")}
                 </h4>
                 <div className="space-y-2">
                   {links.map((link) => (

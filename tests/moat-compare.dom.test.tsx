@@ -3,11 +3,14 @@ import { render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom/vitest";
 import { MemoryRouter } from "react-router";
 import { MoatCompareRoute } from "../src/components/MoatCompareRoute";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 
 function renderRoute() {
   return render(
     <MemoryRouter initialEntries={["/moat-compare"]}>
-      <MoatCompareRoute />
+      <TerminologyProvider>
+        <MoatCompareRoute />
+      </TerminologyProvider>
     </MemoryRouter>,
   );
 }

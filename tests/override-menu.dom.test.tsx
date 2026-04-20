@@ -61,7 +61,7 @@ describe("OverrideMenu behavior", () => {
     expect(menu).toBeInTheDocument();
 
     // Click the "released" override option
-    const releasedBtn = within(menu).getByRole("button", { name: "released" });
+    const releasedBtn = within(menu).getByRole("button", { name: /released/i });
     await user.click(releasedBtn);
 
     expect(onSetLifecycleOverride).toHaveBeenCalledWith("lc-001", "released");

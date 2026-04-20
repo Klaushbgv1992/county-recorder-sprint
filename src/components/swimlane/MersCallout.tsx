@@ -1,4 +1,5 @@
 import type { MersGap } from "../../logic/swimlane-layout";
+import { useTerminology } from "../../terminology/TerminologyContext";
 
 export const MERS_CALLOUT_WIDTH = 200;
 
@@ -9,6 +10,7 @@ interface Props {
 }
 
 export function MersCallout({ gap, xPx, yCenter }: Props) {
+  const { t } = useTerminology();
   // When a servicing-agent is named in the release's mers_note (e.g.
   // "executed by Wells Fargo via CAS Nationwide Title Clearing"), the
   // subtitle line surfaces the agent below the ribbon so the on-screen
@@ -23,7 +25,7 @@ export function MersCallout({ gap, xPx, yCenter }: Props) {
       aria-label={gap.rule_finding.title}
     >
       <div className="text-[9px] uppercase tracking-wide text-amber-700 font-semibold mb-1">
-        ⚠ Unrecorded transfer
+        ⚠ {t("Unrecorded transfer")}
       </div>
       <div className="flex items-center gap-1 text-[10px]">
         <span className="px-1.5 py-0.5 rounded bg-slate-100 text-slate-700 border border-slate-200 whitespace-nowrap truncate" title={gap.originator}>

@@ -1,4 +1,5 @@
 import type { PipelineStatus } from "../types";
+import { useTerminology } from "../terminology/TerminologyContext";
 
 const STAGE_ORDER = ["received", "recorded", "indexed", "verified", "published"];
 
@@ -7,13 +8,14 @@ interface Props {
 }
 
 export function MoatBanner({ pipelineStatus }: Props) {
+  const { t } = useTerminology();
   const currentIdx = STAGE_ORDER.indexOf(pipelineStatus.current_stage);
 
   return (
     <div className="bg-moat-900 text-white px-4 py-3 rounded-lg mb-6">
       <div className="flex items-center justify-between mb-2">
         <span className="text-sm font-semibold">
-          County Recording Pipeline Status
+          {t("County Recording Pipeline Status")}
         </span>
         <span className="text-xs text-moat-200">
           Records verified through{" "}
@@ -45,7 +47,7 @@ export function MoatBanner({ pipelineStatus }: Props) {
                     className="inline-block w-1.5 h-1.5 rounded-full bg-white ring-2 ring-white/50"
                   />
                 )}
-                {stage}
+                {t(stage.charAt(0).toUpperCase() + stage.slice(1))}
               </div>
               {idx < STAGE_ORDER.length - 1 && (
                 <span
@@ -59,7 +61,7 @@ export function MoatBanner({ pipelineStatus }: Props) {
         })}
       </div>
       <p className="text-[11px] text-moat-300 mt-2">
-        Source: Maricopa County Recorder — authoritative county data, not a
+        {t("Source")}: Maricopa County Recorder — authoritative county data, not a
         third-party aggregation
       </p>
     </div>
