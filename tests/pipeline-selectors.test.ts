@@ -17,21 +17,21 @@ const fixture = state as unknown as PipelineState;
 describe("currentFreshness", () => {
   it("returns index, ocr, and curator verified-through dates from current.stages", () => {
     const f = currentFreshness(fixture);
-    expect(f.index).toBe("2026-04-16");
-    expect(f.ocr).toBe("2026-04-15");
-    expect(f.curator).toBe("2026-04-12");
+    expect(f.index).toBe("2026-04-20");
+    expect(f.ocr).toBe("2026-04-19");
+    expect(f.curator).toBe("2026-04-16");
   });
 });
 
 describe("laggingVsPlant", () => {
   it("returns days ahead of the minimum typical plant lag for the reference date", () => {
-    // At ref 2026-04-17, index_vt 2026-04-16 is 1 day behind; plantMin(14) - 1 = 13
-    const result = laggingVsPlant(fixture, { referenceDate: "2026-04-17" });
+    // At ref 2026-04-21, index_vt 2026-04-20 is 1 day behind; plantMin(14) - 1 = 13
+    const result = laggingVsPlant(fixture, { referenceDate: "2026-04-21" });
     expect(result.days_ahead_of_min_plant_lag).toBe(13);
   });
 
   it("defaults the reference date to state.current.as_of when not provided", () => {
-    // as_of 2026-04-16, index_vt 2026-04-16 → 0 days behind → 14 ahead of plant min
+    // as_of 2026-04-20, index_vt 2026-04-20 → 0 days behind → 14 ahead of plant min
     const result = laggingVsPlant(fixture);
     expect(result.days_ahead_of_min_plant_lag).toBe(14);
   });
@@ -39,18 +39,18 @@ describe("laggingVsPlant", () => {
 
 describe("overSLAStages", () => {
   it("includes stages with days_behind > sla_days for the reference date", () => {
-    // At ref 2026-04-30, every stage is far behind its SLA.
-    const stages = overSLAStages(fixture, { referenceDate: "2026-04-30" });
+    // At ref 2026-05-04, every stage is far behind its SLA.
+    const stages = overSLAStages(fixture, { referenceDate: "2026-05-04" });
     const ids = stages.map((s) => s.stage_id);
     expect(ids).toContain("curator");
     expect(ids).toContain("index");
   });
 
   it("excludes stages whose verified-through is within SLA of the reference date", () => {
-    // Reference date 2026-04-17 — index is exactly at SLA (1 day behind, SLA 1;
+    // Reference date 2026-04-21 — index is exactly at SLA (1 day behind, SLA 1;
     // not strictly greater), image is 2d behind SLA 1 and IS over, everything
     // else still within SLA. Asserts the boundary is correctly exclusive.
-    const stages = overSLAStages(fixture, { referenceDate: "2026-04-17" });
+    const stages = overSLAStages(fixture, { referenceDate: "2026-04-21" });
     const ids = stages.map((s) => s.stage_id);
     expect(ids).not.toContain("index");
     expect(ids).not.toContain("curator");
