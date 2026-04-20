@@ -13,7 +13,11 @@ import { WALKTHROUGH_HERO_LIFECYCLE_ID } from "../../walkthrough/steps";
 import type { AnomalyFinding } from "../../types/anomaly";
 import { StatusBadge } from "../StatusBadge";
 import { InstrumentNode } from "./InstrumentNode";
-import { MersCallout, MERS_CALLOUT_WIDTH } from "./MersCallout";
+import {
+  MersCallout,
+  MERS_CALLOUT_WIDTH,
+  MERS_CALLOUT_STRIP_HEIGHT,
+} from "./MersCallout";
 import { CandidateMatcherSlot } from "./CandidateMatcherSlot";
 import { CitationsRow, type CitationEntry } from "./CitationsRow";
 import { OverrideMenu } from "./OverrideMenu";
@@ -266,6 +270,37 @@ export function Swimlane(props: Props) {
         />
       </div>
 
+      {mersGap && (() => {
+        const dotIdx = nodes.findIndex(
+          (n) =>
+            n.kind === "single" &&
+            n.instrument.instrument_number === mersGap.dot_instrument,
+        );
+        const releaseIdx = nodes.findIndex(
+          (n) =>
+            n.kind === "single" &&
+            n.instrument.instrument_number === mersGap.release_instrument,
+        );
+        if (dotIdx === -1 || releaseIdx === -1) return null;
+        const midX =
+          (nodesWithLayout[dotIdx].visualX +
+            nodesWithLayout[releaseIdx].visualX) /
+          2;
+        // The MERS callout is the swimlane's "missing link" indicator.
+        // Rendered in a dedicated strip above the track so the
+        // pin-and-date row underneath always remains unobscured —
+        // examiners need to read both dates and the unrecorded-transfer
+        // annotation side-by-side.
+        return (
+          <div
+            className="relative px-3"
+            style={{ height: MERS_CALLOUT_STRIP_HEIGHT }}
+          >
+            <MersCallout gap={mersGap} xPx={midX} />
+          </div>
+        );
+      })()}
+
       <div className="relative px-3" style={{ height: TRACK_HEIGHT }}>
         <svg
           className="absolute inset-0"
@@ -404,24 +439,6 @@ export function Swimlane(props: Props) {
             />
           );
         })}
-
-        {mersGap && (() => {
-          const dotIdx = nodes.findIndex((n) => n.kind === "single" && n.instrument.instrument_number === mersGap.dot_instrument);
-          const releaseIdx = nodes.findIndex((n) => n.kind === "single" && n.instrument.instrument_number === mersGap.release_instrument);
-          if (dotIdx === -1 || releaseIdx === -1) return null;
-          const dotX = nodesWithLayout[dotIdx].visualX;
-          const releaseX = nodesWithLayout[releaseIdx].visualX;
-          // The MERS callout is the swimlane's "missing link" indicator.
-          // A static dashed amber outline reads as "attention" without
-          // motion — visible even before the examiner hovers, which is
-          // strictly better for discoverability than a hover-triggered
-          // animation.
-          return (
-            <div className="rounded border-2 border-dashed border-amber-400">
-              <MersCallout gap={mersGap} xPx={(dotX + releaseX) / 2} yCenter={Y_CENTER} />
-            </div>
-          );
-        })()}
 
         {justAcceptedId && acceptedInst && (() => {
           const idx = nodes.findIndex(
