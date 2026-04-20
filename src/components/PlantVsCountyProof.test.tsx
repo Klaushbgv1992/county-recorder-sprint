@@ -108,23 +108,6 @@ describe("PlantVsCountyProof — three beats", () => {
     expect(textContent).toMatch(/Full Reconveyance 3 days later on\s+2021-01-22/);
   });
 
-  it("includes the FED TAX L silent-drop receipt verbatim", () => {
-    renderUI();
-    // Two substring assertions so a reformatter cannot accidentally swap
-    // the punctuation and pass the test by spelling alone. Together they
-    // verify the moat-revealing claim is on-page.
-    expect(screen.getByText(/FED TAX L/)).toBeInTheDocument();
-    expect(screen.getByText(/totalResults:\s*0/)).toBeInTheDocument();
-    expect(screen.getByText(/20010092700/)).toBeInTheDocument();
-  });
-
-  it("renders both hunt-log receipt cards with read-the-hunt links", () => {
-    renderUI();
-    // Two receipts: federal-tax-lien hunt + Seville master-plat hunt.
-    const links = screen.getAllByRole("link", { name: /read the hunt/i });
-    expect(links.length).toBe(2);
-  });
-
   it("labels the plant column generically, not by vendor name", () => {
     renderUI();
     // No fabricated vendor names — keep the language generic so the band
@@ -138,8 +121,8 @@ describe("PlantVsCountyProof — three beats", () => {
     renderUI();
     const region = screen.getByRole("region", { name: /plant.*county|county.*plant/i });
     expect(region).toBeInTheDocument();
-    // Sanity: the region contains all three beats.
-    expect(within(region).getByText(/FED TAX L/)).toBeInTheDocument();
+    // Sanity: the region contains the remaining two beats.
+    expect(within(region).getByText(/2026-04-16/)).toBeInTheDocument();
     expect(within(region).getByText(/2021-01-22/)).toBeInTheDocument();
   });
 });

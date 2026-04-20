@@ -124,65 +124,7 @@ export function PlantVsCountyProof({ state = PIPELINE_STATE_DEFAULT }: Props) {
             </Link>
           </div>
         </div>
-
-        {/* Beat C — the receipts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-          <ReceiptCard
-            slug="federal-tax-lien"
-            title="Receipt: federal-tax-lien hunt (Known Gap #2)"
-            finding="A 45-minute API hunt confirmed the moat shape — search and index disagree on what's findable."
-          >
-            <span className="font-mono text-[11px] text-slate-700">
-              <code>documentCode=FED TAX L</code> returns <code>totalResults: 0</code>
-              {" "}— the same code is right there inside <code>documentCodes</code>{" "}
-              on <code>GET /documents/20010092700</code>.
-            </span>
-          </ReceiptCard>
-          <ReceiptCard
-            slug="seville-master-plat"
-            title="Receipt: Seville master-plat hunt (R-005)"
-            finding="A second hunt at the plat tier hit five separate API layers blocking a well-formed question."
-          >
-            <span className="text-[11px] text-slate-700">
-              ~141 of 200 API calls used. <code>documentCode</code>,{" "}
-              <code>docketBook</code>/<code>pageMap</code>,{" "}
-              <code>byBook/page</code>, <code>book/&#123;n&#125;/&#123;p&#125;</code>, and the legacy
-              book/page bridge — all silently dropped, 404, or
-              Cloudflare-gated.
-            </span>
-          </ReceiptCard>
-        </div>
       </div>
     </section>
-  );
-}
-
-function ReceiptCard({
-  slug,
-  title,
-  finding,
-  children,
-}: {
-  slug: string;
-  title: string;
-  finding: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <div className="rounded border border-slate-200 bg-slate-50 px-4 py-3 flex flex-col">
-      <p className="text-[11px] uppercase tracking-wider text-slate-500">
-        {title}
-      </p>
-      <p className="text-xs text-slate-800 mt-1 leading-snug">{finding}</p>
-      <div className="mt-2 border-l-2 border-slate-300 pl-2 leading-snug">
-        {children}
-      </div>
-      <Link
-        to={`/receipts/${slug}`}
-        className="mt-2 self-start text-xs text-recorder-700 underline underline-offset-2 hover:text-recorder-900"
-      >
-        Read the hunt →
-      </Link>
-    </div>
   );
 }
