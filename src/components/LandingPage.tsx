@@ -183,7 +183,10 @@ export function LandingPage() {
         {mode === "homeowner" ? (
           <HomeownerHero
             searchables={searchables}
+            instruments={allInstruments}
+            instrumentToApn={instrumentToApn}
             onResolve={(apn) => navigate(`/parcel/${apn}/home`)}
+            onSelectParty={(normalizedName) => navigate(`/party/${normalizedName}`)}
           />
         ) : (
           <>
