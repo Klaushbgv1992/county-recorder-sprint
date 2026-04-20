@@ -34,14 +34,14 @@ describe("HomeownerHero", () => {
 
   it("renders homeowner-framed placeholder copy", () => {
     render(<HomeownerHero searchables={[POPHAM]} onResolve={() => {}} />, { wrapper: Wrap });
-    const input = screen.getByRole("searchbox");
+    const input = screen.getByRole("combobox");
     expect(input).toHaveAttribute("placeholder", expect.stringMatching(/enter your property address/i));
   });
 
   it("resolves an address on submit by calling onResolve(apn)", async () => {
     const onResolve = vi.fn();
     render(<HomeownerHero searchables={[POPHAM]} onResolve={onResolve} />, { wrapper: Wrap });
-    await userEvent.type(screen.getByRole("searchbox"), "3674 palmer");
+    await userEvent.type(screen.getByRole("combobox"), "3674 palmer");
     await userEvent.click(screen.getByRole("button", { name: /see what the county knows/i }));
     expect(onResolve).toHaveBeenCalledWith("304-78-386");
   });
@@ -49,10 +49,29 @@ describe("HomeownerHero", () => {
   it("shows an inline empty-state when no match", async () => {
     const onResolve = vi.fn();
     render(<HomeownerHero searchables={[POPHAM]} onResolve={onResolve} />, { wrapper: Wrap });
-    await userEvent.type(screen.getByRole("searchbox"), "9999 nowhere ave");
+    await userEvent.type(screen.getByRole("combobox"), "9999 nowhere ave");
     await userEvent.click(screen.getByRole("button", { name: /see what the county knows/i }));
     expect(onResolve).not.toHaveBeenCalled();
     expect(screen.getByRole("status")).toHaveTextContent(/no match/i);
+  });
+
+  it("shows live dropdown suggestions as the user types", async () => {
+    const onResolve = vi.fn();
+    render(<HomeownerHero searchables={[POPHAM]} onResolve={onResolve} />, { wrapper: Wrap });
+    await userEvent.type(screen.getByRole("combobox"), "palmer");
+    const listbox = await screen.findByRole("listbox", { name: /matching properties/i });
+    expect(listbox).toBeInTheDocument();
+    const option = screen.getByRole("option");
+    expect(option).toHaveTextContent(/3674 E Palmer St/i);
+  });
+
+  it("picks the suggestion on click and resolves its parcel", async () => {
+    const onResolve = vi.fn();
+    render(<HomeownerHero searchables={[POPHAM]} onResolve={onResolve} />, { wrapper: Wrap });
+    await userEvent.type(screen.getByRole("combobox"), "popham");
+    const option = await screen.findByRole("option");
+    await userEvent.click(option);
+    expect(onResolve).toHaveBeenCalledWith("304-78-386");
   });
 
   it("uses homeowner-plain language — no 'party', 'grantor', 'instrument', or 'APN' in visible copy", () => {
