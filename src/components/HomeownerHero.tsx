@@ -1,36 +1,72 @@
-import { useState } from "react";
+import { Fragment, useMemo, useState, type ReactNode } from "react";
 import type { Searchable } from "../logic/searchable-index";
-import { searchAll } from "../logic/searchable-index";
+import { searchAll, addressOf, ownerOf, subdivisionOf } from "../logic/searchable-index";
 
 export interface HomeownerHeroProps {
   searchables: Searchable[];
   onResolve: (apn: string) => void;
 }
 
+const DROPDOWN_LIMIT = 6;
+
+function highlight(text: string, query: string): ReactNode {
+  const q = query.trim();
+  if (!q || !text) return text;
+  const lowerText = text.toLowerCase();
+  const lowerQ = q.toLowerCase();
+  const parts: ReactNode[] = [];
+  let cursor = 0;
+  let idx = lowerText.indexOf(lowerQ, cursor);
+  let keyN = 0;
+  while (idx !== -1) {
+    if (idx > cursor) parts.push(<Fragment key={`t${keyN++}`}>{text.slice(cursor, idx)}</Fragment>);
+    parts.push(
+      <mark key={`m${keyN++}`} className="bg-moat-100 text-moat-900 rounded-sm px-0.5">
+        {text.slice(idx, idx + q.length)}
+      </mark>,
+    );
+    cursor = idx + q.length;
+    idx = lowerText.indexOf(lowerQ, cursor);
+  }
+  if (cursor < text.length) parts.push(<Fragment key={`t${keyN++}`}>{text.slice(cursor)}</Fragment>);
+  return <>{parts}</>;
+}
+
 export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
   const [query, setQuery] = useState("");
   const [noMatch, setNoMatch] = useState(false);
+  const [open, setOpen] = useState(true);
+  const [activeIdx, setActiveIdx] = useState(0);
+
+  const hits = useMemo(
+    () => (query ? searchAll(query, searchables, { limit: DROPDOWN_LIMIT }) : []),
+    [query, searchables],
+  );
+  const total = useMemo(
+    () => (query ? searchAll(query, searchables).length : 0),
+    [query, searchables],
+  );
+
+  function pick(apn: string) {
+    setOpen(false);
+    setNoMatch(false);
+    onResolve(apn);
+  }
 
   function submit() {
-    const hits = searchAll(query, searchables);
-    // Prefer curated tier; otherwise accept any tier (the homeowner card page
-    // handles non-curated parcels with a graceful "partial chain" message).
     const curated = hits.find((h) => h.searchable.tier === "curated");
     const chosen = curated ?? hits[0];
     if (!chosen) {
       setNoMatch(true);
       return;
     }
-    setNoMatch(false);
-    onResolve(chosen.searchable.apn);
+    pick(chosen.searchable.apn);
   }
+
+  const showDropdown = open && query.length > 0 && hits.length > 0;
 
   return (
     <section className="relative overflow-hidden bg-white border-b border-slate-200 px-6 py-12">
-      {/* Decorative backdrop — a faint line-drawn house + deed motif that
-          distinguishes homeowner mode from the examiner search hero. The
-          SVG is absolutely positioned and aria-hidden so it never blocks
-          form interaction or screen readers. */}
       <svg
         aria-hidden="true"
         viewBox="0 0 400 240"
@@ -57,7 +93,7 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
           What does the county know about your home?
         </h1>
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          Every ownership transfer, mortgage, release, and lien is recorded here. Type your property address and we&rsquo;ll show you the four things that matter &mdash; in plain English.
+          Every ownership transfer, mortgage, release, and lien is recorded here. Search by address, owner name, or subdivision and we&rsquo;ll show you the four things that matter &mdash; in plain English.
         </p>
         <form
           className="mt-5 flex flex-col sm:flex-row gap-2"
@@ -66,16 +102,95 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
             submit();
           }}
         >
-          <input
-            type="search"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              if (noMatch) setNoMatch(false);
-            }}
-            placeholder="Enter your property address"
-            className="flex-1 rounded-lg border border-slate-300 bg-white px-4 py-3.5 text-base shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-moat-500 focus:border-transparent hover:shadow-md transition-shadow"
-          />
+          <div className="relative flex-1">
+            <input
+              type="search"
+              role="combobox"
+              aria-expanded={showDropdown}
+              aria-controls="homeowner-hero-results"
+              aria-autocomplete="list"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                if (noMatch) setNoMatch(false);
+                if (e.target.value) setOpen(true);
+                setActiveIdx(0);
+              }}
+              onFocus={() => {
+                if (query) setOpen(true);
+              }}
+              onKeyDown={(e) => {
+                if (e.key === "ArrowDown") {
+                  e.preventDefault();
+                  setActiveIdx((i) => Math.min(i + 1, hits.length - 1));
+                } else if (e.key === "ArrowUp") {
+                  e.preventDefault();
+                  setActiveIdx((i) => Math.max(i - 1, 0));
+                } else if (e.key === "Enter" && showDropdown) {
+                  const h = hits[activeIdx];
+                  if (h) {
+                    e.preventDefault();
+                    pick(h.searchable.apn);
+                  }
+                } else if (e.key === "Escape") {
+                  setOpen(false);
+                }
+              }}
+              placeholder="Enter your property address, owner name, or subdivision"
+              className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3.5 text-base shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-moat-500 focus:border-transparent hover:shadow-md transition-shadow"
+            />
+            {showDropdown && (
+              <div
+                id="homeowner-hero-results"
+                className="absolute left-0 right-0 mt-1 max-h-[60vh] overflow-auto rounded-lg border border-slate-200 bg-white shadow-xl z-30"
+              >
+                <ul role="listbox" aria-label="Matching properties">
+                  {hits.map((h, i) => {
+                    const s = h.searchable;
+                    const active = i === activeIdx;
+                    const curated = s.tier === "curated";
+                    const address = addressOf(s) || "—";
+                    const owner = ownerOf(s);
+                    const sub = subdivisionOf(s);
+                    return (
+                      <li
+                        key={`${query}:${s.apn}:${i}`}
+                        role="option"
+                        aria-selected={active}
+                        className={`relative flex items-center gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-moat-50" : "hover:bg-slate-50"}`}
+                        onMouseEnter={() => setActiveIdx(i)}
+                        onMouseDown={(e) => {
+                          e.preventDefault();
+                          pick(s.apn);
+                        }}
+                      >
+                        {curated && (
+                          <span
+                            aria-hidden="true"
+                            className="absolute left-0 top-2 bottom-2 w-1 rounded-r-sm bg-moat-500"
+                          />
+                        )}
+                        <div className="min-w-0 flex-1">
+                          <div className="font-semibold text-recorder-900 truncate">
+                            {highlight(address, query)}
+                          </div>
+                          <div className="text-xs text-slate-600 truncate">
+                            {owner ? highlight(owner, query) : "Owner not on file"}
+                            {sub ? <> &middot; {highlight(sub, query)}</> : null}
+                          </div>
+                        </div>
+                      </li>
+                    );
+                  })}
+                  {total > hits.length && (
+                    <li className="px-4 py-2 text-xs text-slate-500">
+                      +{total - hits.length} more &mdash; narrow your search
+                    </li>
+                  )}
+                </ul>
+              </div>
+            )}
+          </div>
           <button
             type="submit"
             className="rounded-lg bg-moat-700 px-5 py-3.5 text-sm font-semibold text-white shadow-sm hover:bg-moat-800 focus:outline-none focus-visible:ring-2 focus-visible:ring-moat-500 focus-visible:ring-offset-2 transition-colors"
