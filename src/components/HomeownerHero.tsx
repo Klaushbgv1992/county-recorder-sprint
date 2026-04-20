@@ -66,25 +66,29 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
   const showDropdown = open && query.length > 0 && hits.length > 0;
 
   return (
-    <section className="relative overflow-hidden bg-white border-b border-slate-200 px-6 py-12">
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 400 240"
-        className="pointer-events-none absolute -right-8 -top-6 w-[420px] max-w-[55%] text-moat-200/60 hidden md:block"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      >
-        <path d="M60 130 L60 210 L180 210 L180 130" />
-        <path d="M40 140 L120 70 L200 140" />
-        <rect x="100" y="160" width="40" height="50" />
-        <path d="M235 80 L360 80 L360 200 L235 200 Z" />
-        <path d="M250 105 L345 105 M250 125 L345 125 M250 145 L310 145" />
-        <circle cx="340" cy="175" r="10" />
-        <path d="M340 170 v10 M335 175 h10" />
-      </svg>
+    <section className="relative bg-white border-b border-slate-200 px-6 py-12">
+      {/* Decorative backdrop is clipped by its own wrapper so the section
+          itself can allow the search dropdown to overflow downward and
+          render above the walkthrough banner that follows. */}
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
+        <svg
+          viewBox="0 0 400 240"
+          className="absolute -right-8 -top-6 w-[420px] max-w-[55%] text-moat-200/60 hidden md:block"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        >
+          <path d="M60 130 L60 210 L180 210 L180 130" />
+          <path d="M40 140 L120 70 L200 140" />
+          <rect x="100" y="160" width="40" height="50" />
+          <path d="M235 80 L360 80 L360 200 L235 200 Z" />
+          <path d="M250 105 L345 105 M250 125 L345 125 M250 145 L310 145" />
+          <circle cx="340" cy="175" r="10" />
+          <path d="M340 170 v10 M335 175 h10" />
+        </svg>
+      </div>
       <div className="relative max-w-3xl mx-auto">
         <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-moat-700">
           Homeowner view
