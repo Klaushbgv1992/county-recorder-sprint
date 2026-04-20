@@ -1,13 +1,19 @@
 import { Fragment, useMemo, useState, type ReactNode } from "react";
+import type { Instrument } from "../types";
 import type { Searchable } from "../logic/searchable-index";
 import { searchAll, addressOf, ownerOf, subdivisionOf } from "../logic/searchable-index";
+import { searchParties, type PartyHit } from "../logic/party-search";
 
 export interface HomeownerHeroProps {
   searchables: Searchable[];
+  instruments: Instrument[];
+  instrumentToApn: Map<string, string>;
   onResolve: (apn: string) => void;
+  onSelectParty: (normalizedName: string) => void;
 }
 
-const DROPDOWN_LIMIT = 6;
+const PARCEL_LIMIT = 6;
+const PARTY_LIMIT = 5;
 
 function highlight(text: string, query: string): ReactNode {
   const q = query.trim();
@@ -32,44 +38,70 @@ function highlight(text: string, query: string): ReactNode {
   return <>{parts}</>;
 }
 
-export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
+export function HomeownerHero({
+  searchables,
+  instruments,
+  instrumentToApn,
+  onResolve,
+  onSelectParty,
+}: HomeownerHeroProps) {
   const [query, setQuery] = useState("");
   const [noMatch, setNoMatch] = useState(false);
   const [open, setOpen] = useState(true);
   const [activeIdx, setActiveIdx] = useState(0);
 
   const hits = useMemo(
-    () => (query ? searchAll(query, searchables, { limit: DROPDOWN_LIMIT }) : []),
+    () => (query ? searchAll(query, searchables, { limit: PARCEL_LIMIT }) : []),
     [query, searchables],
   );
   const total = useMemo(
     () => (query ? searchAll(query, searchables).length : 0),
     [query, searchables],
   );
+  const partyHits = useMemo<PartyHit[]>(
+    () =>
+      query
+        ? searchParties(query, instruments, instrumentToApn).slice(0, PARTY_LIMIT)
+        : [],
+    [query, instruments, instrumentToApn],
+  );
+  const partyTotal = useMemo(
+    () => (query ? searchParties(query, instruments, instrumentToApn).length : 0),
+    [query, instruments, instrumentToApn],
+  );
 
-  function pick(apn: string) {
+  function resolveParcel(apn: string) {
     setOpen(false);
     setNoMatch(false);
     onResolve(apn);
   }
 
+  function pickParty(normalizedName: string) {
+    setOpen(false);
+    setNoMatch(false);
+    onSelectParty(normalizedName);
+  }
+
   function submit() {
     const curated = hits.find((h) => h.searchable.tier === "curated");
     const chosen = curated ?? hits[0];
-    if (!chosen) {
-      setNoMatch(true);
+    if (chosen) {
+      resolveParcel(chosen.searchable.apn);
       return;
     }
-    pick(chosen.searchable.apn);
+    const firstParty = partyHits[0];
+    if (firstParty) {
+      pickParty(firstParty.normalizedName);
+      return;
+    }
+    setNoMatch(true);
   }
 
-  const showDropdown = open && query.length > 0 && hits.length > 0;
+  const showDropdown =
+    open && query.length > 0 && (hits.length > 0 || partyHits.length > 0);
 
   return (
     <section className="relative bg-white border-b border-slate-200 px-6 py-12">
-      {/* Decorative backdrop is clipped by its own wrapper so the section
-          itself can allow the search dropdown to overflow downward and
-          render above the walkthrough banner that follows. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
         <svg
           viewBox="0 0 400 240"
@@ -97,7 +129,7 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
           What does the county know about your home?
         </h1>
         <p className="mt-2 text-sm text-slate-600 max-w-2xl">
-          Every ownership transfer, mortgage, release, and lien is recorded here. Search by address, owner name, or subdivision and we&rsquo;ll show you the four things that matter &mdash; in plain English.
+          Every ownership transfer, mortgage, release, and lien is recorded here. Search by address, owner name, lender, or subdivision and we&rsquo;ll show you the four things that matter &mdash; in plain English.
         </p>
         <form
           className="mt-5 flex flex-col sm:flex-row gap-2"
@@ -134,13 +166,13 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
                   const h = hits[activeIdx];
                   if (h) {
                     e.preventDefault();
-                    pick(h.searchable.apn);
+                    resolveParcel(h.searchable.apn);
                   }
                 } else if (e.key === "Escape") {
                   setOpen(false);
                 }
               }}
-              placeholder="Enter your property address, owner name, or subdivision"
+              placeholder="Enter address, owner, lender, or subdivision"
               className="w-full rounded-lg border border-slate-300 bg-white px-4 py-3.5 text-base shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-moat-500 focus:border-transparent hover:shadow-md transition-shadow"
             />
             {showDropdown && (
@@ -148,50 +180,90 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
                 id="homeowner-hero-results"
                 className="absolute left-0 right-0 mt-1 max-h-[60vh] overflow-auto rounded-lg border border-slate-200 bg-white shadow-xl z-30"
               >
-                <ul role="listbox" aria-label="Matching properties">
-                  {hits.map((h, i) => {
-                    const s = h.searchable;
-                    const active = i === activeIdx;
-                    const curated = s.tier === "curated";
-                    const address = addressOf(s) || "—";
-                    const owner = ownerOf(s);
-                    const sub = subdivisionOf(s);
-                    return (
-                      <li
-                        key={`${query}:${s.apn}:${i}`}
-                        role="option"
-                        aria-selected={active}
-                        className={`relative flex items-center gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-moat-50" : "hover:bg-slate-50"}`}
-                        onMouseEnter={() => setActiveIdx(i)}
-                        onMouseDown={(e) => {
-                          e.preventDefault();
-                          pick(s.apn);
-                        }}
-                      >
-                        {curated && (
-                          <span
-                            aria-hidden="true"
-                            className="absolute left-0 top-2 bottom-2 w-1 rounded-r-sm bg-moat-500"
-                          />
-                        )}
-                        <div className="min-w-0 flex-1">
-                          <div className="font-semibold text-recorder-900 truncate">
-                            {highlight(address, query)}
+                {hits.length > 0 && (
+                  <ul role="listbox" aria-label="Matching properties">
+                    {hits.map((h, i) => {
+                      const s = h.searchable;
+                      const active = i === activeIdx;
+                      const curated = s.tier === "curated";
+                      const address = addressOf(s) || "—";
+                      const owner = ownerOf(s);
+                      const sub = subdivisionOf(s);
+                      return (
+                        <li
+                          key={`${query}:${s.apn}:${i}`}
+                          role="option"
+                          aria-selected={active}
+                          className={`relative flex items-center gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 ${active ? "bg-moat-50" : "hover:bg-slate-50"}`}
+                          onMouseEnter={() => setActiveIdx(i)}
+                          onMouseDown={(e) => {
+                            e.preventDefault();
+                            resolveParcel(s.apn);
+                          }}
+                        >
+                          {curated && (
+                            <span
+                              aria-hidden="true"
+                              className="absolute left-0 top-2 bottom-2 w-1 rounded-r-sm bg-moat-500"
+                            />
+                          )}
+                          <div className="min-w-0 flex-1">
+                            <div className="font-semibold text-recorder-900 truncate">
+                              {highlight(address, query)}
+                            </div>
+                            <div className="text-xs text-slate-600 truncate">
+                              {owner ? highlight(owner, query) : "Owner not on file"}
+                              {sub ? <> &middot; {highlight(sub, query)}</> : null}
+                            </div>
                           </div>
-                          <div className="text-xs text-slate-600 truncate">
-                            {owner ? highlight(owner, query) : "Owner not on file"}
-                            {sub ? <> &middot; {highlight(sub, query)}</> : null}
-                          </div>
-                        </div>
+                        </li>
+                      );
+                    })}
+                    {total > hits.length && (
+                      <li className="px-4 py-2 text-xs text-slate-500">
+                        +{total - hits.length} more &mdash; narrow your search
                       </li>
-                    );
-                  })}
-                  {total > hits.length && (
-                    <li className="px-4 py-2 text-xs text-slate-500">
-                      +{total - hits.length} more &mdash; narrow your search
-                    </li>
-                  )}
-                </ul>
+                    )}
+                  </ul>
+                )}
+                {partyHits.length > 0 && (
+                  <div className="border-t border-slate-200 bg-slate-50">
+                    <div className="px-4 py-2 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+                      Names on records &middot; {partyTotal} match{partyTotal === 1 ? "" : "es"}
+                    </div>
+                    <ul role="listbox" aria-label="Matching names" className="bg-white">
+                      {partyHits.map((p, i) => {
+                        const rowKey = `${query}:party:${p.normalizedName}:${i}`;
+                        return (
+                          <li
+                            key={rowKey}
+                            role="option"
+                            aria-selected={false}
+                            className="flex items-start justify-between gap-3 border-b border-slate-100 px-4 py-3 text-sm cursor-pointer last:border-b-0 hover:bg-slate-50"
+                            onMouseDown={(e) => {
+                              e.preventDefault();
+                              pickParty(p.normalizedName);
+                            }}
+                          >
+                            <div className="min-w-0 flex-1">
+                              <div className="font-semibold text-recorder-900 truncate">
+                                {highlight(p.displayName, query)}
+                              </div>
+                              <div className="mt-1 text-xs text-slate-600">
+                                On {p.totalInstruments} record{p.totalInstruments === 1 ? "" : "s"} across {p.parcels} propert{p.parcels === 1 ? "y" : "ies"}
+                              </div>
+                            </div>
+                          </li>
+                        );
+                      })}
+                      {partyTotal > partyHits.length && (
+                        <li className="px-4 py-2 text-xs text-slate-500">
+                          +{partyTotal - partyHits.length} more &mdash; narrow your search
+                        </li>
+                      )}
+                    </ul>
+                  </div>
+                )}
               </div>
             )}
           </div>
@@ -204,7 +276,7 @@ export function HomeownerHero({ searchables, onResolve }: HomeownerHeroProps) {
         </form>
         {noMatch && (
           <p role="status" className="mt-3 text-sm text-amber-700">
-            No match in the Gilbert sample. Try a street address like &ldquo;3674 E Palmer St&rdquo; or &ldquo;2715 E Palmer St&rdquo;.
+            No match in the Gilbert sample. Try a street address like &ldquo;3674 E Palmer St&rdquo; or a lender like &ldquo;Wells Fargo&rdquo;.
           </p>
         )}
       </div>
