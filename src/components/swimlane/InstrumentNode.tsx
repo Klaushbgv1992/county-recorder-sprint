@@ -93,7 +93,7 @@ export function InstrumentNode({
         {expanded && (
           <div className="absolute top-10 left-1/2 -translate-x-1/2 z-10 bg-white border border-slate-200 rounded shadow-md p-2 min-w-[220px]">
             <div className="text-[10px] uppercase tracking-wide text-slate-500 mb-1">
-              Same-day transaction
+              {t("Same-day transaction")}
             </div>
             {instruments.map((i) => (
               <button

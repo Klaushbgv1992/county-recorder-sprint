@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import type { LifecycleStatus } from "../../types";
+import { useTerminology } from "../../terminology/TerminologyContext";
 
 interface Props {
   currentOverride: LifecycleStatus | null;
@@ -12,6 +13,7 @@ export function OverrideMenu({
   statusRationale,
   onSetOverride,
 }: Props) {
+  const { t } = useTerminology();
   const [open, setOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -43,7 +45,7 @@ export function OverrideMenu({
         aria-label="Examiner overrides"
         title="Examiner overrides"
       >
-        <span>Override</span>
+        <span>{t("Override")}</span>
         <span aria-hidden="true" className="text-slate-400">{open ? "▴" : "▾"}</span>
       </button>
       {open && (
@@ -52,7 +54,7 @@ export function OverrideMenu({
           className="absolute right-0 top-7 z-20 bg-white border border-slate-200 rounded shadow-lg p-3 w-64"
         >
           <div className="text-[10px] uppercase tracking-wide text-slate-500 font-semibold mb-1">
-            Override status
+            {t("Override status")}
           </div>
           <div className="flex gap-1 mb-3">
             {(["open", "released", "unresolved"] as const).map((s) => (
@@ -65,7 +67,7 @@ export function OverrideMenu({
                     : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                 }`}
               >
-                {s}
+                {t(s.charAt(0).toUpperCase() + s.slice(1))}
               </button>
             ))}
           </div>

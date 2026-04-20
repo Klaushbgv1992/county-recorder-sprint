@@ -13,6 +13,7 @@ import { resolveMatcherSlotState } from "../../logic/swimlane-layout";
 import { CandidateReleasesPanel } from "../CandidateReleasesPanel";
 import { useWalkthrough } from "../../walkthrough/useWalkthrough";
 import { WALKTHROUGH_HERO_LIFECYCLE_ID } from "../../walkthrough/steps";
+import { useTerminology } from "../../terminology/TerminologyContext";
 
 interface Props {
   lifecycleId: string;
@@ -34,6 +35,7 @@ interface Props {
 }
 
 export function CandidateMatcherSlot(props: Props) {
+  const { t } = useTerminology();
   const [userExpanded, setUserExpanded] = useState(false);
   const [walkthroughLatched, setWalkthroughLatched] = useState(false);
   const { currentStep } = useWalkthrough();
@@ -86,7 +88,7 @@ export function CandidateMatcherSlot(props: Props) {
         onClick={() => setForceExpanded(true)}
         className="inline-flex items-center gap-1 text-[11px] px-2 py-1 rounded bg-indigo-50 text-indigo-800 border border-indigo-100 hover:bg-indigo-100"
       >
-        Cross-parcel scan · scanned {total} instrument{total === 1 ? "" : "s"} · {aboveThresholdCount} above threshold · Expand →
+        {t("Cross-parcel scan")} · scanned {total} instrument{total === 1 ? "" : "s"} · {aboveThresholdCount} above threshold · Expand →
       </button>
     );
   }

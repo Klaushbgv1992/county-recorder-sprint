@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import "@testing-library/jest-dom/vitest";
 import { MemoryRouter } from "react-router";
 import { AnomalyPanel } from "../src/components/AnomalyPanel";
+import { TerminologyProvider } from "../src/terminology/TerminologyContext";
 import type { AnomalyFinding } from "../src/types/anomaly";
 
 const APN = "304-78-386";
@@ -11,7 +12,9 @@ const APN = "304-78-386";
 function renderPanel(findings: AnomalyFinding[]) {
   return render(
     <MemoryRouter>
-      <AnomalyPanel findings={findings} apn={APN} />
+      <TerminologyProvider>
+        <AnomalyPanel findings={findings} apn={APN} />
+      </TerminologyProvider>
     </MemoryRouter>,
   );
 }
