@@ -39,15 +39,21 @@ describe("RootLayout", () => {
     expect(screen.getByRole("link", { name: /see pipeline/i })).toBeInTheDocument();
   });
 
-  it("hides the PipelineBanner on /staff", () => {
+  it("also renders the PipelineBanner on /staff so brand/chrome is consistent", () => {
     renderAt("/staff");
     expect(screen.getByTestId("staff-outlet")).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /see pipeline/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /see pipeline/i })).toBeInTheDocument();
   });
 
-  it("hides the PipelineBanner on /staff/queue (nested staff route)", () => {
+  it("also renders the PipelineBanner on /staff/queue (nested staff route)", () => {
     renderAt("/staff/queue");
     expect(screen.getByTestId("staff-queue-outlet")).toBeInTheDocument();
-    expect(screen.queryByRole("link", { name: /see pipeline/i })).not.toBeInTheDocument();
+    expect(screen.getByRole("link", { name: /see pipeline/i })).toBeInTheDocument();
+  });
+
+  it("renders the clickable Land Custodian Portal brand link home on /staff", () => {
+    renderAt("/staff");
+    const brand = screen.getByRole("link", { name: /land custodian portal.*home/i });
+    expect(brand).toHaveAttribute("href", "/");
   });
 });

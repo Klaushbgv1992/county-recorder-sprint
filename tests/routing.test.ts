@@ -226,10 +226,11 @@ describe("/why integration via full router", () => {
     expect(html).toContain("See pipeline");
   });
 
-  it("does not render the banner on /staff", () => {
+  it("renders the sitewide banner on /staff too (consistent brand/chrome)", () => {
     const html = renderAt("/staff");
-    // Staff routes skip the banner per RootLayout's useMatch.
-    expect(html).not.toContain("See pipeline");
+    // RootLayout now mounts AppHeader + PipelineBanner on every route,
+    // so the clickable brand link back to / is available everywhere.
+    expect(html).toContain("See pipeline");
   });
 });
 
