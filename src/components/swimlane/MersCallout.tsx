@@ -2,27 +2,33 @@ import type { MersGap } from "../../logic/swimlane-layout";
 import { useTerminology } from "../../terminology/TerminologyContext";
 
 export const MERS_CALLOUT_WIDTH = 200;
+// Height budget the Swimlane reserves in its pre-track strip so the
+// callout can bottom-align cleanly without overlapping the pin + date
+// label column below. Taller than the hasVia=true rendered height so
+// the dashed timeline gap aligns with the callout's bottom edge.
+export const MERS_CALLOUT_STRIP_HEIGHT = 64;
 
 interface Props {
   gap: MersGap;
   xPx: number;
-  yCenter: number;
 }
 
-export function MersCallout({ gap, xPx, yCenter }: Props) {
+export function MersCallout({ gap, xPx }: Props) {
   const { t } = useTerminology();
   // When a servicing-agent is named in the release's mers_note (e.g.
   // "executed by Wells Fargo via CAS Nationwide Title Clearing"), the
   // subtitle line surfaces the agent below the ribbon so the on-screen
   // story matches the instrument body verbatim.
   const hasVia = Boolean(gap.via);
-  const topOffset = hasVia ? 42 : 30;
   return (
     <div
       className="absolute -translate-x-1/2 bg-white border border-amber-300 rounded shadow-sm px-2 py-1.5 z-10"
-      style={{ left: xPx, top: yCenter - topOffset, width: MERS_CALLOUT_WIDTH }}
+      // bottom:0 bottom-aligns the callout in its dedicated strip above
+      // the track, so it never sits on top of the pin-and-date row.
+      style={{ left: xPx, bottom: 0, width: MERS_CALLOUT_WIDTH }}
       role="note"
       aria-label={gap.rule_finding.title}
+      data-has-via={hasVia ? "true" : "false"}
     >
       <div className="text-[9px] uppercase tracking-wide text-amber-700 font-semibold mb-1">
         ⚠ {t("Unrecorded transfer")}
