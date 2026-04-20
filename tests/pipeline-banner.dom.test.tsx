@@ -15,13 +15,15 @@ function renderBanner() {
 describe("PipelineBanner (verified-through)", () => {
   afterEach(() => cleanup());
 
-  it("renders the verified-through date and days-ahead claim in the exact spec format", () => {
-    // Values coupled to src/data/pipeline-state.json; roll forward when the
-    // fixture is refreshed. See pipeline-selectors.test.ts "fixture health
-    // invariant" describe block for the contract that stays stable.
+  it("renders the verified-through date (today) and days-ahead claim in the exact spec format", () => {
+    // The banner anchors its verified-through date to "today" (viewer's
+    // local clock), not the baked snapshot date, so the live-feel claim
+    // never goes stale. See PipelineBanner.todayISODate.
+    const today = new Date();
+    const todayISO = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart(2, "0")}-${String(today.getDate()).padStart(2, "0")}`;
     const { container } = renderBanner();
     const text = container.textContent ?? "";
-    expect(text).toMatch(/Verified through\s*2026-04-16/);
+    expect(text).toMatch(new RegExp(`Verified through\\s*${todayISO}`));
     expect(text).toMatch(/14\s*days ahead of typical title-plant cycle/);
     expect(text).toMatch(/See pipeline\s*→/);
   });

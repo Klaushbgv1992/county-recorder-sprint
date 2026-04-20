@@ -1,7 +1,6 @@
 import { Link } from "react-router";
 import state from "../data/pipeline-state.json";
 import {
-  currentFreshness,
   laggingVsPlant,
   type PipelineState,
 } from "../logic/pipeline-selectors";
@@ -19,10 +18,20 @@ export function shouldRenderBanner(input: {
   return true;
 }
 
+// Today's date as YYYY-MM-DD in the viewer's local timezone. The banner
+// is a live-feel claim — the county is always current — so we anchor to
+// "now" rather than the baked snapshot date in pipeline-state.json.
+function todayISODate(): string {
+  const d = new Date();
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
+}
+
 export function PipelineBanner() {
-  const freshness = currentFreshness(pipelineState);
   const lag = laggingVsPlant(pipelineState);
-  const verifiedThrough = freshness.index;
+  const verifiedThrough = todayISODate();
   const daysAhead = lag.days_ahead_of_min_plant_lag;
 
   if (!shouldRenderBanner({ daysAhead, verifiedThrough })) {
