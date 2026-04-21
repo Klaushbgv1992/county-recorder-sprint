@@ -12,10 +12,13 @@ import type { TransactionInputs } from "../src/types/commitment";
 const NOW = new Date("2026-04-14T00:00:00Z");
 
 const INPUTS: TransactionInputs = {
-  transaction_type: "refinance",
+  transaction_type: "purchase",
   effective_date: "2026-05-01",
-  buyer_or_borrower: "POPHAM CHRISTOPHER / ASHLEY",
+  buyers: "BUYER NAME",
+  sellers: "POPHAM CHRISTOPHER / ASHLEY",
+  sale_price: "400000",
   new_lender: "ACME BANK, N.A.",
+  loan_amount: "320000",
 };
 
 describe("generateScheduleBI", () => {

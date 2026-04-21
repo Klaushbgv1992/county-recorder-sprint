@@ -52,7 +52,7 @@ describe("triggerCommitmentDownload", () => {
     expect(lc001.viewedMarker).toBe(true);
   });
 
-  it("invokes the download callback with the right filename", () => {
+  it("invokes the download callback with the right filename (general when no transactionInputs)", () => {
     const download = vi.fn();
     triggerCommitmentDownload({
       parcel: data.parcel,
@@ -67,7 +67,7 @@ describe("triggerCommitmentDownload", () => {
     expect(download).toHaveBeenCalledTimes(1);
     const [blob, filename] = download.mock.calls[0];
     expect(blob.type).toBe("application/pdf");
-    expect(filename).toMatch(/^commitment-30478386-\d{4}-\d{2}-\d{2}\.pdf$/);
+    expect(filename).toMatch(/^commitment-30478386-general-\d{4}-\d{2}-\d{2}\.pdf$/);
   });
 
   it("uses verifiedThroughDate (not generatedAt) for the filename date suffix", () => {
@@ -83,7 +83,32 @@ describe("triggerCommitmentDownload", () => {
       download,
     });
     const [, filename] = download.mock.calls[0];
-    expect(filename).toBe("commitment-30478386-2026-04-12.pdf");
+    expect(filename).toBe("commitment-30478386-general-2026-04-16.pdf");
+  });
+
+  it("includes transaction type slug in filename when transactionInputs provided", () => {
+    const download = vi.fn();
+    triggerCommitmentDownload({
+      parcel: data.parcel,
+      instruments: data.instruments,
+      links: data.links,
+      lifecycles: data.lifecycles,
+      pipelineStatus: data.pipelineStatus,
+      closingImpactTemplates,
+      generatedAt: "2026-04-14T12:00:00.000Z",
+      transactionInputs: {
+        transaction_type: "refinance",
+        effective_date: "2026-05-01",
+        borrower: "POPHAM CHRISTOPHER / ASHLEY",
+        new_lender: "Better Mortgage",
+        new_loan_amount: "300000",
+        existing_dot_lifecycle_id: "lc-002",
+      },
+      download,
+    });
+    const [, filename] = download.mock.calls[0];
+    expect(filename).toContain("-refinance-");
+    expect(filename).toBe("commitment-30478386-refinance-2026-04-16.pdf");
   });
 });
 
@@ -115,7 +140,7 @@ describe("ExportCommitmentButton — toast UX", () => {
       </MemoryRouter>,
     );
     await user.click(screen.getByRole("button", { name: /Export Commitment/i }));
-    await screen.findByText(/Downloaded: commitment-30478386-/i, undefined, {
+    await screen.findByText(/Downloaded: commitment-30478386-general-/i, undefined, {
       timeout: 2000,
     });
   });

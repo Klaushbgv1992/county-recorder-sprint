@@ -53,7 +53,8 @@ export function triggerCommitmentDownload(input: TriggerInput): TriggerResult {
     transactionInputs: input.transactionInputs,
   });
   const apnNoDashes = input.parcel.apn.replace(/-/g, "");
-  const filename = `commitment-${apnNoDashes}-${input.pipelineStatus.verified_through_date}.pdf`;
+  const typeSlug = input.transactionInputs?.transaction_type ?? "general";
+  const filename = `commitment-${apnNoDashes}-${typeSlug}-${input.pipelineStatus.verified_through_date}.pdf`;
   input.download(blob, filename);
   return { doc, blob, filename };
 }

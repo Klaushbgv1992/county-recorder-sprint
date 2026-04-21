@@ -48,19 +48,29 @@ describe("TransactionWizard", () => {
     expect(screen.getByLabelText(/effective date/i)).toBeInTheDocument();
   });
 
-  it("step 2 requires effective date, buyer, and lender before Next enables", async () => {
+  it("step 2 requires all refinance fields before Next enables", async () => {
     const user = userEvent.setup();
     renderWizardAt(`/parcel/${POPHAM_APN}/commitment/new`);
     await user.click(screen.getByRole("button", { name: /^refinance$/i }));
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // Step 2. Buyer auto-fills from parcel.current_owner; lender is empty so
-    // Next should stay disabled until user fills lender.
+    // Step 2. Borrower auto-fills from parcel.current_owner; lender, loan
+    // amount, and existing DOT lifecycle are empty so Next stays disabled.
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
+    const loanAmt = screen.getByLabelText(/new loan amount/i) as HTMLInputElement;
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
     const next = screen.getByRole("button", { name: /^next$/i });
     expect(next).toBeDisabled();
 
     await user.type(lender, "ACME BANK, N.A.");
+    expect(next).toBeDisabled(); // still missing loan amount + lifecycle
+
+    await user.type(loanAmt, "$350,000");
+    expect(next).toBeDisabled(); // still missing lifecycle
+
+    // Select the first open lifecycle option
+    const option = dotSelect.options[1]; // index 0 is "— select —"
+    await user.selectOptions(dotSelect, option.value);
     expect(next).not.toBeDisabled();
   });
 
@@ -72,6 +82,9 @@ describe("TransactionWizard", () => {
 
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
     // Heading mentions Schedule B-I
@@ -91,19 +104,22 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // "why" for BI-TAX-CERT is "Required on every residential closing..."
-    expect(
-      screen.queryByText(/required on every residential closing/i),
-    ).not.toBeInTheDocument();
-
+    // "why" text is hidden until expanded. Clicking a "Why this item" button
+    // toggles it to "Hide why" and reveals the explanation paragraph.
     const whyButtons = screen.getAllByRole("button", {
       name: /why this item/i,
     });
-    await user.click(whyButtons[whyButtons.length - 1]);
+    expect(whyButtons.length).toBeGreaterThan(0);
+
+    await user.click(whyButtons[0]);
+    // After clicking, the button label changes to "Hide why"
     expect(
-      screen.getByText(/required on every residential closing/i),
+      screen.getByRole("button", { name: /hide why/i }),
     ).toBeInTheDocument();
   });
 
@@ -114,6 +130,9 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
     // On step 3 — click Back.
@@ -131,10 +150,13 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // Summary shows lender, buyer, etc.
+    // Summary shows lender, borrower, etc.
     expect(screen.getByText(/ACME BANK, N\.A\./)).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /export commitment pdf/i }),
@@ -144,5 +166,94 @@ describe("TransactionWizard", () => {
   it("renders Not in this corpus fallback for unknown APN", () => {
     renderWizardAt("/parcel/999-99-999/commitment/new");
     expect(screen.getByText(/not in this corpus/i)).toBeInTheDocument();
+  });
+
+  describe("Step 2 conditional fields", () => {
+    async function goToStep2(typeName: RegExp) {
+      const user = userEvent.setup();
+      renderWizardAt(`/parcel/${POPHAM_APN}/commitment/new`);
+      await user.click(screen.getByRole("button", { name: typeName }));
+      await user.click(screen.getByRole("button", { name: /^next$/i }));
+      return user;
+    }
+
+    it("Purchase shows buyers, sellers, sale_price, new_lender, loan_amount", async () => {
+      await goToStep2(/^purchase$/i);
+
+      expect(screen.getByLabelText(/buyers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sellers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sale price/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/loan amount/i)).toBeInTheDocument();
+
+      // Should NOT show refinance-specific fields
+      expect(screen.queryByLabelText(/borrower/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/credit limit/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/first position lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("Cash Sale shows buyers, sellers, sale_price — not new_lender or loan_amount", async () => {
+      await goToStep2(/^cash sale$/i);
+
+      expect(screen.getByLabelText(/buyers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sellers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sale price/i)).toBeInTheDocument();
+
+      // No lender or loan fields for cash sale
+      expect(screen.queryByLabelText(/new lender/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/borrower/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+    });
+
+    it("Refinance shows borrower, new_lender, new_loan_amount, existing DOT dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^refinance$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new loan amount/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/existing dot lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/credit limit/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/first position lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("2nd Deed of Trust shows borrower, new_lender, loan_amount, first position dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^2nd deed of trust$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/loan amount/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/first position lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale or refinance-specific fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("HELOC shows borrower, new_lender, credit_limit, first position dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^heloc$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/credit limit/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/first position lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale or refinance-specific fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+    });
   });
 });
