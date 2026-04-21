@@ -49,8 +49,10 @@ describe("renderCommitmentPdf", () => {
     const transactionInputs: TransactionInputs = {
       transaction_type: "refinance",
       effective_date: "2026-04-14",
-      buyer_or_borrower: "POPHAM CHRISTOPHER/ASHLEY",
+      borrower: "POPHAM CHRISTOPHER/ASHLEY",
       new_lender: "ACME BANK, N.A.",
+      new_loan_amount: "300000",
+      existing_dot_lifecycle_id: "lc-002",
     };
 
     const fakeItems: BIItem[] = [
