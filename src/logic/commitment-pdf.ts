@@ -3,6 +3,7 @@ import autoTable from "jspdf-autotable";
 import type { CommitmentDocument, ScheduleB2Row } from "./commitment-builder";
 import { provenanceInlineTag } from "./provenance-vocab";
 import type { BIItem, TransactionInputs } from "../types/commitment";
+import { getBuyerOrBorrower, getNewLender } from "../types/commitment";
 
 const MARGIN_X = 14;
 const PAGE_WIDTH_PT = 210;
@@ -274,7 +275,7 @@ function renderScheduleBI(
     const summaryParts = [
       `Transaction: ${typeLabel}`,
       `Effective: ${inputs.effective_date}`,
-      `Buyer/Borrower: ${inputs.buyer_or_borrower}`,
+      `Buyer/Borrower: ${getBuyerOrBorrower(inputs)}`,
       `Lender: ${inputs.new_lender ?? "\u2014"}`,
     ];
     const summaryLines = pdf.splitTextToSize(
