@@ -167,4 +167,93 @@ describe("TransactionWizard", () => {
     renderWizardAt("/parcel/999-99-999/commitment/new");
     expect(screen.getByText(/not in this corpus/i)).toBeInTheDocument();
   });
+
+  describe("Step 2 conditional fields", () => {
+    async function goToStep2(typeName: RegExp) {
+      const user = userEvent.setup();
+      renderWizardAt(`/parcel/${POPHAM_APN}/commitment/new`);
+      await user.click(screen.getByRole("button", { name: typeName }));
+      await user.click(screen.getByRole("button", { name: /^next$/i }));
+      return user;
+    }
+
+    it("Purchase shows buyers, sellers, sale_price, new_lender, loan_amount", async () => {
+      await goToStep2(/^purchase$/i);
+
+      expect(screen.getByLabelText(/buyers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sellers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sale price/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/loan amount/i)).toBeInTheDocument();
+
+      // Should NOT show refinance-specific fields
+      expect(screen.queryByLabelText(/borrower/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/credit limit/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/first position lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("Cash Sale shows buyers, sellers, sale_price — not new_lender or loan_amount", async () => {
+      await goToStep2(/^cash sale$/i);
+
+      expect(screen.getByLabelText(/buyers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sellers/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/sale price/i)).toBeInTheDocument();
+
+      // No lender or loan fields for cash sale
+      expect(screen.queryByLabelText(/new lender/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/borrower/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+    });
+
+    it("Refinance shows borrower, new_lender, new_loan_amount, existing DOT dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^refinance$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new loan amount/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/existing dot lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/credit limit/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/first position lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("2nd Deed of Trust shows borrower, new_lender, loan_amount, first position dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^2nd deed of trust$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/loan amount/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/first position lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale or refinance-specific fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+    });
+
+    it("HELOC shows borrower, new_lender, credit_limit, first position dropdown — not buyers/sellers", async () => {
+      await goToStep2(/^heloc$/i);
+
+      expect(screen.getByLabelText(/borrower/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/new lender/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/credit limit/i)).toBeInTheDocument();
+      expect(screen.getByLabelText(/first position lifecycle/i)).toBeInTheDocument();
+
+      // Should NOT show purchase/sale or refinance-specific fields
+      expect(screen.queryByLabelText(/buyers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sellers/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/sale price/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/new loan amount/i)).not.toBeInTheDocument();
+      expect(screen.queryByLabelText(/existing dot lifecycle/i)).not.toBeInTheDocument();
+    });
+  });
 });
