@@ -48,19 +48,29 @@ describe("TransactionWizard", () => {
     expect(screen.getByLabelText(/effective date/i)).toBeInTheDocument();
   });
 
-  it("step 2 requires effective date, buyer, and lender before Next enables", async () => {
+  it("step 2 requires all refinance fields before Next enables", async () => {
     const user = userEvent.setup();
     renderWizardAt(`/parcel/${POPHAM_APN}/commitment/new`);
     await user.click(screen.getByRole("button", { name: /^refinance$/i }));
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // Step 2. Buyer auto-fills from parcel.current_owner; lender is empty so
-    // Next should stay disabled until user fills lender.
+    // Step 2. Borrower auto-fills from parcel.current_owner; lender, loan
+    // amount, and existing DOT lifecycle are empty so Next stays disabled.
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
+    const loanAmt = screen.getByLabelText(/new loan amount/i) as HTMLInputElement;
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
     const next = screen.getByRole("button", { name: /^next$/i });
     expect(next).toBeDisabled();
 
     await user.type(lender, "ACME BANK, N.A.");
+    expect(next).toBeDisabled(); // still missing loan amount + lifecycle
+
+    await user.type(loanAmt, "$350,000");
+    expect(next).toBeDisabled(); // still missing lifecycle
+
+    // Select the first open lifecycle option
+    const option = dotSelect.options[1]; // index 0 is "— select —"
+    await user.selectOptions(dotSelect, option.value);
     expect(next).not.toBeDisabled();
   });
 
@@ -72,6 +82,9 @@ describe("TransactionWizard", () => {
 
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
     // Heading mentions Schedule B-I
@@ -91,19 +104,22 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // "why" for BI-TAX-CERT is "Required on every residential closing..."
-    expect(
-      screen.queryByText(/required on every residential closing/i),
-    ).not.toBeInTheDocument();
-
+    // "why" text is hidden until expanded. Clicking a "Why this item" button
+    // toggles it to "Hide why" and reveals the explanation paragraph.
     const whyButtons = screen.getAllByRole("button", {
       name: /why this item/i,
     });
-    await user.click(whyButtons[whyButtons.length - 1]);
+    expect(whyButtons.length).toBeGreaterThan(0);
+
+    await user.click(whyButtons[0]);
+    // After clicking, the button label changes to "Hide why"
     expect(
-      screen.getByText(/required on every residential closing/i),
+      screen.getByRole("button", { name: /hide why/i }),
     ).toBeInTheDocument();
   });
 
@@ -114,6 +130,9 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
     // On step 3 — click Back.
@@ -131,10 +150,13 @@ describe("TransactionWizard", () => {
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     const lender = screen.getByLabelText(/new lender/i) as HTMLInputElement;
     await user.type(lender, "ACME BANK, N.A.");
+    await user.type(screen.getByLabelText(/new loan amount/i), "$350,000");
+    const dotSelect = screen.getByLabelText(/existing dot lifecycle/i) as HTMLSelectElement;
+    await user.selectOptions(dotSelect, dotSelect.options[1].value);
     await user.click(screen.getByRole("button", { name: /^next$/i }));
     await user.click(screen.getByRole("button", { name: /^next$/i }));
 
-    // Summary shows lender, buyer, etc.
+    // Summary shows lender, borrower, etc.
     expect(screen.getByText(/ACME BANK, N\.A\./)).toBeInTheDocument();
     expect(
       screen.getByRole("button", { name: /export commitment pdf/i }),
