@@ -276,7 +276,7 @@ function renderScheduleBI(
       `Transaction: ${typeLabel}`,
       `Effective: ${inputs.effective_date}`,
       `Buyer/Borrower: ${getBuyerOrBorrower(inputs)}`,
-      `Lender: ${inputs.new_lender ?? "\u2014"}`,
+      `Lender: ${getNewLender(inputs) ?? "\u2014"}`,
     ];
     const summaryLines = pdf.splitTextToSize(
       summaryParts.join("  \u2022  "),
